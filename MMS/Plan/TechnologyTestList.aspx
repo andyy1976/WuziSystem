@@ -30,6 +30,9 @@
             <div class="divViewPanel">
                 <telerik:RadCodeBlock ID="RadCodeBlock1" runat="server">
                     <script type="text/javascript">
+                        function RefreshParent(sender, eventArgs) {
+                            document.location.reload();
+                        }
                         function ShowTechnologyTestListDetails(MDP_Code, MDPID, SubmitType,Type) {
                           var win = $find("<%=RadWindowRecordWindow.ClientID %>");
                           var title = "";
@@ -152,7 +155,7 @@
                             Behaviors="Close,Maximize,Minimize" Modal="true" Width="1300px" Height="620px" />
                         <telerik:RadWindow ID="RadWindowRecordWindow1" runat="server" Title="新增工艺试验件" Left="100px"
                             ReloadOnShow="true" ShowContentDuringLoad="false" VisibleTitlebar="true" VisibleStatusbar="false"
-                            Behaviors="Close,Maximize,Minimize" Modal="true" Width="1300px" Height="620px" />
+                            Behaviors="Close,Maximize,Minimize" OnClientClose="RefreshParent" Modal="true" Width="1300px" Height="620px" />
                     </Windows>
                 </telerik:RadWindowManager>
                 <%--结束--%>

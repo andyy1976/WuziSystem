@@ -126,7 +126,9 @@
                 <telerik:RadCodeBlock ID="RadCodeBlock1" runat="server">
 
                     <script type="text/javascript">
-           
+                        function RefreshParent(sender, eventArgs) {
+                            document.location.reload();
+                        }
           
                 var submintId;
               
@@ -429,7 +431,7 @@
                     <Windows>
                         <telerik:RadWindow ID="RadWindowRecordWindow" runat="server" Title="物资需求清单-待提交" Left="150px"
                             ReloadOnShow="true" ShowContentDuringLoad="false" VisibleTitlebar="true" VisibleStatusbar="false"
-                            Behaviors="None" Modal="true" Width="1400px" Height="660px" />
+                            Behaviors="Close,Maximize,Minimize" OnClientClose="RefreshParent" Modal="true" Width="1400px" Height="660px" />
                     </Windows>
                 </telerik:RadWindowManager>
                      <%--结束--%>

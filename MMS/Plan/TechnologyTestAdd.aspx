@@ -74,6 +74,7 @@
     <form id="form1" runat="server">
         <div style="width: 100%; float: left;">
             <div class="divContant">
+   
             <telerik:RadScriptManager ID="RadScriptManager1" runat="server">
                         <Scripts>
                             <asp:ScriptReference Assembly="Telerik.Web.UI" Name="Telerik.Web.UI.Common.Core.js"></asp:ScriptReference>
@@ -104,10 +105,20 @@
                                 <UpdatedControls>
                                     <telerik:AjaxUpdatedControl ControlID="RadGrid_TechnologyTestList" LoadingPanelID="RadAjaxLoadingPanelLoading" />
                                     <telerik:AjaxUpdatedControl ControlID="RadNotificationAlert" />
+                                     <telerik:AjaxUpdatedControl ControlID="RadBtnSubmit" />
+                                      <telerik:AjaxUpdatedControl ControlID="hfBh" />
                                 </UpdatedControls>
                             </telerik:AjaxSetting>
 
-                
+                          <telerik:AjaxSetting AjaxControlID="RadBtnSave">
+                                <UpdatedControls>
+                                    <telerik:AjaxUpdatedControl ControlID="RadGrid_TechnologyTestList" LoadingPanelID="RadAjaxLoadingPanelLoading" />
+                                    <telerik:AjaxUpdatedControl ControlID="RadNotificationAlert" />
+                                     <telerik:AjaxUpdatedControl ControlID="RadBtnSubmit" />
+                                      <telerik:AjaxUpdatedControl ControlID="hfBh" />
+                                </UpdatedControls>
+                            </telerik:AjaxSetting>
+
                      
 
                        <telerik:AjaxSetting AjaxControlID="RB_Clear">
@@ -182,6 +193,15 @@
                         <script type="text/javascript">
                             var deleteButtonID;
                             var importButtonID;
+
+                            function CloseWindow1(args) {
+                                var oWindow = null;
+                                if (window.radWindow) oWindow = window.radWindow;
+                                else if (window.frameElement.radWindow) oWindow = window.frameElement.radWindow;
+                                var oArg = new Object();
+                                oWindow.BrowserWindow.refreshGrid();
+                                oWindow.close(oArg);
+                            }
                             function validationFailed(sender, eventArgs) {
                                 $(".ErrorHolder").append("<p>Validation failed for '" + eventArgs.get_fileName() + "'.</p>").fadeIn("slow");
                             }
@@ -392,7 +412,7 @@
                         </tr>
                     </table>
                 </div>
-
+      
              <div id="div_no_submit1" style="font-size: 12px; text-align: center; margin-bottom: 20px;">
                     <div class="divViewPanel">
                   <telerik:RadGrid ID="RadGridImport" runat="server" AllowPaging="True"  DataKeyNames="ID" Culture="zh-CN" GroupPanelPosition="Top"

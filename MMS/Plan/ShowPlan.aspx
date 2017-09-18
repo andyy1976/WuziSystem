@@ -54,6 +54,9 @@
     <telerik:RadCodeBlock runat="server">
         <script type="text/javascript">
             //同步窗口开始
+            function RefreshParent(sender, eventArgs) {
+                document.location.reload();
+            }
             var SynchronID;
             function confirmWindowSynchron(sender, args) {
                 $find("<%=confirmWindowSynchron.ClientID %>").show();
@@ -335,7 +338,7 @@
                 Behaviors="Close,Maximize,Minimize" Modal="true" Width="1100px" Height="520px" />
             <telerik:RadWindow ID="RadWindowImportMaterialWindow" runat="server" Title="导入型号物资需求" Left="100px"
                             ReloadOnShow="true" ShowContentDuringLoad="false" VisibleTitlebar="true" VisibleStatusbar="false"
-                            Behaviors="None" Modal="true" Width="1300px" Height="620px" />
+                            Behaviors="Close,Maximize,Minimize" OnClientClose="RefreshParent"  Modal="true" Width="1300px" Height="620px" />
         </Windows>
     </telerik:RadWindowManager>
     <%-- 导入计划、查看计划--结束--%>
