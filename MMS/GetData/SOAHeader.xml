@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SOAHeader>
+  <Responsibility>CUX_SOA_ACCESS_RESP</Responsibility>
+  <RespApplication>CUX</RespApplication>
+  <SecurityGroup>STANDARD</SecurityGroup>
+  <NLSLanguage>AMERICAN</NLSLanguage>
+  <Org_Id>81</Org_Id>
+  <UserName>SOA_COMMON</UserName>
+  <Password>111111</Password>
+  <System_Code>TJ-WZ</System_Code>
+</SOAHeader>

@@ -1,0 +1,439 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:db="http://xmlns.oracle.com/apps/cux/soaprovider/plsql/cux_dm_rco_sync_ws_pkg/write_rco_order/" elementFormDefault="qualified" targetNamespace="http://xmlns.oracle.com/apps/cux/soaprovider/plsql/cux_dm_rco_sync_ws_pkg/write_rco_order/" xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="InputParameters">
+    <complexType>
+      <sequence>
+        <element db:index="1" db:type="Struct" minOccurs="0" name="P_SUM_RECORD_INPUT" nillable="true" type="db:APPS.CUX_DM_RCO_SYNC_WS_PKG_SUM_29" />
+        <element db:index="2" db:type="Array" minOccurs="0" name="P_HEADER_INPUT" nillable="true" type="db:APPS.CUX_DM_RCO_SYNC_WS_PKG_TABL30" />
+        <element db:index="3" db:type="Array" minOccurs="0" name="P_LINE_INPUT" nillable="true" type="db:APPS.CUX_DM_RCO_SYNC_WS_PKG_TABL31" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="OutputParameters">
+    <complexType>
+      <sequence>
+        <element db:index="4" db:type="Array" minOccurs="0" name="X_ERROR_RECORD" nillable="true" type="db:APPS.CUX_DM_RCO_SYNC_WS_PKG_ERRO32" />
+        <element db:index="5" db:type="Struct" minOccurs="0" name="X_RECORD_RESULT" nillable="true" type="db:APPS.CUX_DM_RCO_SYNC_WS_PKG_RECO33" />
+      </sequence>
+    </complexType>
+  </element>
+  <complexType name="APPS.CUX_DM_RCO_SYNC_WS_PKG_ERRO36">
+    <sequence>
+      <element db:type="NUMBER" minOccurs="0" name="ORG_ID" nillable="true" type="decimal" />
+      <element db:type="VARCHAR2" minOccurs="0" name="SYSTEM_CODE" nillable="true">
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="50" />
+          </restriction>
+        </simpleType>
+      </element>
+      <element db:type="NUMBER" minOccurs="0" name="USER_RCO_HEADER_ID" nillable="true" type="decimal" />
+      <element db:type="NUMBER" minOccurs="0" name="USER_RCO_LINE_ID" nillable="true" type="decimal" />
+      <element db:type="VARCHAR2" minOccurs="0" name="ERR_MSG" nillable="true">
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="4000" />
+          </restriction>
+        </simpleType>
+      </element>
+    </sequence>
+  </complexType>
+  <complexType name="APPS.CUX_DM_RCO_SYNC_WS_PKG_RECO33">
+    <sequence>
+      <element db:type="VARCHAR2" minOccurs="0" name="STATUS" nillable="true">
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="10" />
+          </restriction>
+        </simpleType>
+      </element>
+      <element db:type="VARCHAR2" minOccurs="0" name="ERR_MSG" nillable="true">
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="240" />
+          </restriction>
+        </simpleType>
+      </element>
+    </sequence>
+  </complexType>
+  <complexType name="APPS.CUX_DM_RCO_SYNC_WS_PKG_ERRO32">
+    <sequence>
+      <element db:type="Struct" minOccurs="0" maxOccurs="unbounded" name="X_ERROR_RECORD_ITEM" nillable="true" type="db:APPS.CUX_DM_RCO_SYNC_WS_PKG_ERRO36" />
+    </sequence>
+  </complexType>
+  <complexType name="APPS.CUX_DM_RCO_SYNC_WS_PKG_TABL30">
+    <sequence>
+      <element db:type="Struct" minOccurs="0" maxOccurs="unbounded" name="P_HEADER_INPUT_ITEM" nillable="true" type="db:APPS.CUX_DM_RCO_SYNC_WS_PKG_RECO34" />
+    </sequence>
+  </complexType>
+  <complexType name="APPS.CUX_DM_RCO_SYNC_WS_PKG_RECO34">
+    <sequence>
+      <element db:type="VARCHAR2" minOccurs="0" name="RCO_HEADER_NO" nillable="true">
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="50" />
+          </restriction>
+        </simpleType>
+      </element>
+      <element db:type="NUMBER" minOccurs="0" name="USER_RCO_HEADER_ID" nillable="true" type="decimal" />
+      <element db:type="VARCHAR2" minOccurs="0" name="USER_RCO_HEADER_NO" nillable="true">
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="50" />
+          </restriction>
+        </simpleType>
+      </element>
+      <element db:type="NUMBER" minOccurs="0" name="ORG_ID" nillable="true" type="decimal" />
+      <element db:type="VARCHAR2" minOccurs="0" name="RCO_STATUS" nillable="true">
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="80" />
+          </restriction>
+        </simpleType>
+      </element>
+      <element db:type="NUMBER" minOccurs="0" name="USER_RQ_ID" nillable="true" type="decimal" />
+      <element db:type="NUMBER" minOccurs="0" name="USER_RQ_LINE_ID" nillable="true" type="decimal" />
+      <element db:type="VARCHAR2" minOccurs="0" name="REASON" nillable="true">
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="4000" />
+          </restriction>
+        </simpleType>
+      </element>
+      <element db:type="VARCHAR2" minOccurs="0" name="REQUESTER" nillable="true">
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="20" />
+          </restriction>
+        </simpleType>
+      </element>
+      <element db:type="VARCHAR2" minOccurs="0" name="REQUESTER_PHONE" nillable="true">
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="20" />
+          </restriction>
+        </simpleType>
+      </element>
+      <element db:type="VARCHAR2" minOccurs="0" name="PREPARER" nillable="true">
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="20" />
+          </restriction>
+        </simpleType>
+      </element>
+      <element db:type="DATE" minOccurs="0" name="CREATION_DATE" nillable="true" type="dateTime" />
+      <element db:type="NUMBER" minOccurs="0" name="CREATED_BY" nillable="true" type="decimal" />
+      <element db:type="VARCHAR2" minOccurs="0" name="CUSTOMER_OF_CREATOR" nillable="true">
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="360" />
+          </restriction>
+        </simpleType>
+      </element>
+      <element db:type="NUMBER" minOccurs="0" name="SUBMITTED_BY" nillable="true" type="decimal" />
+      <element db:type="DATE" minOccurs="0" name="SUBMISSION_DATE" nillable="true" type="dateTime" />
+      <element db:type="VARCHAR2" minOccurs="0" name="CHANGE_OPTION" nillable="true">
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="40" />
+          </restriction>
+        </simpleType>
+      </element>
+      <element db:type="VARCHAR2" minOccurs="0" name="SYSTEM_CODE" nillable="true">
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="50" />
+          </restriction>
+        </simpleType>
+      </element>
+      <element db:type="DATE" minOccurs="0" name="TRANSFER_TIME" nillable="true" type="dateTime" />
+      <element db:type="NUMBER" minOccurs="0" name="GROUP_ID" nillable="true" type="decimal" />
+      <element db:type="VARCHAR2" minOccurs="0" name="ATTRIBUTE_CATEGORY" nillable="true">
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="30" />
+          </restriction>
+        </simpleType>
+      </element>
+      <element db:type="VARCHAR2" minOccurs="0" name="ATTRIBUTE1" nillable="true">
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="240" />
+          </restriction>
+        </simpleType>
+      </element>
+      <element db:type="VARCHAR2" minOccurs="0" name="ATTRIBUTE2" nillable="true">
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="240" />
+          </restriction>
+        </simpleType>
+      </element>
+      <element db:type="VARCHAR2" minOccurs="0" name="ATTRIBUTE3" nillable="true">
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="240" />
+          </restriction>
+        </simpleType>
+      </element>
+      <element db:type="VARCHAR2" minOccurs="0" name="ATTRIBUTE4" nillable="true">
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="240" />
+          </restriction>
+        </simpleType>
+      </element>
+      <element db:type="VARCHAR2" minOccurs="0" name="ATTRIBUTE5" nillable="true">
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="240" />
+          </restriction>
+        </simpleType>
+      </element>
+      <element db:type="VARCHAR2" minOccurs="0" name="ATTRIBUTE6" nillable="true">
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="240" />
+          </restriction>
+        </simpleType>
+      </element>
+      <element db:type="VARCHAR2" minOccurs="0" name="ATTRIBUTE7" nillable="true">
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="240" />
+          </restriction>
+        </simpleType>
+      </element>
+      <element db:type="VARCHAR2" minOccurs="0" name="ATTRIBUTE8" nillable="true">
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="240" />
+          </restriction>
+        </simpleType>
+      </element>
+      <element db:type="VARCHAR2" minOccurs="0" name="ATTRIBUTE9" nillable="true">
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="240" />
+          </restriction>
+        </simpleType>
+      </element>
+      <element db:type="VARCHAR2" minOccurs="0" name="ATTRIBUTE10" nillable="true">
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="240" />
+          </restriction>
+        </simpleType>
+      </element>
+      <element db:type="VARCHAR2" minOccurs="0" name="ATTRIBUTE11" nillable="true">
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="240" />
+          </restriction>
+        </simpleType>
+      </element>
+      <element db:type="VARCHAR2" minOccurs="0" name="ATTRIBUTE12" nillable="true">
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="240" />
+          </restriction>
+        </simpleType>
+      </element>
+      <element db:type="VARCHAR2" minOccurs="0" name="ATTRIBUTE13" nillable="true">
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="240" />
+          </restriction>
+        </simpleType>
+      </element>
+      <element db:type="VARCHAR2" minOccurs="0" name="ATTRIBUTE14" nillable="true">
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="240" />
+          </restriction>
+        </simpleType>
+      </element>
+      <element db:type="VARCHAR2" minOccurs="0" name="ATTRIBUTE15" nillable="true">
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="240" />
+          </restriction>
+        </simpleType>
+      </element>
+    </sequence>
+  </complexType>
+  <complexType name="APPS.CUX_DM_RCO_SYNC_WS_PKG_TABL31">
+    <sequence>
+      <element db:type="Struct" minOccurs="0" maxOccurs="unbounded" name="P_LINE_INPUT_ITEM" nillable="true" type="db:APPS.CUX_DM_RCO_SYNC_WS_PKG_RECO35" />
+    </sequence>
+  </complexType>
+  <complexType name="APPS.CUX_DM_RCO_SYNC_WS_PKG_RECO35">
+    <sequence>
+      <element db:type="NUMBER" minOccurs="0" name="USER_RCO_LINE_ID" nillable="true" type="decimal" />
+      <element db:type="NUMBER" minOccurs="0" name="USER_RCO_HEADER_ID" nillable="true" type="decimal" />
+      <element db:type="NUMBER" minOccurs="0" name="LINE_NUM" nillable="true" type="decimal" />
+      <element db:type="VARCHAR2" minOccurs="0" name="COLUMN_CHANGED" nillable="true">
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="30" />
+          </restriction>
+        </simpleType>
+      </element>
+      <element db:type="VARCHAR2" minOccurs="0" name="ORIGINAL_VALUE" nillable="true">
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="150" />
+          </restriction>
+        </simpleType>
+      </element>
+      <element db:type="VARCHAR2" minOccurs="0" name="CHANGED_VALUE" nillable="true">
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="150" />
+          </restriction>
+        </simpleType>
+      </element>
+      <element db:type="VARCHAR2" minOccurs="0" name="SYSTEM_CODE" nillable="true">
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="50" />
+          </restriction>
+        </simpleType>
+      </element>
+      <element db:type="DATE" minOccurs="0" name="TRANSFER_TIME" nillable="true" type="dateTime" />
+      <element db:type="NUMBER" minOccurs="0" name="GROUP_ID" nillable="true" type="decimal" />
+      <element db:type="VARCHAR2" minOccurs="0" name="ATTRIBUTE_CATEGORY" nillable="true">
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="30" />
+          </restriction>
+        </simpleType>
+      </element>
+      <element db:type="VARCHAR2" minOccurs="0" name="ATTRIBUTE1" nillable="true">
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="240" />
+          </restriction>
+        </simpleType>
+      </element>
+      <element db:type="VARCHAR2" minOccurs="0" name="ATTRIBUTE2" nillable="true">
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="240" />
+          </restriction>
+        </simpleType>
+      </element>
+      <element db:type="VARCHAR2" minOccurs="0" name="ATTRIBUTE3" nillable="true">
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="240" />
+          </restriction>
+        </simpleType>
+      </element>
+      <element db:type="VARCHAR2" minOccurs="0" name="ATTRIBUTE4" nillable="true">
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="240" />
+          </restriction>
+        </simpleType>
+      </element>
+      <element db:type="VARCHAR2" minOccurs="0" name="ATTRIBUTE5" nillable="true">
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="240" />
+          </restriction>
+        </simpleType>
+      </element>
+      <element db:type="VARCHAR2" minOccurs="0" name="ATTRIBUTE6" nillable="true">
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="240" />
+          </restriction>
+        </simpleType>
+      </element>
+      <element db:type="VARCHAR2" minOccurs="0" name="ATTRIBUTE7" nillable="true">
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="240" />
+          </restriction>
+        </simpleType>
+      </element>
+      <element db:type="VARCHAR2" minOccurs="0" name="ATTRIBUTE8" nillable="true">
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="240" />
+          </restriction>
+        </simpleType>
+      </element>
+      <element db:type="VARCHAR2" minOccurs="0" name="ATTRIBUTE9" nillable="true">
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="240" />
+          </restriction>
+        </simpleType>
+      </element>
+      <element db:type="VARCHAR2" minOccurs="0" name="ATTRIBUTE10" nillable="true">
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="240" />
+          </restriction>
+        </simpleType>
+      </element>
+      <element db:type="VARCHAR2" minOccurs="0" name="ATTRIBUTE11" nillable="true">
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="240" />
+          </restriction>
+        </simpleType>
+      </element>
+      <element db:type="VARCHAR2" minOccurs="0" name="ATTRIBUTE12" nillable="true">
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="240" />
+          </restriction>
+        </simpleType>
+      </element>
+      <element db:type="VARCHAR2" minOccurs="0" name="ATTRIBUTE13" nillable="true">
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="240" />
+          </restriction>
+        </simpleType>
+      </element>
+      <element db:type="VARCHAR2" minOccurs="0" name="ATTRIBUTE14" nillable="true">
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="240" />
+          </restriction>
+        </simpleType>
+      </element>
+      <element db:type="VARCHAR2" minOccurs="0" name="ATTRIBUTE15" nillable="true">
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="240" />
+          </restriction>
+        </simpleType>
+      </element>
+    </sequence>
+  </complexType>
+  <complexType name="APPS.CUX_DM_RCO_SYNC_WS_PKG_SUM_29">
+    <sequence>
+      <element db:type="VARCHAR2" minOccurs="0" name="SYSTEM_CODE" nillable="true">
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="100" />
+          </restriction>
+        </simpleType>
+      </element>
+      <element db:type="VARCHAR2" minOccurs="0" name="TOTAL_FLAG" nillable="true">
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="1" />
+          </restriction>
+        </simpleType>
+      </element>
+      <element db:type="NUMBER" minOccurs="0" name="ROW_COUNT" nillable="true" type="decimal" />
+      <element db:type="NUMBER" minOccurs="0" name="GROUP_ID" nillable="true" type="decimal" />
+    </sequence>
+  </complexType>
+</schema>

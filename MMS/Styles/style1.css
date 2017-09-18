@@ -1,0 +1,44 @@
+﻿@charset "utf-8";
+/* CSS Document */
+/*common begin*/
+html {font-family: "微软雅黑";height: 100%;min-width:1200px;}
+body {margin: 0;color: #666; background-size:100% 100%;height: 100%;overflow: auto; min-width:1200px;}
+h1, h2, h3 ,h4{margin: 0;font-size: 100%;}
+h3,h4{font-weight: normal;}
+a {text-decoration: none;color: #3d4245;}
+a:active {outline: 0;}
+img {border: none;vertical-align: top;max-width: 100%;}
+ul, ol {margin: 0;padding: 0;}
+li {list-style: none;}
+p, dl, dd, form {margin: 0;}
+/*button, input {color: inherit;font: inherit;margin: 0;padding: 0;border: 0;background: none;}*/
+/*common end*/
+.headbox{ background:url(../images/headbg.jpg) no-repeat left top; background-size:100% 100%; height:133px; clear:both;}
+.head_logo{ float:left;}
+.head_logo img{ display:inline-block; vertical-align:middle;}
+.head_menu{ float:left;}
+.head_menu li{ float:left; width:140px; position:relative; padding-top:30px; height:103px;}
+.head_menu li a{ display:inline-block; float:left; padding-top:60px; height:2px; 
+line-height:33px; font-size:16px; text-align:center; width:137px; color:#fff; font-family:"微软雅黑"; }
+.head_menu li b{display:inline-block; float:left; width:3px; height:93px; background:url(../Images/line_bg.png) no-repeat center bottom;}
+.head_alink1{background:url(../Images/menu1.png) no-repeat center 64px;}
+.head_alink2{background:url(../Images/menu2.png) no-repeat center 64px;}
+.head_alink3{background:url(../Images/menu3.png) no-repeat center 64px;}
+.head_alink4{background:url(../Images/menu4.png) no-repeat center 64px;}
+.head_alink5{background:url(../Images/menu5.png) no-repeat center 64px;}
+.head_menu li a:hover{ background:url(../images/ahoverbg.png) no-repeat center center;}
+.siblingdiv{ position:absolute; left:0; top:120px; clear:both; display:none; }
+.div_mian{ position:relative;width:200px; clear:both; background:#015093; color:#fff; padding:10px 2px; border-radius:5px;-moz-border-radius:5px;-webkit-border-radius:5px; z-index:10000;}
+.siblingdiv p{ clear:both; height:35px; line-height:35px; }
+.siblingdiv p a{ background:none; color:#fff; padding:0; height:35px; line-height:35px; width:100%; display:block;font-size:14px;font-family:"微软雅黑";}
+.siblingdiv p a:hover{ background:#fff; color:#0477e2; border-radius:2px;-moz-border-radius:2px;-webkit-border-radius:2px;}
+.div_mian span{ width:19px; height:16px; background:url(../Images/arrowbg.png) no-repeat center bottom; position:absolute; left:30px; top:-16px;}
+.head_right{ position:absolute; right:20px; top:10px; color:#fff; font-size:14px; font-family:"微软雅黑";
+    height: 38px;
+}
+.head_right span,.head_right b{ float:left; height:30px; line-height:30px; display:block; margin-right:10px;}
+.head_right .head_tui{ float:right; cursor:pointer; background:rgba(0,0,0,0.3); border-radius:50px; padding:0 20px;}
+.head_right .head_tui i{ display:inline-block; float:left; background:url(../Images/tuibg.png) no-repeat center center; width:20px; height:30px;}
+.head_right .head_tui b{ float:left; display:block; height:30px; line-height:28px; margin:0; padding:0; font-weight:normal;}
+.span_b1{ color:#ff8624;}
+.span_b2{ color:#ffe400;}

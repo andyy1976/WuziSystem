@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DiscoveryClientResultsFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Results>
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="http://k2:8005/K2WebServiceForMMSPre.asmx?wsdl" filename="K2WebServiceForMMSPre.wsdl" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.DiscoveryDocumentReference" url="http://k2:8005/K2WebServiceForMMSPre.asmx?disco" filename="K2WebServiceForMMSPre.disco" />
+  </Results>
+</DiscoveryClientResultsFile>

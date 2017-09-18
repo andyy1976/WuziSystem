@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:ax257="http://writestock.responseinfo.outstock.htyy.nc/xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ax254="http://requestinfo.outstock.htyy.nc/xsd" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:ax258="http://responseinfo.outstock.htyy.nc/xsd" xmlns:ns="http://WriteStockBillService/xsd" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:axis2="http://WriteStockBillService/" xmlns:ax253="http://writestockbill.requestinfo.outstock.htyy.nc/xsd" xmlns:ns1="http://org.apache.axis2/xsd" targetNamespace="http://WriteStockBillService/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation>WriteStockBillService</wsdl:documentation>
+  <wsdl:types>
+    <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://responseinfo.outstock.htyy.nc/xsd">
+      <xs:complexType name="OutStockResponseBaseInfo">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="vdefString5" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="vdefString4" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="vdefString7" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="vdefString6" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="vdefString1" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="vdefDouble8" nillable="true" type="xs:decimal" />
+          <xs:element minOccurs="0" name="vdefString3" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="vdefDouble9" nillable="true" type="xs:decimal" />
+          <xs:element minOccurs="0" name="vdefString2" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="vdefDouble6" nillable="true" type="xs:decimal" />
+          <xs:element minOccurs="0" name="vdefDouble7" nillable="true" type="xs:decimal" />
+          <xs:element minOccurs="0" name="vdefDouble4" nillable="true" type="xs:decimal" />
+          <xs:element minOccurs="0" name="vdefDouble5" nillable="true" type="xs:decimal" />
+          <xs:element minOccurs="0" name="vdefDouble2" nillable="true" type="xs:decimal" />
+          <xs:element minOccurs="0" name="vdefString9" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="vdefDouble3" nillable="true" type="xs:decimal" />
+          <xs:element minOccurs="0" name="vdefString8" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="returnResult" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="vdefDouble1" nillable="true" type="xs:decimal" />
+          <xs:element minOccurs="0" name="vdefDouble10" nillable="true" type="xs:decimal" />
+          <xs:element minOccurs="0" name="errorInfo" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="vdefString10" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+    <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://requestinfo.outstock.htyy.nc/xsd">
+      <xs:complexType name="OutStockParamBaseInfo">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="vdefString1" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="vdefString3" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="vdefString2" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="customerSysPort" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="vdefDouble2" nillable="true" type="xs:decimal" />
+          <xs:element minOccurs="0" name="vdefDouble3" nillable="true" type="xs:decimal" />
+          <xs:element minOccurs="0" name="vdefDouble1" nillable="true" type="xs:decimal" />
+          <xs:element minOccurs="0" name="customerSysCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="customerSyspwd" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="vdefInteger3" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="customerSysIp" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="vdefInteger1" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="vdefInteger2" nillable="true" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="OutStockParamVdefdocInfo">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="vdefdou9" nillable="true" type="xs:decimal" />
+          <xs:element minOccurs="0" name="vdefdou8" nillable="true" type="xs:decimal" />
+          <xs:element minOccurs="0" name="userSysBillBid" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="vdefstr1" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="vdefdou7" nillable="true" type="xs:decimal" />
+          <xs:element minOccurs="0" name="vdefdou6" nillable="true" type="xs:decimal" />
+          <xs:element minOccurs="0" name="vdefdou5" nillable="true" type="xs:decimal" />
+          <xs:element minOccurs="0" name="vdefdou4" nillable="true" type="xs:decimal" />
+          <xs:element minOccurs="0" name="vdefdou3" nillable="true" type="xs:decimal" />
+          <xs:element minOccurs="0" name="vdefstr10" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="vdefdou2" nillable="true" type="xs:decimal" />
+          <xs:element minOccurs="0" name="vdefdou1" nillable="true" type="xs:decimal" />
+          <xs:element minOccurs="0" name="vdefdou10" nillable="true" type="xs:decimal" />
+          <xs:element minOccurs="0" name="userSysBillHid" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="vdefstr7" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="vdefstr6" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="vdefstr9" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="vdefstr8" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="vdefstr3" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="vdefstr2" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="vdefstr5" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="vdefstr4" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+    <xs:schema xmlns:ax256="http://writestockbill.requestinfo.outstock.htyy.nc/xsd" xmlns:ax260="http://writestock.responseinfo.outstock.htyy.nc/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://WriteStockBillService/xsd">
+      <xs:import namespace="http://writestockbill.requestinfo.outstock.htyy.nc/xsd" />
+      <xs:import namespace="http://writestock.responseinfo.outstock.htyy.nc/xsd" />
+      <xs:element name="writeStockBillInfo">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="writestockbillparaminfo" nillable="true" type="ax256:WriteStockBillParam" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="writeStockBillInfoResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="return" nillable="true" type="ax260:WriteStockBillResponse" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+    <xs:schema xmlns:ax255="http://requestinfo.outstock.htyy.nc/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://writestockbill.requestinfo.outstock.htyy.nc/xsd">
+      <xs:import namespace="http://requestinfo.outstock.htyy.nc/xsd" />
+      <xs:complexType name="WriteStockBillParam">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ax255:OutStockParamBaseInfo">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="row_Count" nillable="true" type="xs:int" />
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="writeStockBillRequestBillInfo" nillable="true" type="ax253:WriteStockBillParamBillInfo" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="WriteStockBillParamBillInfo">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ax255:OutStockParamVdefdocInfo">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="cgeneralbid" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="jc_jstype" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="signuser" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="lastupdate" nillable="true" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+    </xs:schema>
+    <xs:schema xmlns:ax259="http://responseinfo.outstock.htyy.nc/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://writestock.responseinfo.outstock.htyy.nc/xsd">
+      <xs:import namespace="http://responseinfo.outstock.htyy.nc/xsd" />
+      <xs:complexType name="WriteStockBillResponse">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ax259:OutStockResponseBaseInfo">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="lastUpdate" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="cgeneralBid" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="userSysBillBid" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="userSysBillHid" nillable="true" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="writeStockBillInfoRequest">
+    <wsdl:part name="parameters" element="ns:writeStockBillInfo" />
+  </wsdl:message>
+  <wsdl:message name="writeStockBillInfoResponse">
+    <wsdl:part name="parameters" element="ns:writeStockBillInfoResponse" />
+  </wsdl:message>
+  <wsdl:portType name="WriteStockBillServicePortType">
+    <wsdl:operation name="writeStockBillInfo">
+      <wsdl:input wsaw:Action="urn:writeStockBillInfo" message="axis2:writeStockBillInfoRequest" />
+      <wsdl:output wsaw:Action="urn:writeStockBillInfoResponse" message="axis2:writeStockBillInfoResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WriteStockBillServiceSoap11Binding" type="axis2:WriteStockBillServicePortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="writeStockBillInfo">
+      <soap:operation soapAction="urn:writeStockBillInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WriteStockBillServiceSoap12Binding" type="axis2:WriteStockBillServicePortType">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="writeStockBillInfo">
+      <soap12:operation soapAction="urn:writeStockBillInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WriteStockBillServiceHttpBinding" type="axis2:WriteStockBillServicePortType">
+    <http:binding verb="POST" />
+    <wsdl:operation name="writeStockBillInfo">
+      <http:operation location="WriteStockBillService/writeStockBillInfo" />
+      <wsdl:input>
+        <mime:content part="writeStockBillInfo" type="text/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="writeStockBillInfo" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WriteStockBillService">
+    <wsdl:port name="WriteStockBillServiceHttpSoap11Endpoint" binding="axis2:WriteStockBillServiceSoap11Binding">
+      <soap:address location="http://10.16.130.79:7000/ufidasrv/services/WriteStockBillService.WriteStockBillServiceHttpSoap11Endpoint/" />
+    </wsdl:port>
+    <wsdl:port name="WriteStockBillServiceHttpSoap12Endpoint" binding="axis2:WriteStockBillServiceSoap12Binding">
+      <soap12:address location="http://10.16.130.79:7000/ufidasrv/services/WriteStockBillService.WriteStockBillServiceHttpSoap12Endpoint/" />
+    </wsdl:port>
+    <wsdl:port name="WriteStockBillServiceHttpEndpoint" binding="axis2:WriteStockBillServiceHttpBinding">
+      <http:address location="http://10.16.130.79:7000/ufidasrv/services/WriteStockBillService.WriteStockBillServiceHttpEndpoint/" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

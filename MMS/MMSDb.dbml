@@ -1,0 +1,1915 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="MMSDBBeta" Class="MMSDbDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=MMS;Initial Catalog=MMSDBBeta;Persist Security Info=True;User ID=sa" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="MaterialManagerSystemConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.GetBasicdata_Rec" Member="GetBasicdata_Rec">
+    <Type Name="GetBasicdata_Rec">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="STATUS" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TOTAL_FLAG" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ROW_ACCOUT" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="MAX_ROWNUMBER" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="ERR_MSG" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE1" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE2" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE3" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE4" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE5" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE6" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE7" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE8" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE9" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE10" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.WriteReqOrder_T_List" Member="WriteReqOrder_T_List">
+    <Type Name="WriteReqOrder_T_List">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="STATUS" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ORG_ID" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="RQ_NUMBER" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="USER_RQ_NUMBER" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="USER_RQ_ID" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="USER_RQ_LINE_ID" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="RQ_TYPE" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ITEM_CODE" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SPECIAL_REQUEST" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="QUANTITY" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="PIECE" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="DIMENSION" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MANUFACTURER" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="RQ_DATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="URGENCY_LEVEL" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="REQUESTER" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="REQUESTER_PHONE" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ITEM_REVISION" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="USER_ITEM_DESCRIPTION" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="UNANIMOUS_BATCH" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SECURITY_LEVEL" Type="System.String" DbType="NVarChar(80)" CanBeNull="true" />
+      <Column Name="PROJECT" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PHASE" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="BATCH" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="BATCH_QTY" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="USAGE" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TASK" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="SUBJECT" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CUSTOMER_NAME" Type="System.String" DbType="NVarChar(360)" CanBeNull="true" />
+      <Column Name="CUSTOMER_ACCOUNT_NUMBER" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="DELIVERY_ADDRESS" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="PREPARER" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="SUBMITED_BY" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="SUBMISSION_DATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="SYSTEM_CODE" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="TRANSFER_TIME" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CUSTOMER_OF_CREATOR" Type="System.String" DbType="NVarChar(360)" CanBeNull="true" />
+      <Column Name="GROUP_ID" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="CREATION_DATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CREATED_BY" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE_CATEGORY" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE1" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE2" Type="System.String" DbType="NVarChar(80)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE3" Type="System.String" DbType="NVarChar(80)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE4" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE5" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE6" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE7" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE8" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE9" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE10" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE11" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE12" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE13" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE14" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE15" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.GetBasicdata_Sent" Member="GetBasicdata_Sent">
+    <Type Name="GetBasicdata_Sent">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SYSTEM_CODE" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MAX_UPDATE_DATE" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="LAST_MAX_ROWNUMBER" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="DICT_CLASS" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE1" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE2" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE3" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE4" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE5" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE6" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE7" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE8" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE9" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE10" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.GetBasicdata_T_Item" Member="GetBasicdata_T_Item">
+    <Type Name="GetBasicdata_T_Item">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="REC_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DICT_CLASS" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DICT_CODE" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DICT_NAME" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ENABLED_FLAG" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="LAST_UPDATE_DATE" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE_CATEGORY" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE1" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE2" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE3" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE4" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE5" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE6" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE7" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE8" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE9" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE10" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE11" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE12" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE13" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE14" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE15" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.GetCommItem_Rec" Member="GetCommItem_Rec">
+    <Type Name="GetCommItem_Rec">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="STATUS" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TOTAL_FLAG" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ROW_ACCOUT" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="MAX_ROWNUMBER" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="ERR_MSG" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="SEG1" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SEG2" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SEG3" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SEG4" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SEG5" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SEG6" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SEG7" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SEG8" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SEG9" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SEG10" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.GetCommItem_Sent" Member="GetCommItem_Sent">
+    <Type Name="GetCommItem_Sent">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SYSTEM_CODE" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ITEM_CATEGORY" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MAX_UPDATE_DATE" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="LAST_MAX_ROWNUMBER" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="SEG1" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SEG2" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SEG3" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SEG4" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SEG5" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SEG6" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SEG7" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SEG8" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SEG9" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SEG10" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.GetCommItem_T_Item" Member="GetCommItem_T_Item">
+    <Type Name="GetCommItem_T_Item">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="REC_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LAST_UPDATE_DATE" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SEG1" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SEG2" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="SEG3" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="SEG4" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="SEG5" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="SEG6" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="SEG7" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="SEG8" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="SEG9" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="SEG10" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="SEG11" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="SEG12" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="SEG13" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="SEG14" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="SEG15" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="SEG16" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="SEG17" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="SEG18" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="SEG19" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="SEG20" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="SEG21" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="SEG22" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="SEG23" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="SEG24" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="SEG25" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="SEG26" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="SEG27" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="SEG28" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="SEG29" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="SEG30" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="SEG31" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="SEG32" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="SEG33" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="SEG34" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="SEG35" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="SEG36" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="SEG37" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="SEG38" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="SEG39" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="SEG40" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="SEG41" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="SEG42" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="SEG43" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="SEG44" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="SEG45" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="SEG46" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="SEG47" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="SEG48" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="SEG49" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="SEG50" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTR1" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTR2" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTR3" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTR4" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTR5" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTR6" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTR7" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTR8" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTR9" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTR10" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTR11" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTR12" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTR13" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTR14" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTR15" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTR16" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTR17" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTR18" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTR19" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTR20" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="LATTR1" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="LATTR2" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="LATTR3" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="LATTR4" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="LATTR5" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.GetCommManu_Rec" Member="GetCommManu_Rec">
+    <Type Name="GetCommManu_Rec">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="STATUS" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TOTAL_FLAG" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ROW_ACCOUT" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="MAX_ROWNUMBER" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="ERR_MSG" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="SEG1" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SEG2" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SEG3" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SEG4" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SEG5" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SEG6" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SEG7" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SEG8" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SEG9" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SEG10" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.GetCommManu_Sent" Member="GetCommManu_Sent">
+    <Type Name="GetCommManu_Sent">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SYSTEM_CODE" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MAX_UPDATE_DATE" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="LAST_MAX_ROWNUMBER" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="SEG1" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SEG2" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SEG3" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SEG4" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SEG5" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SEG6" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SEG7" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SEG8" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SEG9" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SEG10" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.GetCommManu_T_Item" Member="GetCommManu_T_Item">
+    <Type Name="GetCommManu_T_Item">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="REC_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LAST_UPDATE_DATE" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SEG1" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SEG2" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="SEG3" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="SEG4" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="SEG5" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="SEG6" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="SEG7" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="SEG8" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="SEG9" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="SEG10" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="SEG11" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="SEG12" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="SEG13" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="SEG14" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="SEG15" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="SEG16" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="SEG17" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="SEG18" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="SEG19" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="SEG20" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTR1" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTR2" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTR3" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTR4" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTR5" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTR6" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTR7" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTR8" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTR9" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTR10" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTR11" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTR12" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTR13" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTR14" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTR15" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTR16" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTR17" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTR18" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTR19" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTR20" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="LATTR1" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="LATTR2" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="LATTR3" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="LATTR4" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="LATTR5" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.GetCustInfo_Rec" Member="GetCustInfo_Rec">
+    <Type Name="GetCustInfo_Rec">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="STATUS" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TOTAL_FLAG" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ROW_ACCOUT" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="MAX_ROWNUMBER" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="ERR_MSG" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE1" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE2" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE3" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE4" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE5" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE6" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE7" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE8" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE9" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE10" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.GetCustInfo_Sent" Member="GetCustInfo_Sent">
+    <Type Name="GetCustInfo_Sent">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SYSTEM_CODE" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MAX_UPDATE_DATE" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="LAST_MAX_ROWNUMBER" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="SYNC_CLASS" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE1" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE2" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE3" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE4" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE5" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE6" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE7" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE8" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE9" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE10" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.GetCustInfo_T_ACCT_SITE" Member="GetCustInfo_T_ACCT_SITE">
+    <Type Name="GetCustInfo_T_ACCT_SITE">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="REC_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CUST_ACCT_SITE_ID" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="PARTY_SITE_ID" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="CUST_ACCOUNT_ID" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="CUSTOMER_ID" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="PARTY_SITE_NAME" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PARTY_SITE_STATUS" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="LOCATION_ID" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="ADDRESS" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ORG_ID" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="LAST_UPDATE_DATE" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE1" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE2" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE3" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE4" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE5" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE6" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE7" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE8" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE9" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE10" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE11" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE12" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE13" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE14" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE15" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.GetCustInfo_T_CUST" Member="GetCustInfo_T_CUST">
+    <Type Name="GetCustInfo_T_CUST">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="REC_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CUSTOMER_ID" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="CUSTOMER_NUM" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CUSTOMER_NAME" Type="System.String" DbType="NVarChar(360)" CanBeNull="true" />
+      <Column Name="CUST_ALIAS" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="CUST_CATEGORY" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="LAST_UPDATE_DATE" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE1" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE2" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE3" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE4" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE5" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE6" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE7" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE8" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE9" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE10" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE11" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE12" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE13" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE14" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE15" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.GetCustInfo_T_CUST_ACCT" Member="GetCustInfo_T_CUST_ACCT">
+    <Type Name="GetCustInfo_T_CUST_ACCT">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="REC_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CUST_ACCOUNT_ID" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="CUSTOMER_ID" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="ACCOUNT_NUM" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="ACCOUNT_NAME" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="ACCOUNT_STATUS" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="LAST_UPDATE_DATE" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE1" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE2" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE3" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE4" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE5" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE6" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE7" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE8" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE9" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE10" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.GetErrInf_Rec" Member="GetErrInf_Rec">
+    <Type Name="GetErrInf_Rec">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="STATUS" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TOTAL_FLAG" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ROW_ACCOUT" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="MAX_ROWNUMBER" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="ERR_MSG" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE1" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE2" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE3" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE4" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE5" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE6" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE7" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE8" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE9" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE10" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.GetErrInf_Sent" Member="GetErrInf_Sent">
+    <Type Name="GetErrInf_Sent">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SYSTEM_CODE" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MAX_UPDATE_DATE" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="LAST_MAX_ROWNUMBER" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE1" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE2" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE3" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE4" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE5" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE6" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE7" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE8" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE9" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE10" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.GetErrInf_T_Item" Member="GetErrInf_T_Item">
+    <Type Name="GetErrInf_T_Item">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="REC_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DATA_CLASS" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SOURCE_HEADER_ID" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="SOURCE_LINE_ID" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="SOURCE_HEADER_NUMBER" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ERROR_MSG" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="SYSTEM_CODE" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="LAST_UPDATE_DATE" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE_CATEGORY" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE1" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE2" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE3" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE4" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE5" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE6" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE7" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE8" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE9" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE10" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE11" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE12" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE13" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE14" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE15" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.GetExeInf_Rec" Member="GetExeInf_Rec">
+    <Type Name="GetExeInf_Rec">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="STATUS" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TOTAL_FLAG" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ROW_ACCOUT" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="MAX_ROWNUMBER" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="ERR_MSG" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE1" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE2" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE3" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE4" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE5" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE6" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE7" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE8" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE9" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE10" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.GetExeInf_Sent" Member="GetExeInf_Sent">
+    <Type Name="GetExeInf_Sent">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SYSTEM_CODE" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MAX_UPDATE_DATE" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="LAST_MAX_ROWNUMBER" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE1" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE2" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE3" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE4" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE5" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE6" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE7" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE8" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE9" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE10" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.GetExeInf_T_Item" Member="GetExeInf_T_Item">
+    <Type Name="GetExeInf_T_Item">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="REC_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ORG_ID" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="RQ_NO" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="USER_RQ_HEADER_ID" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="USER_RQ_LINE_ID" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="USER_RQ_NUMBER" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TOTAL_PR_QUANTITY" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="TOTAL_PO_QUANTITY" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="TOTAL_RECEIVED_QUANTITY" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="TOTAL_INSPECTED_QUANTITY" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="TOTAL_DELIVERED_QUANTITY" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="TOTAL_SHIPPED_QUANTITY" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="TOTAL_BORROWED_QUANTITY" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="TOTAL_RESERVED_QUANTITY" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="RQ_STATUS" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="RQ_EXECUTION_STATUS" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="RQ_EXECUTION_PHASE" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CLOSE_REASON" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CLOSED_BY" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="CLOSE_DATE" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="LAST_UPDATE_DATE" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE_CATEGORY" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE1" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE2" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE3" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE4" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE5" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE6" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE7" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE8" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE9" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE10" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE11" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE12" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE13" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE14" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE15" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.GetRcoStatus_Rec" Member="GetRcoStatus_Rec">
+    <Type Name="GetRcoStatus_Rec">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="STATUS" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TOTAL_FLAG" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ROW_ACCOUT" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="MAX_ROWNUMBER" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="ERR_MSG" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE1" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE2" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE3" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE4" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE5" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE6" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE7" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE8" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE9" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE10" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.GetRcoStatus_Sent" Member="GetRcoStatus_Sent">
+    <Type Name="GetRcoStatus_Sent">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SYSTEM_CODE" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MAX_UPDATE_DATE" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="LAST_MAX_ROWNUMBER" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE1" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE2" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE3" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE4" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE5" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE6" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE7" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE8" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE9" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE10" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.GetRcoStatus_T_Item" Member="GetRcoStatus_T_Item">
+    <Type Name="GetRcoStatus_T_Item">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="REC_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ORG_ID" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="RCO_NO" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="USER_RCO_NO" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="USER_RCO_ID" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="RCO_STATUS" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CONFIRMED_QUANTITY" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="CONFIRMED_RQ_DATE" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TEST_MATERIAL_QUANTITY" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="PROCESS_APPROACH" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="LAST_STATUS_CHANGE_DATE" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DATA_LAST_UPDATE_DATE" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE_CATEGORY" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE1" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE2" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE3" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE4" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE5" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE6" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE7" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE8" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE9" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE10" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE11" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE12" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE13" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE14" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE15" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.GetRqStatus_Rec" Member="GetRqStatus_Rec">
+    <Type Name="GetRqStatus_Rec">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="STATUS" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TOTAL_FLAG" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ROW_ACCOUT" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="MAX_ROWNUMBER" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="ERR_MSG" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE1" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE2" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE3" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE4" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE5" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE6" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE7" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE8" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE9" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE10" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.GetRqStatus_Sent" Member="GetRqStatus_Sent">
+    <Type Name="GetRqStatus_Sent">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SYSTEM_CODE" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MAX_UPDATE_DATE" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="LAST_MAX_ROWNUMBER" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE1" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE2" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE3" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE4" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE5" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE6" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE7" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE8" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE9" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE10" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.GetRqStatus_T_Item" Member="GetRqStatus_T_Item">
+    <Type Name="GetRqStatus_T_Item">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="REC_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ORG_ID" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="RQ_NO" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="USER_RQ_ID" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="USER_RQ_LINE_ID" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="USER_RQ_NO" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CONFIRMED_QUANTITY" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="CONFIRMED_RQ_DATE" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CONFIRMED_ITEM_ID" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="CONFIRMED_ITEM_REVISION" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TEST_MATERIAL_QUANTITY" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="SUBMISSION_STATUS" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CLAIMED_BY" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DEPARTMENT_OF_PLANNER" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CLAIM_DATE" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CONFIRMED_BY" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CONFIRMATION_DATE" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SUBMITED_SYNC_STATUS" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DATA_LAST_UPDATE_DATE" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE_CATEGORY" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE1" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE2" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE3" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE4" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE5" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE6" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE7" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE8" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE9" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE10" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE11" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE12" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE13" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE14" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE15" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE16" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE17" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE18" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE19" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE20" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE21" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE22" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE23" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE24" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE25" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE26" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE27" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE28" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE29" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE30" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.M_Change_Flow" Member="M_Change_Flow">
+    <Type Name="M_Change_Flow">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MDDLD_Id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Change_State" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="VerCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Class_Id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Object_Id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Stage" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Material_State" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Material_Tech_Condition" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Material_Code" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ParentId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Material_Spec" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="TDM_Description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Material_Name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="PackId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TaskId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DraftId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Drawing_No" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Technics_Line" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Technics_Comment" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Material_Mark" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ItemCode1" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ItemCode2" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="MaterialsNum" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="Mat_Unit" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="LingJian_Type" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Mat_Rough_Weight" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Mat_Pro_Weight" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Mat_Weight" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Mat_Efficiency" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Mat_Comment" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Mat_Technics" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Rough_Spec" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Rough_Size" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="MaterialsDes" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="StandAlone" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ThisTimeOperation" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PredictDeliveryDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="DemandNumSum" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
+      <Column Name="NumCasesSum" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
+      <Column Name="DemandDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Quantity" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Tech_Quantity" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Memo_Quantity" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Test_Quantity" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Required_Quantity" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Other_Quantity" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Ballon_No" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Comment" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Is_allow_merge" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Import_Date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="User_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="JSGS_Des" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Is_del" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="TaskCode" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="MaterialDept" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="MissingDescription" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="CN_Material_State" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="M_Change_List_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.M_Change_List" Member="M_Change_List">
+    <Type Name="M_Change_List">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PackID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="VerCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ChangeList_Code" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Drawing_No" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Remark" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="Change_UserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Change_Date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Relevance_Dept" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="TDM_Description" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="Change_Reason" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="Change_UserName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Reason" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.M_Change_List_Detailed" Member="M_Change_List_Detailed">
+    <Type Name="M_Change_List_Detailed">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MCLID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CN_Drawing_No" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CN_Com_Drawing_No" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CN_Edit_Comment" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="CN_Cur_Content" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="CN_Edit_Type" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CN_Technics_Line" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ChangePerson" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Class_ID" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Object_ID" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Influence" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.M_Change_Record" Member="M_Change_Record">
+    <Type Name="M_Change_Record">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Change_Code" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="Change_Evidence_Id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Correspond_Draft_Code" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="MDPId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MDMId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Change_Date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Change_State" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MReduce_Num" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
+      <Column Name="MReduce_DemandNumSum" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
+      <Column Name="User_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Accept_State" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Column_Changed" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Original_Value" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Changed_Value" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.M_Demand_DetailedList_Draft" Member="M_Demand_DetailedList_Draft">
+    <Type Name="M_Demand_DetailedList_Draft">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="VerCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Class_Id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Object_Id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Stage" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Material_State" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Material_Tech_Condition" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Material_Code" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ParentId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Material_Spec" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="TDM_Description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Material_Name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="PackId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TaskId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DraftId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Drawing_No" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Technics_Line" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Technics_Comment" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Material_Mark" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ItemCode1" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ItemCode2" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="MaterialsNum" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="Mat_Unit" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="LingJian_Type" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Mat_Rough_Weight" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Mat_Pro_Weight" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Mat_Weight" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Mat_Efficiency" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Mat_Comment" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Mat_Technics" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Rough_Spec" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Rough_Size" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="MaterialsDes" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="StandAlone" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ThisTimeOperation" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PredictDeliveryDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="DemandNumSum" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
+      <Column Name="NumCasesSum" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
+      <Column Name="DemandDate" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Quantity" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Tech_Quantity" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Memo_Quantity" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Test_Quantity" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Required_Quantity" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Other_Quantity" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Ballon_No" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Comment" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Is_allow_merge" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Import_Date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="User_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="JSGS_Des" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Is_del" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="TaskCode" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="MaterialDept" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="MissingDescription" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="MDPId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CN_Material_State" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="MDML_Id" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.M_Demand_Merge_List" Member="M_Demand_Merge_List">
+    <Type Name="M_Demand_Merge_List">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Correspond_Draft_Code" Type="System.String" DbType="NVarChar(300)" CanBeNull="true" />
+      <Column Name="Drawing_No" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PackId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TaskId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DraftId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MDMId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MDPId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TechnicsLine" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ItemCode1" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DemandNumSum" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
+      <Column Name="NumCasesSum" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
+      <Column Name="Mat_Unit" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Quantity" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Rough_Size" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Rough_Spec" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DemandDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="MaterialsDes" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="Special_Needs" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Urgency_Degre" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Secret_Level" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Stage" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Use_Des" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Shipping_Address" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Certification" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Unit_Price" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
+      <Column Name="Sum_Price" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
+      <Column Name="Is_Submit" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Is_Save" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="User_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Submit_Date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="TaskCode" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MaterialDept" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Get_Quantity" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Submit_Type" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Mat_Rough_Weight" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Is_Change" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="STATUS" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ORG_ID" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="RQ_NUMBER" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="USER_RQ_NUMBER" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="USER_RQ_ID" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="USER_RQ_LINE_ID" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="RQ_TYPE" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ITEM_CODE" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SPECIAL_REQUEST" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="QUANTITY1" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="PIECE" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="DIMENSION" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MANUFACTURER" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="RQ_DATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="URGENCY_LEVEL" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="REQUESTER" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="REQUESTER_PHONE" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ITEM_REVISION" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="USER_ITEM_DESCRIPTION" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="UNANIMOUS_BATCH" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SECURITY_LEVEL" Type="System.String" DbType="NVarChar(80)" CanBeNull="true" />
+      <Column Name="PROJECT" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PHASE" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="BATCH" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="BATCH_QTY" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="USAGE" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TASK" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="SUBJECT" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CUSTOMER_NAME" Type="System.String" DbType="NVarChar(360)" CanBeNull="true" />
+      <Column Name="CUSTOMER_ACCOUNT_NUMBER" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="DELIVERY_ADDRESS" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="PREPARER" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SUBMITED_BY" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="SUBMISSION_DATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="SYSTEM_CODE" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TRANSFER_TIME" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CUSTOMER_OF_CREATOR" Type="System.String" DbType="NVarChar(360)" CanBeNull="true" />
+      <Column Name="GROUP_ID" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="CREATION_DATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CREATED_BY" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE_CATEGORY" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE1" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE2" Type="System.String" DbType="NVarChar(80)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE3" Type="System.String" DbType="NVarChar(80)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE4" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE5" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE6" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE7" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE8" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE9" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE10" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE11" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE12" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE13" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE14" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE15" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="Material_Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.M_Demand_Plan_List" Member="M_Demand_Plan_List">
+    <Type Name="M_Demand_Plan_List">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MDP_Code" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="PackId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DraftId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MDMId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="User_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Submit_Date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Submit_Type" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Submit_State" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Return_State" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TaskCode" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DeptApproveAccount" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PlanOrTecApproveAccount" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.M_Draft_List" Member="M_Draft_List">
+    <Type Name="M_Draft_List">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Draft_Code" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="Material_State" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Lasttime_Synchro_Time" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="PackId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Task_Type" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="List_Maker" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MaterialApplication" Member="MaterialApplication">
+    <Type Name="MaterialApplication">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Type" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Material_Id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Applicant" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Dept" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ApplicationTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ContactInformation" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TheMaterialWay" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TaskCode" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Drawing_No" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Draft_Code" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Quantity" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FeedingTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="IsDispatch" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="IsConfirm" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Remark" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="MaterialType" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Material_Name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Material_Mark" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="CN_Material_State" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Material_Tech_Condition" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Rough_Spec" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Mat_Rough_Weight" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Mat_Unit" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Rough_Size" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="PleaseTakeQuality" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="AppState" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ReturnReason" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Is_Del" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ItemCode" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DiaoDuApprove" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="XingHaoJiHuaYuanApprove" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="WuZiJiHuaYuanApprove" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Is_ReturnApply" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="retrunapply_T_Item_ID" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TuiKuContext" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UserAccount" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MaterialApplication_Log" Member="MaterialApplication_Log">
+    <Type Name="MaterialApplication_Log">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MaterialApplicationId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Operation_UserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Operation_Time" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Operation_Remark" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.OutOfStorage" Member="OutOfStorage">
+    <Type Name="OutOfStorage">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="DeptID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Type" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Reason" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Quantity" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="Material_Name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ItemCode1" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ItemCode2" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="MaterialDes" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Material_Type" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Material_Mark" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Material_State" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Material_Tech_Condition" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Rough_Spec" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Rough_Size" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Mat_Unit" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Mat_Rough_Weight" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="BarCode" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="SingleSerialNumber" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="MAID" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="OpeUserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OpeTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Consume" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="RelID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.P_Pack" Member="P_Pack">
+    <Type Name="P_Pack">
+      <Column Name="PackId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Model" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="PlanCode" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="ImportFileName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ImportStaffId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ImportTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DraftStatus" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="InvertoryStatus" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EditStaffId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EditTimes" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="IsDel" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="State" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PlanName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Remark" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.P_Pack_Task" Member="P_Pack_Task">
+    <Type Name="P_Pack_Task">
+      <Column Name="TaskId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PackId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProductName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TaskDrawingCode" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="TaskCode" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Stage" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Unit" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="MatingNum" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DefrayNum" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProductionNum" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PlanFinishTime" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="IsSpread" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="LastChangeTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ChangeTimes" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IsDel" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ReleaseStockBill_Rec" Member="ReleaseStockBill_Rec">
+    <Type Name="ReleaseStockBill_Rec">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="returnResult" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="total_Flag" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="row_Count" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="max_Rownumber" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="errorInfo" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="vdefString1" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefString2" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefString3" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefString4" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefString5" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefString6" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefString7" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefString8" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefString9" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefString10" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefDouble1" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="vdefDouble2" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="vdefDouble3" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="vdefDouble4" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="vdefDouble5" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="vdefDouble6" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="vdefDouble7" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="vdefDouble8" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="vdefDouble9" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="vdefDouble10" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ReleaseStockBill_Sent" Member="ReleaseStockBill_Sent">
+    <Type Name="ReleaseStockBill_Sent">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="customerSysIp" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="customerSysPort" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="customerSysCode" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="customerSyspwd" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="max_Update_Date" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="last_Max_Rownumber" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="vdefString1" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefString2" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefString3" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefDouble1" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="vdefDouble2" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="vdefDouble3" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="vdefInteger1" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="vdefInteger2" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="vdefInteger3" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ReleaseStockBill_T_Item" Member="ReleaseStockBill_T_Item">
+    <Type Name="ReleaseStockBill_T_Item">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Rec_Id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="cgeneralhid" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="billno" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="billdate" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="jc_jstype" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="curators" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="outstock" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="planner" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="replacecorp" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="replaceuser" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="accountcorp" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="accountmode" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="distraddress" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="jc_Jyy" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="jc_Zzr" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vnote" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="jc_Jjcd" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="jc_Phone" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="cgeneralbid" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="invcode" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="invname" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="invxhcpdh" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="invscale" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="techconditions" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="invlevel" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="invfurbatch" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="invmeasname" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="invstatus" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="invdepmeasname" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="invspecial" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="manufacturer" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="manufacturdate" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="invbatch" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="realnum" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="realdepnum" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="realitemnum" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="jc_Cc" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="hgz_No" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="hgzbz" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="jc_Rwh" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="jc_Gcxh" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="jc_Yzjd" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="jc_Pzh" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="jc_Use" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="jc_Zxgc" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="jc_Price" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="jc_Money" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="jc_Invcl" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="jc_Th" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="jc_Ckjl" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="jc_Wzms" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="jc_Wzbs" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="dpaconclusion" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="specialinstr" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="ysconclusion" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="hgz_Cqyslb" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="hgz_Zjdbillno" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="hgz_Fyyxqf" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="hgz_Fyyxqz" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="hgz_Yxqx" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="hgz_Zydh" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="hgz_Ysxs" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="hgz_Hjxjl" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="hgz_Sqjyjl" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="nc_Kth" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="rowstatus" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="isprint" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="rq_No" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="rq_Revision" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="user_Rq_No" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="rq_Id" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="securitylevel" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="lastupdate" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="khbm_Info" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="istrans" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="iscutting" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="transdate" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="old_Generalbid" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="old_Generalhid" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="rq_Headid" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="rq_Bodyid" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="crowno" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="request_Sn_Id" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="request_Sn" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="dhprice" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="jcbl" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="jyfft" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="jyxhft" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="startdate" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="npaidmny" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="nbalancemny" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="nprepaidoffsetmny" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="nshouldpaymny" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="lldsqdept" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="bathnewinvcode" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="httsyq" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="nbsignnum" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="vdefstr1" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefstr2" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefstr3" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefstr4" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefstr5" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefstr6" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefstr7" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefstr8" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefstr9" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefstr10" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefstr11" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefstr12" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefstr13" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefstr14" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefstr15" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefstr16" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefstr17" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefstr18" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefstr19" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefstr20" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefstr21" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefstr22" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefstr23" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefstr24" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefstr25" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefstr26" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefstr27" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefstr28" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefstr29" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefstr30" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefstr31" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefstr32" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefstr33" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefstr34" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefstr35" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefstr36" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefstr37" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefstr38" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefstr39" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefstr40" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefstr41" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefstr42" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefstr43" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefstr44" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefstr45" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefstr46" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefstr47" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefstr48" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefstr49" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefstr50" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefdou1" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="vdefdou2" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="vdefdou3" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="vdefdou4" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="vdefdou5" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="vdefdou6" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="vdefdou7" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="vdefdou8" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="vdefdou9" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="vdefdou10" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="vdefdou11" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="vdefdou12" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="vdefdou13" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="vdefdou14" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="vdefdou15" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="vdefdou16" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="vdefdou17" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="vdefdou18" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="vdefdou19" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="vdefdou20" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="vdefdou21" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="vdefdou22" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="vdefdou23" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="vdefdou24" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="vdefdou25" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="vdefdou26" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="vdefdou27" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="vdefdou28" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="vdefdou29" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="vdefdou30" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="vdefdou31" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="vdefdou32" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="vdefdou33" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="vdefdou34" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="vdefdou35" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="vdefdou36" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="vdefdou37" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="vdefdou38" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="vdefdou39" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="vdefdou40" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="vdefdou41" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="vdefdou42" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="vdefdou43" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="vdefdou44" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="vdefdou45" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="vdefdou46" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="vdefdou47" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="vdefdou48" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="vdefdou49" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="vdefdou50" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ReturnApply_Rec" Member="ReturnApply_Rec">
+    <Type Name="ReturnApply_Rec">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="billNo" Type="System.String" DbType="NVarChar(40)" CanBeNull="true" />
+      <Column Name="returnresult" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="errorInfo" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="userSysBillHid" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="userSysBillBid" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefString1" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefString2" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefString3" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefString4" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefString5" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefString6" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefString7" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefString8" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefString9" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefString10" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefDouble1" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
+      <Column Name="vdefDouble2" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
+      <Column Name="vdefDouble3" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
+      <Column Name="vdefDouble4" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
+      <Column Name="vdefDouble5" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
+      <Column Name="vdefDouble6" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
+      <Column Name="vdefDouble7" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
+      <Column Name="vdefDouble8" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
+      <Column Name="vdefDouble9" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
+      <Column Name="vdefDouble10" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.returnapply_Sent" Member="returnapply_Sent">
+    <Type Name="returnapply_Sent">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="customerSysCode" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="customerSyspwd" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="customerSysIp" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="customerSysPort" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="row_Count" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="vdefString1" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefString2" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefString3" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefDouble1" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
+      <Column Name="vdefDouble2" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
+      <Column Name="vdefDouble3" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
+      <Column Name="vdefInteger1" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="vdefInteger2" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="vdefInteger3" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.returnapply_T_Item" Member="returnapply_T_Item">
+    <Type Name="returnapply_T_Item">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="billno" Type="System.String" DbType="NVarChar(40)" CanBeNull="true" />
+      <Column Name="userSysBillHid" Type="System.Int32" DbType="Int NOT NULL" IsDbGenerated="true" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="userSysBillBid" Type="System.Int32" DbType="Int NOT NULL" IsDbGenerated="true" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="billdate" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="replacecorp" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="replacedept" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="replaceuser" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="accountcorp" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="accountmode" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="distraddress" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="jc_Phone" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="invcode" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="nnum" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
+      <Column Name="itemnum" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
+      <Column Name="returnnote" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="vdefstr1" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="vdefstr2" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefstr3" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefstr4" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefstr5" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefstr6" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefstr7" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefstr8" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefstr9" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefstr10" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefdou1" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
+      <Column Name="vdefdou2" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
+      <Column Name="vdefdou3" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
+      <Column Name="vdefdou4" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
+      <Column Name="vdefdou5" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
+      <Column Name="vdefdou6" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
+      <Column Name="vdefdou7" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
+      <Column Name="vdefdou8" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
+      <Column Name="vdefdou9" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
+      <Column Name="vdefdou10" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
+      <Column Name="cgeneralbid" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="cgeneralhid" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="pk_Zrr" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="stockBill_T_ItemID" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SentID" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="State" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.stockbill_Rec" Member="stockbill_Rec">
+    <Type Name="stockbill_Rec">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="cgeneralBid" Type="System.String" DbType="NVarChar(40)" CanBeNull="true" />
+      <Column Name="lastUpdate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="returnResult" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="errorInfo" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="userSysBillHid" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="userSysBillBid" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="vdefString1" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefString2" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefString3" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="vdefString4" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefString5" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefString6" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefString7" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefString8" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefString9" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefString10" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefDouble1" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
+      <Column Name="vdefDouble2" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
+      <Column Name="vdefDouble3" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
+      <Column Name="vdefDouble4" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
+      <Column Name="vdefDouble5" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
+      <Column Name="vdefDouble6" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
+      <Column Name="vdefDouble7" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
+      <Column Name="vdefDouble8" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
+      <Column Name="vdefDouble9" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
+      <Column Name="vdefDouble10" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.stockbill_Sent" Member="stockbill_Sent">
+    <Type Name="stockbill_Sent">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="customerSysCode" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="customerSyspwd" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="customerSysIp" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="customerSysPort" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="row_Count" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="vdefString1" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefString2" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefString3" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefDouble1" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
+      <Column Name="vdefDouble2" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
+      <Column Name="vdefDouble3" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
+      <Column Name="vdefInteger1" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="vdefInteger2" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="vdefInteger3" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.stockbill_T_Item" Member="stockbill_T_Item">
+    <Type Name="stockbill_T_Item">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="cgeneralbid" Type="System.String" DbType="NVarChar(40)" CanBeNull="true" />
+      <Column Name="jc_jstype" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="lastupdate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="vdefstr1" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefstr2" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefstr3" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefstr4" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefstr5" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefstr6" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefstr7" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefstr8" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefstr9" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefstr10" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="vdefdou1" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
+      <Column Name="vdefdou2" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
+      <Column Name="vdefdou3" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
+      <Column Name="vdefdou4" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
+      <Column Name="vdefdou5" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
+      <Column Name="vdefdou6" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
+      <Column Name="vdefdou7" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
+      <Column Name="vdefdou8" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
+      <Column Name="vdefdou9" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
+      <Column Name="vdefdou10" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
+      <Column Name="signuser" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="userSysBillBid" Type="System.Int32" DbType="Int NOT NULL" IsDbGenerated="true" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="userSysBillHid" Type="System.Int32" DbType="Int NOT NULL" IsDbGenerated="true" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="ReleaseStockBill_T_ItemID" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="stockbill_SentID" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="State" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Sys_Area" Member="Sys_Area">
+    <Type Name="Sys_Area">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="AreaCode" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="AreaName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="IsDel" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Sys_BannerItem" Member="Sys_BannerItem">
+    <Type Name="Sys_BannerItem">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ParentId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ItemName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="ItemUrl" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="PermissionId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OrderId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Enable" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Sys_CodeBuild" Member="Sys_CodeBuild">
+    <Type Name="Sys_CodeBuild">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Code_Name" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Code_Des" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Code_Value" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Code_Build_Date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Sys_ComputationalFormula" Member="Sys_ComputationalFormula">
+    <Type Name="Sys_ComputationalFormula">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Remark" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Parameter1" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="Parameter2" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="Parameter3" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Sys_Dept_ShipAddr" Member="Sys_Dept_ShipAddr">
+    <Type Name="Sys_Dept_ShipAddr">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Dept_Id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Shipping_Addr_Id" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Is_Del" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Sys_DeptEnum" Member="Sys_DeptEnum">
+    <Type Name="Sys_DeptEnum">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Dept" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DeptCode" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Is_Shipping" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Is_Del" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Cust_Account_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Sys_Dict" Member="Sys_Dict">
+    <Type Name="Sys_Dict">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TypeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="KeyWordCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="KeyWord" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Is_Del" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Sys_DictIndex" Member="Sys_DictIndex">
+    <Type Name="Sys_DictIndex">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TypeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TypeDes" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Is_Del" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Sys_LingJian_Info" Member="Sys_LingJian_Info">
+    <Type Name="Sys_LingJian_Info">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="LingJian_Type_Code" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LingJian_Type_Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Is_Bom_Show" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Is_MDDLD_Show" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Is_Del" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Sys_M_Change_Reason" Member="Sys_M_Change_Reason">
+    <Type Name="Sys_M_Change_Reason">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Reason" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Enable" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Sys_MaterialDeptInfo" Member="Sys_MaterialDeptInfo">
+    <Type Name="Sys_MaterialDeptInfo">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Technics_Line" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Dept_Id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Technics_Line_Len" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Is_Del" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Sys_Model" Member="Sys_Model">
+    <Type Name="Sys_Model">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Model" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="AreaId" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="IsGetBOM" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Is_Del" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Sys_Permission" Member="Sys_Permission">
+    <Type Name="Sys_Permission">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PermissionSign" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="SignName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="ParentId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PermType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IsAllowDel" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Sys_Phase" Member="Sys_Phase">
+    <Type Name="Sys_Phase">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Phase" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Basicdata_DICT_CODE" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Sys_RoleInfo" Member="Sys_RoleInfo">
+    <Type Name="Sys_RoleInfo">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="RoleName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Is_Del" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Sys_RoleInPermission" Member="Sys_RoleInPermission">
+    <Type Name="Sys_RoleInPermission">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PermissionID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RoleID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Sys_SecretLevel" Member="Sys_SecretLevel">
+    <Type Name="Sys_SecretLevel">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SecretLevel_Code" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SecretLevel_Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Is_Del" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Sys_UserInfo_PWD" Member="Sys_UserInfo_PWD">
+    <Type Name="Sys_UserInfo_PWD">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserAccount" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="PassWord" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Dept" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="IsDel" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="DomainAccount" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Phone" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Sys_UserInRole" Member="Sys_UserInRole">
+    <Type Name="Sys_UserInRole">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RoleID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.WriteRcoOrder_Rec" Member="WriteRcoOrder_Rec">
+    <Type Name="WriteRcoOrder_Rec">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="STATUS" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ERR_MSG" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.WriteRcoOrder_RecList" Member="WriteRcoOrder_RecList">
+    <Type Name="WriteRcoOrder_RecList">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="REC_SUM_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ORG_ID" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="SYSTEM_CODE" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="USER_RCO_HEADER_ID" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="USER_RCO_LINE_ID" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="ERR_MSG" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.WriteRcoOrder_Sent" Member="WriteRcoOrder_Sent">
+    <Type Name="WriteRcoOrder_Sent">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SYSTEM_CODE" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="TOTAL_FLAG" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ROW_COUNT" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="GROUP_ID" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.WriteRcoOrder_SentHeader" Member="WriteRcoOrder_SentHeader">
+    <Type Name="WriteRcoOrder_SentHeader">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="RCO_HEADER_NO" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="USER_RCO_HEADER_ID" Type="System.Int32" DbType="Int NOT NULL" IsDbGenerated="true" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="USER_RCO_HEADER_NO" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ORG_ID" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="RCO_STATUS" Type="System.String" DbType="VarChar(80) NOT NULL" CanBeNull="false" />
+      <Column Name="USER_RQ_ID" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="USER_RQ_LINE_ID" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="REASON" Type="System.String" DbType="NVarChar(4000) NOT NULL" CanBeNull="false" />
+      <Column Name="REQUESTER" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="REQUESTER_PHONE" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PREPARER" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CREATION_DATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CREATED_BY" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="CUSTOMER_OF_CREATOR" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SUBMITTED_BY" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="SUBMISSION_DATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CHANGE_OPTION" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="SYSTEM_CODE" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="TRANSFER_TIME" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="GROUP_ID" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="ATTRIBUTE_CATEGORY" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE1" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE2" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE3" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE4" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE5" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE6" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE7" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE8" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE9" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE10" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE11" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE12" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE13" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE14" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE15" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="MDPLID" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.WriteRcoOrder_SentLine" Member="WriteRcoOrder_SentLine">
+    <Type Name="WriteRcoOrder_SentLine">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="USER_RCO_LINE_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="USER_RCO_HEADER_ID" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="LINE_NUM" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="COLUMN_CHANGED" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ORIGINAL_VALUE" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="CHANGED_VALUE" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="SYSTEM_CODE" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="TRANSFER_TIME" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="GROUP_ID" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="ATTRIBUTE_CATEGORY" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE1" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE2" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE3" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE4" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE5" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE6" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE7" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE8" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE9" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE10" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE11" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE12" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE13" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE14" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="ATTRIBUTE15" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.WriteReqOrder_Rec" Member="WriteReqOrder_Rec">
+    <Type Name="WriteReqOrder_Rec">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="STATUS" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ERR_MSG" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+      <Column Name="GROUP_ID" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.WriteReqOrder_RecList" Member="WriteReqOrder_RecList">
+    <Type Name="WriteReqOrder_RecList">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="REC_SUM_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ORG_ID" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="SYSTEM_CODE" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="USER_RQ_ID" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="USER_RQ_LINE_ID" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="ERR_MSG" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.WriteReqOrder_Sent" Member="WriteReqOrder_Sent">
+    <Type Name="WriteReqOrder_Sent">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SYSTEM_CODE" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="TOTAL_FLAG" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ROW_COUNT" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="GROUP_ID" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+</Database>

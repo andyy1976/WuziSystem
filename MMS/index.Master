@@ -1,0 +1,134 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="index.master.cs" Inherits="mms.index" %>
+
+<%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>物资管理系统</title>
+    <%----%><link href="/Styles/master.css" rel="stylesheet" />
+    <link href="Styles/Plan.css" rel="stylesheet" />
+    <link href="Styles/ContantPage.css" rel="stylesheet" />
+    <link href="Styles/WUC.css" rel="stylesheet" />
+    <link href="Styles/style1.css" rel="stylesheet" />
+    <link href="Styles/mcymasternew.css" rel="stylesheet" />
+    <script src="../Scripts/jquery-1.4.1.min.js"></script>
+    <script src="../Scripts/jquery-1.7.2.min.js"></script>
+    <script src="/Scripts/Date.js"></script>
+    <script src="../Scripts/menu.js"></script>
+    <script src="/Scripts/SysMan/index.js"></script>
+    <script>
+        $(function () {
+            var LID = $("#HiddenField").val();
+            $("#locationDetails").html(LID);
+            $(".menu").hover(function () {
+                $(this).find(".siblingdiv").show();
+            }, function () {
+                $(this).find(".siblingdiv").hide();
+            })
+        })
+    </script>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+
+<body>
+    <form id="form1" runat="server">
+        <telerik:RadSkinManager runat="server" Skin="Silk"></telerik:RadSkinManager>
+        <div class="headDiv">
+            <div class="headDivUser">
+                <%--<div class="headDivDate"><span>今天是：</span><b class="span_b1" id="NowTime"></b></div>--%>
+                <div class="headDivExit">
+                    <div style="float: left;">
+                        <span>欢迎您：</span>
+                        <label id="LbUserName" runat="server"></label>
+                    </div>
+                    <div style="float: left; margin-left: 15px;">
+                        <asp:ImageButton ID="ExitBt" runat="server" OnClick="ExitBt_Click" ImageUrl="/Images/master/exit1.png" Visible="true" CssClass="login" />
+                    </div>
+                </div>
+            </div>
+            <div class="HeadDivLogoMenu">
+                <div class="logo">
+                    <img src="/Images/master/logo2.png" />
+                </div>
+                <div class="menu">
+                    <ul>
+                        <li>
+                            <a href="#">物资需求</a>
+                            <ul>
+                                <li class="lit"><a href="/Plan/ShowPlan.aspx">型号计划任务管理</a></li>
+                                <li class="lia"><a href="/Plan/TechnologyTestList.aspx?t=1">工艺试验件任务</a></li>
+                                <li class="lia"><a href="/Plan/TechnologyTestList.aspx?t=2">技术创新课题任务</a></li>
+                                <li class="lib"><a href="/Plan/TechnologyTestList.aspx?t=3">车间备料需求申请</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">物资申请</a>
+                            <ul>
+                                <li class="lit"><a href="/MaterialApplicationCollar/MaterialApplicationModel.aspx">型号物资申请</a></li>
+                                <li class="lia"><a href="/MaterialApplicationCollar/MaterialApplicationTest.aspx">试验件物资申请</a></li>
+                                <li class="lia"><a href="/MaterialApplicationCollar/MaterialApplicationSubject.aspx">课题物资申请</a></li>
+                                <li class="lia"><a href="/MaterialApplicationCollar/MaterialApplicationAccessory.aspx">车间备料物资申请</a></li>
+                                <li class="lia"><a href="/MaterialApplicationCollar/MaterialApplication.aspx">无需求计划的申请</a></li>
+                                <li class="lib"><a href="/MaterialApplicationCollar/MaterialApplicationQuery.aspx">申请单查询</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">出库单管理</a>
+                            <ul>
+                              <%--  <li class="lit"><a href="/OutOfStorageManagement/BePutInStorage.aspx">物资入库</a></li>
+                                <li class="lia"><a href="/OutOfStorageManagement/DeliveryOfCargoFromStorage.aspx">物资出库</a></li>
+                                  --%>
+                                <%--<li><a href="/OutOfStorageManagement/ReturnLogisticsCenter.aspx">物资退物流中心</a></li>--%>
+                               <%--  <li class="lia"><a href="/OutOfStorageManagement/InventoryQuery.aspx">库存查询</a></li> --%>
+                                <li class="lia"><a href="/OutOfStorageManagement/SignStockBill.aspx">签收出库单</a></li>
+                                <li class="lib"><a href="/OutOfStorageManagement/ReturnApply.aspx">退库</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">物资查询</a>
+                            <ul>
+                                <li class="lit"><a href="/Plan/MDemandMergeListQuery.aspx">物资需求列表</a></li>
+                                <li class="lia"><a href="/Plan/MChangeRecordQuery.aspx">物资需求更改列表</a></li>
+                                <li class="lia"><a href="/Plan/GetRqStatus.aspx">物资需求申请状态</a></li>
+                                <li class="lia"><a href="/Plan/GetRcoStatus.aspx">需求变更申请状态变更</a></li>
+                                <li class="lia"><a href="/Plan/Exe_Inf.aspx">物资需求执行信息</a></li>
+                                <li class="lia"><a href="/OutOfStorageManagement/LogisticsCenterLibrary.aspx">物流中心出库单</a></li>
+                                <li class="lia"><a href="/Plan/WriteReqOrderRecList.aspx">需求与变更错误查询</a></li>
+                                <li class="lib"><a href="/SystemMangement/WzBasic.aspx">物资基础库查询</a></li>
+                                <li class="lia"><a href="/OutOfStorageManagement/InventoryQuery.aspx">出库单查询</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">系统管理</a>
+                            <ul>
+                                <li class="lit"><a href="../SystemMangement/DeptManage.aspx">部门管理</a></li>
+                                <li class="lia"><a href="../SystemMangement/UserManagePWD.aspx">员工管理</a></li>
+                                <li class="lia"><a href="../SystemMangement/SetRoleToPermission.aspx">角色分配权限</a></li>
+                                <li class="lia"><a href="../SystemMangement/ModelManage.aspx">型号管理</a></li>
+                                <li class="lia"><a href="../SystemMangement/PhaseManage.aspx">研制阶段管理</a></li>
+                                <li class="lia"><a href="../SystemMangement/LingJianManage.aspx">零件管理</a></li>
+                                <li class="lia"><a href="../SystemMangement/MaterialDeptInfoManage.aspx">材料部门信息管理</a></li>
+                                <li class="lib"><a href="../SystemMangement/ComputationalFormula.aspx">夹持量参数管理</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div class="clear"></div>
+                </div>
+
+            </div>
+        </div>
+        <div class="clear" style="margin-bottom:-6px;margin-top:5px;">
+            <div id="Location" style="float: left; margin-left: 10px; font-size:16px;">当前位置：</div>
+             <div class="locationdtail"><a id="locationDetails"></a></div>
+            <div class="clear"></div>
+        </div>
+        <div style="clear: both; overflow: hidden"></div>
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        </asp:ContentPlaceHolder>
+    </form>
+</body>
+</html>

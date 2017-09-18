@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="4bcb994d-66f2-4ed8-b52c-968d364c1bee" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://lm01l115.calt.casc:8008/webservices/SOAProvider/plsql/cux_dm_rco_sync_ws_pkg/?wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="APPS_ISG_WRITE_RCO_ORDER_CUX_DM_RCO_SYNC_WS_PKG-24WRITE_.xsd" MetadataType="Schema" ID="930b4a12-5516-4726-b315-bf39a54c689f" SourceId="1" SourceUrl="http://lm01l115.calt.casc:8008/webservices/SOAProvider/plsql/cux_dm_rco_sync_ws_pkg/APPS_ISG_WRITE_RCO_ORDER_CUX_DM_RCO_SYNC_WS_PKG-24WRITE_.xsd" />
+    <MetadataFile FileName="CUX_DM_RCO_SYNC_WS_PKG.wsdl" MetadataType="Wsdl" ID="583350b0-366b-4940-b2eb-181c1854c69d" SourceId="1" SourceUrl="http://lm01l115.calt.casc:8008/webservices/SOAProvider/plsql/cux_dm_rco_sync_ws_pkg/?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

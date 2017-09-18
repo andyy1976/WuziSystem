@@ -1,0 +1,18 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="mms.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="mms_SmarTeam_Items" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://10.19.1.143/ShouHang.SmarTeam.WebService/ST211/Items.asmx</Value>
+    </Setting>
+    <Setting Name="mms_STLookupTables_LookUpTables" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://10.19.1.143/ShouHang.SmarTeam.WebService/ST211/LookUpTables.asmx</Value>
+    </Setting>
+    <Setting Name="mms_k2_K2WebServiceForMMS" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://k2:8005/K2WebServiceForMMS.asmx</Value>
+    </Setting>
+    <Setting Name="mms_k2Pre_K2WebServiceForMMSPre" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://k2:8005/K2WebServiceForMMSPre.asmx</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

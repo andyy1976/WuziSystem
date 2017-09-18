@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="d858b27d-433b-42da-8956-f7605a532b34" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://lm01l115.calt.casc:8008/webservices/SOAProvider/plsql/cux_dm_err_release_ws_pkg/?wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="CUX_DM_ERR_RELEASE_WS_PKG.wsdl" MetadataType="Wsdl" ID="794d96e9-60bb-48fe-93b8-6f637aea7d41" SourceId="1" SourceUrl="http://lm01l115.calt.casc:8008/webservices/SOAProvider/plsql/cux_dm_err_release_ws_pkg/?wsdl" />
+    <MetadataFile FileName="APPS_ISG_GET_ERR_INF_CUX_DM_ERR_RELEASE_WS_PKG-24GET.xsd" MetadataType="Schema" ID="3b28c00a-e252-4cd8-abcd-33c114427c46" SourceId="1" SourceUrl="http://lm01l115.calt.casc:8008/webservices/SOAProvider/plsql/cux_dm_err_release_ws_pkg/APPS_ISG_GET_ERR_INF_CUX_DM_ERR_RELEASE_WS_PKG-24GET.xsd" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

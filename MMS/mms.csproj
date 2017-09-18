@@ -1,0 +1,2298 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{42571862-37FB-4DF3-9F2C-64C7EEACDB58}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>mms</RootNamespace>
+    <AssemblyName>mms</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication>disabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>enabled</IISExpressWindowsAuthentication>
+    <IISExpressUseClassicPipelineMode />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Aspose.BarCode">
+      <HintPath>..\lib\Aspose.BarCode.dll</HintPath>
+    </Reference>
+    <Reference Include="Camc.Web.Library.DataBase, Version=0.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Camc.Web.Library.DataBase.dll</HintPath>
+    </Reference>
+    <Reference Include="ClearUsernameBinding">
+      <HintPath>..\lib\ClearUsernameBinding.dll</HintPath>
+    </Reference>
+    <Reference Include="EpsonStatusAPI">
+      <HintPath>..\lib\EpsonStatusAPI.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>..\lib\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=12.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\lib\Microsoft.Office.Interop.Excel.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Telerik.Web.Design">
+      <HintPath>..\lib\Telerik.Web.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Web.Device.Detection">
+      <HintPath>..\lib\Telerik.Web.Device.Detection.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Web.UI">
+      <HintPath>..\lib\Telerik.Web.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Web.UI.Skins">
+      <HintPath>..\lib\Telerik.Web.UI.Skins.dll</HintPath>
+    </Reference>
+    <Reference Include="ThoughtWorks.QRCode">
+      <HintPath>..\lib\ThoughtWorks.QRCode.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Admin\NoRights.aspx" />
+    <Content Include="Admin\Welcome.aspx" />
+    <Content Include="Default.aspx" />
+    <Content Include="easyui\changelog.txt" />
+    <Content Include="easyui\easyloader.js" />
+    <Content Include="easyui\extension\datagrid-cellediting\datagrid-cellediting.html" />
+    <Content Include="easyui\extension\datagrid-cellediting\datagrid-cellediting.js" />
+    <Content Include="easyui\extension\datagrid-dnd\datagrid-dnd.html" />
+    <Content Include="easyui\extension\datagrid-dnd\datagrid-dnd.js" />
+    <Content Include="easyui\extension\datagrid-filter\datagrid-filter.html" />
+    <Content Include="easyui\extension\datagrid-filter\datagrid-filter.js" />
+    <Content Include="easyui\extension\datagrid-filter\filter.png" />
+    <Content Include="easyui\extension\jquery-easyui-datagridview\datagrid-bufferview.html" />
+    <Content Include="easyui\extension\jquery-easyui-datagridview\datagrid-bufferview.js" />
+    <Content Include="easyui\extension\jquery-easyui-datagridview\datagrid-defaultview.js" />
+    <Content Include="easyui\extension\jquery-easyui-datagridview\datagrid-detailview.html" />
+    <Content Include="easyui\extension\jquery-easyui-datagridview\datagrid-detailview.js" />
+    <Content Include="easyui\extension\jquery-easyui-datagridview\datagrid-detailview2.html" />
+    <Content Include="easyui\extension\jquery-easyui-datagridview\datagrid-groupview.html" />
+    <Content Include="easyui\extension\jquery-easyui-datagridview\datagrid-groupview.js" />
+    <Content Include="easyui\extension\jquery-easyui-datagridview\datagrid-scrollview.html" />
+    <Content Include="easyui\extension\jquery-easyui-datagridview\datagrid-scrollview.js" />
+    <Content Include="easyui\extension\jquery-easyui-datagridview\datagrid-scrollview2.html" />
+    <Content Include="easyui\extension\jquery-easyui-dwrloader\dwrloader.html" />
+    <Content Include="easyui\extension\jquery-easyui-dwrloader\dwrloader.js" />
+    <Content Include="easyui\extension\jquery-easyui-dwrloader\dwr\engine.js" />
+    <Content Include="easyui\extension\jquery-easyui-dwrloader\dwr\interface\MyDwr.js" />
+    <Content Include="easyui\extension\jquery-easyui-dwrloader\dwr\util.js" />
+    <Content Include="easyui\extension\jquery-easyui-edatagrid\editable-datagrid.html" />
+    <Content Include="easyui\extension\jquery-easyui-edatagrid\jquery.edatagrid.js" />
+    <Content Include="easyui\extension\jquery-easyui-etree\editable-tree.html" />
+    <Content Include="easyui\extension\jquery-easyui-etree\jquery.etree.js" />
+    <Content Include="easyui\extension\jquery-easyui-etree\jquery.etree.lang.js" />
+    <Content Include="easyui\extension\jquery-easyui-pivotgrid\jquery.pivotgrid.js" />
+    <Content Include="easyui\extension\jquery-easyui-pivotgrid\layout.png" />
+    <Content Include="easyui\extension\jquery-easyui-pivotgrid\load.png" />
+    <Content Include="easyui\extension\jquery-easyui-pivotgrid\pivotgrid.html" />
+    <Content Include="easyui\extension\jquery-easyui-portal\jquery.portal.js" />
+    <Content Include="easyui\extension\jquery-easyui-portal\portal.html" />
+    <Content Include="easyui\extension\jquery-easyui-ribbon\images\16\align-center.png" />
+    <Content Include="easyui\extension\jquery-easyui-ribbon\images\16\align-justify.png" />
+    <Content Include="easyui\extension\jquery-easyui-ribbon\images\16\align-left.png" />
+    <Content Include="easyui\extension\jquery-easyui-ribbon\images\16\align-right.png" />
+    <Content Include="easyui\extension\jquery-easyui-ribbon\images\16\bold.png" />
+    <Content Include="easyui\extension\jquery-easyui-ribbon\images\16\bullets.png" />
+    <Content Include="easyui\extension\jquery-easyui-ribbon\images\16\case-font.png" />
+    <Content Include="easyui\extension\jquery-easyui-ribbon\images\16\copy.png" />
+    <Content Include="easyui\extension\jquery-easyui-ribbon\images\16\decrease-font.png" />
+    <Content Include="easyui\extension\jquery-easyui-ribbon\images\16\find.png" />
+    <Content Include="easyui\extension\jquery-easyui-ribbon\images\16\format.png" />
+    <Content Include="easyui\extension\jquery-easyui-ribbon\images\16\go.png" />
+    <Content Include="easyui\extension\jquery-easyui-ribbon\images\16\grow-font.png" />
+    <Content Include="easyui\extension\jquery-easyui-ribbon\images\16\increase-font.png" />
+    <Content Include="easyui\extension\jquery-easyui-ribbon\images\16\italic.png" />
+    <Content Include="easyui\extension\jquery-easyui-ribbon\images\16\numbers.png" />
+    <Content Include="easyui\extension\jquery-easyui-ribbon\images\16\paste.png" />
+    <Content Include="easyui\extension\jquery-easyui-ribbon\images\16\replace.png" />
+    <Content Include="easyui\extension\jquery-easyui-ribbon\images\16\select.png" />
+    <Content Include="easyui\extension\jquery-easyui-ribbon\images\16\selectall.png" />
+    <Content Include="easyui\extension\jquery-easyui-ribbon\images\16\shrink-font.png" />
+    <Content Include="easyui\extension\jquery-easyui-ribbon\images\16\strikethrough.png" />
+    <Content Include="easyui\extension\jquery-easyui-ribbon\images\16\subscript.png" />
+    <Content Include="easyui\extension\jquery-easyui-ribbon\images\16\superscript.png" />
+    <Content Include="easyui\extension\jquery-easyui-ribbon\images\16\underline.png" />
+    <Content Include="easyui\extension\jquery-easyui-ribbon\images\32\chart.png" />
+    <Content Include="easyui\extension\jquery-easyui-ribbon\images\32\clipart.png" />
+    <Content Include="easyui\extension\jquery-easyui-ribbon\images\32\paste.png" />
+    <Content Include="easyui\extension\jquery-easyui-ribbon\images\32\picture.png" />
+    <Content Include="easyui\extension\jquery-easyui-ribbon\images\32\shapes.png" />
+    <Content Include="easyui\extension\jquery-easyui-ribbon\images\32\smartart.png" />
+    <Content Include="easyui\extension\jquery-easyui-ribbon\images\32\table.png" />
+    <Content Include="easyui\extension\jquery-easyui-ribbon\jquery.ribbon.js" />
+    <Content Include="easyui\extension\jquery-easyui-ribbon\ribbon-icon.css" />
+    <Content Include="easyui\extension\jquery-easyui-ribbon\ribbon.css" />
+    <Content Include="easyui\extension\jquery-easyui-ribbon\ribbon.html" />
+    <Content Include="easyui\extension\jquery-easyui-rtl\content.html" />
+    <Content Include="easyui\extension\jquery-easyui-rtl\easyui-rtl.css" />
+    <Content Include="easyui\extension\jquery-easyui-rtl\easyui-rtl.js" />
+    <Content Include="easyui\extension\jquery-easyui-rtl\rtl.html" />
+    <Content Include="easyui\extension\treegrid-dnd\treegrid-dnd.html" />
+    <Content Include="easyui\extension\treegrid-dnd\treegrid-dnd.js" />
+    <Content Include="easyui\jquery.easyui.min.js" />
+    <Content Include="easyui\jquery.easyui.mobile.js" />
+    <Content Include="easyui\jquery.min.js" />
+    <Content Include="easyui\licence_gpl.txt" />
+    <Content Include="easyui\locale\easyui-lang-af.js" />
+    <Content Include="easyui\locale\easyui-lang-am.js" />
+    <Content Include="easyui\locale\easyui-lang-ar.js" />
+    <Content Include="easyui\locale\easyui-lang-bg.js" />
+    <Content Include="easyui\locale\easyui-lang-ca.js" />
+    <Content Include="easyui\locale\easyui-lang-cs.js" />
+    <Content Include="easyui\locale\easyui-lang-cz.js" />
+    <Content Include="easyui\locale\easyui-lang-da.js" />
+    <Content Include="easyui\locale\easyui-lang-de.js" />
+    <Content Include="easyui\locale\easyui-lang-el.js" />
+    <Content Include="easyui\locale\easyui-lang-en.js" />
+    <Content Include="easyui\locale\easyui-lang-es.js" />
+    <Content Include="easyui\locale\easyui-lang-fr.js" />
+    <Content Include="easyui\locale\easyui-lang-it.js" />
+    <Content Include="easyui\locale\easyui-lang-jp.js" />
+    <Content Include="easyui\locale\easyui-lang-nl.js" />
+    <Content Include="easyui\locale\easyui-lang-pl.js" />
+    <Content Include="easyui\locale\easyui-lang-pt_BR.js" />
+    <Content Include="easyui\locale\easyui-lang-ru.js" />
+    <Content Include="easyui\locale\easyui-lang-sv_SE.js" />
+    <Content Include="easyui\locale\easyui-lang-tr.js" />
+    <Content Include="easyui\locale\easyui-lang-zh_CN.js" />
+    <Content Include="easyui\locale\easyui-lang-zh_TW.js" />
+    <Content Include="easyui\plugins\jquery.accordion.js" />
+    <Content Include="easyui\plugins\jquery.calendar.js" />
+    <Content Include="easyui\plugins\jquery.combo.js" />
+    <Content Include="easyui\plugins\jquery.combobox.js" />
+    <Content Include="easyui\plugins\jquery.combogrid.js" />
+    <Content Include="easyui\plugins\jquery.combotree.js" />
+    <Content Include="easyui\plugins\jquery.datagrid.js" />
+    <Content Include="easyui\plugins\jquery.datalist.js" />
+    <Content Include="easyui\plugins\jquery.datebox.js" />
+    <Content Include="easyui\plugins\jquery.datetimebox.js" />
+    <Content Include="easyui\plugins\jquery.datetimespinner.js" />
+    <Content Include="easyui\plugins\jquery.dialog.js" />
+    <Content Include="easyui\plugins\jquery.draggable.js" />
+    <Content Include="easyui\plugins\jquery.droppable.js" />
+    <Content Include="easyui\plugins\jquery.filebox.js" />
+    <Content Include="easyui\plugins\jquery.form.js" />
+    <Content Include="easyui\plugins\jquery.layout.js" />
+    <Content Include="easyui\plugins\jquery.linkbutton.js" />
+    <Content Include="easyui\plugins\jquery.menu.js" />
+    <Content Include="easyui\plugins\jquery.menubutton.js" />
+    <Content Include="easyui\plugins\jquery.messager.js" />
+    <Content Include="easyui\plugins\jquery.mobile.js" />
+    <Content Include="easyui\plugins\jquery.numberbox.js" />
+    <Content Include="easyui\plugins\jquery.numberspinner.js" />
+    <Content Include="easyui\plugins\jquery.pagination.js" />
+    <Content Include="easyui\plugins\jquery.panel.js" />
+    <Content Include="easyui\plugins\jquery.parser.js" />
+    <Content Include="easyui\plugins\jquery.progressbar.js" />
+    <Content Include="easyui\plugins\jquery.propertygrid.js" />
+    <Content Include="easyui\plugins\jquery.resizable.js" />
+    <Content Include="easyui\plugins\jquery.searchbox.js" />
+    <Content Include="easyui\plugins\jquery.slider.js" />
+    <Content Include="easyui\plugins\jquery.spinner.js" />
+    <Content Include="easyui\plugins\jquery.splitbutton.js" />
+    <Content Include="easyui\plugins\jquery.switchbutton.js" />
+    <Content Include="easyui\plugins\jquery.tabs.js" />
+    <Content Include="easyui\plugins\jquery.textbox.js" />
+    <Content Include="easyui\plugins\jquery.timespinner.js" />
+    <Content Include="easyui\plugins\jquery.tooltip.js" />
+    <Content Include="easyui\plugins\jquery.tree.js" />
+    <Content Include="easyui\plugins\jquery.treegrid.js" />
+    <Content Include="easyui\plugins\jquery.validatebox.js" />
+    <Content Include="easyui\plugins\jquery.window.js" />
+    <Content Include="easyui\readme.txt" />
+    <Content Include="easyui\src\easyloader.js" />
+    <Content Include="easyui\src\jquery.accordion.js" />
+    <Content Include="easyui\src\jquery.calendar.js" />
+    <Content Include="easyui\src\jquery.combobox.js" />
+    <Content Include="easyui\src\jquery.datebox.js" />
+    <Content Include="easyui\src\jquery.draggable.js" />
+    <Content Include="easyui\src\jquery.droppable.js" />
+    <Content Include="easyui\src\jquery.form.js" />
+    <Content Include="easyui\src\jquery.linkbutton.js" />
+    <Content Include="easyui\src\jquery.menu.js" />
+    <Content Include="easyui\src\jquery.parser.js" />
+    <Content Include="easyui\src\jquery.progressbar.js" />
+    <Content Include="easyui\src\jquery.propertygrid.js" />
+    <Content Include="easyui\src\jquery.resizable.js" />
+    <Content Include="easyui\src\jquery.slider.js" />
+    <Content Include="easyui\src\jquery.tabs.js" />
+    <Content Include="easyui\src\jquery.window.js" />
+    <Content Include="easyui\themes\black\accordion.css" />
+    <Content Include="easyui\themes\black\calendar.css" />
+    <Content Include="easyui\themes\black\combo.css" />
+    <Content Include="easyui\themes\black\combobox.css" />
+    <Content Include="easyui\themes\black\datagrid.css" />
+    <Content Include="easyui\themes\black\datalist.css" />
+    <Content Include="easyui\themes\black\datebox.css" />
+    <Content Include="easyui\themes\black\dialog.css" />
+    <Content Include="easyui\themes\black\easyui.css" />
+    <Content Include="easyui\themes\black\filebox.css" />
+    <Content Include="easyui\themes\black\images\accordion_arrows.png" />
+    <Content Include="easyui\themes\black\images\blank.gif" />
+    <Content Include="easyui\themes\black\images\calendar_arrows.png" />
+    <Content Include="easyui\themes\black\images\combo_arrow.png" />
+    <Content Include="easyui\themes\black\images\datagrid_icons.png" />
+    <Content Include="easyui\themes\black\images\datebox_arrow.png" />
+    <Content Include="easyui\themes\black\images\layout_arrows.png" />
+    <Content Include="easyui\themes\black\images\linkbutton_bg.png" />
+    <Content Include="easyui\themes\black\images\loading.gif" />
+    <Content Include="easyui\themes\black\images\menu_arrows.png" />
+    <Content Include="easyui\themes\black\images\messager_icons.png" />
+    <Content Include="easyui\themes\black\images\pagination_icons.png" />
+    <Content Include="easyui\themes\black\images\panel_tools.png" />
+    <Content Include="easyui\themes\black\images\searchbox_button.png" />
+    <Content Include="easyui\themes\black\images\slider_handle.png" />
+    <Content Include="easyui\themes\black\images\spinner_arrows.png" />
+    <Content Include="easyui\themes\black\images\tabs_icons.png" />
+    <Content Include="easyui\themes\black\images\tree_icons.png" />
+    <Content Include="easyui\themes\black\images\validatebox_warning.png" />
+    <Content Include="easyui\themes\black\layout.css" />
+    <Content Include="easyui\themes\black\linkbutton.css" />
+    <Content Include="easyui\themes\black\menu.css" />
+    <Content Include="easyui\themes\black\menubutton.css" />
+    <Content Include="easyui\themes\black\messager.css" />
+    <Content Include="easyui\themes\black\numberbox.css" />
+    <Content Include="easyui\themes\black\pagination.css" />
+    <Content Include="easyui\themes\black\panel.css" />
+    <Content Include="easyui\themes\black\progressbar.css" />
+    <Content Include="easyui\themes\black\propertygrid.css" />
+    <Content Include="easyui\themes\black\searchbox.css" />
+    <Content Include="easyui\themes\black\slider.css" />
+    <Content Include="easyui\themes\black\spinner.css" />
+    <Content Include="easyui\themes\black\splitbutton.css" />
+    <Content Include="easyui\themes\black\switchbutton.css" />
+    <Content Include="easyui\themes\black\tabs.css" />
+    <Content Include="easyui\themes\black\textbox.css" />
+    <Content Include="easyui\themes\black\tooltip.css" />
+    <Content Include="easyui\themes\black\tree.css" />
+    <Content Include="easyui\themes\black\validatebox.css" />
+    <Content Include="easyui\themes\black\window.css" />
+    <Content Include="easyui\themes\bootstrap\accordion.css" />
+    <Content Include="easyui\themes\bootstrap\calendar.css" />
+    <Content Include="easyui\themes\bootstrap\combo.css" />
+    <Content Include="easyui\themes\bootstrap\combobox.css" />
+    <Content Include="easyui\themes\bootstrap\datagrid.css" />
+    <Content Include="easyui\themes\bootstrap\datalist.css" />
+    <Content Include="easyui\themes\bootstrap\datebox.css" />
+    <Content Include="easyui\themes\bootstrap\dialog.css" />
+    <Content Include="easyui\themes\bootstrap\easyui.css" />
+    <Content Include="easyui\themes\bootstrap\filebox.css" />
+    <Content Include="easyui\themes\bootstrap\images\accordion_arrows.png" />
+    <Content Include="easyui\themes\bootstrap\images\blank.gif" />
+    <Content Include="easyui\themes\bootstrap\images\calendar_arrows.png" />
+    <Content Include="easyui\themes\bootstrap\images\combo_arrow.png" />
+    <Content Include="easyui\themes\bootstrap\images\datagrid_icons.png" />
+    <Content Include="easyui\themes\bootstrap\images\datebox_arrow.png" />
+    <Content Include="easyui\themes\bootstrap\images\layout_arrows.png" />
+    <Content Include="easyui\themes\bootstrap\images\linkbutton_bg.png" />
+    <Content Include="easyui\themes\bootstrap\images\loading.gif" />
+    <Content Include="easyui\themes\bootstrap\images\menu_arrows.png" />
+    <Content Include="easyui\themes\bootstrap\images\messager_icons.png" />
+    <Content Include="easyui\themes\bootstrap\images\pagination_icons.png" />
+    <Content Include="easyui\themes\bootstrap\images\panel_tools.png" />
+    <Content Include="easyui\themes\bootstrap\images\searchbox_button.png" />
+    <Content Include="easyui\themes\bootstrap\images\slider_handle.png" />
+    <Content Include="easyui\themes\bootstrap\images\spinner_arrows.png" />
+    <Content Include="easyui\themes\bootstrap\images\tabs_icons.png" />
+    <Content Include="easyui\themes\bootstrap\images\tree_icons.png" />
+    <Content Include="easyui\themes\bootstrap\images\validatebox_warning.png" />
+    <Content Include="easyui\themes\bootstrap\layout.css" />
+    <Content Include="easyui\themes\bootstrap\linkbutton.css" />
+    <Content Include="easyui\themes\bootstrap\menu.css" />
+    <Content Include="easyui\themes\bootstrap\menubutton.css" />
+    <Content Include="easyui\themes\bootstrap\messager.css" />
+    <Content Include="easyui\themes\bootstrap\numberbox.css" />
+    <Content Include="easyui\themes\bootstrap\pagination.css" />
+    <Content Include="easyui\themes\bootstrap\panel.css" />
+    <Content Include="easyui\themes\bootstrap\progressbar.css" />
+    <Content Include="easyui\themes\bootstrap\propertygrid.css" />
+    <Content Include="easyui\themes\bootstrap\searchbox.css" />
+    <Content Include="easyui\themes\bootstrap\slider.css" />
+    <Content Include="easyui\themes\bootstrap\spinner.css" />
+    <Content Include="easyui\themes\bootstrap\splitbutton.css" />
+    <Content Include="easyui\themes\bootstrap\switchbutton.css" />
+    <Content Include="easyui\themes\bootstrap\tabs.css" />
+    <Content Include="easyui\themes\bootstrap\textbox.css" />
+    <Content Include="easyui\themes\bootstrap\tooltip.css" />
+    <Content Include="easyui\themes\bootstrap\tree.css" />
+    <Content Include="easyui\themes\bootstrap\validatebox.css" />
+    <Content Include="easyui\themes\bootstrap\window.css" />
+    <Content Include="easyui\themes\color.css" />
+    <Content Include="easyui\themes\default\accordion.css" />
+    <Content Include="easyui\themes\default\calendar.css" />
+    <Content Include="easyui\themes\default\combo.css" />
+    <Content Include="easyui\themes\default\combobox.css" />
+    <Content Include="easyui\themes\default\datagrid.css" />
+    <Content Include="easyui\themes\default\datalist.css" />
+    <Content Include="easyui\themes\default\datebox.css" />
+    <Content Include="easyui\themes\default\dialog.css" />
+    <Content Include="easyui\themes\default\easyui.css" />
+    <Content Include="easyui\themes\default\filebox.css" />
+    <Content Include="easyui\themes\default\images\accordion_arrows.png" />
+    <Content Include="easyui\themes\default\images\blank.gif" />
+    <Content Include="easyui\themes\default\images\calendar_arrows.png" />
+    <Content Include="easyui\themes\default\images\combo_arrow.png" />
+    <Content Include="easyui\themes\default\images\datagrid_icons.png" />
+    <Content Include="easyui\themes\default\images\datebox_arrow.png" />
+    <Content Include="easyui\themes\default\images\layout_arrows.png" />
+    <Content Include="easyui\themes\default\images\linkbutton_bg.png" />
+    <Content Include="easyui\themes\default\images\loading.gif" />
+    <Content Include="easyui\themes\default\images\menu_arrows.png" />
+    <Content Include="easyui\themes\default\images\messager_icons.png" />
+    <Content Include="easyui\themes\default\images\pagination_icons.png" />
+    <Content Include="easyui\themes\default\images\panel_tools.png" />
+    <Content Include="easyui\themes\default\images\searchbox_button.png" />
+    <Content Include="easyui\themes\default\images\slider_handle.png" />
+    <Content Include="easyui\themes\default\images\spinner_arrows.png" />
+    <Content Include="easyui\themes\default\images\tabs_icons.png" />
+    <Content Include="easyui\themes\default\images\tree_icons.png" />
+    <Content Include="easyui\themes\default\images\validatebox_warning.png" />
+    <Content Include="easyui\themes\default\layout.css" />
+    <Content Include="easyui\themes\default\linkbutton.css" />
+    <Content Include="easyui\themes\default\menu.css" />
+    <Content Include="easyui\themes\default\menubutton.css" />
+    <Content Include="easyui\themes\default\messager.css" />
+    <Content Include="easyui\themes\default\numberbox.css" />
+    <Content Include="easyui\themes\default\pagination.css" />
+    <Content Include="easyui\themes\default\panel.css" />
+    <Content Include="easyui\themes\default\progressbar.css" />
+    <Content Include="easyui\themes\default\propertygrid.css" />
+    <Content Include="easyui\themes\default\searchbox.css" />
+    <Content Include="easyui\themes\default\slider.css" />
+    <Content Include="easyui\themes\default\spinner.css" />
+    <Content Include="easyui\themes\default\splitbutton.css" />
+    <Content Include="easyui\themes\default\switchbutton.css" />
+    <Content Include="easyui\themes\default\tabs.css" />
+    <Content Include="easyui\themes\default\textbox.css" />
+    <Content Include="easyui\themes\default\tooltip.css" />
+    <Content Include="easyui\themes\default\tree.css" />
+    <Content Include="easyui\themes\default\validatebox.css" />
+    <Content Include="easyui\themes\default\window.css" />
+    <Content Include="easyui\themes\gray\accordion.css" />
+    <Content Include="easyui\themes\gray\calendar.css" />
+    <Content Include="easyui\themes\gray\combo.css" />
+    <Content Include="easyui\themes\gray\combobox.css" />
+    <Content Include="easyui\themes\gray\datagrid.css" />
+    <Content Include="easyui\themes\gray\datalist.css" />
+    <Content Include="easyui\themes\gray\datebox.css" />
+    <Content Include="easyui\themes\gray\dialog.css" />
+    <Content Include="easyui\themes\gray\easyui.css" />
+    <Content Include="easyui\themes\gray\filebox.css" />
+    <Content Include="easyui\themes\gray\images\accordion_arrows.png" />
+    <Content Include="easyui\themes\gray\images\blank.gif" />
+    <Content Include="easyui\themes\gray\images\calendar_arrows.png" />
+    <Content Include="easyui\themes\gray\images\combo_arrow.png" />
+    <Content Include="easyui\themes\gray\images\datagrid_icons.png" />
+    <Content Include="easyui\themes\gray\images\datebox_arrow.png" />
+    <Content Include="easyui\themes\gray\images\layout_arrows.png" />
+    <Content Include="easyui\themes\gray\images\linkbutton_bg.png" />
+    <Content Include="easyui\themes\gray\images\loading.gif" />
+    <Content Include="easyui\themes\gray\images\menu_arrows.png" />
+    <Content Include="easyui\themes\gray\images\messager_icons.png" />
+    <Content Include="easyui\themes\gray\images\pagination_icons.png" />
+    <Content Include="easyui\themes\gray\images\panel_tools.png" />
+    <Content Include="easyui\themes\gray\images\searchbox_button.png" />
+    <Content Include="easyui\themes\gray\images\slider_handle.png" />
+    <Content Include="easyui\themes\gray\images\spinner_arrows.png" />
+    <Content Include="easyui\themes\gray\images\tabs_icons.png" />
+    <Content Include="easyui\themes\gray\images\tree_icons.png" />
+    <Content Include="easyui\themes\gray\images\validatebox_warning.png" />
+    <Content Include="easyui\themes\gray\layout.css" />
+    <Content Include="easyui\themes\gray\linkbutton.css" />
+    <Content Include="easyui\themes\gray\menu.css" />
+    <Content Include="easyui\themes\gray\menubutton.css" />
+    <Content Include="easyui\themes\gray\messager.css" />
+    <Content Include="easyui\themes\gray\numberbox.css" />
+    <Content Include="easyui\themes\gray\pagination.css" />
+    <Content Include="easyui\themes\gray\panel.css" />
+    <Content Include="easyui\themes\gray\progressbar.css" />
+    <Content Include="easyui\themes\gray\propertygrid.css" />
+    <Content Include="easyui\themes\gray\searchbox.css" />
+    <Content Include="easyui\themes\gray\slider.css" />
+    <Content Include="easyui\themes\gray\spinner.css" />
+    <Content Include="easyui\themes\gray\splitbutton.css" />
+    <Content Include="easyui\themes\gray\switchbutton.css" />
+    <Content Include="easyui\themes\gray\tabs.css" />
+    <Content Include="easyui\themes\gray\textbox.css" />
+    <Content Include="easyui\themes\gray\tooltip.css" />
+    <Content Include="easyui\themes\gray\tree.css" />
+    <Content Include="easyui\themes\gray\validatebox.css" />
+    <Content Include="easyui\themes\gray\window.css" />
+    <Content Include="easyui\themes\icon.css" />
+    <Content Include="easyui\themes\icons\back.png" />
+    <Content Include="easyui\themes\icons\blank.gif" />
+    <Content Include="easyui\themes\icons\cancel.png" />
+    <Content Include="easyui\themes\icons\clear.png" />
+    <Content Include="easyui\themes\icons\cut.png" />
+    <Content Include="easyui\themes\icons\edit_add.png" />
+    <Content Include="easyui\themes\icons\edit_remove.png" />
+    <Content Include="easyui\themes\icons\filesave.png" />
+    <Content Include="easyui\themes\icons\filter.png" />
+    <Content Include="easyui\themes\icons\help.png" />
+    <Content Include="easyui\themes\icons\large_chart.png" />
+    <Content Include="easyui\themes\icons\large_clipart.png" />
+    <Content Include="easyui\themes\icons\large_picture.png" />
+    <Content Include="easyui\themes\icons\large_shapes.png" />
+    <Content Include="easyui\themes\icons\large_smartart.png" />
+    <Content Include="easyui\themes\icons\lock.png" />
+    <Content Include="easyui\themes\icons\man.png" />
+    <Content Include="easyui\themes\icons\mini_add.png" />
+    <Content Include="easyui\themes\icons\mini_edit.png" />
+    <Content Include="easyui\themes\icons\mini_refresh.png" />
+    <Content Include="easyui\themes\icons\more.png" />
+    <Content Include="easyui\themes\icons\no.png" />
+    <Content Include="easyui\themes\icons\ok.png" />
+    <Content Include="easyui\themes\icons\pencil.png" />
+    <Content Include="easyui\themes\icons\print.png" />
+    <Content Include="easyui\themes\icons\redo.png" />
+    <Content Include="easyui\themes\icons\reload.png" />
+    <Content Include="easyui\themes\icons\search.png" />
+    <Content Include="easyui\themes\icons\sum.png" />
+    <Content Include="easyui\themes\icons\tip.png" />
+    <Content Include="easyui\themes\icons\undo.png" />
+    <Content Include="easyui\themes\metro-blue\accordion.css" />
+    <Content Include="easyui\themes\metro-blue\calendar.css" />
+    <Content Include="easyui\themes\metro-blue\combo.css" />
+    <Content Include="easyui\themes\metro-blue\combobox.css" />
+    <Content Include="easyui\themes\metro-blue\datagrid.css" />
+    <Content Include="easyui\themes\metro-blue\datalist.css" />
+    <Content Include="easyui\themes\metro-blue\datebox.css" />
+    <Content Include="easyui\themes\metro-blue\dialog.css" />
+    <Content Include="easyui\themes\metro-blue\easyui.css" />
+    <Content Include="easyui\themes\metro-blue\filebox.css" />
+    <Content Include="easyui\themes\metro-blue\images\accordion_arrows.png" />
+    <Content Include="easyui\themes\metro-blue\images\blank.gif" />
+    <Content Include="easyui\themes\metro-blue\images\calendar_arrows.png" />
+    <Content Include="easyui\themes\metro-blue\images\combo_arrow.png" />
+    <Content Include="easyui\themes\metro-blue\images\datagrid_icons.png" />
+    <Content Include="easyui\themes\metro-blue\images\datebox_arrow.png" />
+    <Content Include="easyui\themes\metro-blue\images\layout_arrows.png" />
+    <Content Include="easyui\themes\metro-blue\images\linkbutton_bg.png" />
+    <Content Include="easyui\themes\metro-blue\images\loading.gif" />
+    <Content Include="easyui\themes\metro-blue\images\menu_arrows.png" />
+    <Content Include="easyui\themes\metro-blue\images\messager_icons.png" />
+    <Content Include="easyui\themes\metro-blue\images\pagination_icons.png" />
+    <Content Include="easyui\themes\metro-blue\images\panel_tools.png" />
+    <Content Include="easyui\themes\metro-blue\images\searchbox_button.png" />
+    <Content Include="easyui\themes\metro-blue\images\slider_handle.png" />
+    <Content Include="easyui\themes\metro-blue\images\spinner_arrows.png" />
+    <Content Include="easyui\themes\metro-blue\images\tabs_icons.png" />
+    <Content Include="easyui\themes\metro-blue\images\tree_icons.png" />
+    <Content Include="easyui\themes\metro-blue\images\validatebox_warning.png" />
+    <Content Include="easyui\themes\metro-blue\layout.css" />
+    <Content Include="easyui\themes\metro-blue\linkbutton.css" />
+    <Content Include="easyui\themes\metro-blue\menu.css" />
+    <Content Include="easyui\themes\metro-blue\menubutton.css" />
+    <Content Include="easyui\themes\metro-blue\messager.css" />
+    <Content Include="easyui\themes\metro-blue\numberbox.css" />
+    <Content Include="easyui\themes\metro-blue\pagination.css" />
+    <Content Include="easyui\themes\metro-blue\panel.css" />
+    <Content Include="easyui\themes\metro-blue\progressbar.css" />
+    <Content Include="easyui\themes\metro-blue\propertygrid.css" />
+    <Content Include="easyui\themes\metro-blue\searchbox.css" />
+    <Content Include="easyui\themes\metro-blue\slider.css" />
+    <Content Include="easyui\themes\metro-blue\spinner.css" />
+    <Content Include="easyui\themes\metro-blue\splitbutton.css" />
+    <Content Include="easyui\themes\metro-blue\tabs.css" />
+    <Content Include="easyui\themes\metro-blue\textbox.css" />
+    <Content Include="easyui\themes\metro-blue\tooltip.css" />
+    <Content Include="easyui\themes\metro-blue\tree.css" />
+    <Content Include="easyui\themes\metro-blue\validatebox.css" />
+    <Content Include="easyui\themes\metro-blue\window.css" />
+    <Content Include="easyui\themes\metro-gray\accordion.css" />
+    <Content Include="easyui\themes\metro-gray\calendar.css" />
+    <Content Include="easyui\themes\metro-gray\combo.css" />
+    <Content Include="easyui\themes\metro-gray\combobox.css" />
+    <Content Include="easyui\themes\metro-gray\datagrid.css" />
+    <Content Include="easyui\themes\metro-gray\datalist.css" />
+    <Content Include="easyui\themes\metro-gray\datebox.css" />
+    <Content Include="easyui\themes\metro-gray\dialog.css" />
+    <Content Include="easyui\themes\metro-gray\easyui.css" />
+    <Content Include="easyui\themes\metro-gray\filebox.css" />
+    <Content Include="easyui\themes\metro-gray\images\accordion_arrows.png" />
+    <Content Include="easyui\themes\metro-gray\images\blank.gif" />
+    <Content Include="easyui\themes\metro-gray\images\calendar_arrows.png" />
+    <Content Include="easyui\themes\metro-gray\images\combo_arrow.png" />
+    <Content Include="easyui\themes\metro-gray\images\datagrid_icons.png" />
+    <Content Include="easyui\themes\metro-gray\images\datebox_arrow.png" />
+    <Content Include="easyui\themes\metro-gray\images\layout_arrows.png" />
+    <Content Include="easyui\themes\metro-gray\images\linkbutton_bg.png" />
+    <Content Include="easyui\themes\metro-gray\images\loading.gif" />
+    <Content Include="easyui\themes\metro-gray\images\menu_arrows.png" />
+    <Content Include="easyui\themes\metro-gray\images\messager_icons.png" />
+    <Content Include="easyui\themes\metro-gray\images\pagination_icons.png" />
+    <Content Include="easyui\themes\metro-gray\images\panel_tools.png" />
+    <Content Include="easyui\themes\metro-gray\images\searchbox_button.png" />
+    <Content Include="easyui\themes\metro-gray\images\slider_handle.png" />
+    <Content Include="easyui\themes\metro-gray\images\spinner_arrows.png" />
+    <Content Include="easyui\themes\metro-gray\images\tabs_icons.png" />
+    <Content Include="easyui\themes\metro-gray\images\tree_icons.png" />
+    <Content Include="easyui\themes\metro-gray\images\validatebox_warning.png" />
+    <Content Include="easyui\themes\metro-gray\layout.css" />
+    <Content Include="easyui\themes\metro-gray\linkbutton.css" />
+    <Content Include="easyui\themes\metro-gray\menu.css" />
+    <Content Include="easyui\themes\metro-gray\menubutton.css" />
+    <Content Include="easyui\themes\metro-gray\messager.css" />
+    <Content Include="easyui\themes\metro-gray\numberbox.css" />
+    <Content Include="easyui\themes\metro-gray\pagination.css" />
+    <Content Include="easyui\themes\metro-gray\panel.css" />
+    <Content Include="easyui\themes\metro-gray\progressbar.css" />
+    <Content Include="easyui\themes\metro-gray\propertygrid.css" />
+    <Content Include="easyui\themes\metro-gray\searchbox.css" />
+    <Content Include="easyui\themes\metro-gray\slider.css" />
+    <Content Include="easyui\themes\metro-gray\spinner.css" />
+    <Content Include="easyui\themes\metro-gray\splitbutton.css" />
+    <Content Include="easyui\themes\metro-gray\tabs.css" />
+    <Content Include="easyui\themes\metro-gray\textbox.css" />
+    <Content Include="easyui\themes\metro-gray\tooltip.css" />
+    <Content Include="easyui\themes\metro-gray\tree.css" />
+    <Content Include="easyui\themes\metro-gray\validatebox.css" />
+    <Content Include="easyui\themes\metro-gray\window.css" />
+    <Content Include="easyui\themes\metro-green\accordion.css" />
+    <Content Include="easyui\themes\metro-green\calendar.css" />
+    <Content Include="easyui\themes\metro-green\combo.css" />
+    <Content Include="easyui\themes\metro-green\combobox.css" />
+    <Content Include="easyui\themes\metro-green\datagrid.css" />
+    <Content Include="easyui\themes\metro-green\datalist.css" />
+    <Content Include="easyui\themes\metro-green\datebox.css" />
+    <Content Include="easyui\themes\metro-green\dialog.css" />
+    <Content Include="easyui\themes\metro-green\easyui.css" />
+    <Content Include="easyui\themes\metro-green\filebox.css" />
+    <Content Include="easyui\themes\metro-green\images\accordion_arrows.png" />
+    <Content Include="easyui\themes\metro-green\images\blank.gif" />
+    <Content Include="easyui\themes\metro-green\images\calendar_arrows.png" />
+    <Content Include="easyui\themes\metro-green\images\combo_arrow.png" />
+    <Content Include="easyui\themes\metro-green\images\datagrid_icons.png" />
+    <Content Include="easyui\themes\metro-green\images\datebox_arrow.png" />
+    <Content Include="easyui\themes\metro-green\images\layout_arrows.png" />
+    <Content Include="easyui\themes\metro-green\images\linkbutton_bg.png" />
+    <Content Include="easyui\themes\metro-green\images\loading.gif" />
+    <Content Include="easyui\themes\metro-green\images\menu_arrows.png" />
+    <Content Include="easyui\themes\metro-green\images\messager_icons.png" />
+    <Content Include="easyui\themes\metro-green\images\pagination_icons.png" />
+    <Content Include="easyui\themes\metro-green\images\panel_tools.png" />
+    <Content Include="easyui\themes\metro-green\images\searchbox_button.png" />
+    <Content Include="easyui\themes\metro-green\images\slider_handle.png" />
+    <Content Include="easyui\themes\metro-green\images\spinner_arrows.png" />
+    <Content Include="easyui\themes\metro-green\images\tabs_icons.png" />
+    <Content Include="easyui\themes\metro-green\images\tree_icons.png" />
+    <Content Include="easyui\themes\metro-green\images\validatebox_warning.png" />
+    <Content Include="easyui\themes\metro-green\layout.css" />
+    <Content Include="easyui\themes\metro-green\linkbutton.css" />
+    <Content Include="easyui\themes\metro-green\menu.css" />
+    <Content Include="easyui\themes\metro-green\menubutton.css" />
+    <Content Include="easyui\themes\metro-green\messager.css" />
+    <Content Include="easyui\themes\metro-green\numberbox.css" />
+    <Content Include="easyui\themes\metro-green\pagination.css" />
+    <Content Include="easyui\themes\metro-green\panel.css" />
+    <Content Include="easyui\themes\metro-green\progressbar.css" />
+    <Content Include="easyui\themes\metro-green\propertygrid.css" />
+    <Content Include="easyui\themes\metro-green\searchbox.css" />
+    <Content Include="easyui\themes\metro-green\slider.css" />
+    <Content Include="easyui\themes\metro-green\spinner.css" />
+    <Content Include="easyui\themes\metro-green\splitbutton.css" />
+    <Content Include="easyui\themes\metro-green\tabs.css" />
+    <Content Include="easyui\themes\metro-green\textbox.css" />
+    <Content Include="easyui\themes\metro-green\tooltip.css" />
+    <Content Include="easyui\themes\metro-green\tree.css" />
+    <Content Include="easyui\themes\metro-green\validatebox.css" />
+    <Content Include="easyui\themes\metro-green\window.css" />
+    <Content Include="easyui\themes\metro-orange\accordion.css" />
+    <Content Include="easyui\themes\metro-orange\calendar.css" />
+    <Content Include="easyui\themes\metro-orange\combo.css" />
+    <Content Include="easyui\themes\metro-orange\combobox.css" />
+    <Content Include="easyui\themes\metro-orange\datagrid.css" />
+    <Content Include="easyui\themes\metro-orange\datalist.css" />
+    <Content Include="easyui\themes\metro-orange\datebox.css" />
+    <Content Include="easyui\themes\metro-orange\dialog.css" />
+    <Content Include="easyui\themes\metro-orange\easyui.css" />
+    <Content Include="easyui\themes\metro-orange\filebox.css" />
+    <Content Include="easyui\themes\metro-orange\images\accordion_arrows.png" />
+    <Content Include="easyui\themes\metro-orange\images\blank.gif" />
+    <Content Include="easyui\themes\metro-orange\images\calendar_arrows.png" />
+    <Content Include="easyui\themes\metro-orange\images\combo_arrow.png" />
+    <Content Include="easyui\themes\metro-orange\images\datagrid_icons.png" />
+    <Content Include="easyui\themes\metro-orange\images\datebox_arrow.png" />
+    <Content Include="easyui\themes\metro-orange\images\layout_arrows.png" />
+    <Content Include="easyui\themes\metro-orange\images\linkbutton_bg.png" />
+    <Content Include="easyui\themes\metro-orange\images\loading.gif" />
+    <Content Include="easyui\themes\metro-orange\images\menu_arrows.png" />
+    <Content Include="easyui\themes\metro-orange\images\messager_icons.png" />
+    <Content Include="easyui\themes\metro-orange\images\pagination_icons.png" />
+    <Content Include="easyui\themes\metro-orange\images\panel_tools.png" />
+    <Content Include="easyui\themes\metro-orange\images\searchbox_button.png" />
+    <Content Include="easyui\themes\metro-orange\images\slider_handle.png" />
+    <Content Include="easyui\themes\metro-orange\images\spinner_arrows.png" />
+    <Content Include="easyui\themes\metro-orange\images\tabs_icons.png" />
+    <Content Include="easyui\themes\metro-orange\images\tree_icons.png" />
+    <Content Include="easyui\themes\metro-orange\images\validatebox_warning.png" />
+    <Content Include="easyui\themes\metro-orange\layout.css" />
+    <Content Include="easyui\themes\metro-orange\linkbutton.css" />
+    <Content Include="easyui\themes\metro-orange\menu.css" />
+    <Content Include="easyui\themes\metro-orange\menubutton.css" />
+    <Content Include="easyui\themes\metro-orange\messager.css" />
+    <Content Include="easyui\themes\metro-orange\numberbox.css" />
+    <Content Include="easyui\themes\metro-orange\pagination.css" />
+    <Content Include="easyui\themes\metro-orange\panel.css" />
+    <Content Include="easyui\themes\metro-orange\progressbar.css" />
+    <Content Include="easyui\themes\metro-orange\propertygrid.css" />
+    <Content Include="easyui\themes\metro-orange\searchbox.css" />
+    <Content Include="easyui\themes\metro-orange\slider.css" />
+    <Content Include="easyui\themes\metro-orange\spinner.css" />
+    <Content Include="easyui\themes\metro-orange\splitbutton.css" />
+    <Content Include="easyui\themes\metro-orange\tabs.css" />
+    <Content Include="easyui\themes\metro-orange\textbox.css" />
+    <Content Include="easyui\themes\metro-orange\tooltip.css" />
+    <Content Include="easyui\themes\metro-orange\tree.css" />
+    <Content Include="easyui\themes\metro-orange\validatebox.css" />
+    <Content Include="easyui\themes\metro-orange\window.css" />
+    <Content Include="easyui\themes\metro-red\accordion.css" />
+    <Content Include="easyui\themes\metro-red\calendar.css" />
+    <Content Include="easyui\themes\metro-red\combo.css" />
+    <Content Include="easyui\themes\metro-red\combobox.css" />
+    <Content Include="easyui\themes\metro-red\datagrid.css" />
+    <Content Include="easyui\themes\metro-red\datalist.css" />
+    <Content Include="easyui\themes\metro-red\datebox.css" />
+    <Content Include="easyui\themes\metro-red\dialog.css" />
+    <Content Include="easyui\themes\metro-red\easyui.css" />
+    <Content Include="easyui\themes\metro-red\filebox.css" />
+    <Content Include="easyui\themes\metro-red\images\accordion_arrows.png" />
+    <Content Include="easyui\themes\metro-red\images\blank.gif" />
+    <Content Include="easyui\themes\metro-red\images\calendar_arrows.png" />
+    <Content Include="easyui\themes\metro-red\images\combo_arrow.png" />
+    <Content Include="easyui\themes\metro-red\images\datagrid_icons.png" />
+    <Content Include="easyui\themes\metro-red\images\datebox_arrow.png" />
+    <Content Include="easyui\themes\metro-red\images\layout_arrows.png" />
+    <Content Include="easyui\themes\metro-red\images\linkbutton_bg.png" />
+    <Content Include="easyui\themes\metro-red\images\loading.gif" />
+    <Content Include="easyui\themes\metro-red\images\menu_arrows.png" />
+    <Content Include="easyui\themes\metro-red\images\messager_icons.png" />
+    <Content Include="easyui\themes\metro-red\images\pagination_icons.png" />
+    <Content Include="easyui\themes\metro-red\images\panel_tools.png" />
+    <Content Include="easyui\themes\metro-red\images\searchbox_button.png" />
+    <Content Include="easyui\themes\metro-red\images\slider_handle.png" />
+    <Content Include="easyui\themes\metro-red\images\spinner_arrows.png" />
+    <Content Include="easyui\themes\metro-red\images\tabs_icons.png" />
+    <Content Include="easyui\themes\metro-red\images\tree_icons.png" />
+    <Content Include="easyui\themes\metro-red\images\validatebox_warning.png" />
+    <Content Include="easyui\themes\metro-red\layout.css" />
+    <Content Include="easyui\themes\metro-red\linkbutton.css" />
+    <Content Include="easyui\themes\metro-red\menu.css" />
+    <Content Include="easyui\themes\metro-red\menubutton.css" />
+    <Content Include="easyui\themes\metro-red\messager.css" />
+    <Content Include="easyui\themes\metro-red\numberbox.css" />
+    <Content Include="easyui\themes\metro-red\pagination.css" />
+    <Content Include="easyui\themes\metro-red\panel.css" />
+    <Content Include="easyui\themes\metro-red\progressbar.css" />
+    <Content Include="easyui\themes\metro-red\propertygrid.css" />
+    <Content Include="easyui\themes\metro-red\searchbox.css" />
+    <Content Include="easyui\themes\metro-red\slider.css" />
+    <Content Include="easyui\themes\metro-red\spinner.css" />
+    <Content Include="easyui\themes\metro-red\splitbutton.css" />
+    <Content Include="easyui\themes\metro-red\tabs.css" />
+    <Content Include="easyui\themes\metro-red\textbox.css" />
+    <Content Include="easyui\themes\metro-red\tooltip.css" />
+    <Content Include="easyui\themes\metro-red\tree.css" />
+    <Content Include="easyui\themes\metro-red\validatebox.css" />
+    <Content Include="easyui\themes\metro-red\window.css" />
+    <Content Include="easyui\themes\metro\accordion.css" />
+    <Content Include="easyui\themes\metro\calendar.css" />
+    <Content Include="easyui\themes\metro\combo.css" />
+    <Content Include="easyui\themes\metro\combobox.css" />
+    <Content Include="easyui\themes\metro\datagrid.css" />
+    <Content Include="easyui\themes\metro\datalist.css" />
+    <Content Include="easyui\themes\metro\datebox.css" />
+    <Content Include="easyui\themes\metro\dialog.css" />
+    <Content Include="easyui\themes\metro\easyui.css" />
+    <Content Include="easyui\themes\metro\filebox.css" />
+    <Content Include="easyui\themes\metro\images\accordion_arrows.png" />
+    <Content Include="easyui\themes\metro\images\blank.gif" />
+    <Content Include="easyui\themes\metro\images\calendar_arrows.png" />
+    <Content Include="easyui\themes\metro\images\combo_arrow.png" />
+    <Content Include="easyui\themes\metro\images\datagrid_icons.png" />
+    <Content Include="easyui\themes\metro\images\datebox_arrow.png" />
+    <Content Include="easyui\themes\metro\images\layout_arrows.png" />
+    <Content Include="easyui\themes\metro\images\linkbutton_bg.png" />
+    <Content Include="easyui\themes\metro\images\loading.gif" />
+    <Content Include="easyui\themes\metro\images\menu_arrows.png" />
+    <Content Include="easyui\themes\metro\images\messager_icons.png" />
+    <Content Include="easyui\themes\metro\images\pagination_icons.png" />
+    <Content Include="easyui\themes\metro\images\panel_tools.png" />
+    <Content Include="easyui\themes\metro\images\searchbox_button.png" />
+    <Content Include="easyui\themes\metro\images\slider_handle.png" />
+    <Content Include="easyui\themes\metro\images\spinner_arrows.png" />
+    <Content Include="easyui\themes\metro\images\tabs_icons.png" />
+    <Content Include="easyui\themes\metro\images\tree_icons.png" />
+    <Content Include="easyui\themes\metro\images\validatebox_warning.png" />
+    <Content Include="easyui\themes\metro\layout.css" />
+    <Content Include="easyui\themes\metro\linkbutton.css" />
+    <Content Include="easyui\themes\metro\menu.css" />
+    <Content Include="easyui\themes\metro\menubutton.css" />
+    <Content Include="easyui\themes\metro\messager.css" />
+    <Content Include="easyui\themes\metro\numberbox.css" />
+    <Content Include="easyui\themes\metro\pagination.css" />
+    <Content Include="easyui\themes\metro\panel.css" />
+    <Content Include="easyui\themes\metro\progressbar.css" />
+    <Content Include="easyui\themes\metro\propertygrid.css" />
+    <Content Include="easyui\themes\metro\searchbox.css" />
+    <Content Include="easyui\themes\metro\slider.css" />
+    <Content Include="easyui\themes\metro\spinner.css" />
+    <Content Include="easyui\themes\metro\splitbutton.css" />
+    <Content Include="easyui\themes\metro\switchbutton.css" />
+    <Content Include="easyui\themes\metro\tabs.css" />
+    <Content Include="easyui\themes\metro\textbox.css" />
+    <Content Include="easyui\themes\metro\tooltip.css" />
+    <Content Include="easyui\themes\metro\tree.css" />
+    <Content Include="easyui\themes\metro\validatebox.css" />
+    <Content Include="easyui\themes\metro\window.css" />
+    <Content Include="easyui\themes\mobile.css" />
+    <Content Include="easyui\themes\ui-cupertino\accordion.css" />
+    <Content Include="easyui\themes\ui-cupertino\calendar.css" />
+    <Content Include="easyui\themes\ui-cupertino\combo.css" />
+    <Content Include="easyui\themes\ui-cupertino\combobox.css" />
+    <Content Include="easyui\themes\ui-cupertino\datagrid.css" />
+    <Content Include="easyui\themes\ui-cupertino\datalist.css" />
+    <Content Include="easyui\themes\ui-cupertino\datebox.css" />
+    <Content Include="easyui\themes\ui-cupertino\dialog.css" />
+    <Content Include="easyui\themes\ui-cupertino\easyui.css" />
+    <Content Include="easyui\themes\ui-cupertino\filebox.css" />
+    <Content Include="easyui\themes\ui-cupertino\images\accordion_arrows.png" />
+    <Content Include="easyui\themes\ui-cupertino\images\blank.gif" />
+    <Content Include="easyui\themes\ui-cupertino\images\calendar_arrows.png" />
+    <Content Include="easyui\themes\ui-cupertino\images\combo_arrow.png" />
+    <Content Include="easyui\themes\ui-cupertino\images\datagrid_icons.png" />
+    <Content Include="easyui\themes\ui-cupertino\images\datebox_arrow.png" />
+    <Content Include="easyui\themes\ui-cupertino\images\layout_arrows.png" />
+    <Content Include="easyui\themes\ui-cupertino\images\linkbutton_bg.png" />
+    <Content Include="easyui\themes\ui-cupertino\images\loading.gif" />
+    <Content Include="easyui\themes\ui-cupertino\images\menu_arrows.png" />
+    <Content Include="easyui\themes\ui-cupertino\images\messager_icons.png" />
+    <Content Include="easyui\themes\ui-cupertino\images\pagination_icons.png" />
+    <Content Include="easyui\themes\ui-cupertino\images\panel_tools.png" />
+    <Content Include="easyui\themes\ui-cupertino\images\searchbox_button.png" />
+    <Content Include="easyui\themes\ui-cupertino\images\slider_handle.png" />
+    <Content Include="easyui\themes\ui-cupertino\images\spinner_arrows.png" />
+    <Content Include="easyui\themes\ui-cupertino\images\tabs_icons.png" />
+    <Content Include="easyui\themes\ui-cupertino\images\tree_icons.png" />
+    <Content Include="easyui\themes\ui-cupertino\images\validatebox_warning.png" />
+    <Content Include="easyui\themes\ui-cupertino\layout.css" />
+    <Content Include="easyui\themes\ui-cupertino\linkbutton.css" />
+    <Content Include="easyui\themes\ui-cupertino\menu.css" />
+    <Content Include="easyui\themes\ui-cupertino\menubutton.css" />
+    <Content Include="easyui\themes\ui-cupertino\messager.css" />
+    <Content Include="easyui\themes\ui-cupertino\numberbox.css" />
+    <Content Include="easyui\themes\ui-cupertino\pagination.css" />
+    <Content Include="easyui\themes\ui-cupertino\panel.css" />
+    <Content Include="easyui\themes\ui-cupertino\progressbar.css" />
+    <Content Include="easyui\themes\ui-cupertino\propertygrid.css" />
+    <Content Include="easyui\themes\ui-cupertino\searchbox.css" />
+    <Content Include="easyui\themes\ui-cupertino\slider.css" />
+    <Content Include="easyui\themes\ui-cupertino\spinner.css" />
+    <Content Include="easyui\themes\ui-cupertino\splitbutton.css" />
+    <Content Include="easyui\themes\ui-cupertino\tabs.css" />
+    <Content Include="easyui\themes\ui-cupertino\textbox.css" />
+    <Content Include="easyui\themes\ui-cupertino\tooltip.css" />
+    <Content Include="easyui\themes\ui-cupertino\tree.css" />
+    <Content Include="easyui\themes\ui-cupertino\validatebox.css" />
+    <Content Include="easyui\themes\ui-cupertino\window.css" />
+    <Content Include="easyui\themes\ui-dark-hive\accordion.css" />
+    <Content Include="easyui\themes\ui-dark-hive\calendar.css" />
+    <Content Include="easyui\themes\ui-dark-hive\combo.css" />
+    <Content Include="easyui\themes\ui-dark-hive\combobox.css" />
+    <Content Include="easyui\themes\ui-dark-hive\datagrid.css" />
+    <Content Include="easyui\themes\ui-dark-hive\datalist.css" />
+    <Content Include="easyui\themes\ui-dark-hive\datebox.css" />
+    <Content Include="easyui\themes\ui-dark-hive\dialog.css" />
+    <Content Include="easyui\themes\ui-dark-hive\easyui.css" />
+    <Content Include="easyui\themes\ui-dark-hive\filebox.css" />
+    <Content Include="easyui\themes\ui-dark-hive\images\accordion_arrows.png" />
+    <Content Include="easyui\themes\ui-dark-hive\images\blank.gif" />
+    <Content Include="easyui\themes\ui-dark-hive\images\calendar_arrows.png" />
+    <Content Include="easyui\themes\ui-dark-hive\images\combo_arrow.png" />
+    <Content Include="easyui\themes\ui-dark-hive\images\datagrid_icons.png" />
+    <Content Include="easyui\themes\ui-dark-hive\images\datebox_arrow.png" />
+    <Content Include="easyui\themes\ui-dark-hive\images\layout_arrows.png" />
+    <Content Include="easyui\themes\ui-dark-hive\images\linkbutton_bg.png" />
+    <Content Include="easyui\themes\ui-dark-hive\images\loading.gif" />
+    <Content Include="easyui\themes\ui-dark-hive\images\menu_arrows.png" />
+    <Content Include="easyui\themes\ui-dark-hive\images\messager_icons.png" />
+    <Content Include="easyui\themes\ui-dark-hive\images\pagination_icons.png" />
+    <Content Include="easyui\themes\ui-dark-hive\images\panel_tools.png" />
+    <Content Include="easyui\themes\ui-dark-hive\images\searchbox_button.png" />
+    <Content Include="easyui\themes\ui-dark-hive\images\slider_handle.png" />
+    <Content Include="easyui\themes\ui-dark-hive\images\spinner_arrows.png" />
+    <Content Include="easyui\themes\ui-dark-hive\images\tabs_icons.png" />
+    <Content Include="easyui\themes\ui-dark-hive\images\tree_icons.png" />
+    <Content Include="easyui\themes\ui-dark-hive\images\validatebox_warning.png" />
+    <Content Include="easyui\themes\ui-dark-hive\layout.css" />
+    <Content Include="easyui\themes\ui-dark-hive\linkbutton.css" />
+    <Content Include="easyui\themes\ui-dark-hive\menu.css" />
+    <Content Include="easyui\themes\ui-dark-hive\menubutton.css" />
+    <Content Include="easyui\themes\ui-dark-hive\messager.css" />
+    <Content Include="easyui\themes\ui-dark-hive\numberbox.css" />
+    <Content Include="easyui\themes\ui-dark-hive\pagination.css" />
+    <Content Include="easyui\themes\ui-dark-hive\panel.css" />
+    <Content Include="easyui\themes\ui-dark-hive\progressbar.css" />
+    <Content Include="easyui\themes\ui-dark-hive\propertygrid.css" />
+    <Content Include="easyui\themes\ui-dark-hive\searchbox.css" />
+    <Content Include="easyui\themes\ui-dark-hive\slider.css" />
+    <Content Include="easyui\themes\ui-dark-hive\spinner.css" />
+    <Content Include="easyui\themes\ui-dark-hive\splitbutton.css" />
+    <Content Include="easyui\themes\ui-dark-hive\tabs.css" />
+    <Content Include="easyui\themes\ui-dark-hive\textbox.css" />
+    <Content Include="easyui\themes\ui-dark-hive\tooltip.css" />
+    <Content Include="easyui\themes\ui-dark-hive\tree.css" />
+    <Content Include="easyui\themes\ui-dark-hive\validatebox.css" />
+    <Content Include="easyui\themes\ui-dark-hive\window.css" />
+    <Content Include="easyui\themes\ui-pepper-grinder\accordion.css" />
+    <Content Include="easyui\themes\ui-pepper-grinder\calendar.css" />
+    <Content Include="easyui\themes\ui-pepper-grinder\combo.css" />
+    <Content Include="easyui\themes\ui-pepper-grinder\combobox.css" />
+    <Content Include="easyui\themes\ui-pepper-grinder\datagrid.css" />
+    <Content Include="easyui\themes\ui-pepper-grinder\datalist.css" />
+    <Content Include="easyui\themes\ui-pepper-grinder\datebox.css" />
+    <Content Include="easyui\themes\ui-pepper-grinder\dialog.css" />
+    <Content Include="easyui\themes\ui-pepper-grinder\easyui.css" />
+    <Content Include="easyui\themes\ui-pepper-grinder\filebox.css" />
+    <Content Include="easyui\themes\ui-pepper-grinder\images\accordion_arrows.png" />
+    <Content Include="easyui\themes\ui-pepper-grinder\images\blank.gif" />
+    <Content Include="easyui\themes\ui-pepper-grinder\images\calendar_arrows.png" />
+    <Content Include="easyui\themes\ui-pepper-grinder\images\combo_arrow.png" />
+    <Content Include="easyui\themes\ui-pepper-grinder\images\datagrid_icons.png" />
+    <Content Include="easyui\themes\ui-pepper-grinder\images\datebox_arrow.png" />
+    <Content Include="easyui\themes\ui-pepper-grinder\images\layout_arrows.png" />
+    <Content Include="easyui\themes\ui-pepper-grinder\images\linkbutton_bg.png" />
+    <Content Include="easyui\themes\ui-pepper-grinder\images\loading.gif" />
+    <Content Include="easyui\themes\ui-pepper-grinder\images\menu_arrows.png" />
+    <Content Include="easyui\themes\ui-pepper-grinder\images\messager_icons.png" />
+    <Content Include="easyui\themes\ui-pepper-grinder\images\pagination_icons.png" />
+    <Content Include="easyui\themes\ui-pepper-grinder\images\panel_tools.png" />
+    <Content Include="easyui\themes\ui-pepper-grinder\images\searchbox_button.png" />
+    <Content Include="easyui\themes\ui-pepper-grinder\images\slider_handle.png" />
+    <Content Include="easyui\themes\ui-pepper-grinder\images\spinner_arrows.png" />
+    <Content Include="easyui\themes\ui-pepper-grinder\images\tabs_icons.png" />
+    <Content Include="easyui\themes\ui-pepper-grinder\images\tree_icons.png" />
+    <Content Include="easyui\themes\ui-pepper-grinder\images\validatebox_warning.png" />
+    <Content Include="easyui\themes\ui-pepper-grinder\layout.css" />
+    <Content Include="easyui\themes\ui-pepper-grinder\linkbutton.css" />
+    <Content Include="easyui\themes\ui-pepper-grinder\menu.css" />
+    <Content Include="easyui\themes\ui-pepper-grinder\menubutton.css" />
+    <Content Include="easyui\themes\ui-pepper-grinder\messager.css" />
+    <Content Include="easyui\themes\ui-pepper-grinder\numberbox.css" />
+    <Content Include="easyui\themes\ui-pepper-grinder\pagination.css" />
+    <Content Include="easyui\themes\ui-pepper-grinder\panel.css" />
+    <Content Include="easyui\themes\ui-pepper-grinder\progressbar.css" />
+    <Content Include="easyui\themes\ui-pepper-grinder\propertygrid.css" />
+    <Content Include="easyui\themes\ui-pepper-grinder\searchbox.css" />
+    <Content Include="easyui\themes\ui-pepper-grinder\slider.css" />
+    <Content Include="easyui\themes\ui-pepper-grinder\spinner.css" />
+    <Content Include="easyui\themes\ui-pepper-grinder\splitbutton.css" />
+    <Content Include="easyui\themes\ui-pepper-grinder\tabs.css" />
+    <Content Include="easyui\themes\ui-pepper-grinder\textbox.css" />
+    <Content Include="easyui\themes\ui-pepper-grinder\tooltip.css" />
+    <Content Include="easyui\themes\ui-pepper-grinder\tree.css" />
+    <Content Include="easyui\themes\ui-pepper-grinder\validatebox.css" />
+    <Content Include="easyui\themes\ui-pepper-grinder\window.css" />
+    <Content Include="easyui\themes\ui-sunny\accordion.css" />
+    <Content Include="easyui\themes\ui-sunny\calendar.css" />
+    <Content Include="easyui\themes\ui-sunny\combo.css" />
+    <Content Include="easyui\themes\ui-sunny\combobox.css" />
+    <Content Include="easyui\themes\ui-sunny\datagrid.css" />
+    <Content Include="easyui\themes\ui-sunny\datalist.css" />
+    <Content Include="easyui\themes\ui-sunny\datebox.css" />
+    <Content Include="easyui\themes\ui-sunny\dialog.css" />
+    <Content Include="easyui\themes\ui-sunny\easyui.css" />
+    <Content Include="easyui\themes\ui-sunny\filebox.css" />
+    <Content Include="easyui\themes\ui-sunny\images\accordion_arrows.png" />
+    <Content Include="easyui\themes\ui-sunny\images\blank.gif" />
+    <Content Include="easyui\themes\ui-sunny\images\calendar_arrows.png" />
+    <Content Include="easyui\themes\ui-sunny\images\combo_arrow.png" />
+    <Content Include="easyui\themes\ui-sunny\images\datagrid_icons.png" />
+    <Content Include="easyui\themes\ui-sunny\images\datebox_arrow.png" />
+    <Content Include="easyui\themes\ui-sunny\images\layout_arrows.png" />
+    <Content Include="easyui\themes\ui-sunny\images\linkbutton_bg.png" />
+    <Content Include="easyui\themes\ui-sunny\images\loading.gif" />
+    <Content Include="easyui\themes\ui-sunny\images\menu_arrows.png" />
+    <Content Include="easyui\themes\ui-sunny\images\messager_icons.png" />
+    <Content Include="easyui\themes\ui-sunny\images\pagination_icons.png" />
+    <Content Include="easyui\themes\ui-sunny\images\panel_tools.png" />
+    <Content Include="easyui\themes\ui-sunny\images\searchbox_button.png" />
+    <Content Include="easyui\themes\ui-sunny\images\slider_handle.png" />
+    <Content Include="easyui\themes\ui-sunny\images\spinner_arrows.png" />
+    <Content Include="easyui\themes\ui-sunny\images\tabs_icons.png" />
+    <Content Include="easyui\themes\ui-sunny\images\tree_icons.png" />
+    <Content Include="easyui\themes\ui-sunny\images\validatebox_warning.png" />
+    <Content Include="easyui\themes\ui-sunny\layout.css" />
+    <Content Include="easyui\themes\ui-sunny\linkbutton.css" />
+    <Content Include="easyui\themes\ui-sunny\menu.css" />
+    <Content Include="easyui\themes\ui-sunny\menubutton.css" />
+    <Content Include="easyui\themes\ui-sunny\messager.css" />
+    <Content Include="easyui\themes\ui-sunny\numberbox.css" />
+    <Content Include="easyui\themes\ui-sunny\pagination.css" />
+    <Content Include="easyui\themes\ui-sunny\panel.css" />
+    <Content Include="easyui\themes\ui-sunny\progressbar.css" />
+    <Content Include="easyui\themes\ui-sunny\propertygrid.css" />
+    <Content Include="easyui\themes\ui-sunny\searchbox.css" />
+    <Content Include="easyui\themes\ui-sunny\slider.css" />
+    <Content Include="easyui\themes\ui-sunny\spinner.css" />
+    <Content Include="easyui\themes\ui-sunny\splitbutton.css" />
+    <Content Include="easyui\themes\ui-sunny\tabs.css" />
+    <Content Include="easyui\themes\ui-sunny\textbox.css" />
+    <Content Include="easyui\themes\ui-sunny\tooltip.css" />
+    <Content Include="easyui\themes\ui-sunny\tree.css" />
+    <Content Include="easyui\themes\ui-sunny\validatebox.css" />
+    <Content Include="easyui\themes\ui-sunny\window.css" />
+    <Content Include="GetData\GetData.aspx" />
+    <Content Include="GetData\SOAHeader.xml" />
+    <Content Include="Images\ahoverbg.png" />
+    <Content Include="Images\arrowbg.png" />
+    <Content Include="Images\headbg.jpg" />
+    <Content Include="Images\images\arrow.gif" />
+    <Content Include="Images\images\bg.jpg" />
+    <Content Include="Images\images\btn_left.png" />
+    <Content Include="Images\images\btn_right.png" />
+    <Content Include="Images\images\but.png" />
+    <Content Include="Images\images\c.png" />
+    <Content Include="Images\images\cd.png" />
+    <Content Include="Images\images\daochu.png" />
+    <Content Include="Images\images\Default.jpg" />
+    <Content Include="Images\images\erweima.png" />
+    <Content Include="Images\images\file.gif" />
+    <Content Include="Images\images\folder-close.gif" />
+    <Content Include="Images\images\folder-open.gif" />
+    <Content Include="Images\images\footer.png" />
+    <Content Include="Images\images\ftlogo.png" />
+    <Content Include="Images\images\g.png" />
+    <Content Include="Images\images\gd.png" />
+    <Content Include="Images\images\jian_left.png" />
+    <Content Include="Images\images\jian_right.png" />
+    <Content Include="Images\images\jt.png" />
+    <Content Include="Images\images\kongzhi.png" />
+    <Content Include="Images\images\lan.png" />
+    <Content Include="Images\images\login.jpg" />
+    <Content Include="Images\images\logo.png" />
+    <Content Include="Images\images\man.png" />
+    <Content Include="Images\images\nan_bg.png" />
+    <Content Include="Images\images\NoRights.jpg" />
+    <Content Include="Images\images\pi.png" />
+    <Content Include="Images\images\pi01.png" />
+    <Content Include="Images\images\pi02.png" />
+    <Content Include="Images\images\pifa.png" />
+    <Content Include="Images\images\s.png" />
+    <Content Include="Images\images\sd.png" />
+    <Content Include="Images\images\suo.png" />
+    <Content Include="Images\images\tijiao.png" />
+    <Content Include="Images\images\time.png" />
+    <Content Include="Images\images\topbg.png" />
+    <Content Include="Images\images\treeview-black-line.gif" />
+    <Content Include="Images\images\treeview-black.gif" />
+    <Content Include="Images\images\treeview-default-line.gif" />
+    <Content Include="Images\images\treeview-default.gif" />
+    <Content Include="Images\images\treeview-famfamfam-line.gif" />
+    <Content Include="Images\images\treeview-famfamfam.gif" />
+    <Content Include="Images\images\treeview-gray-line.gif" />
+    <Content Include="Images\images\treeview-gray.gif" />
+    <Content Include="Images\images\treeview-red-line.gif" />
+    <Content Include="Images\images\treeview-red.gif" />
+    <Content Include="Images\images\tuichu.png" />
+    <Content Include="Images\images\warnning1.jpg" />
+    <Content Include="Images\images\x.png" />
+    <Content Include="Images\images\xy_information11.jpg" />
+    <Content Include="Images\images\xy_ksbg.gif" />
+    <Content Include="Images\images\xy_ksbg_1.gif" />
+    <Content Include="Images\images\xy_ksbg_2.gif" />
+    <Content Include="Images\images\xy_ksbg_3.png" />
+    <Content Include="Images\images\xy_ksbg_bottom.png" />
+    <Content Include="Images\images\xy_ksbg_left.png" />
+    <Content Include="Images\images\xy_ksbg_right.png" />
+    <Content Include="Images\images\xy_ksbg_top.png" />
+    <Content Include="Images\images\yuming.png" />
+    <Content Include="Images\images\zi_bg.png" />
+    <Content Include="Images\images\zi_nva.png" />
+    <Content Include="Images\images\zi_top.png" />
+    <Content Include="Images\images\zt_gd.png" />
+    <Content Include="Images\images\zt_zc.png" />
+    <Content Include="Images\index\bird.png" />
+    <Content Include="Images\index\bz.png" />
+    <Content Include="Images\index\comm.png" />
+    <Content Include="Images\index\login.png" />
+    <Content Include="Images\index\login01.png" />
+    <Content Include="Images\index\logo.png" />
+    <Content Include="Images\index\mianbj.jpg" />
+    <Content Include="Images\index\slide-pannel_14.png" />
+    <Content Include="Images\line_bg.png" />
+    <Content Include="Images\login_bg.jpg" />
+    <Content Include="Images\login_formbg.png" />
+    <Content Include="Images\login_logo.png" />
+    <Content Include="Images\login_password.png" />
+    <Content Include="Images\login_ren.png" />
+    <Content Include="Images\logo.png" />
+    <Content Include="Images\master\bird.png" />
+    <Content Include="Images\master\bz.png" />
+    <Content Include="Images\master\comm.png" />
+    <Content Include="Images\master\exit.png" />
+    <Content Include="Images\master\exit1.png" />
+    <Content Include="Images\master\headerbg.png" />
+    <Content Include="Images\master\left.gif" />
+    <Content Include="Images\master\left.png" />
+    <Content Include="Images\master\lit.png" />
+    <Content Include="Images\master\login.png" />
+    <Content Include="Images\master\login01.png" />
+    <Content Include="Images\master\logo.png" />
+    <Content Include="Images\master\logo1.png" />
+    <Content Include="Images\master\logo2.png" />
+    <Content Include="Images\master\mainbg.jpg" />
+    <Content Include="Images\master\munu.png" />
+    <Content Include="Images\master\munu1.png" />
+    <Content Include="Images\master\right.gif" />
+    <Content Include="Images\master\right.png" />
+    <Content Include="Images\master\selected-sub.gif" />
+    <Content Include="Images\master\selected-sub.png" />
+    <Content Include="Images\master\sep-sub.png" />
+    <Content Include="Images\master\sep.png" />
+    <Content Include="Images\master\slide-pannel_14.png" />
+    <Content Include="Images\master\sub-item-hover.gif" />
+    <Content Include="Images\master\submenu-bottom.gif" />
+    <Content Include="Images\master\submenu-bottom.png" />
+    <Content Include="Images\master\submenu-pointer-hover.gif" />
+    <Content Include="Images\master\submenu-pointer.gif" />
+    <Content Include="Images\master\submenu-pointer.png" />
+    <Content Include="Images\master\submenu-top.gif" />
+    <Content Include="Images\master\submenu-top.png" />
+    <Content Include="Images\master\subsubmenu-top.gif" />
+    <Content Include="Images\master\subsubmenu-top.png" />
+    <Content Include="Images\menu1.png" />
+    <Content Include="Images\menu2.png" />
+    <Content Include="Images\menu3.png" />
+    <Content Include="Images\menu4.png" />
+    <Content Include="Images\menu5.png" />
+    <Content Include="Images\NoRights.png" />
+    <Content Include="Images\tuibg.png" />
+    <Content Include="MaterialApplicationCollar\MaterialApplication.aspx" />
+    <Content Include="MaterialApplicationCollar\MaterialApplicationAccessory.aspx" />
+    <Content Include="MaterialApplicationCollar\MaterialApplicationApprove.aspx" />
+    <Content Include="MaterialApplicationCollar\MaterialApplicationModel.aspx" />
+    <Content Include="MaterialApplicationCollar\MaterialApplicationQuery.aspx" />
+    <Content Include="MaterialApplicationCollar\MaterialApplicationSubject.aspx" />
+    <Content Include="MaterialApplicationCollar\MaterialApplicationTest.aspx" />
+    <Content Include="MaterialApplicationCollar\MaterialAppWindow.aspx" />
+    <Content Include="MaterialApplicationCollar\MaterialBack.aspx" />
+    <Content Include="MMSDb.dbml">
+      <SubType>Designer</SubType>
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>MMSDb.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="OutOfStorageManagement\BePutInStorage.aspx" />
+    <Content Include="OutOfStorageManagement\DeliveryOfCargoFromStorage.aspx" />
+    <Content Include="OutOfStorageManagement\InventoryQuery.aspx" />
+    <Content Include="OutOfStorageManagement\LogisticsCenterLibrary.aspx" />
+    <Content Include="OutOfStorageManagement\ReturnApply.aspx" />
+    <Content Include="OutOfStorageManagement\ReturnLogisticsCenter.aspx" />
+    <Content Include="OutOfStorageManagement\SignFailed.aspx" />
+    <Content Include="OutOfStorageManagement\SignStockBill.aspx" />
+    <Content Include="packages.config" />
+    <Content Include="AjaxCode\GetMaterialStateSum.ashx" />
+    <Content Include="Dal\MDemandDetailedListDraft_DS.xsc">
+      <DependentUpon>MDemandDetailedListDraft_DS.xsd</DependentUpon>
+    </Content>
+    <None Include="Dal\MDemandDetailedListDraft_DS.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>MDemandDetailedListDraft_DS.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Dal\MDemandDetailedListDraft_DS.xss">
+      <DependentUpon>MDemandDetailedListDraft_DS.xsd</DependentUpon>
+    </Content>
+    <None Include="MMSDb.dbml.layout">
+      <DependentUpon>MMSDb.dbml</DependentUpon>
+    </None>
+    <None Include="packages\jQuery.2.1.4\Content\Scripts\jquery-2.1.4-vsdoc.js" />
+    <Content Include="packages\jQuery.2.1.4\Content\Scripts\jquery-2.1.4.js" />
+    <Content Include="packages\jQuery.2.1.4\Content\Scripts\jquery-2.1.4.min.js" />
+    <None Include="packages\jQuery.2.1.4\Tools\jquery-2.1.4.intellisense.js" />
+    <Content Include="packages\Newtonsoft.Json.7.0.1\lib\net20\Newtonsoft.Json.dll" />
+    <Content Include="packages\Newtonsoft.Json.7.0.1\lib\net20\Newtonsoft.Json.xml" />
+    <Content Include="packages\Newtonsoft.Json.7.0.1\lib\net35\Newtonsoft.Json.dll" />
+    <Content Include="packages\Newtonsoft.Json.7.0.1\lib\net35\Newtonsoft.Json.xml" />
+    <Content Include="packages\Newtonsoft.Json.7.0.1\lib\net40\Newtonsoft.Json.dll" />
+    <Content Include="packages\Newtonsoft.Json.7.0.1\lib\net40\Newtonsoft.Json.xml" />
+    <Content Include="packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll" />
+    <Content Include="packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.xml" />
+    <Content Include="packages\Newtonsoft.Json.7.0.1\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll" />
+    <Content Include="packages\Newtonsoft.Json.7.0.1\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.xml" />
+    <Content Include="packages\Newtonsoft.Json.7.0.1\lib\portable-net45+wp80+win8+wpa81+dnxcore50\Newtonsoft.Json.dll" />
+    <Content Include="packages\Newtonsoft.Json.7.0.1\lib\portable-net45+wp80+win8+wpa81+dnxcore50\Newtonsoft.Json.xml" />
+    <Content Include="Plan\AuxiliaryMaterialAdd.aspx" />
+    <Content Include="Plan\AuxiliaryMaterialList.aspx" />
+    <Content Include="Plan\ChangeMaterialQuota.aspx" />
+    <Content Include="Plan\Column_Changed.xml" />
+    <Content Include="Plan\Exe_Inf.aspx" />
+    <Content Include="Plan\GetRcoStatus.aspx" />
+    <Content Include="Plan\GetRqStatus.aspx" />
+    <Content Include="Plan\MChangeRecordQuery.aspx" />
+    <Content Include="Plan\MDemandChangeSubmit.aspx" />
+    <Content Include="Plan\MDemandDetailedList.aspx" />
+    <Content Include="Plan\MDemandDetails.aspx" />
+    <Content Include="Plan\MDemandMerge.aspx" />
+    <Content Include="Plan\MDemandMergeList.aspx" />
+    <Content Include="Plan\MDemandMergeListChange.aspx" />
+    <Content Include="Plan\MDemandMergeListQuery.aspx" />
+    <Content Include="Plan\MDemandMergeListState.aspx" />
+    <Content Include="Plan\MDemandMergeListUpdate.aspx" />
+    <Content Include="Plan\MDemandPlan.aspx" />
+    <Content Include="Plan\MDemandPlanList.aspx" />
+    <Content Include="Plan\M_Demand_DetailedList_DraftBOM.aspx" />
+    <Content Include="Plan\M_Demand_Merge_List.aspx" />
+    <Content Include="Plan\PlanImport.aspx" />
+    <Content Include="Plan\PropertyName.xml" />
+    <Content Include="Plan\PropertyNameDB.xml" />
+    <Content Include="Plan\QueryItemCode.aspx" />
+    <Content Include="Plan\ShowM_Change.aspx" />
+    <Content Include="Plan\ShowPlan.aspx" />
+    <Content Include="Plan\ShowSmarTeam.aspx" />
+    <Content Include="Plan\TechnologyChange.aspx" />
+    <Content Include="Plan\TechnologyInnovateAdd.aspx" />
+    <Content Include="Plan\TechnologyInnovateList.aspx" />
+    <Content Include="Plan\TechnologyTest.aspx" />
+    <Content Include="Plan\TechnologyTestAdd.aspx" />
+    <Content Include="Plan\TechnologyTestList.aspx" />
+    <Content Include="Plan\TechnologyTestListChange.aspx" />
+    <Content Include="Plan\TechnologyTestListUpdate.aspx" />
+    <Content Include="Plan\WriteReqOrderRecList.aspx" />
+    <Content Include="Plan\MDemandDetailsCombine.aspx" />
+    <Content Include="Plan\MDemandDetailsTreeList.aspx" />
+    <Content Include="Plan\MDemandImport.aspx" />
+    <Content Include="Scripts\base64.js" />
+    <Content Include="Scripts\CurrencyConversion.js" />
+    <Content Include="Scripts\Date.js" />
+    <Content Include="Scripts\GetLunarDate.js" />
+    <Content Include="Scripts\index.js" />
+    <Content Include="packages\jQuery.2.1.4\Content\Scripts\jquery-2.1.4.min.map" />
+    <Content Include="packages\jQuery.2.1.4\jQuery.2.1.4.nupkg" />
+    <Content Include="packages\jQuery.2.1.4\jQuery.2.1.4.nuspec" />
+    <Content Include="packages\jQuery.2.1.4\Tools\common.ps1" />
+    <Content Include="packages\jQuery.2.1.4\Tools\install.ps1" />
+    <Content Include="packages\jQuery.2.1.4\Tools\uninstall.ps1" />
+    <Content Include="packages\Newtonsoft.Json.7.0.1\Newtonsoft.Json.7.0.1.nupkg" />
+    <Content Include="packages\Newtonsoft.Json.7.0.1\Newtonsoft.Json.7.0.1.nuspec" />
+    <Content Include="packages\Newtonsoft.Json.7.0.1\tools\install.ps1" />
+    <Content Include="packages\repositories.config" />
+    <Content Include="Plan\计划导入模板\计划导入模板.xls" />
+    <None Include="Properties\PublishProfiles\local.pubxml" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings1.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Scripts\jquery-1.4.1-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.4.1.js" />
+    <Content Include="Scripts\jquery-1.4.1.min.js" />
+    <Content Include="Scripts\jquery-1.7.2.min.js" />
+    <None Include="Scripts\jquery-2.1.1.intellisense.js" />
+    <Content Include="Scripts\jquery-2.1.1.js" />
+    <Content Include="Scripts\jquery-2.1.1.min.js" />
+    <None Include="Scripts\jquery-2.1.4.intellisense.js" />
+    <Content Include="Scripts\jquery-2.1.4.js" />
+    <Content Include="Scripts\jquery-2.1.4.min.js" />
+    <Content Include="Scripts\jquery.lightTreeview.pack.js" />
+    <Content Include="Scripts\md5.js" />
+    <Content Include="Scripts\menu.js" />
+    <Content Include="Scripts\Plan\PlanJS.js" />
+    <Content Include="Scripts\PubFun.js" />
+    <Content Include="Scripts\RegExp.js" />
+    <Content Include="Scripts\sha1.js" />
+    <Content Include="Scripts\SysMan\BannerItem.js" />
+    <Content Include="Scripts\SysMan\index.js" />
+    <Content Include="easyui\extension\jquery-easyui-datagridview\datagrid_data.json" />
+    <Content Include="easyui\extension\jquery-easyui-edatagrid\datagrid_data.json" />
+    <Content Include="easyui\extension\jquery-easyui-etree\tree_data.json" />
+    <Content Include="easyui\extension\jquery-easyui-pivotgrid\pivotgrid_data1.json" />
+    <Content Include="easyui\extension\jquery-easyui-pivotgrid\pivotgrid_data2.json" />
+    <Content Include="easyui\extension\jquery-easyui-portal\datagrid_data.json" />
+    <Content Include="easyui\extension\jquery-easyui-rtl\datagrid_data1.json" />
+    <Content Include="easyui\extension\jquery-easyui-rtl\tree_data1.json" />
+    <Content Include="Scripts\jquery-2.1.4.min.map" />
+    <Content Include="Plan\ShowP_Pack_Task.aspx" />
+    <None Include="Service References\Get_Err_Inf\APPS_ISG_GET_ERR_INF_CUX_DM_ERR_RELEASE_WS_PKG-24GET.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Get_Err_Inf\CUX_DM_ERR_RELEASE_WS_PKG.wsdl" />
+    <Content Include="Service References\Get_Err_Inf\mms.Get_Err_Inf.GET_ERR_INFResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\Get_Err_Inf\mms.Get_Err_Inf.OutputParameters.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Service References\ReturnApplyService\configuration91.svcinfo" />
+    <None Include="Service References\ReturnApplyService\configuration.svcinfo" />
+    <Content Include="Service References\ReturnApplyService\mms.ReturnApplyService.returnApplyInfoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ReturnApplyService\mms.ReturnApplyService.ReturnApplyResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Service References\ReturnApplyService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Service References\WriteStockBillService\mms.WriteStockBillService.writeStockBillInfoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\WriteStockBillService\mms.WriteStockBillService.WriteStockBillResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Service References\ReturnApplyService\ReturnApplyService.wsdl" />
+    <None Include="Service References\WriteStockBillService\WriteStockBillService.wsdl" />
+    <Content Include="Service References\WriteStockErrorService\mms.WriteStockErrorService.writeStockErrorInfoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\WriteStockErrorService\mms.WriteStockErrorService.WriteStockErrorResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Service References\WriteStockErrorService\WriteStockErrorService.wsdl" />
+    <None Include="Service References\Write_Rco_Order\APPS_ISG_WRITE_RCO_ORDER_CUX_DM_RCO_SYNC_WS_PKG-24WRITE_.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Write_Rco_Order\CUX_DM_RCO_SYNC_WS_PKG.wsdl" />
+    <None Include="Service References\WriteStockBillService\configuration91.svcinfo" />
+    <None Include="Service References\WriteStockBillService\configuration.svcinfo" />
+    <None Include="Service References\WriteStockBillService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\WriteStockErrorService\configuration91.svcinfo" />
+    <None Include="Service References\WriteStockErrorService\configuration.svcinfo" />
+    <None Include="Service References\WriteStockErrorService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Service References\Write_Rco_Order\mms.Write_Rco_Order.OutputParameters.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\Write_Rco_Order\mms.Write_Rco_Order.WRITE_RCO_ORDERResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Service References\Write_Req_Order\configuration91.svcinfo" />
+    <None Include="Service References\Write_Req_Order\configuration.svcinfo" />
+    <None Include="Service References\Get_Err_Inf\configuration91.svcinfo" />
+    <None Include="Service References\Get_Err_Inf\configuration.svcinfo" />
+    <None Include="Service References\Get_Err_Inf\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\Write_Rco_Order\configuration91.svcinfo" />
+    <None Include="Service References\Write_Rco_Order\configuration.svcinfo" />
+    <None Include="Service References\Write_Rco_Order\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Service References\Write_Req_Order\mms.Write_Req_Order.OutputParameters.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\Write_Req_Order\mms.Write_Req_Order.WRITE_REQ_ORDERResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Service References\Write_Req_Order\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Styles\ContantPage.css" />
+    <Content Include="Styles\jquery.lightTreeview.css" />
+    <Content Include="Styles\login.css" />
+    <Content Include="Styles\Management.css" />
+    <Content Include="Styles\master.css" />
+    <Content Include="Styles\mcymasternew.css" />
+    <Content Include="Styles\Plan.css" />
+    <Content Include="Styles\style.css" />
+    <Content Include="Styles\style1.css" />
+    <Content Include="Styles\TechnologyTestAdd.css" />
+    <Content Include="Styles\WUC.css" />
+    <Content Include="SystemMangement\BannerManage.aspx" />
+    <Content Include="SystemMangement\ComputationalFormula.aspx" />
+    <Content Include="SystemMangement\DeptManage.ascx" />
+    <Content Include="SystemMangement\DeptManage.aspx" />
+    <Content Include="SystemMangement\DeptSetAddress.aspx" />
+    <Content Include="SystemMangement\DictIndexManage.aspx" />
+    <Content Include="SystemMangement\DictionaryManage.aspx" />
+    <Content Include="SystemMangement\LingJianManage.aspx" />
+    <Content Include="SystemMangement\MaterialDeptInfoManage.aspx" />
+    <Content Include="SystemMangement\ModelManage.aspx" />
+    <Content Include="SystemMangement\PermissionManage.aspx" />
+    <Content Include="SystemMangement\PhaseManage.aspx" />
+    <Content Include="SystemMangement\RoleInfoManage.aspx" />
+    <Content Include="SystemMangement\RoleManage.aspx" />
+    <Content Include="SystemMangement\SetRoleToPermission.aspx" />
+    <Content Include="SystemMangement\SetUserToRole.aspx" />
+    <Content Include="SystemMangement\ShippingAddressManage.aspx" />
+    <Content Include="SystemMangement\SyncUserFromAD.aspx" />
+    <Content Include="SystemMangement\UserManage.aspx" />
+    <Content Include="SystemMangement\UserManagePWD.ascx" />
+    <Content Include="SystemMangement\UserManagePWD.aspx" />
+    <Content Include="SystemMangement\WinPage\WinPermission.aspx" />
+    <Content Include="SystemMangement\WinPage\WinRole.aspx" />
+    <Content Include="SystemMangement\WzBasic.aspx" />
+    <Content Include="UserControls\WUCBusiNav.ascx" />
+    <Content Include="UserControls\WUCBusiNav1.ascx" />
+    <Content Include="Web References\k2Pre\ApproveInfoBody.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\k2Pre\ApproveInfoHead.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <None Include="Web References\k2Pre\K2WebServiceForMMSPre.disco" />
+    <Content Include="Web References\k2\ApproveInfoBody.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\k2\ApproveInfoHead.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <None Include="Web References\k2Pre\K2WebServiceForMMSPre.wsdl" />
+    <None Include="Web References\k2Pre\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\k2\K2WebServiceForMMS.disco" />
+    <Content Include="Web References\SmarTeam\Reference.map" />
+    <Content Include="Web References\STLookupTables\Reference.map" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Admin\NoRights.aspx.cs">
+      <DependentUpon>NoRights.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\NoRights.aspx.designer.cs">
+      <DependentUpon>NoRights.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Welcome.aspx.cs">
+      <DependentUpon>Welcome.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Welcome.aspx.designer.cs">
+      <DependentUpon>Welcome.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AjaxCode\GetMaterialStateSum.ashx.cs">
+      <DependentUpon>GetMaterialStateSum.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="AjaxCode\index.Master\Get_FirstItem.ashx.cs">
+      <DependentUpon>Get_FirstItem.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="AjaxCode\index.Master\UserPermission.ashx.cs">
+      <DependentUpon>UserPermission.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="AjaxCode\K2BLL.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AjaxCode\K2PreBLL.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AjaxCode\LogisticsCenterBLL.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AjaxCode\SmarTeamBLL.cs" />
+    <Compile Include="App_Data\AnalysisCommon.cs" />
+    <Compile Include="App_Data\BarcodeBaseTaskService.cs" />
+    <Compile Include="App_Data\BZChildTaskBody.cs" />
+    <Compile Include="App_Data\Common.cs" />
+    <Compile Include="App_Data\DataSourceList.cs" />
+    <Compile Include="App_Data\DingZhiBody.cs" />
+    <Compile Include="App_Data\IObjectSafety.cs" />
+    <Compile Include="App_Data\JiaoJieDanModel.cs" />
+    <Compile Include="App_Data\LedCommon.cs" />
+    <Compile Include="App_Data\LedService.cs" />
+    <Compile Include="App_Data\PrintNetWork.cs" />
+    <Compile Include="App_Data\PushSerice.cs" />
+    <Compile Include="App_Data\PushService.cs" />
+    <Compile Include="App_Data\ReportingPrint.cs" />
+    <Compile Include="App_Data\ScanLogBody.cs" />
+    <Compile Include="App_Data\SqlStringConfig.cs" />
+    <Compile Include="App_Data\TaskDataBody.cs" />
+    <Compile Include="App_Data\Time_Task.cs" />
+    <Compile Include="App_GlobalResources\RadGrid.Main.designer.cs" />
+    <Compile Include="App_GlobalResources\RadGrid.Main.zh-CN.designer.cs" />
+    <Compile Include="App_GlobalResources\RadGrid.Main.zh-CN1.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RadGrid.Main.zh-CN.resx</DependentUpon>
+    </Compile>
+    <Compile Include="BLL\UserService.cs" />
+    <Compile Include="CommonHelper\ADHelper.cs" />
+    <Compile Include="Dal\Account.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Account.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Dal\DS_llx2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS_llx.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Dal\MDemandDetailedListDraft_DS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MDemandDetailedListDraft_DS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Dal\SystemManagement.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SystemManagement.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Dal\UserDataAccess.cs" />
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GetData\GetData.aspx.cs">
+      <DependentUpon>GetData.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GetData\GetData.aspx.designer.cs">
+      <DependentUpon>GetData.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="index.Master.cs">
+      <DependentUpon>index.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="index.Master.designer.cs">
+      <DependentUpon>index.Master</DependentUpon>
+    </Compile>
+    <Compile Include="MaterialApplicationCollar\MaterialApplication.aspx.cs">
+      <DependentUpon>MaterialApplication.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MaterialApplicationCollar\MaterialApplication.aspx.designer.cs">
+      <DependentUpon>MaterialApplication.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MaterialApplicationCollar\MaterialApplicationAccessory.aspx.cs">
+      <DependentUpon>MaterialApplicationAccessory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MaterialApplicationCollar\MaterialApplicationAccessory.aspx.designer.cs">
+      <DependentUpon>MaterialApplicationAccessory.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MaterialApplicationCollar\MaterialApplicationApprove.aspx.cs">
+      <DependentUpon>MaterialApplicationApprove.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MaterialApplicationCollar\MaterialApplicationApprove.aspx.designer.cs">
+      <DependentUpon>MaterialApplicationApprove.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MaterialApplicationCollar\MaterialApplicationModel.aspx.cs">
+      <DependentUpon>MaterialApplicationModel.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MaterialApplicationCollar\MaterialApplicationModel.aspx.designer.cs">
+      <DependentUpon>MaterialApplicationModel.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MaterialApplicationCollar\MaterialApplicationQuery.aspx.cs">
+      <DependentUpon>MaterialApplicationQuery.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MaterialApplicationCollar\MaterialApplicationQuery.aspx.designer.cs">
+      <DependentUpon>MaterialApplicationQuery.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MaterialApplicationCollar\MaterialApplicationSubject.aspx.cs">
+      <DependentUpon>MaterialApplicationSubject.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MaterialApplicationCollar\MaterialApplicationSubject.aspx.designer.cs">
+      <DependentUpon>MaterialApplicationSubject.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MaterialApplicationCollar\MaterialApplicationTest.aspx.cs">
+      <DependentUpon>MaterialApplicationTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MaterialApplicationCollar\MaterialApplicationTest.aspx.designer.cs">
+      <DependentUpon>MaterialApplicationTest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MaterialApplicationCollar\MaterialAppWindow.aspx.cs">
+      <DependentUpon>MaterialAppWindow.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MaterialApplicationCollar\MaterialAppWindow.aspx.designer.cs">
+      <DependentUpon>MaterialAppWindow.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MaterialApplicationCollar\MaterialBack.aspx.cs">
+      <DependentUpon>MaterialBack.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MaterialApplicationCollar\MaterialBack.aspx.designer.cs">
+      <DependentUpon>MaterialBack.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MMSDb.designer.cs">
+      <DependentUpon>MMSDb.dbml</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Models\ADUserInfo.cs" />
+    <Compile Include="Models\RoleModel.cs" />
+    <Compile Include="Models\TreeNodeModel.cs" />
+    <Compile Include="Models\UserModel.cs" />
+    <Compile Include="OutOfStorageManagement\BePutInStorage.aspx.cs">
+      <DependentUpon>BePutInStorage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="OutOfStorageManagement\BePutInStorage.aspx.designer.cs">
+      <DependentUpon>BePutInStorage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="OutOfStorageManagement\DeliveryOfCargoFromStorage.aspx.cs">
+      <DependentUpon>DeliveryOfCargoFromStorage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="OutOfStorageManagement\DeliveryOfCargoFromStorage.aspx.designer.cs">
+      <DependentUpon>DeliveryOfCargoFromStorage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="OutOfStorageManagement\InventoryQuery.aspx.cs">
+      <DependentUpon>InventoryQuery.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="OutOfStorageManagement\InventoryQuery.aspx.designer.cs">
+      <DependentUpon>InventoryQuery.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="OutOfStorageManagement\LogisticsCenterLibrary.aspx.cs">
+      <DependentUpon>LogisticsCenterLibrary.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="OutOfStorageManagement\LogisticsCenterLibrary.aspx.designer.cs">
+      <DependentUpon>LogisticsCenterLibrary.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="OutOfStorageManagement\ReturnApply.aspx.cs">
+      <DependentUpon>ReturnApply.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="OutOfStorageManagement\ReturnApply.aspx.designer.cs">
+      <DependentUpon>ReturnApply.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="OutOfStorageManagement\ReturnLogisticsCenter.aspx.cs">
+      <DependentUpon>ReturnLogisticsCenter.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="OutOfStorageManagement\ReturnLogisticsCenter.aspx.designer.cs">
+      <DependentUpon>ReturnLogisticsCenter.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="OutOfStorageManagement\SignFailed.aspx.cs">
+      <DependentUpon>SignFailed.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="OutOfStorageManagement\SignFailed.aspx.designer.cs">
+      <DependentUpon>SignFailed.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="OutOfStorageManagement\SignStockBill.aspx.cs">
+      <DependentUpon>SignStockBill.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="OutOfStorageManagement\SignStockBill.aspx.designer.cs">
+      <DependentUpon>SignStockBill.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Plan\AuxiliaryMaterialAdd.aspx.cs">
+      <DependentUpon>AuxiliaryMaterialAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Plan\AuxiliaryMaterialAdd.aspx.designer.cs">
+      <DependentUpon>AuxiliaryMaterialAdd.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Plan\AuxiliaryMaterialList.aspx.cs">
+      <DependentUpon>AuxiliaryMaterialList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Plan\AuxiliaryMaterialList.aspx.designer.cs">
+      <DependentUpon>AuxiliaryMaterialList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Plan\ChangeMaterialQuota.aspx.cs">
+      <DependentUpon>ChangeMaterialQuota.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Plan\ChangeMaterialQuota.aspx.designer.cs">
+      <DependentUpon>ChangeMaterialQuota.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Plan\Exe_Inf.aspx.cs">
+      <DependentUpon>Exe_Inf.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Plan\Exe_Inf.aspx.designer.cs">
+      <DependentUpon>Exe_Inf.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Plan\GetRcoStatus.aspx.cs">
+      <DependentUpon>GetRcoStatus.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Plan\GetRcoStatus.aspx.designer.cs">
+      <DependentUpon>GetRcoStatus.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Plan\GetRqStatus.aspx.cs">
+      <DependentUpon>GetRqStatus.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Plan\GetRqStatus.aspx.designer.cs">
+      <DependentUpon>GetRqStatus.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Plan\MChangeRecordQuery.aspx.cs">
+      <DependentUpon>MChangeRecordQuery.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Plan\MChangeRecordQuery.aspx.designer.cs">
+      <DependentUpon>MChangeRecordQuery.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Plan\MDemandChangeSubmit.aspx.cs">
+      <DependentUpon>MDemandChangeSubmit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Plan\MDemandChangeSubmit.aspx.designer.cs">
+      <DependentUpon>MDemandChangeSubmit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Plan\MDemandDetailedList.aspx.cs">
+      <DependentUpon>MDemandDetailedList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Plan\MDemandDetailedList.aspx.designer.cs">
+      <DependentUpon>MDemandDetailedList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Plan\MDemandDetails.aspx.cs">
+      <DependentUpon>MDemandDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Plan\MDemandDetails.aspx.designer.cs">
+      <DependentUpon>MDemandDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Plan\MDemandMerge.aspx.cs">
+      <DependentUpon>MDemandMerge.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Plan\MDemandMerge.aspx.designer.cs">
+      <DependentUpon>MDemandMerge.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Plan\MDemandMergeList.aspx.cs">
+      <DependentUpon>MDemandMergeList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Plan\MDemandMergeList.aspx.designer.cs">
+      <DependentUpon>MDemandMergeList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Plan\MDemandMergeListChange.aspx.cs">
+      <DependentUpon>MDemandMergeListChange.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Plan\MDemandMergeListChange.aspx.designer.cs">
+      <DependentUpon>MDemandMergeListChange.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Plan\MDemandMergeListQuery.aspx.cs">
+      <DependentUpon>MDemandMergeListQuery.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Plan\MDemandMergeListQuery.aspx.designer.cs">
+      <DependentUpon>MDemandMergeListQuery.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Plan\MDemandMergeListState.aspx.cs">
+      <DependentUpon>MDemandMergeListState.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Plan\MDemandMergeListState.aspx.designer.cs">
+      <DependentUpon>MDemandMergeListState.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Plan\MDemandMergeListUpdate.aspx.cs">
+      <DependentUpon>MDemandMergeListUpdate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Plan\MDemandMergeListUpdate.aspx.designer.cs">
+      <DependentUpon>MDemandMergeListUpdate.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Plan\MDemandPlan.aspx.cs">
+      <DependentUpon>MDemandPlan.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Plan\MDemandPlan.aspx.designer.cs">
+      <DependentUpon>MDemandPlan.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Plan\MDemandPlanList.aspx.cs">
+      <DependentUpon>MDemandPlanList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Plan\MDemandPlanList.aspx.designer.cs">
+      <DependentUpon>MDemandPlanList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Plan\M_Demand_DetailedList_DraftBOM.aspx.cs">
+      <DependentUpon>M_Demand_DetailedList_DraftBOM.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Plan\M_Demand_DetailedList_DraftBOM.aspx.designer.cs">
+      <DependentUpon>M_Demand_DetailedList_DraftBOM.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Plan\M_Demand_Merge_List.aspx.cs">
+      <DependentUpon>M_Demand_Merge_List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Plan\M_Demand_Merge_List.aspx.designer.cs">
+      <DependentUpon>M_Demand_Merge_List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Plan\PlanImport.aspx.cs">
+      <DependentUpon>PlanImport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Plan\PlanImport.aspx.designer.cs">
+      <DependentUpon>PlanImport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Plan\QueryItemCode.aspx.cs">
+      <DependentUpon>QueryItemCode.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Plan\QueryItemCode.aspx.designer.cs">
+      <DependentUpon>QueryItemCode.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Plan\ShowM_Change.aspx.cs">
+      <DependentUpon>ShowM_Change.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Plan\ShowM_Change.aspx.designer.cs">
+      <DependentUpon>ShowM_Change.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Plan\ShowPlan.aspx.cs">
+      <DependentUpon>ShowPlan.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Plan\ShowPlan.aspx.designer.cs">
+      <DependentUpon>ShowPlan.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Plan\ShowSmarTeam.aspx.cs">
+      <DependentUpon>ShowSmarTeam.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Plan\ShowSmarTeam.aspx.designer.cs">
+      <DependentUpon>ShowSmarTeam.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Plan\ShowP_Pack_Task.aspx.cs">
+      <DependentUpon>ShowP_Pack_Task.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Plan\ShowP_Pack_Task.aspx.designer.cs">
+      <DependentUpon>ShowP_Pack_Task.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Plan\TechnologyChange.aspx.cs">
+      <DependentUpon>TechnologyChange.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Plan\TechnologyChange.aspx.designer.cs">
+      <DependentUpon>TechnologyChange.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Plan\TechnologyInnovateAdd.aspx.cs">
+      <DependentUpon>TechnologyInnovateAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Plan\TechnologyInnovateAdd.aspx.designer.cs">
+      <DependentUpon>TechnologyInnovateAdd.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Plan\TechnologyInnovateList.aspx.cs">
+      <DependentUpon>TechnologyInnovateList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Plan\TechnologyInnovateList.aspx.designer.cs">
+      <DependentUpon>TechnologyInnovateList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Plan\TechnologyTest.aspx.cs">
+      <DependentUpon>TechnologyTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Plan\TechnologyTest.aspx.designer.cs">
+      <DependentUpon>TechnologyTest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Plan\TechnologyTestAdd.aspx.cs">
+      <DependentUpon>TechnologyTestAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Plan\TechnologyTestAdd.aspx.designer.cs">
+      <DependentUpon>TechnologyTestAdd.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Plan\TechnologyTestList.aspx.cs">
+      <DependentUpon>TechnologyTestList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Plan\TechnologyTestList.aspx.designer.cs">
+      <DependentUpon>TechnologyTestList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Plan\TechnologyTestListChange.aspx.cs">
+      <DependentUpon>TechnologyTestListChange.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Plan\TechnologyTestListChange.aspx.designer.cs">
+      <DependentUpon>TechnologyTestListChange.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Plan\TechnologyTestListUpdate.aspx.cs">
+      <DependentUpon>TechnologyTestListUpdate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Plan\TechnologyTestListUpdate.aspx.designer.cs">
+      <DependentUpon>TechnologyTestListUpdate.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Plan\WriteReqOrderRecList.aspx.cs">
+      <DependentUpon>WriteReqOrderRecList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Plan\WriteReqOrderRecList.aspx.designer.cs">
+      <DependentUpon>WriteReqOrderRecList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Plan\MDemandDetailsCombine.aspx.cs">
+      <DependentUpon>MDemandDetailsCombine.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Plan\MDemandDetailsCombine.aspx.designer.cs">
+      <DependentUpon>MDemandDetailsCombine.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Plan\MDemandDetailsTreeList.aspx.cs">
+      <DependentUpon>MDemandDetailsTreeList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Plan\MDemandDetailsTreeList.aspx.designer.cs">
+      <DependentUpon>MDemandDetailsTreeList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Plan\MDemandImport.aspx.cs">
+      <DependentUpon>MDemandImport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Plan\MDemandImport.aspx.designer.cs">
+      <DependentUpon>MDemandImport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="PublicClass\PublicFunClass.cs" />
+    <Compile Include="Service References\Get_Err_Inf\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\ReturnApplyService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\WriteStockBillService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\WriteStockErrorService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\Write_Rco_Order\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\Write_Req_Order\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="SystemMangement\BannerManage.aspx.cs">
+      <DependentUpon>BannerManage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemMangement\BannerManage.aspx.designer.cs">
+      <DependentUpon>BannerManage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemMangement\ComputationalFormula.aspx.cs">
+      <DependentUpon>ComputationalFormula.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemMangement\ComputationalFormula.aspx.designer.cs">
+      <DependentUpon>ComputationalFormula.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemMangement\DeptManage.ascx.cs">
+      <DependentUpon>DeptManage.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemMangement\DeptManage.ascx.designer.cs">
+      <DependentUpon>DeptManage.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemMangement\DeptManage.aspx.cs">
+      <DependentUpon>DeptManage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemMangement\DeptManage.aspx.designer.cs">
+      <DependentUpon>DeptManage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemMangement\DeptSetAddress.aspx.cs">
+      <DependentUpon>DeptSetAddress.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemMangement\DeptSetAddress.aspx.designer.cs">
+      <DependentUpon>DeptSetAddress.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemMangement\DictIndexManage.aspx.cs">
+      <DependentUpon>DictIndexManage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemMangement\DictIndexManage.aspx.designer.cs">
+      <DependentUpon>DictIndexManage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemMangement\DictionaryManage.aspx.cs">
+      <DependentUpon>DictionaryManage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemMangement\DictionaryManage.aspx.designer.cs">
+      <DependentUpon>DictionaryManage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemMangement\LingJianManage.aspx.cs">
+      <DependentUpon>LingJianManage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemMangement\LingJianManage.aspx.designer.cs">
+      <DependentUpon>LingJianManage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemMangement\MaterialDeptInfoManage.aspx.cs">
+      <DependentUpon>MaterialDeptInfoManage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemMangement\MaterialDeptInfoManage.aspx.designer.cs">
+      <DependentUpon>MaterialDeptInfoManage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemMangement\ModelManage.aspx.cs">
+      <DependentUpon>ModelManage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemMangement\ModelManage.aspx.designer.cs">
+      <DependentUpon>ModelManage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemMangement\PermissionManage.aspx.cs">
+      <DependentUpon>PermissionManage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemMangement\PermissionManage.aspx.designer.cs">
+      <DependentUpon>PermissionManage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemMangement\PhaseManage.aspx.cs">
+      <DependentUpon>PhaseManage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemMangement\PhaseManage.aspx.designer.cs">
+      <DependentUpon>PhaseManage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemMangement\RoleInfoManage.aspx.cs">
+      <DependentUpon>RoleInfoManage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemMangement\RoleInfoManage.aspx.designer.cs">
+      <DependentUpon>RoleInfoManage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemMangement\RoleManage.aspx.cs">
+      <DependentUpon>RoleManage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemMangement\RoleManage.aspx.designer.cs">
+      <DependentUpon>RoleManage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemMangement\SetRoleToPermission.aspx.cs">
+      <DependentUpon>SetRoleToPermission.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemMangement\SetRoleToPermission.aspx.designer.cs">
+      <DependentUpon>SetRoleToPermission.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemMangement\SetUserToRole.aspx.cs">
+      <DependentUpon>SetUserToRole.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemMangement\SetUserToRole.aspx.designer.cs">
+      <DependentUpon>SetUserToRole.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemMangement\ShippingAddressManage.aspx.cs">
+      <DependentUpon>ShippingAddressManage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemMangement\ShippingAddressManage.aspx.designer.cs">
+      <DependentUpon>ShippingAddressManage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemMangement\SyncUserFromAD.aspx.cs">
+      <DependentUpon>SyncUserFromAD.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemMangement\SyncUserFromAD.aspx.designer.cs">
+      <DependentUpon>SyncUserFromAD.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemMangement\UserManage.aspx.cs">
+      <DependentUpon>UserManage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemMangement\UserManage.aspx.designer.cs">
+      <DependentUpon>UserManage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemMangement\UserManagePWD.ascx.cs">
+      <DependentUpon>UserManagePWD.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemMangement\UserManagePWD.ascx.designer.cs">
+      <DependentUpon>UserManagePWD.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemMangement\UserManagePWD.aspx.cs">
+      <DependentUpon>UserManagePWD.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemMangement\UserManagePWD.aspx.designer.cs">
+      <DependentUpon>UserManagePWD.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemMangement\WinPage\WinPermission.aspx.cs">
+      <DependentUpon>WinPermission.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemMangement\WinPage\WinPermission.aspx.designer.cs">
+      <DependentUpon>WinPermission.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemMangement\WinPage\WinRole.aspx.cs">
+      <DependentUpon>WinRole.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemMangement\WinPage\WinRole.aspx.designer.cs">
+      <DependentUpon>WinRole.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemMangement\WzBasic.aspx.cs">
+      <DependentUpon>WzBasic.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemMangement\WzBasic.aspx.designer.cs">
+      <DependentUpon>WzBasic.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\WUCBusiNav.ascx.cs">
+      <DependentUpon>WUCBusiNav.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\WUCBusiNav.ascx.designer.cs">
+      <DependentUpon>WUCBusiNav.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\WUCBusiNav1.ascx.cs">
+      <DependentUpon>WUCBusiNav1.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\WUCBusiNav1.ascx.designer.cs">
+      <DependentUpon>WUCBusiNav1.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\k2Pre\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\k2\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\SmarTeam\Reference.cs">
+      <SubType>code</SubType>
+    </Compile>
+    <Compile Include="Web References\STLookupTables\Reference.cs">
+      <SubType>code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Dal\DS_llx.xsc">
+      <DependentUpon>DS_llx.xsd</DependentUpon>
+    </Content>
+    <Content Include="Dal\Account.xsc">
+      <DependentUpon>Account.xsd</DependentUpon>
+    </Content>
+    <Content Include="AjaxCode\index.Master\Get_FirstItem.ashx" />
+    <Content Include="AjaxCode\index.Master\UserPermission.ashx" />
+    <Content Include="App_Data\RadUploadTemp\RadUploadTestFile" />
+    <None Include="Dal\Account.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Account.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Dal\Account.xss">
+      <DependentUpon>Account.xsd</DependentUpon>
+    </Content>
+    <None Include="Dal\DS_llx.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_llx2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Dal\DS_llx.xss">
+      <DependentUpon>DS_llx.xsd</DependentUpon>
+    </Content>
+    <Content Include="Plan\计划导入模板\计划导入模板.xlsx" />
+    <Content Include="index.Master" />
+    <Content Include="Dal\SystemManagement.xsc">
+      <DependentUpon>SystemManagement.xsd</DependentUpon>
+    </Content>
+    <None Include="Dal\SystemManagement.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SystemManagement.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Dal\SystemManagement.xss">
+      <DependentUpon>SystemManagement.xsd</DependentUpon>
+    </Content>
+    <None Include="Service References\Write_Req_Order\APPS_ISG_WRITE_REQ_ORDER_CUX_DM_REQ_SYNC_WS_PKG-24WRITE_.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Write_Req_Order\CUX_DM_REQ_SYNC_WS_PKG.wsdl" />
+    <None Include="Web References\k2\K2WebServiceForMMS.wsdl" />
+    <None Include="Web References\k2\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\SmarTeam\Items.disco" />
+    <None Include="Web References\SmarTeam\Items.wsdl" />
+    <None Include="Web References\STLookupTables\LookUpTables.disco" />
+    <None Include="Web References\STLookupTables\LookUpTables.wsdl" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\RadGrid.Main.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>RadGrid.Main1.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="App_GlobalResources\RadGrid.Main.zh-CN.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>RadGrid.Main.zh-CN1.designer.cs</LastGenOutput>
+    </Content>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\Get_Err_Inf\" />
+    <WCFMetadataStorage Include="Service References\ReturnApplyService\" />
+    <WCFMetadataStorage Include="Service References\WriteStockBillService\" />
+    <WCFMetadataStorage Include="Service References\WriteStockErrorService\" />
+    <WCFMetadataStorage Include="Service References\Write_Rco_Order\" />
+    <WCFMetadataStorage Include="Service References\Write_Req_Order\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://k2:8005/K2WebServiceForMMS.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\k2\</RelPath>
+      <UpdateFromURL>http://k2:8005/K2WebServiceForMMS.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>mms_k2_K2WebServiceForMMS</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://k2:8005/K2WebServiceForMMSPre.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\k2Pre\</RelPath>
+      <UpdateFromURL>http://k2:8005/K2WebServiceForMMSPre.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>mms_k2Pre_K2WebServiceForMMSPre</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Plan\ImportExcel\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>1196</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:1320/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

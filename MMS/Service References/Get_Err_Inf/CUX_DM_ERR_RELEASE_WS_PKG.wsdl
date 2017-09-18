@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://xmlns.oracle.com/apps/cux/soaprovider/plsql/cux_dm_err_release_ws_pkg/" xmlns:tns1="http://xmlns.oracle.com/apps/cux/soaprovider/plsql/cux_dm_err_release_ws_pkg/get_err_inf/" name="CUX_DM_ERR_RELEASE_WS_PKG" targetNamespace="http://xmlns.oracle.com/apps/cux/soaprovider/plsql/cux_dm_err_release_ws_pkg/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <schema elementFormDefault="qualified" targetNamespace="http://xmlns.oracle.com/apps/cux/soaprovider/plsql/cux_dm_err_release_ws_pkg/get_err_inf/" xmlns="http://www.w3.org/2001/XMLSchema">
+      <include schemaLocation="http://lm01l115.calt.casc:8008/webservices/SOAProvider/plsql/cux_dm_err_release_ws_pkg/APPS_ISG_GET_ERR_INF_CUX_DM_ERR_RELEASE_WS_PKG-24GET.xsd" />
+    </schema>
+    <schema elementFormDefault="qualified" targetNamespace="http://xmlns.oracle.com/apps/cux/soaprovider/plsql/cux_dm_err_release_ws_pkg/" xmlns="http://www.w3.org/2001/XMLSchema">
+      <element name="SOAHeader">
+        <complexType>
+          <sequence>
+            <element minOccurs="0" name="Responsibility" type="string" />
+            <element minOccurs="0" name="RespApplication" type="string" />
+            <element minOccurs="0" name="SecurityGroup" type="string" />
+            <element minOccurs="0" name="NLSLanguage" type="string" />
+            <element minOccurs="0" name="Org_Id" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+    </schema>
+  </types>
+  <message name="GET_ERR_INF_Input_Msg">
+    <part name="header" element="tns:SOAHeader" />
+    <part name="body" element="tns1:InputParameters" />
+  </message>
+  <message name="GET_ERR_INF_Output_Msg">
+    <part name="body" element="tns1:OutputParameters" />
+  </message>
+  <portType name="CUX_DM_ERR_RELEASE_WS_PKG_PortType">
+    <operation name="GET_ERR_INF">
+      <input message="tns:GET_ERR_INF_Input_Msg" />
+      <output message="tns:GET_ERR_INF_Output_Msg" />
+    </operation>
+  </portType>
+  <binding name="CUX_DM_ERR_RELEASE_WS_PKG_Binding" type="tns:CUX_DM_ERR_RELEASE_WS_PKG_PortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="GET_ERR_INF">
+      <soap:operation soapAction="http://lm01l115.calt.casc:8008/webservices/SOAProvider/plsql/cux_dm_err_release_ws_pkg/" />
+      <input>
+        <soap:header message="tns:GET_ERR_INF_Input_Msg" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="CUX_DM_ERR_RELEASE_WS_PKG_Service">
+    <port name="CUX_DM_ERR_RELEASE_WS_PKG_Port" binding="tns:CUX_DM_ERR_RELEASE_WS_PKG_Binding">
+      <soap:address location="http://lm01l115.calt.casc:8008/webservices/SOAProvider/plsql/cux_dm_err_release_ws_pkg/" />
+    </port>
+  </service>
+</definitions>

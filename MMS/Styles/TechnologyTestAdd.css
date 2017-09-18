@@ -1,0 +1,11 @@
+﻿body {
+}
+.technology_Div_content {width: 1240px; margin: 0 auto; border: 1px solid #ccc;}
+.technology_Div_title{width: 1240px; margin: 0 auto; text-align: center; font-size: 22px; margin-top: 5px;}
+.technology_Div_smalltitle{width: 1230px; padding-left: 10px; margin-top: 10px; font-size: 18px; line-height: 40px; height: 40px; border-bottom: 1px solid #ccc;}
+.technology_Div_detailcontent{font-size:14px;width: 1230px; }
+.technology_Div_detailcontent_title{width:8%;text-align:right;height:35px;}
+.technology_Div_detailcontent_content{width:17%;text-align:left;padding-left:5px;}
+.technology_Div_detailcontent_title1{width:8%;text-align:right;height:35px;}
+.technology_Div_detailcontent_content1{width:22%;text-align:left;padding-left:5px;}
+.technology_Div_button{height: 50px; line-height: 50px; border-top: 1px solid #ccc; text-align: center; width: 1240px; margin-top: 20px;}

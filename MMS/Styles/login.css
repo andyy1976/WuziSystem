@@ -1,0 +1,34 @@
+﻿@charset "utf-8";
+/* CSS Document */
+/*common begin*/
+html {font-family: "微软雅黑";height: 100%;min-width:1200px;}
+body {margin: 0;color: #666;background-color: #ffb001; background:url(../Images/login_bg.jpg) no-repeat left top; background-size:100% 100%;height: 100%;overflow: auto; min-width:1200px;}
+h1, h2, h3 ,h4{margin: 0;font-size: 100%;}
+h3,h4{font-weight: normal;}
+a {text-decoration: none;color: #3d4245;}
+a:active {outline: 0;}
+img {border: none;vertical-align: top;max-width: 100%;}
+ul, ol {margin: 0;padding: 0;}
+li {list-style: none;}
+p, dl, dd, form {margin: 0;}
+button, input {color: inherit;font: inherit;margin: 0;padding: 0;border: 0;background: none;}
+/*common end*/
+.login_logo{ position:absolute; _position:absolute; *position:absolute; left:60px; top:30px;}
+.login_logo img{ height:60px; width:auto;}
+/*login_form-------------------------start*/
+.login_form{ margin:0 auto; width:1200px;overflow:hidden;}
+.login_box{ width:310px; height:270px; padding:0 30px; padding-top:130px;  background:url(../Images/login_formbg.png) no-repeat left top; background-size:100% auto; float:right; margin-top:60px; margin-right:20px;}
+.login_input{ clear:both; height:40px; line-height:40px; border:1px solid #b3b3b3; border-radius:5px;-webkit-border-radius:5px;-moz-border-radius:5px; margin-bottom:20px; padding-left:40px; background:url(../images/login_ren.png) no-repeat 3px center; background-size:34px auto;}
+.login_passbg{ background:url(../images/login_password.png) no-repeat 3px center;background-size:34px auto;}
+.login_input input{ height:40px; width:100%;}
+.login_input:hover{ border:1px solid #06F;}
+.login_button{ clear:both; overflow:hidden; height:40px; line-height:40px;}
+.login_button li{ width:50%; float:left; height:40px;}
+.login_button li button{ width:95%; height:40px; border-radius:5px; background:#3d91e6; color:#fff; font-size:16px; font-family:"微软雅黑"; text-align:center; cursor:pointer;}
+
+.LoginBut {
+     width:95%; height:40px; border-radius:5px; background:#3d91e6; color:#fff; font-size:16px; font-family:"微软雅黑"; text-align:center; cursor:pointer;
+}
+.AdLoginBut{ width:95%; height:40px; border-radius:5px; background:#3d91e6; color:#fff; font-size:16px; font-family:"微软雅黑"; text-align:center; cursor:pointer;}
+.login_button li:hover button{ background:#2c80d6;}
+.login_button .float_right{ float:right;}

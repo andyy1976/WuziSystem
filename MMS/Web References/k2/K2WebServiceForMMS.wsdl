@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="StartNewProcess">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SubmitInfo" type="tns:SubmitInfoModel" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="SubmitInfoModel">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="UserAccount" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DiaoDuApproveAccount" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="XingHaoJiHuaYuanApprove" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="WuZiJiHuaYuanApprove" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ProcessInstID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="MMS_ID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Type" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ItemCode" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Material_Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Applicant" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Dept" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ApplicationTime" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="ContactInformation" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TheMaterialWay" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TaskCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Drawing_No" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Draft_Code" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Quantity" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="FeedingTime" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsDispatch" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsConfirm" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Remark" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MaterialType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Material_Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Material_Mark" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CN_Material_State" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Material_Tech_Condition" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Rough_Spec" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Mat_Rough_Weight" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Mat_Unit" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Rough_Size" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PleaseTakeQuality" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RqHeaderId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RqLineId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RqDept" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="AppState" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ReturnReason" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Is_Del" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="TuiKuContext" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="StartNewProcessResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="StartNewProcessResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteProcessInst">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SubmitInfo" type="tns:SubmitInfoModel" />
+            <s:element minOccurs="1" maxOccurs="1" name="OnlyProcess" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteProcessInstResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeleteProcessInstResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetApproveHeader">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SubmitInfo" type="tns:SubmitInfoModel" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetApproveHeaderResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetApproveHeaderResult" type="tns:ApproveInfoHead" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ApproveInfoHead">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ProcessInstID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="MMS_ID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="AppState" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ApprovingActivity" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ApprovingUser" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ApprovingUserDept" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetApproveBody">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SubmitInfo" type="tns:SubmitInfoModel" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetApproveBodyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetApproveBodyResult" type="tns:ArrayOfApproveInfoBody" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfApproveInfoBody">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ApproveInfoBody" nillable="true" type="tns:ApproveInfoBody" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ApproveInfoBody">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ActivityName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ApproveLeaderName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ApproveLeaderDept" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Result" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Reason" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ApproveTime" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SendChuKuNotification">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ChuKuInfo" type="tns:SendChuKuNotificationModel" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="SendChuKuNotificationModel">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ProcessInstID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="RQ_HeadID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RQ_BodyID" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="SendTime" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SendChuKuNotificationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SendChuKuNotificationResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="StartNewProcessSoapIn">
+    <wsdl:part name="parameters" element="tns:StartNewProcess" />
+  </wsdl:message>
+  <wsdl:message name="StartNewProcessSoapOut">
+    <wsdl:part name="parameters" element="tns:StartNewProcessResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteProcessInstSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteProcessInst" />
+  </wsdl:message>
+  <wsdl:message name="DeleteProcessInstSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteProcessInstResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetApproveHeaderSoapIn">
+    <wsdl:part name="parameters" element="tns:GetApproveHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetApproveHeaderSoapOut">
+    <wsdl:part name="parameters" element="tns:GetApproveHeaderResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetApproveBodySoapIn">
+    <wsdl:part name="parameters" element="tns:GetApproveBody" />
+  </wsdl:message>
+  <wsdl:message name="GetApproveBodySoapOut">
+    <wsdl:part name="parameters" element="tns:GetApproveBodyResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendChuKuNotificationSoapIn">
+    <wsdl:part name="parameters" element="tns:SendChuKuNotification" />
+  </wsdl:message>
+  <wsdl:message name="SendChuKuNotificationSoapOut">
+    <wsdl:part name="parameters" element="tns:SendChuKuNotificationResponse" />
+  </wsdl:message>
+  <wsdl:portType name="K2WebServiceForMMSSoap">
+    <wsdl:operation name="StartNewProcess">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">启动物资领料新流程</wsdl:documentation>
+      <wsdl:input message="tns:StartNewProcessSoapIn" />
+      <wsdl:output message="tns:StartNewProcessSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteProcessInst">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">删除流程</wsdl:documentation>
+      <wsdl:input message="tns:DeleteProcessInstSoapIn" />
+      <wsdl:output message="tns:DeleteProcessInstSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetApproveHeader">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取审批信息头部</wsdl:documentation>
+      <wsdl:input message="tns:GetApproveHeaderSoapIn" />
+      <wsdl:output message="tns:GetApproveHeaderSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetApproveBody">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取审批信息内容</wsdl:documentation>
+      <wsdl:input message="tns:GetApproveBodySoapIn" />
+      <wsdl:output message="tns:GetApproveBodySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendChuKuNotification">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">通知出库信息</wsdl:documentation>
+      <wsdl:input message="tns:SendChuKuNotificationSoapIn" />
+      <wsdl:output message="tns:SendChuKuNotificationSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="K2WebServiceForMMSHttpGet" />
+  <wsdl:portType name="K2WebServiceForMMSHttpPost" />
+  <wsdl:binding name="K2WebServiceForMMSSoap" type="tns:K2WebServiceForMMSSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="StartNewProcess">
+      <soap:operation soapAction="http://tempuri.org/StartNewProcess" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteProcessInst">
+      <soap:operation soapAction="http://tempuri.org/DeleteProcessInst" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetApproveHeader">
+      <soap:operation soapAction="http://tempuri.org/GetApproveHeader" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetApproveBody">
+      <soap:operation soapAction="http://tempuri.org/GetApproveBody" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendChuKuNotification">
+      <soap:operation soapAction="http://tempuri.org/SendChuKuNotification" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="K2WebServiceForMMSSoap12" type="tns:K2WebServiceForMMSSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="StartNewProcess">
+      <soap12:operation soapAction="http://tempuri.org/StartNewProcess" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteProcessInst">
+      <soap12:operation soapAction="http://tempuri.org/DeleteProcessInst" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetApproveHeader">
+      <soap12:operation soapAction="http://tempuri.org/GetApproveHeader" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetApproveBody">
+      <soap12:operation soapAction="http://tempuri.org/GetApproveBody" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendChuKuNotification">
+      <soap12:operation soapAction="http://tempuri.org/SendChuKuNotification" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="K2WebServiceForMMSHttpGet" type="tns:K2WebServiceForMMSHttpGet">
+    <http:binding verb="GET" />
+  </wsdl:binding>
+  <wsdl:binding name="K2WebServiceForMMSHttpPost" type="tns:K2WebServiceForMMSHttpPost">
+    <http:binding verb="POST" />
+  </wsdl:binding>
+  <wsdl:service name="K2WebServiceForMMS">
+    <wsdl:port name="K2WebServiceForMMSSoap" binding="tns:K2WebServiceForMMSSoap">
+      <soap:address location="http://k2:8005/K2WebServiceForMMS.asmx" />
+    </wsdl:port>
+    <wsdl:port name="K2WebServiceForMMSSoap12" binding="tns:K2WebServiceForMMSSoap12">
+      <soap12:address location="http://k2:8005/K2WebServiceForMMS.asmx" />
+    </wsdl:port>
+    <wsdl:port name="K2WebServiceForMMSHttpGet" binding="tns:K2WebServiceForMMSHttpGet">
+      <http:address location="http://k2:8005/K2WebServiceForMMS.asmx" />
+    </wsdl:port>
+    <wsdl:port name="K2WebServiceForMMSHttpPost" binding="tns:K2WebServiceForMMSHttpPost">
+      <http:address location="http://k2:8005/K2WebServiceForMMS.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,1134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetByDrawingNo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DrawingNo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetByDrawingNoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetByDrawingNoResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetByDrawingNoAndLastPhase">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DrawingNo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetByDrawingNoAndLastPhaseResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetByDrawingNoAndLastPhaseResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetByDrawingNoAndPhase">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DrawingNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Phase" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Site" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetByDrawingNoAndPhaseResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetByDrawingNoAndPhaseResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetByDrawingNo222">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DrawingNo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetByDrawingNo222Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetByDrawingNo222Result">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetByDrawingNoB">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DrawingNo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetByDrawingNoBResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetByDrawingNoBResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetByPartNameB">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PartName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetByPartNameBResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetByPartNameBResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetById">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ClassId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ObjectId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetByIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetByIdResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetById2">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ObjectId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetById2Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetById2Result">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetChildren">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ClassId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ObjectId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetChildrenResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetChildrenResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetChildren2">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ClassId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ObjectId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetChildren2Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetChildren2Result">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetChildrenByUnit">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ClassId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ObjectId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetChildrenByUnitResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetChildrenByUnitResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUnitChildren">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ClassId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ObjectId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUnitChildrenResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUnitChildrenResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTypeChildren">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ClassId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ObjectId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TypeIds" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTypeChildrenResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTypeChildrenResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTypeChildrenByDrawingNo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DrawingNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TypeIds" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTypeChildrenByDrawingNoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTypeChildrenByDrawingNoResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetParents">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ClassId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ObjectId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetParentsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetParentsResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetItemsCount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ClassId1" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ObjectId1" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ClassId2" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ObjectId2" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetItemsCountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetItemsCountResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDetailsByID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ClassId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ObjectId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDetailsByIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDetailsByIDResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetItemsType">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DrawingNo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetItemsTypeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetItemsTypeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPhaseName">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ObjectId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPhaseNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPhaseNameResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLingJianTypeName">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ObjectId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLingJianTypeNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLingJianTypeNameResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDepName">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DepNo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDepNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDepNameResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="HasCaiLDE">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ClassId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ObjectId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="HasCaiLDEResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="HasCaiLDEResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetItemType">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DrawingNo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetItemTypeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetItemTypeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetByDrawingNoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetByDrawingNo" />
+  </wsdl:message>
+  <wsdl:message name="GetByDrawingNoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetByDrawingNoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetByDrawingNoAndLastPhaseSoapIn">
+    <wsdl:part name="parameters" element="tns:GetByDrawingNoAndLastPhase" />
+  </wsdl:message>
+  <wsdl:message name="GetByDrawingNoAndLastPhaseSoapOut">
+    <wsdl:part name="parameters" element="tns:GetByDrawingNoAndLastPhaseResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetByDrawingNoAndPhaseSoapIn">
+    <wsdl:part name="parameters" element="tns:GetByDrawingNoAndPhase" />
+  </wsdl:message>
+  <wsdl:message name="GetByDrawingNoAndPhaseSoapOut">
+    <wsdl:part name="parameters" element="tns:GetByDrawingNoAndPhaseResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetByDrawingNo222SoapIn">
+    <wsdl:part name="parameters" element="tns:GetByDrawingNo222" />
+  </wsdl:message>
+  <wsdl:message name="GetByDrawingNo222SoapOut">
+    <wsdl:part name="parameters" element="tns:GetByDrawingNo222Response" />
+  </wsdl:message>
+  <wsdl:message name="GetByDrawingNoBSoapIn">
+    <wsdl:part name="parameters" element="tns:GetByDrawingNoB" />
+  </wsdl:message>
+  <wsdl:message name="GetByDrawingNoBSoapOut">
+    <wsdl:part name="parameters" element="tns:GetByDrawingNoBResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetByPartNameBSoapIn">
+    <wsdl:part name="parameters" element="tns:GetByPartNameB" />
+  </wsdl:message>
+  <wsdl:message name="GetByPartNameBSoapOut">
+    <wsdl:part name="parameters" element="tns:GetByPartNameBResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetByIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetById" />
+  </wsdl:message>
+  <wsdl:message name="GetByIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetById2SoapIn">
+    <wsdl:part name="parameters" element="tns:GetById2" />
+  </wsdl:message>
+  <wsdl:message name="GetById2SoapOut">
+    <wsdl:part name="parameters" element="tns:GetById2Response" />
+  </wsdl:message>
+  <wsdl:message name="GetChildrenSoapIn">
+    <wsdl:part name="parameters" element="tns:GetChildren" />
+  </wsdl:message>
+  <wsdl:message name="GetChildrenSoapOut">
+    <wsdl:part name="parameters" element="tns:GetChildrenResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetChildren2SoapIn">
+    <wsdl:part name="parameters" element="tns:GetChildren2" />
+  </wsdl:message>
+  <wsdl:message name="GetChildren2SoapOut">
+    <wsdl:part name="parameters" element="tns:GetChildren2Response" />
+  </wsdl:message>
+  <wsdl:message name="GetChildrenByUnitSoapIn">
+    <wsdl:part name="parameters" element="tns:GetChildrenByUnit" />
+  </wsdl:message>
+  <wsdl:message name="GetChildrenByUnitSoapOut">
+    <wsdl:part name="parameters" element="tns:GetChildrenByUnitResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUnitChildrenSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUnitChildren" />
+  </wsdl:message>
+  <wsdl:message name="GetUnitChildrenSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUnitChildrenResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTypeChildrenSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTypeChildren" />
+  </wsdl:message>
+  <wsdl:message name="GetTypeChildrenSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTypeChildrenResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTypeChildrenByDrawingNoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTypeChildrenByDrawingNo" />
+  </wsdl:message>
+  <wsdl:message name="GetTypeChildrenByDrawingNoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTypeChildrenByDrawingNoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetParentsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetParents" />
+  </wsdl:message>
+  <wsdl:message name="GetParentsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetParentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetItemsCountSoapIn">
+    <wsdl:part name="parameters" element="tns:GetItemsCount" />
+  </wsdl:message>
+  <wsdl:message name="GetItemsCountSoapOut">
+    <wsdl:part name="parameters" element="tns:GetItemsCountResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDetailsByIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDetailsByID" />
+  </wsdl:message>
+  <wsdl:message name="GetDetailsByIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDetailsByIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetItemsTypeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetItemsType" />
+  </wsdl:message>
+  <wsdl:message name="GetItemsTypeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetItemsTypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPhaseNameSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPhaseName" />
+  </wsdl:message>
+  <wsdl:message name="GetPhaseNameSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPhaseNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLingJianTypeNameSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLingJianTypeName" />
+  </wsdl:message>
+  <wsdl:message name="GetLingJianTypeNameSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLingJianTypeNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDepNameSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDepName" />
+  </wsdl:message>
+  <wsdl:message name="GetDepNameSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDepNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="HasCaiLDESoapIn">
+    <wsdl:part name="parameters" element="tns:HasCaiLDE" />
+  </wsdl:message>
+  <wsdl:message name="HasCaiLDESoapOut">
+    <wsdl:part name="parameters" element="tns:HasCaiLDEResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetItemTypeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetItemType" />
+  </wsdl:message>
+  <wsdl:message name="GetItemTypeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetItemTypeResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ItemsSoap">
+    <wsdl:operation name="GetByDrawingNo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">图号全匹配</wsdl:documentation>
+      <wsdl:input message="tns:GetByDrawingNoSoapIn" />
+      <wsdl:output message="tns:GetByDrawingNoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetByDrawingNoAndLastPhase">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">图号全匹配\最新阶段</wsdl:documentation>
+      <wsdl:input message="tns:GetByDrawingNoAndLastPhaseSoapIn" />
+      <wsdl:output message="tns:GetByDrawingNoAndLastPhaseSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetByDrawingNoAndPhase">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">图号全匹配\所需阶段\地区</wsdl:documentation>
+      <wsdl:input message="tns:GetByDrawingNoAndPhaseSoapIn" />
+      <wsdl:output message="tns:GetByDrawingNoAndPhaseSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetByDrawingNo222">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">图号全匹配</wsdl:documentation>
+      <wsdl:input message="tns:GetByDrawingNo222SoapIn" />
+      <wsdl:output message="tns:GetByDrawingNo222SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetByDrawingNoB">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">图号模糊查询</wsdl:documentation>
+      <wsdl:input message="tns:GetByDrawingNoBSoapIn" />
+      <wsdl:output message="tns:GetByDrawingNoBSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetByPartNameB">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">名称模糊查询</wsdl:documentation>
+      <wsdl:input message="tns:GetByPartNameBSoapIn" />
+      <wsdl:output message="tns:GetByPartNameBSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetById">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">基于ID获取详细信息</wsdl:documentation>
+      <wsdl:input message="tns:GetByIdSoapIn" />
+      <wsdl:output message="tns:GetByIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetById2">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">基于ID获取详细信息</wsdl:documentation>
+      <wsdl:input message="tns:GetById2SoapIn" />
+      <wsdl:output message="tns:GetById2SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetChildren">
+      <wsdl:input message="tns:GetChildrenSoapIn" />
+      <wsdl:output message="tns:GetChildrenSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetChildren2">
+      <wsdl:input message="tns:GetChildren2SoapIn" />
+      <wsdl:output message="tns:GetChildren2SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetChildrenByUnit">
+      <wsdl:input message="tns:GetChildrenByUnitSoapIn" />
+      <wsdl:output message="tns:GetChildrenByUnitSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUnitChildren">
+      <wsdl:input message="tns:GetUnitChildrenSoapIn" />
+      <wsdl:output message="tns:GetUnitChildrenSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTypeChildren">
+      <wsdl:input message="tns:GetTypeChildrenSoapIn" />
+      <wsdl:output message="tns:GetTypeChildrenSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTypeChildrenByDrawingNo">
+      <wsdl:input message="tns:GetTypeChildrenByDrawingNoSoapIn" />
+      <wsdl:output message="tns:GetTypeChildrenByDrawingNoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetParents">
+      <wsdl:input message="tns:GetParentsSoapIn" />
+      <wsdl:output message="tns:GetParentsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetItemsCount">
+      <wsdl:input message="tns:GetItemsCountSoapIn" />
+      <wsdl:output message="tns:GetItemsCountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDetailsByID">
+      <wsdl:input message="tns:GetDetailsByIDSoapIn" />
+      <wsdl:output message="tns:GetDetailsByIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetItemsType">
+      <wsdl:input message="tns:GetItemsTypeSoapIn" />
+      <wsdl:output message="tns:GetItemsTypeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPhaseName">
+      <wsdl:input message="tns:GetPhaseNameSoapIn" />
+      <wsdl:output message="tns:GetPhaseNameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLingJianTypeName">
+      <wsdl:input message="tns:GetLingJianTypeNameSoapIn" />
+      <wsdl:output message="tns:GetLingJianTypeNameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDepName">
+      <wsdl:input message="tns:GetDepNameSoapIn" />
+      <wsdl:output message="tns:GetDepNameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="HasCaiLDE">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">基于ID获取详细信息</wsdl:documentation>
+      <wsdl:input message="tns:HasCaiLDESoapIn" />
+      <wsdl:output message="tns:HasCaiLDESoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetItemType">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">取得零件类型</wsdl:documentation>
+      <wsdl:input message="tns:GetItemTypeSoapIn" />
+      <wsdl:output message="tns:GetItemTypeSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ItemsSoap" type="tns:ItemsSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetByDrawingNo">
+      <soap:operation soapAction="http://tempuri.org/GetByDrawingNo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetByDrawingNoAndLastPhase">
+      <soap:operation soapAction="http://tempuri.org/GetByDrawingNoAndLastPhase" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetByDrawingNoAndPhase">
+      <soap:operation soapAction="http://tempuri.org/GetByDrawingNoAndPhase" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetByDrawingNo222">
+      <soap:operation soapAction="http://tempuri.org/GetByDrawingNo222" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetByDrawingNoB">
+      <soap:operation soapAction="http://tempuri.org/GetByDrawingNoB" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetByPartNameB">
+      <soap:operation soapAction="http://tempuri.org/GetByPartNameB" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetById">
+      <soap:operation soapAction="http://tempuri.org/GetById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetById2">
+      <soap:operation soapAction="http://tempuri.org/GetById2" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetChildren">
+      <soap:operation soapAction="http://tempuri.org/GetChildren" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetChildren2">
+      <soap:operation soapAction="http://tempuri.org/GetChildren2" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetChildrenByUnit">
+      <soap:operation soapAction="http://tempuri.org/GetChildrenByUnit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUnitChildren">
+      <soap:operation soapAction="http://tempuri.org/GetUnitChildren" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTypeChildren">
+      <soap:operation soapAction="http://tempuri.org/GetTypeChildren" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTypeChildrenByDrawingNo">
+      <soap:operation soapAction="http://tempuri.org/GetTypeChildrenByDrawingNo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetParents">
+      <soap:operation soapAction="http://tempuri.org/GetParents" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetItemsCount">
+      <soap:operation soapAction="http://tempuri.org/GetItemsCount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDetailsByID">
+      <soap:operation soapAction="http://tempuri.org/GetDetailsByID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetItemsType">
+      <soap:operation soapAction="http://tempuri.org/GetItemsType" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPhaseName">
+      <soap:operation soapAction="http://tempuri.org/GetPhaseName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLingJianTypeName">
+      <soap:operation soapAction="http://tempuri.org/GetLingJianTypeName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDepName">
+      <soap:operation soapAction="http://tempuri.org/GetDepName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HasCaiLDE">
+      <soap:operation soapAction="http://tempuri.org/HasCaiLDE" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetItemType">
+      <soap:operation soapAction="http://tempuri.org/GetItemType" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ItemsSoap12" type="tns:ItemsSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetByDrawingNo">
+      <soap12:operation soapAction="http://tempuri.org/GetByDrawingNo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetByDrawingNoAndLastPhase">
+      <soap12:operation soapAction="http://tempuri.org/GetByDrawingNoAndLastPhase" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetByDrawingNoAndPhase">
+      <soap12:operation soapAction="http://tempuri.org/GetByDrawingNoAndPhase" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetByDrawingNo222">
+      <soap12:operation soapAction="http://tempuri.org/GetByDrawingNo222" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetByDrawingNoB">
+      <soap12:operation soapAction="http://tempuri.org/GetByDrawingNoB" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetByPartNameB">
+      <soap12:operation soapAction="http://tempuri.org/GetByPartNameB" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetById">
+      <soap12:operation soapAction="http://tempuri.org/GetById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetById2">
+      <soap12:operation soapAction="http://tempuri.org/GetById2" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetChildren">
+      <soap12:operation soapAction="http://tempuri.org/GetChildren" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetChildren2">
+      <soap12:operation soapAction="http://tempuri.org/GetChildren2" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetChildrenByUnit">
+      <soap12:operation soapAction="http://tempuri.org/GetChildrenByUnit" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUnitChildren">
+      <soap12:operation soapAction="http://tempuri.org/GetUnitChildren" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTypeChildren">
+      <soap12:operation soapAction="http://tempuri.org/GetTypeChildren" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTypeChildrenByDrawingNo">
+      <soap12:operation soapAction="http://tempuri.org/GetTypeChildrenByDrawingNo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetParents">
+      <soap12:operation soapAction="http://tempuri.org/GetParents" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetItemsCount">
+      <soap12:operation soapAction="http://tempuri.org/GetItemsCount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDetailsByID">
+      <soap12:operation soapAction="http://tempuri.org/GetDetailsByID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetItemsType">
+      <soap12:operation soapAction="http://tempuri.org/GetItemsType" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPhaseName">
+      <soap12:operation soapAction="http://tempuri.org/GetPhaseName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLingJianTypeName">
+      <soap12:operation soapAction="http://tempuri.org/GetLingJianTypeName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDepName">
+      <soap12:operation soapAction="http://tempuri.org/GetDepName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HasCaiLDE">
+      <soap12:operation soapAction="http://tempuri.org/HasCaiLDE" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetItemType">
+      <soap12:operation soapAction="http://tempuri.org/GetItemType" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Items">
+    <wsdl:port name="ItemsSoap" binding="tns:ItemsSoap">
+      <soap:address location="http://10.19.1.143/ShouHang.SmarTeam.WebService/ST211/Items.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ItemsSoap12" binding="tns:ItemsSoap12">
+      <soap12:address location="http://10.19.1.143/ShouHang.SmarTeam.WebService/ST211/Items.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
