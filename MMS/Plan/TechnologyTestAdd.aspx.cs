@@ -90,13 +90,14 @@ namespace mms.Plan
 
             if (!IsPostBack)
             {
-                string strSQL = "";
+               
 
                 GridSource1 = new System.Data.DataTable();
                 if (Request.QueryString["SubmitType"] != null && Request.QueryString["SubmitType"].ToString() != "")
                 {
 
                     string title = "", title1 = "";
+                    string strSQL = "";
                     switch (Request.QueryString["SubmitType"].ToString())
                     { 
                         case "1":
@@ -104,18 +105,19 @@ namespace mms.Plan
                             title1 = "工艺试验件未提交申请";
                             HiddenField.Value = "天津公司工艺试验件任务-->新增工艺试验件";
 
-                           // strSQL = "select UserName, DomainAccount from Sys_UserInfo_PWD" + 
-                             //   " where  ID in (select Userid from Sys_UserInRole where RoleID in (select ID from Sys_RoleInfo where RoleName like '%工艺处%型号%主管%'))";
+                            strSQL = " select UserName, DomainAccount from V_Get_Sys_User_byRole where Isdel = 'false' and DomainAccount != '' and DomainAccount is not null and RoleName like '车间%' + '领导' and Is_Del ='false'";
 
-
+                            RDDL_ApproveAccount1.DataSource = DBI.Execute(strSQL, true);
+                            RDDL_ApproveAccount1.DataValueField = "DomainAccount";
+                            RDDL_ApproveAccount1.DataTextField = "UserName";
+                            RDDL_ApproveAccount1.DataBind();
+                            lbl_ApproveAccount1.Text = "车间领导";
                             strSQL = " select UserName, DomainAccount from V_Get_Sys_User_byRole where Isdel = 'false' and DomainAccount != '' and DomainAccount is not null and RoleName like '%工艺处%型号%主管%' and Is_Del ='false'";
-   
-                            RDDL_PlanApproveAccount.DataSource = DBI.Execute(strSQL, true);
-                            RDDL_PlanApproveAccount.DataValueField = "DomainAccount";
-                            RDDL_PlanApproveAccount.DataTextField = "UserName";
-                            RDDL_PlanApproveAccount.DataBind();
-
-                            lbl_PlanApproveAccount.Text = "工艺处型号主管";
+                            RDDL_ApproveAccount2.DataSource = DBI.Execute(strSQL, true);
+                            RDDL_ApproveAccount2.DataValueField = "DomainAccount";
+                            RDDL_ApproveAccount2.DataTextField = "UserName";
+                            RDDL_ApproveAccount2.DataBind();
+                            lbl_ApproveAccount2.Text = "工艺处型号主管";
 
                             break;
                         case "2":
@@ -123,17 +125,20 @@ namespace mms.Plan
                             title1 = "技术创新课题未提交申请";
                             HiddenField.Value = "天津公司技术创新课题任务-->技术创新课题列表";
                             lblTaskSubject.Text = "课题号：";
+                                                      
+                            strSQL = " select * from V_Get_Sys_User_byRole where Isdel = 'false' and DomainAccount != '' and DomainAccount is not null and RoleName like '%车%间%调%度%员%' and Is_Del ='false'";
+                            RDDL_ApproveAccount1.DataSource = DBI.Execute(strSQL, true);
+                            RDDL_ApproveAccount1.DataTextField = "UserName";
+                            RDDL_ApproveAccount1.DataValueField = "DomainAccount";
+                            RDDL_ApproveAccount1.DataBind();
+                            lbl_ApproveAccount1.Text = "车间调度计划员";
 
-                          //  strSQL = "select UserName, DomainAccount from Sys_UserInfo_PWD" + 
-                             //   " where  ID in (select Userid from Sys_UserInRole where RoleID in (select ID from Sys_RoleInfo where RoleName like '%工艺处%技术%创新%主管%'))";
-
-                            strSQL = " select UserName, DomainAccount from V_Get_Sys_User_byRole where Isdel = 'false' and DomainAccount != '' and DomainAccount is not null and RoleName like '%工艺处%技术%创新%主管%' and Is_Del ='false'";
-                            RDDL_PlanApproveAccount.DataSource = DBI.Execute(strSQL, true);
-                            RDDL_PlanApproveAccount.DataValueField = "DomainAccount";
-                            RDDL_PlanApproveAccount.DataTextField = "UserName";
-                            RDDL_PlanApproveAccount.DataBind();
-
-                            lbl_PlanApproveAccount.Text = "工艺处技术创新主管";
+                            strSQL = " select * from V_Get_Sys_User_byRole where Isdel = 'false' and DomainAccount != '' and DomainAccount is not null and RoleName like '%技%术%主%管%' and Is_Del ='false'";
+                            RDDL_ApproveAccount2.DataSource = DBI.Execute(strSQL, true);
+                            RDDL_ApproveAccount2.DataTextField = "UserName";
+                            RDDL_ApproveAccount2.DataValueField = "DomainAccount";
+                            RDDL_ApproveAccount2.DataBind();
+                            lbl_ApproveAccount2.Text = "工艺技术处课题技术主管";
 
                             break;
                         case "3":
@@ -142,17 +147,28 @@ namespace mms.Plan
                             HiddenField.Value = "天津公司备料任务-->新增物资";
                             trAttribute4.Visible = true;
 
-                           // strSQL = "select UserName, DomainAccount from Sys_UserInfo_PWD" + 
-                               // " where  ID in (select Userid from Sys_UserInRole where RoleID in (select ID from Sys_RoleInfo where RoleName like '%物资%计划员%'))";
-                            strSQL = " select UserName, DomainAccount from V_Get_Sys_User_byRole where Isdel = 'false' and DomainAccount != '' and DomainAccount is not null and RoleName like '%物资%计划员%' and Is_Del ='false'";
+                            strSQL = " select * from V_Get_Sys_User_byRole where Isdel = 'false' and DomainAccount != '' and DomainAccount is not null and RoleName like '%车%间%调%度%员%' and Is_Del ='false'";
+                            RDDL_ApproveAccount1.DataSource = DBI.Execute(strSQL, true);
+                            RDDL_ApproveAccount1.DataTextField = "UserName";
+                            RDDL_ApproveAccount1.DataValueField = "DomainAccount";
+                            RDDL_ApproveAccount1.DataBind();
+                            lbl_ApproveAccount1.Text = "车间调度计划员";
 
-                            RDDL_PlanApproveAccount.DataSource = DBI.Execute(strSQL, true);
-                            RDDL_PlanApproveAccount.DataValueField = "DomainAccount";
-                            RDDL_PlanApproveAccount.DataTextField = "UserName";
-                            RDDL_PlanApproveAccount.DataBind();
+                            strSQL = " select * from V_Get_Sys_User_byRole where Isdel = 'false' and DomainAccount != '' and DomainAccount is not null and RoleName like '%型%号%计%划%员%' and Is_Del ='false'";
+                            RDDL_ApproveAccount2.DataSource = DBI.Execute(strSQL, true);
+                            RDDL_ApproveAccount2.DataTextField = "UserName";
+                            RDDL_ApproveAccount2.DataValueField = "DomainAccount";
+                            RDDL_ApproveAccount2.DataBind();
+                            lbl_ApproveAccount2.Text = "型号主管计划员";
 
-                            lbl_PlanApproveAccount.Text = "物资计划员";
-
+                            RDDL_ApproveAccount3.Visible = true;
+                            lbl_ApproveAccount3.Visible = true;
+                            strSQL = " select * from V_Get_Sys_User_byRole where Isdel = 'false' and DomainAccount != '' and DomainAccount is not null and RoleName like '%物%资%计%划%员%' and Is_Del ='false'";
+                            RDDL_ApproveAccount3.DataSource = DBI.Execute(strSQL, true);
+                            RDDL_ApproveAccount3.DataTextField = "UserName";
+                            RDDL_ApproveAccount3.DataValueField = "DomainAccount";
+                            RDDL_ApproveAccount3.DataBind();
+                            lbl_ApproveAccount3.Text = "3、物资综合计划员";
                             break;
                     }
                     this.ViewState["submit_type"] = Request.QueryString["SubmitType"].ToString();
@@ -218,15 +234,7 @@ namespace mms.Plan
                     Telerik.Web.UI.DropDownListItem li = new Telerik.Web.UI.DropDownListItem("物资编码查询", "ItemCode");
                     RDDLMT.Items.Add(li);
 
-                  //  strSQL = "select UserName, DomainAccount from Sys_UserInfo_PWD where Dept = (select dept from Sys_UserInfo_PWD where ID = '" + Session["UserId"].ToString() + "')" +
-                   //     " and ID in (select Userid from Sys_UserInRole where RoleID in (select ID from Sys_RoleInfo where RoleName like '车间%' + '领导')) ";
-                    strSQL = " select UserName, DomainAccount from V_Get_Sys_User_byRole where Isdel = 'false' and DomainAccount != '' and DomainAccount is not null and RoleName like '车间%' + '领导' and Is_Del ='false'";
-
-                    RDDL_DeptApproveAccount.DataSource = DBI.Execute(strSQL, true);
-                    RDDL_DeptApproveAccount.DataValueField = "DomainAccount";
-                    RDDL_DeptApproveAccount.DataTextField = "UserName";
-                    RDDL_DeptApproveAccount.DataBind();
-
+          
                     this.span_apply_time1.InnerText = DateTime.Now.ToString("yyyy-MM-dd"); 
                     BindDeptUserAddress1();
 
@@ -576,23 +584,33 @@ namespace mms.Plan
         {
             if (this.hfBh.Value != null && this.hfBh.Value != "")
             {
-                string deptAccount = RDDL_DeptApproveAccount.SelectedValue;
-                string planAccount = RDDL_PlanApproveAccount.SelectedValue;
+                string approveAccount1 = RDDL_ApproveAccount1.SelectedValue;
+                string approveAccount2 = RDDL_ApproveAccount2.SelectedValue;
 
-                if (deptAccount == "")
+                if (approveAccount1 == "")
                 {
-                    RadNotificationAlert.Text = "失败！没有选择车间主管";
+                    RadNotificationAlert.Text = "失败！没有选择" + lbl_ApproveAccount1.Text;
                     RadNotificationAlert.Show();
                     return;
                 }
-                if (planAccount == "")
+                if (approveAccount2 == "")
                 {
-                    RadNotificationAlert.Text = "失败！没有选择" + lbl_PlanApproveAccount.Text;
+                    RadNotificationAlert.Text = "失败！没有选择" + lbl_ApproveAccount2.Text;
                     RadNotificationAlert.Show();
                     return;
                 }
-
-                string strSql = " Update M_Demand_Plan_List set DeptApproveAccount = '" + deptAccount + "', PlanOrTecApproveAccount = '" + planAccount + "' where ID = '" + hfBh.Value.ToString() + "'";
+                string approveAccount3 = null;
+                if (Request.QueryString["SubmitType"].ToString() == "3")
+                {
+                    approveAccount3 = RDDL_ApproveAccount3.SelectedValue;
+                    if (approveAccount3 == "")
+                    {
+                        RadNotificationAlert.Text = "失败！没有选择物资综合计划员";
+                        RadNotificationAlert.Show();
+                        return;
+                    }
+                }
+                string strSql = " Update M_Demand_Plan_List set DeptApproveAccount = '" + approveAccount1 + "', PlanOrTecApproveAccount = '" + approveAccount2 + "', MaterialPlanApproveAccount = '" + approveAccount3 + "' where ID = '" + hfBh.Value.ToString() + "'";
                 DBI.Execute(strSql);
 
                 //ModifyTechnologySubmit(this.hfBh.Value);

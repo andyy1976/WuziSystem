@@ -324,14 +324,16 @@
     <%--选择审批流程--开始----%>
                         <telerik:RadWindow ID="RadWindowApprove" runat="server" Title="业务审批流程"
                             ReloadOnShow="false" ShowContentDuringLoad="false" VisibleTitlebar="true" VisibleStatusbar="false"
-                            Modal="true" Behaviors="Close,Maximize,Minimize" Width="600px" Height="300px">
+                            Modal="true" Behaviors="Close,Maximize,Minimize" Width="700px" Height="300px">
                             <ContentTemplate>
-                                <table style="margin:50px auto; width:500px; height:120px;">
-                                    <tr>
-                                        <td>1、车间领导：</td>
-                                        <td><telerik:RadDropDownList ID="RDDL_DeptApproveAccount" runat="server" Width="160px"></telerik:RadDropDownList></td>
-                                        <td>2、<asp:Label ID="lbl_PlanApproveAccount" runat="server"></asp:Label></td>
-                                        <td><telerik:RadDropDownList ID="RDDL_PlanApproveAccount" runat="server" Width="160px"></telerik:RadDropDownList></td>
+                                <table style="margin:50px auto; width:700px; height:120px;">
+                                  <tr>
+                                        <td>1、<asp:Label ID="lbl_ApproveAccount1" runat="server"></asp:Label></td>
+                                        <td><telerik:RadDropDownList ID="RDDL_ApproveAccount1" runat="server" Width="160px"></telerik:RadDropDownList></td>
+                                        <td>2、<asp:Label ID="lbl_ApproveAccount2" runat="server"></asp:Label></td>
+                                        <td><telerik:RadDropDownList ID="RDDL_ApproveAccount2" runat="server" Width="160px"></telerik:RadDropDownList></td>
+                                        <td><asp:Label ID="lbl_ApproveAccount3" runat="server" visible="false"></asp:Label></td>
+                                        <td><telerik:RadDropDownList ID="RDDL_ApproveAccount3" runat="server" Width="160px" visible="false"></telerik:RadDropDownList></td>
                                     </tr>
                                     <tr>                                        
                                         <td colspan="2" style="text-align:center;">

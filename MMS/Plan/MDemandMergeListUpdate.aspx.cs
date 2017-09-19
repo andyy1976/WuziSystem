@@ -160,7 +160,15 @@ namespace mms.Plan
                 string Shipping_Address = RDDL_Shipping_Address.SelectedText.ToString();
                 string MANUFACTURER = RTB_MANUFACTURER.Text.Trim();
                 string SUBJECT = dt.Rows[0]["SUBJECT"].ToString();
-                string UserID = Session["UserId"].ToString();
+                string UserID = null;
+                if (Session["UserId"] != null)
+                {
+                    UserID = Session["UserId"].ToString();
+                }
+                else
+                {
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "info", "CloseWindow();", true);
+                }
                 string Reason = RTB_Reason.Text.Trim();
 
                 if (Special_Needs != dt.Rows[0]["Special_Needs"].ToString() && Special_Needs == "")

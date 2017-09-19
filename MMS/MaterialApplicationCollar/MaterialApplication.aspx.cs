@@ -28,7 +28,7 @@ namespace mms.MaterialApplicationCollar
               //  strSQL = " select * from Sys_UserInfo_PWD where Isdel = 'false' and DomainAccount != '' and DomainAccount is not null and Dept = (select Dept from Sys_UserInfo_PWD where ID = '" + Session["UserId"].ToString() + "')" +
                //     " and ID in (select UserID from Sys_UserInRole where RoleID in (select ID from Sys_RoleInfo where RoleName like '%车%间%调%度%员%' and Is_Del ='false')) ";
 
-                strSQL = " select * from V_Get_Sys_User_byRole where Isdel = 'false' and DomainAccount != '' and DomainAccount is not null and ID ='" + Session["UserId"].ToString() + "' and RoleName like '%车%间%调%度%员%' and Is_Del ='false'";
+                strSQL = " select * from V_Get_Sys_User_byRole where Isdel = 'false' and DomainAccount != '' and DomainAccount is not null and RoleName like '%车%间%调%度%员%' and Is_Del ='false'";
                 DataTable dtdd = DBI.Execute(strSQL, true);
                 RDDL_DiaoDu.DataSource = dtdd;
                 RDDL_DiaoDu.DataTextField = "UserName";

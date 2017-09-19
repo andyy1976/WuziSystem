@@ -526,31 +526,58 @@ namespace mms.Plan {
         protected global::Telerik.Web.UI.RadWindow RadWindowApprove;
         
         /// <summary>
-        /// RDDL_DeptApproveAccount 控件。
+        /// lbl_ApproveAccount1 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::Telerik.Web.UI.RadDropDownList RDDL_DeptApproveAccount;
+        protected global::System.Web.UI.WebControls.Label lbl_ApproveAccount1;
         
         /// <summary>
-        /// lbl_PlanApproveAccount 控件。
+        /// RDDL_ApproveAccount1 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_PlanApproveAccount;
+        protected global::Telerik.Web.UI.RadDropDownList RDDL_ApproveAccount1;
         
         /// <summary>
-        /// RDDL_PlanApproveAccount 控件。
+        /// lbl_ApproveAccount2 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::Telerik.Web.UI.RadDropDownList RDDL_PlanApproveAccount;
+        protected global::System.Web.UI.WebControls.Label lbl_ApproveAccount2;
+        
+        /// <summary>
+        /// RDDL_ApproveAccount2 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadDropDownList RDDL_ApproveAccount2;
+        
+        /// <summary>
+        /// lbl_ApproveAccount3 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_ApproveAccount3;
+        
+        /// <summary>
+        /// RDDL_ApproveAccount3 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadDropDownList RDDL_ApproveAccount3;
         
         /// <summary>
         /// RadButton3 控件。
