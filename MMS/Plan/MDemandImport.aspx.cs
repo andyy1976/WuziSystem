@@ -812,7 +812,7 @@ namespace mms.Plan
                 int userid = Convert.ToInt32(Session["UserId"].ToString());
                 string strSQL = "";
               
-                int Submit_Type = Convert.ToInt32(this.ViewState["submit_type"].ToString());//1－工艺试验件；2－技术创新；3－车间备料
+                int Submit_Type = Convert.ToInt32(this.ViewState["submit_type"].ToString());//1－工艺试验件；2－技术创新课题；3－生产备料
 
                 int PackId = Convert.ToInt32(Request.QueryString["PackId"].ToString());
 

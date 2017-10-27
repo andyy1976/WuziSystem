@@ -40,11 +40,16 @@
                         if (window.radWindow) oWindow = window.radWindow;
                         else if (window.frameElement.radWindow) oWindow = window.frameElement.radWindow;
                         var oArg = new Object();
-                        oWindow.BrowserWindow.refreshGrid(args);
+                        oWindow.BrowserWindow.refreshGrid1(args);
                         oWindow.close(oArg);
                     }
-                    $(document).ready(function () {
-                        $(".CommonSymbols").click(function () {
+
+               
+
+                    $(document).ready(function ()
+                    {
+                        $(".CommonSymbols").click(function ()
+                        {
                             var a = $(this).text();
                             var remark = $("#<%=RTB_Remark.ClientID%>").text();
                             remark += a;
@@ -52,30 +57,36 @@
                         $("#<%=RTB_Remark.ClientID%>").focus();
                         });
                     });
-                    function ShowRadWindowSubmit(sender, args) {
-                        if ($find("<%=RTB_Applicant.ClientID%>")._text == "") {
-                        $find("<%=RadNotificationAlert.ClientID%>").set_text("请输入申请人！");
-                        $find("<%=RadNotificationAlert.ClientID%>").show();
-                        args.set_cancel(true);
-                        return;
-                    }
-                    if ($find("<%=RTB_Quantity.ClientID%>")._text == "") {
-                        $find("<%=RadNotificationAlert.ClientID%>").set_text("请输入申请数量！");
+
+                    function ShowRadWindowSubmit(sender, args)
+                    {
+                        if ($find("<%=RTB_Applicant.ClientID%>")._text == "")
+                        {
+                            $find("<%=RadNotificationAlert.ClientID%>").set_text("请输入申请人！");
+                            $find("<%=RadNotificationAlert.ClientID%>").show();
+                            args.set_cancel(true);
+                            return;
+                         }
+                        if ($find("<%=RTB_Quantity.ClientID%>")._text == "")
+                        {
+                            $find("<%=RadNotificationAlert.ClientID%>").set_text("请输入申请数量！");
                             $find("<%=RadNotificationAlert.ClientID%>").show();
                             args.set_cancel(true);
                             return;
                         }
 
                         $find("<%= RadWindowSubmit.ClientID %>").show();
-                    args.set_cancel(true);
-                }
-                function YesOrNoClickedSubmit(sender, args) {
-                    var oWnd = $find("<%=RadWindowSubmit.ClientID %>");
+                        args.set_cancel(true);
+                   }
+
+                   function YesOrNoClickedSubmit(sender, args)
+                   {
+                        var oWnd = $find("<%=RadWindowSubmit.ClientID %>");
                         oWnd.close();
                         if (sender.get_text() == "是") {
                             $find("<%=RB_Submit.ClientID%>").click();
                         }
-                    }
+                   }
                 </script>
             </telerik:RadCodeBlock>
             <asp:HiddenField ID="HFType" runat="server" />
@@ -175,36 +186,35 @@
                     <td>
                         <asp:Label ID="lbl_ItemCode" runat="server"></asp:Label></td>
 
-                    <td style="text-align: right;">材料名称：</td>
+                    <td style="text-align: right;">物资名称：</td>
                     <td>
                         <asp:Label ID="lbl_Material_Name" runat="server"></asp:Label></td>
-                    <td style="text-align: right;">牌号：</td>
+                    <td style="text-align: right;">物资牌号：</td>
                     <td>
                         <asp:Label ID="lbl_Material_Mark" runat="server"></asp:Label></td>
                 </tr>
                 <tr>
-                    <td style="text-align: right;">状态：</td>
+                    <td style="text-align: right;">供应状态：</td>
                     <td>
                         <asp:Label ID="lbl_CN_Material_State" runat="server"></asp:Label></td>
-                    <td style="text-align: right;">技术条件：</td>
+                    <td style="text-align: right;">采用标准：</td>
                     <td>
                         <asp:Label ID="lbl_Material_Tech_Condition" runat="server"></asp:Label></td>
 
-                    <td style="text-align: right;">规格：</td>
+                    <td style="text-align: right;">胚料规格：</td>
                     <td>
                         <asp:Label ID="lbl_Rough_Spec" runat="server"></asp:Label></td>
                 </tr>
                 <tr>
-                    <td style="text-align: right;">单件定额质量：</td>
-                    <td>
-                        <asp:Label ID="lbl_Mat_Rough_Weight" runat="server">1</asp:Label></td>
+                    <td style="text-align: right;">单个零件尺寸：</td>
+                    <td><asp:Label ID="lbl_Rough_Size" runat="server"></asp:Label></td>
 
                     <td style="text-align: right;">计量单位：</td>
-                    <td>
-                        <asp:Label ID="lbl_Mat_Unit" runat="server"></asp:Label></td>
-                    <td style="text-align: right;">单个零件尺寸：</td>
-                    <td>
-                        <asp:Label ID="lbl_Rough_Size" runat="server"></asp:Label></td>
+                    <td><asp:Label ID="lbl_Mat_Unit" runat="server"></asp:Label></td>
+
+                    <td style="text-align: right;">单件定额质量：</td>
+                    <td><asp:Label ID="lbl_Mat_Rough_Weight" runat="server">1</asp:Label></td>
+                   
                 </tr>
                 <tr>
                     <th colspan="6" style="text-align: left; font-size: 14px; border-bottom: solid 1px #ccc;">业务审批流程</th>
@@ -241,7 +251,7 @@
                     </td>
                 </tr>
             </table>
-
+  
             <%-- 提交弹出窗口--开始--%>
             <telerik:RadWindow ID="RadWindowSubmit" runat="server" VisibleTitlebar="false"
                 VisibleStatusbar="false" Modal="true" Behaviors="None" Height="120px" Width="320px">
@@ -263,13 +273,17 @@
                         <telerik:RadButton ID="RadButton2" runat="server" Text="否" AutoPostBack="false" OnClientClicked="YesOrNoClickedSubmit">
                             <Icon PrimaryIconCssClass="rbCancel" />
                         </telerik:RadButton>
+
+                            
                         </div>
                     </div>
                 </ContentTemplate>
             </telerik:RadWindow>
+
+                    
             <%-- 提交弹出窗口--结束--%>
-            <telerik:RadNotification ID="RadNotificationAlert" runat="server" Text="" Position="Center"
-                AutoCloseDelay="4000" Width="300" Title="提示" EnableRoundedCorners="true">
+            <telerik:RadNotification ID="RadNotificationAlert" runat="server" Text="" Position="Center" OnClientClicked="CloseWindow"
+                AutoCloseDelay="400000" Width="300" Title="提示" EnableRoundedCorners="true">
             </telerik:RadNotification>
         </div>
     </form>

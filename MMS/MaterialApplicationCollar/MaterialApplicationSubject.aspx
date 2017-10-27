@@ -46,7 +46,11 @@
                     $find("<%= RadAjaxManager1.ClientID %>").ajaxRequest("Rebind");
                 }
             }
-
+            function refreshGrid1(arg) {
+                if (!arg) {
+                    $find("<%= RadAjaxManager1.ClientID %>").ajaxRequest("Rebind1");
+                }
+            }
             function ShowWindow(sender, args) {
                 var grid = $find("<%=RadGridMDML.ClientID%>");
                 if (grid._selectedIndexes.length == 0) {
@@ -131,5 +135,8 @@
     </telerik:RadWindowManager>
     <telerik:RadNotification ID="RadNotificationAlert" runat="server" Text="" Position="Center"
         AutoCloseDelay="40000" Width="300" Title="提示" EnableRoundedCorners="true">
+    </telerik:RadNotification>
+    <telerik:RadNotification ID="RadNotificationAlert1" runat="server" Text="申请成功！进入流程平台" Position="Center"
+        AutoCloseDelay="4000" Width="500" Title="提示" EnableRoundedCorners="true">
     </telerik:RadNotification>
 </asp:Content>

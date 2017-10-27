@@ -36,12 +36,11 @@ namespace mms.MaterialApplicationCollar
                 RDDL_DiaoDu.DataBind();
 
 
-               // strSQL = " select * from Sys_UserInfo_PWD where ID = '" + Session["UserId"].ToString() + "'";
-            //    DataTable dtuserinfo = DBI.Execute(strSQL, true);
-             //   RTB_Applicant.Text = dtuserinfo.Rows[0]["UserName"].ToString();
-             //   RTB_ContactInformation.Text = dtuserinfo.Rows[0]["Phone"].ToString();
-                RTB_Applicant.Text = dtdd.Rows[0]["UserName"].ToString();
-                RTB_ContactInformation.Text = dtdd.Rows[0]["Phone"].ToString();
+                strSQL = " select * from Sys_UserInfo_PWD where ID = '" + Session["UserId"].ToString() + "'";
+                DataTable dtuserinfo = DBI.Execute(strSQL, true);
+                RTB_Applicant.Text = dtuserinfo.Rows[0]["UserName"].ToString();
+                RTB_ContactInformation.Text = dtuserinfo.Rows[0]["Phone"].ToString();
+           
 
               //  strSQL = " select * from Sys_UserInfo_PWD where IsDel = 'false' and DomainAccount != '' and DomainAccount is not null" +
                 //    " and ID in (select UserId from Sys_UserInRole where RoleID in (select ID from Sys_RoleInfo where RoleName like '%型%号%计%划%员%'))";
@@ -111,11 +110,14 @@ namespace mms.MaterialApplicationCollar
             {
                 string Seg5 = dt.Rows[0]["Seg5"].ToString().Substring(0, 4);
                 RTB_Material_Mark.Text = dt.Rows[0]["SEG13"].ToString();
+                RTB_CN_Material_State.Text = "";
+                RTB_Material_Tech_Condition.Text = "";
                 switch (dt.Rows[0]["Seg5"].ToString().Substring(0, 4))
                 {
                     case "YY01":
                         if (dt.Rows[0]["Seg10"].ToString().ToUpper() == "Y")
                         { lblMSG.Text = "已失效！"; }
+                        RTB_Material_Mark.Text = "";
                         RTB_Material_Name.Text = dt.Rows[0]["Seg21"].ToString();
                         RTB_Mat_Unit.Text = dt.Rows[0]["Seg7"].ToString();
                         RTB_Rough_Size.Text = "";
@@ -124,6 +126,7 @@ namespace mms.MaterialApplicationCollar
                     case "YY02":
                         if (dt.Rows[0]["Seg10"].ToString().ToUpper() == "Y")
                         { lblMSG.Text = "已失效！"; }
+                        RTB_Material_Mark.Text = "";
                         RTB_Material_Name.Text = dt.Rows[0]["Seg12"].ToString();
                         RTB_Mat_Unit.Text = dt.Rows[0]["Seg7"].ToString();
                         RTB_Rough_Size.Text = "";
@@ -152,6 +155,7 @@ namespace mms.MaterialApplicationCollar
                         RTB_Mat_Unit.Text = dt.Rows[0]["Seg7"].ToString();
                         RTB_Rough_Size.Text = "";
                         RTB_Rough_Spec.Text = dt.Rows[0]["Seg14"].ToString();
+                        RTB_Material_Tech_Condition.Text = dt.Rows[0]["SEG16"].ToString();
                         break;
                     case "YY06":
                         if (dt.Rows[0]["Seg10"].ToString().ToUpper() == "Y")
@@ -176,6 +180,7 @@ namespace mms.MaterialApplicationCollar
                         RTB_Mat_Unit.Text = dt.Rows[0]["Seg7"].ToString();
                         RTB_Rough_Size.Text = "";
                         RTB_Rough_Spec.Text = dt.Rows[0]["Seg14"].ToString();
+                
                         break;
                     case "YY09":
                         if (dt.Rows[0]["Seg10"].ToString().ToUpper() == "Y")
@@ -269,7 +274,7 @@ namespace mms.MaterialApplicationCollar
             K2BLL bll = new K2BLL();
             var result = bll.StartNewProcess(id);
 
-            if (result == "")
+            if (result != "")
             {
                 strSQL = " Update MaterialApplication set AppState = '2' where ID = '" + id + "'";
                 strSQL +=
@@ -280,14 +285,14 @@ namespace mms.MaterialApplicationCollar
                 DBI.Execute(strSQL);
                 RadNotificationAlert.Text = "申请成功！进入流程平台";
                 RadNotificationAlert.Show();
-                Clear();     
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "info", "CloseWindow();", true);
             }
             else
             {
-                var db = new MMSDbDataContext();
-                var ma = db.MaterialApplication.SingleOrDefault(p => p.Id.ToString() == id);
+              //  var db = new MMSDbDataContext();
+             //   var ma = db.MaterialApplication.SingleOrDefault(p => p.Id.ToString() == id);
                // ma.Is_Del = true;
-                db.SubmitChanges();
+               // db.SubmitChanges();
                 RadNotificationAlert.Text = "提交失败！<br />" + result;
                 RadNotificationAlert.Show();
             }
@@ -521,7 +526,7 @@ namespace mms.MaterialApplicationCollar
         protected void RB_Search_Click(object sender, EventArgs e)
         {
             string strSQL = "select * from GetCommItem_T_Item where SEG10 = 'N'";
-            string Material_Name = RTB_Material_Name1.Text.Trim();      
+            string Material_Name = RTB_MaterialName.Text.Trim();      
             string Material_Paihao = RTB_Material_Paihao.Text.Trim();
             string Material_Guige = RTB_Material_Guige.Text.Trim();
             string Material_Biaozhun = RTB_Material_Biaozhun.Text.Trim();

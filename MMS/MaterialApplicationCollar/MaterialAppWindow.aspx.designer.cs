@@ -274,13 +274,13 @@ namespace mms.MaterialApplicationCollar {
         protected global::System.Web.UI.WebControls.Label lbl_Rough_Spec;
         
         /// <summary>
-        /// lbl_Mat_Rough_Weight 控件。
+        /// lbl_Rough_Size 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_Mat_Rough_Weight;
+        protected global::System.Web.UI.WebControls.Label lbl_Rough_Size;
         
         /// <summary>
         /// lbl_Mat_Unit 控件。
@@ -292,13 +292,13 @@ namespace mms.MaterialApplicationCollar {
         protected global::System.Web.UI.WebControls.Label lbl_Mat_Unit;
         
         /// <summary>
-        /// lbl_Rough_Size 控件。
+        /// lbl_Mat_Rough_Weight 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_Rough_Size;
+        protected global::System.Web.UI.WebControls.Label lbl_Mat_Rough_Weight;
         
         /// <summary>
         /// RDDL_DiaoDu 控件。

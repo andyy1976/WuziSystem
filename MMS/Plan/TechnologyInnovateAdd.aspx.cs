@@ -173,7 +173,7 @@ namespace mms.Plan
             mta.Certification = Convert.ToInt32(RadComboBoxCertification.SelectedValue);
             mta.Unit_Price = Convert.ToDecimal(span_Unit_Price.InnerText);
             mta.Sum_Price = Convert.ToDecimal(span_Sum_Price.InnerText);
-            mta.Submit_Type = 2;//1－工艺试验件；2－技术创新
+            mta.Submit_Type = 2;//1－工艺试验件；2－技术创新课题
             SaveTechnologyNoSubmit(mta);
             txt_ItemCode1.Text = "";
             txt_Drawing_No.Text = "";
@@ -265,7 +265,7 @@ namespace mms.Plan
                 }
                 else
                 {
-                    strSQL = @"exec Proc_Add_M_Demand_Plan_List_Technology " + userid + ",'" + mta.TaskCode + "',0,0,2,0,''";//1－工艺试验件；2－技术创新
+                    strSQL = @"exec Proc_Add_M_Demand_Plan_List_Technology " + userid + ",'" + mta.TaskCode + "',0,0,2,0,''";//1－工艺试验件；2－技术创新课题
                     DataTable dt = DBI.Execute(strSQL, true);
                     if (dt.Rows.Count == 1)
                     {
@@ -341,7 +341,7 @@ namespace mms.Plan
                 if (MDPId != "" && MDPId != null)
                 {
                     int userid = Convert.ToInt32(Session["UserId"].ToString());
-                    string strSQL = "select * from V_M_Technology_Apply where Submit_Type=2 and Is_Submit=0 and User_ID=" + userid + " and MDPId=" + MDPId;//1－工艺试验件；2－技术创新
+                    string strSQL = "select * from V_M_Technology_Apply where Submit_Type=2 and Is_Submit=0 and User_ID=" + userid + " and MDPId=" + MDPId;//1－工艺试验件；2－技术创新课题；3-生产备料
                     dt = DBI.Execute(strSQL, true);
                 }
                 return dt;

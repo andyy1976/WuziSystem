@@ -61,7 +61,7 @@
                             <td><telerik:RadDropDownList ID="RDDL_TaskType" runat="server" Width="120px">
                                 <Items>
                                     <telerik:DropDownListItem Value="" Text="全部" />
-                                    <telerik:DropDownListItem Value="0" Text="型号计划任务" />
+                                    <telerik:DropDownListItem Value="0" Text="型号投产计划任务" />
                                     <telerik:DropDownListItem Value="1" Text="工艺试验任务" />
                                     <telerik:DropDownListItem Value="2" Text="创新课题任务" />
                                     <telerik:DropDownListItem Value="3" Text="车间备料任务" />
@@ -131,7 +131,7 @@
                             <td><telerik:RadDropDownList ID="RDDL_TaskTypeRco" runat="server" Width="120px">
                                 <Items>
                                     <telerik:DropDownListItem Value="" Text="全部" />
-                                    <telerik:DropDownListItem Value="0" Text="型号计划任务" />
+                                    <telerik:DropDownListItem Value="0" Text="型号投产计划任务" />
                                     <telerik:DropDownListItem Value="1" Text="工艺试验任务" />
                                     <telerik:DropDownListItem Value="2" Text="创新课题任务" />
                                     <telerik:DropDownListItem Value="3" Text="车间备料任务" />

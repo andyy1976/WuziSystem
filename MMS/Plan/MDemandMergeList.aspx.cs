@@ -247,8 +247,16 @@ namespace mms.Plan
             string MDPLID = SaveMergeInfo();
             try
             {
-                Convert.ToDouble(MDPLID);
-                Response.Redirect("/Plan/MDemandMergeListState.aspx?MDPID=" + MDPLID);
+                if (MDPLID == "" || MDPLID == null)
+                {
+                    RadNotificationAlert.Text = "系统超时，请重新登录";
+                    RadNotificationAlert.Show();
+                }
+                else
+                {
+                    Convert.ToDouble(MDPLID);
+                    Response.Redirect("/Plan/MDemandMergeListState.aspx?MDPID=" + MDPLID);
+                }
             }
             catch (Exception ex)
             {

@@ -111,6 +111,12 @@
                     $find("<%= RadAjaxManager1.ClientID %>").ajaxRequest("Rebind");
                 }
             }
+
+            function refreshGrid1(arg) {
+                if (!arg) {
+                    $find("<%= RadAjaxManager1.ClientID %>").ajaxRequest("Rebind1");
+                }
+            }
         </script>
     </telerik:RadCodeBlock>
     <asp:HiddenField ID="HF_DeptCode" runat="server" />
@@ -124,10 +130,11 @@
         类型：<telerik:RadDropDownList ID="RDDL_Type" runat="server" Width="100px">
             <Items>
                 <telerik:DropDownListItem Value="" Text="全部" />
-                <telerik:DropDownListItem Value="0" Text="型号" />
+                <telerik:DropDownListItem Value="0" Text="型号投产" />
                 <telerik:DropDownListItem Value="1" Text="试验件" />
-                <telerik:DropDownListItem Value="2" Text="课题" />
-                <telerik:DropDownListItem Value="3" Text="车间" />
+                <telerik:DropDownListItem Value="2" Text="技术创新" />
+                <telerik:DropDownListItem Value="3" Text="生产备料" />
+                <telerik:DropDownListItem Value="4" Text="无需求" />
             </Items>
         </telerik:RadDropDownList>
         申请时间：<telerik:RadDatePicker ID="RDPStart" runat="server" Width="100px"></telerik:RadDatePicker>
@@ -237,5 +244,8 @@
     </telerik:RadWindowManager>
     <telerik:RadNotification ID="RadNotificationAlert" runat="server" Text="" Position="Center"
         AutoCloseDelay="4000" Width="300" Title="提示" EnableRoundedCorners="true">
+    </telerik:RadNotification>
+     <telerik:RadNotification ID="RadNotificationAlert1" runat="server" Text="申请成功！进入流程平台" Position="Center"
+        AutoCloseDelay="4000" Width="500" Title="提示" EnableRoundedCorners="true">
     </telerik:RadNotification>
 </asp:Content>

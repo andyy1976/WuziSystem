@@ -107,6 +107,14 @@
                     $("#<%=RTB_Remark.ClientID%>").focus();
                 });
             });
+            function CloseWindow(args) {
+                var oWindow = null;
+                if (window.radWindow) oWindow = window.radWindow;
+                else if (window.frameElement.radWindow) oWindow = window.frameElement.radWindow;
+                var oArg = new Object();
+                oWindow.BrowserWindow.refreshGrid(args);
+                oWindow.close(oArg);
+            }
             var AppId;
             function confirmWindow(sender, args) {
                 var win = $find("<%=confirmWindow.ClientID%>");
@@ -161,7 +169,7 @@
             <table id="table2" style="margin: 0px auto; text-align: left; font-size: 13px; border: solid 1px #ccc; padding: 10px;">
                 <tr>
                     <th colspan="6" style="text-align: center;">
-                        <asp:Label ID="lbltitle" runat="server" Font-Size="22px">无需求计划的领料申请单</asp:Label>
+                        <asp:Label ID="lbltitle" runat="server" Font-Size="22px">无需求物料申请</asp:Label>
                     </th>
                 </tr>
                 <tr>
@@ -262,36 +270,29 @@
                     
                     </td>
 
-                    <td style="text-align: right;">材料名称：</td>
-                    <td>
-                        <telerik:RadTextBox ID="RTB_Material_Name" runat="server"></telerik:RadTextBox></td>
-                    <td style="text-align: right;">牌号：</td>
-                    <td>
-                        <telerik:RadTextBox ID="RTB_Material_Mark" runat="server"></telerik:RadTextBox></td>
+                    <td style="text-align: right;">物资名称：</td>
+                    <td> <telerik:RadTextBox ID="RTB_Material_Name" runat="server"></telerik:RadTextBox></td>
+                    <td style="text-align: right;">物资牌号：</td>
+                    <td><telerik:RadTextBox ID="RTB_Material_Mark" runat="server"></telerik:RadTextBox></td>
                 </tr>
                 <tr>
-                    <td style="text-align: right;">状态：</td>
-                    <td>
-                        <telerik:RadTextBox ID="RTB_CN_Material_State" runat="server"></telerik:RadTextBox></td>
-                    <td style="text-align: right;">技术条件：</td>
-                    <td>
-                        <telerik:RadTextBox ID="RTB_Material_Tech_Condition" runat="server"></telerik:RadTextBox></td>
+                    <td style="text-align: right;">供应状态：</td>
+                    <td><telerik:RadTextBox ID="RTB_CN_Material_State" runat="server"></telerik:RadTextBox></td>
+                    <td style="text-align: right;">采用标准：</td>
+                    <td><telerik:RadTextBox ID="RTB_Material_Tech_Condition" runat="server"></telerik:RadTextBox></td>
 
-                    <td style="text-align: right;">规格：</td>
-                    <td>
-                        <telerik:RadTextBox ID="RTB_Rough_Spec" runat="server"></telerik:RadTextBox></td>
+                    <td style="text-align: right;">胚料规格：</td>
+                    <td><telerik:RadTextBox ID="RTB_Rough_Spec" runat="server"></telerik:RadTextBox></td>
                 </tr>
                 <tr>
-                    <td style="text-align: right;">单件定额质量：</td>
-                    <td>
-                        <telerik:RadTextBox ID="RTB_Mat_Rough_Weight" runat="server"></telerik:RadTextBox></td>
+                    <td style="text-align: right;">单个零件尺寸：</td>
+                    <td><telerik:RadTextBox ID="RTB_Rough_Size" runat="server"></telerik:RadTextBox></td>
 
                     <td style="text-align: right;">计量单位：</td>
-                    <td>
-                        <telerik:RadTextBox ID="RTB_Mat_Unit" runat="server"></telerik:RadTextBox></td>
-                    <td style="text-align: right;">单个零件尺寸：</td>
-                    <td>
-                        <telerik:RadTextBox ID="RTB_Rough_Size" runat="server"></telerik:RadTextBox></td>
+                    <td><telerik:RadTextBox ID="RTB_Mat_Unit" runat="server"></telerik:RadTextBox></td>
+                  
+                    <td style="text-align: right;">单件定额质量：</td>
+                    <td><telerik:RadTextBox ID="RTB_Mat_Rough_Weight" runat="server"></telerik:RadTextBox></td>
                 </tr>
                 <tr>
                     <th colspan="6" style="text-align: left; font-size: 14px; border-bottom: solid 1px #ccc;">业务审批流程</th>
@@ -344,7 +345,7 @@
                     </tr>
                     <tr>
                         <td style="width:50px;">物资名称：</td>
-                        <td><telerik:RadTextBox ID="RTB_Material_Name1" runat="server" Width="100px"></telerik:RadTextBox></td>
+                        <td><telerik:RadTextBox ID="RTB_MaterialName" runat="server" Width="100px"></telerik:RadTextBox></td>
                         <td style="width:70px;">物资牌号：</td>
                         <td><telerik:RadTextBox ID="RTB_Material_Paihao" runat="server" Width="100px"></telerik:RadTextBox></td>
 
@@ -462,6 +463,6 @@
     </telerik:RadWindow>
     <%-- 删除弹出窗口--结束--%>
     <telerik:RadNotification ID="RadNotificationAlert" runat="server" Text="" Position="Center"
-        AutoCloseDelay="4000" Width="300" Title="提示" EnableRoundedCorners="true">
+        AutoCloseDelay="4000" Width="400" Title="提示" EnableRoundedCorners="true">
     </telerik:RadNotification>
 </asp:Content>

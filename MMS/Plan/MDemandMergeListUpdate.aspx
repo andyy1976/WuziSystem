@@ -82,7 +82,7 @@
             <asp:Panel ID="Panel1" runat="server" Width="100%" Height="100%">
                 <table class="table1" style="margin:0px auto; text-align:left;">
                     <tr>
-                        <th colspan="6" style="text-align:center; font-size:16px;">型号计划物资需求信息 </th>
+                        <th colspan="6" style="text-align:center; font-size:16px;">型号投产计划物资需求信息 </th>
                     </tr>
                     <tr>
                         <th colspan="6" style="text-align:left; border-bottom:1px #ccc solid;">物资信息</th>

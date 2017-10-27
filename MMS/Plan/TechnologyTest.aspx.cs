@@ -104,7 +104,7 @@ namespace mms.Plan
                     //    case "2":
                     //        this.span_title.InnerHtml = title = "技术创新课题"; break;
                     //    case "3":
-                    //        this.span_title.InnerHtml = title = "辅料"; break;
+                    //        this.span_title.InnerHtml = title = "生产备料"; break;
                     //}
                     //Page.Title = title;
 

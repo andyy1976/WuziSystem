@@ -31,18 +31,18 @@ namespace mms.Plan
                         case "1":
                             //Common.CheckPermission(Session["UserName"].ToString(), "TechnologyTestListChange1", this.Page);
                             title = "新增工艺试验件";
-                            HiddenField.Value = "物资需求-->天津公司工艺试验件任务";  
+                            HiddenField.Value = "物资需求-->工艺试验件任务";  
                             break;
 
                         case "2":
                             //Common.CheckPermission(Session["UserName"].ToString(), "TechnologyTestListChange2", this.Page);
                             title = "新增技术创新课题";
-                            HiddenField.Value = "物资需求-->天津公司技术创新课题任务";
+                            HiddenField.Value = "物资需求-->技术创新课题任务";
                             break;
                         case "3":
                             //Common.CheckPermission(Session["UserName"].ToString(), "TechnologyTestListChange3", this.Page);
-                            title = "新增车间备料需求";
-                            HiddenField.Value = "物资需求-->天津公司物资备料任务";
+                            title = "新增生产备料";
+                            HiddenField.Value = "物资需求-->生产备料任务";
                             break;
                     }
                 }
@@ -83,14 +83,14 @@ namespace mms.Plan
                     switch (Request.QueryString["t"].ToString())
                     {
                         case "1":
-                            lbltop.Text = "天津公司工艺试验件任务";
+                            lbltop.Text = "工艺试验件任务";
                             break;
 
                         case "2":
-                            lbltop.Text = "天津公司技术创新课题任务";
+                            lbltop.Text = "技术创新课题任务";
                             break;
                         case "3":
-                            lbltop.Text = "天津公司车间备料任务";
+                            lbltop.Text = "生产备料任务";
                             break;
                     }
                 }

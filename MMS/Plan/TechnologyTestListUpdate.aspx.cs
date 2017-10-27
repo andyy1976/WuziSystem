@@ -38,7 +38,7 @@ namespace mms.Plan
                     {
                         case "1":
                             title = "工艺试验件需求信息";
-                            HiddenField.Value = "天津公司工艺试验件任务-->新增工艺试验件";
+                            HiddenField.Value = "工艺试验件任务-->物资需求列表";
 
                             strSQL = " select UserName, DomainAccount from V_Get_Sys_User_byRole where Isdel = 'false' and DomainAccount != '' and DomainAccount is not null and RoleName like '车间%' + '领导' and Is_Del ='false'";
 
@@ -56,7 +56,7 @@ namespace mms.Plan
                             break;
                         case "2":
                             title = "技术创新课题需求信息";
-                            HiddenField.Value = "天津公司技术创新课题任务-->技术创新课题列表";
+                            HiddenField.Value = "技术创新课题任务-->物资需求列表";
                           //  strSQL = "select UserName, DomainAccount from Sys_UserInfo_PWD" + 
                              //   " where  ID in (select Userid from Sys_UserInRole where RoleID in (select ID from Sys_RoleInfo where RoleName like '%工艺处%技术%创新%主管%'))";
 
@@ -75,8 +75,8 @@ namespace mms.Plan
                             lbl_ApproveAccount2.Text = "工艺技术处课题技术主管";
                             break;
                         case "3":
-                            title = "车间备料需求信息";
-                            HiddenField.Value = "天津公司车间备料任务-->物资需求列表";
+                            title = "生产备料需求信息";
+                            HiddenField.Value = "生产备料任务-->物资需求列表";
                             trAttribute4.Visible = true;
                            // strSQL = "select UserName, DomainAccount from Sys_UserInfo_PWD" + 
                                // " where  ID in (select Userid from Sys_UserInRole where RoleID in (select ID from Sys_RoleInfo where RoleName like '%物资%计划员%'))";
@@ -359,7 +359,9 @@ namespace mms.Plan
                 || Special_Needs != dt.Rows[0]["Special_Needs"].ToString() || Urgency_Degre != dt.Rows[0]["Urgency_Degre"].ToString()
                 || Secret_Level != dt.Rows[0]["Secret_Level"].ToString() || Stage != dt.Rows[0]["Stage"].ToString() || Use_Des != dt.Rows[0]["Use_Des"].ToString()
                 || Shipping_Address != dt.Rows[0]["Shipping_Address"].ToString() || Certification != dt.Rows[0]["Certification"].ToString()
-                || Attribute4 != dt.Rows[0]["Attribute4"].ToString() || Material_Name != dt.Rows[0]["Material_Name"].ToString())
+                || Attribute4 != dt.Rows[0]["Attribute4"].ToString() || Material_Name != dt.Rows[0]["Material_Name"].ToString()
+                || Unit_Price != dt.Rows[0]["Unit_Price"].ToString())
+
             {
                 if (Special_Needs != dt.Rows[0]["Special_Needs"].ToString() && Special_Needs == "")
                 {
@@ -465,7 +467,7 @@ namespace mms.Plan
                     return;
                 }
                 string approveAccount3 = null;
-                if (Request.QueryString["SubmitType"].ToString() == "3")
+                if (this.ViewState["Submit_Type"].ToString() == "3")
                 {
                     approveAccount3 = RDDL_ApproveAccount3.SelectedValue;
                     if (approveAccount3 == "")

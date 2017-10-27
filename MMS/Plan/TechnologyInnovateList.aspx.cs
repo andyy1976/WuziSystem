@@ -73,7 +73,7 @@ namespace mms.Plan
                 string strSQL = "";
                 string UserName = Session["UserName"].ToString();
                 if (UserName == "Admin" || UserName == "admin")
-                    strSQL = "select (ROW_NUMBER() OVER(ORDER BY ID)) AS rownum,* from V_M_Demand_Plan_List where Submit_Type=2";//1－技术创新课题；2－技术创新
+                    strSQL = "select (ROW_NUMBER() OVER(ORDER BY ID)) AS rownum,* from V_M_Demand_Plan_List where Submit_Type=2";//1－工艺试验件；2－技术创新课题；3-生产备料
                 else
                     strSQL = "select (ROW_NUMBER() OVER(ORDER BY ID)) AS rownum,* from V_M_Demand_Plan_List where Submit_Type=2 and UserAccount='" + UserName + "'";
                 return DBI.Execute(strSQL, true);

@@ -27,7 +27,7 @@ namespace mms.MaterialApplicationCollar
                 HFType.Value = Request.QueryString["Type"].ToString();
                 if (HFType.Value == "0")
                 {
-                    lbltitle.Text = "型号物资领用申请";
+                    lbltitle.Text = "型号投产物资领用申请";
                 }
                 else if (HFType.Value == "1")
                 {
@@ -39,11 +39,11 @@ namespace mms.MaterialApplicationCollar
                 }
                 else if (HFType.Value == "3")
                 {
-                    lbltitle.Text = "车间物资领用申请";
+                    lbltitle.Text = "生产备料物资领用申请";
                 }
                 else if (HFType.Value == "4")
                 {
-                    lbltitle.Text = "无需求计划物资领用申请";
+                    lbltitle.Text = "无需求物料申请";
                 }
 
                 //  strSQL = " select * from Sys_UserInfo_PWD where Isdel = 'false' and DomainAccount != '' and DomainAccount is not null and Dept = (select Dept from Sys_UserInfo_PWD where ID = '" + Session["UserId"].ToString() + "')" +
@@ -59,10 +59,10 @@ namespace mms.MaterialApplicationCollar
                 //新增
                 if (Request.QueryString["MAID"] == null)
                 {
-                    // strSQL = " select * from Sys_UserInfo_PWD where ID = '" + Session["UserId"].ToString() + "'";
-                    //DataTable dtuserinfo = DBI.Execute(strSQL, true);
-                    RTB_Applicant.Text = dtdd.Rows[0]["UserName"].ToString();
-                    RTB_ContactInformation.Text = dtdd.Rows[0]["Phone"].ToString();
+                    strSQL = " select * from Sys_UserInfo_PWD where ID = '" + Session["UserId"].ToString() + "'";
+                    DataTable dtuserinfo = DBI.Execute(strSQL, true);
+                    RTB_Applicant.Text = dtuserinfo.Rows[0]["UserName"].ToString();
+                    RTB_ContactInformation.Text = dtuserinfo.Rows[0]["Phone"].ToString();
                 }
                 //  strSQL = " select * from Sys_UserInfo_PWD where IsDel = 'false' and DomainAccount != '' and DomainAccount is not null" +
                 //    " and ID in (select UserId from Sys_UserInRole where RoleID in (select ID from Sys_RoleInfo where RoleName like '%型%号%计%划%员%'))";
@@ -342,16 +342,21 @@ namespace mms.MaterialApplicationCollar
 
                 K2BLL k2Bll = new K2BLL();
                 var result = k2Bll.StartNewProcess(HFMAID.Value);
-                if (result == "")
+                if (result != "")
                 {
                     strSQL =
                         " Insert into MaterialApplication_Log (MaterialApplicationId, Operation_UserID, Operation_Time, Operation_Remark)" +
                         " values('" + HFMAID.Value + "','" + Session["UserId"].ToString() + "',GetDate() " +
                         " ,'进入流程平台:调度员：' + '" + diaodu + "' + '型号计划员：' + '" + xinghao + "' +'物资计划员：' + '" + wuzi + "')";
                     DBI.Execute(strSQL);
-                    RadNotificationAlert.Text = "申请成功！进入流程平台";
-                    RadNotificationAlert.Show();
+                   // RadNotificationAlert.Text = "申请成功！进入流程平台";
+                  //  RadNotificationAlert.Show();
+                 // _timer = new System.Timers.Timer(5000);
+             //   _timer.Elapsed += new System.Timers.ElapsedEventHandler(_timer_Elapsed);
+             //   _timer.Enabled = true;
+            //    _timer.Start();
                     Page.ClientScript.RegisterStartupScript(this.GetType(), "info", "CloseWindow();", true);
+                    
                 }
                 else
                 {
@@ -366,6 +371,12 @@ namespace mms.MaterialApplicationCollar
                 RadNotificationAlert.Text = "失败！" + ex.Message.ToString();
                 RadNotificationAlert.Show();
             }
+        }
+     //   private System.Timers.Timer _timer = null;
+        protected void _timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        {
+          //  _timer.Stop();
+            Page.ClientScript.RegisterStartupScript(this.GetType(), "info", "CloseWindow();", true);
         }
     }
 }

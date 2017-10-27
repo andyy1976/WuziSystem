@@ -42,7 +42,7 @@
                         <telerik:RadDropDownList ID="RDDL_Task" runat="server" Width="120" AppendDataBoundItems="true">
                             <Items>
                                 <telerik:DropDownListItem Value="" Text="全部" />
-                                <telerik:DropDownListItem Value="0" Text="型号计划任务" />
+                                <telerik:DropDownListItem Value="0" Text="型号投产计划任务" />
                                 <telerik:DropDownListItem Value="1" Text="工艺试验件任务" />
                                 <telerik:DropDownListItem Value="2" Text="技术创新课题任务" />
                                 <telerik:DropDownListItem Value="3" Text="车间备料任务"/>

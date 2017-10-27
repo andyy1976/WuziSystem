@@ -47,6 +47,7 @@ namespace mms.Plan
                     InitTable.Columns.Add("ItemCode1");
                     InitTable.Columns.Add("DemandNumSum");
                     InitTable.Columns.Add("NumCasesSum");
+                    InitTable.Columns.Add("Mat_Rough_Weight");
                     InitTable.Columns.Add("Mat_Unit");
                     InitTable.Columns.Add("Quantity");
                     InitTable.Columns.Add("Rough_Size");
@@ -103,7 +104,7 @@ namespace mms.Plan
                         case "1":
                             title = "工艺试验件需求申请";
                             title1 = "工艺试验件未提交申请";
-                            HiddenField.Value = "天津公司工艺试验件任务-->新增工艺试验件";
+                            HiddenField.Value = "工艺试验件任务-->新增工艺试验件";
 
                             strSQL = " select UserName, DomainAccount from V_Get_Sys_User_byRole where Isdel = 'false' and DomainAccount != '' and DomainAccount is not null and RoleName like '车间%' + '领导' and Is_Del ='false'";
 
@@ -123,7 +124,7 @@ namespace mms.Plan
                         case "2":
                             title = "技术创新课题需求申请";
                             title1 = "技术创新课题未提交申请";
-                            HiddenField.Value = "天津公司技术创新课题任务-->技术创新课题列表";
+                            HiddenField.Value = "技术创新课题任务-->技术创新课题列表";
                             lblTaskSubject.Text = "课题号：";
                                                       
                             strSQL = " select * from V_Get_Sys_User_byRole where Isdel = 'false' and DomainAccount != '' and DomainAccount is not null and RoleName like '%车%间%调%度%员%' and Is_Del ='false'";
@@ -142,9 +143,9 @@ namespace mms.Plan
 
                             break;
                         case "3":
-                            title = "车间备料物资需求申请";
-                            title1 = "车间备料物资需求未提交申请";
-                            HiddenField.Value = "天津公司备料任务-->新增物资";
+                            title = "生产备料物资需求申请";
+                            title1 = "生产备料物资需求未提交申请";
+                            HiddenField.Value = "生产备料任务-->新增物资";
                             trAttribute4.Visible = true;
 
                             strSQL = " select * from V_Get_Sys_User_byRole where Isdel = 'false' and DomainAccount != '' and DomainAccount is not null and RoleName like '%车%间%调%度%员%' and Is_Del ='false'";
@@ -370,6 +371,7 @@ namespace mms.Plan
             mta.Quantity = Convert.ToInt32(txt_NumCasesSum.Text);//txt_Quantity
             mta.Rough_Size = txt_Rough_Size.Text;//span_Rough_Size.InnerText;
             mta.Rough_Spec = txt_Rough_Spec.Text;//span_Rough_Spec.InnerText;
+            mta.Mat_Rough_Weight = RTB_Mat_Rough_Weight.Text;
             mta.Special_Needs = rtb_SpecialNeeds.Text;
             mta.Urgency_Degre = RadComboBoxUrgencyDegre.SelectedValue;
             mta.Secret_Level = RadComboBoxSecretLevel.SelectedValue;
@@ -398,16 +400,21 @@ namespace mms.Plan
                 mta.Sum_Price = Convert.ToDecimal(span_Sum_Price.Text);
             }
 
-            mta.Submit_Type = Convert.ToInt32(this.ViewState["submit_type"].ToString());//1－工艺试验件；2－技术创新；3－车间备料
-            mta.Material_Name = RTB_MaterialName.Text.Trim();
+            mta.Submit_Type = Convert.ToInt32(this.ViewState["submit_type"].ToString());//1－工艺试验件；2－技术创新课题；3－生产备料
+            mta.Material_Name = RTB_Material_Name.Text.Trim();
 
             SaveTechnologyNoSubmit(mta);
 
-            RTB_MaterialName.Text = "";
+            RTB_Material_Name.Text = "";
+            RTB_Material_Mark.Text = "";
+            RTB_CN_Material_State.Text = "";
+            RTB_Material_Tech_Condition.Text = "";
+
             txt_ItemCode1.Text = "";
             txt_Drawing_No.Text = "";
             txt_NumCasesSum.Text = "";
             txt_DemandNumSum.Text = "";
+            RTB_Mat_Rough_Weight.Text = "";
             txt_Mat_Unit.Text = "";//span_Mat_Unit.InnerHtml = "";
             //txt_Quantity.Text = "";
             txt_Rough_Size.Text = "";//span_Rough_Size.InnerHtml = "";
@@ -439,7 +446,7 @@ namespace mms.Plan
                 strSQL = @"exec Proc_Save_Technology_Apply_NoSubmit '" + mta.MDPId + "','" + mta.Drawing_No + "','" +
                          mta.TaskCode + "','" +
                          mta.MaterialDept + "','" + mta.ItemCode1 + "','" + mta.DemandNumSum + "','" + mta.NumCasesSum +
-                         "','" +
+                         "','" +mta.Mat_Rough_Weight+"','"+
                          mta.Mat_Unit + "','" + mta.Quantity + "','" + mta.Rough_Size + "','" + mta.Rough_Spec + "','" +
                          mta.DemandDate + "','" + mta.Special_Needs + "','" + mta.Urgency_Degre + "','" +
                          mta.Secret_Level + "','" +
@@ -483,6 +490,7 @@ namespace mms.Plan
             public DateTime DemandDate { get; set; }
             public string Rough_Size { get; set; }
             public string Rough_Spec { get; set; }
+            public string Mat_Rough_Weight { get; set; }
             public string MaterialsDes { get; set; }
             public string Special_Needs { get; set; }
             public string Urgency_Degre { get; set; }
@@ -532,7 +540,7 @@ namespace mms.Plan
             }
             catch (Exception ex)
             {
-                throw new Exception((Submit_Type == "1" ? "获取工艺试验件清单信息出错" : (Submit_Type == "2" ? "获取技术创新课题清单信息出错" : "获取车间备料清单信息出错")) +
+                throw new Exception((Submit_Type == "1" ? "获取工艺试验件清单信息出错" : (Submit_Type == "2" ? "获取技术创新课题清单信息出错" : "获取生产备料清单信息出错")) +
                                     ex.Message.ToString());
             }
         }
@@ -1159,137 +1167,102 @@ namespace mms.Plan
                     lblMSG.Text = "已失效！";
                 }
                 string Seg5 = dt.Rows[0]["Seg5"].ToString().Substring(0, 4);
+                RTB_Material_Mark.Text = dt.Rows[0]["SEG13"].ToString();
+                RTB_CN_Material_State.Text = "";
+                RTB_Material_Tech_Condition.Text = "";
                 switch (Seg5)
                 {
                     case "YY01":
-                        RTB_MaterialName.Text = dt.Rows[0]["Seg21"].ToString();
+                        RTB_Material_Mark.Text = "";
+                        RTB_Material_Name.Text = dt.Rows[0]["Seg21"].ToString();
                         txt_Mat_Unit.Text = dt.Rows[0]["Seg7"].ToString();
                         txt_Rough_Size.Text = "";
                         txt_Rough_Spec.Text = dt.Rows[0]["Seg13"].ToString();
                         RTB_Unit_Price.Text = dt.Rows[0]["Seg31"].ToString();
-                        try
-                        {
-                            Convert.ToDouble(RTB_Unit_Price.Text);
-                            Convert.ToDouble(txt_DemandNumSum.Text);
-                            span_Sum_Price.Text = (Convert.ToDouble(RTB_Unit_Price.Text) * Convert.ToDouble(txt_DemandNumSum.Text)).ToString();
-                        }
-                        catch { span_Sum_Price.Text = "0"; }
-
                         break;
                     case "YY02":
-                        RTB_MaterialName.Text = dt.Rows[0]["Seg12"].ToString();
+                        RTB_Material_Mark.Text = "";
+                        RTB_Material_Name.Text = dt.Rows[0]["Seg12"].ToString();
                         txt_Mat_Unit.Text = dt.Rows[0]["Seg7"].ToString();
                         txt_Rough_Size.Text = "";
                         txt_Rough_Spec.Text = dt.Rows[0]["Seg15"].ToString();
                         RTB_Unit_Price.Text = dt.Rows[0]["Seg25"].ToString();
-                        try
-                        {
-                            Convert.ToDouble(RTB_Unit_Price.Text);
-                            Convert.ToDouble(txt_DemandNumSum.Text);
-                            span_Sum_Price.Text = (Convert.ToDouble(RTB_Unit_Price.Text) * Convert.ToDouble(txt_DemandNumSum.Text)).ToString();//span_Sum_Price.InnerHtml
-                        }
-                        catch { span_Sum_Price.Text = "0"; }//span_Sum_Price.InnerHtml
                         break;
                     case "YY03":
-                        RTB_MaterialName.Text = dt.Rows[0]["Seg12"].ToString();
+                        RTB_Material_Name.Text = dt.Rows[0]["Seg12"].ToString();
                         txt_Mat_Unit.Text = dt.Rows[0]["Seg7"].ToString();
                         txt_Rough_Size.Text = dt.Rows[0]["Seg16"].ToString();
                         txt_Rough_Spec.Text = dt.Rows[0]["Seg15"].ToString();
-                        RTB_Unit_Price.Text = "";
+                        RTB_Unit_Price.Text = "0";
                         span_Sum_Price.Text = "0";//span_Sum_Price.InnerHtml = "0";
                         break;
                     case "YY04":
-                        RTB_MaterialName.Text = dt.Rows[0]["Seg12"].ToString();
+                        RTB_Material_Name.Text = dt.Rows[0]["Seg12"].ToString();
                         txt_Mat_Unit.Text = dt.Rows[0]["Seg7"].ToString();
                         txt_Rough_Size.Text = "";
                         txt_Rough_Spec.Text = dt.Rows[0]["Seg14"].ToString();
                         RTB_Unit_Price.Text = dt.Rows[0]["Seg23"].ToString();
-                        try
-                        {
-                            Convert.ToDouble(RTB_Unit_Price.Text);
-                            Convert.ToDouble(txt_DemandNumSum.Text);
-                            span_Sum_Price.Text = (Convert.ToDouble(RTB_Unit_Price.Text) * Convert.ToDouble(txt_DemandNumSum.Text)).ToString();
-                        }
-                        catch { span_Sum_Price.Text = "0"; }
                         break;
                     case "YY05":
-                        RTB_MaterialName.Text = dt.Rows[0]["Seg12"].ToString();
+                        RTB_Material_Name.Text = dt.Rows[0]["Seg12"].ToString();
                         txt_Mat_Unit.Text = dt.Rows[0]["Seg7"].ToString();
                         txt_Rough_Size.Text = "";
                         txt_Rough_Spec.Text = dt.Rows[0]["Seg14"].ToString();
                         RTB_Unit_Price.Text = dt.Rows[0]["Seg23"].ToString();
-                        try
-                        {
-                            Convert.ToDouble(RTB_Unit_Price.Text);
-                            Convert.ToDouble(txt_DemandNumSum.Text);
-                            span_Sum_Price.Text = (Convert.ToDouble(RTB_Unit_Price.Text) * Convert.ToDouble(txt_DemandNumSum.Text)).ToString();
-                        }
-                        catch { span_Sum_Price.Text = "0"; }
+                        RTB_Material_Tech_Condition.Text = dt.Rows[0]["SEG16"].ToString();
                         break;
                     case "YY06":
-                        RTB_MaterialName.Text = dt.Rows[0]["Seg12"].ToString();
+                        RTB_Material_Name.Text = dt.Rows[0]["Seg12"].ToString();
                         txt_Mat_Unit.Text = dt.Rows[0]["Seg7"].ToString();
                         txt_Rough_Size.Text = "";
                         txt_Rough_Spec.Text = dt.Rows[0]["Seg14"].ToString();
                         RTB_Unit_Price.Text = dt.Rows[0]["Seg23"].ToString();
-                        try
-                        {
-                            Convert.ToDouble(RTB_Unit_Price.Text);
-                            Convert.ToDouble(txt_DemandNumSum.Text);
-                            span_Sum_Price.Text = (Convert.ToDouble(RTB_Unit_Price.Text) * Convert.ToDouble(txt_DemandNumSum.Text)).ToString();
-                        }
-                        catch { span_Sum_Price.Text = "0"; }
                         break;
                     case "YY07":
-                        RTB_MaterialName.Text = dt.Rows[0]["Seg20"].ToString();
+                        RTB_Material_Name.Text = dt.Rows[0]["Seg20"].ToString();
                         txt_Mat_Unit.Text = dt.Rows[0]["Seg7"].ToString();
                         txt_Rough_Size.Text = "";
                         txt_Rough_Spec.Text = dt.Rows[0]["Seg14"].ToString();
                         RTB_Unit_Price.Text = dt.Rows[0]["Seg25"].ToString();
-                        try
-                        {
-                            Convert.ToDouble(RTB_Unit_Price.Text);
-                            Convert.ToDouble(txt_DemandNumSum.Text);
-                            span_Sum_Price.Text = (Convert.ToDouble(RTB_Unit_Price.Text) * Convert.ToDouble(txt_DemandNumSum.Text)).ToString();
-                        }
-                        catch { span_Sum_Price.Text = "0"; }
                         break;
                     case "YY08":
-                        RTB_MaterialName.Text = dt.Rows[0]["Seg12"].ToString();
+                        RTB_Material_Name.Text = dt.Rows[0]["Seg12"].ToString();
                         txt_Mat_Unit.Text = dt.Rows[0]["Seg7"].ToString();
                         txt_Rough_Size.Text = "";
                         txt_Rough_Spec.Text = dt.Rows[0]["Seg14"].ToString();
                         RTB_Unit_Price.Text = dt.Rows[0]["Seg21"].ToString();
-                        try
-                        {
-                            Convert.ToDouble(RTB_Unit_Price.Text);
-                            Convert.ToDouble(txt_DemandNumSum.Text);
-                            span_Sum_Price.Text = (Convert.ToDouble(RTB_Unit_Price.Text) * Convert.ToDouble(txt_DemandNumSum.Text)).ToString();
-                        }
-                        catch { span_Sum_Price.Text = "0"; }
                         break;
                     case "YY09":
-                        RTB_MaterialName.Text = dt.Rows[0]["Seg12"].ToString();
+                        RTB_Material_Name.Text = dt.Rows[0]["Seg12"].ToString();
                         txt_Mat_Unit.Text = dt.Rows[0]["Seg7"].ToString();
                         txt_Rough_Size.Text = "";
                         txt_Rough_Spec.Text = dt.Rows[0]["Seg14"].ToString();
                         RTB_Unit_Price.Text = dt.Rows[0]["Seg21"].ToString();
-                        try
-                        {
-                            Convert.ToDouble(RTB_Unit_Price.Text);
-                            Convert.ToDouble(txt_DemandNumSum.Text);
-                            span_Sum_Price.Text = (Convert.ToDouble(RTB_Unit_Price.Text) * Convert.ToDouble(txt_DemandNumSum.Text)).ToString();
-                        }
-                        catch { span_Sum_Price.Text = "0"; }
+                   
                         break;
                     default:
-                        RTB_MaterialName.Text = "";
+                        RTB_Material_Name.Text = "";
                         txt_Mat_Unit.Text = "";
                         txt_Rough_Size.Text = "";
                         txt_Rough_Spec.Text = "";
-                        RTB_Unit_Price.Text = "";
+                        RTB_Unit_Price.Text = "0";
                         span_Sum_Price.Text = "0";
                         break;
+                }
+                try
+                {
+
+                    if (txt_DemandNumSum.Text != "" && RTB_Unit_Price.Text!="")
+                    {
+                        Convert.ToDouble(RTB_Unit_Price.Text);
+                        Convert.ToDouble(txt_DemandNumSum.Text);
+                        span_Sum_Price.Text = (Convert.ToDouble(RTB_Unit_Price.Text) * Convert.ToDouble(txt_DemandNumSum.Text)).ToString();
+                    }
+                }
+                catch
+                { 
+                    span_Sum_Price.Text = "0";
+                    RTB_Unit_Price.Text = "0";
                 }
             }
             else
@@ -1302,7 +1275,6 @@ namespace mms.Plan
         {
             string value = RDDLMT.SelectedValue.ToString();
             string prefix = RDDLMT.SelectedText.ToString() + ".";
-            string strSQL = "";
 
             RDDLMT1.SelectedIndex = 0;
             RDDLMT2.SelectedIndex = 0;
@@ -1399,10 +1371,10 @@ namespace mms.Plan
         protected void RB_Search_Click(object sender, EventArgs e)
         {
             string strSQL = "select * from GetCommItem_T_Item where SEG10 = 'N'";
-            string Material_Name = RTB_Material_Name.Text.Trim();
-            string Material_Paihao = RTB_Material_Paihao.Text.Trim();
-            string Material_Guige = RTB_Material_Guige.Text.Trim();
-            string Material_Biaozhun = RTB_Material_Biaozhun.Text.Trim();
+            string Material_Name = RTB_MaterialName.Text.Trim();
+            string Material_Paihao = RTB_MaterialPaihao.Text.Trim();
+            string Material_Guige = RTB_MaterialGuige.Text.Trim();
+            string Material_Biaozhun = RTB_MaterialBiaozhun.Text.Trim();
             strSQL += " and SEG12 like '%" + Material_Name + "%'";
             strSQL += " and SEG13 like '%" + Material_Paihao + "%'";
 
@@ -1619,6 +1591,11 @@ namespace mms.Plan
                                        GridSource1.Columns[i].ColumnName = "NumCasesSum";
                                        columnscount++;
                                        break;
+                                case "单件定额质量":
+                                       GridSource1.Columns[i].ColumnName = "Mat_Rough_Weight";
+                                       columnscount++;
+                                       break;
+
                                    case "共计需求数量":
                                        GridSource1.Columns[i].ColumnName = "DemandNumSum";
                                        columnscount++;
@@ -1705,6 +1682,9 @@ namespace mms.Plan
 
                         GridSource1.Columns.Add("ID");
                         GridSource1.Columns.Add("Material_Name");
+                        GridSource1.Columns.Add("Material_Mark");
+                        GridSource1.Columns.Add("CN_Material_State");
+                        GridSource1.Columns.Add("Material_Tech_Condition");
                         GridSource1.Columns.Add("MAT_UNIT");
                         GridSource1.Columns.Add("Rough_Spec");
                       //  GridSource1.Columns.Add("Unit_Price");
@@ -1766,15 +1746,20 @@ namespace mms.Plan
             if (dt.Rows.Count > 0)
             {
                 string Seg5 = dt.Rows[0]["Seg5"].ToString().Substring(0, 4);
+                GridSource1.Rows[i]["Material_Mark"] = dt.Rows[0]["SEG13"].ToString();
+                GridSource1.Rows[i]["CN_Material_State"] = "";
+                GridSource1.Rows[i]["Material_Tech_Condition"] = "";
                 switch (Seg5)
                 {
                     case "YY01":
+                        GridSource1.Rows[i]["Material_Mark"] = "";
                         GridSource1.Rows[i]["Material_Name"] = dt.Rows[0]["Seg21"].ToString();
                         GridSource1.Rows[i]["MAT_UNIT"] = dt.Rows[0]["Seg7"].ToString();
                         GridSource1.Rows[i]["Rough_Spec"] = dt.Rows[0]["Seg13"].ToString();
                      //   GridSource1.Rows[i]["Unit_Price"] = dt.Rows[0]["Seg31"].ToString();
                         break;
                     case "YY02":
+                        GridSource1.Rows[i]["Material_Mark"] = "";
                         GridSource1.Rows[i]["Material_Name"] = dt.Rows[0]["Seg12"].ToString();
                         GridSource1.Rows[i]["MAT_UNIT"] = dt.Rows[0]["Seg7"].ToString();
                         GridSource1.Rows[i]["Rough_Spec"] = dt.Rows[0]["Seg15"].ToString();
@@ -1787,8 +1772,14 @@ namespace mms.Plan
                     //    GridSource1.Rows[i]["Unit_Price"] = "0";
                         GridSource1.Rows[i]["ROUGH_SIZE"] = dt.Rows[0]["Seg16"].ToString();
                         break;
-                    case "YY04":
+                
                     case "YY05":
+                        GridSource1.Rows[i]["Material_Tech_Condition"] = dt.Rows[0]["SEG16"].ToString();;
+                        GridSource1.Rows[i]["Material_Name"] = dt.Rows[0]["Seg12"].ToString();
+                        GridSource1.Rows[i]["MAT_UNIT"] = dt.Rows[0]["Seg7"].ToString();
+                        GridSource1.Rows[i]["Rough_Spec"] = dt.Rows[0]["Seg14"].ToString();
+                        break;
+                    case "YY04":
                     case "YY06":
                         GridSource1.Rows[i]["Material_Name"] = dt.Rows[0]["Seg12"].ToString();
                         GridSource1.Rows[i]["MAT_UNIT"] = dt.Rows[0]["Seg7"].ToString();
@@ -1892,7 +1883,7 @@ namespace mms.Plan
                 int userid = Convert.ToInt32(Session["UserId"].ToString());
                 string strSQL = "";
                 int MDPId = 0;
-                int Submit_Type = Convert.ToInt32(this.ViewState["submit_type"].ToString());//1－工艺试验件；2－技术创新；3－辅料
+                int Submit_Type = Convert.ToInt32(this.ViewState["submit_type"].ToString());//1－工艺试验件；2－技术创新课题；3－生产备料
 
                 GridItemCollection gridItems=null;
                   if (RadGridImport.SelectedItems.Count > 0)
@@ -1945,14 +1936,7 @@ namespace mms.Plan
                         }
                          */
                         string Material_Name = item["Material_Name"].Text.Trim();
-                        /*
-                        if (Material_Name == "" || Material_Name == "&nbsp;")
-                        {
-                            RadNotificationAlert.Text = "失败！第" + (i + 1).ToString() + "行，物资名称：请输入物资名称";
-                            RadNotificationAlert.Show();
-                            return;
-                        }
-                        */
+                        string Mat_Rough_Weight = item["Mat_Rough_Weight"].Text.Trim();
                         string Rough_Spec = item["Rough_Spec"].Text.Trim();
                         /*
                         if (Rough_Spec == "" || Rough_Spec == "&nbsp;")
@@ -2076,6 +2060,7 @@ namespace mms.Plan
                         mta.DemandDate = Convert.ToDateTime(DemandDate);
                         mta.ItemCode1 = ItemCode1;
                         mta.NumCasesSum = Convert.ToDecimal(NumCasesSum);
+                        mta.Mat_Rough_Weight = Mat_Rough_Weight;
                         mta.DemandNumSum = Convert.ToDecimal(DemandNumSum);
                         mta.Mat_Unit = MAT_UNIT;
                         mta.Quantity = Convert.ToInt32(NumCasesSum);
@@ -2128,7 +2113,7 @@ namespace mms.Plan
                         strSQL = @"exec Proc_Save_Technology_Apply_NoSubmit '" + mta.MDPId + "','" + mta.Drawing_No + "','" +
                                  mta.TaskCode + "','" +
                                  mta.MaterialDept + "','" + mta.ItemCode1 + "','" + mta.DemandNumSum + "','" + mta.NumCasesSum +
-                                 "','" +
+                                 "','" +mta.Mat_Rough_Weight+"','"+
                                  mta.Mat_Unit + "','" + mta.Quantity + "','" + mta.Rough_Size + "','" + mta.Rough_Spec + "','" +
                                  mta.DemandDate + "','" + mta.Special_Needs + "','" + mta.Urgency_Degre + "','" +
                                  mta.Secret_Level + "','" +

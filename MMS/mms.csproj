@@ -1209,8 +1209,6 @@
     <Content Include="Plan\ShowPlan.aspx" />
     <Content Include="Plan\ShowSmarTeam.aspx" />
     <Content Include="Plan\TechnologyChange.aspx" />
-    <Content Include="Plan\TechnologyInnovateAdd.aspx" />
-    <Content Include="Plan\TechnologyInnovateList.aspx" />
     <Content Include="Plan\TechnologyTest.aspx" />
     <Content Include="Plan\TechnologyTestAdd.aspx" />
     <Content Include="Plan\TechnologyTestList.aspx" />
@@ -1835,20 +1833,6 @@
     <Compile Include="Plan\TechnologyChange.aspx.designer.cs">
       <DependentUpon>TechnologyChange.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Plan\TechnologyInnovateAdd.aspx.cs">
-      <DependentUpon>TechnologyInnovateAdd.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Plan\TechnologyInnovateAdd.aspx.designer.cs">
-      <DependentUpon>TechnologyInnovateAdd.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Plan\TechnologyInnovateList.aspx.cs">
-      <DependentUpon>TechnologyInnovateList.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Plan\TechnologyInnovateList.aspx.designer.cs">
-      <DependentUpon>TechnologyInnovateList.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Plan\TechnologyTest.aspx.cs">
       <DependentUpon>TechnologyTest.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2216,6 +2200,7 @@
     <Content Include="App_GlobalResources\RadGrid.Main.zh-CN.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>RadGrid.Main.zh-CN1.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </Content>
     <EmbeddedResource Include="Properties\licenses.licx" />
   </ItemGroup>

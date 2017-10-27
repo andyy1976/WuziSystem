@@ -190,11 +190,11 @@
                                     </td>
                                     <td class="technology_Div_detailcontent_title">单价：</td>
                                     <td class="technology_Div_detailcontent_content">
-                                        <span id="span_Unit_Price" runat="server" ClientIDMode="Static"></span>元
+                                        <span id="span_Unit_Price" runat="server" clientidmode="Static"></span>元
                                     </td>
                                     <td class="technology_Div_detailcontent_title">总价：</td>
                                     <td class="technology_Div_detailcontent_content">
-                                        <span id="span_Sum_Price" runat="server" ClientIDMode="Static"></span>元
+                                        <span id="span_Sum_Price" runat="server" clientidmode="Static"></span>元
                                     </td>
                                 </tr>
                                 <tr>
@@ -228,8 +228,6 @@
                                         <telerik:RadComboBox ID="RadComboBoxUseDes" runat="server" DataSourceID="SqlDataSourceUseDes" 
                                           DataTextField="UseDes_Name" DataValueField="Id">
                                             <Items>
-                                                <%--<telerik:RadComboBoxItem Text="箭上" Value="0" />
-                                                <telerik:RadComboBoxItem Text="其他" Value="1" />--%>
                                             </Items>
                                         </telerik:RadComboBox>
                                       <asp:SqlDataSource ID="SqlDataSourceUseDes" runat="server" ConnectionString='<%$ ConnectionStrings:MaterialManagerSystemConnectionString %>' SelectCommand="SELECT * FROM [Sys_UseDes] WHERE ([Is_Del] = 0)">
@@ -251,8 +249,6 @@
                                         <telerik:RadComboBox ID="RadComboBoxSpecialNeeds" runat="server" DataSourceID="SqlDataSpecialNeeds"
                                            DataTextField="SpecialNeeds_Name" DataValueField="Id">
                                             <Items>
-                                                <%--<telerik:RadComboBoxItem Text="有" Value="1" />
-                                                <telerik:RadComboBoxItem Text="无" Value="0" />--%>
                                             </Items>
                                         </telerik:RadComboBox>
                                       <asp:SqlDataSource ID="SqlDataSpecialNeeds" runat="server" ConnectionString='<%$ ConnectionStrings:MaterialManagerSystemConnectionString %>' SelectCommand="SELECT * FROM [Sys_SpecialNeeds] WHERE ([Is_Del] = 0)">
@@ -263,8 +259,6 @@
                                         <telerik:RadComboBox ID="RadComboBoxUrgencyDegre" runat="server" DataSourceID="SqlDataSourceUrgencyDegre"
                                            DataTextField="UrgencyDegre_Name" DataValueField="Id">
                                             <Items>
-                                                <%--<telerik:RadComboBoxItem Text="正常" Value="0" />
-                                                <telerik:RadComboBoxItem Text="加急" Value="1" />--%>
                                             </Items>
                                         </telerik:RadComboBox>
                                       <asp:SqlDataSource ID="SqlDataSourceUrgencyDegre" runat="server" ConnectionString='<%$ ConnectionStrings:MaterialManagerSystemConnectionString %>' SelectCommand="SELECT * FROM [Sys_UrgencyDegre] WHERE ([Is_Del] = 0)">

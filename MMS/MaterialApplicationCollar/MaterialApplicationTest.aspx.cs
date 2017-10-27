@@ -77,6 +77,14 @@ namespace mms.MaterialApplicationCollar
                 GetMDML();
                 RadGridMDML.Rebind();
             }
+            else if (e.Argument == "Rebind1")
+            {
+
+                GetMDML();
+                RadGridMDML.Rebind();
+                RadNotificationAlert1.Text = "申请成功！进入流程平台";
+                RadNotificationAlert1.Show();
+            }
             else
             {
                 throw new Exception("刷新页面出错，请按F5刷新！");

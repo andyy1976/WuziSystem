@@ -42,7 +42,7 @@
                             case "2":
                               title = "技术创新课题"; break;
                             case "3":
-                              title = "车间备料"; break;
+                              title = "生产备料"; break;
                           }
                           win.set_title(title);
                             window.radopen("/Plan/TechnologyTest.aspx?MDP_Code=" + MDP_Code + "&MDPID=" + MDPID +
@@ -58,7 +58,7 @@
                             case "2":
                                 title = "新增技术创新课题"; break;
                             case "3":
-                                title = "新增车间备料"; break;
+                                title = "新增生产备料"; break;
                             }
                             win.set_title(title);
                             window.radopen("/Plan/TechnologyTestAdd.aspx?MDPId=" + MDPId +"&SubmitType=" + SubmitType, "RadWindowRecordWindow1");

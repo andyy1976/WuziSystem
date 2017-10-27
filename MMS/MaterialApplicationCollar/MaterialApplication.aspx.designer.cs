@@ -265,13 +265,13 @@ namespace mms.MaterialApplicationCollar {
         protected global::Telerik.Web.UI.RadTextBox RTB_Rough_Spec;
         
         /// <summary>
-        /// RTB_Mat_Rough_Weight 控件。
+        /// RTB_Rough_Size 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::Telerik.Web.UI.RadTextBox RTB_Mat_Rough_Weight;
+        protected global::Telerik.Web.UI.RadTextBox RTB_Rough_Size;
         
         /// <summary>
         /// RTB_Mat_Unit 控件。
@@ -283,13 +283,13 @@ namespace mms.MaterialApplicationCollar {
         protected global::Telerik.Web.UI.RadTextBox RTB_Mat_Unit;
         
         /// <summary>
-        /// RTB_Rough_Size 控件。
+        /// RTB_Mat_Rough_Weight 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::Telerik.Web.UI.RadTextBox RTB_Rough_Size;
+        protected global::Telerik.Web.UI.RadTextBox RTB_Mat_Rough_Weight;
         
         /// <summary>
         /// RDDL_DiaoDu 控件。
@@ -355,13 +355,13 @@ namespace mms.MaterialApplicationCollar {
         protected global::Telerik.Web.UI.RadWindow RadWindow1;
         
         /// <summary>
-        /// RTB_Material_Name1 控件。
+        /// RTB_MaterialName 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::Telerik.Web.UI.RadTextBox RTB_Material_Name1;
+        protected global::Telerik.Web.UI.RadTextBox RTB_MaterialName;
         
         /// <summary>
         /// RTB_Material_Paihao 控件。
