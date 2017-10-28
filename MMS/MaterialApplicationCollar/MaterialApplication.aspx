@@ -223,7 +223,7 @@
                     <td>
                         <telerik:RadDatePicker ID="RDP_FeedingTime" runat="server" ></telerik:RadDatePicker>
                     </td>
-                    <td style="text-align: right;">申请数量(请领质量=单件定额质量*请领数量）：</td>
+                    <td style="text-align: right;">申请数量(单件定额质量*申请件数）：</td>
                     <td><telerik:RadTextBox ID="RTB_PleaseTakeQuality" runat="server"></telerik:RadTextBox></td>
                 </tr>
                 <tr>
@@ -463,6 +463,6 @@
     </telerik:RadWindow>
     <%-- 删除弹出窗口--结束--%>
     <telerik:RadNotification ID="RadNotificationAlert" runat="server" Text="" Position="Center"
-        AutoCloseDelay="4000" Width="400" Title="提示" EnableRoundedCorners="true">
+       AutoCloseDelay="4000" Width="300" Title="提示" EnableRoundedCorners="true" LoadContentOn="EveryShow">
     </telerik:RadNotification>
 </asp:Content>

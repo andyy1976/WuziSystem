@@ -40,11 +40,13 @@
                         if (window.radWindow) oWindow = window.radWindow;
                         else if (window.frameElement.radWindow) oWindow = window.frameElement.radWindow;
                         var oArg = new Object();
-                        oWindow.BrowserWindow.refreshGrid1(args);
+                        oWindow.BrowserWindow.refreshGrid(args);
                         oWindow.close(oArg);
                     }
 
-               
+                    function OnClientHidden(sender, args) {
+                        CloseWindow();
+                    }
 
                     $(document).ready(function ()
                     {
@@ -149,7 +151,7 @@
                     <td>
                         <telerik:RadDatePicker ID="RDP_FeedingTime" runat="server" Width="120px"></telerik:RadDatePicker>
                     </td>
-                    <td style="text-align: right;">申请数量(请领质量=单件定额质量*请领数量）：</td>
+                    <td style="text-align: right;">申请数量(单件定额质量*申请件数）：</td>
                     <td><telerik:RadTextBox ID="RTB_PleaseTakeQuality" runat="server" Width="120px" Enabled="true"></telerik:RadTextBox></td>
                 </tr>
                 <tr>
@@ -282,8 +284,12 @@
 
                     
             <%-- 提交弹出窗口--结束--%>
-            <telerik:RadNotification ID="RadNotificationAlert" runat="server" Text="" Position="Center" OnClientClicked="CloseWindow"
-                AutoCloseDelay="400000" Width="300" Title="提示" EnableRoundedCorners="true">
+            <telerik:RadNotification ID="RadNotificationAlert" runat="server" Text="" Position="Center" 
+                AutoCloseDelay="4000" Width="300" Title="提示"   EnableRoundedCorners="true" LoadContentOn="EveryShow">
+            </telerik:RadNotification>
+
+           <telerik:RadNotification ID="RadNotificationAlert1" runat="server" Text="" Position="Center" 
+                AutoCloseDelay="2000" Width="300" Title="提示" OnClientHidden="OnClientHidden"  EnableRoundedCorners="true">
             </telerik:RadNotification>
         </div>
     </form>

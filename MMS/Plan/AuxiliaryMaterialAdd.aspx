@@ -342,7 +342,7 @@
                         </telerik:RadGrid><br />
                         <telerik:RadButton ID="RadBtnSubmit" runat="server" ValidationGroup="2" Text="提 交" Width="120px" OnClick="RadBtnSubmit_Click"></telerik:RadButton>
                         <telerik:RadNotification ID="RadNotificationAlert" runat="server" Text="" Position="Center"
-                            AutoCloseDelay="4000" Width="240" Title="提示" EnableRoundedCorners="true">
+                            AutoCloseDelay="4000" Width="240" Title="提示" EnableRoundedCorners="true"  >
                         </telerik:RadNotification>
                         <telerik:RadWindow ID="confirmDeleteWindow" runat="server" VisibleTitlebar="false"
                             VisibleStatusbar="false" Modal="true" Behaviors="None" Height="120px" Width="320px">

@@ -112,11 +112,6 @@
                 }
             }
 
-            function refreshGrid1(arg) {
-                if (!arg) {
-                    $find("<%= RadAjaxManager1.ClientID %>").ajaxRequest("Rebind1");
-                }
-            }
         </script>
     </telerik:RadCodeBlock>
     <asp:HiddenField ID="HF_DeptCode" runat="server" />
@@ -243,9 +238,6 @@
         </Windows>
     </telerik:RadWindowManager>
     <telerik:RadNotification ID="RadNotificationAlert" runat="server" Text="" Position="Center"
-        AutoCloseDelay="4000" Width="300" Title="提示" EnableRoundedCorners="true">
-    </telerik:RadNotification>
-     <telerik:RadNotification ID="RadNotificationAlert1" runat="server" Text="申请成功！进入流程平台" Position="Center"
-        AutoCloseDelay="4000" Width="500" Title="提示" EnableRoundedCorners="true">
+        AutoCloseDelay="4000" Width="300" Title="提示" EnableRoundedCorners="true"  >
     </telerik:RadNotification>
 </asp:Content>

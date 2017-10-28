@@ -17,7 +17,11 @@ namespace mms.MaterialApplicationCollar
         DBInterface DBI;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["UserId"] == null) { Page.ClientScript.RegisterStartupScript(this.GetType(), "info", "CloseWindow();", true); }
+            if (Session["UserId"] == null) 
+            {
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "info", "CloseWindow();", true);
+                return;
+            }
             DBConn = ConfigurationManager.ConnectionStrings["MaterialManagerSystemConnectionString"].ToString();
             DBI = DBFactory.GetDBInterface(DBConn);
 
@@ -342,20 +346,20 @@ namespace mms.MaterialApplicationCollar
 
                 K2BLL k2Bll = new K2BLL();
                 var result = k2Bll.StartNewProcess(HFMAID.Value);
-                if (result != "")
+                if (result == "")
                 {
                     strSQL =
                         " Insert into MaterialApplication_Log (MaterialApplicationId, Operation_UserID, Operation_Time, Operation_Remark)" +
                         " values('" + HFMAID.Value + "','" + Session["UserId"].ToString() + "',GetDate() " +
                         " ,'进入流程平台:调度员：' + '" + diaodu + "' + '型号计划员：' + '" + xinghao + "' +'物资计划员：' + '" + wuzi + "')";
                     DBI.Execute(strSQL);
-                   // RadNotificationAlert.Text = "申请成功！进入流程平台";
-                  //  RadNotificationAlert.Show();
+                    RadNotificationAlert1.Text = "申请成功！进入流程平台";
+                    RadNotificationAlert1.Show();
                  // _timer = new System.Timers.Timer(5000);
              //   _timer.Elapsed += new System.Timers.ElapsedEventHandler(_timer_Elapsed);
              //   _timer.Enabled = true;
             //    _timer.Start();
-                    Page.ClientScript.RegisterStartupScript(this.GetType(), "info", "CloseWindow();", true);
+                  //  Page.ClientScript.RegisterStartupScript(this.GetType(), "info", "CloseWindow();", true);
                     
                 }
                 else

@@ -31,7 +31,7 @@
             </MasterTableView>
         </telerik:RadGrid>
         <telerik:RadNotification ID="RadNotificationAlert" runat="server" Text="" Position="Center"
-        AutoCloseDelay="4000" Width="300" Title="提示" EnableRoundedCorners="true">
+        AutoCloseDelay="4000" Width="300" Title="提示" EnableRoundedCorners="true"  >
     </telerik:RadNotification>
     </div>
     </form>

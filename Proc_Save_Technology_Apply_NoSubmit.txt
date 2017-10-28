@@ -1,0 +1,74 @@
+USE [mms]
+GO
+/****** Object:  StoredProcedure [dbo].[Proc_Save_Technology_Apply_NoSubmit]    Script Date: 2017-10-27 18:48:14 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER PROCEDURE [dbo].[Proc_Save_Technology_Apply_NoSubmit]
+(
+@MDPId int,@Drawing_No nvarchar(50),@TaskCode nvarchar(50),@MaterialDept nvarchar(50),@ItemCode1 nvarchar(50),
+@DemandNumSum decimal(18, 4),@NumCasesSum decimal(18, 4),@Mat_Rough_Weight nvarchar(MAX),@Mat_Unit nvarchar(10),@Quantity int,@Rough_Size nvarchar(50),
+@Rough_Spec nvarchar(50),@DemandDate datetime,@Special_Needs nvarchar(200),@Urgency_Degre nvarchar(100),@Secret_Level nvarchar(100),
+@Stage nvarchar(100),@Use_Des nvarchar(100),@Shipping_Address nvarchar(100),@Certification nvarchar(100),@Unit_Price decimal(18, 4),
+@Sum_Price decimal(18, 4),@Submit_Type int,@userId int, @material_Name nvarchar(50), @Attribute4 nvarchar(50), @project nvarchar(50)
+)
+as
+begin transaction T
+declare @res int=0,@res1 int=0,@can nvarchar(200)='',@MDP_Code nvarchar(30)=''
+set @can=(select ACCOUNT_NUM from GetCustInfo_T_CUST_ACCT where CUST_ACCOUNT_ID=(
+		select Cust_Account_ID from Sys_DeptEnum where DeptCode=@MaterialDept))--需求部门
+set @MDP_Code=(select MDP_Code from M_Demand_Plan_List where Id=@MDPId)
+
+declare @user_rq_number_start nvarchar(50)
+select @user_rq_number_start = isnull(Code_Name, case when @Submit_Type=1 then 'GYSY' when @Submit_Type=2 then 'JSCX' when @Submit_Type=3 then 'FZCL' else 'TRQ' end ) from Sys_CodeBuild where Code_Des = case when @Submit_Type=1 then '工艺试验件' when @Submit_Type=2 then '技术创新课题' when @Submit_Type=3 then '辅助材料' else '需求申请' end 
+
+insert M_Demand_Merge_List(MDPId,Drawing_No,TaskCode,MaterialDept,ItemCode1,DemandNumSum,NumCasesSum,Mat_Rough_Weight,Mat_Unit,Quantity,
+	Rough_Size,Rough_Spec,DemandDate,Special_Needs,Urgency_Degre,Secret_Level,Stage,Use_Des,Shipping_Address,
+	Certification,Unit_Price,Sum_Price,Submit_Type,[User_ID],
+	ORG_ID, USER_RQ_NUMBER, USER_RQ_ID, USER_RQ_LINE_ID, RQ_TYPE, [ITEM_CODE],[SPECIAL_REQUEST] , [QUANTITY1], [PIECE],
+		[DIMENSION], [RQ_DATE], [URGENCY_LEVEL], [REQUESTER], [ITEM_REVISION], [UNANIMOUS_BATCH]
+	, [SECURITY_LEVEL] ,[PROJECT], [PHASE] ,[BATCH_QTY], [USAGE] ,[TASK] ,[SUBJECT] , [CUSTOMER_NAME],
+		[CUSTOMER_ACCOUNT_NUMBER], [DELIVERY_ADDRESS]
+	, [PREPARER] , [SUBMISSION_DATE], [SYSTEM_CODE], [CREATION_DATE], [ATTRIBUTE2], [ATTRIBUTE3], [ATTRIBUTE4], [ATTRIBUTE5], Material_Name)
+select @MDPId,@Drawing_No,@TaskCode,@MaterialDept,@ItemCode1,@DemandNumSum,@NumCasesSum,@Mat_Rough_Weight,@Mat_Unit,@Quantity,@Rough_Size,
+	@Rough_Spec,@DemandDate,@Special_Needs,@Urgency_Degre,@Secret_Level,@Stage,@Use_Des,@Shipping_Address,@Certification,
+	@Unit_Price,@Sum_Price,@Submit_Type,@userid,
+	'81', @MDP_Code, @MDPId, @@IDENTITY, '清单需求', @ItemCode1, @Special_Needs, @DemandNumSum, @NumCasesSum, @Rough_Spec,
+		@DemandDate, @Urgency_Degre, (select UserName from Sys_UserInfo_PWD where ID = @userId )
+	, (select isnull((select SEG8 from GetCommItem_T_Item where SEG3 = @ItemCode1),0)),'Y'
+	, @Secret_Level, @project, (select Basicdata_DICT_CODE from Sys_Phase where Code = @Stage), 1, @Use_Des, @TaskCode, case when @Submit_Type = '2' then @TaskCode else Null end, '天津航天长征火箭制造有限公司',@can, @Shipping_Address
+	, (select UserName from Sys_UserInfo_PWD where ID = @userId),getdate(),'TJ-WZ',getdate(),'',@Certification,@Attribute4,@Drawing_No, @material_Name
+set @res=(select @@rowcount)
+declare @MDML_Id int
+select @MDML_Id = @@IDENTITY
+Update M_Demand_Merge_List set USER_RQ_NUMBER = @user_rq_number_start + '-' + convert(nvarchar(50),@MDPId) + '-' + convert(nvarchar(50),@MDML_Id) where ID = @MDML_Id
+
+--WD20160119开始修改	
+Insert into WriteReqOrder_T_List (ORG_ID, USER_RQ_NUMBER, USER_RQ_ID, USER_RQ_LINE_ID, RQ_TYPE
+	, [ITEM_CODE],[SPECIAL_REQUEST] , [QUANTITY], [PIECE], [DIMENSION], [RQ_DATE], [URGENCY_LEVEL], [REQUESTER], [ITEM_REVISION], [UNANIMOUS_BATCH]
+	, [SECURITY_LEVEL] ,[PROJECT], [PHASE] ,[BATCH_QTY], [USAGE] ,[TASK] ,[SUBJECT] , [CUSTOMER_NAME],
+		[CUSTOMER_ACCOUNT_NUMBER], [DELIVERY_ADDRESS]
+	, [PREPARER] , [SUBMISSION_DATE], [SYSTEM_CODE], [CREATION_DATE], [ATTRIBUTE2], [ATTRIBUTE3], [ATTRIBUTE4], [ATTRIBUTE5])
+select '81',@user_rq_number_start + '-' + convert(nvarchar(50),@MDPId) + '-' + convert(nvarchar(50),@MDML_Id), @MDPId, @MDML_Id, '清单需求', @ItemCode1, @Special_Needs, @DemandNumSum, @NumCasesSum, @Rough_Spec,
+		@DemandDate, @Urgency_Degre, (select UserName from Sys_UserInfo_PWD where ID = @userId )
+	, (select isnull((select SEG8 from GetCommItem_T_Item where SEG3 = @ItemCode1),0)),'Y'
+	, @Secret_Level, @project, (select Basicdata_DICT_CODE from Sys_Phase where Code = @Stage), 1, @Use_Des,
+	case when @Submit_Type=2 then Null else @TaskCode end, case when @Submit_Type=2 then @TaskCode else Null end, '天津航天长征火箭制造有限公司',@can, @Shipping_Address
+	, (select UserName from Sys_UserInfo_PWD where ID = @userId),getdate(),'TJ-WZ',getdate(),'',@Certification,@Attribute4,@Drawing_No
+set @res1=(select @@rowcount)
+--WD20160119结束修改
+if(@res=1 and @res1=1)
+	set @res=1 
+else
+	set @res=0
+if @@error<>0 or @res<>1
+	rollback transaction T
+else
+	commit transaction T
+select @res
+
+
+
+
+

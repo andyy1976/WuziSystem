@@ -370,25 +370,12 @@ namespace mms.Plan
         }
 
 
-       protected void RadGrid_MDemandDetails_ItemDataBound(object sender, GridItemEventArgs e)
+        protected void RadGrid_MDemandDetails_ItemDataBound(object sender, GridItemEventArgs e)
         {
-           /* if (e.Item is GridDataItem)
-            {
-                string id = (e.Item as GridDataItem).GetDataKeyValue("ID").ToString();
-                CheckBox cb = e.Item.FindControl("CheckBox1") as CheckBox;
-                if (cb != null)
-                {
-                    if (GridSource.Select("ID='" + id + "'")[0]["checked"].ToString().ToLower() == "true")
-                    {
-                        cb.Checked = true;
-                        e.Item.Selected = true;
-                    }
-                }
-            }
-            */
-        }
 
-   protected DataTable GetTempMergeList(string idStr, string PackId, string DraftId, string dateStr)
+        }  
+
+        protected DataTable GetTempMergeList(string idStr, string PackId, string DraftId, string dateStr)
         {
             try
             {
@@ -401,12 +388,12 @@ namespace mms.Plan
             }
         }
       
-	   protected void RadGrid_MDemandCombinelist_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
+	    protected void RadGrid_MDemandCombinelist_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
         {
             RadGrid_MDemandCombinelist.DataSource = GridSource1;
         }
        
-	   protected class M_Draft_ListBody
+	    protected class M_Draft_ListBody
         {
             public int ID { get; set; }
             public string Correspond_Draft_Code { get; set; }
@@ -461,7 +448,7 @@ namespace mms.Plan
             }
         }
 
-      private void SaveCombineInfo()
+    private void SaveCombineInfo()
      {
 
 

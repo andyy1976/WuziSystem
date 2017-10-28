@@ -229,7 +229,7 @@
             </div>
         </div>       
         <telerik:RadNotification ID="RadNotificationAlert" runat="server" Text="" Position="Center"
-            AutoCloseDelay="4000" Width="300" Title="提示" EnableRoundedCorners="true">
+            AutoCloseDelay="4000" Width="300" Title="提示" EnableRoundedCorners="true" >
         </telerik:RadNotification>
         <%-- 提交确认弹出窗口--开始--%>
         <telerik:RadWindow ID="RadWindow" runat="server" VisibleTitlebar="false"

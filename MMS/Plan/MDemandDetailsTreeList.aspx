@@ -156,10 +156,23 @@
                                 var rnal = $find("<%=RadNotificationAlert.ClientID %>");
                                 rnal.set_text("请选择要提交的数据");
                                 rnal.show();
-                                args.set_cancel(true);
+
                             }
                             else
                             {
+                                for (var i = 0; i < selectedItems.length; i++) {
+
+                                    var combineparentid = treeList.getCellByColumnUniqueName(selectedItems[i], "ParentId_For_Combine").innerText;
+                                    if (combineparentid != 0)
+                                    {
+                                        var rnal = $find("<%=RadNotificationAlert.ClientID %>");
+                                        rnal.set_text("请务包含已经合并的数据记录");
+                                        rnal.show();
+                                        return;
+                                    }
+                                }
+
+
                                 ShowMDemandMergeList();
                             }
                         }
@@ -334,13 +347,15 @@
                           <Columns>
                          <%--    <telerik:TreeListSelectColumn HeaderStyle-Width="38px"></telerik:TreeListSelectColumn>
                              --%>
+
                              <telerik:TreeListTemplateColumn UniqueName="CheckBoxTemplateColumn">
+                               <HeaderTemplate>
+                                <asp:CheckBox ID="headerChkbox" runat="server" OnCheckedChanged="ToggleSelectedState" AutoPostBack="True" />
+                              </HeaderTemplate>
                               <ItemTemplate>
                                 <asp:CheckBox ID="CheckBox1" runat="server" OnCheckedChanged="ToggleRowSelection" AutoPostBack="True" CssClass='<%#Eval("ID") %>' />
                               </ItemTemplate>
-                              <HeaderTemplate>
-                                <asp:CheckBox ID="headerChkbox" runat="server" OnCheckedChanged="ToggleSelectedState" AutoPostBack="True" />
-                              </HeaderTemplate>
+                
                             </telerik:TreeListTemplateColumn>
                             <telerik:TreeListBoundColumn DataField="ID" DataType="System.Int32" HeaderText="序号" ReadOnly="True" SortExpression="ID" UniqueName="ID">
                             </telerik:TreeListBoundColumn>
@@ -423,7 +438,7 @@
             </ContentTemplate>
         </telerik:RadWindow>
                       <telerik:RadNotification ID="RadNotificationAlert" runat="server" Text="" Position="Center"
-                    AutoCloseDelay="4000" Width="240" Height="90" Title="提示" EnableRoundedCorners="true">
+                    AutoCloseDelay="4000" Width="240" Height="90" Title="提示" EnableRoundedCorners="true"  >
                 </telerik:RadNotification>
                    </telerik:RadAjaxPanel>
                      <%--弹出窗口--开始--%>

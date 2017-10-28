@@ -45,7 +45,7 @@ namespace mms.MaterialApplicationCollar
         {
             string strSQL = " select M_Demand_Merge_List.* "
                     + " from M_Demand_Merge_List"
-                    + " where Submit_Type = '3' and Is_submit = 'true' and MaterialDept = '" + HF_DeptCode.Value + "'"
+                    + " where Submit_Type = '3' and Is_submit = 'false' and MaterialDept = '" + HF_DeptCode.Value + "'"
                     + " and ID not in (select Material_ID from MaterialApplication where Is_del = 'false' and Material_ID is not null)";
                   
             if (Session["StrWhere"] != null)
@@ -89,14 +89,6 @@ namespace mms.MaterialApplicationCollar
             {
                 GetMDML();
                 RadGridMDML.Rebind();
-            }
-            else if (e.Argument == "Rebind1")
-            {
-            
-                GetMDML();
-                RadGridMDML.Rebind();
-                RadNotificationAlert1.Text = "申请成功！进入流程平台";
-                RadNotificationAlert1.Show();
             }
             else
             {

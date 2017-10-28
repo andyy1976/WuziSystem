@@ -134,14 +134,6 @@ namespace mms.MaterialApplicationCollar
                 GetMA();
                 RadGridMA.Rebind();
             }
-            else if (e.Argument == "Rebind1")
-            {
-
-                GetMA();
-                RadGridMA.Rebind();
-                RadNotificationAlert1.Text = "申请成功！进入流程平台";
-                RadNotificationAlert1.Show();
-            }
             else
             {
                 throw new Exception("刷新页面出错，请按F5刷新！");

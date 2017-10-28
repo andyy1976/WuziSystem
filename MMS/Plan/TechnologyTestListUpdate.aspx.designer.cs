@@ -148,15 +148,6 @@ namespace mms.Plan {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfv_Drawing_No;
         
         /// <summary>
-        /// txt_ItemCode1 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadTextBox txt_ItemCode1;
-        
-        /// <summary>
         /// RDP_DemandDate 控件。
         /// </summary>
         /// <remarks>
@@ -164,6 +155,15 @@ namespace mms.Plan {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::Telerik.Web.UI.RadDatePicker RDP_DemandDate;
+        
+        /// <summary>
+        /// txt_ItemCode1 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadTextBox txt_ItemCode1;
         
         /// <summary>
         /// RTB_MaterialName 控件。
@@ -184,40 +184,22 @@ namespace mms.Plan {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfv_MaterialName;
         
         /// <summary>
-        /// txt_NumCasesSum 控件。
+        /// txt_Rough_Spec 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::Telerik.Web.UI.RadTextBox txt_NumCasesSum;
+        protected global::Telerik.Web.UI.RadTextBox txt_Rough_Spec;
         
         /// <summary>
-        /// rfv_NumCasesSum 控件。
+        /// txt_Rough_Size 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfv_NumCasesSum;
-        
-        /// <summary>
-        /// txt_DemandNumSum 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadTextBox txt_DemandNumSum;
-        
-        /// <summary>
-        /// rfv_DemandNumSum 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfv_DemandNumSum;
+        protected global::Telerik.Web.UI.RadTextBox txt_Rough_Size;
         
         /// <summary>
         /// txt_Mat_Unit 控件。
@@ -238,22 +220,13 @@ namespace mms.Plan {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfv_Mat_Unit;
         
         /// <summary>
-        /// txt_Rough_Size 控件。
+        /// RTB_Mat_Rough_Weight 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::Telerik.Web.UI.RadTextBox txt_Rough_Size;
-        
-        /// <summary>
-        /// txt_Rough_Spec 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadTextBox txt_Rough_Spec;
+        protected global::Telerik.Web.UI.RadTextBox RTB_Mat_Rough_Weight;
         
         /// <summary>
         /// RTB_Unit_Price 控件。
@@ -271,7 +244,43 @@ namespace mms.Plan {
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label span_Sum_Price;
+        protected global::Telerik.Web.UI.RadTextBox span_Sum_Price;
+        
+        /// <summary>
+        /// txt_DemandNumSum 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadTextBox txt_DemandNumSum;
+        
+        /// <summary>
+        /// rfv_DemandNumSum 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfv_DemandNumSum;
+        
+        /// <summary>
+        /// txt_NumCasesSum 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadTextBox txt_NumCasesSum;
+        
+        /// <summary>
+        /// rfv_NumCasesSum 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfv_NumCasesSum;
         
         /// <summary>
         /// RadComboBoxSecretLevel 控件。
@@ -310,13 +319,13 @@ namespace mms.Plan {
         protected global::Telerik.Web.UI.RadComboBox RadComboBoxCertification;
         
         /// <summary>
-        /// rtb_SpecialNeeds 控件。
+        /// RadComboBoxShipping_Address 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::Telerik.Web.UI.RadTextBox rtb_SpecialNeeds;
+        protected global::Telerik.Web.UI.RadComboBox RadComboBoxShipping_Address;
         
         /// <summary>
         /// RadComboBoxUrgencyDegre 控件。
@@ -346,15 +355,6 @@ namespace mms.Plan {
         protected global::Telerik.Web.UI.RadComboBox RadComboBoxMaterialDept;
         
         /// <summary>
-        /// RadComboBoxShipping_Address 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadComboBox RadComboBoxShipping_Address;
-        
-        /// <summary>
         /// trAttribute4 控件。
         /// </summary>
         /// <remarks>
@@ -380,6 +380,15 @@ namespace mms.Plan {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::Telerik.Web.UI.RadButton RB_Attribute42;
+        
+        /// <summary>
+        /// rtb_SpecialNeeds 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadTextBox rtb_SpecialNeeds;
         
         /// <summary>
         /// RTB_Reason 控件。

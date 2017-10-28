@@ -285,7 +285,8 @@ namespace mms.MaterialApplicationCollar
                 DBI.Execute(strSQL);
                 RadNotificationAlert.Text = "申请成功！进入流程平台";
                 RadNotificationAlert.Show();
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "info", "CloseWindow();", true);
+                Clear();
+              //  Page.ClientScript.RegisterStartupScript(this.GetType(), "info", "CloseWindow();", true);
             }
             else
             {

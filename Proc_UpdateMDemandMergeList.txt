@@ -1,0 +1,247 @@
+USE [mms]
+GO
+/****** Object:  StoredProcedure [dbo].[Proc_UpdateMDemandMergeList]    Script Date: 2017-10-27 18:47:22 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+ALTER PROCEDURE [dbo].[Proc_UpdateMDemandMergeList] 
+	@ID nvarchar(50),
+	@REQUESTER nvarchar(50),
+	@REQUESTER_PHONE nvarchar(50),
+	@Drawing_No nvarchar(50),
+	@TaskCode nvarchar(50),
+	@DemandDate nvarchar(50),
+	@Material_Name nvarchar(50),
+	@NumCasesSum nvarchar(50),
+	@DemandNumSum nvarchar(50),
+	@Mat_Unit nvarchar(50),
+	@Rough_Size nvarchar(50),
+	@Rough_Spec  varchar(50),
+	@Unit_Price nvarchar(50),
+	@Mat_Rough_Weight nvarchar(50),
+	@Sum_Price nvarchar(50),
+	@Secret_Level nvarchar(50),
+	@Stage nvarchar(50),
+	@Use_Des nvarchar(100),
+	@Certification nvarchar(100),
+	@Special_Needs nvarchar(200),
+	@Urgency_Degre nvarchar(100),
+	@MaterialDept nvarchar(50),
+	@Shipping_Address nvarchar(50),
+	@MANUFACTURER nvarchar(50),
+	@SUBJECT nvarchar(50),
+	@UserID nvarchar(50),
+	@Reason nvarchar(max)
+AS
+BEGIN transaction T
+	declare @REQUESTER1 nvarchar(50),
+	@REQUESTER_PHONE1 nvarchar(50),
+	@Drawing_No1 nvarchar(50),
+	@TaskCode1 nvarchar(50),
+	@DemandDate1 nvarchar(50),
+	@Material_Name1 nvarchar(50),
+	@NumCasesSum1 varchar(50),
+	@DemandNumSum1 varchar(50),
+	@Mat_Unit1 nvarchar(50),
+	@Rough_Size1 nvarchar(50),
+	@Rough_Spec1  varchar(50),
+	@Unit_Price1 varchar(50),
+	@Mat_Rough_Weight1 varchar(50),
+	@Sum_Price1 varchar(50),
+	@Secret_Level1 nvarchar(50),
+	@Stage1 nvarchar(50),
+	@Use_Des1 nvarchar(100),
+	@Certification1 nvarchar(100),
+	@Special_Needs1 nvarchar(200),
+	@Urgency_Degre1 nvarchar(100),
+	@MaterialDept1 nvarchar(50),
+	@Shipping_Address1 nvarchar(50),
+	@MANUFACTURER1 nvarchar(50),
+	@SUBJECT1 nvarchar(50),
+	@PackId nvarchar(50),
+	@DraftId varchar(50),
+	@submit_Type nvarchar(50),
+	@MDPLID nvarchar(50),
+	@MDDLDID nvarchar(50),
+	@curdate DateTime = GetDate()
+
+	select top 1 @REQUESTER1 = REQUESTER,
+		@REQUESTER_PHONE1 = REQUESTER_PHONE,
+		@Drawing_No1 = Drawing_No,
+		@TaskCode1 = M_Demand_Merge_List.TaskCode,
+		@DemandDate1 = DemandDate,
+		@Material_Name1 = Material_Name,
+		@NumCasesSum1 = NumCasesSum,
+		@DemandNumSum1 = DemandNumSum,
+		@Mat_Unit1 = Mat_Unit,
+		@Rough_Size1 = Rough_Size,
+		@Rough_Spec1  = Rough_Spec,
+		@Unit_Price1 = Unit_Price,
+		@Mat_Rough_Weight1 = Mat_Rough_Weight,
+		@Sum_Price1 = Sum_Price,
+		@Secret_Level1 = Secret_Level,
+		@Stage1 = Stage,
+		@Use_Des1 = Use_Des,
+		@Certification1 = Certification,
+		@Special_Needs1 = Special_Needs,
+		@Urgency_Degre1 = Urgency_Degre,
+		@MaterialDept1 = MaterialDept,
+		@Shipping_Address1 =Shipping_Address,
+		@PackId = M_Demand_Merge_List.PackId,
+		@DraftId = M_Demand_Plan_List.DraftId,
+		@submit_Type = M_Demand_Plan_List.submit_Type,
+		@MDDLDID = Correspond_Draft_Code,
+		@MANUFACTURER1 = MANUFACTURER,
+		@SUBJECT1 = [SUBJECT] 
+	from M_Demand_Merge_List
+	join M_Demand_Plan_List on M_Demand_Plan_List.ID = M_Demand_Merge_List.MDPId where M_Demand_Merge_List.ID = @ID
+
+	Update M_Demand_Merge_List
+	set REQUESTER = @REQUESTER,
+		REQUESTER_PHONE = @REQUESTER_PHONE,
+		Drawing_No = @Drawing_No ,
+		TaskCode = @TaskCode,
+		DemandDate = @DemandDate ,
+		Material_Name = @Material_Name,
+		NumCasesSum = case when @NumCasesSum = '' then '0' else @NumCasesSum end,
+		DemandNumSum = case when  @DemandNumSum = '' then '0' else @DemandNumSum end ,
+		Mat_Unit = @Mat_Unit ,
+		Rough_Size = @Rough_Size ,
+		Rough_Spec = @Rough_Spec ,
+		Unit_Price = case when @Unit_Price = '' then null else @Unit_Price end,
+		Mat_Rough_Weight = @Mat_Rough_Weight,
+		Sum_Price = case when @Sum_Price = '' then null else @Sum_Price end,
+		Secret_Level = @Secret_Level,
+		Stage = @Stage ,
+		Use_Des = @Use_Des,
+		Certification = @Certification ,
+		Special_Needs = @Special_Needs,
+		Urgency_Degre = @Urgency_Degre ,
+		MaterialDept = @MaterialDept,
+		Shipping_Address = @Shipping_Address,
+		MANUFACTURER = @MANUFACTURER,
+		[SUBJECT] = @SUBJECT,
+		Submit_Date = @curdate
+	where ID = @ID
+
+	if (@Special_Needs != @Special_Needs1 or Convert(decimal(18,4),@NumCasesSum) != Convert(decimal(18,4),@NumCasesSum1) 
+		or Convert(decimal(18,4),@DemandNumSum) != Convert(decimal(18,4),@DemandNumSum1)
+		or @Rough_Size != @Rough_Size1 or @MANUFACTURER != @MANUFACTURER1 or Convert(datetime,@DemandDate) != Convert(datetime,@DemandDate1)
+		or @Urgency_Degre != @Urgency_Degre1 or @REQUESTER != @REQUESTER1 or @REQUESTER_PHONE != @REQUESTER_PHONE1
+		or @Secret_Level != @Secret_Level1 or @Stage != @Stage1 or @Use_Des = @Use_Des1 or @TaskCode != @TaskCode1
+		or @SUBJECT != @SUBJECT1 or @MaterialDept != @MaterialDept1 or @Shipping_Address != @Shipping_Address1
+		or @Certification != @Certification1) begin
+
+		declare @MDPL_Code nvarchar(50)
+		exec Proc_CodeBuildByCodeDes '需求变更','RCO', @MDPL_Code output
+		Insert into M_Demand_Plan_List (MDP_Code, PackId, DraftId, [User_ID], Submit_Date,Submit_Type, Submit_State)
+		values (@MDPL_Code, @PackId, @DraftId, @userId, @curdate, @submit_Type,'1')
+		select @MDPLID = @@IDENTITY
+
+		if @Special_Needs != @Special_Needs1 begin
+			Insert into M_Change_Record (Change_Code, Change_Evidence_Id, Correspond_Draft_Code, MDPId, MDMId, Change_Date, Change_State, [User_ID], Column_Changed, Original_Value, Changed_Value)
+			values  ('', Null , @MDDLDID, @MDPLId,  @id, @curdate, '6', @userId, 'SPECIAL_REQUEST', @Special_Needs1, @Special_Needs)
+		end
+		if Convert(decimal(18,4),@NumCasesSum) != Convert(decimal(18,4),@NumCasesSum1) begin
+			Insert into M_Change_Record (Change_Code, Change_Evidence_Id, Correspond_Draft_Code, MDPId, MDMId, Change_Date, Change_State, [User_ID], Column_Changed, Original_Value, Changed_Value)
+			values  ('', Null , @MDDLDID, @MDPLId,  @id, @curdate, '6', @userId, 'PIECE', @NumCasesSum1, @NumCasesSum)
+		end
+		if Convert(decimal(18,4),@DemandNumSum) != Convert(decimal(18,4),@DemandNumSum1) begin
+			Insert into M_Change_Record (Change_Code, Change_Evidence_Id, Correspond_Draft_Code, MDPId, MDMId, Change_Date, Change_State, [User_ID], Column_Changed, Original_Value, Changed_Value)
+			values  ('', Null , @MDDLDID, @MDPLId,  @id, @curdate, '6', @userId, 'QUANTITY', @DemandNumSum1, @DemandNumSum)
+		end
+		if @Rough_Size != @Rough_Size1 begin
+			Insert into M_Change_Record (Change_Code, Change_Evidence_Id, Correspond_Draft_Code, MDPId, MDMId, Change_Date, Change_State, [User_ID], Column_Changed, Original_Value, Changed_Value)
+			values  ('', Null , @MDDLDID, @MDPLId,  @id, @curdate, '6', @userId, 'DIMENSION', @Rough_Size1, @Rough_Size)
+		end
+		if @MANUFACTURER != @MANUFACTURER1 begin
+			Insert into M_Change_Record (Change_Code, Change_Evidence_Id, Correspond_Draft_Code, MDPId, MDMId, Change_Date, Change_State, [User_ID], Column_Changed, Original_Value, Changed_Value)
+			values  ('', Null , @MDDLDID, @MDPLId,  @id, @curdate, '6', @userId, 'MANUFACTURER_ID', @MANUFACTURER1, @MANUFACTURER)
+		end
+		if Convert(datetime,@DemandDate) != Convert(datetime,@DemandDate1) begin
+			Insert into M_Change_Record (Change_Code, Change_Evidence_Id, Correspond_Draft_Code, MDPId, MDMId, Change_Date, Change_State, [User_ID], Column_Changed, Original_Value, Changed_Value)
+			values  ('', Null , @MDDLDID, @MDPLId,  @id, @curdate, '6', @userId, 'RQ_DATE', @DemandDate1, @DemandDate)
+		end
+		if @Urgency_Degre != @Urgency_Degre1 begin
+			Insert into M_Change_Record (Change_Code, Change_Evidence_Id, Correspond_Draft_Code, MDPId, MDMId, Change_Date, Change_State, [User_ID], Column_Changed, Original_Value, Changed_Value)
+			values  ('', Null , @MDDLDID, @MDPLId,  @id, @curdate, '6', @userId, 'URGENCY_LEVEL', @Urgency_Degre1, @Urgency_Degre)
+		end
+		if @REQUESTER != @REQUESTER1 begin
+			Insert into M_Change_Record (Change_Code, Change_Evidence_Id, Correspond_Draft_Code, MDPId, MDMId, Change_Date, Change_State, [User_ID], Column_Changed, Original_Value, Changed_Value)
+			values  ('', Null , @MDDLDID, @MDPLId,  @id, @curdate, '6', @userId, 'REQUESTER', @REQUESTER1, @REQUESTER)
+		end
+		if @REQUESTER_PHONE != @REQUESTER_PHONE1 begin
+			Insert into M_Change_Record (Change_Code, Change_Evidence_Id, Correspond_Draft_Code, MDPId, MDMId, Change_Date, Change_State, [User_ID], Column_Changed, Original_Value, Changed_Value)
+			values  ('', Null , @MDDLDID, @MDPLId,  @id, @curdate, '6', @userId, 'REQUESTER_PHONE', @REQUESTER_PHONE1, @REQUESTER_PHONE)
+		end
+		if @Secret_Level != @Secret_Level1 begin
+			Insert into M_Change_Record (Change_Code, Change_Evidence_Id, Correspond_Draft_Code, MDPId, MDMId, Change_Date, Change_State, [User_ID], Column_Changed, Original_Value, Changed_Value)
+			values  ('', Null , @MDDLDID, @MDPLId,  @id, @curdate, '6', @userId, 'SECURITY_LEVEL', @Secret_Level1, @Secret_Level)
+		end
+		if @Stage != @Stage1 begin			
+			Insert into M_Change_Record (Change_Code, Change_Evidence_Id, Correspond_Draft_Code, MDPId, MDMId, Change_Date, Change_State, [User_ID], Column_Changed, Original_Value, Changed_Value)
+			values  ('', Null , @MDDLDID, @MDPLId,  @id, @curdate, '6', @userId, 'PHASE', 
+				(select Basicdata_DICT_Code from Sys_Phase where Code = @Stage1), (select Basicdata_DICT_Code from Sys_Phase where Code = @Stage))
+		end
+		if @Use_Des != @Use_Des1 begin
+			Insert into M_Change_Record (Change_Code, Change_Evidence_Id, Correspond_Draft_Code, MDPId, MDMId, Change_Date, Change_State, [User_ID], Column_Changed, Original_Value, Changed_Value)
+			values  ('', Null , @MDDLDID, @MDPLId,  @id, @curdate, '6', @userId, 'USAGE', @Use_Des1, @Use_Des)
+		end
+		if @TaskCode != @TaskCode1 begin
+			Insert into M_Change_Record (Change_Code, Change_Evidence_Id, Correspond_Draft_Code, MDPId, MDMId, Change_Date, Change_State, [User_ID], Column_Changed, Original_Value, Changed_Value)
+			values  ('', Null , @MDDLDID, @MDPLId,  @id, @curdate, '6', @userId, 'TASK', @TaskCode1, @TaskCode)
+		end
+		if @SUBJECT != @SUBJECT1 begin
+			Insert into M_Change_Record (Change_Code, Change_Evidence_Id, Correspond_Draft_Code, MDPId, MDMId, Change_Date, Change_State, [User_ID], Column_Changed, Original_Value, Changed_Value)
+			values  ('', Null , @MDDLDID, @MDPLId,  @id, @curdate, '6', @userId, 'SUBJECT', @SUBJECT1, @SUBJECT)
+		end
+		if @MaterialDept != @MaterialDept1 begin
+			Insert into M_Change_Record (Change_Code, Change_Evidence_Id, Correspond_Draft_Code, MDPId, MDMId, Change_Date, Change_State, [User_ID], Column_Changed, Original_Value, Changed_Value)
+			values  ('', Null , @MDDLDID, @MDPLId,  @id, @curdate, '6', @userId, 'CUSTOMER_ACCOUNT_ID', @MaterialDept1, @MaterialDept)
+		end
+		if @Shipping_Address != @Shipping_Address1 begin
+			Insert into M_Change_Record (Change_Code, Change_Evidence_Id, Correspond_Draft_Code, MDPId, MDMId, Change_Date, Change_State, [User_ID], Column_Changed, Original_Value, Changed_Value)
+			values  ('', Null , @MDDLDID, @MDPLId,  @id, @curdate, '6', @userId, 'DELIVERY_ADDRESS', @Shipping_Address1, @Shipping_Address)
+		end
+		if @Certification != @Certification1 begin
+			Insert into M_Change_Record (Change_Code, Change_Evidence_Id, Correspond_Draft_Code, MDPId, MDMId, Change_Date, Change_State, [User_ID], Column_Changed, Original_Value, Changed_Value)
+			values  ('', Null , @MDDLDID, @MDPLId,  @id, @curdate, '6', @userId, 'ATTRIBUTE3', @Certification1, @Certification)
+		end
+
+		declare @sentheaderid int
+		insert into WriteRcoOrder_SentHeader(USER_RCO_HEADER_NO, ORG_ID, RCO_STATUS, USER_RQ_ID, USER_RQ_LINE_ID,
+			 REASON, REQUESTER, PREPARER, CREATION_DATE, SUBMISSION_DATE, CHANGE_OPTION, SYSTEM_CODE, Group_ID, MDPLID)
+		values ((select isnull(Code_Name,'TRCO') from Sys_CodeBuild where Code_Des = '需求变更') , '81','已提交'
+			, (select MDPID from M_Demand_Merge_List where ID = @ID) ,@ID , @Reason
+			, case when @submit_Type = '0'  then ((select UserName from Sys_UserInfo_PWD where ID = (select [User_ID] from M_Demand_DetailedList_Draft where ID = (select Correspond_Draft_Code from M_Demand_Merge_List where ID = @ID))))
+			else @REQUESTER end
+			, (select UserName from Sys_UserInfo_PWD where ID = @userId)
+			, @curdate, @curdate, 'CHANGE','TJ-WZ', (select isnull(max(Group_ID),0) + 1 from WriteRcoOrder_SentHeader), @MDPLId)
+		select @sentheaderid = @@identity
+
+		Update WriteRcoOrder_SentHeader 
+		set USER_RCO_HEADER_NO = USER_RCO_HEADER_NO + '-' + Convert(nvarchar(50), User_RQ_ID) + '-' + Convert(nvarchar(50),USER_RQ_LINE_ID) + '-' + convert(nvarchar(50),USER_RCO_HEADER_ID)
+		where MDPLID = @MDPLId
+		
+
+		Insert Into WriteRcoOrder_SentLine (USER_RCO_LINE_ID, USER_RCO_HEADER_ID, LINE_NUM, COLUMN_CHANGED, ORIGINAL_VALUE, CHANGED_VALUE, SYSTEM_CODE, GROUP_ID)
+		select ID, @sentheaderid
+				, (select isnull(max(Line_Num),0) + 1 from WriteRcoOrder_SentLine where USER_RCO_LINE_ID = MDMId) 
+				, Column_Changed , Original_Value , Changed_Value, 'TJ-WZ', ID --(select top 1 Group_ID from WriteRcoOrder_SentHeader where MDPLID =@MDPLId)
+		from M_Change_Record
+		where  MDPID = @MDPLId
+	end
+	select @MDPLId ,@MDPL_Code
+if @@error<>0
+	rollback transaction T
+else
+	commit transaction T
+
+
+

@@ -108,6 +108,8 @@
                     <tr>
                         <td style="text-align:right;">需求件数：</td>
                         <td><asp:Label ID="lbl_NumCasesSum" runat="server"></asp:Label></td>
+                         <td style="text-align:right;">单件质量：</td>
+                        <td><asp:Label ID="RTB_Mat_Rough_Weight" runat="server"></asp:Label></td>
                         <td style="text-align:right;">需求量：</td>
                         <td><asp:Label ID="lbl_DemandNumSum" runat="server"></asp:Label></td>
                     </tr>
@@ -215,7 +217,7 @@
     </telerik:RadWindow>
     <%-- 删除弹出窗口--结束--%> 
         <telerik:RadNotification ID="RadNotificationAlert" runat="server" Text="" Position="Center"
-            AutoCloseDelay="4000" Width="300" Title="提示" EnableRoundedCorners="true">
+            AutoCloseDelay="4000" Width="300" Title="提示" EnableRoundedCorners="true"  >
         </telerik:RadNotification>
     </form>
 </body>

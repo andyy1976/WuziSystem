@@ -99,7 +99,7 @@
         </div>
     </div>
     <telerik:RadNotification ID="RadNotificationAlert" runat="server" Text="" Position="Center"
-        AutoCloseDelay="4000" Width="300" Title="提示" EnableRoundedCorners="true">
+        AutoCloseDelay="4000" Width="300" Title="提示" EnableRoundedCorners="true"  >
     </telerik:RadNotification>
     <%-- 同步弹出窗口--开始--%>
     <telerik:RadWindow ID="confirmWindowSynchron" runat="server" VisibleTitlebar="false"

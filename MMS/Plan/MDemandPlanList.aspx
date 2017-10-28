@@ -147,7 +147,7 @@
                 </MasterTableView>
             </telerik:RadGrid>
             <telerik:RadNotification ID="RadNotificationAlert" runat="server" Text="" Position="Center"
-                AutoCloseDelay="4000" Width="240" Height="90" Title="提示" EnableRoundedCorners="true">
+                AutoCloseDelay="4000" Width="240" Height="90" Title="提示" EnableRoundedCorners="true"  >
             </telerik:RadNotification>
         </div>
         <div class="divSiteMap add_divSiteMap" style="clear: both; width: 100%; " runat="server" id="divListTitle">

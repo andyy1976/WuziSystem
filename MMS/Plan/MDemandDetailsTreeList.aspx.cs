@@ -296,18 +296,7 @@ namespace mms.Plan
             
             {
                 TreeListDataItem item = e.Item as TreeListDataItem;
-               /* string id = item.GetDataKeyValue("ID").ToString();
-                CheckBox cb = item.FindControl("CheckBox1") as CheckBox;
-                if (cb != null)
-                {
-                    if (GridSource.Select("ID='" + id + "'")[0]["checked"].ToString().ToLower() == "true")
-                    {
-          
-                        cb.Checked = true;
-                        item.Selected=true;
-                    }
-                }
-                 */
+
                 if (item["ParentId_For_Combine"].Text == "0" && item["Combine_State"].Text == "1")
                 {
                         item.ForeColor = Color.Red;
@@ -439,6 +428,8 @@ namespace mms.Plan
 
         protected void ToggleRowSelection(object sender, EventArgs e)
         {
+            
+
             CheckBox cb = sender as CheckBox;
             string id = cb.CssClass.ToString();
             if (Session["idStr"].ToString().Substring(0, 1) != ",") { Session["idStr"] = "," + Session["idStr"].ToString() + ","; }
@@ -446,15 +437,17 @@ namespace mms.Plan
             {
                 if ((cb.Parent.Parent as TreeListDataItem)["ParentId_For_Combine"].Text != "0")
                 {
-                   // (cb.Parent.Parent as TreeListDataItem).Selected = false;
-                    GridSource.Select("ID='" + id + "'")[0]["checked"] = "false";
+                    // GridSource.Select("ID='" + id + "'")[0]["checked"] = "false";
+                    cb.Checked = false;
+                    (cb.Parent.Parent as TreeListDataItem).Selected = false;
                     RadNotificationAlert.Text = "请勿选择已被合并的数据记录";
                     RadNotificationAlert.Show();
 
                 }
                 else
                 {
-                   GridSource.Select("ID='" + id + "'")[0]["checked"] = "true";
+                    //  GridSource.Select("ID='" + id + "'")[0]["checked"] = "true";
+                    cb.Checked = true;
                    (cb.Parent.Parent as TreeListDataItem).Selected = true;
                     Session["idStr"] += id + ",";
                 }
@@ -462,7 +455,8 @@ namespace mms.Plan
             }
             else
             {
-                GridSource.Select("ID='" + id + "'")[0]["checked"] = "false";
+              //  GridSource.Select("ID='" + id + "'")[0]["checked"] = "false";
+                cb.Checked = false;
                 (cb.Parent.Parent as TreeListDataItem).Selected = false;
                 if (Session["idStr"].ToString().IndexOf("," + id + ",") != -1)
                 {
@@ -481,13 +475,10 @@ namespace mms.Plan
             {
                 (dataitem.FindControl("CheckBox1") as CheckBox).Checked = cb.Checked;
                 string id = dataitem.GetDataKeyValue("ID").ToString();
-              
-            //    GridSource.Select("ID='" + id + "'")[0]["checked"] = cb.Checked.ToString().ToLower();
-              //  dataitem.Selected = cb.Checked;
+ 
+                dataitem.Selected = cb.Checked;
                 if (cb.Checked == true)
                 {
-                    GridSource.Select("ID='" + id + "'")[0]["checked"] = "true";
-                    dataitem.Selected = true;
                     if (Session["idStr"].ToString().IndexOf("," + id + ",") == -1)
                     {
                         Session["idStr"] += id + ",";
@@ -496,8 +487,6 @@ namespace mms.Plan
                 }
                 else
                 {
-                    GridSource.Select("ID='" + id + "'")[0]["checked"] = "false";
-                    dataitem.Selected = false;
                     if (Session["idStr"].ToString().IndexOf("," + id + ",") != -1)
                     {
                         Session["idStr"] = Session["idStr"].ToString().Replace("," + id + ",", ",");

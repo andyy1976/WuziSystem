@@ -139,6 +139,15 @@ namespace mms.Plan {
         protected global::System.Web.UI.WebControls.Label lbl_NumCasesSum;
         
         /// <summary>
+        /// RTB_Mat_Rough_Weight 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label RTB_Mat_Rough_Weight;
+        
+        /// <summary>
         /// lbl_DemandNumSum 控件。
         /// </summary>
         /// <remarks>

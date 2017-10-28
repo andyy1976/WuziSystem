@@ -466,14 +466,12 @@ namespace mms.Plan
             if (Session["idStr"].ToString().Substring(0,1) != ",") { Session["idStr"] = "," + Session["idStr"].ToString() + ","; }
             if (cb.Checked == true)
             {
-                GridSource.Select("ID='" + id + "'")[0]["checked"] = "true";
                 (cb.Parent.Parent as GridDataItem).Selected = true;
                 Session["idStr"] += id + ",";
               
             }
             else
             {
-                GridSource.Select("ID='" + id + "'")[0]["checked"] = "false";
                 (cb.Parent.Parent as GridDataItem).Selected =false;
                 if (Session["idStr"].ToString().IndexOf("," + id + ",") != -1)
                 {
@@ -492,7 +490,6 @@ namespace mms.Plan
             {
                 (dataitem.FindControl("CheckBox1") as CheckBox).Checked = cb.Checked;
                 string id = dataitem.GetDataKeyValue("ID").ToString();
-                GridSource.Select("ID='" + id + "'")[0]["checked"] = cb.Checked.ToString().ToLower();
                 dataitem.Selected = cb.Checked;
                 if (cb.Checked == true)
                 {

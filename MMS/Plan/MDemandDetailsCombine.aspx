@@ -307,7 +307,7 @@
             </ContentTemplate>
         </telerik:RadWindow>
         <telerik:RadNotification ID="RadNotificationAlert" runat="server" Text="" Position="Center"
-            AutoCloseDelay="4000" Width="240" Title="提示" EnableRoundedCorners="true">
+            AutoCloseDelay="4000" Width="240" Title="提示" EnableRoundedCorners="true"  >
         </telerik:RadNotification>
     </form>
 </body>

@@ -67,6 +67,7 @@ namespace mms.Plan
             lbl_Rough_Spec.Text = dt.Rows[0]["Rough_Spec"].ToString();
             lbl_Rough_Size.Text = dt.Rows[0]["Rough_Size"].ToString();
             lbl_Mat_Unit.Text = dt.Rows[0]["Mat_Unit"].ToString();
+            RTB_Mat_Rough_Weight.Text = dt.Rows[0]["Mat_Rough_Weight"].ToString();
             RTB_Special_Needs.Text = dt.Rows[0]["Special_Needs"].ToString();
             lbl_NumCasesSum.Text = Convert.ToDouble(dt.Rows[0]["NumCasesSum"].ToString()).ToString();
             lbl_DemandNumSum.Text = Convert.ToDouble(dt.Rows[0]["DemandNumSum"].ToString()).ToString();
@@ -134,7 +135,7 @@ namespace mms.Plan
                 || RDDL_Secret_Level.SelectedText.ToString() != dt.Rows[0]["Secret_Level"].ToString() || RDDL_Use_Des.SelectedValue.ToString() != dt.Rows[0]["Use_Des"].ToString()
                 || RDDL_Shipping_Address.SelectedText.ToString() != dt.Rows[0]["Shipping_Address"].ToString() || RDDL_Certification.SelectedValue.ToString() != dt.Rows[0]["Certification"].ToString()
                 || Convert.ToDateTime(RDP_DemandDate.SelectedDate).ToString("yyyy-MM-dd") != Convert.ToDateTime(dt.Rows[0]["DemandDate"].ToString()).ToString("yyyy-MM-dd")
-                || RTB_MANUFACTURER.Text.Trim() != dt.Rows[0]["MANUFACTURER"].ToString())
+                || RTB_MANUFACTURER.Text.Trim() != dt.Rows[0]["MANUFACTURER"].ToString() || RTB_Mat_Rough_Weight.Text.Trim() != dt.Rows[0]["Mat_Rough_Weight"].ToString())
             {
                 string ID = lbl_ID.Text;
                 string REQUESTER = dt.Rows[0]["REQUESTER"].ToString();
@@ -149,6 +150,7 @@ namespace mms.Plan
                 string Rough_Size = dt.Rows[0]["Rough_Size"].ToString();
                 string Rough_Spec = dt.Rows[0]["Rough_Spec"].ToString();
                 string Unit_Price = dt.Rows[0]["Unit_Price"].ToString();
+                string Mat_Rough_Weight = dt.Rows[0]["Mat_Rough_Weight"].ToString();
                 string Sum_Price = dt.Rows[0]["Sum_Price"].ToString();
                 string Secret_Level = RDDL_Secret_Level.SelectedText.ToString();
                 string Stage = dt.Rows[0]["Stage"].ToString();
@@ -200,6 +202,7 @@ namespace mms.Plan
                          Rough_Size + "','" +
                          Rough_Spec + "','" +
                          Unit_Price + "','" +
+                         Mat_Rough_Weight + "','" +
                          Sum_Price + "','" +
                          Secret_Level + "','" +
                          Stage + "','" +

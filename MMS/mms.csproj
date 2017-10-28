@@ -1190,7 +1190,6 @@
     <Content Include="Plan\MChangeRecordQuery.aspx" />
     <Content Include="Plan\MDemandChangeSubmit.aspx" />
     <Content Include="Plan\MDemandDetailedList.aspx" />
-    <Content Include="Plan\MDemandDetails.aspx" />
     <Content Include="Plan\MDemandMerge.aspx" />
     <Content Include="Plan\MDemandMergeList.aspx" />
     <Content Include="Plan\MDemandMergeListChange.aspx" />
@@ -1706,13 +1705,6 @@
     </Compile>
     <Compile Include="Plan\MDemandDetailedList.aspx.designer.cs">
       <DependentUpon>MDemandDetailedList.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Plan\MDemandDetails.aspx.cs">
-      <DependentUpon>MDemandDetails.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Plan\MDemandDetails.aspx.designer.cs">
-      <DependentUpon>MDemandDetails.aspx</DependentUpon>
     </Compile>
     <Compile Include="Plan\MDemandMerge.aspx.cs">
       <DependentUpon>MDemandMerge.aspx</DependentUpon>

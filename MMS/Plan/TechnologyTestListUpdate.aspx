@@ -146,10 +146,6 @@
                                             <telerik:RadTextBox ID="txt_Drawing_No" Width="120" MaxLength="50" runat="server"></telerik:RadTextBox>
                                             <asp:RequiredFieldValidator ID="rfv_Drawing_No" ValidationGroup="1" runat="server" ErrorMessage="*" ControlToValidate="txt_Drawing_No" ForeColor="Red"></asp:RequiredFieldValidator>
                                         </td>
-                                        <td class="technology_Div_detailcontent_title">物资编码：</td>
-                                        <td class="technology_Div_detailcontent_content1">
-                                            <telerik:RadTextBox ID="txt_ItemCode1" Width="120" runat="server" ValidationGroup="2" Enabled="false"></telerik:RadTextBox>
-                                        </td>
                                         <td class="technology_Div_detailcontent_title">需求时间：</td>
                                         <td class="technology_Div_detailcontent_content">
                                             <telerik:RadDatePicker ID="RDP_DemandDate" runat="server" Width="100px"></telerik:RadDatePicker>
@@ -159,47 +155,57 @@
                             </div>
                         </div>
                         <div>
-                            <div class="technology_Div_smalltitle"><b>物资信息</b></div>
+                        <div class="technology_Div_smalltitle"><b>物资信息：（需求量=单件质量*需求件数）</b></div>
                             <div class="technology_Div_detailcontent">
                                 <table border="0">
                                     <tr>
+                                        <td class="technology_Div_detailcontent_title">物资编码：</td>
+                                        <td class="technology_Div_detailcontent_content1">
+                                            <telerik:RadTextBox ID="txt_ItemCode1" Width="120" runat="server" ValidationGroup="2" Enabled="false"></telerik:RadTextBox>
+                                        </td>
                                         <td class="technology_Div_detailcontent_title">物资名称：</td>
                                         <td class="technology_Div_detailcontent_content">
                                             <telerik:RadTextBox ID="RTB_MaterialName" runat="server" Width="150" MaxLength="50"></telerik:RadTextBox>
                                             <asp:RequiredFieldValidator ID="rfv_MaterialName" ValidationGroup="1" runat="server" ErrorMessage="*" ControlToValidate="RTB_MaterialName" ForeColor="Red"></asp:RequiredFieldValidator>
                                         </td>
-                                        <td class="technology_Div_detailcontent_title" style="width: 10%">共计需求件数：</td>
+                                    <td class="technology_Div_detailcontent_title">坯料规格：</td>
+                                    <td class="technology_Div_detailcontent_content">
+                                        <telerik:RadTextBox ID="txt_Rough_Spec" runat="server" MaxLength="30" Width="150"></telerik:RadTextBox>
+                                    </td>
+                                    <td class="technology_Div_detailcontent_title">物资尺寸：</td>
+                                    <td class="technology_Div_detailcontent_content">
+                                        <telerik:RadTextBox ID="txt_Rough_Size" runat="server" MaxLength="30" Width="150"></telerik:RadTextBox>
+                                    </td>
+                                </tr>
+                                <tr>
+                                                                   
+
+                                    <td class="technology_Div_detailcontent_title">计量单位：</td>
+                                    <td class="technology_Div_detailcontent_content">
+                                        <telerik:RadTextBox ID="txt_Mat_Unit" runat="server" MaxLength="10" Width="150"></telerik:RadTextBox>
+                                        <asp:RequiredFieldValidator ID="rfv_Mat_Unit" ValidationGroup="1" runat="server" ErrorMessage="*" ControlToValidate="txt_Mat_Unit" ForeColor="Red"></asp:RequiredFieldValidator>
+                                    </td>
+                                 </tr>
+                                <tr>
+                                    
+                                    <td class="technology_Div_detailcontent_title">单件质量：</td>
+                                    <td><telerik:RadTextBox ID="RTB_Mat_Rough_Weight" runat="server"></telerik:RadTextBox></td>
+
+                                 
+
+                                    <td class="technology_Div_detailcontent_title">需求量：</td>
+                                        <td class="technology_Div_detailcontent_content">
+                                            <telerik:RadTextBox ID="txt_DemandNumSum" Width="150" runat="server" MaxLength="5" onpaste="return false" onkeyup='clearNoNum(this)'></telerik:RadTextBox>
+                                            <asp:RequiredFieldValidator ID="rfv_DemandNumSum" ValidationGroup="1" runat="server" ErrorMessage="*" ControlToValidate="txt_DemandNumSum" ForeColor="Red"></asp:RequiredFieldValidator>
+                                    </td>
+                                    <td class="technology_Div_detailcontent_title" style="width: 10%">需求件数：</td>
                                         <td class="technology_Div_detailcontent_content">
                                             <telerik:RadTextBox ID="txt_NumCasesSum" ClientIDMode="Static" Width="150" runat="server" MaxLength="5" onpaste="return false" onkeyup='clearNoNum(this)'></telerik:RadTextBox>
                                             <asp:RequiredFieldValidator ID="rfv_NumCasesSum" ValidationGroup="1" runat="server" ErrorMessage="*" ControlToValidate="txt_NumCasesSum" ForeColor="Red"></asp:RequiredFieldValidator>
                                         </td>
-                                        <td class="technology_Div_detailcontent_title">共计需求量：</td>
+                                         <td class="technology_Div_detailcontent_title">特殊需求：</td>
                                         <td class="technology_Div_detailcontent_content">
-                                            <telerik:RadTextBox ID="txt_DemandNumSum" Width="150" runat="server" MaxLength="5" onpaste="return false" onkeyup='clearNoNum(this)'></telerik:RadTextBox>
-                                            <asp:RequiredFieldValidator ID="rfv_DemandNumSum" ValidationGroup="1" runat="server" ErrorMessage="*" ControlToValidate="txt_DemandNumSum" ForeColor="Red"></asp:RequiredFieldValidator>
-                                        </td>
-                                        <td class="technology_Div_detailcontent_title">计量单位：</td>
-                                        <td class="technology_Div_detailcontent_content">
-                                            <telerik:RadTextBox ID="txt_Mat_Unit" runat="server" MaxLength="10" Width="150"></telerik:RadTextBox>
-                                            <asp:RequiredFieldValidator ID="rfv_Mat_Unit" ValidationGroup="1" runat="server" ErrorMessage="*" ControlToValidate="txt_Mat_Unit" ForeColor="Red"></asp:RequiredFieldValidator>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="technology_Div_detailcontent_title">物资尺寸：</td>
-                                        <td class="technology_Div_detailcontent_content">
-                                            <telerik:RadTextBox ID="txt_Rough_Size" runat="server" MaxLength="30" Width="150"></telerik:RadTextBox>
-                                        </td>
-                                        <td class="technology_Div_detailcontent_title">坯料规格：</td>
-                                        <td class="technology_Div_detailcontent_content">
-                                            <telerik:RadTextBox ID="txt_Rough_Spec" runat="server" MaxLength="30" Width="150"></telerik:RadTextBox>
-                                        </td>
-                                        <td class="technology_Div_detailcontent_title">单价：</td>
-                                        <td class="technology_Div_detailcontent_content">
-                                            <telerik:RadTextBox ID="RTB_Unit_Price" runat="server" Width="130" EmptyMessage="0" MaxLength="10" onpaste="return false" onkeyup='clearNoNum(this)'></telerik:RadTextBox>元
-                                        </td>
-                                        <td class="technology_Div_detailcontent_title">总价：</td>
-                                        <td class="technology_Div_detailcontent_content">
-                                            <asp:Label runat="server" ID="span_Sum_Price"></asp:Label>元
+                                            <telerik:RadTextBox ID="rtb_SpecialNeeds" runat="server" Width="150" MaxLength="20" EmptyMessage="无"></telerik:RadTextBox>
                                         </td>
                                     </tr>
                                     <tr>
@@ -208,6 +214,7 @@
                                             <telerik:RadComboBox ID="RadComboBoxSecretLevel" runat="server" Width="150">
                                             </telerik:RadComboBox>
                                         </td>
+                                    
                                         <td class="technology_Div_detailcontent_title">研制阶段：</td>
                                         <td class="technology_Div_detailcontent_content">
                                             <telerik:RadComboBox ID="RadComboBoxStage" runat="server" Width="150">
@@ -224,6 +231,8 @@
                                             <telerik:RadComboBox ID="RadComboBoxUseDes" runat="server" Width="150">
                                             </telerik:RadComboBox>
                                         </td>
+                                </tr>
+                                <tr>
                                         <td class="technology_Div_detailcontent_title">合格证：</td>
                                         <td class="technology_Div_detailcontent_content">
                                             <telerik:RadComboBox ID="RadComboBoxCertification" runat="server" Width="150">
@@ -233,12 +242,11 @@
                                                 </Items>
                                             </telerik:RadComboBox>
                                         </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="technology_Div_detailcontent_title">特殊需求：</td>
+
+                                         
+                                        <td class="technology_Div_detailcontent_title">配送地址：</td>
                                         <td class="technology_Div_detailcontent_content">
-                                            <telerik:RadTextBox ID="rtb_SpecialNeeds" runat="server" Width="150" MaxLength="20" EmptyMessage="无"></telerik:RadTextBox>
-                                            <%--<asp:RequiredFieldValidator ID="rfv_SpecialNeeds" ValidationGroup="1" runat="server" ErrorMessage="*" ControlToValidate="rtb_SpecialNeeds" ForeColor="Red"></asp:RequiredFieldValidator>--%>
+                                            <telerik:RadComboBox ID="RadComboBoxShipping_Address" runat="server" Width="150"></telerik:RadComboBox>
                                         </td>
                                         <td class="technology_Div_detailcontent_title">紧急程度：</td>
                                         <td class="technology_Div_detailcontent_content">
@@ -251,14 +259,7 @@
                                         <td class="technology_Div_detailcontent_content">
                                             <telerik:RadComboBox ID="RadComboBoxMaterialDept" AutoPostBack="true" AppendDataBoundItems="true" runat="server"
                                                 OnSelectedIndexChanged="RadComboBoxMaterialDept_SelectedIndexChanged" Width="150">
-                                                <%--<Items>
-                                              <telerik:RadComboBoxItem Text="请选择" Value="0" Selected="True" />
-                                            </Items>--%>
                                             </telerik:RadComboBox>
-                                        </td>
-                                        <td class="technology_Div_detailcontent_title">配送地址：</td>
-                                        <td class="technology_Div_detailcontent_content">
-                                            <telerik:RadComboBox ID="RadComboBoxShipping_Address" runat="server" Width="150"></telerik:RadComboBox>
                                         </td>
                                     </tr>
                                     <tr id="trAttribute4" runat="server" visible="false">
@@ -267,11 +268,28 @@
                                             <telerik:RadButton ID="RB_Attribute41" runat="server" ButtonType="ToggleButton" ToggleType="Radio" GroupName="Attribute4" Text="国产" Checked="true" AutoPostBack="false"></telerik:RadButton>
                                             <telerik:RadButton ID="RB_Attribute42" runat="server" ButtonType="ToggleButton" ToggleType="Radio" GroupName="Attribute4" Text="进口" AutoPostBack="false"></telerik:RadButton>
                                         </td>
-                                    </tr>
-                                    <tr>
+
+                                   
+                                           <td class="technology_Div_detailcontent_title">单价(元）：</td>
+                                    <td class="technology_Div_detailcontent_content">
+                                        <telerik:RadTextBox ID="RTB_Unit_Price" runat="server" Width="130" EmptyMessage="0" MaxLength="10" onpaste="return false" onkeyup='clearNoNum(this)'></telerik:RadTextBox>
+                                    </td>
+
+                                    <td class="technology_Div_detailcontent_title">总价（元）：</td>
+                                    <td class="technology_Div_detailcontent_content">
+                                        <telerik:RadTextBox ID="span_Sum_Price" runat="server"></telerik:RadTextBox>
+                                    </td>
                                         <td style="text-align: right;">变更原因：</td>
-                                        <td>
-                                            <telerik:RadTextBox runat="server" ID="RTB_Reason" Width="150"></telerik:RadTextBox></td>
+                                        <td><telerik:RadTextBox runat="server" ID="RTB_Reason" Width="150"></telerik:RadTextBox></td>
+                                        <%--
+                                          <td class="technology_Div_detailcontent_title">物资牌号：</td>
+                                    <td><telerik:RadTextBox ID="RTB_Material_Mark" runat="server" Width="150" MaxLength="30"></telerik:RadTextBox></td>
+                                    <td class="technology_Div_detailcontent_title">供应状态：</td>
+                                    <td><telerik:RadTextBox ID="RTB_CN_Material_State" runat="server" Width="150" MaxLength="20"></telerik:RadTextBox></td>
+
+                                    <td class="technology_Div_detailcontent_title">采用标准：</td>
+                                    <td><telerik:RadTextBox ID="RTB_Material_Tech_Condition" runat="server" Width="150" MaxLength="50"></telerik:RadTextBox></td>
+                                        --%>
                                     </tr>
                                 </table>
                             </div>

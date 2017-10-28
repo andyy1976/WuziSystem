@@ -92,7 +92,7 @@
                             </MasterTableView>
                         </telerik:RadGrid>
                         <telerik:RadNotification ID="RadNotificationAlert" runat="server" Text="" Position="Center"
-                            AutoCloseDelay="4000" Width="240" Title="提示" EnableRoundedCorners="true">
+                            AutoCloseDelay="4000" Width="240" Title="提示" EnableRoundedCorners="true"  >
                         </telerik:RadNotification>
                         <telerik:RadWindow ID="confirmDeleteWindow" runat="server" VisibleTitlebar="false"
                             VisibleStatusbar="false" Modal="true" Behaviors="None" Height="120px" Width="320px">

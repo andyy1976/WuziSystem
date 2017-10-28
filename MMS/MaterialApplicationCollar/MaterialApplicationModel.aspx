@@ -36,6 +36,11 @@
                     <telerik:AjaxUpdatedControl ControlID="RadGridMDML" LoadingPanelID="RadAjaxLoadingPanel1" />
                 </UpdatedControls>
             </telerik:AjaxSetting>
+            <telerik:AjaxSetting AjaxControlID="RB_FillInApp">
+                <UpdatedControls>
+                    <telerik:AjaxUpdatedControl ControlID="RadNotificationAlert" LoadingPanelID="RadAjaxLoadingPanel1" />
+                </UpdatedControls>
+            </telerik:AjaxSetting>
         </AjaxSettings>
     </telerik:RadAjaxManager>
     <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" runat="server" Skin="Default"></telerik:RadAjaxLoadingPanel>
@@ -44,11 +49,6 @@
             function refreshGrid(arg) {
                 if (!arg) {
                     $find("<%= RadAjaxManager1.ClientID %>").ajaxRequest("Rebind");
-                }
-            }
-            function refreshGrid1(arg) {
-                if (!arg) {
-                    $find("<%= RadAjaxManager1.ClientID %>").ajaxRequest("Rebind1");
                 }
             }
             function ShowWindow(sender, args) {              
@@ -142,10 +142,7 @@
                 Behaviors="Close,Maximize,Minimize" Modal="true" Width="1000px" Height="680px" />
         </Windows>
     </telerik:RadWindowManager>
-    <telerik:RadNotification ID="RadNotificationAlert" runat="server" Text="" Position="Center"
-        AutoCloseDelay="40000" Width="300" Title="提示" EnableRoundedCorners="true">
-    </telerik:RadNotification>
-    <telerik:RadNotification ID="RadNotificationAlert1" runat="server" Text="申请成功！进入流程平台" Position="Center"
-        AutoCloseDelay="4000" Width="500" Title="提示" EnableRoundedCorners="true">
+    <telerik:RadNotification ID="RadNotificationAlert" runat="server" Text="请选择申请行" Position="Center"
+        AutoCloseDelay="4000" Width="300" Title="提示" EnableRoundedCorners="true"  >
     </telerik:RadNotification>
 </asp:Content>

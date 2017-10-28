@@ -469,12 +469,12 @@
                                     <telerik:GridBoundColumn DataField="Material_Name" FilterControlAltText="Filter Material_Name column" HeaderText="物资名称" SortExpression="Material_Name" UniqueName="Material_Name">
                                     </telerik:GridBoundColumn>
 
-                                       <telerik:GridBoundColumn DataField="Material_Mark" FilterControlAltText="Filter Material_Mark column" HeaderText="物资牌号" SortExpression="Material_Mark" UniqueName="Material_Mark">
+                                       <telerik:GridBoundColumn DataField="Material_Mark" FilterControlAltText="Filter Material_Mark column" HeaderText="物资牌号" SortExpression="Material_Mark" UniqueName="Material_Mark" Visible="false">
                                     </telerik:GridBoundColumn>
-                                       <telerik:GridBoundColumn DataField="CN_Material_State" FilterControlAltText="Filter CN_Material_State column" HeaderText="供应状态" SortExpression="CN_Material_State" UniqueName="CN_Material_State">
+                                       <telerik:GridBoundColumn DataField="CN_Material_State" FilterControlAltText="Filter CN_Material_State column" HeaderText="供应状态" SortExpression="CN_Material_State" UniqueName="CN_Material_State" Visible="false">
                                     </telerik:GridBoundColumn>
 
-                                     <telerik:GridBoundColumn DataField="Material_Tech_Condition" FilterControlAltText="Filter Material_Tech_Condition column" HeaderText="采用标准" SortExpression="Material_Tech_Condition" UniqueName="Material_Tech_Condition">
+                                     <telerik:GridBoundColumn DataField="Material_Tech_Condition" FilterControlAltText="Filter Material_Tech_Condition column" HeaderText="采用标准" SortExpression="Material_Tech_Condition" UniqueName="Material_Tech_Condition" Visible="false">
                                     </telerik:GridBoundColumn>
                                    
                                     <telerik:GridBoundColumn DataField="Rough_Spec" FilterControlAltText="Filter Rough_Spec column" HeaderText="物资规格" SortExpression="Rough_Spec" UniqueName="Rough_Spec">
@@ -533,8 +533,8 @@
                                         </telerik:RadComboBox>
                                        </ItemTemplate>
                                 </telerik:GridTemplateColumn>
-                                  <telerik:GridTemplateColumn HeaderText="配送地址" HeaderStyle-HorizontalAlign="Center" UniqueName="Shipping_Address"
-                                     HeaderStyle-width="110px" ItemStyle-Width="110px">
+                                  <telerik:GridTemplateColumn HeaderText="配送<br />地址" HeaderStyle-HorizontalAlign="Center" UniqueName="Shipping_Address"
+                                     HeaderStyle-width="100px" ItemStyle-Width="100px">
                                     <HeaderStyle HorizontalAlign="Center"></HeaderStyle>
                                     <ItemTemplate>
                                         <telerik:RadComboBox ID="RadComboBoxShippingAddress1" runat="server" Width="110px" Culture="zh-CN"
@@ -577,9 +577,9 @@
                                   </ItemTemplate>
                                 </telerik:GridTemplateColumn>
 
-                                <telerik:GridBoundColumn DataField="DemandNumSum" HeaderText="需求数量(kg)" SortExpression="DemandNumSum" UniqueName="DemandNumSum" ItemStyle-HorizontalAlign="Right">
+                                <telerik:GridBoundColumn DataField="DemandNumSum" HeaderText="需求<br />数量(kg)" SortExpression="DemandNumSum" UniqueName="DemandNumSum" ItemStyle-HorizontalAlign="Right">
                                 </telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn DataField="NumCasesSum" HeaderText="需求件数" SortExpression="NumCasesSum" UniqueName="NumCasesSum" ItemStyle-HorizontalAlign="Right">
+                                <telerik:GridBoundColumn DataField="NumCasesSum" HeaderText="需求<br />件数" SortExpression="NumCasesSum" UniqueName="NumCasesSum" ItemStyle-HorizontalAlign="Right">
                                 </telerik:GridBoundColumn>
                                 <telerik:GridBoundColumn DataField="Unit_Price" FilterControlAltText="Filter Unit_Price column" HeaderText="单价" SortExpression="Unit_Price" UniqueName="Unit_Price">
                                 </telerik:GridBoundColumn>
@@ -750,7 +750,7 @@
                         </telerik:RadGrid><br />
                         <telerik:RadButton ID="RadBtnSubmit" runat="server" ValidationGroup="3" Text="提交流程平台" Width="120px" OnClick="RadBtnSubmit_Click" OnClientClicking="ShowApprove"></telerik:RadButton>
 				        <telerik:RadNotification ID="RadNotificationAlert" runat="server" Text="" Position="Center"
-				            AutoCloseDelay="4000" Width="300" Title="提示" EnableRoundedCorners="true">
+				            AutoCloseDelay="4000" Width="300" Title="提示" EnableRoundedCorners="true"  >
 				        </telerik:RadNotification>
                         <telerik:RadWindow ID="confirmDeleteWindow" runat="server" VisibleTitlebar="false"
                             VisibleStatusbar="false" Modal="true" Behaviors="None" Height="120px" Width="320px">

@@ -343,6 +343,6 @@
     </telerik:RadWindowManager>
     <%-- 导入计划、查看计划--结束--%>
     <telerik:RadNotification ID="RadNotificationAlert" runat="server" Text="" Position="Center"
-        AutoCloseDelay="4000" Width="300" Title="提示" EnableRoundedCorners="true">
+        AutoCloseDelay="4000" Width="300" Title="提示" EnableRoundedCorners="true"  >
     </telerik:RadNotification>
 </asp:Content>

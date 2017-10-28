@@ -132,6 +132,7 @@ namespace mms.Plan
                     txt_Mat_Unit.Text = dt.Rows[0]["Mat_Unit"].ToString();
                     txt_Rough_Size.Text = dt.Rows[0]["Rough_Size"].ToString();
                     txt_Rough_Spec.Text = dt.Rows[0]["Rough_Spec"].ToString();
+                    RTB_Mat_Rough_Weight.Text = dt.Rows[0]["Mat_Rough_Weight"].ToString();
                     RTB_Unit_Price.Text = dt.Rows[0]["Unit_Price"].ToString();
                     span_Sum_Price.Text = dt.Rows[0]["Sum_Price"].ToString();
                     if (RadComboBoxSecretLevel.FindItemByText(dt.Rows[0]["Secret_Level"].ToString()) != null)
@@ -307,6 +308,7 @@ namespace mms.Plan
             string Rough_Size = txt_Rough_Size.Text.Trim();
             string Rough_Spec = txt_Rough_Spec.Text.Trim();
             string Unit_Price = RTB_Unit_Price.Text.Trim();
+            string Mat_Rough_Weight = RTB_Mat_Rough_Weight.Text.Trim();
             string Sum_Price = span_Sum_Price.Text.Trim();
             string Secret_Level = RadComboBoxSecretLevel.SelectedValue;
             string Stage = RadComboBoxStage.SelectedValue;
@@ -360,7 +362,7 @@ namespace mms.Plan
                 || Secret_Level != dt.Rows[0]["Secret_Level"].ToString() || Stage != dt.Rows[0]["Stage"].ToString() || Use_Des != dt.Rows[0]["Use_Des"].ToString()
                 || Shipping_Address != dt.Rows[0]["Shipping_Address"].ToString() || Certification != dt.Rows[0]["Certification"].ToString()
                 || Attribute4 != dt.Rows[0]["Attribute4"].ToString() || Material_Name != dt.Rows[0]["Material_Name"].ToString()
-                || Unit_Price != dt.Rows[0]["Unit_Price"].ToString())
+                || Unit_Price != dt.Rows[0]["Unit_Price"].ToString() || Mat_Rough_Weight != dt.Rows[0]["Mat_Rough_Weight"].ToString())
 
             {
                 if (Special_Needs != dt.Rows[0]["Special_Needs"].ToString() && Special_Needs == "")
@@ -391,6 +393,7 @@ namespace mms.Plan
                                  Rough_Size + "','" +
                                  Rough_Spec + "','" +
                                  Unit_Price + "','" +
+                                 Mat_Rough_Weight + "','" +
                                  Sum_Price + "','" +
                                  Secret_Level + "','" +
                                  Stage + "','" +
