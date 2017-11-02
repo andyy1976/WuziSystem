@@ -67,6 +67,42 @@ namespace mms.Plan {
         protected global::Telerik.Web.UI.RadTabStrip RadTabStrip1;
         
         /// <summary>
+        /// span_model 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl span_model;
+        
+        /// <summary>
+        /// span_PlanName 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl span_PlanName;
+        
+        /// <summary>
+        /// span_plancode 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl span_plancode;
+        
+        /// <summary>
+        /// span_DraftCode 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl span_DraftCode;
+        
+        /// <summary>
         /// RTB_ItemCode 控件。
         /// </summary>
         /// <remarks>

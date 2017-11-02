@@ -86,12 +86,10 @@
                     <div style="width: 100%; height: 0px; border: solid #000 1px; margin: 5px 0; clear: both;"></div>
                 </div>
                 <div class="divSiteMap" style="width: 100%; float: none; height: 30px; border-bottom-style: solid; border-bottom-width: 0px;">
-                    <label style="margin-left: 10px; float: left">型号：</label><span id="span_model" style="float: left;" runat="server"></span>
+                    <label style="margin-left: 10px; float: left;color:red;">型号：</label><span id="span_model" style="float: left;color:red;" runat="server"></span>
                     <label style="margin-left: 50px; float: left">基准物资材料清单号：</label><span id="span_listNo" style="float: left;" runat="server"></span>
-                    <div style="width: 200px; float: right;">
-                        需求时间：
-                        <telerik:RadDatePicker runat="server" id="RDP_DemandDate" Width="100px"></telerik:RadDatePicker>
-                    </div>
+                   <label style="margin-left: 50px; float: right"> 需求时间：<telerik:RadDatePicker runat="server" id="RDP_DemandDate" Width="100px"></telerik:RadDatePicker></label>
+    
                 </div>
                 <div class="divViewPanel">
                     <telerik:RadGrid ID="RadGrid_MDemandMergelist" runat="server" DataKeyNames="ID" Culture="zh-CN"
@@ -178,7 +176,7 @@
                                 </telerik:GridBoundColumn>
 
                              
-                                <telerik:GridBoundColumn DataField="MaterialDept" FilterControlAltText="Filter MaterialDept column" HeaderText="领料<br />部门" SortExpression="MaterialDept" UniqueName="MaterialDept"
+                                <telerik:GridBoundColumn DataField="MaterialDept" FilterControlAltText="Filter MaterialDept column" HeaderText="领用<br />单位" SortExpression="MaterialDept" UniqueName="MaterialDept"
                                      HeaderStyle-width="40px" ItemStyle-Width="40px">
                                 </telerik:GridBoundColumn>
                                 <telerik:GridTemplateColumn HeaderText="配送地址" HeaderStyle-HorizontalAlign="Center" UniqueName="Shipping_Address"

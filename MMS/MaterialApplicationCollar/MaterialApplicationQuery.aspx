@@ -120,21 +120,18 @@
     <asp:HiddenField ID="HFMAID" runat="server" />
     <asp:HiddenField ID="HFAppSate1" runat="server" />
     <div style="width: 100%; float: left;">
+        需求行号：<telerik:RadTextBox ID="RTB_ID" runat="server" Width="100px"></telerik:RadTextBox>
         任务号：<telerik:RadTextBox ID="RTB_TaskCode" runat="server" Width="100px"></telerik:RadTextBox>
         图号：<telerik:RadTextBox ID="RTB_DrawingNo" runat="server" Width="100px"></telerik:RadTextBox>
         类型：<telerik:RadDropDownList ID="RDDL_Type" runat="server" Width="100px">
             <Items>
                 <telerik:DropDownListItem Value="" Text="全部" />
                 <telerik:DropDownListItem Value="0" Text="型号投产" />
-                <telerik:DropDownListItem Value="1" Text="试验件" />
                 <telerik:DropDownListItem Value="2" Text="技术创新" />
                 <telerik:DropDownListItem Value="3" Text="车间备料" />
                 <telerik:DropDownListItem Value="4" Text="无需求" />
             </Items>
         </telerik:RadDropDownList>
-        申请时间：<telerik:RadDatePicker ID="RDPStart" runat="server" Width="100px"></telerik:RadDatePicker>
-        ～<telerik:RadDatePicker ID="RDPEnd" runat="server" Width="100px"></telerik:RadDatePicker>
-        物资编码：<telerik:RadTextBox ID="RTB_ItemCode1" runat="server" Width="100px"></telerik:RadTextBox>
         物资清单状态：<telerik:RadDropDownList ID="RDDL_AppState" runat="server" Width="100px">
             <Items>
                 <telerik:DropDownListItem Value="" Text="全部" />
@@ -143,6 +140,10 @@
                 <telerik:DropDownListItem Value="3" Text="已删除" />
             </Items>
         </telerik:RadDropDownList>
+        申请时间：<telerik:RadDatePicker ID="RDPStart" runat="server" Width="100px"></telerik:RadDatePicker>
+        ～<telerik:RadDatePicker ID="RDPEnd" runat="server" Width="100px"></telerik:RadDatePicker>
+        物资编码：<telerik:RadTextBox ID="RTB_ItemCode1" runat="server" Width="100px"></telerik:RadTextBox>
+      
         <telerik:RadButton ID="RB_Search" runat="server" Text="搜索" OnClick="RB_Search_Click"></telerik:RadButton>
     </div>
     <div style="width: 100%; float: left;">

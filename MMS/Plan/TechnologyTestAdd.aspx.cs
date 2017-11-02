@@ -380,6 +380,10 @@ namespace mms.Plan
             mta.Shipping_Address = RadComboBoxShipping_Address.SelectedItem.Text;//Session["Shipping_Addr"].ToString();
             mta.Certification = RadComboBoxCertification.SelectedValue;
             mta.Project = RDDL_Project.SelectedValue;
+
+            mta.TDM_Description = RTB_TDM_Description.Text; ;
+            mta.MaterialsDes = RTB_MaterialsDes.Text; ;
+            mta.Material_Size_Required = RTB_Material_Size_Required.Text; ;
             if (Request.QueryString["SubmitType"].ToString() == "3")
             {
                 if (RB_Attribute41.Checked == true)
@@ -409,7 +413,9 @@ namespace mms.Plan
             RTB_Material_Mark.Text = "";
             RTB_CN_Material_State.Text = "";
             RTB_Material_Tech_Condition.Text = "";
-
+            RTB_Material_Size_Required.Text = "";
+            RTB_MaterialsDes.Text = "";
+            RTB_TDM_Description.Text = "";
             txt_ItemCode1.Text = "";
             txt_Drawing_No.Text = "";
             txt_NumCasesSum.Text = "";
@@ -1174,6 +1180,7 @@ namespace mms.Plan
                     lblMSG.Text = "已失效！";
                 }
                 string Seg5 = dt.Rows[0]["Seg5"].ToString().Substring(0, 4);
+                RTB_MaterialsDes.Text = dt.Rows[0]["SEG4"].ToString();
                 RTB_Material_Mark.Text = dt.Rows[0]["SEG13"].ToString();
                 RTB_CN_Material_State.Text = "";
                 RTB_Material_Tech_Condition.Text = "";

@@ -86,7 +86,7 @@ namespace mms.Plan
                     }
                     this.ViewState["submit_type"] = Request.QueryString["t"].ToString();
                     btnNewAdd.Text = title;
-                    GridSource = Common.AddTableRowsID(GetTechnologyTestList());
+                    GridSource = Common.AddTableRowsID(GetTechnologyTestList(null));
                     btnNewAdd.Attributes["onclick"] = "return ShowTechnologyTestAdd(''," + Request.QueryString["t"].ToString() + ")";
                     RadTabStrip1.Tabs[1].NavigateUrl = "TechnologyTestListChange.aspx?t=" + Request.QueryString["t"].ToString();
                 }
@@ -96,7 +96,38 @@ namespace mms.Plan
                 }
             }
         }
-        protected DataTable GetTechnologyTestList()
+
+        protected void RB_Search_Click(object sender, EventArgs e)
+        {
+            string MDP_Code = RTB_MDP_Code.Text.Trim();
+            string startTime = RDPStart.SelectedDate.ToString();
+            string endTime = RDPEnd.SelectedDate.ToString();
+            string Submit_State = RDDL_AppState.SelectedItem.Value;
+            Session["StrWhere"] = "";
+            if (Submit_State != "")
+            {
+                Session["StrWhere"] += " and Submit_State = '" + Submit_State + "'";
+            }
+            if (MDP_Code != "")
+            {
+                Session["StrWhere"] += " and MDP_Code like '%" + MDP_Code + "%'";
+            }
+            try
+            {
+                Session["StrWhere"] += " and SUBMIT_DATE >= '" + Convert.ToDateTime(startTime).ToString() + "'";
+            }
+            catch { }
+            try
+            {
+                Session["StrWhere"] += " and SUBMIT_DATE <= '" + Convert.ToDateTime(endTime).ToString() + "'";
+            }
+            catch { }
+
+            GridSource = Common.AddTableRowsID(GetTechnologyTestList(Session["StrWhere"].ToString()));
+            RadGrid_TechnologyTestList.Rebind();
+        }
+
+        protected DataTable GetTechnologyTestList(string strWhereCondition)
         {
             string stype = this.ViewState["submit_type"].ToString();
             try
@@ -113,7 +144,8 @@ namespace mms.Plan
                         " , (select Convert(nvarchar(50),count(*)) from M_Demand_Merge_List where MDPID = M_Demand_Plan_List.ID and Is_Submit = '1')" +
                         " + '/' + (select Convert(nvarchar(50),Count(*)) from M_Demand_Merge_List where MDPID = M_Demand_Plan_List.ID)  as SubmitCount" +
                         " from M_Demand_Plan_List left join Sys_UserInfo_PWD on M_Demand_Plan_List.User_ID = Sys_UserInfo_PWD.ID" +
-                        " where Submit_Type = '" + stype + "' and M_Demand_Plan_List.ID in (select MDPID from M_Demand_Merge_List) order by Submit_Date desc";
+                        " where Submit_Type = '" + stype + "' and M_Demand_Plan_List.ID in (select MDPID from M_Demand_Merge_List)"+
+                        strWhereCondition+"order by Submit_Date desc";
                 }
                 else
                 {
@@ -124,7 +156,8 @@ namespace mms.Plan
                         " ,  (select Convert(nvarchar(50),count(*)) from M_Demand_Merge_List where MDPID = M_Demand_Plan_List.ID and Is_Submit = '1')" +
                         " + '/' + (select Convert(nvarchar(50),Count(*)) from M_Demand_Merge_List where MDPID = M_Demand_Plan_List.ID)  as SubmitCount" +
                         " from M_Demand_Plan_List left join Sys_UserInfo_PWD on M_Demand_Plan_List.User_ID = Sys_UserInfo_PWD.ID" +
-                        " where Submit_Type = '" + stype + "' and M_Demand_Plan_List.ID in (select MDPID from M_Demand_Merge_List) and UserAccount='" + UserName + "' order by Submit_Date desc";
+                        " where Submit_Type = '" + stype + "' and M_Demand_Plan_List.ID in (select MDPID from M_Demand_Merge_List) and UserAccount='" + UserName + "'"+
+                        strWhereCondition+"order by Submit_Date desc";
                 }
                 return DBI.Execute(strSQL, true);
             }
@@ -255,7 +288,7 @@ namespace mms.Plan
 
         protected void RadAjaxManager1_OnAjaxRequest(object sender, AjaxRequestEventArgs e)
         {
-            GridSource = Common.AddTableRowsID(GetTechnologyTestList());
+            GridSource = Common.AddTableRowsID(GetTechnologyTestList(null));
             RadGrid_TechnologyTestList.Rebind();
         }
 

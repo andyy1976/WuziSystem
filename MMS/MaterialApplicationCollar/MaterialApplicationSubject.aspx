@@ -69,10 +69,22 @@
         <div style="width: 100%; float: left;">
             <table>
                 <tr>
-                    <td>任务号：</td>
-                    <td><telerik:RadTextBox ID="RTB_TaskCode" runat="server" Width="100px"></telerik:RadTextBox></td>
+                       <td>需求行号：</td>
+                    <td><telerik:RadTextBox ID="RTB_ID" runat="server" Width="100px"></telerik:RadTextBox></td>
+                    <td>型号：</td>
+                    <td><telerik:RadTextBox ID="RTB_Project" runat="server" Width="100px"></telerik:RadTextBox></td>
                     <td>图号：</td>
                     <td><telerik:RadTextBox ID="RTB_Drawing_No" runat="server" Width="100px"></telerik:RadTextBox></td>
+                    <td>任务号：</td>
+                    <td><telerik:RadTextBox ID="RTB_TaskCode" runat="server" Width="100px"></telerik:RadTextBox></td>
+
+                    <td>物资名称：</td>
+                    <td><telerik:RadTextBox ID="RTB_Material_Name" runat="server" Width="100px"></telerik:RadTextBox></td>
+                    <td>物资编码：</td>
+                    <td><telerik:RadTextBox ID="RTB_ItemCode1" runat="server" Width="100px"></telerik:RadTextBox></td>
+                    <td>申请时间：</td>
+                    <td><telerik:RadDatePicker ID="RDPStart" runat="server" Width="100px"></telerik:RadDatePicker>
+                      ～<telerik:RadDatePicker ID="RDPEnd" runat="server" Width="100px"></telerik:RadDatePicker></td>
                     <td><telerik:RadButton ID="RB_Search" runat="server" Text="搜索" OnClick="RB_Search_Click"></telerik:RadButton></td>
                 </tr>
             </table>

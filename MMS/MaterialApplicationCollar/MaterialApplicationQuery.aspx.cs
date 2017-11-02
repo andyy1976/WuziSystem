@@ -150,6 +150,9 @@ namespace mms.MaterialApplicationCollar
             string endTime = RDPEnd.SelectedDate.ToString();
             string itemcode1 = RTB_ItemCode1.Text.Trim();
             string AppState = RDDL_AppState.SelectedItem.Value;
+            string ID = RTB_ID.Text.Trim();
+           //string PROJECT = RTB_Project.Text.Trim();
+           // string Material_Name = RTB_Material_Name.Text.Trim();
             string strWhere = "";
             if (taskCode != "")
             {
@@ -159,6 +162,15 @@ namespace mms.MaterialApplicationCollar
             {
                 strWhere += " and MaterialApplication.Drawing_No like '%" + drawingNo + "%'";
             }
+            if (ID != "")
+            {
+                strWhere += " and MaterialApplication.Material_Id like '%" + ID + "%'";
+            }
+          /*  if (Material_Name != "")
+            {
+                strWhere += " and MaterialApplication.Material_Name like '%" + Material_Name + "%'";
+            }
+           */
             if (type != "")
             {
                 strWhere += " and MaterialApplication.Type = '" + type + "'";

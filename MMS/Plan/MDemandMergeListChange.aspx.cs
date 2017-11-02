@@ -22,35 +22,54 @@ namespace mms.Plan
             DBI = DBFactory.GetDBInterface(DBConn);
             if (!IsPostBack)
             {
+                if (Request.QueryString["PackId"] != null && Request.QueryString["PackId"].ToString() != "")
+                {
+                    Common.CheckPermission(Session["UserName"].ToString(), "MDemandMergeListChange", this.Page);
 
-                Common.CheckPermission(Session["UserName"].ToString(), "MDemandMergeListChange", this.Page);
+                    string packId = Request.QueryString["PackId"].ToString();
+                    string DraftCode = "";
+                    string draftid = "";
+                    string Model = "";
+                    string PlanCode = "";
+                    string strSQL = " Select * From V_M_Draft_List where packid='" + packId + "'";
+                    DataTable dt = DBI.Execute(strSQL, true);
 
-                string packId = Request.QueryString["PackId"].ToString();
+                    DraftCode = dt.Rows[0]["DraftCode"].ToString();
+                    draftid = dt.Rows[0]["draftid"].ToString();
+                    Model = dt.Rows[0]["model_1"].ToString();
+                    PlanCode = dt.Rows[0]["PlanCode"].ToString();
 
-             //   RadTabStrip1.Tabs[0].NavigateUrl = "MDemandDetails.aspx?PackId=" + packId;
-                RadTabStrip1.Tabs[0].NavigateUrl = "MDemandDetailsTreeList.aspx?PackId=" + packId;
-                string strSQL = "select * from GetBasicdata_T_Item where DICT_CLASS='CUX_DM_URGENCY_LEVEL'";
-                DataTable dt = DBI.Execute(strSQL, true);
-                RDDL_Urgency_Degre.DataSource = dt;
-                RDDL_Urgency_Degre.DataTextField = "DICT_Name";
-                RDDL_Urgency_Degre.DataValueField = "DICT_CODE";
-                RDDL_Urgency_Degre.DataBind();
 
-                strSQL = "select Dept, DeptCode from Sys_DeptEnum where Is_Del = 'false'";
-                dt = DBI.Execute(strSQL, true);
-                RDDL_Dept.DataSource = dt;
-                RDDL_Dept.DataTextField = "Dept";
-                RDDL_Dept.DataValueField = "DeptCode";
-                RDDL_Dept.DataBind();
+                    this.span_DraftCode.InnerText = DraftCode;
+                    this.span_model.InnerText = Model;
+                    this.span_plancode.InnerText = PlanCode;
+                    this.span_PlanName.InnerText = dt.Rows[0]["PlanName"].ToString();
 
-                strSQL = "SELECT * FROM [Sys_SecretLevel] WHERE ([Is_Del] = 0)";
-                dt = DBI.Execute(strSQL, true);
-                RDDL_Secret_Level.DataSource = dt;
-                RDDL_Secret_Level.DataValueField = "SecretLevel_Name";
-                RDDL_Secret_Level.DataTextField = "SecretLevel_Name";
-                RDDL_Secret_Level.DataBind();
+                    //   RadTabStrip1.Tabs[0].NavigateUrl = "MDemandDetails.aspx?PackId=" + packId;
+                    RadTabStrip1.Tabs[0].NavigateUrl = "MDemandDetailsTreeList.aspx?PackId=" + packId;
+                    strSQL = "select * from GetBasicdata_T_Item where DICT_CLASS='CUX_DM_URGENCY_LEVEL'";
+                    dt = DBI.Execute(strSQL, true);
+                    RDDL_Urgency_Degre.DataSource = dt;
+                    RDDL_Urgency_Degre.DataTextField = "DICT_Name";
+                    RDDL_Urgency_Degre.DataValueField = "DICT_CODE";
+                    RDDL_Urgency_Degre.DataBind();
 
-                GetMDemandMergeList("");
+                    strSQL = "select Dept, DeptCode from Sys_DeptEnum where Is_Del = 'false'";
+                    dt = DBI.Execute(strSQL, true);
+                    RDDL_Dept.DataSource = dt;
+                    RDDL_Dept.DataTextField = "Dept";
+                    RDDL_Dept.DataValueField = "DeptCode";
+                    RDDL_Dept.DataBind();
+
+                    strSQL = "SELECT * FROM [Sys_SecretLevel] WHERE ([Is_Del] = 0)";
+                    dt = DBI.Execute(strSQL, true);
+                    RDDL_Secret_Level.DataSource = dt;
+                    RDDL_Secret_Level.DataValueField = "SecretLevel_Name";
+                    RDDL_Secret_Level.DataTextField = "SecretLevel_Name";
+                    RDDL_Secret_Level.DataBind();
+
+                    GetMDemandMergeList("");
+                }
             }
         }
 

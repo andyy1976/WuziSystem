@@ -52,6 +52,56 @@ namespace mms.Plan
             }
         }
 
+        protected void RB_Search_Click(object sender, EventArgs e)
+        {
+            string taskCode = RTB_TaskCode.Text.Trim();
+            string DrawingNo = RTB_Drawing_No.Text.Trim();
+            string ID = RTB_ID.Text.Trim();
+            string PROJECT = RTB_Project.Text.Trim();
+            string Material_Name = RTB_Material_Name.Text.Trim();
+            string ItemCode1 = RTB_ItemCode1.Text.Trim();
+            string startTime = RDPStart.SelectedDate.ToString();
+            string endTime = RDPEnd.SelectedDate.ToString();
+            Session["StrWhere"] = "";
+            if (taskCode != "")
+            {
+                Session["StrWhere"] += " and M_Demand_Merge_List.TaskCode like '%" + taskCode + "%'";
+            }
+            if (DrawingNo != "")
+            {
+                Session["StrWhere"] += " and M_Demand_Merge_List.Drawing_No like '%" + DrawingNo + "%'";
+            }
+
+            if (PROJECT != "")
+            {
+                Session["StrWhere"] += " and M_Demand_Merge_List.PROJECT like '%" + PROJECT + "%'";
+            }
+            if (Material_Name != "")
+            {
+                Session["StrWhere"] += " and M_Demand_Merge_List.Material_Name like '%" + Material_Name + "%'";
+            }
+            if (ItemCode1 != "")
+            {
+                Session["StrWhere"] += " and M_Demand_Merge_List.ItemCode1 like '%" + DrawingNo + "%'";
+            }
+            try
+            {
+                Session["StrWhere"] += " and M_Demand_Merge_List.SUBMIT_DATE >= '" + Convert.ToDateTime(startTime).ToString() + "'";
+            }
+            catch { }
+            try
+            {
+                Session["StrWhere"] += " and M_Demand_Merge_List.SUBMIT_DATE <= '" + Convert.ToDateTime(endTime).ToString() + "'";
+            }
+            catch { }
+            if (ID != "")
+            {
+                Session["StrWhere"] += " and M_Demand_Merge_List.ID like '%" + ID + "%'";
+            }
+            GetMDemandMergeList(Session["StrWhere"].ToString());
+            RadGrid1.Rebind();
+        }
+
         protected void GetMDemandMergeList(string strWhere)
         {
             string strSQL = " select M_Demand_Merge_List.ID, M_Demand_Merge_List.TaskCode, Drawing_No, ItemCode1, NumCasesSum, DemandNumSum, Dept, DemandDate, M_Demand_Merge_List.Submit_Date" +

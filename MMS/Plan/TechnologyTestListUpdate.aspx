@@ -228,8 +228,7 @@
                                         </td>
                                         <td class="technology_Div_detailcontent_title">用途：</td>
                                         <td class="technology_Div_detailcontent_content">
-                                            <telerik:RadComboBox ID="RadComboBoxUseDes" runat="server" Width="150">
-                                            </telerik:RadComboBox>
+                                            <telerik:RadTextBox ID="RTB_UseDes" runat="server"></telerik:RadTextBox>
                                         </td>
                                 </tr>
                                 <tr>

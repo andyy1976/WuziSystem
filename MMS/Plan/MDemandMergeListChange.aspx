@@ -59,7 +59,20 @@
                 </Tabs>
             </telerik:RadTabStrip>
         </div>
+              <div class="divSiteMap" style="width: 100%; float: none; height: 30px; border-bottom-style: solid; border-bottom-width: 0px;">
+                    <label style="float: left; margin-top: 0px;">型号：</label>
+                    <span id="span_model" style="font-weight:bold; width:200px;" runat="server"></span>
+                    <label style="float: left; margin-top: 0px;">计划包名称：</label>
+                    <span id="span_PlanName" style="font-weight:bold; width:200px;" runat="server"></span>
+                    <label style="float: left; margin-top: 0px;">对应型号投产计划编号：</label>
+                    <span id="span_plancode" style="font-weight:bold;width:200px;" runat="server"></span>
+                    <label style="float: left">材料清单编号：</label>
+                    <span id="span_DraftCode" style="font-weight:bold;width:200px;" runat="server"></span>
+                </div>
+                <div style="width: 100%; height: 0px; border: solid #000 1px; margin: 5px 0; clear: both;"></div>
+
         <div style="width: 100%; margin: 0px auto;">
+            
             <table style="text-align:left;">
                 <tr>
                     <td style="text-align:right;">物资编码：</td>
@@ -122,7 +135,7 @@
                                 <telerik:RadButton ID="RB_ShowWin" runat="server" Text="修改需求" ButtonType="ToggleButton" ForeColor="Blue"></telerik:RadButton>
                             </ItemTemplate>
                         </telerik:GridTemplateColumn>
-                        <telerik:GridBoundColumn DataField="ID" HeaderText="需求<br />行号" HeaderStyle-Width="70px" ItemStyle-Width="70px"></telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="ID" HeaderText="需求行号" HeaderStyle-Width="70px" ItemStyle-Width="70px"></telerik:GridBoundColumn>
                         
                         <telerik:GridBoundColumn DataField="TaskCode" HeaderText="任务号" HeaderStyle-Width="100px" ItemStyle-Width="100px"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="Drawing_No" HeaderText="图号" HeaderStyle-Width="100px" ItemStyle-Width="100px"></telerik:GridBoundColumn>
@@ -139,11 +152,11 @@
                         <telerik:GridBoundColumn DataField="Secret_Level" HeaderText="密级" HeaderStyle-Width="70px" ItemStyle-Width="70px"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="UseDes" HeaderText="用途" HeaderStyle-Width="100px" ItemStyle-Width="100px"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="Manufacturer" HeaderText="生产厂家" HeaderStyle-Width="100px" ItemStyle-Width="100px"></telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="State" HeaderText="状态" HeaderStyle-Width="70px" ItemStyle-Width="70px"></telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="State" HeaderText="状态" HeaderStyle-Width="70px" ItemStyle-Width="70px" Visible="false"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="Submit_Date" HeaderText="提交时间" HeaderStyle-Width="70px" ItemStyle-Width="70px"></telerik:GridBoundColumn>  
                     </Columns>
                     <CommandItemTemplate>
-                        <asp:Label ID="lbltop" runat="server"></asp:Label>
+                        <asp:Label ID="lbltop" runat="server">型号投产任务</asp:Label>
 					     <telerik:RadButton ID="RadButton_ExportExcel" runat="server" Text="导出Excel" Font-Bold="true" CommandName="ExportExcel" OnClick="RadButton_ExportExcel_Click" CssClass="floatright"></telerik:RadButton>
                          <telerik:RadButton ID="RadButton_ExportWord"  runat="server" Text="导出Word"  Font-Bold="true" CommandName="ExportWord" Visible="false"  OnClick="RadButton_ExportWord_Click"  CssClass="floatright"></telerik:RadButton>
                          <telerik:RadButton ID="RadButton_ExportPDF"   runat="server" Text="导出PDF"   Font-Bold="true" CommandName="ExportPDF" Visible="false"   OnClick="RadButton_ExportPdf_Click"   CssClass="floatright"></telerik:RadButton>

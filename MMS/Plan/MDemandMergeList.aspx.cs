@@ -395,9 +395,7 @@ namespace mms.Plan
                 {
                     string temp = GridSource.Select("ID='" + id + "'")[0]["Use_Des"].ToString();
                 }
-               RadComboBox RadComboBoxUseDes = e.Item.FindControl("RadComboBoxUseDes") as RadComboBox;
-               RadComboBoxUseDes.FindItemByValue(GridSource.Select("ID='" + id + "'")[0]["Use_Des"].ToString()).Selected = true;
-              
+           
                RadComboBox RadComboBoxSecretLevel = e.Item.FindControl("RadComboBoxSecretLevel") as RadComboBox;
               //RadComboBoxSecretLevel.FindItemByValue(GridSource.Select("ID='" + id + "'")[0]["Secret_Level"].ToString()).Selected = true;
                RadComboBoxSecretLevel.FindItemByValue("内部").Selected = true;

@@ -102,6 +102,11 @@ namespace mms.MaterialApplicationCollar
             string taskCode = RTB_TaskCode.Text.Trim();
             string DrawingNo = RTB_Drawing_No.Text.Trim();
             string ID = RTB_ID.Text.Trim();
+            string PROJECT = RTB_Project.Text.Trim();
+            string Material_Name = RTB_Material_Name.Text.Trim();
+            string ItemCode1 = RTB_ItemCode1.Text.Trim();
+            string startTime = RDPStart.SelectedDate.ToString();
+            string endTime = RDPEnd.SelectedDate.ToString();
             Session["StrWhere"] = "";
             if (taskCode != "")
             {
@@ -112,6 +117,28 @@ namespace mms.MaterialApplicationCollar
                 Session["StrWhere"] += " and Drawing_No like '%" + DrawingNo + "%'";
             }
 
+            if (PROJECT != "")
+            {
+                Session["StrWhere"] += " and PROJECT like '%" + PROJECT + "%'";
+            }
+            if (Material_Name != "")
+            {
+                Session["StrWhere"] += " and Material_Name like '%" + Material_Name + "%'";
+            }
+            if (ItemCode1 != "")
+            {
+                Session["StrWhere"] += " and ItemCode1 like '%" + DrawingNo + "%'";
+            }
+            try
+            {
+                Session["StrWhere"] += " and SUBMIT_DATE >= '" + Convert.ToDateTime(startTime).ToString() + "'";
+            }
+            catch { }
+            try
+            {
+                Session["StrWhere"] += " and SUBMIT_DATE <= '" + Convert.ToDateTime(endTime).ToString() + "'";
+            }
+            catch { }
             if (ID != "")
             {
                 Session["StrWhere"] += " and ID like '%" + ID + "%'";

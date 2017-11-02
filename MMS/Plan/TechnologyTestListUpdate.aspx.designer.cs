@@ -229,24 +229,6 @@ namespace mms.Plan {
         protected global::Telerik.Web.UI.RadTextBox RTB_Mat_Rough_Weight;
         
         /// <summary>
-        /// RTB_Unit_Price 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadTextBox RTB_Unit_Price;
-        
-        /// <summary>
-        /// span_Sum_Price 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadTextBox span_Sum_Price;
-        
-        /// <summary>
         /// txt_DemandNumSum 控件。
         /// </summary>
         /// <remarks>
@@ -283,6 +265,15 @@ namespace mms.Plan {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfv_NumCasesSum;
         
         /// <summary>
+        /// rtb_SpecialNeeds 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadTextBox rtb_SpecialNeeds;
+        
+        /// <summary>
         /// RadComboBoxSecretLevel 控件。
         /// </summary>
         /// <remarks>
@@ -301,13 +292,13 @@ namespace mms.Plan {
         protected global::Telerik.Web.UI.RadComboBox RadComboBoxStage;
         
         /// <summary>
-        /// RadComboBoxUseDes 控件。
+        /// RTB_UseDes 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::Telerik.Web.UI.RadComboBox RadComboBoxUseDes;
+        protected global::Telerik.Web.UI.RadTextBox RTB_UseDes;
         
         /// <summary>
         /// RadComboBoxCertification 控件。
@@ -382,13 +373,22 @@ namespace mms.Plan {
         protected global::Telerik.Web.UI.RadButton RB_Attribute42;
         
         /// <summary>
-        /// rtb_SpecialNeeds 控件。
+        /// RTB_Unit_Price 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::Telerik.Web.UI.RadTextBox rtb_SpecialNeeds;
+        protected global::Telerik.Web.UI.RadTextBox RTB_Unit_Price;
+        
+        /// <summary>
+        /// span_Sum_Price 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadTextBox span_Sum_Price;
         
         /// <summary>
         /// RTB_Reason 控件。

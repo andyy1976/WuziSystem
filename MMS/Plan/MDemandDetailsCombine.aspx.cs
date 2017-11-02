@@ -151,14 +151,14 @@ namespace mms.Plan
             DBConn = ConfigurationManager.ConnectionStrings["MaterialManagerSystemConnectionString"].ToString();
             DBI = DBFactory.GetDBInterface(DBConn);
             if (!IsPostBack)
-            {
-               string PackId = "";
-           
+            {         
                 string DraftCode = "";
                 string draftid = "";
+                string PackId = "";
                 string Model = "";
                 string PlanCode = "";
                 string idStr = string.Empty;
+                string[] otherStr = new string[4];
 			    string dateStr = string.Empty;
                 if(Request.QueryString["PackId"]!=null && Request.QueryString["PackId"].ToString()!= "")
                 {
@@ -180,7 +180,10 @@ namespace mms.Plan
                             Session["idStr"] = Session["idStr"].ToString().Substring(1, Session["idStr"].ToString().Length - 2);
                         }
                         idStr = Session["idStr"].ToString();
-                     
+                        otherStr = Session["otherStr"].ToString().Split(new char[] { ',' });
+                        string DraftId = otherStr[1];
+                        this.span_listNo.InnerText = otherStr[3];
+                        this.span_model.InnerText = otherStr[2];
                         DataTable dt1 = GetDetailedListList(DraftCode, "", idStr);
                         GridSource = Common.AddTableRowsID(dt1);
                      //   DataTable dt2 = null;
