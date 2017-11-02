@@ -110,20 +110,21 @@
                                 <telerik:GridBoundColumn DataField="ID" DataType="System.Int32" FilterControlAltText="Filter ID column" HeaderText="编号" ReadOnly="True" SortExpression="ID" UniqueName="ID"
                                     HeaderStyle-width="60px" ItemStyle-Width="60px">
                                 </telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn DataField="Drawing_No" FilterControlAltText="Filter Drawing_No column" HeaderText="产品图号" SortExpression="Drawing_No" UniqueName="Drawing_No"
-                                    HeaderStyle-width="100px" ItemStyle-Width="100px">
-                                </telerik:GridBoundColumn>
                                 <telerik:GridBoundColumn DataField="TaskCode" FilterControlAltText="Filter TaskCode column" HeaderText="任务号" SortExpression="TaskCode" UniqueName="TaskCode"
                                      HeaderStyle-width="100px" ItemStyle-Width="100px">
                                 </telerik:GridBoundColumn>
+                                <telerik:GridBoundColumn DataField="Drawing_No" FilterControlAltText="Filter Drawing_No column" HeaderText="图号" SortExpression="Drawing_No" UniqueName="Drawing_No"
+                                    HeaderStyle-width="100px" ItemStyle-Width="100px">
+                                </telerik:GridBoundColumn>
+                                 <telerik:GridBoundColumn DataField="TDM_Description" FilterControlAltText="Filter TaskCode column" HeaderText="产品名称" SortExpression="TaskCode" UniqueName="TaskCode"
+                                     HeaderStyle-Width="100px" ItemStyle-Width="100px">
+                                 </telerik:GridBoundColumn>
                                 <telerik:GridBoundColumn DataField="ItemCode1" FilterControlAltText="Filter ItemCode1 column" HeaderText="物资编码" SortExpression="ItemCode1" UniqueName="ItemCode1"
                                      HeaderStyle-width="100px" ItemStyle-Width="100px">
                                 </telerik:GridBoundColumn>
-                               
-                                 <telerik:GridBoundColumn DataField="Material_Name" FilterControlAltText="Filter Material_Name column" HeaderText="材料名称" SortExpression="Material_Name" UniqueName="Material_Name"  
+                                 <telerik:GridBoundColumn DataField="Material_Name" FilterControlAltText="Filter Material_Name column" HeaderText="物资名称" SortExpression="Material_Name" UniqueName="Material_Name"  
                                      HeaderStyle-width="70px" ItemStyle-Width="70px">
                                  </telerik:GridBoundColumn>
-
                                 <telerik:GridBoundColumn DataField="Mat_Unit" FilterControlAltText="Filter Mat_Unit column" HeaderText="计量单位" SortExpression="Mat_Unit" UniqueName="Mat_Unit"
                                      HeaderStyle-width="50px" ItemStyle-Width="50px">
                                 </telerik:GridBoundColumn>
@@ -170,17 +171,13 @@
                                         </telerik:RadComboBox>
                                     </ItemTemplate>
                                 </telerik:GridTemplateColumn>
-                                <telerik:GridTemplateColumn HeaderText="用途" HeaderStyle-HorizontalAlign="Center" UniqueName="Use_Des"  HeaderStyle-width="90px" ItemStyle-Width="90px">
-                                    <HeaderStyle HorizontalAlign="Center"></HeaderStyle>
-                                    <ItemTemplate>
-                                        <telerik:RadComboBox ID="RadComboBoxUseDes" runat="server" Width="80px" AutoPostBack="true"
-                                            OnSelectedIndexChanged="RadComboBoxUseDes_SelectedIndexChanged"
-                                            Culture="zh-CN" DataSourceID="SqlDataSourceUseDes" DataTextField="DICT_Name" DataValueField="DICT_CODE">
-                                            <Items>
-                                            </Items>
-                                        </telerik:RadComboBox>
-                                    </ItemTemplate>
-                                </telerik:GridTemplateColumn>
+
+                
+                                  <telerik:GridBoundColumn DataField="RTB_Use_Des" FilterControlAltText="Filter RTB_Use_Des column" HeaderText="用途" SortExpression="MaterialDept" UniqueName="RTB_Use_Des"
+                                     HeaderStyle-width="40px" ItemStyle-Width="40px">
+                                </telerik:GridBoundColumn>
+
+                             
                                 <telerik:GridBoundColumn DataField="MaterialDept" FilterControlAltText="Filter MaterialDept column" HeaderText="领料<br />部门" SortExpression="MaterialDept" UniqueName="MaterialDept"
                                      HeaderStyle-width="40px" ItemStyle-Width="40px">
                                 </telerik:GridBoundColumn>
@@ -265,8 +262,6 @@
                         SelectCommand="select * from GetBasicdata_T_Item where DICT_CLASS='CUX_DM_URGENCY_LEVEL'"></asp:SqlDataSource>
                     <asp:SqlDataSource ID="SqlDataSourceSecretLevel" runat="server" ConnectionString='<%$ ConnectionStrings:MaterialManagerSystemConnectionString %>'
                         SelectCommand="SELECT * FROM [Sys_SecretLevel] WHERE ([Is_Del] = 0)"></asp:SqlDataSource>
-                    <asp:SqlDataSource ID="SqlDataSourceUseDes" runat="server" ConnectionString='<%$ ConnectionStrings:MaterialManagerSystemConnectionString %>'
-                        SelectCommand="select * from GetBasicdata_T_Item where DICT_CLASS='CUX_DM_USAGE'"></asp:SqlDataSource>
                     <telerik:RadButton ID="RB_Submit" runat="server" Text="提交物流中心" OnClick="RB_Submit_Click" OnClientClicking="confirmRadWindow"></telerik:RadButton>
                 </div>
 

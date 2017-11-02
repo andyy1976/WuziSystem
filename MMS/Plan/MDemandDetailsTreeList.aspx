@@ -62,6 +62,8 @@
                            <Items><telerik:DropDownListItem Text="全部" Value="" /></Items>
                         </telerik:RadDropDownList>
                     </td>
+                    <td style="text-align:right;">图号：</td>
+                    <td><telerik:RadTextBox ID="RTB_DrawingNum" runat="server" Width="120px"></telerik:RadTextBox></td>
                     <td><telerik:RadButton ID="RB_Query" runat="server" Text="查询" OnClick="WZBH_Query_Click"></telerik:RadButton></td>
 
                 </tr>
@@ -345,9 +347,6 @@
                          </ClientSettings>
                           
                           <Columns>
-                         <%--    <telerik:TreeListSelectColumn HeaderStyle-Width="38px"></telerik:TreeListSelectColumn>
-                             --%>
-
                              <telerik:TreeListTemplateColumn UniqueName="CheckBoxTemplateColumn">
                                <HeaderTemplate>
                                 <asp:CheckBox ID="headerChkbox" runat="server" OnCheckedChanged="ToggleSelectedState" AutoPostBack="True" />
@@ -359,41 +358,67 @@
                             </telerik:TreeListTemplateColumn>
                             <telerik:TreeListBoundColumn DataField="ID" DataType="System.Int32" HeaderText="序号" ReadOnly="True" SortExpression="ID" UniqueName="ID">
                             </telerik:TreeListBoundColumn>
-                            <telerik:TreeListBoundColumn DataField="mstate"  HeaderText="物资状态" SortExpression="mstate" UniqueName="mstate">
+                            <telerik:TreeListBoundColumn DataField="mstate"  HeaderText="提交<br />状态" SortExpression="mstate" UniqueName="mstate">
                             </telerik:TreeListBoundColumn>
-                            <telerik:TreeListBoundColumn DataField="Material_State"  Visible="false" SortExpression="Material_State" UniqueName="Material_State">
+                     
+                            <telerik:TreeListBoundColumn DataField="LingJian_Type1" HeaderText="零件<br />类型"></telerik:TreeListBoundColumn>
+            
+                            <telerik:TreeListBoundColumn DataField="TDM_Description" HeaderText="产品<br />名称" SortExpression="Material_Name" UniqueName="Material_Name">
                             </telerik:TreeListBoundColumn>
-                            <telerik:TreeListBoundColumn DataField="MDPId"  Visible="false" SortExpression="MDPId" UniqueName="MDPId">
+                           
+                            <telerik:TreeListBoundColumn DataField="Drawing_No"  HeaderText="图号" SortExpression="Drawing_No" UniqueName="Drawing_No">
                             </telerik:TreeListBoundColumn>
-                            <telerik:TreeListBoundColumn DataField="Material_Name" HeaderText="产品名称" SortExpression="Material_Name" UniqueName="Material_Name">
+                                              <telerik:TreeListBoundColumn DataField="TaskCode"  HeaderText="任务编号" SortExpression="TaskCode" UniqueName="TaskCode">
                             </telerik:TreeListBoundColumn>
-                             <telerik:TreeListBoundColumn DataField="LingJian_Type1" HeaderText="零件类型"></telerik:TreeListBoundColumn>
-                            <telerik:TreeListBoundColumn DataField="TaskCode"  HeaderText="任务号" SortExpression="TaskCode" UniqueName="TaskCode">
-                            </telerik:TreeListBoundColumn>
-                            <telerik:TreeListBoundColumn DataField="Drawing_No"  HeaderText="产品图号" SortExpression="Drawing_No" UniqueName="Drawing_No">
-                            </telerik:TreeListBoundColumn>
+                      
                             <telerik:TreeListBoundColumn DataField="Technics_Line"  HeaderText="工艺路线" SortExpression="Technics_Line" UniqueName="Technics_Line">
                             </telerik:TreeListBoundColumn>
-                            <telerik:TreeListBoundColumn DataField="ItemCode1" HeaderText="物资编码" SortExpression="ItemCode1" UniqueName="ItemCode1">
+
+                            <telerik:TreeListBoundColumn DataField="Material_Name" HeaderText="材料名称" SortExpression="Material_Name" UniqueName="Material_Name">
                             </telerik:TreeListBoundColumn>
-                            <telerik:TreeListBoundColumn DataField="Mat_Unit" HeaderText="计量单位" SortExpression="Mat_Unit" UniqueName="Mat_Unit">
+
+                            <telerik:TreeListBoundColumn DataField="Material_Mark" HeaderText="材料<br />牌号" SortExpression="Material_Name" UniqueName="Material_Name"></telerik:TreeListBoundColumn>
+                            <telerik:TreeListBoundColumn DataField="CN_Material_State" HeaderText="材料<br />状态" SortExpression="CN_Material_State" UniqueName="CN_Material_State"></telerik:TreeListBoundColumn>
+                            <telerik:TreeListBoundColumn DataField="Material_Tech_Condition" HeaderText="技术条件" SortExpression="Material_Tech_Condition" UniqueName="Material_Tech_Condition"> </telerik:TreeListBoundColumn>
+                            <telerik:TreeListBoundColumn DataField="Rough_Spec" HeaderText="胚料<br />规格" SortExpression="Rough_Spec" UniqueName="Rough_Spec"></telerik:TreeListBoundColumn>
+                            <telerik:TreeListBoundColumn DataField="Rough_Size" HeaderText="胚料<br />尺寸" SortExpression="Rough_Size" UniqueName="Rough_Size"></telerik:TreeListBoundColumn>
+                                                  
+                            <telerik:TreeListBoundColumn DataField="Mat_Unit" HeaderText="计量<br />单位" SortExpression="Mat_Unit" UniqueName="Mat_Unit">
                             </telerik:TreeListBoundColumn>
-                            <telerik:TreeListBoundColumn DataField="Mat_Rough_Weight" itemstyle-HorizontalAlign="Right" HeaderText="单件质量" SortExpression="Mat_Rough_Weight" UniqueName="Mat_Rough_Weight">
+                            <telerik:TreeListBoundColumn DataField="Mat_Rough_Weight" itemstyle-HorizontalAlign="Right" HeaderText="单件<br />质量" SortExpression="Mat_Rough_Weight" UniqueName="Mat_Rough_Weight">
                             </telerik:TreeListBoundColumn>
-                            <telerik:TreeListBoundColumn DataField="Mat_Pro_Weight"  HeaderText="每产品质量" SortExpression="Mat_Pro_Weight" UniqueName="Mat_Pro_Weight">
+                            <telerik:TreeListBoundColumn DataField="Mat_Pro_Weight"  HeaderText="产品<br />质量" SortExpression="Mat_Pro_Weight" UniqueName="Mat_Pro_Weight">
                             </telerik:TreeListBoundColumn>
-                            <telerik:TreeListBoundColumn DataField="Rough_Size"  HeaderText="物资尺寸" SortExpression="Rough_Size" UniqueName="Rough_Size">
+
+                            <telerik:TreeListBoundColumn DataField="ItemCode1" HeaderText="物资<br />编码" SortExpression="ItemCode1" UniqueName="ItemCode1">
                             </telerik:TreeListBoundColumn>
-                            <telerik:TreeListBoundColumn DataField="DemandNumSum"  HeaderText="共计需求数量" SortExpression="DemandNumSum" UniqueName="DemandNumSum">
+
+                            <telerik:TreeListBoundColumn DataField="MaterialsDes" HeaderText="物资<br />描述" SortExpression="MaterialsDes" UniqueName="MaterialsDes">
                             </telerik:TreeListBoundColumn>
-                            <telerik:TreeListBoundColumn DataField="NumCasesSum"  HeaderText="共计需求件数" SortExpression="NumCasesSum" UniqueName="NumCasesSum">
+
+                            <telerik:TreeListBoundColumn DataField="NumCasesSum"  HeaderText="需求<br />件数" SortExpression="NumCasesSum" UniqueName="NumCasesSum">
                             </telerik:TreeListBoundColumn>
-                             <telerik:TreeListBoundColumn DataField="ParentId_For_Combine" HeaderText="合并前父ID" SortExpression="ParentId_For_Combine" UniqueName="ParentId_For_Combine" Visible="true">
+
+                            <telerik:TreeListBoundColumn DataField="DemandNumSum"  HeaderText="需求<br />数量" SortExpression="DemandNumSum" UniqueName="DemandNumSum">
                             </telerik:TreeListBoundColumn>
-                            <%--<telerik:GridBoundColumn DataField="quantity1" itemstyle-HorizontalAlign="Right" HeaderText="已提交" SortExpression="quantity1" UniqueName="quantity1">
-                            </telerik:GridBoundColumn>--%>
+
+                            <telerik:TreeListBoundColumn DataField="Tech_Quantity"  HeaderText="工艺<br />数量" SortExpression="Tech_Quantity" UniqueName="Tech_Quantity">
+                            </telerik:TreeListBoundColumn>
+                            <telerik:TreeListBoundColumn DataField="Technics_Comment" HeaderText="路线<br />备注" SortExpression="Technics_Comment" UniqueName="Technics_Comment">
+                            </telerik:TreeListBoundColumn>
+                            <telerik:TreeListBoundColumn DataField="Memo_Quantity"  HeaderText="定额<br />数量" SortExpression="Memo_Quantity" UniqueName="Memo_Quantity">
+                            </telerik:TreeListBoundColumn>
+                            <telerik:TreeListBoundColumn DataField="Mat_Comment" HeaderText="定额<br />备注" SortExpression="Mat_Comment" UniqueName="Mat_Comment">
+                            </telerik:TreeListBoundColumn>
+
+                         
+                          
+                            <telerik:TreeListBoundColumn DataField="Combine_State"  HeaderText="合并<br />状态" SortExpression="Combine_State"  UniqueName="Combine_State"> 
+                            </telerik:TreeListBoundColumn>
+
+                            <telerik:TreeListBoundColumn DataField="ParentId_For_Combine" HeaderText="" SortExpression="ParentId_For_Combine" UniqueName="ParentId_For_Combine" Visible="true">
+                            </telerik:TreeListBoundColumn>
                       
-                            <telerik:TreeListBoundColumn DataField="Combine_State"  HeaderText="合并状态" SortExpression="Combine_State"  UniqueName="Combine_State"> </telerik:TreeListBoundColumn>
                         </Columns>
                    
                     </telerik:RadTreeList>

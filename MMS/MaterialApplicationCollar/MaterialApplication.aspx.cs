@@ -180,7 +180,6 @@ namespace mms.MaterialApplicationCollar
                         RTB_Mat_Unit.Text = dt.Rows[0]["Seg7"].ToString();
                         RTB_Rough_Size.Text = "";
                         RTB_Rough_Spec.Text = dt.Rows[0]["Seg14"].ToString();
-                
                         break;
                     case "YY09":
                         if (dt.Rows[0]["Seg10"].ToString().ToUpper() == "Y")
@@ -274,7 +273,7 @@ namespace mms.MaterialApplicationCollar
             K2BLL bll = new K2BLL();
             var result = bll.StartNewProcess(id);
 
-            if (result != "")
+            if (result == "")
             {
                 strSQL = " Update MaterialApplication set AppState = '2' where ID = '" + id + "'";
                 strSQL +=

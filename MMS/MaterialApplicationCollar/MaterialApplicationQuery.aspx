@@ -128,7 +128,7 @@
                 <telerik:DropDownListItem Value="0" Text="型号投产" />
                 <telerik:DropDownListItem Value="1" Text="试验件" />
                 <telerik:DropDownListItem Value="2" Text="技术创新" />
-                <telerik:DropDownListItem Value="3" Text="生产备料" />
+                <telerik:DropDownListItem Value="3" Text="车间备料" />
                 <telerik:DropDownListItem Value="4" Text="无需求" />
             </Items>
         </telerik:RadDropDownList>

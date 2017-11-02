@@ -80,8 +80,8 @@ namespace mms.Plan
                             break;
                         case "3":
                             Common.CheckPermission(Session["UserName"].ToString(), "TechnologyTestList3", this.Page);
-                            title = "新增生产备料任务";
-                            HiddenField.Value = "物资需求-->生产备料任务";
+                            title = "新增车间备料任务";
+                            HiddenField.Value = "物资需求-->车间备料任务";
                             break;
                     }
                     this.ViewState["submit_type"] = Request.QueryString["t"].ToString();
@@ -108,7 +108,7 @@ namespace mms.Plan
                 {
                     //strSQL = "select (ROW_NUMBER() OVER(ORDER BY ID)) AS rownum,* from V_M_Demand_Plan_List where Submit_Type=" + stype;
                     strSQL = " select (ROW_NUMBER() OVER(ORDER BY Submit_Date desc)) AS rownum, M_Demand_Plan_List.* , UserAccount, UserName" +
-                        " , case when submit_Type = '1' then '工艺试验件' when submit_Type = '2' then '技术创新课题' when submit_Type ='3' then '生产备料' else Convert(nvarchar(50),submit_Type) end as subtype" +
+                        " , case when submit_Type = '1' then '工艺试验件' when submit_Type = '2' then '技术创新课题' when submit_Type ='3' then '车间备料' else Convert(nvarchar(50),submit_Type) end as subtype" +
                         " , case when submit_State = '0' then '未提交' when submit_State = '1' then '进入流程平台' when submit_State = '2' then '已审批，已通过' when submit_State = '3' then '已审批，未通过' else '已提交物流' end as substate " +
                         " , (select Convert(nvarchar(50),count(*)) from M_Demand_Merge_List where MDPID = M_Demand_Plan_List.ID and Is_Submit = '1')" +
                         " + '/' + (select Convert(nvarchar(50),Count(*)) from M_Demand_Merge_List where MDPID = M_Demand_Plan_List.ID)  as SubmitCount" +
@@ -119,7 +119,7 @@ namespace mms.Plan
                 {
                     //strSQL = "select (ROW_NUMBER() OVER(ORDER BY ID)) AS rownum,* from V_M_Demand_Plan_List where Submit_Type=" + stype+" and UserAccount='" + UserName + "'";
                     strSQL = " select (ROW_NUMBER() OVER(ORDER BY Submit_Date desc)) AS rownum, M_Demand_Plan_List.* , UserAccount, UserName" +
-                        " , case when submit_Type = '1' then '工艺试验件' when submit_Type = '2' then '技术创新课题' when submit_Type ='3' then '生产备料' else Convert(nvarchar(50),submit_Type) end as subtype" +
+                        " , case when submit_Type = '1' then '工艺试验件' when submit_Type = '2' then '技术创新课题' when submit_Type ='3' then '车间备料' else Convert(nvarchar(50),submit_Type) end as subtype" +
                         " , case when submit_State = '0' then '未提交' when submit_State = '1' then '进入流程平台' when submit_State = '2' then '已审批，已通过' when submit_State = '3' then '已审批，未通过' else '已提交物流' end as substate " +
                         " ,  (select Convert(nvarchar(50),count(*)) from M_Demand_Merge_List where MDPID = M_Demand_Plan_List.ID and Is_Submit = '1')" +
                         " + '/' + (select Convert(nvarchar(50),Count(*)) from M_Demand_Merge_List where MDPID = M_Demand_Plan_List.ID)  as SubmitCount" +
@@ -130,7 +130,7 @@ namespace mms.Plan
             }
             catch (Exception ex)
             {
-                throw new Exception((stype == "1" ? "获取工艺试验件清单信息出错" : (stype == "2" ? "获取技术创新课题清单信息出错" : "获取生产备料清单信息出错")) +
+                throw new Exception((stype == "1" ? "获取工艺试验件清单信息出错" : (stype == "2" ? "获取技术创新课题清单信息出错" : "获取车间备料清单信息出错")) +
                                     ex.Message.ToString());
             }
         }
@@ -166,7 +166,7 @@ namespace mms.Plan
                             lbltop.Text = "技术创新课题任务";
                             break;
                         case "3":
-                            lbltop.Text = "生产备料任务";
+                            lbltop.Text = "车间备料任务";
                             break;
                     }
                 }
@@ -180,7 +180,7 @@ namespace mms.Plan
                 DataTable table = GridSource;
                 
                 string MDP_Code = table.Rows[e.Item.DataSetIndex]["MDP_Code"].ToString();
-                string SubmitType = this.ViewState["submit_type"].ToString();//1－工艺试验件；2－技术创新课题；3－生产备料
+                string SubmitType = this.ViewState["submit_type"].ToString();//1－工艺试验件；2－技术创新课题；3－车间备料
                 RadButton btnDetails = e.Item.FindControl("RadButtonDetails") as RadButton;
                 if (btnDetails != null)
                 {

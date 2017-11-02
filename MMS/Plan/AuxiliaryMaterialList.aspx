@@ -23,7 +23,7 @@
                     <script type="text/javascript">
                         function ShowAuxiliaryMaterialListDetails(MDP_Code, MDPID, SubmitType, Type) {
                             var win = $find("<%=RadWindowRecordWindow.ClientID %>");
-                            win.set_title("生产备料物资申请");
+                            win.set_title("车间备料物资申请");
                             window.radopen("/Plan/TechnologyTest.aspx?MDP_Code=" + MDP_Code + "&MDPID=" + MDPID +
                                 "&SubmitType=" + SubmitType + "&Type=" + Type, "RadWindowRecordWindow");
                             return false;

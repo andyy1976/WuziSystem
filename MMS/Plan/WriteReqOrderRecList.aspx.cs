@@ -32,10 +32,9 @@ namespace mms.Plan
             var strSql = "";
             strSql =
                 " select WriteReqOrder_RecList.USER_RQ_LINE_ID, ERR_MSG , Material_Name, Rough_Size, Rough_Spec" +
-                " , Special_Needs, a.Dict_Name as Urgency_Degre, Secret_Level, b.Dict_Name as Use_Des, Shipping_Address, Certification, MANUFACTURER" +
+                " , Special_Needs, a.Dict_Name as Urgency_Degre, Secret_Level,Use_Des, Shipping_Address, Certification, MANUFACTURER" +
                 " from WriteReqOrder_RecList join M_Demand_Merge_List on M_Demand_Merge_List.ID = WriteReqOrder_RecList.USER_RQ_LINE_ID " +
                 " left join GetBasicdata_T_Item as a on a.DICT_CODE = M_Demand_Merge_List.Urgency_Degre and a.DICT_CLASS='CUX_DM_URGENCY_LEVEL'" +
-                " left join GetBasicdata_T_Item as b on b.DICT_CODE = M_Demand_Merge_List.Use_Des and b.DICT_CLASS='CUX_DM_USAGE'" +
                 " where 1 = 1 " + strWhere + " order by WriteReqOrder_RecList.ID desc";
            return Common.AddTableRowsID(DBI.Execute(strSql, true));
         }
@@ -77,12 +76,11 @@ namespace mms.Plan
                         " as Column_Changed, Original_Value, Changed_Value" +
                         " , M_Demand_Merge_List.ID" +
                         " , Material_Name, Rough_Size, Rough_Spec" +
-                        " , Special_Needs, a.Dict_Name as Urgency_Degre, Secret_Level, b.Dict_Name as Use_Des, Shipping_Address, Certification, MANUFACTURER" +
+                        " , Special_Needs, a.Dict_Name as Urgency_Degre, Secret_Level, Use_Des, Shipping_Address, Certification, MANUFACTURER" +
                         " from WriteRcoOrder_RecList" +
                         " join M_Change_Record on M_Change_Record.ID = WriteRcoOrder_RecList.USER_RCO_LINE_ID" +
                         " join M_Demand_Merge_List on M_Demand_Merge_List.ID = M_Change_Record.MDMId" +
                         " left join GetBasicdata_T_Item as a on a.DICT_CODE = M_Demand_Merge_List.Urgency_Degre and a.DICT_CLASS='CUX_DM_URGENCY_LEVEL'" +
-                        " left join GetBasicdata_T_Item as b on b.DICT_CODE = M_Demand_Merge_List.Use_Des and b.DICT_CLASS='CUX_DM_USAGE'" +
                         " where 1 = 1" + strWhere + " order by WriteRcoOrder_RecList.Id desc";
             return Common.AddTableRowsID(DBI.Execute(strSql, true));
         }

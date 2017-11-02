@@ -173,7 +173,7 @@ namespace mms.Plan
             mta.Certification = Convert.ToInt32(RadComboBoxCertification.SelectedValue);
             mta.Unit_Price = Convert.ToDecimal(span_Unit_Price.InnerText);
             mta.Sum_Price = Convert.ToDecimal(span_Sum_Price.InnerText);
-            mta.Submit_Type = 3;//1－工艺试验件；2－技术创新课题；3-生产备料
+            mta.Submit_Type = 3;//1－工艺试验件；2－技术创新课题；3-车间备料
             SaveTechnologyNoSubmit(mta);
             txt_ItemCode1.Text = "";
             txt_Drawing_No.Text = "";

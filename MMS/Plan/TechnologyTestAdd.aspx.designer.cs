@@ -166,15 +166,6 @@ namespace mms.Plan {
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceSecretLevel1;
         
         /// <summary>
-        /// SqlDataSourceUseDes1 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceUseDes1;
-        
-        /// <summary>
         /// SqlDataSourceProject 控件。
         /// </summary>
         /// <remarks>
@@ -904,22 +895,13 @@ namespace mms.Plan {
         protected global::Telerik.Web.UI.RadComboBox RadComboBoxStage;
         
         /// <summary>
-        /// RadComboBoxUseDes 控件。
+        /// RTB_Use_Des 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::Telerik.Web.UI.RadComboBox RadComboBoxUseDes;
-        
-        /// <summary>
-        /// SqlDataSourceUseDes 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceUseDes;
+        protected global::Telerik.Web.UI.RadTextBox RTB_Use_Des;
         
         /// <summary>
         /// RadComboBoxCertification 控件。

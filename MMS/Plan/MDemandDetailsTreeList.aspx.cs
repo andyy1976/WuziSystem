@@ -131,7 +131,7 @@ namespace mms.Plan
                     RDDL_LingJian_Type.DataValueField = "LingJian_Type_Code";
                     RDDL_LingJian_Type.DataBind();
 
-                    GridSource = Common.AddTableRowsID(GetDetailedListByItemCode("",""));
+                    GridSource = Common.AddTableRowsID(GetDetailedListByItemCode("","",""));
                     this.ViewState["DraftId"] = draftid;
                     this.ViewState["DraftCode"] = DraftCode;
                     this.ViewState["PackId"] = PackId;
@@ -172,15 +172,15 @@ namespace mms.Plan
             }
         }
 
-        protected DataTable GetDetailedListByItemCode(string ItemCode, string lingjiantype)
+        protected DataTable GetDetailedListByItemCode(string ItemCode, string lingjiantype,string DrawingNum)
         {
             try
             {
                 string strSQL = " select * , 'false' as checked, case when is_del='1' then '取消提交' else case when Material_State = '7' then '取消提交' else '需重新提交' end  end as mstate" +
                   " , Convert(nvarchar(50), (select Convert(int,sum(NumCasesSum)) from M_Demand_Merge_List where Correspond_Draft_Code = Convert(nvarchar(50), M_Demand_DetailedList_Draft.ID))) as quantity1, " +
                   "case when LingJian_Type='1' then '标准件' else case when LingJian_Type='2' then '成品件'  else case when LingJian_Type='3' then '通用件' else case when LingJian_Type='4' then '专用件' else case when LingJian_Type='5' then '组件'   else '其它' end  end end end end as LingJian_Type1 from M_Demand_DetailedList_Draft ";
-  
-                strSQL += " where PackId = '" + Request.QueryString["PackId"].ToString() + "' and ParentId_For_Combine = 0 " + " and ItemCode1 like'%" + ItemCode + "%' and ((Is_del = 'false' and Material_State in ('2','7')) or (Is_del = 'true' and Material_State in ('1','2','6','7')))";
+
+                strSQL += " where PackId = '" + Request.QueryString["PackId"].ToString() + "' and ParentId_For_Combine = 0 " + " and ItemCode1 like'%" + ItemCode + "%' and Drawing_No like'%" + DrawingNum + "%' and ((Is_del = 'false' and Material_State in ('2','7')) or (Is_del = 'true' and Material_State in ('1','2','6','7')))";
 
                 if (lingjiantype == "6")
                 {
@@ -195,8 +195,8 @@ namespace mms.Plan
 
                 strSQL += " union all select *, 'false' as checked, '未提交' as mstate, '0' as quantity1, "+
                          "case when LingJian_Type='1' then '标准件' else case when LingJian_Type='2' then '成品件'  else case when LingJian_Type='3' then '通用件' else case when LingJian_Type='4' then '专用件' else case when LingJian_Type='5' then '组件'   else '其它' end  end end end end as LingJian_Type1 from M_Demand_DetailedList_Draft ";
-      
-                strSQL += " where PackId = '" + Request.QueryString["PackId"].ToString() + "' and ParentId_For_Combine = 0  " + " and ItemCode1 like'%" + ItemCode + "%' and is_del = 'false' and Material_State = '0'";
+
+                strSQL += " where PackId = '" + Request.QueryString["PackId"].ToString() + "' and ParentId_For_Combine = 0  " + " and ItemCode1 like'%" + ItemCode + "%' and Drawing_No like'%" + DrawingNum + "%' and is_del = 'false' and Material_State = '0'";
                 if (lingjiantype == "6")
                 {
                       strSQL += " and LingJian_Type not in (1,2,3,4,5)";
@@ -363,9 +363,9 @@ namespace mms.Plan
 
                 string ItemCode = this.RTB_ItemCode.Text.Trim();
                 string lingjiantype = RDDL_LingJian_Type.SelectedItem.Value;
+                string DrawingNum = this.RTB_DrawingNum.Text.Trim();
 
-
-                GridSource = GetDetailedListByItemCode(ItemCode, lingjiantype);
+                GridSource = GetDetailedListByItemCode(ItemCode, lingjiantype,DrawingNum);
                 RadTreeList1.DataSource = GridSource;
                 RadTreeList1.Rebind();
          //   }
@@ -576,7 +576,7 @@ namespace mms.Plan
                     strSQL = " Update M_Demand_DetailedList_Draft set Material_State =10,Combine_State=2 where Id=" + id;
                     DBI.Execute(strSQL);
 
-                    GridSource = GetDetailedListByItemCode("", "");
+                    GridSource = GetDetailedListByItemCode("", "","");
                     Session["idStr"] = ",";
                     RadTreeList1.DataSource = GridSource;
                     RadTreeList1.Rebind();

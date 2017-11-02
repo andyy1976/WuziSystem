@@ -11,9 +11,9 @@ using mms;
 using Telerik.Web.UI;
 using System.Drawing;
 
-namespace mms.Plan
+namespace mms.MaterialApplicationCollar
 {
-    public partial class ShowPlan : System.Web.UI.Page
+    public partial class MaterialShowPlan : System.Web.UI.Page
     {
         static string DBContractConn = ConfigurationManager.ConnectionStrings["MaterialManagerSystemConnectionString"].ConnectionString.ToString();
         DBInterface DBI = DBFactory.GetDBInterface(DBContractConn);
@@ -424,10 +424,8 @@ namespace mms.Plan
             string UserName = RTB_UserName.Text.Trim();
             DateTime? StartDate = RDP_Start.SelectedDate;
             DateTime? EndDate = RDP_End.SelectedDate;
-        /*    string TaskCode = RTB_TaskCode.Text.Trim();
+            string TaskCode = RTB_TaskCode.Text.Trim();
             string DrawingNo = RTB_DrawingNo.Text.Trim();
-         */
-            string PackageName = RTB_PackageName.Text.Trim();
             string strWhere = "";
             if (Model != "")
             {
@@ -453,12 +451,6 @@ namespace mms.Plan
             {
                 strWhere += " and ImportTime <= '" + Convert.ToDateTime(EndDate).ToString("yyyy-MM-dd") + "'";
             }
-
-            if (PackageName != "")
-            {
-                strWhere += " and P_Pack.PlanName like '%" + PackageName + "%'";
-            }
-            /*
             if (TaskCode != "")
             {
                 strWhere += " and P_Pack.PackId in (select PackId from P_Pack_Task where TaskCode like '%" + TaskCode + "%')";
@@ -467,7 +459,6 @@ namespace mms.Plan
             {
                 strWhere += " and P_Pack.PackId in (select PackId from M_Demand_DetailedList_Draft where Drawing_No like '%" + DrawingNo + "%')";
             }
-             */
             Session["P_PackWhere"] = strWhere;
             Session["GridSource"]= GetP_Pack();
             RadGridP_Pack.Rebind();

@@ -15,7 +15,7 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:HiddenField ID="HiddenField" runat="server" Value="物资申请-->生产物资需求申请" ClientIDMode="Static" />
+    <asp:HiddenField ID="HiddenField" runat="server" Value="物资申请-->车间备料物资需求申请" ClientIDMode="Static" />
     <telerik:RadScriptManager ID="RadScriptManager1" runat="server"></telerik:RadScriptManager>
     <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server"  OnAjaxRequest="RadAjaxManager1_AjaxRequest">
         <ClientEvents OnRequestStart="onRequestStart" />
@@ -134,7 +134,7 @@
     </div>
     <telerik:RadWindowManager ID="RadWindowManager1" runat="server">
         <Windows>
-            <telerik:RadWindow ID="RadWindowApp" runat="server" Title="生产物资需求申请" Left="150px"
+            <telerik:RadWindow ID="RadWindowApp" runat="server" Title="车间备料物资需求申请" Left="150px"
                 ReloadOnShow="true" ShowContentDuringLoad="false" VisibleTitlebar="true" VisibleStatusbar="false"
                 Behaviors="Close,Maximize,Minimize" Modal="true" Width="1000px" Height="680px" />
         </Windows>

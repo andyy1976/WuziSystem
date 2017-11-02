@@ -1135,6 +1135,7 @@
     <Content Include="MaterialApplicationCollar\MaterialApplicationTest.aspx" />
     <Content Include="MaterialApplicationCollar\MaterialAppWindow.aspx" />
     <Content Include="MaterialApplicationCollar\MaterialBack.aspx" />
+    <Content Include="MaterialApplicationCollar\MaterialShowPlan.aspx" />
     <Content Include="MMSDb.dbml">
       <SubType>Designer</SubType>
       <Generator>MSLinqToSQLGenerator</Generator>
@@ -1180,8 +1181,6 @@
     <Content Include="packages\Newtonsoft.Json.7.0.1\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.xml" />
     <Content Include="packages\Newtonsoft.Json.7.0.1\lib\portable-net45+wp80+win8+wpa81+dnxcore50\Newtonsoft.Json.dll" />
     <Content Include="packages\Newtonsoft.Json.7.0.1\lib\portable-net45+wp80+win8+wpa81+dnxcore50\Newtonsoft.Json.xml" />
-    <Content Include="Plan\AuxiliaryMaterialAdd.aspx" />
-    <Content Include="Plan\AuxiliaryMaterialList.aspx" />
     <Content Include="Plan\ChangeMaterialQuota.aspx" />
     <Content Include="Plan\Column_Changed.xml" />
     <Content Include="Plan\Exe_Inf.aspx" />
@@ -1216,7 +1215,7 @@
     <Content Include="Plan\WriteReqOrderRecList.aspx" />
     <Content Include="Plan\MDemandDetailsCombine.aspx" />
     <Content Include="Plan\MDemandDetailsTreeList.aspx" />
-    <Content Include="Plan\MDemandImport.aspx" />
+    <Content Include="MaterialApplicationCollar\MaterialPlanImport.aspx" />
     <Content Include="Scripts\base64.js" />
     <Content Include="Scripts\CurrencyConversion.js" />
     <Content Include="Scripts\Date.js" />
@@ -1578,6 +1577,13 @@
     <Compile Include="MaterialApplicationCollar\MaterialBack.aspx.designer.cs">
       <DependentUpon>MaterialBack.aspx</DependentUpon>
     </Compile>
+    <Compile Include="MaterialApplicationCollar\MaterialShowPlan.aspx.cs">
+      <DependentUpon>MaterialShowPlan.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MaterialApplicationCollar\MaterialShowPlan.aspx.designer.cs">
+      <DependentUpon>MaterialShowPlan.aspx</DependentUpon>
+    </Compile>
     <Compile Include="MMSDb.designer.cs">
       <DependentUpon>MMSDb.dbml</DependentUpon>
       <DesignTime>True</DesignTime>
@@ -1642,20 +1648,6 @@
     </Compile>
     <Compile Include="OutOfStorageManagement\SignStockBill.aspx.designer.cs">
       <DependentUpon>SignStockBill.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Plan\AuxiliaryMaterialAdd.aspx.cs">
-      <DependentUpon>AuxiliaryMaterialAdd.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Plan\AuxiliaryMaterialAdd.aspx.designer.cs">
-      <DependentUpon>AuxiliaryMaterialAdd.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Plan\AuxiliaryMaterialList.aspx.cs">
-      <DependentUpon>AuxiliaryMaterialList.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Plan\AuxiliaryMaterialList.aspx.designer.cs">
-      <DependentUpon>AuxiliaryMaterialList.aspx</DependentUpon>
     </Compile>
     <Compile Include="Plan\ChangeMaterialQuota.aspx.cs">
       <DependentUpon>ChangeMaterialQuota.aspx</DependentUpon>
@@ -1881,12 +1873,12 @@
     <Compile Include="Plan\MDemandDetailsTreeList.aspx.designer.cs">
       <DependentUpon>MDemandDetailsTreeList.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Plan\MDemandImport.aspx.cs">
-      <DependentUpon>MDemandImport.aspx</DependentUpon>
+    <Compile Include="MaterialApplicationCollar\MaterialPlanImport.aspx.cs">
+      <DependentUpon>MaterialPlanImport.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Plan\MDemandImport.aspx.designer.cs">
-      <DependentUpon>MDemandImport.aspx</DependentUpon>
+    <Compile Include="MaterialApplicationCollar\MaterialPlanImport.aspx.designer.cs">
+      <DependentUpon>MaterialPlanImport.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings1.Designer.cs">

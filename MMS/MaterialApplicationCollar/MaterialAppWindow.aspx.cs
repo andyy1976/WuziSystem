@@ -43,7 +43,7 @@ namespace mms.MaterialApplicationCollar
                 }
                 else if (HFType.Value == "3")
                 {
-                    lbltitle.Text = "生产备料物资领用申请";
+                    lbltitle.Text = "车间备料物资领用申请";
                 }
                 else if (HFType.Value == "4")
                 {

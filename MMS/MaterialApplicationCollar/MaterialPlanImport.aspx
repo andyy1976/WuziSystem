@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="MDemandImport.aspx.cs" Inherits="mms.Plan.MDemandImport" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="MaterialPlanImport.aspx.cs" Inherits="mms.MaterialApplicationCollar.MaterialPlanImport" %>
 
 <%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
 
@@ -297,13 +297,13 @@
                             <Columns>
                                 <telerik:GridBoundColumn DataField="RowsID" HeaderText="序号" ItemStyle-Width="40px" HeaderStyle-Width="40px">
                                 </telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn DataField="ProductName" HeaderText="产品名称" ItemStyle-Width="80px" HeaderStyle-Width="80px">
-                                </telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn DataField="TaskDrawingCode" HeaderText="产品图号" ItemStyle-Width="80px" HeaderStyle-Width="80px">
-                                </telerik:GridBoundColumn>
                                 <telerik:GridBoundColumn DataField="TaskCode" HeaderText="任务号" ItemStyle-Width="80px" HeaderStyle-Width="80px">
+                                </telerik:GridBoundColumn>                  
+                                <telerik:GridBoundColumn DataField="TaskDrawingCode" HeaderText="图号" ItemStyle-Width="80px" HeaderStyle-Width="80px">
                                 </telerik:GridBoundColumn>
                                 <telerik:GridBoundColumn DataField="Stage1" HeaderText="阶段" ItemStyle-Width="40px" HeaderStyle-Width="40px">
+                                </telerik:GridBoundColumn>
+                                <telerik:GridBoundColumn DataField="ProductName" HeaderText="产品名称" ItemStyle-Width="80px" HeaderStyle-Width="80px">
                                 </telerik:GridBoundColumn>
                                 <telerik:GridBoundColumn DataField="Unit" HeaderText="计量单位" ItemStyle-Width="80px" HeaderStyle-Width="80px">
                                 </telerik:GridBoundColumn>
@@ -529,15 +529,16 @@
 						   未提交申请
                                              </CommandItemTemplate>
                                  <Columns>
-                                    <telerik:GridBoundColumn DataField="ID" HeaderText="序号" ItemStyle-Width="40px" HeaderStyle-Width="40px">
+                                    <telerik:GridBoundColumn DataField="ID" HeaderText="编号" ItemStyle-Width="40px" HeaderStyle-Width="40px">
                                     </telerik:GridBoundColumn>
-                                    <telerik:GridBoundColumn DataField="DRAWING_NO" FilterControlAltText="Filter DRAWING_NO column" HeaderStyle-HorizontalAlign="Center" HeaderText="产品图号" SortExpression="DRAWING_NO" UniqueName="DRAWING_NO">
-                                    </telerik:GridBoundColumn>
+
                                     <telerik:GridBoundColumn DataField="TaskCode" FilterControlAltText="Filter TaskCode column" HeaderText="任务号" SortExpression="TaskCode" UniqueName="TaskCode">
                                     </telerik:GridBoundColumn>
-                                       <telerik:GridBoundColumn DataField="Material_Code" FilterControlAltText="Filter Material_Code column" HeaderText="产品编号" SortExpression="Material_Code" UniqueName="Material_Code">
+                                    <telerik:GridBoundColumn DataField="DRAWING_NO" FilterControlAltText="Filter DRAWING_NO column" HeaderStyle-HorizontalAlign="Center" HeaderText="图号" SortExpression="DRAWING_NO" UniqueName="DRAWING_NO">
                                     </telerik:GridBoundColumn>
-                                   <telerik:GridBoundColumn DataField="TDM_Description" FilterControlAltText="Filter TDM_Description column" HeaderText="产品名称" SortExpression="TDM_Description" UniqueName="TDM_Description">
+                                    <telerik:GridBoundColumn DataField="Material_Code" FilterControlAltText="Filter Material_Code column" HeaderText="产品编号" SortExpression="Material_Code" UniqueName="Material_Code">
+                                    </telerik:GridBoundColumn>
+                                    <telerik:GridBoundColumn DataField="TDM_Description" FilterControlAltText="Filter TDM_Description column" HeaderText="产品名称" SortExpression="TDM_Description" UniqueName="TDM_Description">
                                     </telerik:GridBoundColumn>
                                     <telerik:GridBoundColumn DataField="Material_Tech_Condition" FilterControlAltText="Filter Material_Tech_Condition column" HeaderStyle-HorizontalAlign="Center" HeaderText="技术条件" SortExpression="Material_Tech_Condition" UniqueName="Material_Tech_Condition">
                                     </telerik:GridBoundColumn>

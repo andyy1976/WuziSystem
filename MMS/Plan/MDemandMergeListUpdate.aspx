@@ -134,7 +134,7 @@
                     </tr>
                     <tr>
                         <td style="text-align:right;">用途：</td>
-                        <td><telerik:RadDropDownList ID="RDDL_Use_Des" runat="server" Width="160px"></telerik:RadDropDownList></td>
+                        <td><telerik:RadTextBox ID="RTB_Use_Des" runat="server" Width="160px"></telerik:RadTextBox></td>
                         <td style="text-align:right;">配送地址：</td>
                         <td><telerik:RadDropDownList ID="RDDL_Shipping_Address" runat="server" Width="160px"></telerik:RadDropDownList></td>
                         <td style="text-align:right;">开具合格证：</td>

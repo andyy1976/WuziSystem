@@ -7,10 +7,10 @@
 // </自动生成>
 //------------------------------------------------------------------------------
 
-namespace mms.Plan {
+namespace mms.MaterialApplicationCollar {
     
     
-    public partial class MDemandImport {
+    public partial class MaterialPlanImport {
         
         /// <summary>
         /// form1 控件。

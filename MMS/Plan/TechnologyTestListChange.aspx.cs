@@ -41,8 +41,8 @@ namespace mms.Plan
                             break;
                         case "3":
                             //Common.CheckPermission(Session["UserName"].ToString(), "TechnologyTestListChange3", this.Page);
-                            title = "新增生产备料";
-                            HiddenField.Value = "物资需求-->生产备料任务";
+                            title = "新增车间备料";
+                            HiddenField.Value = "物资需求-->车间备料任务";
                             break;
                     }
                 }
@@ -56,12 +56,11 @@ namespace mms.Plan
         {
             string strSQL = " select M_Demand_Merge_List.ID, M_Demand_Merge_List.TaskCode, Drawing_No, ItemCode1, NumCasesSum, DemandNumSum, Dept, DemandDate, M_Demand_Merge_List.Submit_Date" +
                 " , Special_Needs, Secret_Level, Shipping_Address, Material_Name, Manufacturer" +
-                " , CUX_DM_URGENCY_LEVEL.DICT_Name as UrgencyDegre, CUX_DM_USAGE.DICT_Name as UseDes , Convert(float, NumCasesSum) as NumCasesSum1" +
+                " , CUX_DM_URGENCY_LEVEL.DICT_Name as UrgencyDegre, Use_Des as UseDes , Convert(float, NumCasesSum) as NumCasesSum1" +
                 " , isnull((select top 1 Submission_Status from GetRqStatus_T_Item where USER_RQ_LINE_ID = M_Demand_Merge_List.ID order by SUBMITED_SYNC_STATUS desc),'已提交') as State" +
                 " from M_Demand_Merge_List join M_Demand_Plan_List on M_Demand_Plan_List.ID = M_Demand_Merge_List.MDPID" +
                 " join Sys_DeptEnum on Sys_DeptEnum.DeptCode = M_Demand_Merge_List.MaterialDept" +
                 " left join GetBasicdata_T_Item as CUX_DM_URGENCY_LEVEL on CUX_DM_URGENCY_LEVEL.DICT_CODE = M_Demand_Merge_List.Urgency_Degre and DICT_CLASS='CUX_DM_URGENCY_LEVEL'" +
-                " left join GetBasicdata_T_Item as CUX_DM_USAGE on CUX_DM_USAGE.DICT_CODE = M_Demand_Merge_List.Use_Des and CUX_DM_USAGE.DICT_CLASS='CUX_DM_USAGE'" +
                 " where M_Demand_Plan_List.Submit_Type = '" + Request.QueryString["t"].ToString() + "' and Submit_State = '4' and Is_Submit = 'true' " + strWhere + " order by M_Demand_Plan_List.ID desc, M_Demand_Merge_List.ID desc";
             DataTable dt = DBI.Execute(strSQL, true);
             this.ViewState["_gds"] = dt;
@@ -90,7 +89,7 @@ namespace mms.Plan
                             lbltop.Text = "技术创新课题任务";
                             break;
                         case "3":
-                            lbltop.Text = "生产备料任务";
+                            lbltop.Text = "车间备料任务";
                             break;
                     }
                 }

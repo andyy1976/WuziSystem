@@ -75,8 +75,8 @@ namespace mms.Plan
                             lbl_ApproveAccount2.Text = "工艺技术处课题技术主管";
                             break;
                         case "3":
-                            title = "生产备料需求信息";
-                            HiddenField.Value = "生产备料任务-->物资需求列表";
+                            title = "车间备料需求信息";
+                            HiddenField.Value = "车间备料任务-->物资需求列表";
                             trAttribute4.Visible = true;
                            // strSQL = "select UserName, DomainAccount from Sys_UserInfo_PWD" + 
                                // " where  ID in (select Userid from Sys_UserInRole where RoleID in (select ID from Sys_RoleInfo where RoleName like '%物资%计划员%'))";

@@ -211,13 +211,13 @@ namespace mms.Plan {
         protected global::Telerik.Web.UI.RadDropDownList RDDL_Secret_Level;
         
         /// <summary>
-        /// RDDL_Use_Des 控件。
+        /// RTB_Use_Des 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::Telerik.Web.UI.RadDropDownList RDDL_Use_Des;
+        protected global::Telerik.Web.UI.RadTextBox RTB_Use_Des;
         
         /// <summary>
         /// RDDL_Shipping_Address 控件。

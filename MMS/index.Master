@@ -59,21 +59,22 @@
                         <li>
                             <a href="#">物资需求</a>
                             <ul>
-                                <li class="lit"><a href="/Plan/ShowPlan.aspx">型号投产计划任务</a></li>
-                                <li class="lia"><a href="/Plan/TechnologyTestList.aspx?t=1">工艺试验件任务</a></li>
-                                <li class="lia"><a href="/Plan/TechnologyTestList.aspx?t=2">技术创新课题任务</a></li>
-                                <li class="lib"><a href="/Plan/TechnologyTestList.aspx?t=3">生产备料任务</a></li>
+                                <li class="lit"><a href="/Plan/ShowPlan.aspx">型号投产任务</a></li>
+                              <%--  <li class="lia"><a href="/Plan/TechnologyTestList.aspx?t=1">工艺试验件任务</a></li>--%>
+                                <li class="lia"><a href="/Plan/TechnologyTestList.aspx?t=2">技术创新任务</a></li>
+                                <li class="lib"><a href="/Plan/TechnologyTestList.aspx?t=3">车间备料任务</a></li>
                             </ul>
                         </li>
                         <li>
                             <a href="#">物资申请</a>
                             <ul>
                                 <li class="lit"><a href="/MaterialApplicationCollar/MaterialApplicationModel.aspx">型号投产物资申请</a></li>
-                                <li class="lia"><a href="/MaterialApplicationCollar/MaterialApplicationTest.aspx">试验件物资申请</a></li>
-                                <li class="lia"><a href="/MaterialApplicationCollar/MaterialApplicationSubject.aspx">技术课题物资申请</a></li>
-                                <li class="lia"><a href="/MaterialApplicationCollar/MaterialApplicationAccessory.aspx">生产备料物资申请</a></li>
+                                <%--   <li class="lia"><a href="/MaterialApplicationCollar/MaterialApplicationTest.aspx">试验件物资申请</a></li>--%>
+                                <li class="lia"><a href="/MaterialApplicationCollar/MaterialApplicationSubject.aspx">技术创新物资申请</a></li>
+                                <li class="lia"><a href="/MaterialApplicationCollar/MaterialApplicationAccessory.aspx">车间备料物资申请</a></li>
+                                <li class="lit"><a href="/MaterialApplicationCollar/MaterialShowPlan.aspx">企业备料物资申请</a></li>
                                 <li class="lia"><a href="/MaterialApplicationCollar/MaterialApplication.aspx">无需求物资申请</a></li>
-                                <li class="lib"><a href="/MaterialApplicationCollar/MaterialApplicationQuery.aspx">申请单查询</a></li>
+                                <li class="lib"><a href="/MaterialApplicationCollar/MaterialApplicationQuery.aspx">物资申请单查询</a></li>
                             </ul>
                         </li>
                         <li>

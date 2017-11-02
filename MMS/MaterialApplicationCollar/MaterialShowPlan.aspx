@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/index.Master" CodeBehind="ShowPlan.aspx.cs" Inherits="mms.Plan.ShowPlan" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/index.Master" CodeBehind="MaterialShowPlan.aspx.cs" Inherits="mms.MaterialApplicationCollar.MaterialShowPlan" %>
 
 <%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
 
@@ -162,14 +162,10 @@
                 <tr>
                     <td>型号：</td>
                     <td><telerik:RadTextBox ID="RTB_Model" runat="server" Width="100px"></telerik:RadTextBox></td>
-                    <td>计划报名称：</td>
-                    <td><telerik:RadTextBox ID="RTB_PackageName" runat="server" Width="150px"></telerik:RadTextBox></td>
-                    <%--
                     <td>任务号：</td>
                     <td><telerik:RadTextBox ID="RTB_TaskCode" runat="server" Width="100px"></telerik:RadTextBox></td>
                     <td>图号：</td>
                     <td><telerik:RadTextBox ID="RTB_DrawingNo" runat="server" Width="100px"></telerik:RadTextBox></td>
-                        --%>
                     <td>材料定额状态：</td>
                     <td>
                         <telerik:RadDropDownList ID="RDDL_DS" runat="server" Width="100">
@@ -223,19 +219,20 @@
                     <CommandItemTemplate>
                         型号投产计划包列表
                         <telerik:RadButton ID="RB_Add" runat="server" Text="新增计划包" CssClass="floatleft" AutoPostBack="false" OnClientClicked="ImportPlan" Visible="false"></telerik:RadButton>
+                        <telerik:RadButton ID="RB_Import" runat="server" Text="导入物资需求" CssClass="floatleft" AutoPostBack="false" OnClientClicked="ImportMaterial" Visible="true"></telerik:RadButton>
                     </CommandItemTemplate>
                     <Columns>
                         <telerik:GridBoundColumn DataField="RowsID" HeaderText="序号" ItemStyle-Width="50px" HeaderStyle-Width="50px">
                         </telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="Model" HeaderText="型号" ItemStyle-Width="80px" HeaderStyle-Width="80px">
                         </telerik:GridBoundColumn>
-                        <telerik:GridTemplateColumn HeaderText="计划包名称" ItemStyle-Width="150px" HeaderStyle-Width="150px">
+                        <telerik:GridTemplateColumn HeaderText="计划包名称">
                             <ItemTemplate> 
                                 <telerik:RadButton ID="RB_PlanName" runat="server" AutoPostBack="false" ForeColor="Blue" ButtonType="ToggleButton" ToggleType="None" ToolTip="点击查看计划包数据"></telerik:RadButton>
                                 <telerik:RadButton ID="RB_State" runat="server" AutoPostBack="false" ToolTip="点击查看计划包数据" Width="20px" Height="20px"></telerik:RadButton>
                             </ItemTemplate>
                         </telerik:GridTemplateColumn>
-                        <telerik:GridTemplateColumn HeaderText="BOM管理" ItemStyle-Width="150px" HeaderStyle-Width="150px">
+                        <telerik:GridTemplateColumn HeaderText="BOM管理">
                             <ItemStyle HorizontalAlign="Center" />
                             <ItemTemplate>
                                 <telerik:RadButton ID="RB_NotSynchron" runat="server" ButtonType="ToggleButton" Text="同步BOM与定额" ToolTip="点击同步SmarTeam"
@@ -255,7 +252,7 @@
                                 <telerik:RadButton ID="RB_ChangeList" runat="server" AutoPostBack="false" ButtonType="ToggleButton" ToolTip="点击查询变更单" ForeColor="Blue"></telerik:RadButton>
                             </ItemTemplate>
                         </telerik:GridTemplateColumn>
-                        <telerik:GridTemplateColumn HeaderText="物资需求清单管理" ItemStyle-Width="150px" HeaderStyle-Width="150px">
+                        <telerik:GridTemplateColumn HeaderText="物资需求清单管理">
                             <ItemStyle HorizontalAlign="Center" />
                             <ItemTemplate>
                                 <telerik:RadButton ID="RB_Draft" runat="server" AutoPostBack="false" ButtonType="ToggleButton" ToolTip="" ForeColor="Blue"></telerik:RadButton>
@@ -270,9 +267,9 @@
                         </telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="ImportTime" HeaderText="编制时间" ItemStyle-Width="80px" HeaderStyle-Width="80px">
                         </telerik:GridBoundColumn>
-                        <telerik:GridTemplateColumn HeaderText="删除" ItemStyle-Width="60px" HeaderStyle-Width="60px">
+                        <telerik:GridTemplateColumn HeaderText="删除" ItemStyle-Width="40px" HeaderStyle-Width="40px">
                             <ItemTemplate>
-                                <telerik:RadButton ID="RB_Delete" runat="server"  Text="删除" AutoPostBack="false" ForeColor="Blue" OnClientClicking="confirmRadWindowDelete" CommandName="Delete" ButtonType="ToggleButton" ToolTip="点击删除该计划报" Visible="false"></telerik:RadButton>
+                                <telerik:RadButton ID="RB_Delete" runat="server" ButtonType="ToggleButton" Text="删除" OnClientClicking="confirmRadWindowDelete" CommandName="Delete" Visible="false"></telerik:RadButton>
                             </ItemTemplate>
                         </telerik:GridTemplateColumn>
                     </Columns>

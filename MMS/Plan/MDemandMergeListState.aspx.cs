@@ -24,7 +24,6 @@ namespace mms.Plan
 
                 string strSQL = " select a.*, b.DICT_Name as Urgency_Degre1, c.DICT_Name as Use_Des1 , isnull(Sys_Phase.Phase, Stage) as Phase1 from M_Demand_Merge_List as a " +
                     " left join GetBasicdata_T_Item as b on b.DICT_CODE = a.Urgency_level and b.DICT_CLASS='CUX_DM_URGENCY_LEVEL'" +
-                    " left join GetBasicdata_T_Item as c on  c.DICT_CODE = a.Use_Des and c.DICT_CLASS='CUX_DM_USAGE'" +
                     " left join Sys_Phase on Sys_Phase.Code = a.Stage" +
                     " where MDPID = '" + Request.QueryString["MDPID"].ToString() + "' and Is_Submit = '1'";
                 Session["GridSource"] = DBI.Execute(strSQL, true);

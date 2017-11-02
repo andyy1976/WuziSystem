@@ -119,10 +119,11 @@
                         </CommandItemTemplate>
                     <Columns>
                         <telerik:GridBoundColumn DataField="ID" HeaderText="需求行号"></telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="Material_Name" HeaderText="产品名称"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="TaskCode" HeaderText="任务号"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="Drawing_No" HeaderText="图号"></telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="TDM_Description" HeaderText="产品名称"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="ItemCode1" HeaderText="物资编码"></telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="Material_Name" HeaderText="物资名称"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="NumCasesSum" HeaderText="需求件数"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="DemandNumSum" HeaderText="需求量"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="Dept" HeaderText="领料部门"></telerik:GridBoundColumn>

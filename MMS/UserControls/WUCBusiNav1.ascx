@@ -22,7 +22,7 @@
         <div id="iwucDiv1" class="iwucDiv">
           <%--   <div id="divMenu1"><a href="/Plan/MDemandDetails.aspx?inFlag=1" id="a1">需要提交</a></div>--%>
 
-                    <div id="div3"><a href="/Plan/MDemandDetailsTreeList.aspx?inFlag=1" id="a3">需要提交</a></div>
+                    <div id="divMenu1"><a href="/Plan/MDemandDetailsTreeList.aspx?inFlag=1" id="a3">需要提交</a></div>
             <%--<div style="font-size:12px;margin-top:2px;" id="divNum">
                 <span class="span_0">未提交：</span><asp:Label ID="lbl_state_0" runat="server" Text="0" CssClass="zt_1"></asp:Label>
                 <span class="span_1">已提交：</span><asp:Label ID="lbl_state_1" runat="server" Text="0" CssClass="zt_2"></asp:Label>

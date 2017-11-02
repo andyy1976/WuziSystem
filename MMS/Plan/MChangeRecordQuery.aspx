@@ -46,7 +46,7 @@
                                 <telerik:DropDownListItem Value="0" Text="型号投产计划任务" />
                                 <telerik:DropDownListItem Value="1" Text="工艺试验件任务" />
                                 <telerik:DropDownListItem Value="2" Text="技术创新课题任务" />
-                                <telerik:DropDownListItem Value="3" Text="生产备料任务"/>
+                                <telerik:DropDownListItem Value="3" Text="车间备料任务"/>
                             </Items>
                         </telerik:RadDropDownList>
                     </td>
@@ -123,10 +123,11 @@
                     <Columns>
                         <telerik:GridBoundColumn DataField="USER_RCO_HEADER_NO" HeaderText="用户变更申请号"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="ID" HeaderText="需求行号"></telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="Material_Name" HeaderText="产品名称"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="TaskCode" HeaderText="任务号"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="Drawing_No" HeaderText="图号"></telerik:GridBoundColumn>
+                          <telerik:GridBoundColumn DataField="TDM_Description" HeaderText="产品名称"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="ItemCode1" HeaderText="物资编码"></telerik:GridBoundColumn>
+                          <telerik:GridBoundColumn DataField="Material_Name" HeaderText="物资名称"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="NumCasesSum" HeaderText="需求件数"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="DemandNumSum" HeaderText="需求量"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="Dept" HeaderText="领料部门"></telerik:GridBoundColumn>

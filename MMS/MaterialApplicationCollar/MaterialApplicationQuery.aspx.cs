@@ -46,7 +46,7 @@ namespace mms.MaterialApplicationCollar
         {
             string strSQL = "select Convert(nvarchar(50),ApplicationTime, 111) as ApplicationTime, MaterialApplication.*, case when AppState = '1' then '已申请,未审批' when AppState='2' then '进入流程平台' when AppState='3' then '取消审批'"
                 + " when AppState ='4' then '已审批已通过' when AppState = '5' then '已审批未通过' when AppState='6' then '已退回' else Convert(nvarchar(50),AppState) end as AppState1"
-                + " , case when MaterialApplication.Type = '0' then '型号投产' when MaterialApplication.Type = '1' then '试验件' when MaterialApplication.Type='2' then '技术创新课题'  when MaterialApplication.Type='3' then '生产备料' when MaterialApplication.Type ='4' then '无需求' else Convert(nvarchar(50), MaterialApplication.Type) end as Type1"
+                + " , case when MaterialApplication.Type = '0' then '型号投产' when MaterialApplication.Type = '1' then '试验件' when MaterialApplication.Type='2' then '技术创新课题'  when MaterialApplication.Type='3' then '车间备料' when MaterialApplication.Type ='4' then '无需求' else Convert(nvarchar(50), MaterialApplication.Type) end as Type1"
                 + " , ItemCode1"
                 + " from MaterialApplication "
                 + " left join M_Demand_Merge_List on M_Demand_Merge_List.ID = MaterialApplication.Material_Id"
@@ -116,7 +116,7 @@ namespace mms.MaterialApplicationCollar
                 {
                     HFType.Value = "2";
                 }
-                else if (type1 == "生产备料")
+                else if (type1 == "车间备料")
                 {
                     HFType.Value = "3";
                 }
