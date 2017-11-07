@@ -18,6 +18,10 @@ namespace mms.Plan
         {
             if (!IsPostBack)
             {
+                if (Session["UserName"] == null || Session["UserId"] == null)
+                {
+                    Response.Redirect("/Default.aspx");
+                }
                 Common.CheckPermission(Session["UserName"].ToString(), "ShowM_Change", this.Page);   
                 if (Request.QueryString["PackID"] == null)
                 {

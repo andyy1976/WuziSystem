@@ -57,18 +57,18 @@
                     <Columns>
                         <telerik:GridBoundColumn DataField="Material_Name" HeaderText="物资名称" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="Column_Changed" HeaderText="变更字段" HeaderStyle-Width="100px" UniqueName="Column_Changed"></telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="Original_Value" HeaderText="原值" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="Changed_Value" HeaderText="变更值" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="Original_Value" HeaderText="原值" HeaderStyle-Width="70px"></telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="Changed_Value" HeaderText="变更值" HeaderStyle-Width="70px"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="RCO_No" HeaderText="变更申请号" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="User_RCO_No" HeaderText="用户变更申请号" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="User_RCO_ID" HeaderText="用户变更申请ID" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="RCO_Status" HeaderText="变更申请状态" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="Confirmed_Quantity" HeaderText="确认需求数量" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="Confirmed_RQ_Date" HeaderText="确认需求时间" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="Test_material_Quantity" HeaderText="化验料数量" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="Process_Approach" HeaderText="变更处理方式" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="LAST_STATUS_CHANGE_DATE" HeaderText="状态最后更新时间" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="Attribute1" HeaderText="需求单位变更申请单行ID" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="User_RCO_No" HeaderText="用户变更<br />申请号" HeaderStyle-Width="180px"></telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="User_RCO_ID" HeaderText="用户变更<br />申请ID" HeaderStyle-Width="70px"></telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="RCO_Status" HeaderText="变更申<br />请状态" HeaderStyle-Width="80px"></telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="Confirmed_Quantity" HeaderText="确认需<br />求数量" HeaderStyle-Width="80px"></telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="Confirmed_RQ_Date" HeaderText="确认需<br />求时间" HeaderStyle-Width="80px" DataFormatString="{0:yyyy/MM/dd}"></telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="Test_material_Quantity" HeaderText="化验料<br />数量" HeaderStyle-Width="80px"></telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="Process_Approach" HeaderText="变更处<br />理方式" HeaderStyle-Width="80px"></telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="LAST_STATUS_CHANGE_DATE" HeaderText="状态最后<br />更新时间" HeaderStyle-Width="80px" DataFormatString="{0:yyyy/MM/dd}"></telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="Attribute1" HeaderText="需求单位变更<br />申请单行ID" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
                    </Columns>                    
                 </MasterTableView>
             </telerik:RadGrid>

@@ -17,16 +17,16 @@ namespace mms.MaterialApplicationCollar
         DBInterface DBI;
         protected void Page_Load(object sender, EventArgs e)
         {
-            DBConn = ConfigurationManager.ConnectionStrings["MaterialManagerSystemConnectionString"].ToString();
-            DBI = DBFactory.GetDBInterface(DBConn);
-            if (Session["UserId"] == null)
+            if (Session["UserName"] == null || Session["UserId"] == null)
             {
                 Response.Redirect("/Default.aspx");
             }
+            DBConn = ConfigurationManager.ConnectionStrings["MaterialManagerSystemConnectionString"].ToString();
+            DBI = DBFactory.GetDBInterface(DBConn);
             if (!IsPostBack)
             {
                 Common.CheckPermission(Session["UserName"].ToString(), "MaterialApplicationModel", this.Page);
-                Session["StrWhereModel"] = null;
+                Session["StrWhere"] = null;
                 string userId = Session["UserId"].ToString();
                 string strSQL = " select DeptCode, Dept from Sys_DeptEnum where ID = (select Dept from Sys_UserInfo_PWD where Id = '" + userId + "')";
                 DataTable dt = DBI.Execute(strSQL, true);
@@ -53,9 +53,9 @@ namespace mms.MaterialApplicationCollar
                     + " left join Sys_Phase on Sys_Phase.Code =  M_Demand_Merge_List.Stage"
                     + " where Submit_Type = '0' and Is_submit = 'true' and MaterialDept = '" + HF_DeptCode.Value + "'"
                     + " and M_Demand_Merge_List.ID not in (select Material_ID from MaterialApplication where Is_del = 'false' and Material_ID is not null)";
-            if (Session["StrWhereModel"] != null)
+            if (Session["StrWhere"] != null)
             {
-                strSQL += Session["StrWhereModel"].ToString();
+                strSQL += Session["StrWhere"].ToString();
             }
             strSQL += " order by M_Demand_Merge_List.Id desc";
 
@@ -65,7 +65,7 @@ namespace mms.MaterialApplicationCollar
 
         protected void RadGridMDML_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
         {
-            RadGridMDML.DataSource = Session["MAMGridSource"];
+            RadGridMDML.DataSource = ((Session["MAMGridSource"]) as DataTable);
         }
 
         protected void RadGridMDML_ItemDataBound(object sender, GridItemEventArgs e)
@@ -118,16 +118,48 @@ namespace mms.MaterialApplicationCollar
         {
             string taskCode = RTB_TaskCode.Text.Trim();
             string DrawingNo = RTB_Drawing_No.Text.Trim();
-            Session["StrWhereModel"] = "";
+            string ID = RTB_ID.Text.Trim();
+            string PROJECT = RTB_Project.Text.Trim();
+            string Material_Name = RTB_Material_Name.Text.Trim();
+            string ItemCode1 = RTB_ItemCode1.Text.Trim();
+            string startTime = RDPStart.SelectedDate.ToString();
+            string endTime = RDPEnd.SelectedDate.ToString();
+            Session["StrWhere"] = "";
             if (taskCode != "")
             {
-                Session["StrWhereModel"] += " and P_Pack_Task.TaskCode like '%" + taskCode + "%'";
+                Session["StrWhere"] += " and P_Pack_Task.TaskCode like '%" + taskCode + "%'";
             }
             if (DrawingNo != "")
             {
-                Session["StrWhereModel"] += " and Drawing_No like '%" + DrawingNo + "%'";
+                Session["StrWhere"] += " and Drawing_No like '%" + DrawingNo + "%'";
             }
 
+            if (PROJECT != "")
+            {
+                Session["StrWhere"] += " and Sys_Model.Model like '%" + PROJECT + "%'";
+            }
+            if (Material_Name != "")
+            {
+                Session["StrWhere"] += " and Material_Name like '%" + Material_Name + "%'";
+            }
+            if (ItemCode1 != "")
+            {
+                Session["StrWhere"] += " and ItemCode1 like '%" + DrawingNo + "%'";
+            }
+            try
+            {
+                Session["StrWhere"] += " and SUBMIT_DATE >= '" + Convert.ToDateTime(startTime).ToString() + "'";
+            }
+            catch { }
+            try
+            {
+                Session["StrWhere"] += " and SUBMIT_DATE <= '" + Convert.ToDateTime(endTime).ToString() + "'";
+            }
+            catch { }
+            if (ID != "")
+            {
+                Session["StrWhere"] += " and M_Demand_Merge_List.ID like '%" + ID + "%'";
+            }
             GetMDML();
             RadGridMDML.Rebind();
         }
@@ -145,19 +177,19 @@ namespace mms.MaterialApplicationCollar
         }
 		protected void RadButton_ExportExcel_Click(object sender, EventArgs e)
         {
-            RadGridMDML.ExportSettings.FileName = "请领物资信息列表--型号" + DateTime.Now.ToString("yyyy-MM-dd");
+            RadGridMDML.ExportSettings.FileName = "请领物资信息列表--型号投产" + DateTime.Now.ToString("yyyy-MM-dd");
             RadGridMDML.MasterTableView.ExportToExcel();
         }
 
         protected void RadButton_ExportWord_Click(object sender, EventArgs e)
         {
-            RadGridMDML.ExportSettings.FileName = "请领物资信息列表--型号" + DateTime.Now.ToString("yyyy-MM-dd");
+            RadGridMDML.ExportSettings.FileName = "请领物资信息列表--型号投产" + DateTime.Now.ToString("yyyy-MM-dd");
             RadGridMDML.MasterTableView.ExportToWord();
         }
 
         protected void RadButton_ExportPdf_Click(object sender, EventArgs e)
         {
-            RadGridMDML.ExportSettings.FileName = "请领物资信息列表--型号" + DateTime.Now.ToString("yyyy-MM-dd");
+            RadGridMDML.ExportSettings.FileName = "请领物资信息列表--型号投产" + DateTime.Now.ToString("yyyy-MM-dd");
             RadGridMDML.ExportSettings.IgnorePaging = true;
             RadGridMDML.MasterTableView.ExportToPdf();
             RadGridMDML.ExportSettings.IgnorePaging = false;

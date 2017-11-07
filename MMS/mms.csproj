@@ -1162,6 +1162,10 @@
     <Content Include="Dal\MDemandDetailedListDraft_DS.xss">
       <DependentUpon>MDemandDetailedListDraft_DS.xsd</DependentUpon>
     </Content>
+    <Content Include="MaterialApplicationCollar\需求导入模板\型号物资导入模板.xls" />
+    <Content Include="MaterialApplicationCollar\需求导入模板\型号物资导入模板.xlsx" />
+    <Content Include="MaterialApplicationCollar\需求导入模板\车间物资导入模板.xls" />
+    <Content Include="MaterialApplicationCollar\需求导入模板\车间物资导入模板.xlsx" />
     <None Include="MMSDb.dbml.layout">
       <DependentUpon>MMSDb.dbml</DependentUpon>
     </None>

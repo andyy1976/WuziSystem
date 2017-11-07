@@ -19,7 +19,10 @@ namespace mms.Plan
         DBInterface DBI ;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["UserId"] == null) { Response.Redirect("/Default.aspx"); }
+            if (Session["UserName"] == null || Session["UserId"] == null)
+            {
+                Response.Redirect("/Default.aspx");
+            }
             DBContractConn = ConfigurationManager.ConnectionStrings["MaterialManagerSystemConnectionString"].ConnectionString.ToString();
             DBI = DBFactory.GetDBInterface(DBContractConn);
 

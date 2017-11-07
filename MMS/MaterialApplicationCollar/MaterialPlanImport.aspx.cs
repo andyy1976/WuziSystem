@@ -83,10 +83,13 @@ namespace mms.MaterialApplicationCollar
         private DBInterface DBI;
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["UserName"] == null || Session["UserId"] == null)
+            {
+                Response.Redirect("/Default.aspx");
+            }
             DBConn = ConfigurationManager.ConnectionStrings["MaterialManagerSystemConnectionString"].ToString();
             DBI = DBFactory.GetDBInterface(DBConn);
-
-            if (Session["UserId"] == null) { Response.Redirect("/Default.aspx"); }
+    
             if (!IsPostBack)
             {
                // Common.CheckPermission(Session["UserName"].ToString(), "MDemandImport", this.Page); 
@@ -101,14 +104,7 @@ namespace mms.MaterialApplicationCollar
                 }
   
                 GridSource1 = new System.Data.DataTable();
-           
-
-                    string title = "", title1 = "";
-
-                    title = "型号物资需求申请";
-                    title1 = "型号物资需求未提交申请";
-
-             
+                 
                      this.hfBh.Value = "";
                      this.hfTaskId.Value = "";
                     this.ViewState["submit_type"] = "4";
@@ -136,7 +132,6 @@ namespace mms.MaterialApplicationCollar
                     }
                     else
                     {
-                        RB_Add.Visible = true;
                         RTB_PlanName.Text = dt.Rows[0]["PlanName"].ToString();
                         RTB_Remark.Text = dt.Rows[0]["Remark"].ToString();
                     }
@@ -569,7 +564,7 @@ namespace mms.MaterialApplicationCollar
                                        break;
 
 
-                                   case "备注":
+                                   case "特殊需求":
                                        GridSource1.Columns[i].ColumnName = "Comment";
                                        columnscount++;
                                        break;
@@ -1156,7 +1151,7 @@ namespace mms.MaterialApplicationCollar
         {
             int i = 0;
             DirectoryInfo info =
-                new DirectoryInfo(System.AppDomain.CurrentDomain.BaseDirectory.ToString() + "Plan/计划导入模板");
+                new DirectoryInfo(System.AppDomain.CurrentDomain.BaseDirectory.ToString() + "MaterialApplicationCollar/需求导入模板");
             if (System.IO.Directory.Exists(info.ToString()))
             {
                 foreach (FileInfo n in info.GetFiles())
@@ -1171,7 +1166,7 @@ namespace mms.MaterialApplicationCollar
                         Response.ContentType = "application/ms-excel";
                         this.EnableViewState = false;
 
-                        Response.WriteFile(Server.MapPath(@"~\Plan\计划导入模板\") + n.Name);
+                        Response.WriteFile(Server.MapPath(@"~\MaterialApplicationCollar\需求导入模板\") + n.Name);
                         Response.End();
                         return;
                     }

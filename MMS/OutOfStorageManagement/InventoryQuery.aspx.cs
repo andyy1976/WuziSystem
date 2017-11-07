@@ -16,23 +16,20 @@ namespace mms.OutOfStorageManagement
     {
         string DBConn;
         DBInterface DBI;
-        string UserId;
         protected void Page_Load(object sender, EventArgs e)
         {
-            DBConn = ConfigurationManager.ConnectionStrings["MaterialManagerSystemConnectionString"].ToString();
-            DBI = DBFactory.GetDBInterface(DBConn);
-            if (Session["UserId"] == null)
+            if (Session["UserName"] == null || Session["UserId"] == null)
             {
                 Response.Redirect("/Default.aspx");
             }
-            else
-            {
-                UserId = Session["UserId"].ToString();
-            }
+            DBConn = ConfigurationManager.ConnectionStrings["MaterialManagerSystemConnectionString"].ToString();
+            DBI = DBFactory.GetDBInterface(DBConn);
+    
             if (!IsPostBack)
             {
+                string userId = Session["UserId"].ToString();
                 Common.CheckPermission(Session["UserName"].ToString(), "InventoryQuery", this.Page);
-                string strSQL = " select Dept from Sys_UserInfo_PWD where Id = '" + UserId + "'";
+                string strSQL = " select Dept from Sys_UserInfo_PWD where Id = '" + userId + "'";
                 DataTable dt = DBI.Execute(strSQL, true);
                 if (dt.Rows.Count == 0)
                 {

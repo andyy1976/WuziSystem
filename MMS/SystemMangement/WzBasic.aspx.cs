@@ -191,12 +191,12 @@ namespace mms.SystemMangement
             string Material_Biaozhun = RTB_Material_Biaozhun.Text.Trim();
             string ItemCode = RTB_ItemCode.Text.Trim();
             strSQL += " and SEG3 like '%" + ItemCode + "%'";
-            strSQL += " and Seg12 like '%" + Material_Name + "%'";
-            strSQL += " and Seg13 like '%" + Material_Paihao + "%'";
+            strSQL += " and Seg4 like '%" + Material_Name + "%'";
+            strSQL += " and Seg4 like '%" + Material_Paihao + "%'";
 
-            strSQL += " and Seg14 like '%" + Material_Guige + "%'";
+            strSQL += " and Seg4 like '%" + Material_Guige + "%'";
 
-            strSQL += " and Seg16 like '%" + Material_Biaozhun + "%'";
+            strSQL += " and Seg4 like '%" + Material_Biaozhun + "%'";
             string MTv = RDDLMT.SelectedValue.ToString();
             if (MTv == "")
             {

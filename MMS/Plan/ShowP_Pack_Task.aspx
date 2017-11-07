@@ -114,15 +114,15 @@
                                 </telerik:GridBoundColumn>
                                 <telerik:GridBoundColumn DataField="Stage1" HeaderText="阶段" ItemStyle-Width="40px" HeaderStyle-Width="40px">
                                 </telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn DataField="Unit" HeaderText="计量单位" ItemStyle-Width="80px" HeaderStyle-Width="80px">
+                                <telerik:GridBoundColumn DataField="Unit" HeaderText="计量单位" ItemStyle-Width="60px" HeaderStyle-Width="60px">
                                 </telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn DataField="MatingNum" HeaderText="单机配套数量" ItemStyle-Width="80px" HeaderStyle-Width="80px">
+                                <telerik:GridBoundColumn DataField="MatingNum" HeaderText="单机配套数量" ItemStyle-Width="70px" HeaderStyle-Width="70px">
                                 </telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn DataField="DefrayNum" HeaderText="交付总数量" ItemStyle-Width="80px" HeaderStyle-Width="80px">
+                                <telerik:GridBoundColumn DataField="DefrayNum" HeaderText="交付总数量" ItemStyle-Width="70px" HeaderStyle-Width="70px">
                                 </telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn DataField="ProductionNum" HeaderText="本次投产数量" ItemStyle-Width="80px" HeaderStyle-Width="80px">
+                                <telerik:GridBoundColumn DataField="ProductionNum" HeaderText="本次投产数量" ItemStyle-Width="70px" HeaderStyle-Width="70px">
                                 </telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn DataField="PlanFinishTime" HeaderText="计划交付时间" DataFormatString="{0:yyyy/MM/dd}" ItemStyle-Width="80px" HeaderStyle-Width="80px">
+                                <telerik:GridBoundColumn DataField="PlanFinishTime" HeaderText="计划交付时间" DataFormatString="{0:yyyy/MM/dd}" ItemStyle-Width="120px" HeaderStyle-Width="120px">
                                 </telerik:GridBoundColumn>
                                 <telerik:GridTemplateColumn HeaderText="是否可展开" ItemStyle-Width="100px" HeaderStyle-Width="100px">
                                     <ItemStyle HorizontalAlign="Center" />

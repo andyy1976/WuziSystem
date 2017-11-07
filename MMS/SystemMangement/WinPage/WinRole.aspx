@@ -67,10 +67,10 @@
                             </ColumnValidationSettings>
                         </telerik:GridBoundColumn>
                         <telerik:GridEditCommandColumn ButtonType="ImageButton" HeaderText="编辑" UniqueName="EditCommandColumn"
-                            HeaderStyle-HorizontalAlign="Center" HeaderStyle-Width="80px">
+                             HeaderStyle-Width="80px">
                             <HeaderStyle HorizontalAlign="Center" Width="80px"></HeaderStyle>
                         </telerik:GridEditCommandColumn>
-                        <telerik:GridTemplateColumn HeaderText="删除" HeaderStyle-HorizontalAlign="Center" HeaderStyle-Width="80px" UniqueName="DeleteColumn">
+                        <telerik:GridTemplateColumn HeaderText="删除"  HeaderStyle-Width="80px" UniqueName="DeleteColumn">
                             <HeaderStyle HorizontalAlign="Center" Width="80px"></HeaderStyle>
                             <ItemTemplate>
                                 <telerik:RadButton ID="RadButtonDelete" runat="server" Text="删除" OnClientClicking="CustomRadWindowConfirm" CommandName="Delete"></telerik:RadButton>

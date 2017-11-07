@@ -96,7 +96,10 @@
                         GroupPanelPosition="Top" AllowMultiRowSelection="true" 
                          AllowPaging="true" PageSize="20" PagerStyle-AlwaysVisible="True"
                         OnItemDataBound="RadGrid_MDemandMergelist_ItemDataBound" OnNeedDataSource="RadGrid_MDemandMergelist_NeedDataSource">
-                        <HeaderStyle HorizontalAlign="Center" Font-Size="12px" />
+                      <AlternatingItemStyle HorizontalAlign="Center" />
+                    <ItemStyle HorizontalAlign="Center" />
+                    <HeaderStyle HorizontalAlign="Center" Font-Size="13px" />
+                    <CommandItemStyle Font-Bold="true" Font-Size="16px" HorizontalAlign="Center" Height="40px" />
                         <ClientSettings EnableRowHoverStyle="true" >
                             <Selecting AllowRowSelect="true" />
                             <Scrolling AllowScroll="True" UseStaticHeaders="True" ScrollHeight="260px"></Scrolling>
@@ -106,7 +109,7 @@
                             <CommandItemSettings ShowExportToExcelButton="false" ShowAddNewRecordButton="false" ShowRefreshButton="false" />
                             <Columns>
                                 <telerik:GridBoundColumn DataField="ID" DataType="System.Int32" FilterControlAltText="Filter ID column" HeaderText="编号" ReadOnly="True" SortExpression="ID" UniqueName="ID"
-                                    HeaderStyle-width="60px" ItemStyle-Width="60px">
+                                    HeaderStyle-width="80px" ItemStyle-Width="80px">
                                 </telerik:GridBoundColumn>
                                 <telerik:GridBoundColumn DataField="TaskCode" FilterControlAltText="Filter TaskCode column" HeaderText="任务号" SortExpression="TaskCode" UniqueName="TaskCode"
                                      HeaderStyle-width="100px" ItemStyle-Width="100px">
@@ -124,7 +127,7 @@
                                      HeaderStyle-width="70px" ItemStyle-Width="70px">
                                  </telerik:GridBoundColumn>
                                 <telerik:GridBoundColumn DataField="Mat_Unit" FilterControlAltText="Filter Mat_Unit column" HeaderText="计量单位" SortExpression="Mat_Unit" UniqueName="Mat_Unit"
-                                     HeaderStyle-width="50px" ItemStyle-Width="50px">
+                                     HeaderStyle-width="70px" ItemStyle-Width="70px">
                                 </telerik:GridBoundColumn>
                                 <telerik:GridBoundColumn DataField="Rough_Size" FilterControlAltText="Filter Rough_Size column" HeaderText="物资尺寸" SortExpression="Rough_Size" UniqueName="Rough_Size"
                                      HeaderStyle-width="70px" ItemStyle-Width="70px">
@@ -140,14 +143,14 @@
                                      HeaderStyle-width="70px" ItemStyle-Width="70px">
                                 </telerik:GridBoundColumn>
                                 
-                                <telerik:GridTemplateColumn HeaderText="特殊需求" HeaderStyle-HorizontalAlign="Center" UniqueName="Special_Needs"
-                                     HeaderStyle-width="60px" ItemStyle-Width="60px">
+                                <telerik:GridTemplateColumn HeaderText="特殊需求"  UniqueName="Special_Needs"
+                                     HeaderStyle-width="80px" ItemStyle-Width="80px">
                                     <HeaderStyle HorizontalAlign="Center"></HeaderStyle>
                                     <ItemTemplate>
                                         <telerik:RadTextBox ID="rtb_SpecialNeeds" runat="server" Width="50" AutoPostBack="true" MaxLength="20" EmptyMessage="无" OnTextChanged="rtb_SpecialNeeds_TextChanged"></telerik:RadTextBox>
                                     </ItemTemplate>
                                 </telerik:GridTemplateColumn>
-                                <telerik:GridTemplateColumn HeaderText="紧急程度" HeaderStyle-HorizontalAlign="Center" UniqueName="Urgency_Degre" HeaderStyle-width="70px" ItemStyle-Width="70px">
+                                <telerik:GridTemplateColumn HeaderText="紧急程度"  UniqueName="Urgency_Degre" HeaderStyle-width="70px" ItemStyle-Width="70px">
                                     <HeaderStyle HorizontalAlign="Center"></HeaderStyle>
                                     <ItemTemplate>
                                         <telerik:RadComboBox ID="RadComboBoxUrgencyDegre" runat="server" Width="60px" AutoPostBack="true"
@@ -158,7 +161,7 @@
                                         </telerik:RadComboBox>
                                     </ItemTemplate>
                                 </telerik:GridTemplateColumn>
-                                <telerik:GridTemplateColumn HeaderText="密级" HeaderStyle-HorizontalAlign="Center" UniqueName="Secret_Level" HeaderStyle-width="70px" ItemStyle-Width="70px">
+                                <telerik:GridTemplateColumn HeaderText="密级"  UniqueName="Secret_Level" HeaderStyle-width="70px" ItemStyle-Width="70px">
                                     <HeaderStyle HorizontalAlign="Center"></HeaderStyle>
                                     <ItemTemplate>
                                         <telerik:RadComboBox ID="RadComboBoxSecretLevel" runat="server" Width="60px" AutoPostBack="true"
@@ -171,15 +174,19 @@
                                 </telerik:GridTemplateColumn>
 
                 
-                                  <telerik:GridBoundColumn DataField="RTB_Use_Des" FilterControlAltText="Filter RTB_Use_Des column" HeaderText="用途" SortExpression="MaterialDept" UniqueName="RTB_Use_Des"
-                                     HeaderStyle-width="40px" ItemStyle-Width="40px">
-                                </telerik:GridBoundColumn>
-
+                      
+                                 <telerik:GridTemplateColumn HeaderText="用途"  UniqueName="Use_Des"
+                                     HeaderStyle-width="80px" ItemStyle-Width="80px">
+                                    <HeaderStyle HorizontalAlign="Center"></HeaderStyle>
+                                    <ItemTemplate>
+                                        <telerik:RadTextBox ID="RTB_Use_Des" runat="server" Width="50" AutoPostBack="true" MaxLength="20" EmptyMessage="无" OnTextChanged="RTB_Use_Des_TextChanged"></telerik:RadTextBox>
+                                    </ItemTemplate>
+                                </telerik:GridTemplateColumn>
                              
-                                <telerik:GridBoundColumn DataField="MaterialDept" FilterControlAltText="Filter MaterialDept column" HeaderText="领用<br />单位" SortExpression="MaterialDept" UniqueName="MaterialDept"
-                                     HeaderStyle-width="40px" ItemStyle-Width="40px">
+                                <telerik:GridBoundColumn DataField="MaterialDept" FilterControlAltText="Filter MaterialDept column" HeaderText="领用单位" SortExpression="MaterialDept" UniqueName="MaterialDept"
+                                     HeaderStyle-width="70px" ItemStyle-Width="70px">
                                 </telerik:GridBoundColumn>
-                                <telerik:GridTemplateColumn HeaderText="配送地址" HeaderStyle-HorizontalAlign="Center" UniqueName="Shipping_Address"
+                                <telerik:GridTemplateColumn HeaderText="配送地址"  UniqueName="Shipping_Address"
                                      HeaderStyle-width="110px" ItemStyle-Width="110px">
                                     <HeaderStyle HorizontalAlign="Center"></HeaderStyle>
                                     <ItemTemplate>
@@ -188,7 +195,7 @@
                                         </telerik:RadComboBox>
                                     </ItemTemplate>
                                 </telerik:GridTemplateColumn>
-                                <telerik:GridTemplateColumn HeaderText="合格证" HeaderStyle-HorizontalAlign="Center" UniqueName="Certification"  HeaderStyle-width="60px" ItemStyle-Width="60px">
+                                <telerik:GridTemplateColumn HeaderText="合格证"  UniqueName="Certification"  HeaderStyle-width="60px" ItemStyle-Width="60px">
                                     <HeaderStyle HorizontalAlign="Center"></HeaderStyle>
                                     <ItemTemplate>
                                         <telerik:RadComboBox ID="RadComboBoxCertification" runat="server" Width="50px" AutoPostBack="true" OnSelectedIndexChanged="RadComboBoxCertification_SelectedIndexChanged">
@@ -199,7 +206,7 @@
                                         </telerik:RadComboBox>
                                     </ItemTemplate>
                                 </telerik:GridTemplateColumn>
-                                <telerik:GridTemplateColumn HeaderText="生产厂家" HeaderStyle-HorizontalAlign="Center" UniqueName="MANUFACTURER" HeaderStyle-width="90px" ItemStyle-Width="90px">
+                                <telerik:GridTemplateColumn HeaderText="生产厂家"  UniqueName="MANUFACTURER" HeaderStyle-width="90px" ItemStyle-Width="90px">
                                     <ItemTemplate>
                                         <telerik:RadTextBox ID="RTB_MANUFACTURER" runat="server" Width="80px" AutoPostBack="true" OnTextChanged="RTB_MANUFACTURER_TextChanged"></telerik:RadTextBox>
                                     </ItemTemplate>

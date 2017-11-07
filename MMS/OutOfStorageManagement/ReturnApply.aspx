@@ -193,103 +193,103 @@
                             <telerik:RadTextBox ID="RTB_itemnum" runat="server" Width="90px" OnTextChanged="RTB_itemnum_TextChanged" AutoPostBack="true"></telerik:RadTextBox>
                         </ItemTemplate>
                     </telerik:GridTemplateColumn>--%>
-                    <telerik:GridBoundColumn DataField="crowno" HeaderText="出库单行号" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="billno" HeaderText="出库单号" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="billdate" HeaderText="单据日期" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="CanReturnnnum" HeaderText="可退数量" ItemStyle-Width="100px" HeaderStyle-Width="100px" UniqueName="CanReturnnnum"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="CanReturnitemnum" HeaderText="可退件数" ItemStyle-Width="100px" HeaderStyle-Width="100px" UniqueName="CanReturnitemnum"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="jc_jstype1" HeaderText="结算类型" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="realnum" HeaderText="实发数量" ItemStyle-Width="80px" HeaderStyle-Width="80px"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="realdepnum" HeaderText="实发辅数量" ItemStyle-Width="100px" HeaderStyle-Width="80px"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="realitemnum" HeaderText="实发件数" ItemStyle-Width="80px" HeaderStyle-Width="80px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="crowno" HeaderText="出库单<br />行号" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="billno" HeaderText="出库<br />单号" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="billdate" HeaderText="单据<br />日期" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="CanReturnnnum" HeaderText="可退<br />数量" ItemStyle-Width="100px" HeaderStyle-Width="100px" UniqueName="CanReturnnnum"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="CanReturnitemnum" HeaderText="可退<br />件数" ItemStyle-Width="100px" HeaderStyle-Width="100px" UniqueName="CanReturnitemnum"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="jc_jstype1" HeaderText="结算<br />类型" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="realnum" HeaderText="实发<br />数量" ItemStyle-Width="80px" HeaderStyle-Width="80px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="realdepnum" HeaderText="实发<br />辅数量" ItemStyle-Width="100px" HeaderStyle-Width="80px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="realitemnum" HeaderText="实发<br />件数" ItemStyle-Width="80px" HeaderStyle-Width="80px"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn DataField="curators" HeaderText="保管员" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn DataField="outstock" HeaderText="出库仓库" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="planner" HeaderText="计划员" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="replacecorp" HeaderText="领用单位" ItemStyle-Width="200px" HeaderStyle-Width="200px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="planner" HeaderText="计划员" ItemStyle-Width="80px" HeaderStyle-Width="80px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="replacecorp" HeaderText="领用<br />单位" ItemStyle-Width="200px" HeaderStyle-Width="200px"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn DataField="replaceuser" HeaderText="领用人" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="accountcorp" HeaderText="客户单位" ItemStyle-Width="200px" HeaderStyle-Width="200px"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="accountmode" HeaderText="结算方式" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="accountcorp" HeaderText="客户<br />单位" ItemStyle-Width="200px" HeaderStyle-Width="200px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="accountmode" HeaderText="结算<br />方式" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn DataField="distraddress" HeaderText="配送地" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn DataField="jc_jyy" HeaderText="检验员" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn DataField="jc_zzr" HeaderText="制单人" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="vnote" HeaderText="单据头备注" ItemStyle-Width="160px" HeaderStyle-Width="160px"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="jc_jjcd" HeaderText="紧急程度" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="jc_phone" HeaderText="联系人/联系电话" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="cgeneralbid" HeaderText="出库单表体主键" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="vnote" HeaderText="单据<br />头备注" ItemStyle-Width="160px" HeaderStyle-Width="160px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="jc_jjcd" HeaderText="紧急<br />程度" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="jc_phone" HeaderText="联系人/<br />联系电话" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="cgeneralbid" HeaderText="出库单<br />表体主键" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn DataField="invcode" HeaderText="物资编码" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn DataField="invname" HeaderText="物资名称" ItemStyle-Width="160px" HeaderStyle-Width="160px"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="invxhcpdh" HeaderText="型（牌）号/产品代号" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="invxhcpdh" HeaderText="型（牌）号/<br />产品代号" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn DataField="invscale" HeaderText="规格" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="techconditions" HeaderText="技术条件" ItemStyle-Width="160px" HeaderStyle-Width="160px"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="invstatus" HeaderText="物资状态" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="invlevel" HeaderText="质量等级" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="techconditions" HeaderText="技术<br />条件" ItemStyle-Width="160px" HeaderStyle-Width="160px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="invstatus" HeaderText="物资<br />状态" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="invlevel" HeaderText="质量<br />等级" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn DataField="invfurbatch" HeaderText="（炉）批号" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="invmeasname" HeaderText="计量单位" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="invdepmeasname" HeaderText="副计量单位" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="invspecial" HeaderText="特殊记载" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="manufacturer" HeaderText="生产厂家" ItemStyle-Width="200px" HeaderStyle-Width="200px"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="manufacturdate" HeaderText="生产日期" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="invbatch" HeaderText="批次号（帐卡号）" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="invmeasname" HeaderText="计量<br />单位" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="invdepmeasname" HeaderText="副计量<br />单位" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="invspecial" HeaderText="特殊<br />记载" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="manufacturer" HeaderText="生产<br />厂家" ItemStyle-Width="200px" HeaderStyle-Width="200px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="manufacturdate" HeaderText="生产<br />日期" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="invbatch" HeaderText="批次号<br />（帐卡号）" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn DataField="jc_cc" HeaderText="尺寸" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="hgz_no" HeaderText="合格证号" ItemStyle-Width="140px" HeaderStyle-Width="140px"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="hgzbz" HeaderText="单据体备注" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="hgz_no" HeaderText="合格<br />证号" ItemStyle-Width="140px" HeaderStyle-Width="140px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="hgzbz" HeaderText="单据体<br />备注" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn DataField="jc_rwh" HeaderText="任务号" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="jc_gcxh" HeaderText="型号工程" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="jc_yzjd" HeaderText="研制阶段" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="jc_gcxh" HeaderText="型号<br />工程" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="jc_yzjd" HeaderText="研制<br />阶段" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn DataField="jc_pzh" HeaderText="批组号" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn DataField="jc_use" HeaderText="用途" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="jc_zxgc" HeaderText="专项工程" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="jc_price" HeaderText="出库单价" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="jc_money" HeaderText="出库金额" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="jc_invcl" HeaderText="存货分类" ItemStyle-Width="160px" HeaderStyle-Width="160px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="jc_zxgc" HeaderText="专项<br />工程" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="jc_price" HeaderText="出库<br />单价" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="jc_money" HeaderText="出库<br />金额" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="jc_invcl" HeaderText="存货<br />分类" ItemStyle-Width="160px" HeaderStyle-Width="160px"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn DataField="jc_th" HeaderText="图号" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="jc_ckjl" HeaderText="出库结论" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="jc_wzms" HeaderText="物资描述" ItemStyle-Width="260px" HeaderStyle-Width="260px"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="jc_wzbs" HeaderText="物资标识" ItemStyle-Width="260px" HeaderStyle-Width="260px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="jc_ckjl" HeaderText="出库v结论" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="jc_wzms" HeaderText="物资<br />描述" ItemStyle-Width="300px" HeaderStyle-Width="300px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="jc_wzbs" HeaderText="物资<br />标识" ItemStyle-Width="260px" HeaderStyle-Width="260px"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn DataField="dpaconclusion" HeaderText="DPA结论" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="specialinstr" HeaderText="特殊说明" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="ysconclusion" HeaderText="验收结论（入库结论）" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="hgz_cqyslb" HeaderText="超期验收类别" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="hgz_zjdbillno" HeaderText="质检单号" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="hgz_fyyxqf" HeaderText="复验有效期自" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="hgz_fyyxqz" HeaderText="复验有效期止" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="hgz_yxqx" HeaderText="存储期止" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="hgz_zydh" HeaderText="质疑单号" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="hgz_ysxs" HeaderText="验收形式" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="hgz_hjxjl" HeaderText="焊接性结论" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="hgz_sqjyjl" HeaderText="水汽检验结论" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="specialinstr" HeaderText="特殊<br />说明" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="ysconclusion" HeaderText="验收结论<br />（入库结论）" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="hgz_cqyslb" HeaderText="超期验收<br />类别" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="hgz_zjdbillno" HeaderText="质检<br />单号" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="hgz_fyyxqf" HeaderText="复验有效<br />期自" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="hgz_fyyxqz" HeaderText="复验有效<br />期止" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="hgz_yxqx" HeaderText="存储<br />期止" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="hgz_zydh" HeaderText="质疑<br />单号" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="hgz_ysxs" HeaderText="验收<br />形式" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="hgz_hjxjl" HeaderText="焊接性<br />结论" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="hgz_sqjyjl" HeaderText="水汽检验<br />结论" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn DataField="nc_kth" HeaderText="课题号" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn DataField="rowstatus" HeaderText="行状态" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="isprint" HeaderText="是否打印合格证" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="rq_no" HeaderText="需求申请编号" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="rq_revision" HeaderText="需求申请版本号" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="user_rq_no" HeaderText="用户需求编号" ItemStyle-Width="160px" HeaderStyle-Width="160px"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="rq_id" HeaderText="需求系统需求ID" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="isprint" HeaderText="是否打印<br />合格证" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="rq_no" HeaderText="需求申请<br />编号" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="rq_revision" HeaderText="需求申请<br />版本号" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="user_rq_no" HeaderText="用户需求<br />编号" ItemStyle-Width="160px" HeaderStyle-Width="160px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="rq_id" HeaderText="需求系统<br />需求ID" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn DataField="securitylevel" HeaderText="密级" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="lastupdate" HeaderText="最后更新时间" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="khbm_info" HeaderText="客户部门" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="istrans" HeaderText="是否配送" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="iscutting" HeaderText="是否下料" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="transdate" HeaderText="配送时限" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="old_generalbid" HeaderText="原出库单行ID" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="old_generalhid" HeaderText="原出库单头ID" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="rq_headid" HeaderText="需求头ID" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="rq_bodyid" HeaderText="需求行ID" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="request_sn_id" HeaderText="领料单标识" ItemStyle-Width="160px" HeaderStyle-Width="160px"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="request_sn" HeaderText="领料单头标识" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="dhprice" HeaderText="到货价" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="jcbl" HeaderText="加成比例" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="jyfft" HeaderText="检验费分摊" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="jyxhft" HeaderText="检验消耗分摊" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="startdate" HeaderText="滞纳金起算日期" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="npaidmny" HeaderText="累计实收金额" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="nbalancemny" HeaderText="剩余应收金额" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="nprepaidoffsetmny" HeaderText="预付冲抵金额" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="nshouldpaymny" HeaderText="应收金额" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="lldsqdept" HeaderText="申请部门" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="bathnewinvcode" HeaderText="存帐卡对应的新物质编码" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="httsyq" HeaderText="合同特殊要求" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="nbReturnApplynum" HeaderText="签收数量" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="lastupdate" HeaderText="最后<br />更新<br />时间" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="khbm_info" HeaderText="客户<br />部门" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="istrans" HeaderText="是否<br />配送" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="iscutting" HeaderText="是否<br />下料" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="transdate" HeaderText="配送<br />时限" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="old_generalbid" HeaderText="原出库单<br />行ID" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="old_generalhid" HeaderText="原出库单<br />头ID" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="rq_headid" HeaderText="需求<br />头ID" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="rq_bodyid" HeaderText="需求<br />行ID" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="request_sn_id" HeaderText="领料单<br />标识" ItemStyle-Width="160px" HeaderStyle-Width="160px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="request_sn" HeaderText="领料单<br />头标识" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="dhprice" HeaderText="到货<br />价" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="jcbl" HeaderText="加成<br />比例" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="jyfft" HeaderText="检验费<br />分摊" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="jyxhft" HeaderText="检验消耗<br />分摊" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="startdate" HeaderText="滞纳金<br />起算日期" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="npaidmny" HeaderText="累计实收<br />金额" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="nbalancemny" HeaderText="剩余应收<br />金额" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="nprepaidoffsetmny" HeaderText="预付冲抵<br />金额" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="nshouldpaymny" HeaderText="应收<br />金额" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="lldsqdept" HeaderText="申请<br />部门" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="bathnewinvcode" HeaderText="存帐卡对应的<br />新物质编码" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="httsyq" HeaderText="合同特殊<br />要求" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="nbReturnApplynum" HeaderText="签收<br />数量" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
                 </Columns>
             </MasterTableView>
         </telerik:RadGrid>

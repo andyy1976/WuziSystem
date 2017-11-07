@@ -64,7 +64,7 @@
             <telerik:RadMultiPage ID="RadMultiPage1" runat="server">
                 <telerik:RadPageView ID="RadPageView1" runat="server" Selected="true">
                     <telerik:RadGrid ID="RadGridModel" runat="server" AllowPaging="true" OnNeedDataSource="RadGridModel_NeedDataSource"
-                        OnItemCommand="RadGridModel_ItemCommand" AutoGenerateColumns="false" ItemStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center">
+                        OnItemCommand="RadGridModel_ItemCommand" AutoGenerateColumns="false" ItemStyle-HorizontalAlign="Center" >
                         <AlternatingItemStyle HorizontalAlign="Center" />
                         <ItemStyle HorizontalAlign="Center" />
                         <HeaderStyle HorizontalAlign="Center" Font-Size="13px" />

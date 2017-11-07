@@ -93,14 +93,10 @@ namespace mms.Plan
        // public string itemCodeStr=",";
         protected void Page_Load(object sender, EventArgs e)
         {
-        //    ((ScriptManager)Master.FindControl("ScriptManager1")).RegisterPostBackControl(RadBtnCombineMergeList); 
-            if (Session["UserName"] == null || Session["UserId"] == null)
-            {
-                Response.Redirect("/Default.aspx");
-            }
+        //    ((ScriptManager)Master.FindControl("ScriptManager1")).RegisterPostBackControl(RadBtnCombineMergeList);  
             DBConn = ConfigurationManager.ConnectionStrings["MaterialManagerSystemConnectionString"].ToString();
             DBI = DBFactory.GetDBInterface(DBConn);
-
+            if (Session["UserId"] == null) { Response.Redirect("/Default.aspx"); }
             if (!IsPostBack)
             {
                 Common.CheckPermission(Session["UserName"].ToString(), "MDemandDetails", this.Page); 
@@ -300,15 +296,26 @@ namespace mms.Plan
             
             {
                 TreeListDataItem item = e.Item as TreeListDataItem;
-
+               /* string id = item.GetDataKeyValue("ID").ToString();
+                CheckBox cb = item.FindControl("CheckBox1") as CheckBox;
+                if (cb != null)
+                {
+                    if (GridSource.Select("ID='" + id + "'")[0]["checked"].ToString().ToLower() == "true")
+                    {
+          
+                        cb.Checked = true;
+                        item.Selected=true;
+                    }
+                }
+                 */
                 if (item["ParentId_For_Combine"].Text == "0" && item["Combine_State"].Text == "1")
                 {
                         item.ForeColor = Color.Red;
                 }
-               // else 
-             //   {
-                     //  item.ForeColor = Color.Green;
-             //   }
+                else 
+                {
+                       item.ForeColor = Color.Green;
+                }
 
                
             }
@@ -363,7 +370,7 @@ namespace mms.Plan
             else
             {
             */
-    
+
                 string ItemCode = this.RTB_ItemCode.Text.Trim();
                 string lingjiantype = RDDL_LingJian_Type.SelectedItem.Value;
 
@@ -375,7 +382,31 @@ namespace mms.Plan
 
         }
 
+        protected void RadBtn_Search_Click(object sender, EventArgs e)
+        {
+            string DraftCode = "";
+            if (this.RadTxt_DraftCode.Text.Trim() == "" && this.span_DraftCode.InnerText == "") {
+                RadNotificationAlert.Text = "请输入查询条件！";
+                RadNotificationAlert.Show();
+            }
+            else {
+                if (this.RadTxt_DraftCode.Text.Trim() != "" && this.span_DraftCode.InnerText != "")
+                    DraftCode = this.RadTxt_DraftCode.Text.Trim();
+                else if (this.RadTxt_DraftCode.Text.Trim() == "")
+                    DraftCode = this.span_DraftCode.InnerText;
+                else if (this.span_DraftCode.InnerText == "")
+                    DraftCode = this.RadTxt_DraftCode.Text.Trim();
+                GetMDraftList(DraftCode);
+                GetMaterialStateSum(DraftCode);
+                string state = this.ddlMState.SelectedValue;
+                GridSource = GetDetailedListList();
+                RadTreeList1.DataSource = GridSource;
+                RadTreeList1.Rebind();
+            }
 
+        }
+
+  
         protected void GetMDraftList(string DraftCode)
         {
             try
@@ -414,17 +445,15 @@ namespace mms.Plan
             {
                 if ((cb.Parent.Parent as TreeListDataItem)["ParentId_For_Combine"].Text != "0")
                 {
-                    // GridSource.Select("ID='" + id + "'")[0]["checked"] = "false";
-                    cb.Checked = false;
-                    (cb.Parent.Parent as TreeListDataItem).Selected = false;
+                   // (cb.Parent.Parent as TreeListDataItem).Selected = false;
+                    GridSource.Select("ID='" + id + "'")[0]["checked"] = "false";
                     RadNotificationAlert.Text = "请勿选择已被合并的数据记录";
                     RadNotificationAlert.Show();
 
                 }
                 else
                 {
-                    //  GridSource.Select("ID='" + id + "'")[0]["checked"] = "true";
-                    cb.Checked = true;
+                   GridSource.Select("ID='" + id + "'")[0]["checked"] = "true";
                    (cb.Parent.Parent as TreeListDataItem).Selected = true;
                     Session["idStr"] += id + ",";
                 }
@@ -432,8 +461,7 @@ namespace mms.Plan
             }
             else
             {
-              //  GridSource.Select("ID='" + id + "'")[0]["checked"] = "false";
-                cb.Checked = false;
+                GridSource.Select("ID='" + id + "'")[0]["checked"] = "false";
                 (cb.Parent.Parent as TreeListDataItem).Selected = false;
                 if (Session["idStr"].ToString().IndexOf("," + id + ",") != -1)
                 {
@@ -452,10 +480,13 @@ namespace mms.Plan
             {
                 (dataitem.FindControl("CheckBox1") as CheckBox).Checked = cb.Checked;
                 string id = dataitem.GetDataKeyValue("ID").ToString();
- 
-                dataitem.Selected = cb.Checked;
+              
+            //    GridSource.Select("ID='" + id + "'")[0]["checked"] = cb.Checked.ToString().ToLower();
+              //  dataitem.Selected = cb.Checked;
                 if (cb.Checked == true)
                 {
+                    GridSource.Select("ID='" + id + "'")[0]["checked"] = "true";
+                    dataitem.Selected = true;
                     if (Session["idStr"].ToString().IndexOf("," + id + ",") == -1)
                     {
                         Session["idStr"] += id + ",";
@@ -464,6 +495,8 @@ namespace mms.Plan
                 }
                 else
                 {
+                    GridSource.Select("ID='" + id + "'")[0]["checked"] = "false";
+                    dataitem.Selected = false;
                     if (Session["idStr"].ToString().IndexOf("," + id + ",") != -1)
                     {
                         Session["idStr"] = Session["idStr"].ToString().Replace("," + id + ",", ",");
@@ -643,13 +676,6 @@ namespace mms.Plan
                 RadTreeList1.Rebind();
             }
         }
-
-        protected void RadButton_ExportExcel_Click(object sender, EventArgs e)
-        {
-            RadTreeList1.ExportSettings.FileName = "型号物资需求清单" + DateTime.Now.ToString("yyyy-MM-dd");
-        //    RadTreeList1.ExportToExcel();
-          //  RadTreeList1.ExportSettings.Excel.Format = (TreeListExcelFormat)Enum.Parse(typeof(TreeListExcelFormat), "Xlsx");
-            RadTreeList1.ExportToExcel();
-        } 
+                  
     }
 }

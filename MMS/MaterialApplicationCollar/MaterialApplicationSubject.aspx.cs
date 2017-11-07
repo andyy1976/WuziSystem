@@ -17,12 +17,12 @@ namespace mms.MaterialApplicationCollar
         DBInterface DBI;
         protected void Page_Load(object sender, EventArgs e)
         {
-            DBConn = ConfigurationManager.ConnectionStrings["MaterialManagerSystemConnectionString"].ToString();
-            DBI = DBFactory.GetDBInterface(DBConn);
-            if (Session["UserId"] == null)
+            if (Session["UserName"] == null || Session["UserId"] == null)
             {
                 Response.Redirect("/Default.aspx");
             }
+            DBConn = ConfigurationManager.ConnectionStrings["MaterialManagerSystemConnectionString"].ToString();
+            DBI = DBFactory.GetDBInterface(DBConn);
             if (!IsPostBack)
             {
                 Common.CheckPermission(Session["UserName"].ToString(), "MaterialApplicationSubject", this.Page);
@@ -44,7 +44,7 @@ namespace mms.MaterialApplicationCollar
 
         public void GetMDML()
         {
-            string strSQL = " select M_Demand_Merge_List.*"
+            string strSQL = " select M_Demand_Merge_List.* "
                     + " from M_Demand_Merge_List"
                     + " where Submit_Type = '2' and Is_submit = 'true' and MaterialDept = '" + HF_DeptCode.Value + "'"
                     + " and ID not in (select Material_ID from MaterialApplication where Is_del = 'false' and Material_ID is not null)";
@@ -60,7 +60,20 @@ namespace mms.MaterialApplicationCollar
 
         protected void RadGridMDML_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
         {
-            RadGridMDML.DataSource = Session["MAMGridSource"];
+            RadGridMDML.DataSource = ((Session["MAMGridSource"]) as DataTable);
+        }
+
+        protected void RadGridMDML_ItemDataBound(object sender, GridItemEventArgs e)
+        {
+            if (e.Item is GridDataItem)
+            {
+                RadButton rb = e.Item.FindControl("RB_APP") as RadButton;
+                if (rb != null)
+                {
+                    string id = ((e.Item) as GridDataItem).GetDataKeyValue("ID").ToString();
+                    rb.Attributes["onclick"] = string.Format("return ShowMaterialAppWindow({0})", id);
+                }
+            }
         }
 
         protected void RB_App_Click(object sender, EventArgs e)
@@ -139,26 +152,26 @@ namespace mms.MaterialApplicationCollar
             {
                 HFMDMLID.Value = ((RadGridMDML.SelectedItems[0]) as GridDataItem).GetDataKeyValue("ID").ToString();
             }
-            else
+            else 
             {
                 HFMDMLID.Value = "";
             }
         }
 		protected void RadButton_ExportExcel_Click(object sender, EventArgs e)
         {
-            RadGridMDML.ExportSettings.FileName = "请领物资信息列表--课题" + DateTime.Now.ToString("yyyy-MM-dd");
+            RadGridMDML.ExportSettings.FileName = "请领物资信息列表--技术创新" + DateTime.Now.ToString("yyyy-MM-dd");
             RadGridMDML.MasterTableView.ExportToExcel();
         }
 
         protected void RadButton_ExportWord_Click(object sender, EventArgs e)
         {
-            RadGridMDML.ExportSettings.FileName = "请领物资信息列表--课题" + DateTime.Now.ToString("yyyy-MM-dd");
+            RadGridMDML.ExportSettings.FileName = "请领物资信息列表--技术创新" + DateTime.Now.ToString("yyyy-MM-dd");
             RadGridMDML.MasterTableView.ExportToWord();
         }
 
         protected void RadButton_ExportPdf_Click(object sender, EventArgs e)
         {
-            RadGridMDML.ExportSettings.FileName = "请领物资信息列表--课题" + DateTime.Now.ToString("yyyy-MM-dd");
+            RadGridMDML.ExportSettings.FileName = "请领物资信息列表--技术创新" + DateTime.Now.ToString("yyyy-MM-dd");
             RadGridMDML.ExportSettings.IgnorePaging = true;
             RadGridMDML.MasterTableView.ExportToPdf();
             RadGridMDML.ExportSettings.IgnorePaging = false;

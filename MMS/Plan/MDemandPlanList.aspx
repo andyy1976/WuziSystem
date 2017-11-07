@@ -97,7 +97,7 @@
                         </telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="ID" DataType="System.Int32" FilterControlAltText="Filter ID column" HeaderText="需求行号" ReadOnly="True" Visible="false" SortExpression="ID" UniqueName="ID">
                         </telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="DRAWING_NO" FilterControlAltText="Filter DRAWING_NO column" HeaderStyle-HorizontalAlign="Center" HeaderText="产品图号" SortExpression="DRAWING_NO" UniqueName="DRAWING_NO">
+                        <telerik:GridBoundColumn DataField="DRAWING_NO" FilterControlAltText="Filter DRAWING_NO column"  HeaderText="产品图号" SortExpression="DRAWING_NO" UniqueName="DRAWING_NO">
                         </telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="TaskCode" FilterControlAltText="Filter TaskCode column" HeaderText="任务号" SortExpression="TaskCode" UniqueName="TaskCode">
                         </telerik:GridBoundColumn>

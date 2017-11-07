@@ -35,10 +35,8 @@
                 <ClientSettings Selecting-AllowRowSelect="true" EnableRowHoverStyle="true">
                     <Scrolling AllowScroll="True" UseStaticHeaders="True" SaveScrollPosition="true" FrozenColumnsCount="6" ScrollHeight="600px"></Scrolling>
                     <Selecting AllowRowSelect="true" />
-                </ClientSettings>
-
-     
-                    <ExportSettings HideStructureColumns="true" ExportOnlyData="true" IgnorePaging="false" OpenInNewWindow="true">
+                    </ClientSettings>
+                     <ExportSettings HideStructureColumns="true" ExportOnlyData="true" IgnorePaging="false" OpenInNewWindow="true">
                        <Pdf  DefaultFontFamily="Arial Unicode MS" />
                      </ExportSettings>
                     <MasterTableView CommandItemDisplay="Top">
@@ -52,24 +50,24 @@
              
                     <Columns>
                         <telerik:GridBoundColumn DataField="RQ_No" HeaderText="需求编号" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="User_RQ_ID" HeaderText="用户需求ID" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="User_RQ_Line_ID" HeaderText="用户需求行ID" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="User_RQ_ID" HeaderText="用户需<br />求ID" HeaderStyle-Width="70px"></telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="User_RQ_Line_ID" HeaderText="用户需<br />求行ID" HeaderStyle-Width="70px"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="Material_Name" HeaderText="物资名称" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="NumCasesSum" HeaderText="需求件数" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="NumCasesSum" HeaderText="需求件数" HeaderStyle-Width="70px"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="DemandNumSum" HeaderText="需求数" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="User_RQ_No" HeaderText="用户需求编号" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="Confirmed_Quantity" HeaderText="确认需求数量" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="Confirmed_RQ_Date" HeaderText="确认需求时间" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="User_RQ_No" HeaderText="用户需求编号" HeaderStyle-Width="150px"></telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="Confirmed_Quantity" HeaderText="确认需求<br />数量" HeaderStyle-Width="70px"></telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="Confirmed_RQ_Date" HeaderText="确认需求时间" HeaderStyle-Width="150px" DataFormatString="{0:yyyy/MM/dd}"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="Confirmed_Item_ID" HeaderText="确认物资编码" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="Confirmed_Item_Revision" HeaderText="确认物资版本" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="Test_material_Quantity" HeaderText="化验料数量" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="Submission_Status" HeaderText="提交状态" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="Claimed_By" HeaderText="认领人" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="Department_Of_Planner" HeaderText="认领人所属部门" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="Claim_Date" HeaderText="认领时间" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="Confirmed_By" HeaderText="确认人" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="Confirmation_Date" HeaderText="确认时间" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="SUBMITED_SYNC_STATUS" HeaderText="提交状态最后更新时间" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="Claimed_By" HeaderText="认领人" HeaderStyle-Width="80px"></telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="Department_Of_Planner" HeaderText="认领人<br />所属部门" HeaderStyle-Width="150px"></telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="Claim_Date" HeaderText="认领时间" HeaderStyle-Width="150px" DataFormatString="{0:yyyy/MM/dd}"></telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="Confirmed_By" HeaderText="确认人" HeaderStyle-Width="80px"></telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="Confirmation_Date" HeaderText="确认时间" HeaderStyle-Width="150px" DataFormatString="{0:yyyy/MM/dd}"></telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="SUBMITED_SYNC_STATUS" HeaderText="提交状态最后更新时间" HeaderStyle-Width="150px" DataFormatString="{0:yyyy/MM/dd}"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="Attribute1" HeaderText="确认用途" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="Attribute2" HeaderText="确认生产厂家" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="Attribute3" HeaderText="确认特殊要求" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
@@ -81,12 +79,12 @@
                         <telerik:GridBoundColumn DataField="Attribute9" HeaderText="物资供应周期" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="Attribute10" HeaderText="起订量" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="Attribute11" HeaderText="标准供货日期" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="Attribute12" HeaderText="是否超期" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="Attribute13" HeaderText="是否应收预付款" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="Attribute12" HeaderText="是否<br />超期" HeaderStyle-Width="60px"></telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="Attribute13" HeaderText="是否应收<br />预付款" HeaderStyle-Width="80px"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="Attribute14" HeaderText="预付款比例" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="Attribute15" HeaderText="预付款单价" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="Attribute16" HeaderText="预付款金额" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="Attribute17" HeaderText="确认件数" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="Attribute16" HeaderText="预付款<br />金额" HeaderStyle-Width="60px"></telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="Attribute17" HeaderText="确认<br />件数" HeaderStyle-Width="60px"></telerik:GridBoundColumn>
                         
                     </Columns>
                     

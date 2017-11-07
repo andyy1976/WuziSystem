@@ -53,26 +53,9 @@
     <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel2" runat="server" Skin="Default" GroupingText="同步中，结束前请不要有任何操作"></telerik:RadAjaxLoadingPanel>
     <telerik:RadCodeBlock runat="server">
         <script type="text/javascript">
-            //同步窗口开始
             function RefreshParent(sender, eventArgs) {
                 document.location.reload();
             }
-            var SynchronID;
-            function confirmWindowSynchron(sender, args) {
-                $find("<%=confirmWindowSynchron.ClientID %>").show();
-                SynchronID = sender.get_id();
-                args.set_cancel(true);
-            }
-
-            function YesOrNoClickedSynchron(sender, args) {
-                var oWnd = $find("<%=confirmWindowSynchron.ClientID %>");
-                oWnd.close();
-                if (sender.get_text() == "是") {
-                    $find(SynchronID).click();
-                }
-            }
-            //同步窗口结束
-
             //删除
             var deleteID;
             function confirmRadWindowDelete(sender, args) {
@@ -92,7 +75,7 @@
             function ImportPlan(sender, args) {
                 var win = $find("<%=RadWindowImportWindow.ClientID %>");
                 win.set_title("新增计划包");
-                window.radopen("/Plan/PlanImport.aspx", "RadWindowImportWindow");
+                window.radopen("/Plan/PlanImport.aspx?Type=1", "RadWindowImportWindow");
             }
 
             //导入型号物资需求
@@ -120,9 +103,22 @@
                     var win = $find("<%=RadWindowImportMaterialWindow.ClientID %>");
                     win.set_title("导入型号物资需求");
                    
-                    window.radopen("/Plan/MDemandImport.aspx?PackId=" + PackId, "RadWindowImportMaterialWindow");
+                    window.radopen("/MaterialApplicationCollar/MaterialPlanImport.aspx?PackId=" + PackId, "RadWindowImportMaterialWindow");
                 }
             }
+
+
+            function ImportMaterialNoSelection(PackId) 
+
+             {
+                  
+                    var win = $find("<%=RadWindowImportMaterialWindow.ClientID %>");
+                    win.set_title("导入型号物资需求");
+
+                    window.radopen("/MaterialApplicationCollar/MaterialPlanImport.aspx?PackId=" + PackId, "RadWindowImportMaterialWindow");
+                }
+   
+
             //查看计划包
             function ShowP_Pack_Task(PackId) {
                 var win = $find("<%=RadWindowImportWindow.ClientID %>");
@@ -162,10 +158,14 @@
                 <tr>
                     <td>型号：</td>
                     <td><telerik:RadTextBox ID="RTB_Model" runat="server" Width="100px"></telerik:RadTextBox></td>
+                    <td>计划包名称：</td>
+                    <td><telerik:RadTextBox ID="RTB_PackageName" runat="server" Width="150px"></telerik:RadTextBox></td>
+                    <%--
                     <td>任务号：</td>
                     <td><telerik:RadTextBox ID="RTB_TaskCode" runat="server" Width="100px"></telerik:RadTextBox></td>
                     <td>图号：</td>
                     <td><telerik:RadTextBox ID="RTB_DrawingNo" runat="server" Width="100px"></telerik:RadTextBox></td>
+                        --%>
                     <td>材料定额状态：</td>
                     <td>
                         <telerik:RadDropDownList ID="RDDL_DS" runat="server" Width="100">
@@ -226,17 +226,17 @@
                         </telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="Model" HeaderText="型号" ItemStyle-Width="80px" HeaderStyle-Width="80px">
                         </telerik:GridBoundColumn>
-                        <telerik:GridTemplateColumn HeaderText="计划包名称">
+                        <telerik:GridTemplateColumn HeaderText="计划包名称" ItemStyle-Width="150px" HeaderStyle-Width="150px">
                             <ItemTemplate> 
                                 <telerik:RadButton ID="RB_PlanName" runat="server" AutoPostBack="false" ForeColor="Blue" ButtonType="ToggleButton" ToggleType="None" ToolTip="点击查看计划包数据"></telerik:RadButton>
                                 <telerik:RadButton ID="RB_State" runat="server" AutoPostBack="false" ToolTip="点击查看计划包数据" Width="20px" Height="20px"></telerik:RadButton>
                             </ItemTemplate>
                         </telerik:GridTemplateColumn>
-                        <telerik:GridTemplateColumn HeaderText="BOM管理">
+                        <telerik:GridTemplateColumn HeaderText="BOM管理" ItemStyle-Width="150px" HeaderStyle-Width="150px">
                             <ItemStyle HorizontalAlign="Center" />
                             <ItemTemplate>
-                                <telerik:RadButton ID="RB_NotSynchron" runat="server" ButtonType="ToggleButton" Text="同步BOM与定额" ToolTip="点击同步SmarTeam"
-                                    OnClientClicking="confirmWindowSynchron" CommandName="Synchron" Visible="false" ForeColor="Red">
+                                <telerik:RadButton ID="RB_ADD_1" runat="server" ButtonType="ToggleButton" Text="导入物资需求" ToolTip="点击通过Excel导入型号物资需求"
+                                    OnClientClicking="ImportMaterial" CommandName="ImportFromExcel" Visible="false" ForeColor="Red">
                                 </telerik:RadButton>
                                 <telerik:RadButton ID="RB_Synchronization" runat="server" AutoPostBack="false" ButtonType="ToggleButton" Text="查看BOM" ToolTip="点击查看BOM与定额" Visible="false" ForeColor="Blue"></telerik:RadButton>
                                 <telerik:RadButton ID="RB_Synchronization1" runat="server" AutoPostBack="false" ButtonType="ToggleButton" ToolTip="点击查看BOM与定额" Visible="false" ForeColor="Blue"></telerik:RadButton>
@@ -252,7 +252,7 @@
                                 <telerik:RadButton ID="RB_ChangeList" runat="server" AutoPostBack="false" ButtonType="ToggleButton" ToolTip="点击查询变更单" ForeColor="Blue"></telerik:RadButton>
                             </ItemTemplate>
                         </telerik:GridTemplateColumn>
-                        <telerik:GridTemplateColumn HeaderText="物资需求清单管理">
+                        <telerik:GridTemplateColumn HeaderText="物资需求清单管理" ItemStyle-Width="150px" HeaderStyle-Width="150px">
                             <ItemStyle HorizontalAlign="Center" />
                             <ItemTemplate>
                                 <telerik:RadButton ID="RB_Draft" runat="server" AutoPostBack="false" ButtonType="ToggleButton" ToolTip="" ForeColor="Blue"></telerik:RadButton>
@@ -278,32 +278,7 @@
             </telerik:RadGrid>
         </div>
     </div>
-    <%-- 同步弹出窗口--开始--%>
-    <telerik:RadWindow ID="confirmWindowSynchron" runat="server" VisibleTitlebar="false"
-        VisibleStatusbar="false" Modal="true" Behaviors="None" Height="120px" Width="320px">
-        <ContentTemplate>
-            <div style="margin-top: 30px; float: left;">
-                <div style="width: 60px; padding-left: 15px; float: left;">
-                    <img src="../Images/images/warnning1.jpg" alt="" />
-                </div>
-                <div style="width: 200px; float: left;">
-                    <asp:Label ID="Label1" Font-Size="14px" Text="确定要同步吗？" runat="server" Font-Bold="true"
-                        ForeColor="#25a0da" />
-                    <br />
-                    <br />
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <telerik:RadButton ID="RadButton1" runat="server" Text="是" AutoPostBack="false" OnClientClicked="YesOrNoClickedSynchron">
-                            <Icon PrimaryIconCssClass="rbOk" />
-                        </telerik:RadButton>
-                    &nbsp;
-                        <telerik:RadButton ID="RadButton2" runat="server" Text="否" AutoPostBack="false" OnClientClicked="YesOrNoClickedSynchron">
-                            <Icon PrimaryIconCssClass="rbCancel" />
-                        </telerik:RadButton>
-                </div>
-            </div>
-        </ContentTemplate>
-    </telerik:RadWindow>
-    <%-- 同步弹出窗口--结束--%>
+
     <%-- 删除弹出窗口--开始--%>
     <telerik:RadWindow ID="RadWindowDelete" runat="server" VisibleTitlebar="false"
         VisibleStatusbar="false" Modal="true" Behaviors="None" Height="120px" Width="320px">

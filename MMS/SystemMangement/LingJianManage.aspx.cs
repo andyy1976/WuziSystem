@@ -50,7 +50,7 @@ namespace mms.SystemMangement
         private string userAccount;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["UserName"] == null)
+            if (Session["UserName"] == null || Session["UserId"] == null)
             {
                 Response.Redirect("/Default.aspx");
             }

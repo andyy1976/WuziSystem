@@ -16,7 +16,10 @@ namespace mms.Plan
         DBInterface DBI;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["UserId"] == null) { Response.Redirect("/Default.aspx"); }
+            if (Session["UserName"] == null || Session["UserId"] == null)
+            {
+                Response.Redirect("/Default.aspx");
+            }
             DBConn = ConfigurationManager.ConnectionStrings["MaterialManagerSystemConnectionString"].ToString();
             DBI = DBFactory.GetDBInterface(DBConn);
             if (!IsPostBack)
@@ -114,7 +117,7 @@ namespace mms.Plan
 
         protected void GetMDemandMergeList(string strWhere)
         {
-            string strSQL = " select M_Demand_Merge_List.ID, M_Demand_Merge_List.Material_Name, M_Demand_Merge_List.TaskCode, Drawing_No, ItemCode1, NumCasesSum, DemandNumSum, Dept, DemandDate, M_Demand_Merge_List.Submit_Date, Special_Needs, Secret_Level" +
+            string strSQL = " select M_Demand_Merge_List.ID, M_Demand_Merge_List.Material_Name,M_Demand_Merge_List.Project, M_Demand_Merge_List.TaskCode, Drawing_No, ItemCode1, NumCasesSum, DemandNumSum, Dept, DemandDate, M_Demand_Merge_List.Submit_Date, Special_Needs, Secret_Level" +
                 " , CUX_DM_URGENCY_LEVEL.DICT_Name as UrgencyDegre, Use_Des as UseDes, Shipping_Address" + //, GetCustInfo_T_ACCT_SITE.ADDRESS as ADDRESS
                 " , isnull((select top 1 Submission_Status from GetRqStatus_T_Item where USER_RQ_LINE_ID = M_Demand_Merge_List.ID order by SUBMITED_SYNC_STATUS desc),'已提交') as State" +
                 " from M_Demand_Merge_List" +

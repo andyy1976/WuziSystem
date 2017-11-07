@@ -102,11 +102,14 @@
         <telerik:RadGrid ID="RadGrid1" runat="server" OnNeedDataSource="RadGrid1_NeedDataSource" AutoGenerateColumns="false" 
             AllowPaging="true" PageSize="20" PagerStyle-AlwaysVisible="True">
             <PagerStyle AlwaysVisible="true" />
-            <HeaderStyle HorizontalAlign="Center" Font-Size="13px" />
             <ClientSettings EnableRowHoverStyle="true">
                 <Selecting AllowRowSelect="true" />
                 <Scrolling AllowScroll="True" UseStaticHeaders="True" SaveScrollPosition="true" FrozenColumnsCount="3" ScrollHeight="600px"></Scrolling>
             </ClientSettings>
+              <AlternatingItemStyle HorizontalAlign="Center" />
+                <ItemStyle HorizontalAlign="Center" />
+                <HeaderStyle HorizontalAlign="Center" Font-Size="13px" />
+                <CommandItemStyle Font-Bold="true" Font-Size="16px" HorizontalAlign="Center" Height="40px" />
               <ExportSettings HideStructureColumns="true" ExportOnlyData="true" IgnorePaging="false" OpenInNewWindow="true">
                        <Pdf  DefaultFontFamily="Arial Unicode MS" />
                      </ExportSettings>
@@ -121,7 +124,7 @@
    
                 <Columns>
                     <telerik:GridBoundColumn DataField="SEG3" HeaderText="物资编码" HeaderStyle-Width="200px"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="SEG4" HeaderText="描述"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="SEG4" HeaderText="描述" headerstyle-HorizontalAlign="left" itemstyle-HorizontalAlign="left"></telerik:GridBoundColumn>
                 </Columns>
             </MasterTableView>
         </telerik:RadGrid>

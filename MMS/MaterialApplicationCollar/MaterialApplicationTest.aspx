@@ -95,7 +95,7 @@
                 <MasterTableView DataKeyNames="ID" CommandItemDisplay="Top">
 			    <CommandItemSettings ShowExportToExcelButton="true" ShowExportToWordButton="true" ShowExportToPdfButton="true" />
                     <ColumnGroups>
-                        <telerik:GridColumnGroup Name="Material" HeaderText="物资信息" HeaderStyle-HorizontalAlign="Center"></telerik:GridColumnGroup>
+                        <telerik:GridColumnGroup Name="Material" HeaderText="物资信息" ></telerik:GridColumnGroup>
                     </ColumnGroups>
                     <Columns>
                         <telerik:GridBoundColumn DataField="RowsId" HeaderText="序号" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>

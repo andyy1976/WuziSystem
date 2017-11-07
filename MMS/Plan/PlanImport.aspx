@@ -154,7 +154,7 @@
             </div>
             <div style="width: 100%; float: left;">
                 <telerik:RadGrid ID="RadGridPack" runat="server" OnNeedDataSource="RadGridPack_NeedDataSource" AllowPaging="false"
-                    AutoGenerateColumns="false" ItemStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center" Height="420px">
+                    AutoGenerateColumns="false" ItemStyle-HorizontalAlign="Center"  Height="420px">
                     <AlternatingItemStyle HorizontalAlign="Center" />
                     <HeaderStyle HorizontalAlign="Center" Font-Size="13px" />
                     <CommandItemStyle Font-Bold="true" Font-Size="16px" HorizontalAlign="Center" Height="40px" />

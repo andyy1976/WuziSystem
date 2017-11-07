@@ -1,8 +1,17 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/index.Master" CodeBehind="ShowPlan.aspx.cs" Inherits="mms.Plan.ShowPlan" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/index.Master" AutoEventWireup="true" CodeBehind="ShowPlan.aspx.cs" Inherits="mms.Plan.ShowPlan" %>
 
 <%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
-
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <script type="text/javascript">
+        function onRequestStart(sender, args) {
+            if (args.get_eventTarget().indexOf("RadButton_ExportExcel") >= 0 || args.get_eventTarget().indexOf("RadButton_ExportWord") >= 0 || args.get_eventTarget().indexOf("RadButton_ExportPDF") >= 0)
+			{
+
+                args.set_enableAjax(false);
+
+            }
+        }
+    </script>
     <script src="../Scripts/jquery-1.4.1.min.js"></script>
     <script src="../Scripts/jquery-1.7.2.min.js"></script>
    
@@ -14,11 +23,13 @@
             text-decoration: underline;
         }
     </style>
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:HiddenField ID="HiddenField" runat="server" Value="物资需求-->型号投产计划" ClientIDMode="Static" />
     <telerik:RadScriptManager ID="RadScriptManager1" runat="server" AsyncPostBackTimeout="1800"></telerik:RadScriptManager>
     <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server" OnAjaxRequest="RadAjaxManager1_AjaxRequest">
+        <ClientEvents OnRequestStart="onRequestStart" />
         <AjaxSettings>
             <telerik:AjaxSetting AjaxControlID="RadAjaxManager1">
                 <UpdatedControls>
@@ -92,7 +103,7 @@
             function ImportPlan(sender, args) {
                 var win = $find("<%=RadWindowImportWindow.ClientID %>");
                 win.set_title("新增计划包");
-                window.radopen("/Plan/PlanImport.aspx", "RadWindowImportWindow");
+                window.radopen("/Plan/PlanImport.aspx?Type=0", "RadWindowImportWindow");
             }
 
             //导入型号物资需求
@@ -162,7 +173,7 @@
                 <tr>
                     <td>型号：</td>
                     <td><telerik:RadTextBox ID="RTB_Model" runat="server" Width="100px"></telerik:RadTextBox></td>
-                    <td>计划报名称：</td>
+                    <td>计划包名称：</td>
                     <td><telerik:RadTextBox ID="RTB_PackageName" runat="server" Width="150px"></telerik:RadTextBox></td>
                     <%--
                     <td>任务号：</td>
@@ -215,6 +226,9 @@
                 <ItemStyle HorizontalAlign="Center" />
                 <HeaderStyle HorizontalAlign="Center" Font-Size="13px" />
                 <CommandItemStyle Font-Bold="true" Font-Size="16px" HorizontalAlign="Center" Height="40px" />
+                <ExportSettings HideStructureColumns="true" ExportOnlyData="true" IgnorePaging="false" OpenInNewWindow="true">
+                       <Pdf  DefaultFontFamily="Arial Unicode MS" />
+                </ExportSettings>
                 <ClientSettings EnableRowHoverStyle="true" >
                     <Selecting AllowRowSelect="true" />
                     <Scrolling AllowScroll="True" UseStaticHeaders="True" ScrollHeight="600px"></Scrolling>
@@ -223,6 +237,7 @@
                     <CommandItemTemplate>
                         型号投产计划包列表
                         <telerik:RadButton ID="RB_Add" runat="server" Text="新增计划包" CssClass="floatleft" AutoPostBack="false" OnClientClicked="ImportPlan" Visible="false"></telerik:RadButton>
+                        <telerik:RadButton ID="RadButton_ExportExcel" runat="server" Text="导出Excel" Font-Bold="true" CommandName="ExportExcel" OnClick="RadButton_ExportExcel_Click" CssClass="floatright"></telerik:RadButton>
                     </CommandItemTemplate>
                     <Columns>
                         <telerik:GridBoundColumn DataField="RowsID" HeaderText="序号" ItemStyle-Width="50px" HeaderStyle-Width="50px">
@@ -270,9 +285,9 @@
                         </telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="ImportTime" HeaderText="编制时间" ItemStyle-Width="80px" HeaderStyle-Width="80px">
                         </telerik:GridBoundColumn>
-                        <telerik:GridTemplateColumn HeaderText="删除" ItemStyle-Width="60px" HeaderStyle-Width="60px">
+                        <telerik:GridTemplateColumn HeaderText="删除" ItemStyle-Width="40px" HeaderStyle-Width="40px">
                             <ItemTemplate>
-                                <telerik:RadButton ID="RB_Delete" runat="server"  Text="删除" AutoPostBack="false" ForeColor="Blue" OnClientClicking="confirmRadWindowDelete" CommandName="Delete" ButtonType="ToggleButton" ToolTip="点击删除该计划报" Visible="false"></telerik:RadButton>
+                                <telerik:RadButton ID="RB_Delete" runat="server" ButtonType="ToggleButton" Text="删除" OnClientClicking="confirmRadWindowDelete" CommandName="Delete" Visible="false"></telerik:RadButton>
                             </ItemTemplate>
                         </telerik:GridTemplateColumn>
                     </Columns>

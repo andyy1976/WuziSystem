@@ -135,8 +135,8 @@
                     <telerik:GridBoundColumn DataField="jc_invcl" HeaderText="存货分类" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn DataField="jc_th" HeaderText="图号" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn DataField="jc_ckjl" HeaderText="出库结论" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="jc_wzms" HeaderText="物资描述" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="jc_wzbs" HeaderText="物资标识" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="jc_wzms" HeaderText="物资描述" ItemStyle-Width="300px" HeaderStyle-Width="300px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="jc_wzbs" HeaderText="物资标识" ItemStyle-Width="300px" HeaderStyle-Width="300px"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn DataField="dpaconclusion" HeaderText="DPA结论" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn DataField="specialinstr" HeaderText="特殊说明" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn DataField="ysconclusion" HeaderText="验收结论（入库结论）" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>

@@ -54,11 +54,12 @@ namespace mms.OutOfStorageManagement
         {
             DBConn = ConfigurationManager.ConnectionStrings["MaterialManagerSystemConnectionString"].ToString();
             DBI = DBFactory.GetDBInterface(DBConn);
-            if (Session["UserId"] == null)
+            if (Session["UserName"] == null || Session["UserId"] == null)
             {
                 Response.Redirect("/Default.aspx");
             }
-            else {
+            else 
+            {
                 UserId = Session["UserId"].ToString();
             }
             if (!IsPostBack)

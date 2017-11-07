@@ -447,13 +447,19 @@ namespace mms.Plan
             GridSource.Select("Id='" + id + "'")[0]["Certification"] = cb.SelectedItem.Value;
         }
 
+        protected void RTB_Use_Des_TextChanged(object sender, EventArgs e)
+        {
+            RadTextBox RTB_Use_Des = sender as RadTextBox;
+            string id = (RTB_Use_Des.Parent.Parent as GridDataItem).GetDataKeyValue("ID").ToString();
+            GridSource.Select("Id='" + id + "'")[0]["Use_Des"] = RTB_Use_Des.Text;
+        }
+
         protected void rtb_SpecialNeeds_TextChanged(object sender, EventArgs e)
         {
             RadTextBox rtb = sender as RadTextBox;
             string id = (rtb.Parent.Parent as GridDataItem).GetDataKeyValue("ID").ToString();
             GridSource.Select("Id='" + id + "'")[0]["Special_Needs"] = rtb.Text;
         }
-
         protected void RTB_MANUFACTURER_TextChanged(object sender, EventArgs e)
         {
             RadTextBox rtb = sender as RadTextBox;

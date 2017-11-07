@@ -51,7 +51,7 @@
        
         <div style="width: 100%; float: left; padding-top: 20px;">           
             <telerik:RadGrid ID="RadGridPhase" runat="server" AllowPaging="true" OnNeedDataSource="RadGridPhase_NeedDataSource"
-                OnItemCommand="RadGridPhase_ItemCommand" AutoGenerateColumns="false" ItemStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center">
+                OnItemCommand="RadGridPhase_ItemCommand" AutoGenerateColumns="false" ItemStyle-HorizontalAlign="Center" >
                 <AlternatingItemStyle HorizontalAlign="Center" />
                 <ItemStyle HorizontalAlign="Center" />
                 <HeaderStyle HorizontalAlign="Center" Font-Size="13px" />

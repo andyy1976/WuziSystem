@@ -67,22 +67,13 @@ namespace mms.MaterialApplicationCollar {
         protected global::Telerik.Web.UI.RadTextBox RTB_Model;
         
         /// <summary>
-        /// RTB_TaskCode 控件。
+        /// RTB_PackageName 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::Telerik.Web.UI.RadTextBox RTB_TaskCode;
-        
-        /// <summary>
-        /// RTB_DrawingNo 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadTextBox RTB_DrawingNo;
+        protected global::Telerik.Web.UI.RadTextBox RTB_PackageName;
         
         /// <summary>
         /// RDDL_DS 控件。
@@ -146,42 +137,6 @@ namespace mms.MaterialApplicationCollar {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::Telerik.Web.UI.RadGrid RadGridP_Pack;
-        
-        /// <summary>
-        /// confirmWindowSynchron 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadWindow confirmWindowSynchron;
-        
-        /// <summary>
-        /// Label1 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
-        
-        /// <summary>
-        /// RadButton1 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton RadButton1;
-        
-        /// <summary>
-        /// RadButton2 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton RadButton2;
         
         /// <summary>
         /// RadWindowDelete 控件。

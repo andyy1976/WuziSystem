@@ -44,11 +44,11 @@
                                 <Columns>
                                     <telerik:GridBoundColumn DataField="rownum" DataType="System.Int32" FilterControlAltText="Filter rownum column" HeaderText="序号" ReadOnly="True" SortExpression="rownum" UniqueName="rownum">
                                     </telerik:GridBoundColumn>
-                                    <telerik:GridBoundColumn DataField="MDP_Code" FilterControlAltText="Filter MDP_Code column" HeaderStyle-HorizontalAlign="Center" HeaderText="编号" SortExpression="MDP_Code" UniqueName="MDP_Code">
+                                    <telerik:GridBoundColumn DataField="MDP_Code" FilterControlAltText="Filter MDP_Code column"  HeaderText="编号" SortExpression="MDP_Code" UniqueName="MDP_Code">
                                     </telerik:GridBoundColumn>
                                     <telerik:GridBoundColumn DataField="MDPId" FilterControlAltText="Filter MDPId column" Visible="false" SortExpression="MDPId" UniqueName="MDPId">
                                     </telerik:GridBoundColumn>
-                                    <telerik:GridBoundColumn DataField="DRAWING_NO" FilterControlAltText="Filter DRAWING_NO column" HeaderStyle-HorizontalAlign="Center" HeaderText="产品图号" SortExpression="DRAWING_NO" UniqueName="DRAWING_NO">
+                                    <telerik:GridBoundColumn DataField="DRAWING_NO" FilterControlAltText="Filter DRAWING_NO column"  HeaderText="产品图号" SortExpression="DRAWING_NO" UniqueName="DRAWING_NO">
                                     </telerik:GridBoundColumn>
                                     <telerik:GridBoundColumn DataField="TaskCode" FilterControlAltText="Filter TaskCode column" HeaderText="任务号" SortExpression="TaskCode" UniqueName="TaskCode">
                                     </telerik:GridBoundColumn>
@@ -81,7 +81,7 @@
                                     <telerik:GridBoundColumn DataField="Sum_Price" FilterControlAltText="Filter Sum_Price column" HeaderText="总价" SortExpression="Sum_Price" UniqueName="Sum_Price">
                                     </telerik:GridBoundColumn>
                                     <telerik:GridEditCommandColumn ButtonType="ImageButton" HeaderText="编辑" UniqueName="EditCommandColumn"
-                                        HeaderStyle-HorizontalAlign="Center" HeaderStyle-Width="80px">
+                                         HeaderStyle-Width="80px">
                                         <HeaderStyle HorizontalAlign="Center" Width="80px"></HeaderStyle>
                                     </telerik:GridEditCommandColumn>
                                 </Columns>

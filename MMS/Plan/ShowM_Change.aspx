@@ -22,7 +22,7 @@
         <MasterTableView DataKeyNames="RowsId" CommandItemDisplay="Top">
             <ColumnGroups>
                 <telerik:GridColumnGroup Name="ChangeDetailed" HeaderText="更改单详细信息"
-                    HeaderStyle-HorizontalAlign="Center" />
+                     />
             </ColumnGroups>
             <Columns>
                 <telerik:GridBoundColumn DataField="RowsId" HeaderText="序号" ItemStyle-Width="40px" HeaderStyle-Width="40px"></telerik:GridBoundColumn>

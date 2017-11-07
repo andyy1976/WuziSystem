@@ -90,32 +90,30 @@
         <asp:HiddenField ID="HiddenField" runat="server" Value="物资需求-->物资需求清单数据合并" ClientIDMode="Static" />
         <div style="width: 100%; float: left;">
             <div class="divContant" style="margin-top: 0px;">
-                <div class="divSiteMap add_divSiteMap" style="clear: both; width: 100%;">
-                    <div style="float: left; height: 40px; line-height: 0px;">
-                        <h3 style="font-weight: bold">您选择的需要合并的物资需求清单数据记录</h3>
-                        
-                    </div>
-                    <div style="width: 100%; height: 0px; border: solid #000 1px; margin: 5px 0; clear: both;"></div>
-                </div>
-                <div class="divSiteMap" style="width: 100%; float: none; height: 30px; border-bottom-style: solid; border-bottom-width: 0px;">
+                <div class="divSiteMap" style="width: 100%; float: none; height: auto; border-bottom-style: solid; border-bottom-width: 0px;">
                     <label style="margin-left: 10px; float: left;color:red;">型号：</label><span id="span_model" style="float: left;color:red;" runat="server"></span>
                     <label style="margin-left: 50px; float: left">基准物资材料清单号：</label><span id="span_listNo" style="float: left;" runat="server"></span>
+                         <div style="width: 100%; height: 0px; border: solid #000 1px; margin: 5px 0; clear: both;"></div>
                 </div>
                 <div class="divViewPanel">
                 <telerik:RadGrid ID="RadGrid_MDemandDetails" runat="server" DataKeyNames="ID" Culture="zh-CN" GroupPanelPosition="Top"
-                    AllowPaging="True"  PageSize="20" PagerStyle-AlwaysVisible="True"
+                    AllowPaging="true"  PageSize="20" PagerStyle-AlwaysVisible="True"
                     OnNeedDataSource="RadGrid_MDemandDetails_NeedDataSource" AllowMultiRowSelection="true"
                     OnItemDataBound="RadGrid_MDemandDetails_ItemDataBound">
                     <GroupingSettings CollapseAllTooltip="Collapse all groups"></GroupingSettings>
-                    <HeaderStyle HorizontalAlign="Center" Font-Size="13px" />
-                    <ClientSettings EnableRowHoverStyle="true" >
-                        <Scrolling AllowScroll="True" UseStaticHeaders="True" FrozenColumnsCount="6" ScrollHeight="160px"></Scrolling>
+                <AlternatingItemStyle HorizontalAlign="Center" />
+                <ItemStyle HorizontalAlign="Center" />
+                <HeaderStyle HorizontalAlign="Center" Font-Size="13px" />
+                <CommandItemStyle Font-Bold="true" Font-Size="16px" HorizontalAlign="Center" Height="40px" />
+                <ClientSettings Selecting-AllowRowSelect="true" EnableRowHoverStyle="true">
+                    <Scrolling AllowScroll="True" UseStaticHeaders="True" SaveScrollPosition="true" FrozenColumnsCount="6" ScrollHeight="160px"></Scrolling>
+                    <Selecting AllowRowSelect="true" />
                     </ClientSettings>
                      <ExportSettings HideStructureColumns="true" ExportOnlyData="true" IgnorePaging="false" OpenInNewWindow="true">
                        <Pdf  DefaultFontFamily="Arial Unicode MS" />
                      </ExportSettings>
                     <MasterTableView AutoGenerateColumns="False" DataKeyNames="ID,ItemCode1" CommandItemDisplay="Top">
-                          <CommandItemSettings ShowExportToExcelButton="True" ShowExportToWordButton="true" ShowExportToPdfButton="true"  ShowAddNewRecordButton="false" ShowRefreshButton="false" />
+                        <CommandItemSettings ShowExportToExcelButton="true" ShowExportToWordButton="true" ShowExportToPdfButton="true" />
                         <Columns>
                         
 
@@ -154,6 +152,7 @@
                        
                         </Columns>
                         	<CommandItemTemplate>
+							您选择的需要合并的物资需求清单数据记
                             
 					 	    <telerik:RadButton ID="RadButton_ExportExcel" runat="server" Text="导出Excel" Font-Bold="true" CommandName="ExportExcel" OnClick="RadButton_ExportExcel_Click" CssClass="floatright"></telerik:RadButton>
 	                        <telerik:RadButton ID="RadButton_ExportWord"  runat="server" Text="导出Word"  Font-Bold="true" CommandName="ExportWord" Visible="false"  OnClick="RadButton_ExportWord_Click"  CssClass="floatright"></telerik:RadButton>
@@ -164,30 +163,27 @@
                     </telerik:RadGrid>
                    </div>
 
-                <div class="divSiteMap add_divSiteMap" style="clear: both; width: 100%;">
-                    <div style="float: left; height: 40px; line-height: 0px;">
-                        <h3 style="font-weight: bold">合并后的物资需求清单数据记录</h3>
-                        
-                    </div>
-                    <div style="width: 100%; height: 0px; border: solid #000 1px; margin: 5px 0; clear: both;"></div>
-                </div>
+               
                     <div class="divViewPanel">
                     <telerik:RadGrid ID="RadGrid_MDemandCombinelist" runat="server" DataKeyNames="ID" Culture="zh-CN"
                         GroupPanelPosition="Top" AllowMultiRowSelection="False" 
                          AllowPaging="False" PageSize="1" PagerStyle-AlwaysVisible="False"
                         OnItemDataBound="RadGrid_MDemandCombinelist_ItemDataBound" OnNeedDataSource="RadGrid_MDemandCombinelist_NeedDataSource">
-                        <HeaderStyle HorizontalAlign="Center" Font-Size="12px" />
-                        <ClientSettings EnableRowHoverStyle="true" >
-                            <Selecting AllowRowSelect="False" />
-                            <Scrolling AllowScroll="False" UseStaticHeaders="True" ScrollHeight="60px"></Scrolling>
-                        </ClientSettings>
+                      <AlternatingItemStyle HorizontalAlign="Center" />
+                <ItemStyle HorizontalAlign="Center" />
+                <HeaderStyle HorizontalAlign="Center" Font-Size="13px" />
+                <CommandItemStyle Font-Bold="true" Font-Size="16px" HorizontalAlign="Center" Height="40px" />
+                <ClientSettings Selecting-AllowRowSelect="true" EnableRowHoverStyle="true">
+                    <Scrolling AllowScroll="False" UseStaticHeaders="True" SaveScrollPosition="true" FrozenColumnsCount="6" ScrollHeight="60px"></Scrolling>
+                    <Selecting AllowRowSelect="true" />
+                    </ClientSettings>
                         <ExportSettings HideStructureColumns="true" ExportOnlyData="true" />
                         <MasterTableView AutoGenerateColumns="False" DataKeyNames="ID,MaterialDept" PagerStyle-AlwaysVisible="False">
                             <CommandItemSettings ShowExportToExcelButton="false" ShowAddNewRecordButton="false" ShowRefreshButton="false" />
                             <Columns>
                                 <telerik:GridBoundColumn DataField="ID" DataType="System.Int32" ItemStyle-Width="50px" HeaderStyle-Width="50px" HeaderText="编号"   ReadOnly="True" SortExpression="ID" UniqueName="ID" Visible="false">
                                 </telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn DataField="mstate" ItemStyle-Width="70px" HeaderStyle-Width="70px" HeaderText="物资状态"  SortExpression="mstate" UniqueName="mstate" >
+                                <telerik:GridBoundColumn DataField="mstate" ItemStyle-Width="100px" HeaderStyle-Width="100px" HeaderText="物资状态"  SortExpression="mstate" UniqueName="mstate" >
                                 </telerik:GridBoundColumn>
                                 <telerik:GridBoundColumn DataField="ItemCode1" ItemStyle-Width="70px" HeaderStyle-Width="70px" HeaderText="物资编码"  SortExpression="ItemCode1" UniqueName="ItemCode1">
                                 </telerik:GridBoundColumn>
@@ -209,7 +205,7 @@
                  
                                 <telerik:GridBoundColumn DataField="Mat_Unit" ItemStyle-Width="70px" HeaderStyle-Width="70px" HeaderText="计量单位"  SortExpression="Mat_Unit" UniqueName="Mat_Unit" Visible="false">
                                 </telerik:GridBoundColumn>               
-                               <telerik:GridTemplateColumn DataField="Mat_Pro_Weight" ItemStyle-Width="70px" HeaderStyle-Width="70px" HeaderText="每产品质量"  SortExpression="Mat_Pro_Weight" UniqueName="Mat_Pro_Weight">
+                               <telerik:GridTemplateColumn DataField="Mat_Pro_Weight" ItemStyle-Width="90px" HeaderStyle-Width="90px" HeaderText="每产品质量"  SortExpression="Mat_Pro_Weight" UniqueName="Mat_Pro_Weight">
                                    <ItemTemplate>
                                         <telerik:RadTextBox ID="Mat_Pro_Weight" runat="server" Width="70px" AutoPostBack="true" OnTextChanged="Mat_Mat_Pro_Weight_TextChanged"></telerik:RadTextBox>
                                     </ItemTemplate>
@@ -265,7 +261,10 @@
                                 <telerik:GridBoundColumn DataField="TaskId" Visible="false" UniqueName="TaskId"></telerik:GridBoundColumn>
                                 <telerik:GridBoundColumn DataField="DraftId" Visible="false" UniqueName="DraftId"></telerik:GridBoundColumn>
                             </Columns>
-  						
+  						<CommandItemTemplate>
+							合并后的物资需求清单数据记录
+                            
+			              </CommandItemTemplate>
                           </MasterTableView>
                     </telerik:RadGrid>
                       <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString='<%$ ConnectionStrings:MaterialManagerSystemConnectionString %>'

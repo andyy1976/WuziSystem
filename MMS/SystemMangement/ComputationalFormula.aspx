@@ -59,7 +59,7 @@
                                 <telerik:GridBoundColumn DataField="Parameter1" HeaderText="参考直径" ItemStyle-Width="160px"></telerik:GridBoundColumn>
                                 <telerik:GridBoundColumn DataField="Parameter2" HeaderText="参考长度" ItemStyle-Width="160px"></telerik:GridBoundColumn>
                                 <telerik:GridBoundColumn DataField="Parameter3" HeaderText="夹持量" ItemStyle-Width="160px"></telerik:GridBoundColumn>
-                                <telerik:GridEditCommandColumn ButtonType="LinkButton" HeaderText="编辑" HeaderStyle-HorizontalAlign="Center" HeaderStyle-Width="80px" UpdateText="修改"></telerik:GridEditCommandColumn>                               
+                                <telerik:GridEditCommandColumn ButtonType="LinkButton" HeaderText="编辑"  HeaderStyle-Width="80px" UpdateText="修改"></telerik:GridEditCommandColumn>                               
                             </Columns>
                         </MasterTableView>
                     </telerik:RadGrid>

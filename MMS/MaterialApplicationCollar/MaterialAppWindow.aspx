@@ -71,7 +71,7 @@
                          }
                         if ($find("<%=RTB_Quantity.ClientID%>")._text == "")
                         {
-                            $find("<%=RadNotificationAlert.ClientID%>").set_text("请输入申请数量！");
+                            $find("<%=RadNotificationAlert.ClientID%>").set_text("请输入申请件数！");
                             $find("<%=RadNotificationAlert.ClientID%>").show();
                             args.set_cancel(true);
                             return;
@@ -217,6 +217,10 @@
                     <td style="text-align: right;">单件定额质量：</td>
                     <td><asp:Label ID="lbl_Mat_Rough_Weight" runat="server">1</asp:Label></td>
                    
+                </tr>
+                  <tr>
+                    <td style="text-align: right;">物资描述：</td>
+                    <td colspan="5"> <asp:Label ID="lb1_MaterialsDes" runat="server"></asp:Label></td>
                 </tr>
                 <tr>
                     <th colspan="6" style="text-align: left; font-size: 14px; border-bottom: solid 1px #ccc;">业务审批流程</th>

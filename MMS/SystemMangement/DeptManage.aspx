@@ -102,15 +102,15 @@
       
                
                             <Columns>
-                                <telerik:GridBoundColumn DataField="RowsID" HeaderText="序号" ReadOnly="True" ItemStyle-Width="40px"></telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn DataField="Dept" HeaderText="部门名称" ItemStyle-Width="200px"></telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn DataField="DeptCode" HeaderText="部门编号" ItemStyle-Width="200px"></telerik:GridBoundColumn>
-                                <telerik:GridDropDownColumn DataField="Cust_Account_ID" DataSourceID="SqlDataSourceCust_Account" ListTextField="Account_Name" ListValueField="Cust_Account_ID" HeaderText="物流中心对应部门"></telerik:GridDropDownColumn>
+                                <telerik:GridBoundColumn DataField="RowsID" HeaderText="序号" ReadOnly="True" ItemStyle-Width="40px" HeaderStyle-Width="40px"></telerik:GridBoundColumn>
+                                <telerik:GridBoundColumn DataField="Dept" HeaderText="部门名称" ItemStyle-Width="200px" HeaderStyle-Width="200px"></telerik:GridBoundColumn>
+                                <telerik:GridBoundColumn DataField="DeptCode" HeaderText="部门编号" ItemStyle-Width="200px" HeaderStyle-Width="200px"></telerik:GridBoundColumn>
+                                <telerik:GridDropDownColumn DataField="Cust_Account_ID" DataSourceID="SqlDataSourceCust_Account" ListTextField="Account_Name" ListValueField="Cust_Account_ID" HeaderText="物流中心对应部门" ItemStyle-Width="200px" HeaderStyle-Width="200px"></telerik:GridDropDownColumn>
                                <%-- <telerik:GridDropDownColumn DataField="ADDRESS" HeaderText="物流中心对应部门配送地址" ReadOnly="true" UniqueName="ADDRESS"></telerik:GridDropDownColumn>--%>
-                                <telerik:GridBoundColumn DataField="Shipping_Address" HeaderText="配送地址" UniqueName="Shipping_Address"></telerik:GridBoundColumn>
-                                <telerik:GridCheckBoxColumn DataField="Is_Del" HeaderText="删除标记" ReadOnly="True" ItemStyle-Width="80px"/>
-                                <telerik:GridEditCommandColumn ButtonType="LinkButton" HeaderText="编辑" HeaderStyle-HorizontalAlign="Center" HeaderStyle-Width="80px"></telerik:GridEditCommandColumn>
-                                <telerik:GridTemplateColumn HeaderText="删除" HeaderStyle-HorizontalAlign="Center" HeaderStyle-Width="80px" UniqueName="DeleteColumn">
+                                <telerik:GridBoundColumn DataField="Shipping_Address" HeaderText="配送地址" UniqueName="Shipping_Address" ItemStyle-Width="200px" HeaderStyle-Width="200px"></telerik:GridBoundColumn>
+                                <telerik:GridCheckBoxColumn DataField="Is_Del" HeaderText="删除标记" ReadOnly="True" ItemStyle-Width="100px" HeaderStyle-Width="100px"/>
+                                <telerik:GridEditCommandColumn ButtonType="LinkButton" HeaderText="编辑"  ItemStyle-Width="80px" HeaderStyle-Width="80px"></telerik:GridEditCommandColumn>
+                                <telerik:GridTemplateColumn HeaderText="删除"  ItemStyle-Width="80px" HeaderStyle-Width="80px" UniqueName="DeleteColumn">
                                     <HeaderStyle HorizontalAlign="Center" Width="80px"></HeaderStyle>
                                     <ItemTemplate>
                                         <telerik:RadButton ID="RadButtonDelete" runat="server" Text="删除" OnClientClicking="CustomRadWindowConfirm" CommandName="Delete"></telerik:RadButton>

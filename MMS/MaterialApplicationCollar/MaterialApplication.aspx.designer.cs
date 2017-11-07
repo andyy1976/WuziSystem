@@ -13,6 +13,15 @@ namespace mms.MaterialApplicationCollar {
     public partial class MaterialApplication {
         
         /// <summary>
+        /// HiddenField 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField HiddenField;
+        
+        /// <summary>
         /// RadScriptManager1 控件。
         /// </summary>
         /// <remarks>
@@ -292,6 +301,15 @@ namespace mms.MaterialApplicationCollar {
         protected global::Telerik.Web.UI.RadTextBox RTB_Mat_Rough_Weight;
         
         /// <summary>
+        /// RTB_MaterialsDes 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadTextBox RTB_MaterialsDes;
+        
+        /// <summary>
         /// RDDL_DiaoDu 控件。
         /// </summary>
         /// <remarks>
@@ -472,13 +490,13 @@ namespace mms.MaterialApplicationCollar {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl div2;
         
         /// <summary>
-        /// RadTextBox2 控件。
+        /// RTB_ItemCode1 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::Telerik.Web.UI.RadTextBox RadTextBox2;
+        protected global::Telerik.Web.UI.RadTextBox RTB_ItemCode1;
         
         /// <summary>
         /// RadGrid1 控件。

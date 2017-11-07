@@ -1,6 +1,6 @@
 USE [mms]
 GO
-/****** Object:  StoredProcedure [dbo].[Proc_UpdateMDemandMergeList]    Script Date: 2017-10-27 18:47:22 ******/
+/****** Object:  StoredProcedure [dbo].[Proc_UpdateMDemandMergeList]    Script Date: 2017-11-07 16:03:03 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -18,6 +18,12 @@ ALTER PROCEDURE [dbo].[Proc_UpdateMDemandMergeList]
 	@TaskCode nvarchar(50),
 	@DemandDate nvarchar(50),
 	@Material_Name nvarchar(50),
+	@Project nvarchar(50),
+	@TDM_Description nvarchar(max),
+	@Material_Mark nvarchar(50),
+	@CN_Material_State nvarchar(50),
+	@Material_Tech_Condition nvarchar(50),
+	@MaterialsDes nvarchar(500),
 	@NumCasesSum nvarchar(50),
 	@DemandNumSum nvarchar(50),
 	@Mat_Unit nvarchar(50),
@@ -46,6 +52,12 @@ BEGIN transaction T
 	@TaskCode1 nvarchar(50),
 	@DemandDate1 nvarchar(50),
 	@Material_Name1 nvarchar(50),
+	@Project1 nvarchar(50),
+	@TDM_Description1 nvarchar(max),
+	@Material_Mark1 nvarchar(50),
+	@CN_Material_State1 nvarchar(50),
+	@Material_Tech_Condition1 nvarchar(50),
+	@MaterialsDes1 nvarchar(500),
 	@NumCasesSum1 varchar(50),
 	@DemandNumSum1 varchar(50),
 	@Mat_Unit1 nvarchar(50),
@@ -77,6 +89,12 @@ BEGIN transaction T
 		@TaskCode1 = M_Demand_Merge_List.TaskCode,
 		@DemandDate1 = DemandDate,
 		@Material_Name1 = Material_Name,
+		@Project1 = Project,
+		@TDM_Description1 = TDM_Description,
+	    @Material_Mark1 = @Material_Mark,
+		@CN_Material_State1 = CN_Material_State,
+		@Material_Tech_Condition1 = @Material_Tech_Condition,
+		@MaterialsDes1 = MaterialsDes,
 		@NumCasesSum1 = NumCasesSum,
 		@DemandNumSum1 = DemandNumSum,
 		@Mat_Unit1 = Mat_Unit,
@@ -109,6 +127,12 @@ BEGIN transaction T
 		TaskCode = @TaskCode,
 		DemandDate = @DemandDate ,
 		Material_Name = @Material_Name,
+		Project = @Project,
+		TDM_Description = @TDM_Description,
+		Material_Mark = @Material_Mark,
+		CN_Material_State = @CN_Material_State,
+		Material_Tech_Condition = @Material_Tech_Condition,
+		MaterialsDes = @MaterialsDes,
 		NumCasesSum = case when @NumCasesSum = '' then '0' else @NumCasesSum end,
 		DemandNumSum = case when  @DemandNumSum = '' then '0' else @DemandNumSum end ,
 		Mat_Unit = @Mat_Unit ,

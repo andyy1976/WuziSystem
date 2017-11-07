@@ -136,6 +136,7 @@ namespace mms.MaterialApplicationCollar
                     lbl_Material_Tech_Condition.Text = dtma.Rows[0]["Material_Tech_Condition"].ToString();
                     lbl_Rough_Spec.Text = dtma.Rows[0]["Rough_Spec"].ToString();
                     lbl_Mat_Rough_Weight.Text = dtma.Rows[0]["Mat_Rough_Weight"].ToString();
+                    lb1_MaterialsDes.Text = dtma.Rows[0]["MaterialsDes"].ToString();
                     lbl_Mat_Unit.Text = dtma.Rows[0]["Mat_Unit"].ToString();
                     lbl_Rough_Size.Text = dtma.Rows[0]["Rough_Size"].ToString();
 
@@ -178,13 +179,14 @@ namespace mms.MaterialApplicationCollar
                         {
                             string Correspond_Draft_Code = dt.Rows[0]["Correspond_Draft_Code"].ToString();
                             string mddldid = Correspond_Draft_Code.Split(',')[0];
-                            strSQL = " select TDM_Description, Material_Name, Material_Mark, CN_Material_State, Material_Tech_Condition, Mat_Rough_Weight from M_Demand_DetailedList_Draft where Id = '" + mddldid + "'";
+                            strSQL = " select TDM_Description, Material_Name, Material_Mark, CN_Material_State, Material_Tech_Condition, Mat_Rough_Weight ,MaterialsDes from M_Demand_DetailedList_Draft where Id = '" + mddldid + "'";
                             DataTable dtmddld = DBI.Execute(strSQL, true);
 
                             lbl_Material_Mark.Text = dtmddld.Rows[0]["Material_Mark"].ToString();
                             lbl_CN_Material_State.Text = dtmddld.Rows[0]["CN_Material_State"].ToString();
                             lbl_Material_Tech_Condition.Text = dtmddld.Rows[0]["Material_Tech_Condition"].ToString();
                             lbl_Mat_Rough_Weight.Text = dtmddld.Rows[0]["Mat_Rough_Weight"].ToString();
+                            lb1_MaterialsDes.Text = dtmddld.Rows[0]["MaterialsDes"].ToString();
                         }
                     }
                 
@@ -246,6 +248,7 @@ namespace mms.MaterialApplicationCollar
             string Material_Tech_Condition = lbl_Material_Tech_Condition.Text;
             string Rough_Spec = lbl_Rough_Spec.Text;
             string Mat_Rough_Weight = lbl_Mat_Rough_Weight.Text;
+            string MaterialsDes = lb1_MaterialsDes.Text;
             string Mat_Unit = lbl_Mat_Unit.Text;
             string Rough_Size = lbl_Rough_Size.Text;
             string ItemCode = lbl_ItemCode.Text.Trim();
@@ -305,11 +308,11 @@ namespace mms.MaterialApplicationCollar
                     strSQL = "declare @id int";
                     strSQL += " Insert into MaterialApplication (Type, Material_Id, Applicant, Dept, ApplicationTime, ContactInformation, TheMaterialWay, TaskCode, Drawing_No"
                         + " , Draft_Code, Quantity, FeedingTime, IsDispatch, IsConfirm, Remark, MaterialType, Material_Name, Material_Mark, CN_Material_State, Material_Tech_Condition"
-                        + " , Rough_Spec, Mat_Rough_Weight, Mat_Unit, Rough_Size, PleaseTakeQuality, AppState, ReturnReason, Is_Del, ItemCode,DiaoDuApprove, XingHaoJiHuaYuanApprove, WuZiJiHuaYuanApprove, UserId, UserAccount)"
+                        + " , Rough_Spec, Mat_Rough_Weight,MaterialsDes, Mat_Unit, Rough_Size, PleaseTakeQuality, AppState, ReturnReason, Is_Del, ItemCode,DiaoDuApprove, XingHaoJiHuaYuanApprove, WuZiJiHuaYuanApprove, UserId, UserAccount)"
                         + " values ('" + HFType.Value + "','" + HFMDMLID.Value + "', '" + Applicant + "','" + Dept + "','" + ApplicationTime + "','" + ContactInformation + "','" + TheMaterialWay + "','" + TaskCode + "','" + DrawingNo + "'"
                         + " ,Null,'" + Quantity + "','" + FeedingTime + "','" + IsDispatch + "','" + IsConfirm + "','" + Remark + "'"
                         + " ,Null,'" + Material_Name + "','" + Material_Mark + "','" + CN_Material_State + "','" + Material_Tech_Condition + "'"
-                        + " ,'" + Rough_Spec + "','" + Mat_Rough_Weight + "','" + Mat_Unit + "','" + Rough_Size + "','" + PleaseTakeQuality + "','1',Null,'false'"
+                        + " ,'" + Rough_Spec + "','" + Mat_Rough_Weight + "','" + MaterialsDes + "','" + Mat_Unit + "','" + Rough_Size + "','" + PleaseTakeQuality + "','1',Null,'false'"
                         + " ,'" + ItemCode + "','" +diaodu + "','" + xinghao + "','" + wuzi + "','" + Session["UserId"].ToString() + "'"
                         + " ,(select DomainAccount from Sys_UserInfo_PWD where Id = '" + Session["UserId"].ToString() + "'))" +
                         " select @id = @@identity"

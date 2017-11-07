@@ -25,7 +25,10 @@ namespace mms.Plan
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["UserId"] == null) { Response.Redirect("/Default.aspx"); }
+            if (Session["UserName"] == null || Session["UserId"] == null)
+            {
+                Response.Redirect("/Default.aspx");
+            }
             UserID = Session["UserId"].ToString();
             if (!IsPostBack)
             {
@@ -37,7 +40,7 @@ namespace mms.Plan
 
         protected DataTable GetP_Pack()
         {
-            string strSQL = " select P_Pack.PackID, isnull(Sys_Model.Model, P_Pack.Model) as Model, PlanCode, PlanName, State"
+            string strSQL = " select P_Pack.PackID, isnull(Sys_Model.Model, P_Pack.Model) as Model, PlanCode, PlanName, State,Type"
                 + " , isnull(UserName,ImportStaffId) as UserName , Convert(varchar(100),ImportTime,111) as ImportTime , Draft_Code"
                 + " ,(select count(*) from M_Demand_DetailedList_Draft where PackId = P_Pack.PackId and Material_State in ('0','1','2','4','5','6')) as AllCount"
                 + " ,(select count(*) from M_Demand_DetailedList_Draft where PackId = P_Pack.PackId and Material_State = '5') as ErrorCount"
@@ -49,7 +52,7 @@ namespace mms.Plan
                 + " left join Sys_Model on Convert(nvarchar(50),Sys_Model.ID) = P_Pack.Model"
                 + " left join Sys_UserInfo_PWD on Sys_UserInfo_PWD.ID = P_Pack.ImportStaffId"
                 + " left join M_Draft_List on M_Draft_List.PackId = P_Pack.PackId"
-                + " where P_Pack.Isdel = 'false'";
+                + " where P_Pack.Isdel = 'false' and P_Pack.Type=0";
             if (Session["P_PackWhere"] != null)
             {
                 strSQL += Session["P_PackWhere"].ToString();
@@ -957,7 +960,12 @@ namespace mms.Plan
             {
                 throw new Exception("刷新页面出错，请按F5刷新！");
             }
+        }
 
+        protected void RadButton_ExportExcel_Click(object sender, EventArgs e)
+        {
+            RadGridP_Pack.ExportSettings.FileName = " 型号投产计划包列表" + DateTime.Now.ToString("yyyy-MM-dd");
+            RadGridP_Pack.MasterTableView.ExportToExcel();
         }
     }
 }

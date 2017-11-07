@@ -85,7 +85,6 @@ namespace mms.Plan
         private DBInterface DBI;
         protected void Page_Load(object sender, EventArgs e)
         {
-
             DBConn = ConfigurationManager.ConnectionStrings["MaterialManagerSystemConnectionString"].ToString();
             DBI = DBFactory.GetDBInterface(DBConn);
 
@@ -102,9 +101,9 @@ namespace mms.Plan
                     switch (Request.QueryString["SubmitType"].ToString())
                     { 
                         case "1":
-                            title = "工艺试验件需求申请";
-                            title1 = "工艺试验件未提交申请";
-                            HiddenField.Value = "工艺试验件任务-->新增工艺试验件";
+                            title = "工艺试验件物资需求申请";
+                            title1 = "工艺试验件物资需求未提交申请";
+                            HiddenField.Value = "工艺试验件任务-->新增工艺试验件物资需求";
 
                             strSQL = " select UserName, DomainAccount from V_Get_Sys_User_byRole where Isdel = 'false' and DomainAccount != '' and DomainAccount is not null and RoleName like '车间%' + '领导' and Is_Del ='false'";
 
@@ -119,14 +118,12 @@ namespace mms.Plan
                             RDDL_ApproveAccount2.DataTextField = "UserName";
                             RDDL_ApproveAccount2.DataBind();
                             lbl_ApproveAccount2.Text = "工艺处型号主管";
-
                             break;
                         case "2":
-                            title = "技术创新课题需求申请";
-                            title1 = "技术创新课题未提交申请";
-                            HiddenField.Value = "技术创新课题任务-->技术创新课题列表";
-                            lblTaskSubject.Text = "课题号：";
-                                                      
+                            title = "技术创新物资需求申请";
+                            title1 = "技术创新物资需求未提交申请";
+                            HiddenField.Value = "技术创新任务-->新增技术创新物资需求";
+                       
                             strSQL = " select * from V_Get_Sys_User_byRole where Isdel = 'false' and DomainAccount != '' and DomainAccount is not null and RoleName like '%车%间%调%度%员%' and Is_Del ='false'";
                             RDDL_ApproveAccount1.DataSource = DBI.Execute(strSQL, true);
                             RDDL_ApproveAccount1.DataTextField = "UserName";
@@ -140,12 +137,11 @@ namespace mms.Plan
                             RDDL_ApproveAccount2.DataValueField = "DomainAccount";
                             RDDL_ApproveAccount2.DataBind();
                             lbl_ApproveAccount2.Text = "工艺技术处课题技术主管";
-
                             break;
                         case "3":
                             title = "车间备料物资需求申请";
                             title1 = "车间备料物资需求未提交申请";
-                            HiddenField.Value = "车间备料任务-->新增物资";
+                            HiddenField.Value = "车间备料任务-->新增车间备料物资需求";
                             trAttribute4.Visible = true;
 
                             strSQL = " select * from V_Get_Sys_User_byRole where Isdel = 'false' and DomainAccount != '' and DomainAccount is not null and RoleName like '%车%间%调%度%员%' and Is_Del ='false'";
@@ -174,7 +170,6 @@ namespace mms.Plan
                     }
                     this.ViewState["submit_type"] = Request.QueryString["SubmitType"].ToString();
                     this.b_title.InnerHtml = title;
-                  //  this.b_title1.InnerHtml = title1;
                     if (Request.QueryString["MDPId"] != null && Request.QueryString["MDPId"].ToString() != "")
                     {
                         this.hfBh.Value = Request.QueryString["MDPId"].ToString();
@@ -192,7 +187,7 @@ namespace mms.Plan
 
                     BindDeptUserAddress();
 
-                    this.span_apply_time.InnerText = DateTime.Now.ToString("yyyy-MM-dd"); 
+                    this.span_apply_time.Text = DateTime.Now.ToString("yyyy-MM-dd"); 
                     DemandDate.SelectedDate = DateTime.Now.AddMonths(3);
 
 
@@ -381,9 +376,15 @@ namespace mms.Plan
             mta.Certification = RadComboBoxCertification.SelectedValue;
             mta.Project = RDDL_Project.SelectedValue;
 
-            mta.TDM_Description = RTB_TDM_Description.Text; ;
-            mta.MaterialsDes = RTB_MaterialsDes.Text; ;
-            mta.Material_Size_Required = RTB_Material_Size_Required.Text; ;
+            mta.Special_Needs = rtb_SpecialNeeds.Text.Trim();
+            mta.Material_Mark = RTB_Material_Mark.Text.Trim();
+            mta.CN_Material_State = RTB_CN_Material_State.Text.Trim();
+            mta.Material_Tech_Condition = RTB_Material_Tech_Condition.Text.Trim(); ;        
+
+            mta.Material_Size_Required = RTB_Material_Size_Required.Text;
+            mta.TDM_Description = RTB_TDM_Description.Text;
+
+            mta.MaterialsDes = RTB_MaterialsDes.Text; 
             if (Request.QueryString["SubmitType"].ToString() == "3")
             {
                 if (RB_Attribute41.Checked == true)
@@ -436,6 +437,10 @@ namespace mms.Plan
             DBI.OpenConnection();
             try
             {
+                if (Session["UserId"] == null)
+                {
+                    throw new Exception("超时，请重新登录");
+                }
                 int userid = Convert.ToInt32(Session["UserId"].ToString());
                 string strSQL = "";
                 int MDPId = 0;
@@ -455,7 +460,7 @@ namespace mms.Plan
                          mta.TaskCode + "','" +mta.MaterialDept + "','" + mta.ItemCode1 + "','" + 
                          mta.DemandNumSum + "','" + mta.NumCasesSum +"','" +mta.Mat_Rough_Weight+"','"+
                          mta.Material_Tech_Condition + "','" + mta.CN_Material_State + "','" + mta.Material_Mark + "','" +
-                         mta.Material_Size_Required + "','" + mta.TDM_Description + "','" +
+                         mta.Material_Size_Required + "','" + mta.TDM_Description + "','" + mta.MaterialsDes + "','" +
                          mta.Mat_Unit + "','" + mta.Quantity + "','" + mta.Rough_Size + "','" + mta.Rough_Spec + "','" +
                          mta.DemandDate + "','" + mta.Special_Needs + "','" + mta.Urgency_Degre + "','" +
                          mta.Secret_Level + "','" +
@@ -1389,12 +1394,12 @@ namespace mms.Plan
             string Material_Paihao = RTB_MaterialPaihao.Text.Trim();
             string Material_Guige = RTB_MaterialGuige.Text.Trim();
             string Material_Biaozhun = RTB_MaterialBiaozhun.Text.Trim();
-            strSQL += " and SEG12 like '%" + Material_Name + "%'";
-            strSQL += " and SEG13 like '%" + Material_Paihao + "%'";
+            strSQL += " and SEG4 like '%" + Material_Name + "%'";
+            strSQL += " and SEG4 like '%" + Material_Paihao + "%'";
 
-            strSQL += " and SEG14 like '%" + Material_Guige + "%'";
+            strSQL += " and SEG4 like '%" + Material_Guige + "%'";
 
-            strSQL += " and SEG16 like '%" + Material_Biaozhun + "%'";
+            strSQL += " and SEG4 like '%" + Material_Biaozhun + "%'";
         
             string MTv = RDDLMT.SelectedValue.ToString();
             if (MTv == "")
@@ -1725,7 +1730,7 @@ namespace mms.Plan
                         GridSource1.Columns.Add("Material_Name");
                      //   GridSource1.Columns.Add("Material_Mark");
                       //  GridSource1.Columns.Add("CN_Material_State");
-                      //  GridSource1.Columns.Add("Material_Tech_Condition");
+                     // GridSource1.Columns.Add("Material_Tech_Condition");
                         GridSource1.Columns.Add("MAT_UNIT");
                     //    GridSource1.Columns.Add("Rough_Spec");
                       //  GridSource1.Columns.Add("Unit_Price");
@@ -2109,10 +2114,12 @@ namespace mms.Plan
                         string Material_Tech_Condition = item["Material_Tech_Condition"].Text.Trim();
                         string Material_Size_Required = item["Material_Size_Required"].Text.Trim();
                         string TDM_Description = item["TDM_Description"].Text.Trim();
+                        string MaterialsDes = item["MaterialsDes"].Text.Trim();
                         mta.Material_Mark = Material_Mark;
                         mta.CN_Material_State = CN_Material_State;
                         mta.Material_Tech_Condition = Material_Tech_Condition;
                         mta.Material_Size_Required = Material_Size_Required;
+                        mta.MaterialsDes = MaterialsDes;
                         mta.TDM_Description = TDM_Description;
                         mta.Drawing_No = DRAWING_NO;
                         mta.TaskCode = TaskCode;
@@ -2173,7 +2180,7 @@ namespace mms.Plan
                                  mta.TaskCode + "','" + mta.MaterialDept + "','" + mta.ItemCode1 + "','" + mta.DemandNumSum + "','" +
                                  mta.NumCasesSum + "','" + mta.Mat_Rough_Weight + "','" + 
                                  mta.Material_Tech_Condition + "','" + mta.CN_Material_State + "','" + mta.Material_Mark + "','" +
-                                 mta.Material_Size_Required + "','" + mta.TDM_Description + "','" +
+                                 mta.Material_Size_Required + "','" + mta.TDM_Description + "','" + mta.MaterialsDes + "','" +
                                  mta.Mat_Unit + "','" + mta.Quantity + "','" + mta.Rough_Size + "','" + mta.Rough_Spec + "','" +
                                  mta.DemandDate + "','" + mta.Special_Needs + "','" + mta.Urgency_Degre + "','" +
                                  mta.Secret_Level + "','" +
@@ -2209,12 +2216,12 @@ namespace mms.Plan
         {
             int i = 0;
             DirectoryInfo info =
-                new DirectoryInfo(System.AppDomain.CurrentDomain.BaseDirectory.ToString() + "Plan/需求导入模板");
+                new DirectoryInfo(System.AppDomain.CurrentDomain.BaseDirectory.ToString() + "MaterialApplicationCollar/需求导入模板");
             if (System.IO.Directory.Exists(info.ToString()))
             {
                 foreach (FileInfo n in info.GetFiles())
                 {
-                    if (n.Name == "需求导入模板.xlsx")
+                    if (n.Name == "车间物资导入模板.xlsx")
                     {
                         i = 1;
                         Response.Clear();
@@ -2224,7 +2231,7 @@ namespace mms.Plan
                         Response.ContentType = "application/ms-excel";
                         this.EnableViewState = false;
 
-                        Response.WriteFile(Server.MapPath(@"~\Plan\需求导入模板\") + n.Name);
+                        Response.WriteFile(Server.MapPath(@"~\MaterialApplicationCollar\需求导入模板\") + n.Name);
                         Response.End();
                         return;
                     }

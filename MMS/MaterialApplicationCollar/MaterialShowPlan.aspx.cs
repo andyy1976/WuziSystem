@@ -25,7 +25,11 @@ namespace mms.MaterialApplicationCollar
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["UserId"] == null) { Response.Redirect("/Default.aspx"); }
+            if (Session["UserName"] == null || Session["UserId"] == null)
+            {
+                Response.Redirect("/Default.aspx");
+            }
+    
             UserID = Session["UserId"].ToString();
             if (!IsPostBack)
             {
@@ -37,7 +41,7 @@ namespace mms.MaterialApplicationCollar
 
         protected DataTable GetP_Pack()
         {
-            string strSQL = " select P_Pack.PackID, isnull(Sys_Model.Model, P_Pack.Model) as Model, PlanCode, PlanName, State"
+            string strSQL = " select P_Pack.PackID, isnull(Sys_Model.Model, P_Pack.Model) as Model, PlanCode, PlanName, State,Type"
                 + " , isnull(UserName,ImportStaffId) as UserName , Convert(varchar(100),ImportTime,111) as ImportTime , Draft_Code"
                 + " ,(select count(*) from M_Demand_DetailedList_Draft where PackId = P_Pack.PackId and Material_State in ('0','1','2','4','5','6')) as AllCount"
                 + " ,(select count(*) from M_Demand_DetailedList_Draft where PackId = P_Pack.PackId and Material_State = '5') as ErrorCount"
@@ -49,7 +53,7 @@ namespace mms.MaterialApplicationCollar
                 + " left join Sys_Model on Convert(nvarchar(50),Sys_Model.ID) = P_Pack.Model"
                 + " left join Sys_UserInfo_PWD on Sys_UserInfo_PWD.ID = P_Pack.ImportStaffId"
                 + " left join M_Draft_List on M_Draft_List.PackId = P_Pack.PackId"
-                + " where P_Pack.Isdel = 'false'";
+                + " where P_Pack.Isdel = 'false' and P_Pack.Type=1";
             if (Session["P_PackWhere"] != null)
             {
                 strSQL += Session["P_PackWhere"].ToString();
@@ -83,7 +87,7 @@ namespace mms.MaterialApplicationCollar
                
                 RadButton RB_PlanName = e.Item.FindControl("RB_PlanName") as RadButton;
                 RadButton RB_State = e.Item.FindControl("RB_State") as RadButton;
-                RadButton RB_NotSynchron = e.Item.FindControl("RB_NotSynchron") as RadButton;
+                RadButton RB_ADD_1 = e.Item.FindControl("RB_ADD_1") as RadButton;
                 RadButton RB_Synchronization = e.Item.FindControl("RB_Synchronization") as RadButton;
                 RadButton RB_Synchronization1 = e.Item.FindControl("RB_Synchronization1") as RadButton;
                 RadButton RB_Change = e.Item.FindControl("RB_Change") as RadButton;
@@ -110,14 +114,14 @@ namespace mms.MaterialApplicationCollar
                         {
                             RB_Delete.Visible = true;
                         }
-                       
-                        if (RB_NotSynchron != null)
+
+                        if (RB_ADD_1 != null)
                         {
-                            RB_NotSynchron.Text = "未归档";
-                            RB_NotSynchron.ForeColor = Color.Gray;
-                            RB_NotSynchron.Visible = true;
-                            RB_NotSynchron.Enabled = false;
-                            RB_NotSynchron.ToolTip = "";
+                            RB_ADD_1.Text = "未归档";
+                            RB_ADD_1.ForeColor = Color.Gray;
+                            RB_ADD_1.Visible = true;
+                            RB_ADD_1.Enabled = false;
+                            RB_ADD_1.ToolTip = "";
                         }
                      
                         if (RB_Change != null)
@@ -152,10 +156,13 @@ namespace mms.MaterialApplicationCollar
                         if (datarow["Draft_Code"].ToString() == "")
                         {
                             //BOM管理
-                            if (RB_NotSynchron != null)
+                            if (RB_ADD_1 != null)
                             {
-                                RB_NotSynchron.Visible = true;
-                                RB_NotSynchron.Style.Add("cursor", "pointer");
+
+                                RB_ADD_1.Visible = true;
+                                RB_ADD_1.Style.Add("cursor", "pointer");
+
+                                RB_ADD_1.Attributes["onclick"] = String.Format("return ImportMaterialNoSelection({0});", PackID);
                             }
                             if (RB_Synchronization != null)
                             {
@@ -198,9 +205,9 @@ namespace mms.MaterialApplicationCollar
                         else
                         {
                             //BOM管理
-                            if (RB_NotSynchron != null)
+                            if (RB_ADD_1 != null)
                             {
-                                RB_NotSynchron.Visible = false;
+                                RB_ADD_1.Visible = false;
                             }
                             if (RB_Synchronization != null)
                             {
@@ -289,97 +296,12 @@ namespace mms.MaterialApplicationCollar
 
         protected void RadGridP_Pack_ItemCommand(object sender, Telerik.Web.UI.GridCommandEventArgs e)
         {
-            if (e.CommandName == "Synchron")
+            if (e.CommandName == "ImportFromExcel")
             {
-                if (Session["UserId"] == null) { Response.Redirect("/Default.aspx"); }
+                //if (Session["UserId"] == null) { Response.Redirect("/Default.aspx"); }
                 //System.Threading.Thread.Sleep(5000);
-                string PackID = ((e.Item) as GridDataItem).GetDataKeyValue("PackID").ToString();
-                string strSQL = " select count(*) from M_Demand_DetailedList_Draft where PackID = '" + PackID + "'";
-                if (DBI.GetSingleValue(strSQL) != "0")
-                {
-                    RadNotificationAlert.Text = "已同步，此处不可以再同步，请去变更管理";
-                    RadNotificationAlert.Show();
-                    return;
-                }
-
-                //ListMDDLD = new List<M_Demand_DetailedList_Draft>();
-                //获取SmarTeam数据
-                //var result = GetTask(PackID);
-                //if (result != "")
-                //{
-                //    RadNotificationAlert.Text = result;
-                //    RadNotificationAlert.Show();
-                //    return;
-                //}
-                var db = new MMSDbDataContext();
-                SmarTeamBLL bll = new SmarTeamBLL();
-                var result = bll.GetTask(Convert.ToInt32(PackID), Convert.ToInt32(Session["UserId"]));
-                if (result.ErrMsg != "")
-                {
-                    RadNotificationAlert.Text = result.ErrMsg;
-                    RadNotificationAlert.Show();
-                    return;
-                }
-
-                try
-                {
-                    DBI.OpenConnection();
-                    DBI.BeginTrans();
-                    //将取回来的SmarTeam数据插入数据库中
-                    if (result.Mddld.Count == 0)
-                    //if (ListMDDLD.Count == 0)
-                    {
-                        RadNotificationAlert.Text = "失败！StarTeam中没有相关数据";
-                        RadNotificationAlert.Show();
-                    }
-                    else
-                    {
-                        //for (int i = 0; i < ListMDDLD.Count; i++)
-                        //{
-                        //    if (ListMDDLD[i].ParentId == "-1") { ListMDDLD[i].ParentId = "0"; }
-                        //    else { ListMDDLD[i].ParentId = ListMDDLD[Convert.ToInt32(ListMDDLD[i].ParentId)].Id; }
-                        //    string id = InsertMDDLD(ListMDDLD[i]);
-                        //    ListMDDLD[i].Id = id;
-                        //}
-                        for (int i = 0; i < result.Mddld.Count; i++)
-                        {
-                            if (result.Mddld[i].ParentId == -1) { result.Mddld[i].ParentId = 0; }
-                            else { result.Mddld[i].ParentId = result.Mddld[Convert.ToInt32(result.Mddld[i].ParentId)].Id; }
-                            db.M_Demand_DetailedList_Draft.InsertOnSubmit(result.Mddld[i]);
-                            db.SubmitChanges();
-                        }
-                       
-
-                        string Draft_Code = DBI.GetSingleValue(" Exec [Proc_CodeBuildByCodeDes1] '材料清单编号','JZWZ'");
-                        strSQL = " declare @draftId nvarchar(50) Insert into [dbo].[M_Draft_List] (Draft_Code, Material_State, Lasttime_Synchro_Time, PackId, Task_Type, List_Maker)"
-                            + " values ('" + Draft_Code + "','0',GetDate(),'" + PackID + "','0','" + UserID + "') select @draftId = @@identity"
-                            + " Update M_Demand_DetailedList_Draft set DraftId = @draftId where PackId = '" + PackID + "'";
-                        DBI.Execute(strSQL);
-
-                        //计算共计需求数量（kg)
-                        UpdateDemandNumSum(PackID);
-
-                        DBI.CommitTrans();
-
-                        RadNotificationAlert.Text = "同步成功！";
-                        RadNotificationAlert.Show();
-                        Session["GridSource"] = GetP_Pack();
-                        RadGridP_Pack.Rebind();
-                    }
-                }
-                catch (Exception ex)
-                {
-                    strSQL = " delete M_Draft_List where PackId = '" + PackID + "'";
-                    DBI.Execute(strSQL);
-
-                    DBI.RollbackTrans();
-                    RadNotificationAlert.Text = "同步失败！" + ex.Message.ToString();
-                    RadNotificationAlert.Show();
-                }
-                finally
-                {
-                    DBI.CloseConnection();
-                }
+              //  string PackID = ((e.Item) as GridDataItem).GetDataKeyValue("PackID").ToString();
+           
             }
             if (e.CommandName == "Draft")
             {
@@ -424,8 +346,10 @@ namespace mms.MaterialApplicationCollar
             string UserName = RTB_UserName.Text.Trim();
             DateTime? StartDate = RDP_Start.SelectedDate;
             DateTime? EndDate = RDP_End.SelectedDate;
-            string TaskCode = RTB_TaskCode.Text.Trim();
+        /*    string TaskCode = RTB_TaskCode.Text.Trim();
             string DrawingNo = RTB_DrawingNo.Text.Trim();
+         */
+            string PackageName = RTB_PackageName.Text.Trim();
             string strWhere = "";
             if (Model != "")
             {
@@ -451,6 +375,12 @@ namespace mms.MaterialApplicationCollar
             {
                 strWhere += " and ImportTime <= '" + Convert.ToDateTime(EndDate).ToString("yyyy-MM-dd") + "'";
             }
+
+            if (PackageName != "")
+            {
+                strWhere += " and P_Pack.PlanName like '%" + PackageName + "%'";
+            }
+            /*
             if (TaskCode != "")
             {
                 strWhere += " and P_Pack.PackId in (select PackId from P_Pack_Task where TaskCode like '%" + TaskCode + "%')";
@@ -459,6 +389,7 @@ namespace mms.MaterialApplicationCollar
             {
                 strWhere += " and P_Pack.PackId in (select PackId from M_Demand_DetailedList_Draft where Drawing_No like '%" + DrawingNo + "%')";
             }
+             */
             Session["P_PackWhere"] = strWhere;
             Session["GridSource"]= GetP_Pack();
             RadGridP_Pack.Rebind();

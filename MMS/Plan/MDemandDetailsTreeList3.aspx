@@ -69,7 +69,7 @@
                         </telerik:RadDropDownList>
                     </td>
                     <td><telerik:RadButton ID="RB_Query" runat="server" Text="查询" OnClick="WZBH_Query_Click"></telerik:RadButton></td>
-                <%--     <td> <telerik:RadButton ID="RadBtnReturn" runat="server" Text="返回投产计划包列表" OnClick="RadBtnReturn_Click"></telerik:RadButton></td> --%>
+
                 </tr>
               
             </table>
@@ -110,7 +110,24 @@
                 </div>
                 <div style="width: 100%; height: 0px; border: solid #000 1px; margin: 5px 0; clear: both"></div>
                 <div style="clear: both; overflow: hidden"></div>
-               </div>
+            </div>
+            <div class="divSiteMap" style="width: 100%; display:none;float: left; height: 30px; border-bottom-style: solid; border-bottom-width: 1px;">
+                <div style="float: left; height: 30px;">
+                    <label>材料清单编号：</label>
+                    <telerik:RadTextBox ID="RadTxt_DraftCode" runat="server"></telerik:RadTextBox>
+                    <label>提交状态：</label>
+                    <asp:DropDownList ID="ddlMState" runat="server">
+                        <asp:ListItem Value="-1">全部</asp:ListItem>
+                        <asp:ListItem Value="0">未提交</asp:ListItem>
+                        <asp:ListItem Value="1">已提交</asp:ListItem>
+                        <asp:ListItem Value="2">已提交有更改可再次提交</asp:ListItem>
+                    </asp:DropDownList>
+                </div>
+                <div style="float: left; height: 30px;">
+                    <telerik:RadButton ID="RadBtn_Search" runat="server" Text="查询" OnClick="RadBtn_Search_Click"></telerik:RadButton>
+                    <telerik:RadButton ID="RadBtnReturn" runat="server" Text="返回投产计划包列表" OnClick="RadBtnReturn_Click"></telerik:RadButton>
+                </div>
+            </div>
             <div style="width: 100%; float: left;">
                 <telerik:RadCodeBlock ID="RadCodeBlock1" runat="server">
 
@@ -328,27 +345,26 @@
                     </AjaxSettings>
                 </telerik:RadAjaxManager>
          
-          <telerik:RadAjaxPanel ID="RadAjaxPanel1" runat="server" LoadingPanelID="RadAjaxLoadingPanelLoading" ClientEvents-OnRequestStart="onRequestStart">
+                  <telerik:RadAjaxPanel ID="RadAjaxPanel1" runat="server" LoadingPanelID="RadAjaxLoadingPanelLoading" ClientEvents-OnRequestStart="onRequestStart">
 
                       <telerik:RadTreeList RenderMode="Lightweight" Width="100%" ID="RadTreeList1" AutoGenerateColumns="false" AllowLoadOnDemand="true" AllowSorting="true" AllowPaging="true" PageSize="15" 
                          OnItemDataBound="RadTreeList_MDemandDetails_ItemDataBound" OnItemSelected="RadTreeList1_SelectedIndexChanged" OnChildItemsDataBind="RadTreeList1_ChildItemsDataBind" OnNeedDataSource="RadTreeList1_NeedDataSource" OnUpdateCommand="RadTreeList1_UpdateCommand"
                           DataKeyNames="ID" ParentDataKeyNames="ParentId_For_Combine" AllowMultiItemSelection="true" runat="server" >
                         
-
-                        <AlternatingItemStyle HorizontalAlign="Center" Font-Size="13px"/>
-                        <ItemStyle HorizontalAlign="Center"  Font-Size="13px" />
-                        <HeaderStyle HorizontalAlign="Center" Font-Size="14px" />              
+                        <AlternatingItemStyle HorizontalAlign="Center" />
+                        <ItemStyle HorizontalAlign="Center" />
+                        <HeaderStyle HorizontalAlign="Center" Font-Size="13px" />              
                           <ClientSettings>
                               <Selecting AllowItemSelection="true" AllowToggleSelection="true" />
-                              <Scrolling AllowScroll="True" UseStaticHeaders="True" SaveScrollPosition="true" ScrollHeight="480px"></Scrolling>
+                              <Scrolling AllowScroll="True" UseStaticHeaders="True" SaveScrollPosition="true" ScrollHeight="600px"></Scrolling>
                           </ClientSettings> 
 
                          <ExportSettings IgnorePaging="false" OpenInNewWindow="true">
                            <Pdf  DefaultFontFamily="Arial Unicode MS" />
                          </ExportSettings>
                           <Columns>
-                             <telerik:TreeListTemplateColumn UniqueName="CheckBoxTemplateColumn" ItemStyle-Width="50px" HeaderStyle-Width="50px" >
-                              <ItemTemplate >
+                             <telerik:TreeListTemplateColumn UniqueName="CheckBoxTemplateColumn">
+                              <ItemTemplate>
                                 <asp:CheckBox ID="CheckBox1" runat="server" OnCheckedChanged="ToggleRowSelection" AutoPostBack="True" CssClass='<%#Eval("ID") %>' />
                               </ItemTemplate>
                               <HeaderTemplate>
@@ -416,7 +432,7 @@
                             <telerik:TreeListBoundColumn DataField="Combine_State"  HeaderText="合并<br />状态" ItemStyle-Width="100px" HeaderStyle-Width="100px" SortExpression="Combine_State"  UniqueName="Combine_State" Visible="true"> 
                             </telerik:TreeListBoundColumn>
 
-                            <telerik:TreeListBoundColumn DataField="ParentId_For_Combine" HeaderText="" ItemStyle-Width="20px" HeaderStyle-Width="20px" SortExpression="ParentId_For_Combine" UniqueName="ParentId_For_Combine" Visible="true">
+                            <telerik:TreeListBoundColumn DataField="ParentId_For_Combine" HeaderText="" ItemStyle-Width="40px" HeaderStyle-Width="40px" SortExpression="ParentId_For_Combine" UniqueName="ParentId_For_Combine" Visible="true">
                             </telerik:TreeListBoundColumn>
                       
                         </Columns>
@@ -424,23 +440,22 @@
                     </telerik:RadTreeList>
                        
                       <div style="margin:5px 0 5px 4px;">
-       
-                           
-                                <telerik:RadButton ID="RadBtnCombineMergeList" runat="server" Text="合并相同编码清单" CssClass="floatcenter" Font-Bold="true" 
+                                <telerik:RadButton ID="RadBtnCombineMergeList" runat="server" Text="合并相同编码清单" CssClass="btn_margin1" Font-Bold="true" 
                                     CommandName="CombineMergeList" CausesValidation="true"  OnClientClicking="confirmWindowSubmitCombineClicking" >
                                 </telerik:RadButton>
 
-                                <telerik:RadButton ID="RB_Combine_Cancel" runat="server" Text="取消合并编码清单" CssClass="floatcenter" Font-Bold="true" 
+                                <telerik:RadButton ID="RB_Combine_Cancel" runat="server" Text="取消合并编码清单" CssClass="btn_margin1" Font-Bold="true" 
                                     CommandName="CancelCombine" OnClick="RB_Combine_Cancel_Click" OnClientClicking="confirmWindowSubmitCancel">
                                 </telerik:RadButton>
 
-                                <telerik:RadButton ID="RadBtnBuildMergeList" runat="server" Text="生成物资需求清单" CssClass="floatcenter" Font-Bold="true" 
+                                <telerik:RadButton ID="RadBtnBuildMergeList" runat="server" Text="生成物资需求清单" CssClass="btn_margin1" Font-Bold="true" 
                                     CommandName="BuildMergeList" OnClientClicking="confirmWindowSubmitMerge">
                                 </telerik:RadButton>
                                 <telerik:RadButton ID="RadButton_ExportExcel" runat="server" Text="导出Excel" CssClass="floatright" Font-Bold="true" 
                                     CommandName="ExportExcel" OnClick="RadButton_ExportExcel_Click">
 
                                 </telerik:RadButton>
+
                     </div>    
                              
                           

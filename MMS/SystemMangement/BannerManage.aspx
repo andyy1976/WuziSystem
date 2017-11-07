@@ -63,7 +63,7 @@
                 <telerik:GridCheckBoxColumn DataField="Enable" DataType="System.Boolean" FilterControlAltText="Filter Enable column" HeaderText="是否可用" SortExpression="Enable" UniqueName="Enable">
                 </telerik:GridCheckBoxColumn>
                 <telerik:GridEditCommandColumn ButtonType="LinkButton" HeaderText="编辑" UniqueName="EditCommandColumn"
-                    HeaderStyle-HorizontalAlign="Center" HeaderStyle-Width="40px" EditText="编辑">
+                     HeaderStyle-Width="40px" EditText="编辑">
                     <HeaderStyle HorizontalAlign="Center" Width="40px"></HeaderStyle>
                 </telerik:GridEditCommandColumn>
             </Columns>

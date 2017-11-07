@@ -17,12 +17,13 @@ namespace mms.MaterialApplicationCollar
         DBInterface DBI;
         protected void Page_Load(object sender, EventArgs e)
         {
-            DBConn = ConfigurationManager.ConnectionStrings["MaterialManagerSystemConnectionString"].ToString();
-            DBI = DBFactory.GetDBInterface(DBConn);
-            if (Session["UserId"] == null)
+            if (Session["UserName"] == null || Session["UserId"] == null)
             {
                 Response.Redirect("/Default.aspx");
             }
+            DBConn = ConfigurationManager.ConnectionStrings["MaterialManagerSystemConnectionString"].ToString();
+            DBI = DBFactory.GetDBInterface(DBConn);
+    
             if (!IsPostBack)
             {
                 Common.CheckPermission(Session["UserName"].ToString(), "MaterialApplicationTest", this.Page);

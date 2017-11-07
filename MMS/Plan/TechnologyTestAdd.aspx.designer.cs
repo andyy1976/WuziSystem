@@ -622,7 +622,7 @@ namespace mms.Plan {
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl span_apply_time;
+        protected global::Telerik.Web.UI.RadTextBox span_apply_time;
         
         /// <summary>
         /// RDDL_Project 控件。
@@ -641,15 +641,6 @@ namespace mms.Plan {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::Telerik.Web.UI.RadTextBox RTB_TDM_Description;
-        
-        /// <summary>
-        /// lblTaskSubject 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTaskSubject;
         
         /// <summary>
         /// txt_TaskCode 控件。
@@ -697,15 +688,6 @@ namespace mms.Plan {
         protected global::Telerik.Web.UI.RadDatePicker DemandDate;
         
         /// <summary>
-        /// txt_ItemCode1 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadTextBox txt_ItemCode1;
-        
-        /// <summary>
         /// btn_ItemCodeOK 控件。
         /// </summary>
         /// <remarks>
@@ -713,6 +695,15 @@ namespace mms.Plan {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::Telerik.Web.UI.RadButton btn_ItemCodeOK;
+        
+        /// <summary>
+        /// txt_ItemCode1 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadTextBox txt_ItemCode1;
         
         /// <summary>
         /// lblMSG 控件。

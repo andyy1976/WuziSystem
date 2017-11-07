@@ -31,6 +31,15 @@ namespace mms.MaterialApplicationCollar {
         protected global::Telerik.Web.UI.RadAjaxManager RadAjaxManager1;
         
         /// <summary>
+        /// RadCodeBlock1 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadCodeBlock RadCodeBlock1;
+        
+        /// <summary>
         /// lblPlanCode 控件。
         /// </summary>
         /// <remarks>
@@ -155,15 +164,6 @@ namespace mms.MaterialApplicationCollar {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::Telerik.Web.UI.RadButton RB_Query;
-        
-        /// <summary>
-        /// RB_Add 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton RB_Add;
         
         /// <summary>
         /// BtnClose 控件。

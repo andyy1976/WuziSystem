@@ -201,7 +201,7 @@
     <telerik:RadWindow ID="confirmWindow" runat="server" VisibleTitlebar="false"
         VisibleStatusbar="false" Modal="true" Behaviors="None" Height="260px" Width="400px">
         <ContentTemplate>
-            <table cellspacing="10" style="text-align: center; margin: 20px auto;">
+            <table style="text-align: center; margin: 20px auto;">
                 <tr>
                     <td style="text-align: right; width: 80px;">更改原因：</td>
                     <td style="width: 240px;">

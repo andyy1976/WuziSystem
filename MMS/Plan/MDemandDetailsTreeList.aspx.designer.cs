@@ -49,15 +49,6 @@ namespace mms.Plan {
         protected global::Telerik.Web.UI.RadDropDownList RDDL_LingJian_Type;
         
         /// <summary>
-        /// RTB_DrawingNum 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadTextBox RTB_DrawingNum;
-        
-        /// <summary>
         /// RB_Query 控件。
         /// </summary>
         /// <remarks>
@@ -166,42 +157,6 @@ namespace mms.Plan {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl lbl_state_6;
         
         /// <summary>
-        /// RadTxt_DraftCode 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadTextBox RadTxt_DraftCode;
-        
-        /// <summary>
-        /// ddlMState 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlMState;
-        
-        /// <summary>
-        /// RadBtn_Search 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton RadBtn_Search;
-        
-        /// <summary>
-        /// RadBtnReturn 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton RadBtnReturn;
-        
-        /// <summary>
         /// RadCodeBlock1 控件。
         /// </summary>
         /// <remarks>
@@ -272,6 +227,15 @@ namespace mms.Plan {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::Telerik.Web.UI.RadButton RadBtnBuildMergeList;
+        
+        /// <summary>
+        /// RadButton_ExportExcel 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadButton RadButton_ExportExcel;
         
         /// <summary>
         /// RadWindow 控件。

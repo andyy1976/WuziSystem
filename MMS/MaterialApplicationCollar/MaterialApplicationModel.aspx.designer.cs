@@ -49,13 +49,22 @@ namespace mms.MaterialApplicationCollar {
         protected global::Telerik.Web.UI.RadAjaxLoadingPanel RadAjaxLoadingPanel1;
         
         /// <summary>
-        /// RTB_TaskCode 控件。
+        /// RTB_ID 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::Telerik.Web.UI.RadTextBox RTB_TaskCode;
+        protected global::Telerik.Web.UI.RadTextBox RTB_ID;
+        
+        /// <summary>
+        /// RTB_Project 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadTextBox RTB_Project;
         
         /// <summary>
         /// RTB_Drawing_No 控件。
@@ -65,6 +74,51 @@ namespace mms.MaterialApplicationCollar {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::Telerik.Web.UI.RadTextBox RTB_Drawing_No;
+        
+        /// <summary>
+        /// RTB_TaskCode 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadTextBox RTB_TaskCode;
+        
+        /// <summary>
+        /// RTB_Material_Name 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadTextBox RTB_Material_Name;
+        
+        /// <summary>
+        /// RTB_ItemCode1 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadTextBox RTB_ItemCode1;
+        
+        /// <summary>
+        /// RDPStart 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadDatePicker RDPStart;
+        
+        /// <summary>
+        /// RDPEnd 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadDatePicker RDPEnd;
         
         /// <summary>
         /// RB_Search 控件。

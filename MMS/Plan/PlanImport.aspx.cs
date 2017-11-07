@@ -332,11 +332,11 @@ namespace mms.Plan
                 string Model = RDDL_Model.SelectedItem.Value.ToString();
                 string Stage = RDDL_Stage.SelectedItem.Value;
                 string PlanCode = DBI.GetSingleValue(" Exec [Proc_CodeBuildByCodeDes1] '型号投产计划编号','XH'");
-
+                string Type = Request.QueryString["Type"].ToString();
                 strSQL =
-                    " insert into P_Pack (Model, PlanCode, ImportFileName, ImportStaffId, ImportTime,DraftStatus, InvertoryStatus, IsDel, state, PlanName, Remark) values";
+                    " insert into P_Pack (Model, PlanCode, ImportFileName, ImportStaffId, ImportTime,DraftStatus, InvertoryStatus, IsDel, state, PlanName, Remark,Type) values";
                 strSQL += " ('" + Model + "', '" + PlanCode + "','" + HFFileName.Value + "', '" + UserID +
-                          "', Getdate(),'1','1','false','" + PackState + "','" + planName + "','" + remark + "')";
+                          "', Getdate(),'1','1','false','" + PackState + "','" + planName + "','" + remark + "',"+Type+")";
                 strSQL += " select @@identity";
                 string PackID = DBI.GetSingleValue(strSQL);
 

@@ -6,9 +6,7 @@
         function onRequestStart(sender, args) {
             if (args.get_eventTarget().indexOf("RadButton_ExportExcel") >= 0 || args.get_eventTarget().indexOf("RadButton_ExportWord") >= 0 || args.get_eventTarget().indexOf("RadButton_ExportPDF") >= 0)
 			{
-
                 args.set_enableAjax(false);
-
             }
         }
   
@@ -44,7 +42,7 @@
                             <Items>
                                 <telerik:DropDownListItem Value="" Text="全部" />
                                 <telerik:DropDownListItem Value="0" Text="型号投产计划任务" />
-                                <telerik:DropDownListItem Value="1" Text="工艺试验件任务" />
+                             <%--      <telerik:DropDownListItem Value="1" Text="工艺试验件任务" />--%>
                                 <telerik:DropDownListItem Value="2" Text="技术创新课题任务" />
                                 <telerik:DropDownListItem Value="3" Text="车间备料任务"/>
                             </Items>
@@ -93,7 +91,10 @@
         <div style="width: 100%; margin: 0px auto;">
             <telerik:RadGrid ID="RadGrid1" runat="server" AutoGenerateColumns="false" OnNeedDataSource="RadGrid1_NeedDataSource"
                 AllowPaging="true" PageSize="20" PagerStyle-AlwaysVisible="True">
-                <HeaderStyle Font-Size="13px" HorizontalAlign="Center"></HeaderStyle>
+                 <AlternatingItemStyle HorizontalAlign="Center" />
+                <ItemStyle HorizontalAlign="Center" />
+                <HeaderStyle HorizontalAlign="Center" Font-Size="13px" />
+
                 <CommandItemStyle Font-Bold="true" Font-Size="16px" HorizontalAlign="Center" Height="40px" />
                 <ClientSettings EnableRowHoverStyle="true" >
                     <Selecting AllowRowSelect="true" />
@@ -111,23 +112,23 @@
                          <telerik:RadButton ID="RadButton_ExportPDF"   runat="server" Text="导出PDF"   Font-Bold="true" CommandName="ExportPDF" Visible="false"   OnClick="RadButton_ExportPdf_Click"   CssClass="floatright"></telerik:RadButton>
                         </CommandItemTemplate>
                          <Columns>
-                        <telerik:GridBoundColumn DataField="USER_RQ_LINE_ID" HeaderText="需求行号" ItemStyle-Width="70px" HeaderStyle-Width="70px"></telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="User_Rq_Number" HeaderText="用户需求编号" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="Total_Pr_Quantity" HeaderText="累计采购计划数量" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="Total_Po_Quantity" HeaderText="累计采购订单数量" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="Total_Received_Quantity" HeaderText="累计到货数量" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="Total_Inspected_Quantity" HeaderText="累计检验数量" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="Total_Delivered_Quantity" HeaderText="累计入库数量" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="Total_Shipped_Quantity" HeaderText="累计发放数量" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="Total_Borrowed_Quantity" HeaderText="被借用数量" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="TOTAL_RECEIVED_QUANTITY" HeaderText="累计锁定库存数量" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="Rq_Execution_Status" HeaderText="需求执行状态" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="Rq_Execution_Phase" HeaderText="执行进度" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="Rq_Status" HeaderText="需求状态" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="Close_Reason" HeaderText="关闭原因" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="Closed_By" HeaderText="关闭人" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="Close_Date" HeaderText="需求关闭时间" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="Last_Update_Date" HeaderText="最后更新时间" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>   
+                        <telerik:GridBoundColumn DataField="USER_RQ_LINE_ID" HeaderText="需求<br />行号" ItemStyle-Width="70px" HeaderStyle-Width="70px"></telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="User_Rq_Number" HeaderText="用户需求<br />编号" ItemStyle-Width="150px" HeaderStyle-Width="150px"></telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="Total_Pr_Quantity" HeaderText="累计采购<br />计划数量" ItemStyle-Width="80px" HeaderStyle-Width="80px"></telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="Total_Po_Quantity" HeaderText="累计采购<br />订单数量" ItemStyle-Width="80px" HeaderStyle-Width="80px"></telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="Total_Received_Quantity" HeaderText="累计到货<br />数量" ItemStyle-Width="80px" HeaderStyle-Width="80px"></telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="Total_Inspected_Quantity" HeaderText="累计检验<br />数量" ItemStyle-Width="80px" HeaderStyle-Width="80px"></telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="Total_Delivered_Quantity" HeaderText="累计入库<br />数量" ItemStyle-Width="80px" HeaderStyle-Width="80px"></telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="Total_Shipped_Quantity" HeaderText="累计发放<br />数量" ItemStyle-Width="80px" HeaderStyle-Width="80px"></telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="Total_Borrowed_Quantity" HeaderText="被借用<br />数量" ItemStyle-Width="70px" HeaderStyle-Width="70px"></telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="TOTAL_RECEIVED_QUANTITY" HeaderText="累计锁定<br />库存数量" ItemStyle-Width="80px" HeaderStyle-Width="80px"></telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="Rq_Execution_Status" HeaderText="需求执行<br />状态" ItemStyle-Width="80px" HeaderStyle-Width="80px"></telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="Rq_Execution_Phase" HeaderText="执行<br />进度" ItemStyle-Width="80px" HeaderStyle-Width="80px"></telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="Rq_Status" HeaderText="需求<br />状态" ItemStyle-Width="80px" HeaderStyle-Width="80px"></telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="Close_Reason" HeaderText="关闭<br />原因" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="Closed_By" HeaderText="关闭<br />人" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="Close_Date" HeaderText="需求关闭<br />时间" ItemStyle-Width="150px" HeaderStyle-Width="150px"></telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="Last_Update_Date" HeaderText="最后更新<br />时间" ItemStyle-Width="150px" HeaderStyle-Width="150px"></telerik:GridBoundColumn>   
                     </Columns>
                 </MasterTableView>
             </telerik:RadGrid>

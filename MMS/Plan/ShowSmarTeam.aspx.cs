@@ -21,9 +21,13 @@ namespace mms.Plan
         
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["UserName"] == null || Session["UserId"] == null)
+            {
+                Response.Redirect("/Default.aspx");
+            }
             DBContractConn = ConfigurationManager.ConnectionStrings["MaterialManagerSystemConnectionString"].ConnectionString.ToString();
             DBI = DBFactory.GetDBInterface(DBContractConn);
-            if (Session["UserId"] == null) { Response.Redirect("/Default.aspx"); }
+        
             if (!IsPostBack)
             {
                 Common.CheckPermission(Session["UserName"].ToString(), "ShouSmarTeam", this.Page);               

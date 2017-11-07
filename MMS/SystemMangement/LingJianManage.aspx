@@ -56,7 +56,7 @@
                 <telerik:GridCheckBoxColumn DataField="Is_Bom_Show"  HeaderText="是否在BOM显示"></telerik:GridCheckBoxColumn>
                 <telerik:GridCheckBoxColumn DataField="Is_MDDLD_Show" HeaderText="是否取物资信息"></telerik:GridCheckBoxColumn>
                 <telerik:GridCheckBoxColumn DataField="Is_Del" HeaderText="是否可用"></telerik:GridCheckBoxColumn>
-                <telerik:GridEditCommandColumn ButtonType="LinkButton" HeaderText="操作" HeaderStyle-HorizontalAlign="Center"
+                <telerik:GridEditCommandColumn ButtonType="LinkButton" HeaderText="操作" 
                     HeaderStyle-Width="100px" EditText="编辑" InsertText="新增" CancelText="取消" UpdateText="修改">
                 </telerik:GridEditCommandColumn>
             </Columns>

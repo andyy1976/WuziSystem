@@ -44,7 +44,7 @@
                             <Items>
                                 <telerik:DropDownListItem Value="" Text="全部" />
                                 <telerik:DropDownListItem Value="0" Text="型号投产计划任务" />
-                                <telerik:DropDownListItem Value="1" Text="工艺试验件任务" />
+                                <%--  <telerik:DropDownListItem Value="1" Text="工艺试验件任务" />--%>
                                 <telerik:DropDownListItem Value="2" Text="技术创新课题任务" />
                                 <telerik:DropDownListItem Value="3" Text="车间备料任务"/>
                             </Items>
@@ -121,25 +121,25 @@
     
    
                     <Columns>
-                        <telerik:GridBoundColumn DataField="USER_RCO_HEADER_NO" HeaderText="用户变更申请号"></telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="ID" HeaderText="需求行号"></telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="TaskCode" HeaderText="任务号"></telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="Drawing_No" HeaderText="图号"></telerik:GridBoundColumn>
-                          <telerik:GridBoundColumn DataField="TDM_Description" HeaderText="产品名称"></telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="ItemCode1" HeaderText="物资编码"></telerik:GridBoundColumn>
-                          <telerik:GridBoundColumn DataField="Material_Name" HeaderText="物资名称"></telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="NumCasesSum" HeaderText="需求件数"></telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="DemandNumSum" HeaderText="需求量"></telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="Dept" HeaderText="领料部门"></telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="Shipping_Address" HeaderText="配送地址"></telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="DemandDate" HeaderText="需求时间"></telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="Special_Needs" HeaderText="特殊需求"></telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="UrgencyDegre" HeaderText="紧急程度"></telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="Secret_Level" HeaderText="密级"></telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="UseDes" HeaderText="用途"></telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="Column_Changed" HeaderText="更改字段" UniqueName="Column_Changed"></telerik:GridBoundColumn> 
-                        <telerik:GridBoundColumn DataField="Original_Value" HeaderText="原值"></telerik:GridBoundColumn> 
-                        <telerik:GridBoundColumn DataField="Changed_Value" HeaderText="变更值"></telerik:GridBoundColumn> 
+                        <telerik:GridBoundColumn DataField="USER_RCO_HEADER_NO" HeaderText="用户变更申请号" ItemStyle-Width="150px" HeaderStyle-Width="150px"></telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="ID" HeaderText="需求行号" ItemStyle-Width="80px" HeaderStyle-Width="80px"></telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="TaskCode" HeaderText="任务号" ItemStyle-Width="120px" HeaderStyle-Width="120px"></telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="Drawing_No" HeaderText="图号" ItemStyle-Width="120px" HeaderStyle-Width="120px"></telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="TDM_Description" HeaderText="产品名称" ItemStyle-Width="120px" HeaderStyle-Width="120px"></telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="ItemCode1" HeaderText="物资编码" ItemStyle-Width="80px" HeaderStyle-Width="80px"></telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="Material_Name" HeaderText="物资名称" ItemStyle-Width="120px" HeaderStyle-Width="120px"></telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="NumCasesSum" HeaderText="需求件数" ItemStyle-Width="80px" HeaderStyle-Width="80px"></telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="DemandNumSum" HeaderText="需求量" ItemStyle-Width="80px" HeaderStyle-Width="80px"></telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="Dept" HeaderText="领料部门" ItemStyle-Width="80px" HeaderStyle-Width="80px"></telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="Shipping_Address" HeaderText="配送地址" ItemStyle-Width="120px" HeaderStyle-Width="120px"></telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="DemandDate" HeaderText="需求时间" ItemStyle-Width="100px" HeaderStyle-Width="100px" DataFormatString="{0:yyyy/MM/dd}"></telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="Special_Needs" HeaderText="特殊需求" ItemStyle-Width="80px" HeaderStyle-Width="80px"></telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="UrgencyDegre" HeaderText="紧急程度" ItemStyle-Width="80px" HeaderStyle-Width="80px"></telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="Secret_Level" HeaderText="密级" ItemStyle-Width="60px" HeaderStyle-Width="60px"></telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="UseDes" HeaderText="用途" ItemStyle-Width="80px" HeaderStyle-Width="80px"></telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="Column_Changed" HeaderText="更改字段" ItemStyle-Width="80px" HeaderStyle-Width="80px" UniqueName="Column_Changed"></telerik:GridBoundColumn> 
+                        <telerik:GridBoundColumn DataField="Original_Value" HeaderText="原值" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn> 
+                        <telerik:GridBoundColumn DataField="Changed_Value" HeaderText="变更值" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn> 
                     </Columns>
                 </MasterTableView>
             </telerik:RadGrid>

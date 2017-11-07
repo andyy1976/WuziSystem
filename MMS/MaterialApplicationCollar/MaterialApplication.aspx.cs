@@ -17,7 +17,10 @@ namespace mms.MaterialApplicationCollar
         DBInterface DBI;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["UserId"] == null) { Response.Redirect("/Default.aspx"); }
+            if (Session["UserName"] == null || Session["UserId"] == null) 
+            { 
+                Response.Redirect("/Default.aspx");
+            }
             DBConn = ConfigurationManager.ConnectionStrings["MaterialManagerSystemConnectionString"].ToString();
             DBI = DBFactory.GetDBInterface(DBConn);
             if (!IsPostBack)
@@ -112,6 +115,7 @@ namespace mms.MaterialApplicationCollar
                 RTB_Material_Mark.Text = dt.Rows[0]["SEG13"].ToString();
                 RTB_CN_Material_State.Text = "";
                 RTB_Material_Tech_Condition.Text = "";
+                RTB_MaterialsDes.Text = dt.Rows[0]["SEG4"].ToString();
                 switch (dt.Rows[0]["Seg5"].ToString().Substring(0, 4))
                 {
                     case "YY01":
@@ -225,6 +229,7 @@ namespace mms.MaterialApplicationCollar
             string Material_Tech_Condition = RTB_Material_Tech_Condition.Text.Trim();
             string Rough_Spec = RTB_Rough_Spec.Text.Trim();
             string Mat_Rough_Weight = RTB_Mat_Rough_Weight.Text.Trim();
+            string MaterialsDes = RTB_MaterialsDes.Text.Trim();
             string Mat_Unit = RTB_Mat_Unit.Text.Trim();
             string Rough_Size = RTB_Rough_Size.Text.Trim();
             string DiaoDu = RDDL_DiaoDu.SelectedValue.ToString();
@@ -259,11 +264,11 @@ namespace mms.MaterialApplicationCollar
             string strSQL = "declare @id int";
             strSQL += " Insert into MaterialApplication (Type, Material_Id, Applicant, Dept, ApplicationTime, ContactInformation, TheMaterialWay, TaskCode, Drawing_No"
                 + " , Draft_Code, Quantity, FeedingTime, IsDispatch, IsConfirm, Remark, MaterialType, Material_Name, Material_Mark, CN_Material_State, Material_Tech_Condition"
-                + " , Rough_Spec, Mat_Rough_Weight, Mat_Unit, Rough_Size, PleaseTakeQuality, AppState, ReturnReason, Is_Del, ItemCode,DiaoDuApprove, XingHaoJiHuaYuanApprove, WuZiJiHuaYuanApprove)"
+                + " , Rough_Spec, Mat_Rough_Weight,MaterialsDes, Mat_Unit, Rough_Size, PleaseTakeQuality, AppState, ReturnReason, Is_Del, ItemCode,DiaoDuApprove, XingHaoJiHuaYuanApprove, WuZiJiHuaYuanApprove)"
                 + " values ('4',Null, '" + Applicant + "','" + deptCode + "','" + ApplicationTime + "','" + ContactInformation + "','" + TheMaterialWay + "','" + TaskCode + "','" + DrawingNo + "'"
                 + " ,Null,'" + Quantity + "','" + FeedingTime + "','" + IsDispatch + "','" + IsConfirm + "','" + Remark + "'"
                 + " ,Null,'" + Material_Name + "','" + Material_Mark + "','" + CN_Material_State + "','" + Material_Tech_Condition + "'"
-                + " ,'" + Rough_Spec + "','" + Mat_Rough_Weight + "','" + Mat_Unit + "','" + Rough_Size + "','" + PleaseTakeQuality + "','1',Null,'false'"
+                + " ,'" + Rough_Spec + "','" + Mat_Rough_Weight + "','" + MaterialsDes + "','" + Mat_Unit + "','" + Rough_Size + "','" + PleaseTakeQuality + "','1',Null,'false'"
                 + " ,'" + ItemCode + "','" + DiaoDu + "','" + XingHao + "','" + WuZi + "') select @id = @@identity"
                 + " Insert into MaterialApplication_Log (MaterialApplicationId, Operation_UserId, Operation_Time, Operation_Remark)"
                 + " values (@id, '" + Session["UserId"].ToString() + "',GetDate(),'申请') select @id";
@@ -320,6 +325,7 @@ namespace mms.MaterialApplicationCollar
             string Material_Tech_Condition = RTB_Material_Tech_Condition.Text.Trim();
             string Rough_Spec = RTB_Rough_Spec.Text.Trim();
             string Mat_Rough_Weight = RTB_Mat_Rough_Weight.Text.Trim();
+            string MaterialsDes = RTB_MaterialsDes.Text.Trim();
             string Mat_Unit = RTB_Mat_Unit.Text.Trim();
             string Rough_Size = RTB_Rough_Size.Text.Trim();
             string DiaoDu = RDDL_DiaoDu.SelectedValue.ToString();
@@ -356,16 +362,17 @@ namespace mms.MaterialApplicationCollar
             string strSQL = "declare @id int";
             strSQL += " Insert into MaterialApplication (Type, Material_Id, Applicant, Dept, ApplicationTime, ContactInformation, TheMaterialWay, TaskCode, Drawing_No"
                 + " , Draft_Code, Quantity, FeedingTime, IsDispatch, IsConfirm, Remark, MaterialType, Material_Name, Material_Mark, CN_Material_State, Material_Tech_Condition"
-                + " , Rough_Spec, Mat_Rough_Weight, Mat_Unit, Rough_Size, PleaseTakeQuality, AppState, ReturnReason, Is_Del, ItemCode,DiaoDuApprove, XingHaoJiHuaYuanApprove, WuZiJiHuaYuanApprove)"
+                + " , Rough_Spec, Mat_Rough_Weight, MaterialsDes,Mat_Unit, Rough_Size, PleaseTakeQuality, AppState, ReturnReason, Is_Del, ItemCode,DiaoDuApprove, XingHaoJiHuaYuanApprove, WuZiJiHuaYuanApprove)"
                 + " values ('4',Null, '" + Applicant + "','" + deptCode + "','" + ApplicationTime + "','" + ContactInformation + "','" + TheMaterialWay + "','" + TaskCode + "','" + DrawingNo + "'"
                 + " ,Null,'" + Quantity + "','" + FeedingTime + "','" + IsDispatch + "','" + IsConfirm + "','" + Remark + "'"
                 + " ,Null,'" + Material_Name + "','" + Material_Mark + "','" + CN_Material_State + "','" + Material_Tech_Condition + "'"
-                + " ,'" + Rough_Spec + "','" + Mat_Rough_Weight + "','" + Mat_Unit + "','" + Rough_Size + "','" + PleaseTakeQuality + "','1',Null,'false'"
+                + " ,'" + Rough_Spec + "','" + Mat_Rough_Weight + "','" + MaterialsDes + "','" + Mat_Unit + "','" + Rough_Size + "','" + PleaseTakeQuality + "','1',Null,'false'"
                 + " ,'" + ItemCode + "','" + DiaoDu + "','" + XingHao + "','" + WuZi + "') select @id = @@identity"
                 + " Insert into MaterialApplication_Log (MaterialApplicationId, Operation_UserId, Operation_Time, Operation_Remark)"
                 + " values (@id, '" + Session["UserId"].ToString() + "',GetDate(),'编辑') select @id";
-
-                RadNotificationAlert.Text = "保存数据成功!,";
+                string id = DBI.GetSingleValue(strSQL).ToString();
+                Clear();     
+                RadNotificationAlert.Text = "保存数据成功,请到申请单状态查询页提交页面!,";
                 RadNotificationAlert.Show();
 
             }
@@ -384,7 +391,7 @@ namespace mms.MaterialApplicationCollar
 
         protected void Clear()
         {
-            RTB_Applicant.Text = "";
+           // RTB_Applicant.Text = "";
             RDP_ApplicationTime.SelectedDate = DateTime.Today;
             RTB_ContactInformation.Text = "";
             RTB_TaskCode.Text = "";
@@ -403,6 +410,7 @@ namespace mms.MaterialApplicationCollar
             RTB_Material_Tech_Condition.Text = "";
             RTB_Rough_Spec.Text = "";
             RTB_Mat_Rough_Weight.Text = "";
+            RTB_MaterialsDes.Text="";
             RTB_Mat_Unit.Text = "";
             RTB_Rough_Size.Text = "";
             RDDL_DiaoDu.SelectedIndex = 0;
@@ -530,12 +538,12 @@ namespace mms.MaterialApplicationCollar
             string Material_Paihao = RTB_Material_Paihao.Text.Trim();
             string Material_Guige = RTB_Material_Guige.Text.Trim();
             string Material_Biaozhun = RTB_Material_Biaozhun.Text.Trim();
-            strSQL += " and SEG12 like '%" + Material_Name + "%'";
-            strSQL += " and SEG13 like '%" + Material_Paihao + "%'";
+            strSQL += " and SEG4 like '%" + Material_Name + "%'";
+            strSQL += " and SEG4 like '%" + Material_Paihao + "%'";
 
-            strSQL += " and SEG14 like '%" + Material_Guige + "%'";
+            strSQL += " and SEG4 like '%" + Material_Guige + "%'";
 
-            strSQL += " and SEG16 like '%" + Material_Biaozhun + "%'";
+            strSQL += " and SEG4 like '%" + Material_Biaozhun + "%'";
             string MTv = RDDLMT.SelectedValue.ToString();
             if (MTv == "")
             {
@@ -543,7 +551,7 @@ namespace mms.MaterialApplicationCollar
             }
             else if (MTv == "ItemCode")
             {
-                string ItemCode = RTB_ItemCode.Text.Trim();
+                string ItemCode = RTB_ItemCode1.Text.Trim();
                 strSQL += " and SEG3 like '%" + ItemCode + "%'"; ;
             }
             else

@@ -81,7 +81,7 @@
                     </ColumnValidationSettings>
                 </telerik:GridDropDownColumn>
                 <telerik:GridEditCommandColumn ButtonType="ImageButton" HeaderText="编辑" UniqueName="EditCommandColumn"
-                    HeaderStyle-HorizontalAlign="Center" HeaderStyle-Width="80px">
+                     HeaderStyle-Width="80px">
                     <HeaderStyle HorizontalAlign="Center" Width="80px"></HeaderStyle>
                 </telerik:GridEditCommandColumn>
             </Columns>

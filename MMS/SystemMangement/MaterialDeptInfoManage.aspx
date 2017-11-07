@@ -59,7 +59,7 @@
                 <%--<telerik:GridBoundColumn DataField="Technics_Line_Len" HeaderText="前缀长度"></telerik:GridBoundColumn>--%>
                 <telerik:GridDropDownColumn DataField="Dept_Id" DataSourceID="SqlDataSourceDept" ListValueField="ID" ListTextField="Dept" HeaderText="领料部门"></telerik:GridDropDownColumn>
                 <telerik:GridCheckBoxColumn DataField="Is_Del" HeaderText="是否禁用"></telerik:GridCheckBoxColumn>
-                <telerik:GridEditCommandColumn ButtonType="LinkButton" HeaderText="操作" HeaderStyle-HorizontalAlign="Center"
+                <telerik:GridEditCommandColumn ButtonType="LinkButton" HeaderText="操作" 
                     HeaderStyle-Width="100px" EditText="编辑" UpdateText="修改" InsertText="新增" CancelText="取消">
                 </telerik:GridEditCommandColumn>
             </Columns>

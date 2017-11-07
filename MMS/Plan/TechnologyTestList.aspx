@@ -140,24 +140,24 @@
                     <MasterTableView AutoGenerateColumns="False" DataKeyNames="ID" CommandItemDisplay="Top">
                     <CommandItemSettings ShowExportToExcelButton="True" ShowExportToWordButton="true" ShowExportToPdfButton="true"  ShowAddNewRecordButton="false" ShowRefreshButton="false" />
                         <Columns>
-                            <telerik:GridBoundColumn DataField="rownum" DataType="System.Int32" FilterControlAltText="Filter rownum column" HeaderText="序号" HeaderStyle-HorizontalAlign="Center" ReadOnly="True" SortExpression="rownum" UniqueName="rownum">
+                            <telerik:GridBoundColumn DataField="rownum" DataType="System.Int32" FilterControlAltText="Filter rownum column" HeaderText="序号" ItemStyle-HorizontalAlign="Center" ReadOnly="True" SortExpression="rownum" UniqueName="rownum">
                             </telerik:GridBoundColumn>
-                            <telerik:GridBoundColumn DataField="MDP_Code" FilterControlAltText="Filter MDP_Code column" HeaderText="编号" HeaderStyle-HorizontalAlign="Center" SortExpression="MDP_Code" UniqueName="MDP_Code">
+                            <telerik:GridBoundColumn DataField="MDP_Code" FilterControlAltText="Filter MDP_Code column" HeaderText="编号" ItemStyle-HorizontalAlign="Center" SortExpression="MDP_Code" UniqueName="MDP_Code">
                             </telerik:GridBoundColumn>
-                            <telerik:GridBoundColumn DataField="subtype" FilterControlAltText="Filter subtype column" HeaderText="类型" HeaderStyle-HorizontalAlign="Center" SortExpression="subtype" UniqueName="subtype">
+                            <telerik:GridBoundColumn DataField="subtype" FilterControlAltText="Filter subtype column" HeaderText="类型" ItemStyle-HorizontalAlign="Center" SortExpression="subtype" UniqueName="subtype">
                             </telerik:GridBoundColumn>
-                            <telerik:GridBoundColumn DataField="substate" FilterControlAltText="Filter substate column" HeaderText="提交状态" HeaderStyle-HorizontalAlign="Center" SortExpression="substate" UniqueName="substate">
+                            <telerik:GridBoundColumn DataField="substate" FilterControlAltText="Filter substate column" HeaderText="提交状态" ItemStyle-HorizontalAlign="Center" SortExpression="substate" UniqueName="substate">
                             </telerik:GridBoundColumn>
-                            <telerik:GridBoundColumn DataField="SubmitCount" HeaderText="已接受/总数" HeaderStyle-HorizontalAlign="Center"></telerik:GridBoundColumn>
+                            <telerik:GridBoundColumn DataField="SubmitCount" HeaderText="已接受/总数" ItemStyle-HorizontalAlign="Center" SortExpression="SubmitCount" UniqueName="SubmitCount"> </telerik:GridBoundColumn>
                             <%--<telerik:GridBoundColumn DataField="reState" FilterControlAltText="Filter reState column" HeaderText="退回状态" SortExpression="reState" UniqueName="reState">
                             </telerik:GridBoundColumn>--%>
                             <telerik:GridBoundColumn DataField="ID" FilterControlAltText="Filter ID column" Visible="false" SortExpression="ID" UniqueName="ID">
                             </telerik:GridBoundColumn>
-                            <telerik:GridBoundColumn DataField="UserName" FilterControlAltText="Filter UserName column" HeaderText="操作员" HeaderStyle-HorizontalAlign="Center" SortExpression="UserName" UniqueName="UserName">
+                            <telerik:GridBoundColumn DataField="UserName" FilterControlAltText="Filter UserName column" HeaderText="操作员"  ItemStyle-HorizontalAlign="Center" SortExpression="UserName" UniqueName="UserName">
                             </telerik:GridBoundColumn>
-                            <telerik:GridBoundColumn DataField="Submit_Date" FilterControlAltText="Filter Submit_Date column" HeaderText="提交时间" HeaderStyle-HorizontalAlign="Center" SortExpression="Submit_Date" UniqueName="Submit_Date">
+                            <telerik:GridBoundColumn DataField="Submit_Date" FilterControlAltText="Filter Submit_Date column" HeaderText="提交时间"  ItemStyle-HorizontalAlign="Center" SortExpression="Submit_Date" UniqueName="Submit_Date">
                             </telerik:GridBoundColumn>
-                            <telerik:GridTemplateColumn HeaderText="操作" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
+                            <telerik:GridTemplateColumn HeaderText="操作"  ItemStyle-HorizontalAlign="Center">
                                 <ItemTemplate>
                                     <telerik:RadButton ID="RadButtonDetails" runat="server"  Text="查看详细" Visible="false" AutoPostBack="false"></telerik:RadButton>
                                     <%--<telerik:RadButton ID="RadBtnChange" runat="server"  Text="变更申请" Visible="false" AutoPostBack="false"></telerik:RadButton>--%>

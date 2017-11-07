@@ -71,10 +71,10 @@
                                 <li class="lit"><a href="/MaterialApplicationCollar/MaterialApplicationModel.aspx">型号投产物资申请</a></li>
                                 <%--   <li class="lia"><a href="/MaterialApplicationCollar/MaterialApplicationTest.aspx">试验件物资申请</a></li>--%>
                                 <li class="lia"><a href="/MaterialApplicationCollar/MaterialApplicationSubject.aspx">技术创新物资申请</a></li>
-                                <li class="lia"><a href="/MaterialApplicationCollar/MaterialApplicationAccessory.aspx">车间备料物资申请</a></li>
-                                <li class="lit"><a href="/MaterialApplicationCollar/MaterialShowPlan.aspx">企业备料物资申请</a></li>
-                                <li class="lia"><a href="/MaterialApplicationCollar/MaterialApplication.aspx">无需求物资申请</a></li>
-                                <li class="lib"><a href="/MaterialApplicationCollar/MaterialApplicationQuery.aspx">申请单状态查询</a></li>
+                                <li class="lib"><a href="/MaterialApplicationCollar/MaterialApplicationAccessory.aspx">车间备料物资申请</a></li>
+                                <li class="lia"><a href="/MaterialApplicationCollar/MaterialShowPlan.aspx">企业备料物资申请</a></li>
+                                <li class="lib"><a href="/MaterialApplicationCollar/MaterialApplication.aspx">无需求物资申请</a></li>
+                                <li class="lia"><a href="/MaterialApplicationCollar/MaterialApplicationQuery.aspx">申请单状态查询</a></li>
                             </ul>
                         </li>
                         <li>
@@ -100,7 +100,7 @@
                                 <li class="lia"><a href="/OutOfStorageManagement/LogisticsCenterLibrary.aspx">物流中心出库单</a></li>
                                 <li class="lia"><a href="/Plan/WriteReqOrderRecList.aspx">需求与变更错误查询</a></li>
                                 <li class="lib"><a href="/SystemMangement/WzBasic.aspx">物资基础库查询</a></li>
-                                <li class="lia"><a href="/OutOfStorageManagement/InventoryQuery.aspx">出库单查询</a></li>
+                               <%--  <li class="lia"><a href="/OutOfStorageManagement/InventoryQuery.aspx">出库单查询</a></li>--%>
                             </ul>
                         </li>
                         <li>

@@ -18,9 +18,12 @@ namespace mms.OutOfStorageManagement
         DBInterface DBI;
         protected void Page_Load(object sender, EventArgs e)
         {
-            DBContractConn = ConfigurationManager.ConnectionStrings["MaterialManagerSystemConnectionString"].ConnectionString.ToString();
+            if (Session["UserName"] == null || Session["UserId"] == null)
+            {
+                Response.Redirect("/Default.aspx");
+            }
+            DBContractConn = ConfigurationManager.ConnectionStrings["MaterialManagerSystemConnectionString"].ToString();
             DBI = DBFactory.GetDBInterface(DBContractConn);
-            if (Session["UserId"] == null) { Response.Redirect("/Default.aspx"); }
             if (!IsPostBack)
             {
                 Common.CheckPermission(Session["UserName"].ToString(), "ReturnApply", this.Page);

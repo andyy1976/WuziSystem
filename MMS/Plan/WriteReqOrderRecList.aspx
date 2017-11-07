@@ -62,7 +62,7 @@
                                 <Items>
                                     <telerik:DropDownListItem Value="" Text="全部" />
                                     <telerik:DropDownListItem Value="0" Text="型号投产计划任务" />
-                                    <telerik:DropDownListItem Value="1" Text="工艺试验任务" />
+                              <%--  <telerik:DropDownListItem Value="1" Text="工艺试验任务" /> --%>
                                     <telerik:DropDownListItem Value="2" Text="创新课题任务" />
                                     <telerik:DropDownListItem Value="3" Text="车间备料任务" />
                                 </Items>
@@ -101,11 +101,9 @@
                          <telerik:RadButton ID="RadButton_ExportExcel" runat="server" Text="导出Excel" Font-Bold="true" CommandName="ExportExcel" OnClick="RadButton_ExportExcel_Click" CssClass="floatright"></telerik:RadButton>
                          <telerik:RadButton ID="RadButton_ExportWord"  runat="server" Text="导出Word"  Font-Bold="true" CommandName="ExportWord" Visible="false"  OnClick="RadButton_ExportWord_Click"  CssClass="floatright"></telerik:RadButton>
                          <telerik:RadButton ID="RadButton_ExportPDF"   runat="server" Text="导出PDF"   Font-Bold="true" CommandName="ExportPDF" Visible="false"   OnClick="RadButton_ExportPdf_Click"   CssClass="floatright"></telerik:RadButton>
-                        </CommandItemTemplate>
-      
-               
+                        </CommandItemTemplate>     
                             <Columns>
-                                <telerik:GridBoundColumn DataField="RowsId" HeaderText="序号" ItemStyle-Width="40px" HeaderStyle-Width="40px"></telerik:GridBoundColumn>
+                                <telerik:GridBoundColumn DataField="RowsId" HeaderText="序号" ItemStyle-Width="60px" HeaderStyle-Width="60px"></telerik:GridBoundColumn>
                                 <telerik:GridBoundColumn DataField="USER_RQ_LINE_ID" HeaderText="需求行号" Visible="false"></telerik:GridBoundColumn>
                                 <telerik:GridBoundColumn DataField="ERR_MSG" HeaderText="提交失败原因" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
                                 <telerik:GridBoundColumn DataField="Material_Name" HeaderText="物资名称" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
@@ -132,7 +130,7 @@
                                 <Items>
                                     <telerik:DropDownListItem Value="" Text="全部" />
                                     <telerik:DropDownListItem Value="0" Text="型号投产计划任务" />
-                                    <telerik:DropDownListItem Value="1" Text="工艺试验任务" />
+                                  <%--   <telerik:DropDownListItem Value="1" Text="工艺试验任务" /> --%>
                                     <telerik:DropDownListItem Value="2" Text="创新课题任务" />
                                     <telerik:DropDownListItem Value="3" Text="车间备料任务" />
                                 </Items>
@@ -163,7 +161,7 @@
                                 物流中心返回错误列表--变更
                             </CommandItemTemplate>
                             <Columns>
-                                <telerik:GridBoundColumn DataField="RowsId" HeaderText="序号" ItemStyle-Width="40px" HeaderStyle-Width="40px"></telerik:GridBoundColumn>
+                                <telerik:GridBoundColumn DataField="RowsId" HeaderText="序号" ItemStyle-Width="60px" HeaderStyle-Width="60px"></telerik:GridBoundColumn>
                                 <telerik:GridBoundColumn DataField="USER_RQ_LINE_ID" HeaderText="需求行号" Visible="false"></telerik:GridBoundColumn>
                                 <telerik:GridBoundColumn DataField="ERR_MSG" HeaderText="提交失败原因" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
                                 <telerik:GridBoundColumn DataField="Column_Changed" HeaderText="变更信息" ItemStyle-Width="80px" HeaderStyle-Width="80px"></telerik:GridBoundColumn>

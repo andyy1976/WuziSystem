@@ -37,8 +37,8 @@ namespace mms.Plan
                     switch (submit_Type)
                     {
                         case "1":
-                            title = "工艺试验件需求信息";
-                            HiddenField.Value = "工艺试验件任务-->物资需求列表";
+                            title = "工艺试验件物资需求信息";
+                            HiddenField.Value = "工艺试验件任务-->物资需求信息";
 
                             strSQL = " select UserName, DomainAccount from V_Get_Sys_User_byRole where Isdel = 'false' and DomainAccount != '' and DomainAccount is not null and RoleName like '车间%' + '领导' and Is_Del ='false'";
 
@@ -55,11 +55,9 @@ namespace mms.Plan
                             lbl_ApproveAccount2.Text = "工艺处型号主管";
                             break;
                         case "2":
-                            title = "技术创新课题需求信息";
-                            HiddenField.Value = "技术创新课题任务-->物资需求列表";
-                          //  strSQL = "select UserName, DomainAccount from Sys_UserInfo_PWD" + 
-                             //   " where  ID in (select Userid from Sys_UserInRole where RoleID in (select ID from Sys_RoleInfo where RoleName like '%工艺处%技术%创新%主管%'))";
-
+                            title = "技术创新物资需求信息";
+                            HiddenField.Value = "技术创新任务-->物资需求信息";
+                       
                             strSQL = " select * from V_Get_Sys_User_byRole where Isdel = 'false' and DomainAccount != '' and DomainAccount is not null and RoleName like '%车%间%调%度%员%' and Is_Del ='false'";
                             RDDL_ApproveAccount1.DataSource = DBI.Execute(strSQL, true);
                             RDDL_ApproveAccount1.DataTextField = "UserName";
@@ -75,12 +73,10 @@ namespace mms.Plan
                             lbl_ApproveAccount2.Text = "工艺技术处课题技术主管";
                             break;
                         case "3":
-                            title = "车间备料需求信息";
-                            HiddenField.Value = "车间备料任务-->物资需求列表";
-                            trAttribute4.Visible = true;
-                           // strSQL = "select UserName, DomainAccount from Sys_UserInfo_PWD" + 
-                               // " where  ID in (select Userid from Sys_UserInRole where RoleID in (select ID from Sys_RoleInfo where RoleName like '%物资%计划员%'))";
-                           
+                            title = "车间备料物资需求信息";
+                            HiddenField.Value = "车间备料任务-->物资需求信息";
+                           // trAttribute4.Visible = true;
+
                             strSQL = " select * from V_Get_Sys_User_byRole where Isdel = 'false' and DomainAccount != '' and DomainAccount is not null and RoleName like '%车%间%调%度%员%' and Is_Del ='false'";
                             RDDL_ApproveAccount1.DataSource = DBI.Execute(strSQL, true);
                             RDDL_ApproveAccount1.DataTextField = "UserName";
@@ -103,7 +99,6 @@ namespace mms.Plan
                             RDDL_ApproveAccount3.DataValueField = "DomainAccount";
                             RDDL_ApproveAccount3.DataBind();
                             lbl_ApproveAccount3.Text = "3、物资综合计划员";
-
                             break;
                     }
                     this.ViewState["Submit_Type"] = submit_Type;
@@ -111,21 +106,25 @@ namespace mms.Plan
                     
                     BindDDlDept();
                     BindDDlMaterialDept();
-                    BindSecretLevel();
-                    BindUrgencyDegre();
-                    
+           
                     strSQL = " select Dept from Sys_UserInfo_PWD where ID = '" + dt.Rows[0]["User_ID"].ToString() +"'";
                     string dept = DBI.GetSingleValue(strSQL).ToString();
                     RadComboBox_Dept.FindItemByValue(dept).Selected = true;
                     BindDDlUserInfo(RadComboBox_Dept.SelectedValue);
                     RadComboBox_User.FindItemByValue(dt.Rows[0]["User_ID"].ToString()).Selected = true;
-                    span_apply_time.InnerHtml = dt.Rows[0]["Submit_Date"].ToString();
-
+                    span_apply_time.SelectedDate = Convert.ToDateTime(dt.Rows[0]["Submit_Date"].ToString());
                     txt_TaskCode.Text = dt.Rows[0]["TaskCode"].ToString();
                     txt_Drawing_No.Text = dt.Rows[0]["Drawing_No"].ToString();
                     txt_ItemCode1.Text = dt.Rows[0]["ItemCode1"].ToString();
                     RDP_DemandDate.SelectedDate = Convert.ToDateTime(dt.Rows[0]["DemandDate"].ToString());
                     RTB_MaterialName.Text = dt.Rows[0]["Material_Name"].ToString();
+
+                    RTB_TDM_Description.Text = dt.Rows[0]["TDM_Description"].ToString();
+                    RTB_MaterialsDes.Text = dt.Rows[0]["MaterialsDes"].ToString();
+                    RTB_Material_Mark.Text = dt.Rows[0]["Material_Mark"].ToString();
+                    RTB_CN_Material_State.Text = dt.Rows[0]["CN_Material_State"].ToString();
+                    RTB_Material_Tech_Condition.Text = dt.Rows[0]["Material_Tech_Condition"].ToString();
+
                     txt_NumCasesSum.Text = dt.Rows[0]["NumCasesSum"].ToString();
                     txt_DemandNumSum.Text = dt.Rows[0]["DemandNumSum"].ToString();
                     txt_Mat_Unit.Text = dt.Rows[0]["Mat_Unit"].ToString();
@@ -137,9 +136,26 @@ namespace mms.Plan
                     span_Sum_Price.Text = dt.Rows[0]["Sum_Price"].ToString();
                     if (RadComboBoxSecretLevel.FindItemByText(dt.Rows[0]["Secret_Level"].ToString()) != null)
                     RadComboBoxSecretLevel.FindItemByText(dt.Rows[0]["Secret_Level"].ToString()).Selected = true;
+
+                    strSQL = " select * from Sys_Phase order by Code";
+                    RadComboBoxStage.DataSource = DBI.Execute(strSQL, true);
+                    RadComboBoxStage.DataValueField = "Code";
+                    RadComboBoxStage.DataTextField = "Phase";
+                    RadComboBoxStage.DataBind();
+
                     if (RadComboBoxStage.FindItemByValue(dt.Rows[0]["Stage"].ToString())!= null)
                     RadComboBoxStage.FindItemByValue(dt.Rows[0]["Stage"].ToString()).Selected = true; ;
-                 
+
+                    strSQL = " select DICT_Code, DICT_Name from GetBasicdata_T_Item  where DICT_CLASS = 'CUX_DM_PROJECT' and ENABLED_FLAG = 'Y' order by DICT_Name";
+                    RDDL_Project.DataSource = DBI.Execute(strSQL, true);
+                    RDDL_Project.DataValueField = "DICT_Code";
+                    RDDL_Project.DataTextField = "DICT_Name";
+                    RDDL_Project.DataBind();
+                    if (RDDL_Project.FindItemByValue(dt.Rows[0]["Project"].ToString()) != null)
+                        RDDL_Project.FindItemByValue(dt.Rows[0]["Project"].ToString()).Selected = true;
+
+
+
                     if (RadComboBoxCertification.FindItemByValue(dt.Rows[0]["Certification"].ToString()) != null)
                     RadComboBoxCertification.FindItemByValue(dt.Rows[0]["Certification"].ToString()).Selected = true ;
                     rtb_SpecialNeeds.Text = dt.Rows[0]["Special_Needs"].ToString();
@@ -234,15 +250,6 @@ namespace mms.Plan
             RadComboBoxShipping_Address.DataBind();
         }
 
-        protected void BindSecretLevel()
-        {
-            string strSQL = "SELECT * FROM [Sys_SecretLevel] WHERE ([Is_Del] = 0)";
-            RadComboBoxSecretLevel.DataSource = DBI.Execute(strSQL, true);
-            RadComboBoxSecretLevel.DataTextField = "SecretLevel_Name";
-            RadComboBoxSecretLevel.DataValueField = "SecretLevel_Name";
-            RadComboBoxSecretLevel.DataBind();
-        }
- 
 
         protected void BindUrgencyDegre()
         {
@@ -294,6 +301,15 @@ namespace mms.Plan
                 RadNotificationAlert.Text = "需求时间不能为空！"; RadNotificationAlert.Show(); return;
             }
             string Material_Name = RTB_MaterialName.Text.Trim();
+
+            string Project = RDDL_Project.SelectedValue;
+            string TDM_Description = RTB_TDM_Description.Text.Trim();
+            string Material_Mark = RTB_Material_Mark.Text.Trim();
+            string CN_Material_State = RTB_CN_Material_State.Text.Trim();
+            string Material_Tech_Condition = RTB_Material_Tech_Condition.Text.Trim();
+            string MaterialsDes = RTB_MaterialsDes.Text.Trim();
+
+
             string NumCasesSum = txt_NumCasesSum.Text.Trim();
             string DemandNumSum = txt_DemandNumSum.Text.Trim();
             string Mat_Unit = txt_Mat_Unit.Text.Trim();
@@ -354,6 +370,9 @@ namespace mms.Plan
                 || Secret_Level != dt.Rows[0]["Secret_Level"].ToString() || Stage != dt.Rows[0]["Stage"].ToString() || Use_Des != dt.Rows[0]["Use_Des"].ToString()
                 || Shipping_Address != dt.Rows[0]["Shipping_Address"].ToString() || Certification != dt.Rows[0]["Certification"].ToString()
                 || Attribute4 != dt.Rows[0]["Attribute4"].ToString() || Material_Name != dt.Rows[0]["Material_Name"].ToString()
+                || Project != dt.Rows[0]["Project"].ToString() || TDM_Description != dt.Rows[0]["TDM_Description"].ToString()
+                || Material_Mark != dt.Rows[0]["Material_Mark"].ToString() || CN_Material_State != dt.Rows[0]["CN_Material_State"].ToString()
+                || Material_Tech_Condition != dt.Rows[0]["Material_Tech_Condition"].ToString() || MaterialsDes != dt.Rows[0]["MaterialsDes"].ToString()
                 || Unit_Price != dt.Rows[0]["Unit_Price"].ToString() || Mat_Rough_Weight != dt.Rows[0]["Mat_Rough_Weight"].ToString())
 
             {
@@ -379,6 +398,12 @@ namespace mms.Plan
                                  TaskCode + "','" +
                                  DemandDate + "','" +
                                  Material_Name + "','" +
+                                 Project + "','" +
+                                 TDM_Description + "','" +
+                                 Material_Mark + "','" +
+                                 CN_Material_State + "','" +
+                                 Material_Tech_Condition + "','" +
+                                 MaterialsDes + "','" +
                                  NumCasesSum + "','" +
                                  DemandNumSum + "','" +
                                  Mat_Unit + "','" +

@@ -1,0 +1,13 @@
+表P_Pack增加字段 
+Type	int	Checked
+默认值0，说明：用于定义计划包的类型，0：用于从BOM导入型号物资需求，1用于通过EXCEL导入型号物资需求。将现有数据的值都改为0
+
+表M_Demand_Merge_List 
+
+TDM_Description	nvarchar(MAX)	Checked
+Material_Mark	nvarchar(50)	Checked
+CN_Material_State	nvarchar(50)	Checked
+Material_Size_Required	nvarchar(50)	Checked
+Material_Tech_Condition	nvarchar(50)	Checked
+表MaterialApplication
+MaterialsDes	nvarchar(500)	Checked

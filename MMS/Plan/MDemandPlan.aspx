@@ -90,7 +90,7 @@
                         </telerik:GridBoundColumn>
                         <%--<telerik:GridBoundColumn DataField="schedule" FilterControlAltText="Filter schedule column" HeaderText="完成进度" SortExpression="schedule" UniqueName="schedule">
                         </telerik:GridBoundColumn>--%>
-                        <telerik:GridTemplateColumn HeaderText="操作" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center">
+                        <telerik:GridTemplateColumn HeaderText="操作"  ItemStyle-HorizontalAlign="Center">
                             <ItemTemplate>
                                 <telerik:RadButton ID="RadButtonDetails" runat="server"  Text="查看详细" AutoPostBack="false"></telerik:RadButton>
                             </ItemTemplate>

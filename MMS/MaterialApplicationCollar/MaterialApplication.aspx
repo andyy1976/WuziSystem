@@ -12,6 +12,7 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <asp:HiddenField ID="HiddenField" runat="server" Value="物资申请-->无需求物资申请" ClientIDMode="Static" />
     <telerik:RadScriptManager ID="RadScriptManager1" runat="server"></telerik:RadScriptManager>
     <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server">
         <AjaxSettings>
@@ -295,6 +296,10 @@
                     <td><telerik:RadTextBox ID="RTB_Mat_Rough_Weight" runat="server"></telerik:RadTextBox></td>
                 </tr>
                 <tr>
+                    <td style="text-align: right;">物资描述：</td>
+                    <td colspan="5"><telerik:RadTextBox ID="RTB_MaterialsDes" runat="server"></telerik:RadTextBox></td>
+                </tr>
+                <tr>
                     <th colspan="6" style="text-align: left; font-size: 14px; border-bottom: solid 1px #ccc;">业务审批流程</th>
                 </tr>
                 <tr>
@@ -406,7 +411,7 @@
                                 <table>
                                     <tr>
                                         <td style="width:70px">物资编码：</td>
-                                        <td><telerik:RadTextBox ID="RadTextBox2" runat="server" Width="100px"></telerik:RadTextBox></td>
+                                        <td><telerik:RadTextBox ID="RTB_ItemCode1" runat="server" Width="100px"></telerik:RadTextBox></td>
                                     </tr>
                                 </table>
                             </div>

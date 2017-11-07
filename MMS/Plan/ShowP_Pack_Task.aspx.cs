@@ -18,7 +18,10 @@ namespace mms.Plan
         DBInterface DBI = DBFactory.GetDBInterface(DBContractConn);
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["UserId"] == null) { Page.ClientScript.RegisterStartupScript(this.GetType(), "info", "CloseWindow();", true); }
+            if (Session["UserName"]==null||Session["UserId"] == null) 
+            {
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "info", "CloseWindow();", true);
+            }
             if (!IsPostBack)
             {
                 Common.CheckPermission(Session["UserName"].ToString(), "ShowP_Pack_Task", this.Page); 

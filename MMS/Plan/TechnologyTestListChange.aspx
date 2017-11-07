@@ -48,6 +48,9 @@
                     $find("<%= RadAjaxManager1.ClientID %>").ajaxRequest("Rebind");
                 }
             }
+            function RefreshParent(sender, eventArgs) {
+                document.location.reload();
+            }
         </script>
     </telerik:RadCodeBlock>
     <div style="width:100%;">
@@ -85,7 +88,7 @@
         <div style="width:100%;">
             <telerik:RadGrid ID="RadGrid1" runat="server" AutoGenerateColumns="false" 
                 OnNeedDataSource="RadGrid1_NeedDataSource" OnItemDataBound="RadGrid1_ItemDataBound"
-                AllowPaging="true" PageSize="20" PagerStyle-AlwaysVisible="True">
+                AllowPaging="true" PageSize="50" PagerStyle-AlwaysVisible="True" >
                 <AlternatingItemStyle HorizontalAlign="Center" />
                 <ItemStyle HorizontalAlign="Center" />
                 <HeaderStyle HorizontalAlign="Center" Font-Size="13px" />
@@ -100,7 +103,7 @@
                 <MasterTableView  AutoGenerateColumns="False" DataKeyNames="ID" CommandItemDisplay="Top">
                     <CommandItemSettings ShowExportToExcelButton="True" ShowExportToWordButton="true" ShowExportToPdfButton="true"  ShowAddNewRecordButton="false" ShowRefreshButton="false" />
                     <Columns>  
-                        <telerik:GridTemplateColumn HeaderText="修改" ItemStyle-Width="80px" HeaderStyle-Width="80px">
+                        <telerik:GridTemplateColumn HeaderText="修改" ItemStyle-Width="100px" HeaderStyle-Width="100px">
                             <ItemTemplate>
                                 <telerik:RadButton ID="RB_ShowWin" runat="server" Text="修改需求"  ButtonType="ToggleButton" ForeColor="Blue"></telerik:RadButton>
                             </ItemTemplate>
@@ -113,15 +116,15 @@
                         <telerik:GridBoundColumn DataField="TDM_Description" HeaderText="产品名称" HeaderStyle-Width="100px" ItemStyle-Width="100px"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="ItemCode1" HeaderText="物资编码" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="Material_Name" HeaderText="物资名称" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="NumCasesSum1" HeaderText="件数" ItemStyle-Width="60px" HeaderStyle-Width="60px" ItemStyle-HorizontalAlign="right"></telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="DemandNumSum" HeaderText="需求量" ItemStyle-Width="60px" HeaderStyle-Width="60px" ItemStyle-HorizontalAlign="right"></telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="NumCasesSum1" HeaderText="件数" ItemStyle-Width="60px" HeaderStyle-Width="60px"></telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="DemandNumSum" HeaderText="需求量" ItemStyle-Width="60px" HeaderStyle-Width="60px" ItemStyle-HorizontalAlign="Center"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="Dept" HeaderText="领料部门" ItemStyle-Width="70px" HeaderStyle-Width="70px"></telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="Submit_Date" HeaderText="提交时间" ItemStyle-Width="80px" HeaderStyle-Width="80px"></telerik:GridBoundColumn> 
+                        <telerik:GridBoundColumn DataField="Submit_Date" HeaderText="申请时间" ItemStyle-Width="150px" HeaderStyle-Width="150px"></telerik:GridBoundColumn> 
                         <telerik:GridBoundColumn DataField="UrgencyDegre" HeaderText="紧急程度" ItemStyle-Width="80px" HeaderStyle-Width="80px"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="Secret_Level" HeaderText="密级" ItemStyle-Width="80px" HeaderStyle-Width="80px"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="UseDes" HeaderText="用途" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="Shipping_Address" HeaderText="配送地址" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="DemandDate" HeaderText="需求时间" ItemStyle-Width="80px" HeaderStyle-Width="80px" DataFormatString="{0:yyyy/MM/dd}"></telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="DemandDate" HeaderText="需求时间" ItemStyle-Width="100px" HeaderStyle-Width="100px" DataFormatString="{0:yyyy/MM/dd}"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="Special_Needs" HeaderText="特殊需求" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="State" HeaderText="状态" ItemStyle-Width="70px" HeaderStyle-Width="70px" Visible="false"></telerik:GridBoundColumn>
 
@@ -139,9 +142,9 @@
      <%--修改需求弹窗--开始--%>
     <telerik:RadWindowManager ID="RadWindowManager1" runat="server">
         <Windows>
-            <telerik:RadWindow ID="RadWindow1" runat="server" Title="修改需求" Left="150px" Top="50"
+            <telerik:RadWindow ID="RadWindow1" runat="server" Title="修改需求" Left="150px" Top="20"
                 ReloadOnShow="true" ShowContentDuringLoad="false" VisibleTitlebar="true" VisibleStatusbar="false"
-                Behaviors="Close,Maximize,Minimize" Modal="true" Width="1300px" Height="680px" />
+                Behaviors="Close,Maximize,Minimize" OnClientClose="RefreshParent" Modal="true" Width="1300px" Height="680px" />
         </Windows>
     </telerik:RadWindowManager>
     <%--修改需求弹窗--结束--%>

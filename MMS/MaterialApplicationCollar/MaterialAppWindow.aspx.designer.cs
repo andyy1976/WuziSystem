@@ -301,6 +301,15 @@ namespace mms.MaterialApplicationCollar {
         protected global::System.Web.UI.WebControls.Label lbl_Mat_Rough_Weight;
         
         /// <summary>
+        /// lb1_MaterialsDes 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lb1_MaterialsDes;
+        
+        /// <summary>
         /// RDDL_DiaoDu 控件。
         /// </summary>
         /// <remarks>
