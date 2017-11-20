@@ -261,7 +261,7 @@
                     <td>
                         <table style="width:100%; margin:0px; padding:0px;">
                             <tr>
-                                <td><telerik:RadTextBox ID="RTB_ItemCode" runat="server" Width="110px" OnTextChanged="RTB_ItemCode_TextChanged" AutoPostBack="true"></telerik:RadTextBox></td>
+                                <td><telerik:RadTextBox ID="RTB_ItemCode" runat="server" Width="110px" OnTextChanged="RTB_ItemCode_TextChanged" OnKeyPress="AlphabetOnly" AutoPostBack="true"></telerik:RadTextBox></td>
                                 <td><asp:Label ID="lblMSG" runat="server" Text="*" ForeColor="Red" Visible="false"></asp:Label></td>
                                 <td><telerik:RadButton ID="RB_Search" runat="server" Text ="搜索" AutoPostBack="false" OnClientClicking="ShowItemCode" ButtonType="ToggleButton" ForeColor="Blue"></telerik:RadButton></td>
                             </tr>
@@ -372,7 +372,7 @@
                                   </td>
                          </tr>
                          <tr>
-                        <td style="width:100px;">物资类别(一级)：</td>
+                        <td style="width:100px;">物资类别：</td>
                         <td style="width:100px;">
                             <telerik:RadDropDownList ID="RDDLMT" runat="server" AppendDataBoundItems="true" OnSelectedIndexChanged="RDDLMT_SelectedIndexChanged" AutoPostBack="true" Width="140px">
                                 <Items>
@@ -380,6 +380,7 @@
                                 </Items>
                             </telerik:RadDropDownList>
                         </td>
+                             <%--
                         <td colspan="8">
                             <div >
                                 <table id="div1" runat="server" visible="false">
@@ -416,6 +417,7 @@
                                 </table>
                             </div>
                         </td>
+                                 --%>
                     </tr>
                 </table>
             </div>

@@ -127,7 +127,6 @@ namespace mms.Plan
                     this.span_model.InnerText = Model;
                     this.span_plancode.InnerText = PlanCode;
                     this.span_PlanName.InnerText = dt.Rows[0]["PlanName"].ToString();
-
                     strSQL = " select LingJian_Type_Code, LingJian_Type_Name from Sys_LingJian_Info where Is_Del = 'false'";
                     DataTable dtlingJianInfo = DBI.Execute(strSQL, true);
                     RDDL_LingJian_Type.DataSource = dtlingJianInfo;
@@ -135,14 +134,13 @@ namespace mms.Plan
                     RDDL_LingJian_Type.DataValueField = "LingJian_Type_Code";
                     RDDL_LingJian_Type.DataBind();
 
-                    GridSource = Common.AddTableRowsID(GetDetailedListByItemCode("",""));
+                    GridSource = Common.AddTableRowsID(GetDetailedListByItemCode("","","",""));
                     this.ViewState["DraftId"] = draftid;
                     this.ViewState["DraftCode"] = DraftCode;
                     this.ViewState["PackId"] = PackId;
                     this.ViewState["Model"] = Model;
                     GetMaterialStateSum(DraftCode);
                     this.ViewState["flag"] = false;
-                     RadTabStrip1.Tabs[1].NavigateUrl = "MDemandMergeListChange.aspx?PackId=" + PackId;
 
                     Session["idStr"] = ",";
                     Session["otherStr"] = PackId + "," + draftid + "," + Model + "," + DraftCode;
@@ -176,15 +174,15 @@ namespace mms.Plan
             }
         }
 
-        protected DataTable GetDetailedListByItemCode(string ItemCode, string lingjiantype)
+        protected DataTable GetDetailedListByItemCode(string ItemCode, string lingjiantype, string drawingNum, string techline)
         {
             try
             {
                 string strSQL = " select * , 'false' as checked, case when is_del='1' then '取消提交' else case when Material_State = '7' then '取消提交' else '需重新提交' end  end as mstate" +
                   " , Convert(nvarchar(50), (select Convert(int,sum(NumCasesSum)) from M_Demand_Merge_List where Correspond_Draft_Code = Convert(nvarchar(50), M_Demand_DetailedList_Draft.ID))) as quantity1, " +
                   "case when LingJian_Type='1' then '标准件' else case when LingJian_Type='2' then '成品件'  else case when LingJian_Type='3' then '通用件' else case when LingJian_Type='4' then '专用件' else case when LingJian_Type='5' then '组件'   else '其它' end  end end end end as LingJian_Type1 from M_Demand_DetailedList_Draft ";
-  
-                strSQL += " where PackId = '" + Request.QueryString["PackId"].ToString() + "' and ParentId_For_Combine = 0 " + " and ItemCode1 like'%" + ItemCode + "%' and ((Is_del = 'false' and Material_State in ('2','7')) or (Is_del = 'true' and Material_State in ('1','2','6','7')))";
+
+                strSQL += " where PackId = '" + Request.QueryString["PackId"].ToString() + "' and ParentId_For_Combine = 0 " + " and ItemCode1 like '%" + ItemCode + "%' and Drawing_No like '%" + drawingNum + "%' and Technics_Line like '%" + techline + "%' and ((Is_del = 'false' and Material_State in ('2','7')) or (Is_del = 'true' and Material_State in ('1','2','6','7')))";
 
                 if (lingjiantype == "6")
                 {
@@ -199,8 +197,8 @@ namespace mms.Plan
 
                 strSQL += " union all select *, 'false' as checked, '未提交' as mstate, '0' as quantity1, "+
                          "case when LingJian_Type='1' then '标准件' else case when LingJian_Type='2' then '成品件'  else case when LingJian_Type='3' then '通用件' else case when LingJian_Type='4' then '专用件' else case when LingJian_Type='5' then '组件'   else '其它' end  end end end end as LingJian_Type1 from M_Demand_DetailedList_Draft ";
-      
-                strSQL += " where PackId = '" + Request.QueryString["PackId"].ToString() + "' and ParentId_For_Combine = 0  " + " and ItemCode1 like'%" + ItemCode + "%' and is_del = 'false' and Material_State = '0'";
+
+                strSQL += " where PackId = '" + Request.QueryString["PackId"].ToString() + "' and ParentId_For_Combine = 0  " + " and ItemCode1 like'%" + ItemCode + "%' and Drawing_No like '%" + drawingNum + "%' and Technics_Line like '%" + techline + "%' and is_del = 'false' and Material_State = '0'";
                 if (lingjiantype == "6")
                 {
                       strSQL += " and LingJian_Type not in (1,2,3,4,5)";
@@ -241,24 +239,6 @@ namespace mms.Plan
             }
         }
 
-        protected DataTable GetDetailedListByCombineParent(string ParentId_For_Combine)
-        {
-            try
-            {
-                string strSQL =
-                    "select *, 'false' as checked, '已合并' as mstate, '0' as quantity1" +
-                    " from M_Demand_DetailedList_Draft where PackId = '" + Request.QueryString["PackId"].ToString() + "' and ParentId_For_Combine=" +ParentId_For_Combine+ " and is_del = 'false' and Material_State = '9' order by ID";
-
-                return DBI.Execute(strSQL, true);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("获取物资需求清单信息出错" + ex.Message.ToString());
-            }
-        }
-
-   
-
         protected void RadTreeList1_NeedDataSource(object sender, TreeListNeedDataSourceEventArgs e)
         {
             RadTreeList1.DataSource = GridSource;
@@ -290,7 +270,6 @@ namespace mms.Plan
             }
         }
         
-        
 
 
         protected void RadTreeList_MDemandDetails_ItemDataBound(object sender, TreeListItemDataBoundEventArgs e)
@@ -305,12 +284,6 @@ namespace mms.Plan
                 {
                         item.ForeColor = Color.Red;
                 }
-               // else 
-             //   {
-                     //  item.ForeColor = Color.Green;
-             //   }
-
-               
             }
         }
 
@@ -318,40 +291,24 @@ namespace mms.Plan
         {
             string  ParentId_For_Combine = e.ParentDataKeyValues["ID"].ToString();
             e.ChildItemsDataSource = GetDetailedListByCombineParent(ParentId_For_Combine);
-            //this.RadTreeList1.Columns[0].Visible = false;
         }
-
-        protected void RadTreeList1_UpdateCommand(object sender, TreeListCommandEventArgs e)
+        protected DataTable GetDetailedListByCombineParent(string ParentId_For_Combine)
         {
-            /*  Hashtable table = new Hashtable();
-              TreeListEditableItem item = e.Item as TreeListEditableItem;
-              item.ExtractValues(table);
-              ConvertEmptyValuesToDBNull(table);
-              string commandText = "UPDATE [TestItems] SET [StringItem] = @StringItem, [DateItem] = @DateItem, [NumberItem] = @NumberItem, [BoolItem] = @BoolItem, [ParentID] = @ParentID WHERE [ID] = @ID";
-              ExecuteNonQuery(commandText, table);
-              Session["TreeListSource"] = null;
-              GridSource=null;
-              */
-        }
-
-        private void ConvertEmptyValuesToDBNull(Hashtable values)
-        {
-            List<object> keysToDbNull = new List<object>();
-
-            foreach (DictionaryEntry entry in values)
+            try
             {
-                if (entry.Value == null || (entry.Value is String && String.IsNullOrEmpty((String)entry.Value)))
-                {
-                    keysToDbNull.Add(entry.Key);
-                }
+                string strSQL =
+                    "select *, 'false' as checked, '已合并' as mstate, '0' as quantity1" +
+                    " from M_Demand_DetailedList_Draft where PackId = '" + Request.QueryString["PackId"].ToString() + "' and ParentId_For_Combine=" +ParentId_For_Combine+ " and is_del = 'false' and Material_State = '9' order by ID";
+
+                return DBI.Execute(strSQL, true);
             }
-
-            foreach (object key in keysToDbNull)
+            catch (Exception ex)
             {
-                values[key] = DBNull.Value;
+                throw new Exception("获取物资需求清单信息出错" + ex.Message.ToString());
             }
         }
 
+ 
         protected void WZBH_Query_Click(object sender, EventArgs e)
         {
             
@@ -366,9 +323,9 @@ namespace mms.Plan
     
                 string ItemCode = this.RTB_ItemCode.Text.Trim();
                 string lingjiantype = RDDL_LingJian_Type.SelectedItem.Value;
-
-
-                GridSource = GetDetailedListByItemCode(ItemCode, lingjiantype);
+                string drawingNum = this.RTB_Drawing_No.Text.Trim();
+                string techline = this.Rad_TechLine.Text.Trim();
+                GridSource = GetDetailedListByItemCode(ItemCode, lingjiantype,drawingNum,techline);
                 RadTreeList1.DataSource = GridSource;
                 RadTreeList1.Rebind();
          //   }
@@ -376,27 +333,6 @@ namespace mms.Plan
         }
 
 
-        protected void GetMDraftList(string DraftCode)
-        {
-            try
-            {
-                string strSQL = "select * from V_M_Draft_List where DraftCode='" + DraftCode + "'";
-                DataTable dt = DBI.Execute(strSQL, true);
-                if (dt.Rows.Count > 0) {
-                    this.span_DraftCode.InnerText = DraftCode;
-                    this.ViewState["DraftId"] = dt.Rows[0][6].ToString();
-                    this.ViewState["DraftCode"] = DraftCode;
-                    this.ViewState["PackId"] = dt.Rows[0][7].ToString();
-                    this.ViewState["Model"] = dt.Rows[0][8].ToString();
-                    this.span_model.InnerText = dt.Rows[0][8].ToString();
-                    this.span_plancode.InnerText = dt.Rows[0][9].ToString();
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("获取物资需求清单草稿信息出错" + ex.Message.ToString());
-            }
-        }
         public void GetMergeParameter(string idStr, string dateStr)
         {
             Session["idStr"] = idStr == "" ? idStr : idStr.Substring(0, idStr.Length - 1);
@@ -404,17 +340,15 @@ namespace mms.Plan
             Session["otherStr"] = this.ViewState["PackId"].ToString() + "," + this.ViewState["DraftId"].ToString() + "," +
                 this.ViewState["Model"].ToString() + "," + this.ViewState["DraftCode"].ToString();
         }
-
         protected void ToggleRowSelection(object sender, EventArgs e)
         {
             CheckBox cb = sender as CheckBox;
             string id = cb.CssClass.ToString();
-            if (Session["idStr"].ToString().Substring(0, 1) != ",") { Session["idStr"] = "," + Session["idStr"].ToString() + ","; }
+            if (Session["idStr"].ToString().Substring(0,1) != ",") { Session["idStr"] = "," + Session["idStr"].ToString() + ","; }
             if (cb.Checked == true)
             {
                 if ((cb.Parent.Parent as TreeListDataItem)["ParentId_For_Combine"].Text != "0")
                 {
-                    // GridSource.Select("ID='" + id + "'")[0]["checked"] = "false";
                     cb.Checked = false;
                     (cb.Parent.Parent as TreeListDataItem).Selected = false;
                     RadNotificationAlert.Text = "请勿选择已被合并的数据记录";
@@ -423,7 +357,6 @@ namespace mms.Plan
                 }
                 else
                 {
-                    //  GridSource.Select("ID='" + id + "'")[0]["checked"] = "true";
                     cb.Checked = true;
                    (cb.Parent.Parent as TreeListDataItem).Selected = true;
                     Session["idStr"] += id + ",";
@@ -432,14 +365,13 @@ namespace mms.Plan
             }
             else
             {
-              //  GridSource.Select("ID='" + id + "'")[0]["checked"] = "false";
                 cb.Checked = false;
                 (cb.Parent.Parent as TreeListDataItem).Selected = false;
                 if (Session["idStr"].ToString().IndexOf("," + id + ",") != -1)
                 {
                     Session["idStr"] = Session["idStr"].ToString().Replace("," + id + ",", ",");
                 }
-
+              
             }
 
         }
@@ -452,7 +384,6 @@ namespace mms.Plan
             {
                 (dataitem.FindControl("CheckBox1") as CheckBox).Checked = cb.Checked;
                 string id = dataitem.GetDataKeyValue("ID").ToString();
- 
                 dataitem.Selected = cb.Checked;
                 if (cb.Checked == true)
                 {
@@ -460,7 +391,7 @@ namespace mms.Plan
                     {
                         Session["idStr"] += id + ",";
                     }
-
+                  
                 }
                 else
                 {
@@ -476,49 +407,11 @@ namespace mms.Plan
 
         protected void RadTreeList1_SelectedIndexChanged(object sender, EventArgs e)
         {
-          /*  foreach (TreeListDataItem dataitem in RadTreeList1.SelectedItems)
-            {
-                  if (dataitem["ParentId_For_Combine"].Text != "0")
-                  {
-                        RadNotificationAlert.Text = "请勿选择以合并的数据记录";
-                       RadNotificationAlert.Show();
-                       break;
-                  }
-                 
-            }
-           * */
-            Session["idStr"] = ",";
-              /*
-            if (e.CommandName == RadTreeList.SelectCommandName)
-            {
-                //item is being selected   
-            
-            }
-            if (e.CommandName == RadTreeList.DeselectCommandName)
-            {
-                //item is being deselected   
-            
-            }
-            if (e.CommandName == RadTreeList.SelectAllCommandName)
-            {
-                //item is being selected    
-            }
-            if (e.CommandName == RadTreeList.DeselectAllCommandName)
-            {
-                //item is being deselected    
-            }
-            */
+                Session["idStr"] = ",";
+    
             string id = null;
             foreach (TreeListDataItem dataitem in RadTreeList1.SelectedItems)
             {
-
-              /*  if (dataitem["ParentId_For_Combine"].Text != "0")
-                {
-                      RadNotificationAlert.Text = "请勿选择以合并的数据记录";
-                     RadNotificationAlert.Show();
-                     break;
-                }
-                */
                  id = dataitem.GetDataKeyValue("ID").ToString();
               
                
@@ -530,36 +423,97 @@ namespace mms.Plan
                
             }
 
-        }       
+        }
 
 
+        protected void RB_Combine_Cllick(object sender, EventArgs e)
+        {
+
+            if (RadTreeList1.SelectedItems.Count ==0)
+            {
+                   RadNotificationAlert.Text = "请选择要合并的数据";
+                     RadNotificationAlert.Show();
+            }
+            else 
+            {
+                var combineparentid = RadTreeList1.SelectedItems[0]["ParentId_For_Combine"].Text;
+               // var combineparentid = RadTreeList1.SelectedItems[0].GetDataKeyValue("ParentId_For_Combine").ToString();
+                  if (combineparentid !="0") 
+                  {
+                         RadNotificationAlert.Text = "请务选择已经合并过的数据记录";
+                         RadNotificationAlert.Show();
+                   }     
+                   else               
+                   {
+                       string temp = RadTreeList1.SelectedItems[0]["ItemCode1"].Text;
+                      // var temp = RadTreeList1.SelectedItems[0].GetDataKeyValue("ItemCode1").ToString();
+                        for (var i = 1; i < RadTreeList1.SelectedItems.Count; i++)
+                        {
+                            combineparentid = RadTreeList1.SelectedItems[i]["ParentId_For_Combine"].Text;
+                            //combineparentid = RadTreeList1.SelectedItems[i].GetDataKeyValue("ParentId_For_Combine").ToString();
+                            if (combineparentid != "0")
+                            {
+                                    RadNotificationAlert.Text = "请务选择已经合并过的数据记录";
+                                     RadNotificationAlert.Show();
+                                     return;
+                            }
+                            var itemCode1 = RadTreeList1.SelectedItems[i]["ItemCode1"].Text;
+                           // var itemCode1 = RadTreeList1.SelectedItems[i].GetDataKeyValue("ItemCode1").ToString();
+                            if (itemCode1 != temp) 
+                            {
+                                  RadNotificationAlert.Text = "请选择物资编码相同的数据";
+                                  RadNotificationAlert.Show();
+                                 return;
+                            }
+                      }
+                      RadBtnCombineMergeList.Attributes["onclick"] = "return ShowMDemandCombineList()";
+                  
+                  }                     
+                            
+            }
+        }
 
 
         protected void RB_Combine_Cancel_Click(object sender, EventArgs e)
         {
-         
-            if (RadTreeList1.SelectedItems.Count ==1)
+
+          /* 
+           if (RadTreeList1.SelectedItems.Count == 0)
             {
-              //  if ( RadTreeList1.SelectedItems[0]["Combine_State"].ToString()== "1")
-                {
-                    
+                RadNotificationAlert.Text = "请选择一条以红颜色标记的合并过的数据记录";
+                RadNotificationAlert.Show();
+            }
+            else if (RadTreeList1.SelectedItems.Count>1)
+            {
+                RadNotificationAlert.Text = "请勿选择两条（含）以上的数据记录";
+                RadNotificationAlert.Show();
+            }
+           */
+         //       var combineparentid = RadTreeList1.SelectedItems[0].GetDataKeyValue("ParentId_For_Combine").ToString();
+        //        var combine_State = RadTreeList1.SelectedItems[0].GetDataKeyValue("Combine_State").ToString();
+             //   if (combine_State == "1" && combineparentid == "0")
+            if (RadTreeList1.SelectedItems.Count ==1)
+            {              
                     string id = RadTreeList1.SelectedItems[0].GetDataKeyValue("ID").ToString();
-
-                
-
+                    
                     string strSQL = " Update M_Demand_DetailedList_Draft set ParentId_For_Combine = 0 , Material_State = 0" + " where ParentId_For_Combine=" + id;
                     DBI.Execute(strSQL);
                     strSQL = " Update M_Demand_DetailedList_Draft set Material_State =10,Combine_State=2 where Id=" + id;
                     DBI.Execute(strSQL);
 
-                    GridSource = GetDetailedListByItemCode("", "");
+                    GridSource = GetDetailedListByItemCode("", "","","");
                     Session["idStr"] = ",";
                     RadTreeList1.DataSource = GridSource;
                     RadTreeList1.Rebind();
             
-
+                    
                }
-            }
+             //   else
+              //  {
+                  //    RadNotificationAlert.Text = "请选择一条以红颜色标记的合并过的数据记录";
+                 //     RadNotificationAlert.Show();
+           //     }
+
         }
           
         protected void RadBtnReturn_Click(object sender, EventArgs e)
@@ -646,10 +600,36 @@ namespace mms.Plan
 
         protected void RadButton_ExportExcel_Click(object sender, EventArgs e)
         {
-            RadTreeList1.ExportSettings.FileName = "型号物资需求清单" + DateTime.Now.ToString("yyyy-MM-dd");
+          RadTreeList1.ExportSettings.FileName = "型号物资需求清单-" + DateTime.Now.ToString("yyyy-MM-dd");
+       //    RadTreeList1.ExportSettings.FileName = "ModelMaterialRequirements-" + DateTime.Now.ToString("yyyy-MM-dd");
         //    RadTreeList1.ExportToExcel();
-          //  RadTreeList1.ExportSettings.Excel.Format = (TreeListExcelFormat)Enum.Parse(typeof(TreeListExcelFormat), "Xlsx");
+           // RadTreeList1.GetColumn("ID").Visible = false;
+            RadTreeList1.Items[0].Visible = false;
+            RadTreeList1.Items[1].Visible = false;
+            RadTreeList1.Items[2].Visible = false;
+            RadTreeList1.ExportSettings.IgnorePaging = true;
+          
+            RadTreeList1.ExportSettings.ExportMode = (TreeListExportMode)1;
+            RadTreeList1.ShowFooter = false;
+            RadTreeList1.Rebind();
+           
+            RadTreeList1.ExportSettings.Excel.Format = (TreeListExcelFormat)Enum.Parse(typeof(TreeListExcelFormat), "Xlsx");
             RadTreeList1.ExportToExcel();
+            RadTreeList1.Items[0].Visible = true;
+            RadTreeList1.Items[1].Visible = true;
+            RadTreeList1.Items[2].Visible = true;
         } 
+        protected void RadButton_ExportWord_Click(object sender, EventArgs e)
+        {
+            RadTreeList1.ExportSettings.FileName = "型号物资需求清单" + DateTime.Now.ToString("yyyy-MM-dd");
+            RadTreeList1.ExportToWord();
+        }
+
+        protected void RadButton_ExportPdf_Click(object sender, EventArgs e)
+        {
+            RadTreeList1.ExportSettings.FileName = "型号物资需求清单" + DateTime.Now.ToString("yyyy-MM-dd");
+            RadTreeList1.ExportSettings.IgnorePaging = true;
+            RadTreeList1.ExportToPdf();
+        }
     }
 }

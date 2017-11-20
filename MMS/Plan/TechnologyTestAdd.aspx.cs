@@ -142,7 +142,7 @@ namespace mms.Plan
                             title = "车间备料物资需求申请";
                             title1 = "车间备料物资需求未提交申请";
                             HiddenField.Value = "车间备料任务-->新增车间备料物资需求";
-                            trAttribute4.Visible = true;
+                            //trAttribute4.Visible = true;
 
                             strSQL = " select * from V_Get_Sys_User_byRole where Isdel = 'false' and DomainAccount != '' and DomainAccount is not null and RoleName like '%车%间%调%度%员%' and Is_Del ='false'";
                             RDDL_ApproveAccount1.DataSource = DBI.Execute(strSQL, true);
@@ -182,8 +182,6 @@ namespace mms.Plan
                     }
                     GridSource = Common.AddTableRowsID(GetTechnologyTestList(this.hfBh.Value, Request.QueryString["SubmitType"].ToString()));
                     //BindDDlDept();
-                    //BindDDlMaterialDept();
-                    //BindDDlAddress(RadComboBoxMaterialDept.SelectedValue);
 
                     BindDeptUserAddress();
 
@@ -227,8 +225,8 @@ namespace mms.Plan
                     Session["gds"] = DBI.Execute(strSQL, true);
                     RadGrid1.DataSource = (Session["gds"] as DataTable);
                     */
-                    Telerik.Web.UI.DropDownListItem li = new Telerik.Web.UI.DropDownListItem("物资编码查询", "ItemCode");
-                    RDDLMT.Items.Add(li);
+                  //  Telerik.Web.UI.DropDownListItem li = new Telerik.Web.UI.DropDownListItem("物资编码查询", "ItemCode");
+                    //RDDLMT.Items.Add(li);
 
           
                     this.span_apply_time1.InnerText = DateTime.Now.ToString("yyyy-MM-dd"); 
@@ -358,7 +356,7 @@ namespace mms.Plan
             mta.Drawing_No = txt_Drawing_No.Text;
             mta.TaskCode = txt_TaskCode.Text;
             mta.DemandDate = Convert.ToDateTime(DemandDate.SelectedDate);
-            mta.MaterialDept = RadComboBoxMaterialDept.SelectedValue;//Session["DeptCode"].ToString();
+            mta.MaterialDept = RadComboBoxMaterialDept1.SelectedValue;//Session["DeptCode"].ToString();
             mta.ItemCode1 = txt_ItemCode1.Text;
             mta.NumCasesSum = Convert.ToDecimal(txt_NumCasesSum.Text);
             mta.DemandNumSum = Convert.ToDecimal(txt_DemandNumSum.Text);
@@ -368,12 +366,12 @@ namespace mms.Plan
             mta.Rough_Spec = txt_Rough_Spec.Text;//span_Rough_Spec.InnerText;
             mta.Mat_Rough_Weight = RTB_Mat_Rough_Weight.Text;
             mta.Special_Needs = rtb_SpecialNeeds.Text;
-            mta.Urgency_Degre = RadComboBoxUrgencyDegre.SelectedValue;
-            mta.Secret_Level = RadComboBoxSecretLevel.SelectedValue;
+            mta.Urgency_Degre = RadComboBoxUrgencyDegree1.SelectedValue;
+            mta.Secret_Level = RadComboBoxSecretLevel1.SelectedValue;
             mta.Stage = RadComboBoxStage.SelectedValue;
-            mta.Use_Des = RTB_Use_Des.Text; ;
+            mta.Use_Des = RadComboBoxUseDes1.SelectedValue;
             mta.Shipping_Address = RadComboBoxShipping_Address.SelectedItem.Text;//Session["Shipping_Addr"].ToString();
-            mta.Certification = RadComboBoxCertification.SelectedValue;
+            mta.Certification = RadComboBoxCertification1.SelectedValue;
             mta.Project = RDDL_Project.SelectedValue;
 
             mta.Special_Needs = rtb_SpecialNeeds.Text.Trim();
@@ -428,7 +426,6 @@ namespace mms.Plan
             txt_Rough_Spec.Text = "";//span_Rough_Spec.InnerHtml = "";
             RTB_Unit_Price.Text = "";//span_Unit_Price.InnerHtml = "";
             span_Sum_Price.Text = "";
-            RTB_Use_Des.Text = "";
             rtb_SpecialNeeds.Text = "";
             DemandDate.SelectedDate = DateTime.Now;
         }
@@ -544,11 +541,12 @@ namespace mms.Plan
                     //string strSQL = "select * from V_M_Technology_Apply where Submit_Type=" + Submit_Type + " and Is_Submit=0 and User_ID=" + userid + " and MDPId=" + MDPId;
                     string strSQL =
                         " select (ROW_NUMBER() OVER (ORDER BY M_Demand_Merge_List.ID)) AS rownum, MDP_Code" +
-                        " , CUX_DM_URGENCY_LEVEL.DICT_Name as UrgencyDegre, Use_Des as UseDes , GetCustInfo_T_ACCT_SITE.ADDRESS as ADDRESS" +
+                        " , CUX_DM_URGENCY_LEVEL.DICT_Name as UrgencyDegre, CUX_DM_USAGE.DICT_Name as UseDes , GetCustInfo_T_ACCT_SITE.ADDRESS as ADDRESS" +
                         " , case when Stage ='1' then 'M' when stage='2' then 'C' when Stage='3' then 'S' when Stage='4' then 'D' else Convert(nvarchar(50),Stage) end as Stage1"+
                         " , M_Demand_Merge_List.*" +
                         " from M_Demand_Merge_List join M_Demand_Plan_List on M_Demand_Plan_List.Id = M_Demand_Merge_List.MDPId" +
                         " left join GetBasicdata_T_Item as CUX_DM_URGENCY_LEVEL on CUX_DM_URGENCY_LEVEL.DICT_CODE = M_Demand_Merge_List.Urgency_Degre and DICT_CLASS='CUX_DM_URGENCY_LEVEL'" +
+                        " left join GetBasicdata_T_Item as CUX_DM_USAGE on CUX_DM_USAGE.DICT_CODE = M_Demand_Merge_List.Use_Des and CUX_DM_USAGE.DICT_CLASS='CUX_DM_USAGE'" +
                         " left join GetCustInfo_T_ACCT_SITE on Convert(nvarchar(50),GetCustInfo_T_ACCT_SITE.LOCATION_ID) = M_Demand_Merge_List.Shipping_Address" +
                         " where MDPId = '" + MDPId + "'";
                     
@@ -706,10 +704,10 @@ namespace mms.Plan
             RadComboBox_Dept.DataValueField = "DeptID";
             RadComboBox_Dept.DataBind();
 
-            RadComboBoxMaterialDept.DataSource = dt;
-            RadComboBoxMaterialDept.DataTextField = "Dept";
-            RadComboBoxMaterialDept.DataValueField = "DeptCode";
-            RadComboBoxMaterialDept.DataBind();
+            RadComboBoxMaterialDept1.DataSource = dt;
+            RadComboBoxMaterialDept1.DataTextField = "Dept";
+            RadComboBoxMaterialDept1.DataValueField = "DeptCode";
+            RadComboBoxMaterialDept1.DataBind();
 
             RadComboBox_User.DataSource = dt;
             RadComboBox_User.DataTextField = "UserName";
@@ -737,50 +735,32 @@ namespace mms.Plan
             RadComboBox_Dept.DataValueField = "Id";
             RadComboBox_Dept.DataBind(); 
         }
-        private void BindDDlUserInfo(string Dept_Id)
-        {
-            RadComboBox_User.ClearSelection();
-            string strSQL = "SELECT * FROM [Sys_UserInfo_PWD] where Dept='" + Dept_Id+"'";
-            DataTable dt = DBI.Execute(strSQL, true);
-            RadComboBox_User.DataSource = dt;
-            RadComboBox_User.DataTextField = "UserName";
-            RadComboBox_User.DataValueField = "Id";
-            RadComboBox_User.DataBind();
-        }
+
         protected void RadComboBox_Dept_SelectedIndexChanged(object sender, RadComboBoxSelectedIndexChangedEventArgs e)
         {
             if (RadComboBox_Dept.SelectedValue != "0") {
-                BindDDlUserInfo(RadComboBox_Dept.SelectedValue);
-
-                //Get_Sys_DeptEnumByUID(RadComboBox_Dept.SelectedValue);
+                RadComboBox_User.ClearSelection();
+                string strSQL = "SELECT * FROM [Sys_UserInfo_PWD] where Dept='" + RadComboBox_Dept.SelectedValue + "'";
+                DataTable dt = DBI.Execute(strSQL, true);
+                RadComboBox_User.DataSource = dt;
+                RadComboBox_User.DataTextField = "UserName";
+                RadComboBox_User.DataValueField = "Id";
+                RadComboBox_User.DataBind();
             }
         }
-        private void BindDDlMaterialDept()
-        {
-            string strSQL = "SELECT * from Sys_DeptEnum WHERE (Cust_Account_ID is not null) order by dept";
-            DataTable dt = DBI.Execute(strSQL, true);
-            RadComboBoxMaterialDept.DataSource = dt;
-            RadComboBoxMaterialDept.DataTextField = "Dept";
-            RadComboBoxMaterialDept.DataValueField = "DeptCode";
-            RadComboBoxMaterialDept.DataBind();
-            RadComboBoxMaterialDept.SelectedIndex = 0;
-            BindDDlAddress(RadComboBoxMaterialDept.SelectedValue);
-        }
-        private void BindDDlAddress(string DeptCode)
+    
+    
+        protected void RadComboBoxMaterialDept_SelectedIndexChanged1(object sender, RadComboBoxSelectedIndexChangedEventArgs e)
         {
             RadComboBoxShipping_Address.Items.Clear();
             string strSQL = "select KeyWord from Sys_Dict" +
                 " join Sys_Dept_ShipAddr on Sys_Dept_ShipAddr.Shipping_Addr_Id = '2-'+ Convert(nvarchar(50),Sys_Dict.KeyWordCode)" +
-                " where TypeID = '2' and Dept_Id = (select ID from Sys_DeptEnum where DeptCode = '" + DeptCode + "')";
+                " where TypeID = '2' and Dept_Id = (select ID from Sys_DeptEnum where DeptCode = '" + RadComboBoxMaterialDept1.SelectedValue + "')";
             DataTable dt = DBI.Execute(strSQL, true);
             RadComboBoxShipping_Address.DataSource = dt;
             RadComboBoxShipping_Address.DataTextField = "KeyWord";
             RadComboBoxShipping_Address.DataValueField = "KeyWord";
             RadComboBoxShipping_Address.DataBind();
-        }
-        protected void RadComboBoxMaterialDept_SelectedIndexChanged(object sender, RadComboBoxSelectedIndexChangedEventArgs e)
-        {
-            BindDDlAddress(RadComboBoxMaterialDept.SelectedValue);
         }
 
         #region 提交辅料需求清单
@@ -1292,7 +1272,7 @@ namespace mms.Plan
 
         protected void RDDLMT_SelectedIndexChanged(object sender, Telerik.Web.UI.DropDownListEventArgs e)
         {
-            string value = RDDLMT.SelectedValue.ToString();
+         /*   string value = RDDLMT.SelectedValue.ToString();
             string prefix = RDDLMT.SelectedText.ToString() + ".";
 
             RDDLMT1.SelectedIndex = 0;
@@ -1325,9 +1305,9 @@ namespace mms.Plan
             {
                 div1.Visible = false;
                 div2.Visible = false;
-            }
+            }*/
         }
-
+        /*
         protected void RDDLMT1_SelectedIndexChanged(object sender, DropDownListEventArgs e)
         {
             string prefix = RDDLMT.SelectedText.ToString() + "." + RDDLMT1.SelectedText.ToString() + ".";
@@ -1386,7 +1366,7 @@ namespace mms.Plan
                 RDDLMT4.DataBind();
             }
         }
-
+*/
         protected void RB_Search_Click(object sender, EventArgs e)
         {
             string strSQL = "select * from GetCommItem_T_Item where SEG10 = 'N'";
@@ -1406,25 +1386,25 @@ namespace mms.Plan
             {
 
             }
-            else if (MTv == "ItemCode")
+           /* else if (MTv == "ItemCode")
             {
                 string ItemCode = RTB_ItemCode.Text.Trim();
                 strSQL += " and SEG3 like '%" + ItemCode + "%'"; ;
-            }
+            }*/
             else
             {
                 string MT = RDDLMT.SelectedText.ToString();
-                string MT1 = RDDLMT1.SelectedText.ToString();
-                string MT2 = RDDLMT2.SelectedText.ToString();
-                string MT3 = RDDLMT3.SelectedText.ToString();
-                string MT4 = RDDLMT4.SelectedText.ToString();
+              //  string MT1 = RDDLMT1.SelectedText.ToString();
+             //   string MT2 = RDDLMT2.SelectedText.ToString();
+              //  string MT3 = RDDLMT3.SelectedText.ToString();
+              //  string MT4 = RDDLMT4.SelectedText.ToString();
 
                 string SEG6 = "";
                 if (MT != "") { SEG6 += MT; }
-                if (MT1 != "") { SEG6 += "." + MT1; }
-                if (MT2 != "") { SEG6 += "." + MT2; }
-                if (MT3 != "") { SEG6 += "." + MT3; }
-                if (MT4 != "") { SEG6 += "." + MT4; }
+            //    if (MT1 != "") { SEG6 += "." + MT1; }
+            //    if (MT2 != "") { SEG6 += "." + MT2; }
+              //  if (MT3 != "") { SEG6 += "." + MT3; }
+               // if (MT4 != "") { SEG6 += "." + MT4; }
                 strSQL += " and SEG6 like '" + SEG6 + "%'";
             }
             Session["gds"] = DBI.Execute(strSQL, true);
@@ -1465,26 +1445,18 @@ namespace mms.Plan
                                 " where Sys_UserInfo_PWD.ID = '" + userid + "'";
                 DataTable dt = DBI.Execute(strSQL, true);
 
-                RadComboBox RadComboBoxMaterialDept = e.Item.FindControl("RadComboBoxMaterialDept1") as RadComboBox;
+                RadComboBox RadComboBoxMaterialDept = e.Item.FindControl("RadComboBoxMaterialDept") as RadComboBox;
 
                 RadComboBoxMaterialDept.DataSource = dt;
                 RadComboBoxMaterialDept.DataTextField = "Dept";
                 RadComboBoxMaterialDept.DataValueField = "DeptCode";
                 RadComboBoxMaterialDept.DataBind();
 
-                RadComboBox RadComboBoxShipping_Address = e.Item.FindControl("RadComboBoxShippingAddress1") as RadComboBox;
+                RadComboBox RadComboBoxShipping_Address = e.Item.FindControl("RadComboBoxShippingAddress") as RadComboBox;
                 RadComboBoxShipping_Address.CssClass = id;
                 string departCode="";
-            /*    if( GridSource1.Select("ID='" + id + "'")[0]["DeptCode"]!=null)
-                {
-                    departCode= GridSource1.Select("ID='" + id + "'")[0]["DeptCode"].ToString();
-                }
-                else
-                {
-             * */
-
-                    departCode=dt.Rows[0]["DeptCode"].ToString();
-              //  }
+                departCode=dt.Rows[0]["DeptCode"].ToString();
+           
          
                 strSQL = "select KeyWord from Sys_Dict" +
              " join Sys_Dept_ShipAddr on Sys_Dept_ShipAddr.Shipping_Addr_Id = '2-'+ Convert(nvarchar(50),Sys_Dict.KeyWordCode)" +
@@ -1500,27 +1472,29 @@ namespace mms.Plan
                
           
 
-                 RadComboBox RadComboBoxSecretLevel = e.Item.FindControl("RadComboBoxSecretLevel1") as RadComboBox;
+                 RadComboBox RadComboBoxSecretLevel = e.Item.FindControl("RadComboBoxSecretLevel") as RadComboBox;
                  RadComboBoxSecretLevel.FindItemByValue(GridSource1.Select("ID='" + id + "'")[0]["Secret_Level"].ToString()).Selected = true;
                 // RadComboBoxSecretLevel.FindItemByText("内部").Selected = true;
                  
 
-                 RadComboBox RadComboBoxCertification = e.Item.FindControl("RadComboBoxCertification1") as RadComboBox;
+                 RadComboBox RadComboBoxCertification = e.Item.FindControl("RadComboBoxCertification") as RadComboBox;
                  RadComboBoxCertification.FindItemByValue(GridSource1.Select("ID='" + id + "'")[0]["Certification"].ToString()).Selected = true;
              
                  RadDropDownList RDDL_Project = e.Item.FindControl("RDDL_Project1") as RadDropDownList;
               
                  RDDL_Project.FindItemByValue(GridSource1.Select("ID='" + id + "'")[0]["Project"].ToString()).Selected = true;
               
-                 RadComboBox RadComboBoxStage = e.Item.FindControl("RadComboBoxStage1") as RadComboBox;
+                 RadComboBox RadComboBoxStage = e.Item.FindControl("RadComboBoxStage") as RadComboBox;
                  RadComboBoxStage.FindItemByValue(GridSource1.Select("ID='" + id + "'")[0]["stage"].ToString()).Selected = true;
 
                  RadComboBox RadComboBoxAttribute4 = e.Item.FindControl("RadComboBoxAttribute4") as RadComboBox;
                  RadComboBoxAttribute4.FindItemByValue(GridSource1.Select("ID='" + id + "'")[0]["Attribute4"].ToString()).Selected = true;
 
-                 RadComboBox RadComboBoxUrgencyDegre = e.Item.FindControl("RadComboBoxUrgencyDegre1") as RadComboBox;
-                 RadComboBoxUrgencyDegre.FindItemByText(GridSource1.Select("ID='" + id + "'")[0]["Urgency_Degre"].ToString()).Selected = true;
-             //    RadComboBoxUrgencyDegre.FindItemByText("一般").Selected = true;
+                 RadComboBox RadComboBoxUrgencyDegree = e.Item.FindControl("RadComboBoxUrgencyDegree") as RadComboBox;
+                 RadComboBoxUrgencyDegree.FindItemByText(GridSource1.Select("ID='" + id + "'")[0]["Urgency_Degre"].ToString()).Selected = true;
+             //    RadComboBoxUrgencyDegree.FindItemByText("一般").Selected = true;
+                 RadComboBox RadComboBoxUseDes = e.Item.FindControl("RadComboBoxUseDes") as RadComboBox;
+                 RadComboBoxUseDes.FindItemByValue(GridSource1.Select("ID='" + id + "'")[0]["Use_Des"].ToString()).Selected = true;
          
                
             }
@@ -1688,7 +1662,7 @@ namespace mms.Plan
                                     break;
 
                                 case "用途":
-                                    GridSource1.Columns[i].ColumnName = "UseDes";
+                                    GridSource1.Columns[i].ColumnName = "Use_Des";
                                     columnscount++;
                                     break;
                                 case "研制阶段":
@@ -1709,7 +1683,6 @@ namespace mms.Plan
                                     GridSource1.Columns[i].ColumnName = "Attribute4";
                                     columnscount++;
                                     break;
-
 
 
                         
@@ -2075,29 +2048,30 @@ namespace mms.Plan
                         }
 
 
-                        RadComboBox RadComboBoxMaterialDept = item.FindControl("RadComboBoxMaterialDept1") as RadComboBox;
+                        RadComboBox RadComboBoxMaterialDept = item.FindControl("RadComboBoxMaterialDept") as RadComboBox;
                         string MaterialDept = RadComboBoxMaterialDept.SelectedValue; 
 
            
-                        RadComboBox RadComboBoxUrgency_Degre = item.FindControl("RadComboBoxUrgencyDegre1") as RadComboBox;
-                        string Urgency_Degre = RadComboBoxUrgency_Degre.SelectedValue; 
+                        RadComboBox RadComboBoxUrgency_Degree = item.FindControl("RadComboBoxUrgencyDegree") as RadComboBox;
+                        string Urgency_Degre = RadComboBoxUrgency_Degree.SelectedValue; 
 
                  
-                        RadComboBox RadComboBoxSecret_Level = item.FindControl("RadComboBoxSecretLevel1") as RadComboBox;
+                        RadComboBox RadComboBoxSecret_Level = item.FindControl("RadComboBoxSecretLevel") as RadComboBox;
                         string Secret_Level = RadComboBoxSecret_Level.SelectedValue; 
 
                   
 
-                        RadComboBox RadComboBoxStage = item.FindControl("RadComboBoxStage1") as RadComboBox;
+                        RadComboBox RadComboBoxStage = item.FindControl("RadComboBoxStage") as RadComboBox;
                         string Stage = RadComboBoxStage.SelectedValue; 
 
-              
-                        string Use_Des = item["UseDes"].Text.Trim();
-                        RadComboBox RadComboBoxShipping_Address = item.FindControl("RadComboBoxShippingAddress1") as RadComboBox;
+                        RadComboBox RadComboBoxUseDes = item.FindControl("RadComboBoxUseDes") as RadComboBox;
+                        string Use_Des = RadComboBoxUseDes.SelectedValue;
+
+                        RadComboBox RadComboBoxShipping_Address = item.FindControl("RadComboBoxShippingAddress") as RadComboBox;
                         string Shipping_Address = RadComboBoxShipping_Address.SelectedItem.Text; 
 
                    
-                        RadComboBox RadComboBoxCertification = item.FindControl("RadComboBoxCertification1") as RadComboBox;
+                        RadComboBox RadComboBoxCertification = item.FindControl("RadComboBoxCertification") as RadComboBox;
                         string Certification = RadComboBoxCertification.SelectedValue;
 
 
@@ -2216,7 +2190,7 @@ namespace mms.Plan
         {
             int i = 0;
             DirectoryInfo info =
-                new DirectoryInfo(System.AppDomain.CurrentDomain.BaseDirectory.ToString() + "MaterialApplicationCollar/需求导入模板");
+                new DirectoryInfo(System.AppDomain.CurrentDomain.BaseDirectory.ToString() + "Plan/物资导入模板");
             if (System.IO.Directory.Exists(info.ToString()))
             {
                 foreach (FileInfo n in info.GetFiles())
@@ -2231,7 +2205,7 @@ namespace mms.Plan
                         Response.ContentType = "application/ms-excel";
                         this.EnableViewState = false;
 
-                        Response.WriteFile(Server.MapPath(@"~\MaterialApplicationCollar\需求导入模板\") + n.Name);
+                        Response.WriteFile(Server.MapPath(@"~\Plan\物资导入模板\") + n.Name);
                         Response.End();
                         return;
                     }
@@ -2247,11 +2221,11 @@ namespace mms.Plan
 
 
 
-       protected void RadComboBoxMaterialDept_SelectedIndexChanged1(object sender, RadComboBoxSelectedIndexChangedEventArgs e)
+       protected void RadComboBoxMaterialDept_SelectedIndexChanged(object sender, RadComboBoxSelectedIndexChangedEventArgs e)
         {
             RadComboBox cb = sender as RadComboBox;
             string id = (cb.Parent.Parent as GridDataItem).GetDataKeyValue("ID").ToString(); ;
-            RadComboBox RadComboBoxShipping_Address = (cb.Parent.Parent as GridDataItem).FindControl("RadComboBoxShippingAddress1") as RadComboBox;
+            RadComboBox RadComboBoxShipping_Address = (cb.Parent.Parent as GridDataItem).FindControl("RadComboBoxShippingAddress") as RadComboBox;
           
            string strSQL = "select KeyWord from Sys_Dict" +
                " join Sys_Dept_ShipAddr on Sys_Dept_ShipAddr.Shipping_Addr_Id = '2-'+ Convert(nvarchar(50),Sys_Dict.KeyWordCode)" +
@@ -2264,14 +2238,6 @@ namespace mms.Plan
            RadComboBoxShipping_Address.DataBind();
         }
 
-       private void BindDDlAddress1(string DeptCode)
-       {
-          
-       }
-
-
-
-  
   
         private void BindDeptUserAddress1()
         {
@@ -2302,23 +2268,17 @@ namespace mms.Plan
 
         }
 
-        private void BindDDlUserInfo1(string Dept_Id)
-        {
-            RadComboBox_User1.ClearSelection();
-            string strSQL = "SELECT * FROM [Sys_UserInfo_PWD] where Dept='" + Dept_Id + "'";
-            DataTable dt = DBI.Execute(strSQL, true);
-            RadComboBox_User1.DataSource = dt;
-            RadComboBox_User1.DataTextField = "UserName";
-            RadComboBox_User1.DataValueField = "Id";
-            RadComboBox_User1.DataBind();
-        }
         protected void RadComboBox_Dept_SelectedIndexChanged1(object sender, RadComboBoxSelectedIndexChangedEventArgs e)
         {
-            if (RadComboBox_Dept.SelectedValue != "0")
+            if (RadComboBox_Dept1.SelectedValue != "0")
             {
-                BindDDlUserInfo1(RadComboBox_Dept.SelectedValue);
-
-                //Get_Sys_DeptEnumByUID(RadComboBox_Dept.SelectedValue);
+                RadComboBox_User1.ClearSelection();
+                string strSQL = "SELECT * FROM [Sys_UserInfo_PWD] where Dept='" + RadComboBox_Dept1.SelectedValue + "'";
+                DataTable dt = DBI.Execute(strSQL, true);
+                RadComboBox_User1.DataSource = dt;
+                RadComboBox_User1.DataTextField = "UserName";
+                RadComboBox_User1.DataValueField = "Id";
+                RadComboBox_User1.DataBind();
             }
         }
         #endregion

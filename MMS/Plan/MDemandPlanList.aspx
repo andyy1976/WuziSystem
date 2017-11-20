@@ -59,13 +59,13 @@
                 <AjaxSettings>
                     <telerik:AjaxSetting AjaxControlID="RadGrid_MDemandPlanList">
                         <UpdatedControls>
-                            <telerik:AjaxUpdatedControl ControlID="RadGrid_MDemandPlanList" LoadingPanelID="RadAjaxLoadingPanelLoading" />
+                            <telerik:AjaxUpdatedControl ControlID="RadGrid_MDemandPlanList" LoadingPanelID="RadAjaxLoadingPanel1" />
                             <telerik:AjaxUpdatedControl ControlID="RadNotificationAlert" />
                         </UpdatedControls>
                     </telerik:AjaxSetting>
                     <telerik:AjaxSetting AjaxControlID="RadBtn_Search">
                         <UpdatedControls>
-                            <telerik:AjaxUpdatedControl ControlID="RadGrid_MDemandPlanList" LoadingPanelID="RadAjaxLoadingPanelLoading" />
+                            <telerik:AjaxUpdatedControl ControlID="RadGrid_MDemandPlanList" LoadingPanelID="RadAjaxLoadingPanel1" />
                             <telerik:AjaxUpdatedControl ControlID="span_hbxqCode" />
                             <telerik:AjaxUpdatedControl ControlID="span_model" />
                             <telerik:AjaxUpdatedControl ControlID="span_listNo" />
@@ -74,7 +74,7 @@
                     </telerik:AjaxSetting>
                 </AjaxSettings>
             </telerik:RadAjaxManager>
-            <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanelLoading" runat="server"></telerik:RadAjaxLoadingPanel>
+            <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" runat="server"></telerik:RadAjaxLoadingPanel>
             <telerik:RadGrid ID="RadGrid_MDemandPlanList" runat="server" AllowPaging="True" DataKeyNames="ID" Culture="zh-CN" GroupPanelPosition="Top" PageSize="10" 
                 OnNeedDataSource="RadGrid_MDemandPlanList_NeedDataSource">
                     <ExportSettings HideStructureColumns="true" ExportOnlyData="true" IgnorePaging="false" OpenInNewWindow="true">
@@ -147,7 +147,7 @@
                 </MasterTableView>
             </telerik:RadGrid>
             <telerik:RadNotification ID="RadNotificationAlert" runat="server" Text="" Position="Center"
-                AutoCloseDelay="4000" Width="240" Height="90" Title="提示" EnableRoundedCorners="true"  >
+                AutoCloseDelay="4000" Width="240" Height="90" Title="提示" EnableRoundedCorners="true">
             </telerik:RadNotification>
         </div>
         <div class="divSiteMap add_divSiteMap" style="clear: both; width: 100%; " runat="server" id="divListTitle">

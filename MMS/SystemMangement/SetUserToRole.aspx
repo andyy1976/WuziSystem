@@ -17,7 +17,7 @@
                  <%--<AjaxSettings>
                     <telerik:AjaxSetting AjaxControlID="rcob_user">
                         <UpdatedControls>
-                            <telerik:AjaxUpdatedControl ControlID="rcob_role" LoadingPanelID="RadAjaxLoadingPanelLoading" />
+                            <telerik:AjaxUpdatedControl ControlID="rcob_role" LoadingPanelID="RadAjaxLoadingPanel1" />
                             <telerik:AjaxUpdatedControl ControlID="RadNotificationAlert" />
                         </UpdatedControls>
                     </telerik:AjaxSetting>

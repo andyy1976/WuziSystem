@@ -18,39 +18,34 @@
         <telerik:RadSkinManager runat="server" Skin="Silk"></telerik:RadSkinManager>
         <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server">
             <AjaxSettings>
+          	  	  	    <telerik:AjaxSetting AjaxControlID="RadAjaxManager1">
+           			        <UpdatedControls>
+                	    <telerik:AjaxUpdatedControl ControlID="RadGrid_MDemandMergelist" LoadingPanelID="RadAjaxLoadingPanel1" />
+           				    </UpdatedControls>
+          			    </telerik:AjaxSetting>
                 <telerik:AjaxSetting AjaxControlID="RadGrid_MDemandMergelist">
                     <UpdatedControls>
-                        <telerik:AjaxUpdatedControl ControlID="RadGrid_MDemandMergelist" LoadingPanelID="RadAjaxLoadingPanelLoading" />
+                        <telerik:AjaxUpdatedControl ControlID="RadGrid_MDemandMergelist" LoadingPanelID="RadAjaxLoadingPanel1" />
                         <telerik:AjaxUpdatedControl ControlID="RadNotificationAlert" />
                     </UpdatedControls>
                 </telerik:AjaxSetting>
                 <telerik:AjaxSetting AjaxControlID="RadBtn_Search">
                     <UpdatedControls>
-                        <telerik:AjaxUpdatedControl ControlID="RadGrid_MDemandMergelist" LoadingPanelID="RadAjaxLoadingPanelLoading" />
-                        <telerik:AjaxUpdatedControl ControlID="span_hbxqCode" />
-                        <telerik:AjaxUpdatedControl ControlID="span_model" />
-                        <telerik:AjaxUpdatedControl ControlID="span_listNo" />
+                        <telerik:AjaxUpdatedControl ControlID="RadGrid_MDemandMergelist" LoadingPanelID="RadAjaxLoadingPanel1" />
+                        <telerik:AjaxUpdatedControl ControlID="RadNotificationAlert" />
                     </UpdatedControls>
                 </telerik:AjaxSetting>
                 <telerik:AjaxSetting AjaxControlID="RB_Submit">
                     <UpdatedControls>
-                        <telerik:AjaxUpdatedControl ControlID="RadGrid_MDemandMergelist" LoadingPanelID="RadAjaxLoadingPanelLoading" />
+                        <telerik:AjaxUpdatedControl ControlID="RadGrid_MDemandMergelist" LoadingPanelID="RadAjaxLoadingPanel1" />
                         <telerik:AjaxUpdatedControl ControlID="RadNotificationAlert" />
                     </UpdatedControls>
                 </telerik:AjaxSetting>
             </AjaxSettings>
         </telerik:RadAjaxManager>
-        <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanelLoading" runat="server"></telerik:RadAjaxLoadingPanel>
+        <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" runat="server" Skin="Default"  MinDisplayTime="0"></telerik:RadAjaxLoadingPanel>
         <telerik:RadCodeBlock runat="server">
             <script type="text/javascript">
-                function CloseRadWindow(args) {
-                    var oWindow = null;
-                    if (window.radWindow) oWindow = window.radWindow;
-                    else if (window.frameElement.radWindow) oWindow = window.frameElement.radWindow;
-                    var oArg = new Object();
-                    oWindow.BrowserWindow.refreshGrid(args);
-                    var radalert = $find("<%=RadNotificationAlert.ClientID%>");
-                }
                 function CloseWindow1(sender,args){
                     var oWindow = null;
                     if (window.radWindow) oWindow = window.radWindow;
@@ -72,19 +67,8 @@
                 }
             </script>
         </telerik:RadCodeBlock>
-        <div style="position:fixed; right:0px; top:0px;">
-            <telerik:RadButton ID="BtnClose" runat="server" Text="关闭" AutoPostBack="false" OnClientClicking="CloseWindow1" CssClass="floatright"></telerik:RadButton>
-        </div>
-        <asp:HiddenField ID="HiddenField" runat="server" Value="物资需求-->物资需求清单数据合并" ClientIDMode="Static" />
         <div style="width: 100%; float: left;">
             <div class="divContant" style="margin-top: 0px;">
-                <div class="divSiteMap add_divSiteMap" style="clear: both; width: 100%;">
-                    <div style="float: left; height: 40px; line-height: 0px;">
-                        <h3 style="font-weight: bold">物资需求清单数据</h3>
-                        
-                    </div>
-                    <div style="width: 100%; height: 0px; border: solid #000 1px; margin: 5px 0; clear: both;"></div>
-                </div>
                 <div class="divSiteMap" style="width: 100%; float: none; height: 30px; border-bottom-style: solid; border-bottom-width: 0px;">
                     <label style="margin-left: 10px; float: left;color:red;">型号：</label><span id="span_model" style="float: left;color:red;" runat="server"></span>
                     <label style="margin-left: 50px; float: left">基准物资材料清单号：</label><span id="span_listNo" style="float: left;" runat="server"></span>
@@ -92,19 +76,20 @@
     
                 </div>
                 <div class="divViewPanel">
-                    <telerik:RadGrid ID="RadGrid_MDemandMergelist" runat="server" DataKeyNames="ID" Culture="zh-CN"
-                        GroupPanelPosition="Top" AllowMultiRowSelection="true" 
-                         AllowPaging="true" PageSize="20" PagerStyle-AlwaysVisible="True"
-                        OnItemDataBound="RadGrid_MDemandMergelist_ItemDataBound" OnNeedDataSource="RadGrid_MDemandMergelist_NeedDataSource">
-                      <AlternatingItemStyle HorizontalAlign="Center" />
-                    <ItemStyle HorizontalAlign="Center" />
-                    <HeaderStyle HorizontalAlign="Center" Font-Size="13px" />
-                    <CommandItemStyle Font-Bold="true" Font-Size="16px" HorizontalAlign="Center" Height="40px" />
-                        <ClientSettings EnableRowHoverStyle="true" >
-                            <Selecting AllowRowSelect="true" />
-                            <Scrolling AllowScroll="True" UseStaticHeaders="True" ScrollHeight="260px"></Scrolling>
-                        </ClientSettings>
-                        <ExportSettings HideStructureColumns="true" ExportOnlyData="true" />
+                <telerik:RadGrid ID="RadGrid_MDemandMergelist" runat="server" DataKeyNames="ID" Culture="zh-CN" GroupPanelPosition="Top"
+                    OnNeedDataSource="RadGrid_MDemandMergelist_NeedDataSource" OnItemDataBound="RadGrid_MDemandMergelist_ItemDataBound" 
+                AllowPaging="true" PageSize="20" PagerStyle-AlwaysVisible="True" AllowSorting="true" AllowMultiRowSelection="True" AutoGenerateColumns="False">
+                <AlternatingItemStyle HorizontalAlign="Center" />
+                <ItemStyle Font-Size="12px" HorizontalAlign="Center" />
+                <HeaderStyle Font-Size="13px" HorizontalAlign="Center"/>
+                <CommandItemStyle Font-Bold="true" Font-Size="16px" HorizontalAlign="Center" Height="40px" />
+                <ClientSettings Selecting-AllowRowSelect="true"  EnablePostBackOnRowClick="true" EnableRowHoverStyle="true">
+                    <Selecting AllowRowSelect="true" />
+                    <Scrolling AllowScroll="True" UseStaticHeaders="True" SaveScrollPosition="true" FrozenColumnsCount="3" ScrollHeight="600px"></Scrolling>
+                </ClientSettings>
+                <ExportSettings HideStructureColumns="true" ExportOnlyData="true" IgnorePaging="false" OpenInNewWindow="true">
+                       <Pdf  DefaultFontFamily="Arial Unicode MS" />
+                </ExportSettings>
                         <MasterTableView AutoGenerateColumns="False" DataKeyNames="ID,MaterialDept" PagerStyle-AlwaysVisible="true">
                             <CommandItemSettings ShowExportToExcelButton="false" ShowAddNewRecordButton="false" ShowRefreshButton="false" />
                             <Columns>
@@ -172,14 +157,15 @@
                                         </telerik:RadComboBox>
                                     </ItemTemplate>
                                 </telerik:GridTemplateColumn>
-
-                
-                      
-                                 <telerik:GridTemplateColumn HeaderText="用途"  UniqueName="Use_Des"
-                                     HeaderStyle-width="80px" ItemStyle-Width="80px">
+                                <telerik:GridTemplateColumn HeaderText="用途" HeaderStyle-HorizontalAlign="Center" UniqueName="Use_Des"  HeaderStyle-width="90px" ItemStyle-Width="90px">
                                     <HeaderStyle HorizontalAlign="Center"></HeaderStyle>
                                     <ItemTemplate>
-                                        <telerik:RadTextBox ID="RTB_Use_Des" runat="server" Width="50" AutoPostBack="true" MaxLength="20" EmptyMessage="无" OnTextChanged="RTB_Use_Des_TextChanged"></telerik:RadTextBox>
+                                        <telerik:RadComboBox ID="RadComboBoxUseDes" runat="server" Width="80px" AutoPostBack="true"
+                                            OnSelectedIndexChanged="RadComboBoxUseDes_SelectedIndexChanged"
+                                            Culture="zh-CN" DataSourceID="SqlDataSourceUseDes" DataTextField="DICT_Name" DataValueField="DICT_Name">
+                                            <Items>
+                                            </Items>
+                                        </telerik:RadComboBox>
                                     </ItemTemplate>
                                 </telerik:GridTemplateColumn>
                              
@@ -211,13 +197,14 @@
                                         <telerik:RadTextBox ID="RTB_MANUFACTURER" runat="server" Width="80px" AutoPostBack="true" OnTextChanged="RTB_MANUFACTURER_TextChanged"></telerik:RadTextBox>
                                     </ItemTemplate>
                                 </telerik:GridTemplateColumn>
-                                <telerik:GridBoundColumn DataField="DemandNumSum" HeaderText="共计需求<br />数量(kg)" SortExpression="DemandNumSum" UniqueName="DemandNumSum" ItemStyle-HorizontalAlign="Right"
+                                <telerik:GridBoundColumn DataField="DemandNumSum" HeaderText="需求质量" SortExpression="DemandNumSum" UniqueName="DemandNumSum" 
                                      HeaderStyle-width="80px" ItemStyle-Width="60px">
                                 </telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn DataField="NumCasesSum" HeaderText="共计需求<br />件数" SortExpression="NumCasesSum" UniqueName="NumCasesSum" ItemStyle-HorizontalAlign="Right"
+                                <telerik:GridBoundColumn DataField="NumCasesSum" HeaderText="需求件数" SortExpression="NumCasesSum" UniqueName="NumCasesSum" 
                                      HeaderStyle-width="80px" ItemStyle-Width="60px">
                                 </telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn DataField="stage1" FilterControlAltText="Filter stage1 column" HeaderText="研制<br />阶段" SortExpression="stage1" UniqueName="stage1">
+                                <telerik:GridBoundColumn DataField="stage1" HeaderText="研制阶段" SortExpression="stage1" UniqueName="stage1"  HeaderStyle-width="80px"
+                                     ItemStyle-Width="60px">
                                 </telerik:GridBoundColumn>
                                 <telerik:GridBoundColumn DataField="PackId" Visible="false" UniqueName="PackId"></telerik:GridBoundColumn>
                                 <telerik:GridBoundColumn DataField="TaskId" Visible="false" UniqueName="TaskId"></telerik:GridBoundColumn>
@@ -267,6 +254,8 @@
                         SelectCommand="select * from GetBasicdata_T_Item where DICT_CLASS='CUX_DM_URGENCY_LEVEL'"></asp:SqlDataSource>
                     <asp:SqlDataSource ID="SqlDataSourceSecretLevel" runat="server" ConnectionString='<%$ ConnectionStrings:MaterialManagerSystemConnectionString %>'
                         SelectCommand="SELECT * FROM [Sys_SecretLevel] WHERE ([Is_Del] = 0)"></asp:SqlDataSource>
+                    <asp:SqlDataSource ID="SqlDataSourceUseDes" runat="server" ConnectionString='<%$ ConnectionStrings:MaterialManagerSystemConnectionString %>'
+                        SelectCommand="select * from GetBasicdata_T_Item where DICT_CLASS='CUX_DM_USAGE'"></asp:SqlDataSource>
                     <telerik:RadButton ID="RB_Submit" runat="server" Text="提交物流中心" OnClick="RB_Submit_Click" OnClientClicking="confirmRadWindow"></telerik:RadButton>
                 </div>
 
@@ -276,7 +265,8 @@
                     </div>
                 </div>
                 <div style="width: 100%; float: left; margin-top: 10px;" runat="server" id="divListContent">
-                    <telerik:RadGrid ID="RadGrid_ChangeRecord" runat="server" AllowPaging="True" PageSize="20" PagerStyle-AlwaysVisible="true" DataKeyNames="MDMLID" Culture="zh-CN" GroupPanelPosition="Top" 
+                    <telerik:RadGrid ID="RadGrid_ChangeRecord" runat="server" AllowPaging="True" PageSize="20" PagerStyle-AlwaysVisible="true" 
+                        DataKeyNames="MDMLID" Culture="zh-CN" GroupPanelPosition="Top" 
                         OnNeedDataSource="RadGrid_ChangeRecord_NeedDataSource">
                         <HeaderStyle HorizontalAlign="Center" Font-Size="13px" />
                         <ClientSettings EnableRowHoverStyle="true" >
@@ -355,7 +345,7 @@
             </ContentTemplate>
         </telerik:RadWindow>
         <telerik:RadNotification ID="RadNotificationAlert" runat="server" Text="" Position="Center"
-            AutoCloseDelay="4000" Width="240" Title="提示" EnableRoundedCorners="true"  >
+            AutoCloseDelay="4000" Width="240" Title="提示" EnableRoundedCorners="true">
         </telerik:RadNotification>
     </form>
 </body>

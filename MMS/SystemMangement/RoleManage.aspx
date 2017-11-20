@@ -42,13 +42,13 @@
                 <AjaxSettings>
                     <telerik:AjaxSetting AjaxControlID="RadGrid_RoleManage">
                         <UpdatedControls>
-                            <telerik:AjaxUpdatedControl ControlID="RadGrid_RoleManage" LoadingPanelID="RadAjaxLoadingPanelLoading" />
+                            <telerik:AjaxUpdatedControl ControlID="RadGrid_RoleManage" LoadingPanelID="RadAjaxLoadingPanel1" />
                             <telerik:AjaxUpdatedControl ControlID="RadNotificationAlert" />
                         </UpdatedControls>
                     </telerik:AjaxSetting>
                 </AjaxSettings>
             </telerik:RadAjaxManager>
-            <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanelLoading" runat="server" Skin="Default"></telerik:RadAjaxLoadingPanel>
+            <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" runat="server" Skin="Default"></telerik:RadAjaxLoadingPanel>
             <telerik:RadGrid ID="RadGrid_RoleManage" runat="server" AllowPaging="True" DataKeyNames="ID" Culture="zh-CN" GroupPanelPosition="Top" OnNeedDataSource="RadGrid_RoleManage_NeedDataSource" OnItemCommand="RadGrid_RoleManage_ItemCommand" OnItemDataBound="RadGrid_RoleManage_ItemDataBound" OnItemCreated="RadGrid_RoleManage_ItemCreated">
                 <MasterTableView AutoGenerateColumns="False" DataKeyNames="ID" CommandItemDisplay="Top">
                     <Columns>

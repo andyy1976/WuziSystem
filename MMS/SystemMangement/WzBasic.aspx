@@ -34,29 +34,37 @@
     </telerik:RadAjaxManager>
     <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" runat="server" Skin="Default"></telerik:RadAjaxLoadingPanel>
     <telerik:RadCodeBlock ID="RadCodeBlock1" runat="server">
+       <script type="text/javascript">
+                        function AlphabetOnly(sender, eventArgs) {
+                            var c = eventArgs.get_keyCode();
+                            if ((c == 13)) {
+                                eventArgs.set_cancel(true);
+                            }
+                        }
+       </script>
 	</telerik:RadCodeBlock>
     <div style="width: 100%; float:left">
         <asp:Panel runat="server" id="Panel1">
             <table id="tableMT" style="margin:0px auto;float:left">
                 <tr>
                     <td style="width:80px">物资名称：</td>
-                    <td><telerik:RadTextBox ID="RTB_Material_Name" runat="server" Width="150px" ></telerik:RadTextBox></td>
+                    <td><telerik:RadTextBox ID="RTB_Material_Name" OnKeyPress="AlphabetOnly" runat="server" Width="150px" ></telerik:RadTextBox></td>
 
                     <td style="width:80px">物资编码：</td>
-                    <td><telerik:RadTextBox ID="RTB_ItemCode" runat="server" Width="150px"></telerik:RadTextBox></td>
+                    <td><telerik:RadTextBox ID="RTB_ItemCode" runat="server" OnKeyPress="AlphabetOnly" Width="150px"></telerik:RadTextBox></td>
                     <td style="width:80px">物资牌号：</td>
-                    <td><telerik:RadTextBox ID="RTB_Material_Paihao" runat="server" Width="150px"></telerik:RadTextBox></td>
+                    <td><telerik:RadTextBox ID="RTB_Material_Paihao" runat="server" OnKeyPress="AlphabetOnly" Width="150px"></telerik:RadTextBox></td>
 
                     <td style="width:80px">物资规格:</td>
-                    <td><telerik:RadTextBox ID="RTB_Material_Guige" runat="server" Width="150px"></telerik:RadTextBox></td>
+                    <td><telerik:RadTextBox ID="RTB_Material_Guige" runat="server" OnKeyPress="AlphabetOnly" Width="150px"></telerik:RadTextBox></td>
 
                     <td style="width:80px">物资标准：</td>
-                    <td><telerik:RadTextBox ID="RTB_Material_Biaozhun" runat="server" Width="150px"></telerik:RadTextBox></td>
+                    <td><telerik:RadTextBox ID="RTB_Material_Biaozhun" runat="server" OnKeyPress="AlphabetOnly" Width="150px"></telerik:RadTextBox></td>
                      <td  style="width:200px" colspan="2"><telerik:RadButton ID="RB_Search" runat="server" Text="搜索" OnClick="RB_Search_Click"></telerik:RadButton></td>
 
            </tr>
                 <tr>
-                    <td style="width:120px">物资类别(一级)：</td>
+                    <td style="width:120px">物资类别：</td>
                     <td >
                         <telerik:RadDropDownList ID="RDDLMT" runat="server" AppendDataBoundItems="true" OnSelectedIndexChanged="RDDLMT_SelectedIndexChanged" AutoPostBack="true" Width="150px">
                             <Items>
@@ -64,7 +72,7 @@
                             </Items>
                         </telerik:RadDropDownList>
                     </td>
-                   
+                   <%-- 
                     <td colspan="8">
                         <div id="div1" runat="server" visible="false">
                             <table>
@@ -94,6 +102,7 @@
                         </div>
                    
                     </td>
+                     --%>
                 </tr>
             </table>
         </asp:Panel>

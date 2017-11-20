@@ -60,19 +60,19 @@
                         <AjaxSettings>
                             <telerik:AjaxSetting AjaxControlID="RadGrid_DeptManage">
                                 <UpdatedControls>
-                                    <telerik:AjaxUpdatedControl ControlID="RadGrid_DeptManage" LoadingPanelID="RadAjaxLoadingPanelLoading" />
+                                    <telerik:AjaxUpdatedControl ControlID="RadGrid_DeptManage" LoadingPanelID="RadAjaxLoadingPanel1" />
                                     <telerik:AjaxUpdatedControl ControlID="RadNotificationAlert" />
                                 </UpdatedControls>
                             </telerik:AjaxSetting>
                             <telerik:AjaxSetting AjaxControlID="RadAjaxManager1">
                                 <UpdatedControls>
-                                    <telerik:AjaxUpdatedControl ControlID="RadGrid_DeptManage" LoadingPanelID="RadAjaxLoadingPanelLoading" />
+                                    <telerik:AjaxUpdatedControl ControlID="RadGrid_DeptManage" LoadingPanelID="RadAjaxLoadingPanel1" />
                                     <telerik:AjaxUpdatedControl ControlID="SqlDataSourceAddress" />
                                 </UpdatedControls>
                             </telerik:AjaxSetting>
                         </AjaxSettings>
                     </telerik:RadAjaxManager>
-                    <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanelLoading" runat="server" Skin="Default"></telerik:RadAjaxLoadingPanel>
+                    <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" runat="server" Skin="Default"></telerik:RadAjaxLoadingPanel>
 
                     <telerik:RadGrid ID="RadGrid_DeptManage" runat="server" AllowPaging="True" PageSize="20" PagerStyle-AlwaysVisible="True"
                         DataKeyNames="ID" Culture="zh-CN" GroupPanelPosition="Top"

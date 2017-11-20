@@ -106,8 +106,7 @@ namespace mms.Plan
                 string PlanCode = table.Rows[e.Item.DataSetIndex]["PlanCode"].ToString();
                 string DraftCode = table.Rows[e.Item.DataSetIndex]["DraftCode"].ToString();
                 string draftid = table.Rows[e.Item.DataSetIndex]["draftid"].ToString();
-               // Response.Redirect("~/Plan/MDemandDetails.aspx?PackId=" + ID + "&DraftCode=" + DraftCode + "&draftid=" + draftid + "&Model=" + Model + "&PlanCode=" + PlanCode + "&inFlag=2");
-                Response.Redirect("~/Plan/MDemandDetailsTreeList.aspx?PackId=" + ID + "&DraftCode=" + DraftCode + "&draftid=" + draftid + "&Model=" + Model + "&PlanCode=" + PlanCode + "&inFlag=2");
+                Response.Redirect("~/Plan/MDemandDetails.aspx?PackId=" + ID + "&DraftCode=" + DraftCode + "&draftid=" + draftid + "&Model=" + Model + "&PlanCode=" + PlanCode + "&inFlag=2");
             }
 
             if (e.CommandName == "Synchron")
@@ -169,7 +168,7 @@ namespace mms.Plan
             //{
             //    DataTable table = GridSource;
             //    GridDataItem dataitem = e.Item as GridDataItem;
-            //    if (table.Rows[e.Item.DataSetIndex]["lstime"].ToString() == "未同步")
+            //    if (table.Rows[e.Item.DataSetIndex]["lstime"].ToString() == "未导入")
             //    {
             //        e.Item.FindControl("RadButtonDetail").Visible = false;
             //        RadButton btn = e.Item.FindControl("RadButtonSynchron") as RadButton;

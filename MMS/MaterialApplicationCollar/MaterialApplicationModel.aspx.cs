@@ -124,10 +124,21 @@ namespace mms.MaterialApplicationCollar
             string ItemCode1 = RTB_ItemCode1.Text.Trim();
             string startTime = RDPStart.SelectedDate.ToString();
             string endTime = RDPEnd.SelectedDate.ToString();
+            string applicant = RTB_Applicant.Text.Trim();
+            string app_Depart = RTB_App_Depart.Text.Trim();
             Session["StrWhere"] = "";
             if (taskCode != "")
             {
                 Session["StrWhere"] += " and P_Pack_Task.TaskCode like '%" + taskCode + "%'";
+            }
+
+            if (applicant != "")
+            {
+                Session["StrWhere"] += " and REQUESTER like '%" + applicant + "%'";
+            }
+            if (app_Depart != "")
+            {
+                Session["StrWhere"] += " and MaterialApplication.Dept like '%" + app_Depart + "%'";
             }
             if (DrawingNo != "")
             {

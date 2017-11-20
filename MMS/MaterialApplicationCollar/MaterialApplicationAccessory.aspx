@@ -1,5 +1,4 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/index.Master" AutoEventWireup="true" CodeBehind="MaterialApplicationAccessory.aspx.cs" Inherits="mms.MaterialApplicationCollar.MaterialApplicationAccessory" %>
-
 <%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link type="text/css" rel="stylesheet" href="../Styles/Plan.css" />
@@ -16,7 +15,8 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:HiddenField ID="HiddenField" runat="server" Value="物资申请-->车间备料物资申请" ClientIDMode="Static" />
-    <telerik:RadScriptManager ID="RadScriptManager1" runat="server" AsyncPostBackTimeout="1800"></telerik:RadScriptManager>
+    <telerik:RadScriptManager ID="RadScriptManager1" runat="server" AsyncPostBackTimeout="1800">
+	</telerik:RadScriptManager>
     <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server"  OnAjaxRequest="RadAjaxManager1_AjaxRequest">
         <ClientEvents OnRequestStart="onRequestStart" />
         <AjaxSettings>
@@ -46,6 +46,13 @@
     <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" runat="server" Skin="Default"></telerik:RadAjaxLoadingPanel>
     <telerik:RadCodeBlock runat="server">
         <script type="text/javascript">
+            function AlphabetOnly(sender, eventArgs) {
+                var c = eventArgs.get_keyCode();
+                if ((c == 13)) {
+                    eventArgs.set_cancel(true);
+                }
+            }
+
             function refreshGrid(arg) {
                 if (!arg) {
                     $find("<%= RadAjaxManager1.ClientID %>").ajaxRequest("Rebind");
@@ -75,20 +82,20 @@
             <table>
                 <tr>
                     <td>需求行号：</td>
-                    <td><telerik:RadTextBox ID="RTB_ID" runat="server" Width="100px"></telerik:RadTextBox></td>
+                    <td><telerik:RadTextBox ID="RTB_ID" runat="server" OnKeyPress="AlphabetOnly" Width="100px"></telerik:RadTextBox></td>
                     <td>型号：</td>
-                    <td><telerik:RadTextBox ID="RTB_Project" runat="server" Width="100px"></telerik:RadTextBox></td>
+                    <td><telerik:RadTextBox ID="RTB_Project" runat="server" OnKeyPress="AlphabetOnly" Width="100px"></telerik:RadTextBox></td>
                     <td>图号：</td>
-                    <td><telerik:RadTextBox ID="RTB_Drawing_No" runat="server" Width="100px"></telerik:RadTextBox></td>
+                    <td><telerik:RadTextBox ID="RTB_Drawing_No" runat="server" OnKeyPress="AlphabetOnly" Width="100px"></telerik:RadTextBox></td>
                     <td>任务号：</td>
-                    <td><telerik:RadTextBox ID="RTB_TaskCode" runat="server" Width="100px"></telerik:RadTextBox></td>
+                    <td><telerik:RadTextBox ID="RTB_TaskCode" runat="server" OnKeyPress="AlphabetOnly" Width="100px"></telerik:RadTextBox></td>
 
                     <td>物资名称：</td>
-                    <td><telerik:RadTextBox ID="RTB_Material_Name" runat="server" Width="100px"></telerik:RadTextBox></td>
+                    <td><telerik:RadTextBox ID="RTB_Material_Name" runat="server" OnKeyPress="AlphabetOnly" Width="100px"></telerik:RadTextBox></td>
                     <td>物资编码：</td>
-                    <td><telerik:RadTextBox ID="RTB_ItemCode1" runat="server" Width="100px"></telerik:RadTextBox></td>
+                    <td><telerik:RadTextBox ID="RTB_ItemCode1" runat="server" OnKeyPress="AlphabetOnly" Width="100px"></telerik:RadTextBox></td>
                     <td>申请时间：</td>
-                    <td><telerik:RadDatePicker ID="RDPStart" runat="server" Width="100px"></telerik:RadDatePicker>
+                    <td><telerik:RadDatePicker ID="RDPStart" runat="server"  Width="100px"></telerik:RadDatePicker>
                       ～<telerik:RadDatePicker ID="RDPEnd" runat="server" Width="100px"></telerik:RadDatePicker></td>
                     <td><telerik:RadButton ID="RB_Search" runat="server" Text="搜索" OnClick="RB_Search_Click"></telerik:RadButton></td>
                 </tr>
@@ -140,8 +147,8 @@
                         <telerik:GridBoundColumn DataField="Rough_Size" HeaderText="尺寸" UniqueName="Rough_Size" ColumnGroupName="Material" ItemStyle-Width="70px" HeaderStyle-Width="70px"></telerik:GridBoundColumn>
                       </Columns>
                     <CommandItemTemplate>
+                        <telerik:RadButton ID="RB_FillInApp" runat="server" Text="填写申请单" Font-Bold="true" OnClientClicking="ShowWindow" CssClass="floatleft" AutoPostBack="true"></telerik:RadButton>
                         请领物资信息列表--车间备料
-                        <telerik:RadButton ID="RB_FillInApp" runat="server" Text="填写申请单" OnClientClicking="ShowWindow" CssClass="floatright" AutoPostBack="true"></telerik:RadButton>
 				        <telerik:RadButton ID="RadButton_ExportExcel" runat="server" Text="导出Excel" Font-Bold="true" CommandName="ExportExcel" OnClick="RadButton_ExportExcel_Click" CssClass="floatright"></telerik:RadButton>
                         <telerik:RadButton ID="RadButton_ExportWord"  runat="server" Text="导出Word"  Font-Bold="true" CommandName="ExportWord" Visible="false"  OnClick="RadButton_ExportWord_Click"  CssClass="floatright"></telerik:RadButton>
                         <telerik:RadButton ID="RadButton_ExportPDF"   runat="server" Text="导出PDF"   Font-Bold="true" CommandName="ExportPDF" Visible="false"   OnClick="RadButton_ExportPdf_Click"   CssClass="floatright"></telerik:RadButton>

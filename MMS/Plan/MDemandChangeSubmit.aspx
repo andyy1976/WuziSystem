@@ -34,9 +34,6 @@
             <div style="width:100%; height:0px; border:solid #000 1px; margin:5px 0; clear:both;"></div>
             <div style="clear:both; overflow:hidden"></div>
         </div>
-        <%--<div class="divSiteMap" style="width:100%;float:none;height:30px;border-bottom-style: solid;border-bottom-width: 0px;">
-            <label style="margin-left:10px;float:left">型号：</label><span id="span_model" style="float:left;" runat="server"></span>
-        </div>--%>
         <div class="divViewPanel" style="width:100%;float:none;">
             
             <telerik:RadScriptManager ID="RadScriptManager1" runat="server">
@@ -69,20 +66,18 @@
                 <AjaxSettings>
                     <telerik:AjaxSetting AjaxControlID="RadGrid_MDemandMergelist">
                         <UpdatedControls>
-                            <telerik:AjaxUpdatedControl ControlID="RadGrid_MDemandMergelist" LoadingPanelID="RadAjaxLoadingPanelLoading" />
+                            <telerik:AjaxUpdatedControl ControlID="RadGrid_MDemandMergelist" LoadingPanelID="RadAjaxLoadingPanel1" />
                             <telerik:AjaxUpdatedControl ControlID="RadNotificationAlert" />
                         </UpdatedControls>
                     </telerik:AjaxSetting>
                     <telerik:AjaxSetting AjaxControlID="RadBtn_Search">
                         <UpdatedControls>
-                            <telerik:AjaxUpdatedControl ControlID="RadGrid_MDemandMergelist" LoadingPanelID="RadAjaxLoadingPanelLoading" />
-                            <telerik:AjaxUpdatedControl ControlID="span_model" />
-                            <telerik:AjaxUpdatedControl ControlID="span_listNo" />
+                            <telerik:AjaxUpdatedControl ControlID="RadGrid_MDemandMergelist" LoadingPanelID="RadAjaxLoadingPanel1" />
                         </UpdatedControls>
                     </telerik:AjaxSetting>
                 </AjaxSettings>
             </telerik:RadAjaxManager>
-            <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanelLoading" runat="server"></telerik:RadAjaxLoadingPanel>
+            <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" runat="server"></telerik:RadAjaxLoadingPanel>
             <telerik:RadGrid ID="RadGrid_MDemandMergelist" runat="server" AllowPaging="false" DataKeyNames="ID" Culture="zh-CN" 
                 GroupPanelPosition="Top" PageSize="10" AllowMultiRowSelection="true" skin="Silk"
                 OnNeedDataSource="RadGrid_MDemandMergelist_NeedDataSource">
@@ -128,7 +123,7 @@
                 </MasterTableView>
             </telerik:RadGrid>
             <telerik:RadNotification ID="RadNotificationAlert" runat="server" Text="" Position="Center"
-                AutoCloseDelay="4000" Width="240" Title="提示" EnableRoundedCorners="true"  >
+                AutoCloseDelay="4000" Width="240" Title="提示" EnableRoundedCorners="true">
             </telerik:RadNotification>
             <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString='<%$ ConnectionStrings:MaterialManagerSystemConnectionString %>' SelectCommand="SELECT [KeyWordCode], [KeyWord] FROM [Sys_Dict] WHERE ([TypeID] = @TypeID)">
                 <SelectParameters>

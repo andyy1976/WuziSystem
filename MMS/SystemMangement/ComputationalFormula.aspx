@@ -25,13 +25,13 @@
                         <AjaxSettings>
                             <telerik:AjaxSetting AjaxControlID="RadGrid_ComputationalFormula">
                                 <UpdatedControls>
-                                    <telerik:AjaxUpdatedControl ControlID="RadGrid_ComputationalFormula" LoadingPanelID="RadAjaxLoadingPanelLoading" />
+                                    <telerik:AjaxUpdatedControl ControlID="RadGrid_ComputationalFormula" LoadingPanelID="RadAjaxLoadingPanel1" />
                                     <telerik:AjaxUpdatedControl ControlID="RadNotificationAlert" />
                                 </UpdatedControls>
                             </telerik:AjaxSetting>
                         </AjaxSettings>
                     </telerik:RadAjaxManager>
-                    <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanelLoading" runat="server" Skin="Default"></telerik:RadAjaxLoadingPanel>
+                    <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" runat="server" Skin="Default"></telerik:RadAjaxLoadingPanel>
 
                     <telerik:RadGrid ID="RadGrid_ComputationalFormula" runat="server" AllowPaging="True" DataKeyNames="ID" GroupPanelPosition="Top"
                         OnNeedDataSource="RadGrid_ComputationalFormula_NeedDataSource" OnItemCommand="RadGrid_ComputationalFormula_ItemCommand">                       

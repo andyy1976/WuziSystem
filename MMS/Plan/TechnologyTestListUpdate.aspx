@@ -65,7 +65,7 @@
                     <AjaxSettings>
                         <telerik:AjaxSetting AjaxControlID="RadGrid_TechnologyTestList">
                             <UpdatedControls>
-                                <telerik:AjaxUpdatedControl ControlID="RadGrid_TechnologyTestList" LoadingPanelID="RadAjaxLoadingPanelLoading" />
+                                <telerik:AjaxUpdatedControl ControlID="RadGrid_TechnologyTestList" LoadingPanelID="RadAjaxLoadingPanel1" />
                                 <telerik:AjaxUpdatedControl ControlID="RadNotificationAlert" />
                             </UpdatedControls>
                         </telerik:AjaxSetting>
@@ -94,13 +94,13 @@
                         </telerik:AjaxSetting>
                         <%--<telerik:AjaxSetting AjaxControlID="RadBtnSave">
                             <UpdatedControls>
-                                <telerik:AjaxUpdatedControl ControlID="Panel1" LoadingPanelID="RadAjaxLoadingPanelLoading" />
+                                <telerik:AjaxUpdatedControl ControlID="Panel1" LoadingPanelID="RadAjaxLoadingPanel1" />
                                 <telerik:AjaxUpdatedControl ControlID="RadNotificationAlert" />
                             </UpdatedControls>
                         </telerik:AjaxSetting>--%>
                     </AjaxSettings>
                 </telerik:RadAjaxManager>
-                <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanelLoading" runat="server"></telerik:RadAjaxLoadingPanel>
+                <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" runat="server"></telerik:RadAjaxLoadingPanel>
                 <asp:HiddenField ID="HiddenField" runat="server" Value="" ClientIDMode="Static" />
             </div>
             <div class="divContant">
@@ -256,7 +256,8 @@
                                     </td>
                                     <td class="technology_Div_detailcontent_title">用途：</td>
                                     <td class="technology_Div_detailcontent_content">
-                                        <telerik:RadTextBox ID="RTB_UseDes" runat="server" MaxLength="30" Width="150"></telerik:RadTextBox>
+                                            <telerik:RadComboBox ID="RadComboBoxUseDes" runat="server" Width="150">
+                                            </telerik:RadComboBox>
                                     </td>
                                 </tr>
                                 <tr>

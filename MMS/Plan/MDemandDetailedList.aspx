@@ -27,13 +27,13 @@
                 <AjaxSettings>
                     <telerik:AjaxSetting AjaxControlID="RadGrid_MDemandDetailedList">
                         <UpdatedControls>
-                            <telerik:AjaxUpdatedControl ControlID="RadGrid_MDemandDetailedList" LoadingPanelID="RadAjaxLoadingPanelLoading" />
+                            <telerik:AjaxUpdatedControl ControlID="RadGrid_MDemandDetailedList" LoadingPanelID="RadAjaxLoadingPanel1" />
                             <telerik:AjaxUpdatedControl ControlID="RadNotificationAlert" />
                         </UpdatedControls>
                     </telerik:AjaxSetting>
                 </AjaxSettings>
             </telerik:RadAjaxManager>
-            <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanelLoading" runat="server"></telerik:RadAjaxLoadingPanel>
+            <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" runat="server"></telerik:RadAjaxLoadingPanel>
                 <telerik:RadCodeBlock ID="RadCodeBlock1" runat="server">
                     <script type="text/javascript">
                         //同步窗口开始

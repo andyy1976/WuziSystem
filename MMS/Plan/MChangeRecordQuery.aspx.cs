@@ -120,13 +120,14 @@ namespace mms.Plan
         protected void GetMDemandMergeList(string strWhere)
         {
             string strSQL = " select M_Demand_Merge_List.ID, TaskCode, Drawing_No, ItemCode1, NumCasesSum, DemandNumSum, Dept, DemandDate, Submit_Date, Special_Needs, Secret_Level" +
-                " , CUX_DM_URGENCY_LEVEL.DICT_Name as UrgencyDegre,Use_Des as UseDes , M_Demand_Merge_List.Shipping_Address" +
+                " , CUX_DM_URGENCY_LEVEL.DICT_Name as UrgencyDegre, CUX_DM_USAGE.DICT_Name as UseDes , M_Demand_Merge_List.Shipping_Address" +
                 " , Column_Changed, Original_Value, Changed_Value" +
                 " , M_Demand_Merge_List.Material_Name" +
                 " , (select Top 1 USER_RCO_HEADER_NO from WriteRcoOrder_SentHeader where MDPLId = Convert(nvarchar(50),M_Change_Record.MDPID) ) as USER_RCO_HEADER_NO" +
                 " from M_Demand_Merge_List join M_Change_Record on M_Change_Record.MDMID = M_Demand_Merge_List.ID" +
                 " join Sys_DeptEnum on Sys_DeptEnum.DeptCode = M_Demand_Merge_List.MaterialDept" +
                 " left join GetBasicdata_T_Item as CUX_DM_URGENCY_LEVEL on CUX_DM_URGENCY_LEVEL.DICT_CODE = M_Demand_Merge_List.Urgency_Degre and DICT_CLASS='CUX_DM_URGENCY_LEVEL'" +
+                " left join GetBasicdata_T_Item as CUX_DM_USAGE on CUX_DM_USAGE.DICT_CODE = M_Demand_Merge_List.Use_Des and CUX_DM_USAGE.DICT_CLASS='CUX_DM_USAGE'" +
                 //" left join GetCustInfo_T_ACCT_SITE on Convert(nvarchar(50),GetCustInfo_T_ACCT_SITE.LOCATION_ID) = M_Demand_Merge_List.Shipping_Address" +
                 " where 1 = 1" + strWhere + " order by M_Change_Record.ID desc";
             DataTable dt = DBI.Execute(strSQL, true);

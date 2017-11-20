@@ -15,29 +15,37 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:HiddenField ID="HiddenField" runat="server" Value="物资需求-->需求变更" ClientIDMode="Static" />
+    <telerik:RadTabStrip ID="RadTabStrip1" runat="server" Skin="Silk" ShowBaseLine="True" >
+                <Tabs>
+                    <telerik:RadTab Text="需要提交" TabIndex="0"></telerik:RadTab>
+                    <telerik:RadTab Text="需求变更" TabIndex="1" Selected="true"></telerik:RadTab>
+                </Tabs>
+            </telerik:RadTabStrip>
     <telerik:RadScriptManager ID="RadScriptManager1" runat="server"></telerik:RadScriptManager>
     <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server" OnAjaxRequest="RadAjaxManager1_AjaxRequest">
                 <ClientEvents OnRequestStart="onRequestStart" />
         <AjaxSettings>
              <telerik:AjaxSetting AjaxControlID="RadAjaxManager1">
                 <UpdatedControls>
-                    <telerik:AjaxUpdatedControl ControlID="RadGrid1" />
-                </UpdatedControls>
-            </telerik:AjaxSetting>
-            <telerik:AjaxSetting AjaxControlID="RB_Query">
-                <UpdatedControls>
-                    <telerik:AjaxUpdatedControl ControlID="RadGrid1" />
+                    <telerik:AjaxUpdatedControl ControlID="RadGrid1" LoadingPanelID="RadAjaxLoadingPanel1" />
                 </UpdatedControls>
             </telerik:AjaxSetting>
             <telerik:AjaxSetting AjaxControlID="RadGrid1">
                 <UpdatedControls>
                     <telerik:AjaxUpdatedControl ControlID="RadGrid1" />
+                    <telerik:AjaxUpdatedControl ControlID="RadNotificationAlert" />
+                </UpdatedControls>
+            </telerik:AjaxSetting>
+            <telerik:AjaxSetting AjaxControlID="RB_Query">
+                <UpdatedControls>
+                    <telerik:AjaxUpdatedControl ControlID="RadGrid1" />
+                                <telerik:AjaxUpdatedControl ControlID="RadNotificationAlert" />                 
                 </UpdatedControls>
             </telerik:AjaxSetting>
         </AjaxSettings>
     </telerik:RadAjaxManager>
-    <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" runat="server" Skin="Default"></telerik:RadAjaxLoadingPanel>
-    <telerik:RadCodeBlock ID="RadCodeBlock1" runat="server">
+    <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" runat="server" MinDisplayTime="0"></telerik:RadAjaxLoadingPanel>  
+    <telerik:RadCodeBlock runat="server">
         <script type="text/javascript">
             function ShowWin(ID) {
                 window.radopen("/Plan/MDemandMergeListUpdate.aspx?MDMLID=" + ID, "RadWindow1");
@@ -51,28 +59,19 @@
         </script>
     </telerik:RadCodeBlock>
     <div style="width: 100%; margin: 0px auto;">
-        <div style="width:100%;">
-            <telerik:RadTabStrip ID="RadTabStrip1" runat="server" Skin="Default" ShowBaseLine ="true">
-                <Tabs>
-                    <telerik:RadTab Text="需要提交" TabIndex="0"></telerik:RadTab>
-                    <telerik:RadTab Text="需求变更" TabIndex="1" Selected="true"></telerik:RadTab>
-                </Tabs>
-            </telerik:RadTabStrip>
-        </div>
-              <div class="divSiteMap" style="width: 100%; float: none; height: 30px; border-bottom-style: solid; border-bottom-width: 0px;">
+       <div class="divSiteMap" style="width: 100%; float: left; height: 30px; border-bottom-style: solid; border-bottom-width:0px;">
                     <label style="float: left; margin-top: 0px;">型号：</label>
-                    <span id="span_model" style="font-weight:bold; width:200px;" runat="server"></span>
+                    <span id="span_model" style="font-weight:bold; color:red;width:200px;" runat="server"></span>
                     <label style="float: left; margin-top: 0px;">计划包名称：</label>
                     <span id="span_PlanName" style="font-weight:bold; width:200px;" runat="server"></span>
                     <label style="float: left; margin-top: 0px;">对应型号投产计划编号：</label>
                     <span id="span_plancode" style="font-weight:bold;width:200px;" runat="server"></span>
                     <label style="float: left">材料清单编号：</label>
                     <span id="span_DraftCode" style="font-weight:bold;width:200px;" runat="server"></span>
-                </div>
-                <div style="width: 100%; height: 0px; border: solid #000 1px; margin: 5px 0; clear: both;"></div>
+        </div>
+        
+       <div style="width: 100%; height: 0px;  border-bottom-style: solid; border-bottom-width: 1px; margin: 5px 0; clear: both;"></div>
 
-        <div style="width: 100%; margin: 0px auto;">
-            
             <table style="text-align:left;">
                 <tr>
                     <td style="text-align:right;">物资编码：</td>
@@ -112,21 +111,19 @@
                     <td><telerik:RadButton ID="RB_Query" runat="server" Text="查询" OnClick="RB_Query_Click"></telerik:RadButton></td>
                 </tr>
             </table>
-        </div>
-        <div style="width: 100%; margin-top:10px;">
             <telerik:RadGrid ID="RadGrid1" runat="server" AutoGenerateColumns="false"
-                AllowPaging="true" PageSize="20" PagerStyle-AlwaysVisible="True"
-                OnItemDataBound="RadGrid1_ItemDataBound" OnNeedDataSource="RadGrid1_NeedDataSource">
+                OnItemDataBound="RadGrid1_ItemDataBound" OnNeedDataSource="RadGrid1_NeedDataSource"
+                AllowPaging="true" PageSize="20" PagerStyle-AlwaysVisible="True">
                 <AlternatingItemStyle HorizontalAlign="Center" />
-                <ItemStyle HorizontalAlign="Center" />
-                <HeaderStyle HorizontalAlign="Center" Font-Size="13px" />
+                <ItemStyle Font-Size="12px" HorizontalAlign="Center" />
+                <HeaderStyle Font-Size="13px" HorizontalAlign="Center"/>
                 <CommandItemStyle Font-Bold="true" Font-Size="16px" HorizontalAlign="Center" Height="40px" />
-                <ClientSettings EnableRowHoverStyle="true" >
+                <ClientSettings Selecting-AllowRowSelect="true"  EnablePostBackOnRowClick="true" EnableRowHoverStyle="true">
                     <Selecting AllowRowSelect="true" />
-                    <Scrolling AllowScroll="True" UseStaticHeaders="True" FrozenColumnsCount="6" ScrollHeight="600px"></Scrolling>
+                    <Scrolling AllowScroll="True" UseStaticHeaders="True" SaveScrollPosition="true" FrozenColumnsCount="3" ScrollHeight="600px"></Scrolling>
                 </ClientSettings>
-				<ExportSettings HideStructureColumns="true" ExportOnlyData="true" IgnorePaging="false" OpenInNewWindow="true">
-                        <Pdf  DefaultFontFamily="Arial Unicode MS" />
+                <ExportSettings HideStructureColumns="true" ExportOnlyData="true" IgnorePaging="false" OpenInNewWindow="true">
+                       <Pdf  DefaultFontFamily="Arial Unicode MS" />
                 </ExportSettings>
                 <MasterTableView AutoGenerateColumns="False" DataKeyNames="ID" CommandItemDisplay="Top">
                     <Columns> 
@@ -146,33 +143,35 @@
                         <telerik:GridBoundColumn DataField="DemandNumSum" HeaderText="需求量" HeaderStyle-Width="70px" ItemStyle-Width="70px"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="Dept" HeaderText="领料部门" HeaderStyle-Width="70px" ItemStyle-Width="70px"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="Shipping_Address" HeaderText="配送地址" HeaderStyle-Width="70px" ItemStyle-Width="170px"></telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="DemandDate" HeaderText="需求时间" HeaderStyle-Width="70px" ItemStyle-Width="70px"></telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="DemandDate" HeaderText="需求时间" HeaderStyle-Width="120px" ItemStyle-Width="120px"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="Special_Needs" HeaderText="特殊需求" HeaderStyle-Width="100px" ItemStyle-Width="100px"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="UrgencyDegre" HeaderText="紧急程度" HeaderStyle-Width="70px" ItemStyle-Width="70px"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="Secret_Level" HeaderText="密级" HeaderStyle-Width="70px" ItemStyle-Width="70px"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="UseDes" HeaderText="用途" HeaderStyle-Width="100px" ItemStyle-Width="100px"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="Manufacturer" HeaderText="生产厂家" HeaderStyle-Width="100px" ItemStyle-Width="100px"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="State" HeaderText="状态" HeaderStyle-Width="70px" ItemStyle-Width="70px" Visible="false"></telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="Submit_Date" HeaderText="提交时间" HeaderStyle-Width="70px" ItemStyle-Width="70px"></telerik:GridBoundColumn>  
-                    </Columns>
-                    <CommandItemTemplate>
+                        <telerik:GridBoundColumn DataField="Submit_Date" HeaderText="提交时间" HeaderStyle-Width="120px" ItemStyle-Width="120px"></telerik:GridBoundColumn>  
+
+
+                     
+                        </Columns>
+
+                        <CommandItemTemplate>
                         <asp:Label ID="lbltop" runat="server">型号投产任务</asp:Label>
 					     <telerik:RadButton ID="RadButton_ExportExcel" runat="server" Text="导出Excel" Font-Bold="true" CommandName="ExportExcel" OnClick="RadButton_ExportExcel_Click" CssClass="floatright"></telerik:RadButton>
                          <telerik:RadButton ID="RadButton_ExportWord"  runat="server" Text="导出Word"  Font-Bold="true" CommandName="ExportWord" Visible="false"  OnClick="RadButton_ExportWord_Click"  CssClass="floatright"></telerik:RadButton>
                          <telerik:RadButton ID="RadButton_ExportPDF"   runat="server" Text="导出PDF"   Font-Bold="true" CommandName="ExportPDF" Visible="false"   OnClick="RadButton_ExportPdf_Click"   CssClass="floatright"></telerik:RadButton>
-
-                    </CommandItemTemplate>
-                </MasterTableView>
-            </telerik:RadGrid>
+                        </CommandItemTemplate>
+                    </MasterTableView>
+                </telerik:RadGrid>
         </div>
-    </div>
-    <%--修改需求弹窗--开始--%>
+    <%--弹出窗口--开始--%>
     <telerik:RadWindowManager ID="RadWindowManager1" runat="server">
         <Windows>
-            <telerik:RadWindow ID="RadWindow1" runat="server" Title="修改需求" Left="150px"
+            <telerik:RadWindow ID="RadWindow1" runat="server" Title="修改需求" Left="50px" top="50px"
                 ReloadOnShow="true" ShowContentDuringLoad="false" VisibleTitlebar="true" VisibleStatusbar="false"
                 Behaviors="Close,Maximize,Minimize" Modal="true" Width="1100px" Height="600px" />
         </Windows>
     </telerik:RadWindowManager>
-    <%--修改需求弹窗--结束--%>
+                <%--结束--%>
 </asp:Content>

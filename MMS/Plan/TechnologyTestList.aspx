@@ -95,7 +95,7 @@
                         }
                     </script>
                 </telerik:RadCodeBlock>
-                <telerik:RadScriptManager ID="RadScriptManager1" runat="server">
+                <telerik:RadScriptManager ID="RadScriptManager1" runat="server" AsyncPostBackTimeout="1800">
                     <Scripts>
                         <asp:ScriptReference Assembly="Telerik.Web.UI" Name="Telerik.Web.UI.Common.Core.js"></asp:ScriptReference>
                         <asp:ScriptReference Assembly="Telerik.Web.UI" Name="Telerik.Web.UI.Common.jQuery.js"></asp:ScriptReference>
@@ -105,26 +105,25 @@
                 <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server" OnAjaxRequest="RadAjaxManager1_OnAjaxRequest">
                       <ClientEvents OnRequestStart="onRequestStart" />
                     <AjaxSettings>
+                        <telerik:AjaxSetting AjaxControlID="RadAjaxManager1">
+                            <UpdatedControls>
+                                <telerik:AjaxUpdatedControl ControlID="RadGrid_TechnologyTestList" />
+                                <telerik:AjaxUpdatedControl ControlID="RadNotificationAlert" />
+                            </UpdatedControls>
+                        </telerik:AjaxSetting>
                         <telerik:AjaxSetting AjaxControlID="RadGrid_TechnologyTestList">
                             <UpdatedControls>
-                                <telerik:AjaxUpdatedControl ControlID="RadGrid_TechnologyTestList" LoadingPanelID="RadAjaxLoadingPanelLoading" />
+                                <telerik:AjaxUpdatedControl ControlID="RadGrid_TechnologyTestList"  />
                                 <telerik:AjaxUpdatedControl ControlID="RadNotificationAlert" />
                             </UpdatedControls>
                         </telerik:AjaxSetting>
                         <telerik:AjaxSetting AjaxControlID="RB_Search_Click">
                             <UpdatedControls>
-                                 <telerik:AjaxUpdatedControl ControlID="RadGrid_TechnologyTestList" LoadingPanelID="RadAjaxLoadingPanelLoading" />
+                                 <telerik:AjaxUpdatedControl ControlID="RadGrid_TechnologyTestList"  />
                              </UpdatedControls>
                           </telerik:AjaxSetting>
-                        <telerik:AjaxSetting AjaxControlID="RadAjaxManager1">
-                            <UpdatedControls>
-                                <telerik:AjaxUpdatedControl ControlID="RadGrid_TechnologyTestList" LoadingPanelID="RadAjaxLoadingPanelLoading" />
-                                <telerik:AjaxUpdatedControl ControlID="RadNotificationAlert" />
-                            </UpdatedControls>
-                        </telerik:AjaxSetting>
                     </AjaxSettings>
                 </telerik:RadAjaxManager>
-                <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanelLoading" runat="server"></telerik:RadAjaxLoadingPanel>
 
                 <telerik:RadGrid ID="RadGrid_TechnologyTestList" runat="server" DataKeyNames="ID" Culture="zh-CN" GroupPanelPosition="Top"  
                     AllowPaging="True" PageSize="20" PagerStyle-AlwaysVisible="True"
@@ -184,13 +183,12 @@
                             ReloadOnShow="true" ShowContentDuringLoad="false" VisibleTitlebar="true" VisibleStatusbar="false"
                             Behaviors="Close,Maximize,Minimize" OnClientClose="RefreshParent" Modal="true" Width="1300px" Height="620px" />
                     </Windows>
-                </telerik:RadWindowManager>
-                <%--结束--%>
+    </telerik:RadWindowManager>
+        <telerik:RadNotification ID="RadNotificationAlert" runat="server" Text="" Position="Center"
+        AutoCloseDelay="4000" Width="350" Title="提示" EnableRoundedCorners="true"  >
+        </telerik:RadNotification>
+                     <%--结束--%>
             </div>
-            
         </div>
     </div>
-    <telerik:RadNotification ID="RadNotificationAlert" runat="server" Text="" Position="Center"
-        AutoCloseDelay="4000" Width="300" Title="提示" EnableRoundedCorners="true">
-    </telerik:RadNotification>
 </asp:Content>

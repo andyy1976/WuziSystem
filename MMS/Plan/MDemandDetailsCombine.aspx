@@ -30,28 +30,24 @@
                     <AjaxSettings>
                         <telerik:AjaxSetting AjaxControlID="RadGrid_MDemandCombinelist">
                           <UpdatedControls>
-                          <telerik:AjaxUpdatedControl ControlID="RadGrid_MDemandCombinelist" LoadingPanelID="RadAjaxLoadingPanelLoading" /><telerik:AjaxUpdatedControl ControlID="RadNotificationAlert" />
+                          <telerik:AjaxUpdatedControl ControlID="RadGrid_MDemandCombinelist" LoadingPanelID="RadAjaxLoadingPanel1" /><telerik:AjaxUpdatedControl ControlID="RadNotificationAlert" />
                           </UpdatedControls>
                         </telerik:AjaxSetting>
                         <telerik:AjaxSetting AjaxControlID="RadBtn_Search">
                             <UpdatedControls>
-                        <telerik:AjaxUpdatedControl ControlID="RadGrid_MDemandCombinelist" LoadingPanelID="RadAjaxLoadingPanelLoading" />
-                                <telerik:AjaxUpdatedControl ControlID="span_DraftCode" />
-                                <telerik:AjaxUpdatedControl ControlID="span_model" />
-                                <telerik:AjaxUpdatedControl ControlID="span_plancode" />
-                                <telerik:AjaxUpdatedControl ControlID="RadNotificationAlert" />
-                                
+                            <telerik:AjaxUpdatedControl ControlID="RadGrid_MDemandCombinelist" LoadingPanelID="RadAjaxLoadingPanel1" />
+                            <telerik:AjaxUpdatedControl ControlID="RadNotificationAlert" />
                             </UpdatedControls>
                         </telerik:AjaxSetting>
                 <telerik:AjaxSetting AjaxControlID="RB_Submit">
                             <UpdatedControls>
-                        <telerik:AjaxUpdatedControl ControlID="RadGrid_MDemandCombinelist" LoadingPanelID="RadAjaxLoadingPanelLoading" />
+                        <telerik:AjaxUpdatedControl ControlID="RadGrid_MDemandCombinelist" LoadingPanelID="RadAjaxLoadingPanel1" />
                         <telerik:AjaxUpdatedControl ControlID="RadNotificationAlert" />
                             </UpdatedControls>
                         </telerik:AjaxSetting>
                     </AjaxSettings>
                 </telerik:RadAjaxManager>
-                <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanelLoading" runat="server"></telerik:RadAjaxLoadingPanel>
+                <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" runat="server"></telerik:RadAjaxLoadingPanel>
         <telerik:RadCodeBlock runat="server">
             <script type="text/javascript">
                 function CloseRadWindow(sender,args) {
@@ -93,7 +89,7 @@
                 <div class="divSiteMap" style="width: 100%; float: none; height: auto; border-bottom-style: solid; border-bottom-width: 0px;">
                     <label style="margin-left: 10px; float: left;color:red;">型号：</label><span id="span_model" style="float: left;color:red;" runat="server"></span>
                     <label style="margin-left: 50px; float: left">基准物资材料清单号：</label><span id="span_listNo" style="float: left;" runat="server"></span>
-                         <div style="width: 100%; height: 0px; border: solid #000 1px; margin: 5px 0; clear: both;"></div>
+                         <div style="width: 100%; height: 0px; border: solid #000 0px; margin: 5px 0; clear: both;"></div>
                 </div>
                 <div class="divViewPanel">
                 <telerik:RadGrid ID="RadGrid_MDemandDetails" runat="server" DataKeyNames="ID" Culture="zh-CN" GroupPanelPosition="Top"
@@ -226,6 +222,7 @@
                             
                                 <telerik:GridBoundColumn DataField="Rough_Spec" ItemStyle-Width="70px" HeaderStyle-Width="70px" HeaderText="物资规格"  SortExpression="Rough_Spec" UniqueName="Rough_Spec" Visible="false" >
                                 </telerik:GridBoundColumn>
+
                                 <telerik:GridTemplateColumn ItemStyle-Width="70px" HeaderStyle-Width="70px" HeaderText="特殊需求"  UniqueName="Special_Needs" >
                                     <HeaderStyle HorizontalAlign="Center"></HeaderStyle>
                                     <ItemTemplate>

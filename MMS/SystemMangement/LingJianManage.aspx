@@ -21,13 +21,13 @@
         <AjaxSettings>
             <telerik:AjaxSetting AjaxControlID="RadGridLingJian">
                 <UpdatedControls>
-                    <telerik:AjaxUpdatedControl ControlID="RadGridLingJian" LoadingPanelID="RadAjaxLoadingPanelLoading" />
+                    <telerik:AjaxUpdatedControl ControlID="RadGridLingJian" LoadingPanelID="RadAjaxLoadingPanel1" />
                     <telerik:AjaxUpdatedControl ControlID="RadNotificationAlert" />
                 </UpdatedControls>
             </telerik:AjaxSetting>
         </AjaxSettings>
     </telerik:RadAjaxManager>
-    <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanelLoading" runat="server" Skin="Default"></telerik:RadAjaxLoadingPanel>
+    <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" runat="server" Skin="Default"></telerik:RadAjaxLoadingPanel>
     <input type="hidden" value="系统管理-->零件信息管理" />
 
     <telerik:RadGrid ID="RadGridLingJian" runat="server" AllowPaging="True" GroupPanelPosition="Top"

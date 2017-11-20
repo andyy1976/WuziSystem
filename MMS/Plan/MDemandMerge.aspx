@@ -24,13 +24,13 @@
                 <AjaxSettings>
                     <telerik:AjaxSetting AjaxControlID="RadGrid_MDemandMerge">
                         <UpdatedControls>
-                            <telerik:AjaxUpdatedControl ControlID="RadGrid_MDemandMerge" LoadingPanelID="RadAjaxLoadingPanelLoading" />
+                            <telerik:AjaxUpdatedControl ControlID="RadGrid_MDemandMerge" LoadingPanelID="RadAjaxLoadingPanel1" />
                             <telerik:AjaxUpdatedControl ControlID="RadNotificationAlert" />
                         </UpdatedControls>
                     </telerik:AjaxSetting>
                 </AjaxSettings>
             </telerik:RadAjaxManager>
-            <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanelLoading" runat="server"></telerik:RadAjaxLoadingPanel>
+            <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" runat="server"></telerik:RadAjaxLoadingPanel>
 
             <telerik:RadGrid ID="RadGrid_MDemandMerge" runat="server" AllowPaging="True" DataKeyNames="ID" Culture="zh-CN" GroupPanelPosition="Top"
                 OnNeedDataSource="RadGrid_MDemandMerge_NeedDataSource" OnItemCommand="RadGrid_MDemandMerge_ItemCommand" OnItemDataBound="RadGrid_MDemandMerge_ItemDataBound" PageSize="3">

@@ -38,12 +38,12 @@
         <AjaxSettings>
             <telerik:AjaxSetting AjaxControlID="RadGrid_UserManage">
                 <UpdatedControls>
-                    <telerik:AjaxUpdatedControl ControlID="RadGrid_UserManage" LoadingPanelID="RadAjaxLoadingPanelLoading" />
+                    <telerik:AjaxUpdatedControl ControlID="RadGrid_UserManage" LoadingPanelID="RadAjaxLoadingPanel1" />
                 </UpdatedControls>
             </telerik:AjaxSetting>
         </AjaxSettings>
     </telerik:RadAjaxManager>
-    <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanelLoading" runat="server" Skin="Default"></telerik:RadAjaxLoadingPanel>
+    <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" runat="server" Skin="Default"></telerik:RadAjaxLoadingPanel>
     <telerik:RadGrid ID="RadGrid_UserManage" runat="server" AllowPaging="True" DataKeyNames="ID" Culture="zh-CN"
         GroupPanelPosition="Top" OnNeedDataSource="RadGrid_UserManage_NeedDataSource"
         OnItemCommand="RadGrid_UserManage_ItemCommand" OnItemDeleted="RadGrid_UserManage_ItemDeleted" OnItemDataBound="RadGrid_UserManage_ItemDataBound" OnItemCreated="RadGrid_UserManage_ItemCreated">

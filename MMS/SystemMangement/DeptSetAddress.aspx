@@ -20,17 +20,17 @@
         <AjaxSettings>
             <telerik:AjaxSetting AjaxControlID="RadComboBoxDept">
                 <UpdatedControls>
-                    <telerik:AjaxUpdatedControl ControlID="Address" LoadingPanelID="RadAjaxLoadingPanelLoading" />
+                    <telerik:AjaxUpdatedControl ControlID="Address" LoadingPanelID="RadAjaxLoadingPanel1" />
                 </UpdatedControls>
             </telerik:AjaxSetting>
             <telerik:AjaxSetting AjaxControlID="RadButtonSave">
                 <UpdatedControls>
-                    <telerik:AjaxUpdatedControl ControlID="RadNotificationAlert" LoadingPanelID="RadAjaxLoadingPanelLoading" />
+                    <telerik:AjaxUpdatedControl ControlID="RadNotificationAlert" LoadingPanelID="RadAjaxLoadingPanel1" />
                 </UpdatedControls>
             </telerik:AjaxSetting>
         </AjaxSettings>
     </telerik:RadAjaxManager>
-    <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanelLoading" Runat="server" Skin="Default"></telerik:RadAjaxLoadingPanel>
+    <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" Runat="server" Skin="Default"></telerik:RadAjaxLoadingPanel>
     <div id="Dept">
         <label>选择部门：</label>
   

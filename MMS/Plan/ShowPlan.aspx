@@ -151,7 +151,10 @@
                 window.location.href = "/Plan/ShowM_Change.aspx?PackId=" + PackId;
             }
             function ShowMDemandDetails(PackId) {
-               // window.location.href = "/Plan/MDemandDetails.aspx?PackId=" + PackId;
+                window.location.href = "/Plan/MDemandDetails.aspx?PackId=" + PackId;
+            }
+
+            function ShowMDemandDetailsTreeList(PackId) {
                 window.location.href = "/Plan/MDemandDetailsTreeList.aspx?PackId=" + PackId;
             }
             //需求变更
@@ -240,17 +243,17 @@
                         <telerik:RadButton ID="RadButton_ExportExcel" runat="server" Text="导出Excel" Font-Bold="true" CommandName="ExportExcel" OnClick="RadButton_ExportExcel_Click" CssClass="floatright"></telerik:RadButton>
                     </CommandItemTemplate>
                     <Columns>
-                        <telerik:GridBoundColumn DataField="RowsID" HeaderText="序号" ItemStyle-Width="50px" HeaderStyle-Width="50px">
+                        <telerik:GridBoundColumn DataField="RowsID" HeaderText="序号" ItemStyle-Width="40px" HeaderStyle-Width="40px">
                         </telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="Model" HeaderText="型号" ItemStyle-Width="80px" HeaderStyle-Width="80px">
+                        <telerik:GridBoundColumn DataField="Model" HeaderText="型号" ItemStyle-Width="70px" HeaderStyle-Width="70px">
                         </telerik:GridBoundColumn>
-                        <telerik:GridTemplateColumn HeaderText="计划包名称" ItemStyle-Width="150px" HeaderStyle-Width="150px">
+                        <telerik:GridTemplateColumn HeaderText="计划包名称" ItemStyle-Width="120px" HeaderStyle-Width="120px">
                             <ItemTemplate> 
                                 <telerik:RadButton ID="RB_PlanName" runat="server" AutoPostBack="false" ForeColor="Blue" ButtonType="ToggleButton" ToggleType="None" ToolTip="点击查看计划包数据"></telerik:RadButton>
                                 <telerik:RadButton ID="RB_State" runat="server" AutoPostBack="false" ToolTip="点击查看计划包数据" Width="20px" Height="20px"></telerik:RadButton>
                             </ItemTemplate>
                         </telerik:GridTemplateColumn>
-                        <telerik:GridTemplateColumn HeaderText="BOM管理" ItemStyle-Width="150px" HeaderStyle-Width="150px">
+                        <telerik:GridTemplateColumn HeaderText="BOM管理" ItemStyle-Width="120px" HeaderStyle-Width="120px">
                             <ItemStyle HorizontalAlign="Center" />
                             <ItemTemplate>
                                 <telerik:RadButton ID="RB_NotSynchron" runat="server" ButtonType="ToggleButton" Text="同步BOM与定额" ToolTip="点击同步SmarTeam"
@@ -276,6 +279,14 @@
                                 <telerik:RadButton ID="RB_Draft" runat="server" AutoPostBack="false" ButtonType="ToggleButton" ToolTip="" ForeColor="Blue"></telerik:RadButton>
                             </ItemTemplate>
                         </telerik:GridTemplateColumn>
+
+                        <telerik:GridTemplateColumn HeaderText="物资需求清单合并" ItemStyle-Width="150px" HeaderStyle-Width="150px">
+                            <ItemStyle HorizontalAlign="Center" />
+                            <ItemTemplate>
+                                <telerik:RadButton ID="RB_Combine" runat="server" AutoPostBack="false" ButtonType="ToggleButton" ToolTip="" ForeColor="Blue"></telerik:RadButton>
+                            </ItemTemplate>
+                        </telerik:GridTemplateColumn>
+
                         <telerik:GridTemplateColumn HeaderText="需求变更" ItemStyle-Width="80px" HeaderStyle-Width="80px">
                             <ItemTemplate>
                                 <telerik:RadButton ID="RB_MergeListUpdate" runat="server" Text="更改需求" AutoPostBack="false" ForeColor="Blue" ButtonType="ToggleButton" ToolTip="点击进入需求变更"></telerik:RadButton>

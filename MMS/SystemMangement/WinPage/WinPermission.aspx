@@ -43,12 +43,12 @@
             <AjaxSettings>
                 <telerik:AjaxSetting AjaxControlID="RadGrid_Permission">
                     <UpdatedControls>
-                        <telerik:AjaxUpdatedControl ControlID="RadGrid_Permission" LoadingPanelID="RadAjaxLoadingPanelLoading" />
+                        <telerik:AjaxUpdatedControl ControlID="RadGrid_Permission" LoadingPanelID="RadAjaxLoadingPanel1" />
                     </UpdatedControls>
                 </telerik:AjaxSetting>
             </AjaxSettings>
         </telerik:RadAjaxManager>
-        <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanelLoading" runat="server" Skin="Default"></telerik:RadAjaxLoadingPanel>
+        <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" runat="server" Skin="Default"></telerik:RadAjaxLoadingPanel>
         <telerik:RadGrid ID="RadGrid_Permission" runat="server" Culture="zh-CN" GroupPanelPosition="Top"
             OnNeedDataSource="RadGrid_Permission_NeedDataSource" Width="100%"
             OnItemCommand="RadGrid_Permission_ItemCommand" OnItemDataBound="RadGrid_Permission_ItemDataBound"

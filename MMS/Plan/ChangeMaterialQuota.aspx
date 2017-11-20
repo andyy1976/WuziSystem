@@ -50,6 +50,13 @@
     <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" runat="server" Skin="Default"></telerik:RadAjaxLoadingPanel>
     <telerik:RadCodeBlock runat="server">
         <script type="text/javascript">
+
+            function AlphabetOnly(sender, eventArgs) {
+                var c = eventArgs.get_keyCode();
+                if ((c == 13)) {
+                    eventArgs.set_cancel(true);
+                }
+            }
             //更改材料定额 开始
             function ConfirmChange(sender, args) {
                 var grid = $find("<%=RadGridChange.ClientID%>");
@@ -128,7 +135,7 @@
                 <div>
                     <table>
                         <tr>
-                            <td>更改单号：<telerik:RadTextBox ID="RTB_CN_CHANGEREPORT_NO" runat="server" Width="120px"></telerik:RadTextBox>
+                            <td>更改单号：<telerik:RadTextBox ID="RTB_CN_CHANGEREPORT_NO" runat="server" OnKeyPress="AlphabetOnly" Width="120px"></telerik:RadTextBox>
                                 <asp:HiddenField ID="HFChange" runat="server" />
                                 <asp:Label ID="lblMessage" runat="server" ForeColor="Red"></asp:Label>
                             </td>

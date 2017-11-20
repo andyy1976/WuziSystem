@@ -92,6 +92,8 @@ namespace mms.Plan
                 RadButton RB_Change = e.Item.FindControl("RB_Change") as RadButton;
                 RadButton RB_ChangeList = e.Item.FindControl("RB_ChangeList") as RadButton;
                 RadButton RB_Draft = e.Item.FindControl("RB_Draft") as RadButton;
+                RadButton RB_Combine = e.Item.FindControl("RB_Combine") as RadButton;
+
                 RadButton RB_MergeListUpdate = e.Item.FindControl("RB_MergeListUpdate") as RadButton;
                 RadButton RB_Delete = e.Item.FindControl("RB_Delete") as RadButton;
 
@@ -141,6 +143,13 @@ namespace mms.Plan
                             RB_Draft.ForeColor = Color.Gray;
                             RB_Draft.ToolTip = "";
                         }
+
+                        if (RB_Combine != null)
+                        {
+                            RB_Combine.Text = "未归档";
+                            RB_Combine.ForeColor = Color.Gray;
+                            RB_Combine.ToolTip = "";
+                        }
                         if (RB_MergeListUpdate != null)
                         {
                             RB_MergeListUpdate.Text = "未归档";
@@ -189,6 +198,15 @@ namespace mms.Plan
                                 RB_Draft.ForeColor = Color.Gray;
                                 RB_Draft.ToolTip = "";
                             }
+
+                            //物资需求清单合并
+                            if (RB_Combine != null)
+                            {
+                                RB_Combine.Text = "未同步";
+                                RB_Combine.ForeColor = Color.Gray;
+                                RB_Combine.ToolTip = "";
+                            }
+
                             //需求变更
                             if (RB_MergeListUpdate != null)
                             {
@@ -265,6 +283,22 @@ namespace mms.Plan
                                 RB_Draft.ForeColor = Color.Blue;
                                 RB_Draft.ToolTip = "点击查询物资清单";
                                 RB_Draft.Style.Add("cursor", "pointer");
+                            }
+                            //物资需求清单合并
+                            if (RB_Combine != null)
+                            {
+                                if (datarow["AllCount"].ToString() != "0" && datarow["NoSubmitCount"].ToString() == "0")
+                                {
+                                    RB_Combine.Text = "已完成";
+                                }
+                                else
+                                {
+                                    RB_Combine.Text = "【" + datarow["SubmitCount"].ToString() + "已提；" + datarow["NoSubmitCount"].ToString() + "未提】";
+                                }
+                                RB_Combine.Attributes["onclick"] = string.Format("return ShowMDemandDetailsTreeList({0})", PackID);
+                                RB_Combine.ForeColor = Color.Blue;
+                                RB_Combine.ToolTip = "点击进入物资清单合并页面";
+                                RB_Combine.Style.Add("cursor", "pointer");
                             }
                             //需求变更
                             if (RB_MergeListUpdate != null)
@@ -392,11 +426,20 @@ namespace mms.Plan
                 string PlanCode = dt.Rows[0]["PlanCode"].ToString();
                 string DraftCode = dt.Rows[0]["DraftCode"].ToString();
                 string draftid = dt.Rows[0]["draftid"].ToString();
-                RadButton RB_Draft = e.Item.FindControl("RB_Draft") as RadButton;
-               
-               // Response.Redirect("~/Plan/MDemandDetails.aspx?PackId=" + PackID + "&DraftCode=" + DraftCode + "&draftid=" + draftid + "&Model=" + Model + "&PlanCode=" + PlanCode + "&inFlag=1");
-                Response.Redirect("~/Plan/MDemandDetailsTreeList.aspx?PackId=" + PackID + "&DraftCode=" + DraftCode + "&draftid=" + draftid + "&Model=" + Model + "&PlanCode=" + PlanCode + "&inFlag=1");
-                    
+                RadButton RB_Draft = e.Item.FindControl("RB_Draft") as RadButton;   
+                Response.Redirect("~/Plan/MDemandDetails.aspx?PackId=" + PackID + "&DraftCode=" + DraftCode + "&draftid=" + draftid + "&Model=" + Model + "&PlanCode=" + PlanCode + "&inFlag=1");   
+            }
+
+            if (e.CommandName == "Combine")
+            {
+                string PackID = ((GridDataItem)e.Item).GetDataKeyValue("PackID").ToString();
+                DataTable dt = GetMDraftList(PackID);
+                string Model = dt.Rows[0]["model_1"].ToString();
+                string PlanCode = dt.Rows[0]["PlanCode"].ToString();
+                string DraftCode = dt.Rows[0]["DraftCode"].ToString();
+                string draftid = dt.Rows[0]["draftid"].ToString();
+                Response.Redirect("~/Plan/MDemandDetailsTreelist.aspx?PackId=" + PackID + "&DraftCode=" + DraftCode + "&draftid=" + draftid + "&Model=" + Model + "&PlanCode=" + PlanCode + "&inFlag=1");
+
             }
             if (e.CommandName == "Delete")
             {

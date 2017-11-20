@@ -74,9 +74,9 @@
                             <td>～</td>
                             <td><telerik:RadDatePicker ID="RDP_End" runat="server" Width="120px"></telerik:RadDatePicker></td>
                             <td>需求头ID：</td>
-                            <td><telerik:RadTextBox ID="RTB_HeaderID" runat="server" Width="120px"></telerik:RadTextBox></td>
+                            <td><telerik:RadTextBox ID="RTB_HeaderID" runat="server" OnKeyPress="AlphabetOnly" Width="120px"></telerik:RadTextBox></td>
                             <td>需求行ID：</td>
-                            <td><telerik:RadTextBox ID="RTB_LineID" runat="server" Width="120px"></telerik:RadTextBox></td>
+                            <td><telerik:RadTextBox ID="RTB_LineID" runat="server" OnKeyPress="AlphabetOnly" Width="120px"></telerik:RadTextBox></td>
                             <td><telerik:RadButton ID="RB_Search" runat="server" Text="搜索" OnClick="RB_Search_Click"></telerik:RadButton></td>
                         </tr>
                     </table>
@@ -140,9 +140,9 @@
                             <td>～</td>
                             <td><telerik:RadDatePicker ID="RDP_EndRco" runat="server" Width="120px"></telerik:RadDatePicker></td>
                             <td>需求行ID：</td>
-                            <td><telerik:RadTextBox ID="RTB_RQ_LineId" runat="server" Width="120px"></telerik:RadTextBox></td>
+                            <td><telerik:RadTextBox ID="RTB_RQ_LineId" runat="server" OnKeyPress="AlphabetOnly" Width="120px"></telerik:RadTextBox></td>
                             <td>变更行ID：</td>
-                            <td><telerik:RadTextBox ID="RTB_RCO_LintId" runat="server" Width="120px"></telerik:RadTextBox></td>
+                            <td><telerik:RadTextBox ID="RTB_RCO_LintId" runat="server" OnKeyPress="AlphabetOnly" Width="120px"></telerik:RadTextBox></td>
                             <td><telerik:RadButton ID="RB_SearchRco" runat="server" Text="搜索" OnClick="RB_SearchRco_Click"></telerik:RadButton></td>
                         </tr>
                     </table>

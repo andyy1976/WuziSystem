@@ -29,7 +29,7 @@
             </telerik:RadScriptManager>
             <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server">
             </telerik:RadAjaxManager>
-            <telerik:RadAjaxPanel ID="RadAjaxPanel1" runat="server" LoadingPanelID="RadAjaxLoadingPanelLoading">
+            <telerik:RadAjaxPanel ID="RadAjaxPanel1" runat="server" LoadingPanelID="RadAjaxLoadingPanel1">
                 <%-- <telerik:RadButton ID="RadButtonSetPermission" runat="server" Text="配置权限" AutoPostBack="false" OnClientClicked="OpenPermissionWindow"></telerik:RadButton>--%>
                 <div class="divTabPanel">
                     <telerik:RadTabStrip ID="RadTabStripRoles" runat="server" OnTabClick="RadTabStripRoles_TabClick" Skin="Default">
@@ -63,7 +63,7 @@
                     AutoCloseDelay="4000" Width="240" Title="提示" EnableRoundedCorners="true">
                 </telerik:RadNotification>
             </telerik:RadAjaxPanel>
-            <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanelLoading" runat="server">
+            <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" runat="server">
             </telerik:RadAjaxLoadingPanel>
         </div>
     </div>

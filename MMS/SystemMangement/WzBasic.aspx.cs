@@ -32,7 +32,7 @@ namespace mms.SystemMangement
                 RDDLMT.DataTextField = "Seg6";
                 RDDLMT.DataValueField = "Type";
                 RDDLMT.DataBind();
-
+                RDDLMT.SelectedIndex = 0;
               //  Telerik.Web.UI.DropDownListItem li = new Telerik.Web.UI.DropDownListItem("物资编码查询", "ItemCode");
               //  RDDLMT.Items.Add(li);
 
@@ -86,7 +86,7 @@ namespace mms.SystemMangement
             string prefix = RDDLMT.SelectedText.ToString() + ".";
            // string strSQL = "";
 
-            RDDLMT1.SelectedIndex = 0;
+         /*   RDDLMT1.SelectedIndex = 0;
             RDDLMT2.SelectedIndex = 0;
             RDDLMT3.SelectedIndex = 0;
             RDDLMT4.SelectedIndex = 0;
@@ -95,14 +95,15 @@ namespace mms.SystemMangement
             RDDLMT2.Items.Clear();
             RDDLMT3.Items.Clear();
             RDDLMT4.Items.Clear();
-
+            */
          //   if (value == "ItemCode")
         //    {
             //    div1.Visible = false;
 
           //  }
           //  else 
-                if (value != "")
+        
+            /*if (value != "")
             {
                 DataTable dt = GetSeg6(prefix, "2");
                 RDDLMT1.DataSource = dt;
@@ -117,8 +118,9 @@ namespace mms.SystemMangement
                 div1.Visible = false;
                 //div2.Visible = false;
             }
+             */
         }
-
+        /*
         protected void RDDLMT1_SelectedIndexChanged(object sender, DropDownListEventArgs e)
         {
             string prefix = RDDLMT.SelectedText.ToString() + "." + RDDLMT1.SelectedText.ToString() + ".";
@@ -181,7 +183,7 @@ namespace mms.SystemMangement
                 RDDLMT4.DataBind();
             }
         }
-
+        */
         protected void RB_Search_Click(object sender, EventArgs e)
         {
             string strSQL = "select * from GetCommItem_T_Item where SEG10 = 'N'";
@@ -211,17 +213,17 @@ namespace mms.SystemMangement
             else
             {
                 string MT = RDDLMT.SelectedText.ToString();
-                string MT1 = RDDLMT1.SelectedText.ToString();
-                string MT2 = RDDLMT2.SelectedText.ToString();
-                string MT3 = RDDLMT3.SelectedText.ToString();
-                string MT4 = RDDLMT4.SelectedText.ToString();
+             //   string MT1 = RDDLMT1.SelectedText.ToString();
+               // string MT2 = RDDLMT2.SelectedText.ToString();
+               // string MT3 = RDDLMT3.SelectedText.ToString();
+               // string MT4 = RDDLMT4.SelectedText.ToString();
 
                 string SEG6 = "";
                 if (MT != "") { SEG6 += MT ; }
-                if (MT1 != "") { SEG6 +=  "." +MT1; }
-                if (MT2 != "") { SEG6 += "." + MT2; }
-                if (MT3 != "") { SEG6 += "." + MT3; }
-                if (MT4 != "") { SEG6 += "." + MT4; }
+            //    if (MT1 != "") { SEG6 +=  "." +MT1; }
+             //   if (MT2 != "") { SEG6 += "." + MT2; }
+           //     if (MT3 != "") { SEG6 += "." + MT3; }
+            //    if (MT4 != "") { SEG6 += "." + MT4; }
                 strSQL += " and SEG6 like '" + SEG6 + "%'";
             }
             Session["gds"] = DBI.Execute(strSQL, true);

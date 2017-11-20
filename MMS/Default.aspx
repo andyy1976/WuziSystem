@@ -13,6 +13,8 @@
 <body>
     <form id="form1" runat="server">
         <telerik:RadScriptManager ID="RadScriptManager1" runat="server"></telerik:RadScriptManager>
+        <telerik:RadSkinManager ID="RadSkinManager1" runat="server" Skin="Silk"></telerik:RadSkinManager>
+
         <div class="login_logo">
             <img src="Images/login_logo.png" />
         </div>

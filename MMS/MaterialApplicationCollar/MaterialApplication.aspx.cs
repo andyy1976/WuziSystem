@@ -87,8 +87,8 @@ namespace mms.MaterialApplicationCollar
                 Session["gds"] = DBI.Execute(strSQL, true);
                 RadGrid1.DataSource = (Session["gds"] as DataTable);
                */
-                Telerik.Web.UI.DropDownListItem li = new Telerik.Web.UI.DropDownListItem("物资编码查询", "ItemCode");
-                RDDLMT.Items.Add(li);
+              //  Telerik.Web.UI.DropDownListItem li = new Telerik.Web.UI.DropDownListItem("物资编码查询", "ItemCode");
+             //   RDDLMT.Items.Add(li);
 
                 RDP_ApplicationTime.SelectedDate = DateTime.Today;
 
@@ -260,24 +260,38 @@ namespace mms.MaterialApplicationCollar
             if (DiaoDu == "") { RadNotificationAlert.Text = "失败！请选择调度"; RadNotificationAlert.Show(); return; }
             if (XingHao == "") { RadNotificationAlert.Text = "失败！请输入型号计划员"; RadNotificationAlert.Show(); return; }
             if (WuZi == "") { RadNotificationAlert.Text = "失败！请输入物资计划员"; RadNotificationAlert.Show(); return; }
-            
-            string strSQL = "declare @id int";
-            strSQL += " Insert into MaterialApplication (Type, Material_Id, Applicant, Dept, ApplicationTime, ContactInformation, TheMaterialWay, TaskCode, Drawing_No"
-                + " , Draft_Code, Quantity, FeedingTime, IsDispatch, IsConfirm, Remark, MaterialType, Material_Name, Material_Mark, CN_Material_State, Material_Tech_Condition"
-                + " , Rough_Spec, Mat_Rough_Weight,MaterialsDes, Mat_Unit, Rough_Size, PleaseTakeQuality, AppState, ReturnReason, Is_Del, ItemCode,DiaoDuApprove, XingHaoJiHuaYuanApprove, WuZiJiHuaYuanApprove)"
-                + " values ('4',Null, '" + Applicant + "','" + deptCode + "','" + ApplicationTime + "','" + ContactInformation + "','" + TheMaterialWay + "','" + TaskCode + "','" + DrawingNo + "'"
-                + " ,Null,'" + Quantity + "','" + FeedingTime + "','" + IsDispatch + "','" + IsConfirm + "','" + Remark + "'"
-                + " ,Null,'" + Material_Name + "','" + Material_Mark + "','" + CN_Material_State + "','" + Material_Tech_Condition + "'"
-                + " ,'" + Rough_Spec + "','" + Mat_Rough_Weight + "','" + MaterialsDes + "','" + Mat_Unit + "','" + Rough_Size + "','" + PleaseTakeQuality + "','1',Null,'false'"
-                + " ,'" + ItemCode + "','" + DiaoDu + "','" + XingHao + "','" + WuZi + "') select @id = @@identity"
-                + " Insert into MaterialApplication_Log (MaterialApplicationId, Operation_UserId, Operation_Time, Operation_Remark)"
-                + " values (@id, '" + Session["UserId"].ToString() + "',GetDate(),'申请') select @id";
+            var result = "";
+            var strSQL = "";
+            string id = "";
+            try
+            {
 
-            string id = DBI.GetSingleValue(strSQL).ToString();
-            
-            K2BLL bll = new K2BLL();
-            var result = bll.StartNewProcess(id);
+                strSQL = "declare @id int";
+                strSQL += " Insert into MaterialApplication (Type, Material_Id, Applicant, Dept, ApplicationTime, ContactInformation, TheMaterialWay, TaskCode, Drawing_No"
+                    + " , Draft_Code, Quantity, FeedingTime, IsDispatch, IsConfirm, Remark, MaterialType, Material_Name, Material_Mark, CN_Material_State, Material_Tech_Condition"
+                    + " , Rough_Spec, Mat_Rough_Weight,MaterialsDes, Mat_Unit, Rough_Size, PleaseTakeQuality, AppState, ReturnReason, Is_Del, ItemCode,DiaoDuApprove, XingHaoJiHuaYuanApprove, WuZiJiHuaYuanApprove)"
+                    + " values ('4',Null, '" + Applicant + "','" + deptCode + "','" + ApplicationTime + "','" + ContactInformation + "','" + TheMaterialWay + "','" + TaskCode + "','" + DrawingNo + "'"
+                    + " ,Null,'" + Quantity + "','" + FeedingTime + "','" + IsDispatch + "','" + IsConfirm + "','" + Remark + "'"
+                    + " ,Null,'" + Material_Name + "','" + Material_Mark + "','" + CN_Material_State + "','" + Material_Tech_Condition + "'"
+                    + " ,'" + Rough_Spec + "','" + Mat_Rough_Weight + "','" + MaterialsDes + "','" + Mat_Unit + "','" + Rough_Size + "','" + PleaseTakeQuality + "','1',Null,'false'"
+                    + " ,'" + ItemCode + "','" + DiaoDu + "','" + XingHao + "','" + WuZi + "') select @id = @@identity"
+                    + " Insert into MaterialApplication_Log (MaterialApplicationId, Operation_UserId, Operation_Time, Operation_Remark)"
+                    + " values (@id, '" + Session["UserId"].ToString() + "',GetDate(),'申请') select @id";
 
+                id = DBI.GetSingleValue(strSQL).ToString();
+                RB_Submit.Visible = false;
+                RadNotificationAlert.Text = "正在和流程平台通信中，请稍候";
+                RadNotificationAlert.Show();
+                K2BLL bll = new K2BLL();
+                result = bll.StartNewProcess(id);
+            }
+            catch (Exception ex)
+            {
+                RadNotificationAlert.Text = "和物流通信失败:"+ex.Message.ToString(); 
+                RadNotificationAlert.Show();
+                RB_Submit.Visible = true;
+                return;
+            }
             if (result == "")
             {
                 strSQL = " Update MaterialApplication set AppState = '2' where ID = '" + id + "'";
@@ -285,22 +299,24 @@ namespace mms.MaterialApplicationCollar
                     " Insert into MaterialApplication_Log (MaterialApplicationId, Operation_UserID, Operation_Time, Operation_Remark)" +
                     " values('" + id + "','" + Session["UserId"].ToString() + "',GetDate() " +
                     " ,'进入流程平台:调度员：' + '" + DiaoDu + "' + '型号计划员：' + '" +
-                    XingHao + "' +'物资计划员：' + '" +WuZi + "')";
+                    XingHao + "' +'物资计划员：' + '" + WuZi + "')";
                 DBI.Execute(strSQL);
                 RadNotificationAlert.Text = "申请成功！进入流程平台";
                 RadNotificationAlert.Show();
                 Clear();
-              //  Page.ClientScript.RegisterStartupScript(this.GetType(), "info", "CloseWindow();", true);
+                //  Page.ClientScript.RegisterStartupScript(this.GetType(), "info", "CloseWindow();", true);
             }
             else
             {
-              //  var db = new MMSDbDataContext();
-             //   var ma = db.MaterialApplication.SingleOrDefault(p => p.Id.ToString() == id);
-               // ma.Is_Del = true;
-               // db.SubmitChanges();
+                //  var db = new MMSDbDataContext();
+                //   var ma = db.MaterialApplication.SingleOrDefault(p => p.Id.ToString() == id);
+                // ma.Is_Del = true;
+                // db.SubmitChanges();
                 RadNotificationAlert.Text = "提交失败！<br />" + result;
                 RadNotificationAlert.Show();
             }
+            RB_Submit.Visible = true;
+         
         }
 
         protected void RB_Save_Click(object sender, EventArgs e)
@@ -423,10 +439,10 @@ namespace mms.MaterialApplicationCollar
         #region 物资编码查询
         protected void RDDLMT_SelectedIndexChanged(object sender, Telerik.Web.UI.DropDownListEventArgs e)
         {
-            string value = RDDLMT.SelectedValue.ToString();
-            string prefix = RDDLMT.SelectedText.ToString() + ".";
-            string strSQL = "";
-
+           // string value = RDDLMT.SelectedValue.ToString();
+         //   string prefix = RDDLMT.SelectedText.ToString() + ".";
+           // string strSQL = "";
+/*
             RDDLMT1.SelectedIndex = 0;
             RDDLMT2.SelectedIndex = 0;
             RDDLMT3.SelectedIndex = 0;
@@ -460,8 +476,9 @@ namespace mms.MaterialApplicationCollar
                 div1.Visible = false;
                 div2.Visible = false;
             }
+ * */
         }
-
+/*
         protected void RDDLMT1_SelectedIndexChanged(object sender, DropDownListEventArgs e)
         {
             string prefix = RDDLMT.SelectedText.ToString() + "." + RDDLMT1.SelectedText.ToString() + ".";
@@ -530,7 +547,7 @@ namespace mms.MaterialApplicationCollar
                 RDDLMT4.DataBind();
             }
         }
-
+        */
         protected void RB_Search_Click(object sender, EventArgs e)
         {
             string strSQL = "select * from GetCommItem_T_Item where SEG10 = 'N'";
@@ -549,25 +566,26 @@ namespace mms.MaterialApplicationCollar
             {
 
             }
-            else if (MTv == "ItemCode")
+           /* else if (MTv == "ItemCode")
             {
                 string ItemCode = RTB_ItemCode1.Text.Trim();
                 strSQL += " and SEG3 like '%" + ItemCode + "%'"; ;
             }
+            * */
             else
             {
                 string MT = RDDLMT.SelectedText.ToString();
-                string MT1 = RDDLMT1.SelectedText.ToString();
-                string MT2 = RDDLMT2.SelectedText.ToString();
-                string MT3 = RDDLMT3.SelectedText.ToString();
-                string MT4 = RDDLMT4.SelectedText.ToString();
+           //     string MT1 = RDDLMT1.SelectedText.ToString();
+            //    string MT2 = RDDLMT2.SelectedText.ToString();
+            //    string MT3 = RDDLMT3.SelectedText.ToString();
+           //     string MT4 = RDDLMT4.SelectedText.ToString();
 
                 string SEG6 = "";
                 if (MT != "") { SEG6 += MT; }
-                if (MT1 != "") { SEG6 += "." + MT1; }
-                if (MT2 != "") { SEG6 += "." + MT2; }
-                if (MT3 != "") { SEG6 += "." + MT3; }
-                if (MT4 != "") { SEG6 += "." + MT4; }
+             //  if (MT1 != "") { SEG6 += "." + MT1; }
+              //  if (MT2 != "") { SEG6 += "." + MT2; }
+               //if (MT3 != "") { SEG6 += "." + MT3; }
+              //  if (MT4 != "") { SEG6 += "." + MT4; }
                 strSQL += " and SEG6 like '" + SEG6 + "%'";
             }
             Session["gds"] = DBI.Execute(strSQL, true);

@@ -27,10 +27,11 @@ namespace mms
             string strSql = "select M_Demand_Plan_List.*, DomainAccount, UserName from M_Demand_Plan_List" +
                 " join Sys_UserInfo_PWD on Sys_UserInfo_PWD.ID = M_Demand_Plan_List.User_ID where M_Demand_Plan_List.ID = '" + MDPLID + "'";
             DataTable dtmdpl = DBI.Execute(strSql, true);
-            strSql = " select Use_Des as UseDes, M_Demand_Merge_List.*, Dept, a.DICT_Name as Urgency" +
+            strSql = " select b.DICT_Name as UseDes, M_Demand_Merge_List.*, Dept, a.DICT_Name as Urgency" +
                 " from M_Demand_Merge_List" +
                 " left join Sys_DeptEnum on Sys_DeptEnum.DeptCode = M_Demand_Merge_List.MaterialDept" +
                 " left join GetBasicdata_T_Item as a on M_Demand_Merge_List.Urgency_Degre = a.DICT_Code and a.DICT_CLASS='CUX_DM_URGENCY_LEVEL'" +
+                " left join GetBasicdata_T_Item as b on M_Demand_Merge_List.Use_Des = b.DICT_Code and b.DICT_CLASS='CUX_DM_USAGE'" +
                 " where MDPID='" + MDPLID + "'";
             DataTable dtmdml = DBI.Execute(strSql, true);
         
@@ -114,10 +115,11 @@ namespace mms
             string strSql = "select M_Demand_Plan_List.*, DomainAccount, UserName from M_Demand_Plan_List" +
                 " join Sys_UserInfo_PWD on Sys_UserInfo_PWD.ID = M_Demand_Plan_List.User_ID where M_Demand_Plan_List.ID = '" + MDPLID + "'";
             DataTable dtmdpl = DBI.Execute(strSql, true);
-            strSql = " select Use_Des as UseDes, M_Demand_Merge_List.*, Dept, a.DICT_Name as Urgency" +
+            strSql = " select b.DICT_Name as UseDes, M_Demand_Merge_List.*, Dept, a.DICT_Name as Urgency" +
                 " from M_Demand_Merge_List" +
                 " left join Sys_DeptEnum on Sys_DeptEnum.DeptCode = M_Demand_Merge_List.MaterialDept" +
                 " left join GetBasicdata_T_Item as a on M_Demand_Merge_List.Urgency_Degre = a.DICT_Code and a.DICT_CLASS='CUX_DM_URGENCY_LEVEL'" +
+                " left join GetBasicdata_T_Item as b on M_Demand_Merge_List.Use_Des = b.DICT_Code and b.DICT_CLASS='CUX_DM_USAGE'" +
                 " where MDPID='" + MDPLID + "'and M_Demand_Merge_List.ID='" + MDMLID + "'";
             DataTable dtmdml = DBI.Execute(strSql, true);
 

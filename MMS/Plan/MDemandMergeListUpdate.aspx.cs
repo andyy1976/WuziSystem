@@ -40,7 +40,12 @@ namespace mms.Plan
                 RDDL_Secret_Level.DataValueField = "SecretLevel_Name";
                 RDDL_Secret_Level.DataBind();
 
-          
+                strSQL = "select * from GetBasicdata_T_Item where DICT_CLASS='CUX_DM_USAGE'";
+                dt = DBI.Execute(strSQL, true);
+                RDDL_Use_Des.DataSource = dt;
+                RDDL_Use_Des.DataTextField = "DICT_Name";
+                RDDL_Use_Des.DataValueField = "DICT_Code";
+                RDDL_Use_Des.DataBind();
 
                 GetMDML(MDMLID);
                 GetManufactur("");
@@ -51,7 +56,7 @@ namespace mms.Plan
         {
             string strSQL = " select *, (select Dept from Sys_DeptEnum where DeptCode = M_Demand_Merge_List.MaterialDept) as Dept  from M_Demand_Merge_List where ID = '" + id + "'";
             DataTable dt = DBI.Execute(strSQL, true);
-
+             
             lbl_ID.Text = id;
             hf_MDPLID.Value = dt.Rows[0]["MDPID"].ToString();
             lbl_TaskCode.Text = dt.Rows[0]["TaskCode"].ToString();
@@ -64,7 +69,6 @@ namespace mms.Plan
             lbl_Mat_Unit.Text = dt.Rows[0]["Mat_Unit"].ToString();
             RTB_Mat_Rough_Weight.Text = dt.Rows[0]["Mat_Rough_Weight"].ToString();
             RTB_Special_Needs.Text = dt.Rows[0]["Special_Needs"].ToString();
-            RTB_Use_Des.Text = dt.Rows[0]["Use_Des"].ToString();
             lbl_NumCasesSum.Text = Convert.ToDouble(dt.Rows[0]["NumCasesSum"].ToString()).ToString();
             lbl_DemandNumSum.Text = Convert.ToDouble(dt.Rows[0]["DemandNumSum"].ToString()).ToString();
             if (RDDL_Urgency_Degre.FindItemByValue(dt.Rows[0]["Urgency_Degre"].ToString()) != null)
@@ -74,6 +78,10 @@ namespace mms.Plan
             if (RDDL_Secret_Level.FindItemByText(dt.Rows[0]["Secret_Level"].ToString()) != null)
             {
                 RDDL_Secret_Level.FindItemByText(dt.Rows[0]["Secret_Level"].ToString()).Selected = true;
+            }
+            if (RDDL_Use_Des.FindItemByValue(dt.Rows[0]["Use_Des"].ToString()) != null)
+            {
+                RDDL_Use_Des.FindItemByValue(dt.Rows[0]["Use_Des"].ToString()).Selected = true;
             }
             if (RDDL_Certification.FindItemByText(dt.Rows[0]["Certification"].ToString()) != null)
             {
@@ -123,8 +131,8 @@ namespace mms.Plan
                 return;
             }
 
-            if (RTB_Special_Needs.Text.Trim() != dt.Rows[0]["Special_Needs"].ToString() || RDDL_Urgency_Degre.SelectedValue.ToString() != dt.Rows[0]["Urgency_Degre"].ToString()
-                || RDDL_Secret_Level.SelectedText.ToString() != dt.Rows[0]["Secret_Level"].ToString() || RTB_Use_Des.Text.Trim() != dt.Rows[0]["Use_Des"].ToString()
+            if (RTB_Special_Needs.Text.Trim() != dt.Rows[0]["Special_Needs"].ToString() || RDDL_Urgency_Degre.SelectedValue.ToString() != dt.Rows[0]["Urgency_Degre"].ToString() 
+                || RDDL_Secret_Level.SelectedText.ToString() != dt.Rows[0]["Secret_Level"].ToString() || RDDL_Use_Des.SelectedValue.ToString() != dt.Rows[0]["Use_Des"].ToString()
                 || RDDL_Shipping_Address.SelectedText.ToString() != dt.Rows[0]["Shipping_Address"].ToString() || RDDL_Certification.SelectedValue.ToString() != dt.Rows[0]["Certification"].ToString()
                 || Convert.ToDateTime(RDP_DemandDate.SelectedDate).ToString("yyyy-MM-dd") != Convert.ToDateTime(dt.Rows[0]["DemandDate"].ToString()).ToString("yyyy-MM-dd")
                 || RTB_MANUFACTURER.Text.Trim() != dt.Rows[0]["MANUFACTURER"].ToString() || RTB_Mat_Rough_Weight.Text.Trim() != dt.Rows[0]["Mat_Rough_Weight"].ToString())
@@ -146,7 +154,7 @@ namespace mms.Plan
                 string Sum_Price = dt.Rows[0]["Sum_Price"].ToString();
                 string Secret_Level = RDDL_Secret_Level.SelectedText.ToString();
                 string Stage = dt.Rows[0]["Stage"].ToString();
-                string Use_Des = RTB_Use_Des.Text.Trim();
+                string Use_Des = RDDL_Use_Des.SelectedValue.ToString();
                 string Certification = RDDL_Certification.SelectedValue.ToString();
                 string Special_Needs = RTB_Special_Needs.Text.Trim();
                 string Urgency_Degre = RDDL_Urgency_Degre.SelectedValue.ToString();
@@ -155,6 +163,14 @@ namespace mms.Plan
                 string MANUFACTURER = RTB_MANUFACTURER.Text.Trim();
                 string SUBJECT = dt.Rows[0]["SUBJECT"].ToString();
                 string UserID = null;
+
+                string Project = dt.Rows[0]["Project"].ToString(); ;
+                string TDM_Description = dt.Rows[0]["TDM_Description"].ToString(); ;
+                string Material_Mark = dt.Rows[0]["Material_Mark"].ToString(); ;
+                string CN_Material_State = dt.Rows[0]["CN_Material_State"].ToString(); ;
+                string Material_Tech_Condition = dt.Rows[0]["Material_Tech_Condition"].ToString(); ;
+                string MaterialsDes = dt.Rows[0]["MaterialsDes"].ToString(); ;
+
                 if (Session["UserId"] != null)
                 {
                     UserID = Session["UserId"].ToString();
@@ -188,6 +204,12 @@ namespace mms.Plan
                          TaskCode + "','" +
                          DemandDate + "','" +
                          Material_Name + "','" +
+                         Project + "','" +
+                         TDM_Description + "','" +
+                         Material_Mark + "','" +
+                         CN_Material_State + "','" +
+                         Material_Tech_Condition + "','" +
+                         MaterialsDes + "','" +
                          NumCasesSum + "','" +
                          DemandNumSum + "','" +
                          Mat_Unit + "','" +

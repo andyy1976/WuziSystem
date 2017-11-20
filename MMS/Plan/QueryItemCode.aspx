@@ -60,16 +60,16 @@
             <tr>
                 <td style="width:80px">物资名称：</td>
 
-                <td><telerik:RadTextBox ID="RTB_Material_Name" runat="server" Width="140px"></telerik:RadTextBox></td>
+                <td><telerik:RadTextBox ID="RTB_Material_Name" runat="server" OnKeyPress="AlphabetOnly" Width="140px"></telerik:RadTextBox></td>
 
                     <td style="width:80px">物资牌号：</td>
-                    <td><telerik:RadTextBox ID="RTB_Material_Paihao" runat="server" Width="140px"></telerik:RadTextBox></td>
+                    <td><telerik:RadTextBox ID="RTB_Material_Paihao" runat="server" OnKeyPress="AlphabetOnly"  Width="140px"></telerik:RadTextBox></td>
 
                     <td style="width:80px">物资规格:</td>
-                    <td><telerik:RadTextBox ID="RTB_Material_Guige" runat="server" Width="140px"></telerik:RadTextBox></td>
+                    <td><telerik:RadTextBox ID="RTB_Material_Guige" runat="server" OnKeyPress="AlphabetOnly" Width="140px"></telerik:RadTextBox></td>
 
                     <td style="width:80px">物资标准：</td>
-                    <td><telerik:RadTextBox ID="RTB_Material_Biaozhun" runat="server" Width="140px"></telerik:RadTextBox></td>
+                    <td><telerik:RadTextBox ID="RTB_Material_Biaozhun" runat="server" OnKeyPress="AlphabetOnly" Width="140px"></telerik:RadTextBox></td>
                  <td style="width:200px" colspan="2"><telerik:RadButton ID="RB_Search" runat="server" Text="搜索" OnClick="RB_Search_Click"></telerik:RadButton></td>
                 </tr>
                <tr>

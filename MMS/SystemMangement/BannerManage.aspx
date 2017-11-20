@@ -20,12 +20,12 @@
         <AjaxSettings>
                 <telerik:AjaxSetting AjaxControlID="RadGridBannerManage">
                     <UpdatedControls>
-                        <telerik:AjaxUpdatedControl ControlID="RadGridBannerManage" LoadingPanelID="RadAjaxLoadingPanelLoading" />
+                        <telerik:AjaxUpdatedControl ControlID="RadGridBannerManage" LoadingPanelID="RadAjaxLoadingPanel1" />
                     </UpdatedControls>
                 </telerik:AjaxSetting>
         </AjaxSettings>
     </telerik:RadAjaxManager>
-    <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanelLoading" runat="server" Skin="Default"></telerik:RadAjaxLoadingPanel>
+    <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" runat="server" Skin="Default"></telerik:RadAjaxLoadingPanel>
     <telerik:RadGrid ID="RadGridBannerManage" runat="server" AllowPaging="True" AutoGenerateColumns="False" Culture="zh-CN" GroupPanelPosition="Top" OnNeedDataSource="RadGridBannerManage_NeedDataSource"
          OnInsertCommand="RadGridBannerManage_InsertCommand" OnUpdateCommand="RadGridBannerManage_ItemUpdated" OnItemDataBound="RadGridBannerManage_ItemDataBound" OnItemCreated="RadGridBannerManage_ItemCreated">
         <MasterTableView DataKeyNames="ID" CommandItemDisplay="Top" >

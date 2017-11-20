@@ -67,8 +67,7 @@ namespace mms.Plan
                 this.ViewState["lastSelectDeptCode"] = "";
                 this.ViewState["lastSelectAccount"] = "";
 
-               // RadTabStrip1.Tabs[0].NavigateUrl = "MDemandDetails.aspx?PackId=" + Request.QueryString["PackId"].ToString();
-                RadTabStrip1.Tabs[0].NavigateUrl = "MDemandDetailsTreeList.aspx?PackId=" + Request.QueryString["PackId"].ToString();
+                RadTabStrip1.Tabs[0].NavigateUrl = "MDemandDetails.aspx?PackId=" + Request.QueryString["PackId"].ToString();
             }
         }
 

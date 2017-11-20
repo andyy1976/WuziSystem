@@ -383,19 +383,17 @@ namespace mms.Plan
                 DataTable table = GridSource;
                 RadComboBox rcbAddr = e.Item.FindControl("RadComboBoxShippingAddress") as RadComboBox;
              
-                rcbAddr.CssClass = id;
+              //  rcbAddr.CssClass = id;
                 BindDDlShipping_Addr(rcbAddr, MaterialDept);
                 rcbAddr.FindItemByValue(GridSource.Select("ID='" + id + "'")[0]["Shipping_Addr_Id"].ToString()).Selected = true;
-                RadTextBox rbtSN = e.Item.FindControl("rtb_SpecialNeeds") as RadTextBox;
-                rbtSN.CssClass = id;
 
+                RadTextBox rtbSpecialNeeds = e.Item.FindControl("rtb_SpecialNeeds") as RadTextBox;
+               // rtbSpecialNeeds.CssClass = id;
+                rtbSpecialNeeds.Text = (GridSource.Select("ID='" + id + "'")[0]["Special_Needs"].ToString());
 
-
-                if (GridSource.Select("ID='" + id + "'")[0]["Use_Des"] != null)
-                {
-                    string temp = GridSource.Select("ID='" + id + "'")[0]["Use_Des"].ToString();
-                }
-           
+               RadComboBox RadComboBoxUseDes = e.Item.FindControl("RadComboBoxUseDes") as RadComboBox;
+               RadComboBoxUseDes.FindItemByValue(GridSource.Select("ID='" + id + "'")[0]["Use_Des"].ToString()).Selected = true;
+              
                RadComboBox RadComboBoxSecretLevel = e.Item.FindControl("RadComboBoxSecretLevel") as RadComboBox;
               //RadComboBoxSecretLevel.FindItemByValue(GridSource.Select("ID='" + id + "'")[0]["Secret_Level"].ToString()).Selected = true;
                RadComboBoxSecretLevel.FindItemByValue("内部").Selected = true;
@@ -406,8 +404,6 @@ namespace mms.Plan
 
                RadComboBox RadComboBoxCertification = e.Item.FindControl("RadComboBoxCertification") as RadComboBox;
                RadComboBoxCertification.FindItemByValue(GridSource.Select("ID='" + id + "'")[0]["Certification"].ToString()).Selected = true;
-               RadTextBox rtbAddr = e.Item.FindControl("rtb_SpecialNeeds") as RadTextBox;
-              rtbAddr.Text = (GridSource.Select("ID='" + id + "'")[0]["Special_Needs"].ToString());
             
             }
         }
@@ -447,19 +443,13 @@ namespace mms.Plan
             GridSource.Select("Id='" + id + "'")[0]["Certification"] = cb.SelectedItem.Value;
         }
 
-        protected void RTB_Use_Des_TextChanged(object sender, EventArgs e)
-        {
-            RadTextBox RTB_Use_Des = sender as RadTextBox;
-            string id = (RTB_Use_Des.Parent.Parent as GridDataItem).GetDataKeyValue("ID").ToString();
-            GridSource.Select("Id='" + id + "'")[0]["Use_Des"] = RTB_Use_Des.Text;
-        }
-
         protected void rtb_SpecialNeeds_TextChanged(object sender, EventArgs e)
         {
             RadTextBox rtb = sender as RadTextBox;
             string id = (rtb.Parent.Parent as GridDataItem).GetDataKeyValue("ID").ToString();
             GridSource.Select("Id='" + id + "'")[0]["Special_Needs"] = rtb.Text;
         }
+
         protected void RTB_MANUFACTURER_TextChanged(object sender, EventArgs e)
         {
             RadTextBox rtb = sender as RadTextBox;

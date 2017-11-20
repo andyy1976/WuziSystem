@@ -40,13 +40,13 @@ namespace mms.Plan {
         protected global::Telerik.Web.UI.RadAjaxManager RadAjaxManager1;
         
         /// <summary>
-        /// RadAjaxLoadingPanelLoading 控件。
+        /// RadAjaxLoadingPanel1 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::Telerik.Web.UI.RadAjaxLoadingPanel RadAjaxLoadingPanelLoading;
+        protected global::Telerik.Web.UI.RadAjaxLoadingPanel RadAjaxLoadingPanel1;
         
         /// <summary>
         /// HiddenField 控件。
@@ -148,22 +148,31 @@ namespace mms.Plan {
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
         
         /// <summary>
-        /// SqlDataSourceUrgencyDegre1 控件。
+        /// SqlDataSourceUrgencyDegree 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceUrgencyDegre1;
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceUrgencyDegree;
         
         /// <summary>
-        /// SqlDataSourceSecretLevel1 控件。
+        /// SqlDataSourceSecretLevel 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceSecretLevel1;
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceSecretLevel;
+        
+        /// <summary>
+        /// SqlDataSourceUseDes 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceUseDes;
         
         /// <summary>
         /// SqlDataSourceProject 控件。
@@ -434,69 +443,6 @@ namespace mms.Plan {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::Telerik.Web.UI.RadDropDownList RDDLMT;
-        
-        /// <summary>
-        /// div1 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div1;
-        
-        /// <summary>
-        /// RDDLMT1 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadDropDownList RDDLMT1;
-        
-        /// <summary>
-        /// RDDLMT2 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadDropDownList RDDLMT2;
-        
-        /// <summary>
-        /// RDDLMT3 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadDropDownList RDDLMT3;
-        
-        /// <summary>
-        /// RDDLMT4 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadDropDownList RDDLMT4;
-        
-        /// <summary>
-        /// div2 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div2;
-        
-        /// <summary>
-        /// RTB_ItemCode 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadTextBox RTB_ItemCode;
         
         /// <summary>
         /// RadGrid1 控件。
@@ -877,22 +823,22 @@ namespace mms.Plan {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfv_NumCasesSum;
         
         /// <summary>
-        /// RadComboBoxSecretLevel 控件。
+        /// RadComboBoxSecretLevel1 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::Telerik.Web.UI.RadComboBox RadComboBoxSecretLevel;
+        protected global::Telerik.Web.UI.RadComboBox RadComboBoxSecretLevel1;
         
         /// <summary>
-        /// SqlDataSourceSecretLevel 控件。
+        /// SqlDataSourceSecretLevel1 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceSecretLevel;
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceSecretLevel1;
         
         /// <summary>
         /// span_Sum_Price 控件。
@@ -913,22 +859,31 @@ namespace mms.Plan {
         protected global::Telerik.Web.UI.RadComboBox RadComboBoxStage;
         
         /// <summary>
-        /// RTB_Use_Des 控件。
+        /// RadComboBoxUseDes1 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::Telerik.Web.UI.RadTextBox RTB_Use_Des;
+        protected global::Telerik.Web.UI.RadComboBox RadComboBoxUseDes1;
         
         /// <summary>
-        /// RadComboBoxCertification 控件。
+        /// SqlDataSourceUseDes1 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::Telerik.Web.UI.RadComboBox RadComboBoxCertification;
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceUseDes1;
+        
+        /// <summary>
+        /// RadComboBoxCertification1 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadComboBox RadComboBoxCertification1;
         
         /// <summary>
         /// RadComboBoxShipping_Address 控件。
@@ -940,40 +895,31 @@ namespace mms.Plan {
         protected global::Telerik.Web.UI.RadComboBox RadComboBoxShipping_Address;
         
         /// <summary>
-        /// RadComboBoxUrgencyDegre 控件。
+        /// RadComboBoxUrgencyDegree1 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::Telerik.Web.UI.RadComboBox RadComboBoxUrgencyDegre;
+        protected global::Telerik.Web.UI.RadComboBox RadComboBoxUrgencyDegree1;
         
         /// <summary>
-        /// SqlDataSourceUrgencyDegre 控件。
+        /// SqlDataSourceUrgencyDegree1 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceUrgencyDegre;
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceUrgencyDegree1;
         
         /// <summary>
-        /// RadComboBoxMaterialDept 控件。
+        /// RadComboBoxMaterialDept1 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::Telerik.Web.UI.RadComboBox RadComboBoxMaterialDept;
-        
-        /// <summary>
-        /// trAttribute4 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTableRow trAttribute4;
+        protected global::Telerik.Web.UI.RadComboBox RadComboBoxMaterialDept1;
         
         /// <summary>
         /// RB_Attribute41 控件。

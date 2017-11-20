@@ -20,13 +20,13 @@
         <AjaxSettings>
             <telerik:AjaxSetting AjaxControlID="RadGridMaterialDeptInfo">
                 <UpdatedControls>
-                    <telerik:AjaxUpdatedControl ControlID="RadGridMaterialDeptInfo" LoadingPanelID="RadAjaxLoadingPanelLoading" />
+                    <telerik:AjaxUpdatedControl ControlID="RadGridMaterialDeptInfo" LoadingPanelID="RadAjaxLoadingPanel1" />
                     <telerik:AjaxUpdatedControl ControlID="RadNotificationAlert" />
                 </UpdatedControls>
             </telerik:AjaxSetting>
         </AjaxSettings>
     </telerik:RadAjaxManager>
-    <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanelLoading" Runat="server" Skin="Default"></telerik:RadAjaxLoadingPanel>
+    <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" Runat="server" Skin="Default"></telerik:RadAjaxLoadingPanel>
 
     <telerik:RadGrid ID="RadGridMaterialDeptInfo" runat="server" CellSpacing="-1" Culture="zh-CN" 
         AllowPaging="true" PageSize="20" PagerStyle-AlwaysVisible="True"

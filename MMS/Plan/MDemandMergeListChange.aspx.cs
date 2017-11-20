@@ -48,8 +48,7 @@ namespace mms.Plan
                     this.span_plancode.InnerText = PlanCode;
                     this.span_PlanName.InnerText = dt.Rows[0]["PlanName"].ToString();
 
-                    //   RadTabStrip1.Tabs[0].NavigateUrl = "MDemandDetails.aspx?PackId=" + packId;
-                    RadTabStrip1.Tabs[0].NavigateUrl = "MDemandDetailsTreeList.aspx?PackId=" + packId;
+                    RadTabStrip1.Tabs[0].NavigateUrl = "MDemandDetails.aspx?PackId=" + packId;
                     strSQL = "select * from GetBasicdata_T_Item where DICT_CLASS='CUX_DM_URGENCY_LEVEL'";
                     dt = DBI.Execute(strSQL, true);
                     RDDL_Urgency_Degre.DataSource = dt;
@@ -139,11 +138,12 @@ namespace mms.Plan
         {
             string strSQL = " select M_Demand_Merge_List.ID, TaskCode, Drawing_No, ItemCode1, NumCasesSum, DemandNumSum, Dept, DemandDate, Submit_Date" +
                 " , Special_Needs, Secret_Level, Shipping_Address, Material_Name, Manufacturer" +
-                " , CUX_DM_URGENCY_LEVEL.DICT_Name as UrgencyDegre, Use_Des as UseDes , Convert(float, NumCasesSum) as NumCasesSum1" +
+                " , CUX_DM_URGENCY_LEVEL.DICT_Name as UrgencyDegre, CUX_DM_USAGE.DICT_Name as UseDes , Convert(float, NumCasesSum) as NumCasesSum1" +
                 " , isnull((select top 1 Submission_Status from GetRqStatus_T_Item where USER_RQ_LINE_ID = M_Demand_Merge_List.ID order by SUBMITED_SYNC_STATUS desc),'已提交') as State" +
                 " from M_Demand_Merge_List" +
                 " join Sys_DeptEnum on Sys_DeptEnum.DeptCode = M_Demand_Merge_List.MaterialDept" +
                 " left join GetBasicdata_T_Item as CUX_DM_URGENCY_LEVEL on CUX_DM_URGENCY_LEVEL.DICT_CODE = M_Demand_Merge_List.Urgency_Degre and DICT_CLASS='CUX_DM_URGENCY_LEVEL'" +
+                " left join GetBasicdata_T_Item as CUX_DM_USAGE on CUX_DM_USAGE.DICT_CODE = M_Demand_Merge_List.Use_Des and CUX_DM_USAGE.DICT_CLASS='CUX_DM_USAGE'" +
                 " where PackId = '" + Request.QueryString["PackId"].ToString() + "' and Is_Submit = 'true' " + strWhere + " order by submit_Date desc";
             DataTable dt = DBI.Execute(strSQL, true);
             this.ViewState["_gds"] = dt;

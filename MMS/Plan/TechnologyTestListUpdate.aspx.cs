@@ -132,7 +132,6 @@ namespace mms.Plan
                     txt_Rough_Spec.Text = dt.Rows[0]["Rough_Spec"].ToString();
                     RTB_Mat_Rough_Weight.Text = dt.Rows[0]["Mat_Rough_Weight"].ToString();
                     RTB_Unit_Price.Text = dt.Rows[0]["Unit_Price"].ToString();
-                    RTB_UseDes.Text = dt.Rows[0]["Use_Des"].ToString();
                     span_Sum_Price.Text = dt.Rows[0]["Sum_Price"].ToString();
                     if (RadComboBoxSecretLevel.FindItemByText(dt.Rows[0]["Secret_Level"].ToString()) != null)
                     RadComboBoxSecretLevel.FindItemByText(dt.Rows[0]["Secret_Level"].ToString()).Selected = true;
@@ -154,8 +153,8 @@ namespace mms.Plan
                     if (RDDL_Project.FindItemByValue(dt.Rows[0]["Project"].ToString()) != null)
                         RDDL_Project.FindItemByValue(dt.Rows[0]["Project"].ToString()).Selected = true;
 
-
-
+                    if (RadComboBoxUseDes.FindItemByValue(dt.Rows[0]["Use_Des"].ToString()) != null)
+                    RadComboBoxUseDes.FindItemByValue(dt.Rows[0]["Use_Des"].ToString()).Selected = true;
                     if (RadComboBoxCertification.FindItemByValue(dt.Rows[0]["Certification"].ToString()) != null)
                     RadComboBoxCertification.FindItemByValue(dt.Rows[0]["Certification"].ToString()).Selected = true ;
                     rtb_SpecialNeeds.Text = dt.Rows[0]["Special_Needs"].ToString();
@@ -250,6 +249,14 @@ namespace mms.Plan
             RadComboBoxShipping_Address.DataBind();
         }
 
+        protected void BindUseDes()
+        {
+            string strSQL = "select * from GetBasicdata_T_Item where DICT_CLASS='CUX_DM_USAGE'";
+            RadComboBoxUseDes.DataSource = DBI.Execute(strSQL, true);
+            RadComboBoxUseDes.DataTextField = "DICT_Name";
+            RadComboBoxUseDes.DataValueField = "DICT_Code";
+            RadComboBoxUseDes.DataBind();
+        }
 
         protected void BindUrgencyDegre()
         {
@@ -320,7 +327,7 @@ namespace mms.Plan
             string Sum_Price = span_Sum_Price.Text.Trim();
             string Secret_Level = RadComboBoxSecretLevel.SelectedValue;
             string Stage = RadComboBoxStage.SelectedValue;
-            string Use_Des = RTB_UseDes.Text.Trim();
+            string Use_Des = RadComboBoxUseDes.SelectedValue;
             string Certification = RadComboBoxCertification.SelectedValue;
             string Special_Needs = rtb_SpecialNeeds.Text;
             string Urgency_Degre = RadComboBoxUrgencyDegre.SelectedValue;

@@ -58,13 +58,13 @@
                 <AjaxSettings>
                     <telerik:AjaxSetting AjaxControlID="RadGrid_MDemandPlan">
                         <UpdatedControls>
-                            <telerik:AjaxUpdatedControl ControlID="RadGrid_MDemandPlan" LoadingPanelID="RadAjaxLoadingPanelLoading" />
+                            <telerik:AjaxUpdatedControl ControlID="RadGrid_MDemandPlan" LoadingPanelID="RadAjaxLoadingPanel1" />
                             <telerik:AjaxUpdatedControl ControlID="RadNotificationAlert" />
                         </UpdatedControls>
                     </telerik:AjaxSetting>
                 </AjaxSettings>
             </telerik:RadAjaxManager>
-            <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanelLoading" runat="server"></telerik:RadAjaxLoadingPanel>
+            <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" runat="server"></telerik:RadAjaxLoadingPanel>
 
             <telerik:RadGrid ID="RadGrid_MDemandPlan" runat="server" AllowPaging="True" DataKeyNames="ID" Culture="zh-CN" GroupPanelPosition="Top" 
                 OnNeedDataSource="RadGrid_MDemandPlan_NeedDataSource" OnItemCommand="RadGrid_MDemandPlan_ItemCommand" PageSize="50"

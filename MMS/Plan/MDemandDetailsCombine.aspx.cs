@@ -187,7 +187,7 @@ namespace mms.Plan
                         DataTable dt1 = GetDetailedListList(DraftCode, "", idStr);
                         GridSource = Common.AddTableRowsID(dt1);
                      //   DataTable dt2 = null;
-                        DataTable dt2 = GetCombinedParentRecordList();
+                        DataTable dt2 = GetCombinedParentRecordList(GridSource.Rows[0]["ItemCode1"].ToString());
                         if (dt2.Rows.Count<=0)
                         {
                             dt2 = new DataTable();
@@ -252,7 +252,7 @@ namespace mms.Plan
             }
         }
 
-        protected DataTable GetCombinedParentRecordList()
+        protected DataTable GetCombinedParentRecordList(string itemCode)
         {
             try
             {
@@ -260,6 +260,10 @@ namespace mms.Plan
                 if (Request.QueryString["itemCode1"] != null && Request.QueryString["itemCode1"].ToString() != "")
                 {
                     itemCode1 = Request.QueryString["itemCode1"].ToString();
+                }
+                else
+                {
+                    itemCode1 = itemCode;
                 }
               //  string strSQL =
               //      "select *, 'false' as checked, '未提交' as mstate, '0' as quantity1" +
@@ -300,79 +304,8 @@ namespace mms.Plan
                 throw new Exception("查询物资需求清单详表数据出错" + ex.Message.ToString());
             }
         }
-        
-        /// <summary>
-        /// 数据库操作-更新需求时间
-        /// M_Demand_DetailedList_DraftBody M_Demand_DetailedList_DraftBody
-        /// </summary>
-        protected void UpdateDemandDate(string MDID, DateTime DemandDate)
-        {
-            string strSQL;
-            DBI.OpenConnection();
-            try
-            {
-                DBI.BeginTrans();
-                strSQL = @"UPDATE [dbo].[M_Demand_DetailedList_Draft] SET [DemandDate] = '" + DemandDate + "' WHERE [ID] = '" + MDID + "'";
-                DBI.Execute(strSQL);
-                DBI.CommitTrans();
-            }
-            catch (Exception e)
-            {
-                DBI.RollbackTrans();
-                throw new Exception("数据库操作-更新需求时间时出现异常" + e.Message.ToString());
-            }
-            finally
-            {
-                DBI.CloseConnection();
-            }
-        }
 
-
-        protected class M_Demand_DetailedList_DraftBody
-        {
-            public int ID { get; set; }
-            public string VerCode { get; set; }
-            public string CLASS_ID { get; set; }
-            public string OBJECT_ID { get; set; }
-            public string STAGE { get; set; }
-            public string MATERIAL_STATE { get; set; }
-            public string MATERIAL_TECH_CONDITION { get; set; }
-            public string MATERIAL_CODE { get; set; }
-            public string ParentId { get; set; }
-            public string MATERIAL_NAME { get; set; }
-            public string TASK_NUM { get; set; }
-            public string DRAWING_NO { get; set; }
-            public string TECHNICS_LINE { get; set; }
-            public string ItemCode1 { get; set; }
-            public string MaterialsNum { get; set; }
-            public string MAT_UNIT { get; set; }
-            public string LINGJIAN_TYPE { get; set; }
-            public string MAT_ROUGH_WEIGHT { get; set; }
-            public string MAT_PRO_WEIGHT { get; set; }
-            public string MAT_WEIGHT { get; set; }
-            public string MAT_EFFICIENCY { get; set; }
-            public string MAT_COMMENT { get; set; }
-            public string MAT_TECHNICS { get; set; }
-            public string ROUCH_SPEC { get; set; }
-            public string ROUGH_SIZE { get; set; }
-            public string MaterialsDes { get; set; }
-            public string StandAlone { get; set; }
-            public string ThisTimeOperation { get; set; }
-            public string PredictDeliveryDate { get; set; }
-            public string DemandNumSum { get; set; }
-            public string NumCasesSum { get; set; }
-            public string DemandDate { get; set; }
-            public string Product_num { get; set; }
-            public string SparePart_num { get; set; }
-            public string Process_num { get; set; }
-            public string CanonicalForm_num { get; set; }
-            public string MustChangePart_num { get; set; }
-            public string Other { get; set; }
-            public string Import_Date { get; set; }
-            public string User_ID { get; set; }
-        }
-
-
+  
         protected void RadGrid_MDemandDetails_ItemDataBound(object sender, GridItemEventArgs e)
         {
 
@@ -560,11 +493,13 @@ namespace mms.Plan
             if (e.Item is GridDataItem)
             {
                 string id =(e.Item as GridDataItem).GetDataKeyValue("ID").ToString();
-              //  string MaterialDept = (e.Item as GridDataItem).GetDataKeyValue("MaterialDept").ToString();
-                DataTable table = GridSource1;
-                         //  RadTextBox rbtSN = e.Item.FindControl("rtb_SpecialNeeds") as RadTextBox;
-               // rbtSN.CssClass = id;
-    
+              
+               /* RadTextBox rtbSpecialNeeds = e.Item.FindControl("rtb_SpecialNeeds") as RadTextBox;
+                if (GridSource.Select("ID='" + id + "'")[0]["Special_Needs"] != null)
+                {
+                    rtbSpecialNeeds.Text = GridSource.Select("ID='" + id + "'")[0]["Special_Needs"].ToString();
+                }
+    */
                 RadTextBox rtbDemandNumSum = e.Item.FindControl("DemandNumSum") as RadTextBox;
                 rtbDemandNumSum.Text = (GridSource1.Select("ID='" + id + "'")[0]["DemandNumSum"].ToString());
 
@@ -591,15 +526,7 @@ namespace mms.Plan
             }
         }
   
-
-    
-     
-
-     
-
-      
-
-         protected void rtb_SpecialNeeds_TextChanged(object sender, EventArgs e)
+        protected void rtb_SpecialNeeds_TextChanged(object sender, EventArgs e)
         {
             RadTextBox rtb = sender as RadTextBox;
             string id = (rtb.Parent.Parent as GridDataItem).GetDataKeyValue("ID").ToString();

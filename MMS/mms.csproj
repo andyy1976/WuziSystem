@@ -89,17 +89,31 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
-    <Reference Include="Telerik.Web.Design">
-      <HintPath>..\lib\Telerik.Web.Design.dll</HintPath>
+    <Reference Include="Telerik.Web.Spreadsheet">
+      <HintPath>..\lib\RCAJAX\2017.2.503.45\AdditionalLibraries\Bin45\Telerik.Web.Spreadsheet.dll</HintPath>
     </Reference>
-    <Reference Include="Telerik.Web.Device.Detection">
-      <HintPath>..\lib\Telerik.Web.Device.Detection.dll</HintPath>
+    <Reference Include="Telerik.Web.UI, Version=2017.2.503.45, Culture=neutral, PublicKeyToken=121fae78165ba3d4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\teleric new\Telerik.Web.UI.dll</HintPath>
     </Reference>
-    <Reference Include="Telerik.Web.UI">
-      <HintPath>..\lib\Telerik.Web.UI.dll</HintPath>
+    <Reference Include="Telerik.Web.UI.Skins, Version=2017.2.503.45, Culture=neutral, PublicKeyToken=121fae78165ba3d4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\teleric new\Telerik.Web.UI.Skins.dll</HintPath>
     </Reference>
-    <Reference Include="Telerik.Web.UI.Skins">
-      <HintPath>..\lib\Telerik.Web.UI.Skins.dll</HintPath>
+    <Reference Include="Telerik.Windows.Documents.Core">
+      <HintPath>..\lib\RCAJAX\2017.2.503.45\AdditionalLibraries\Bin45\Telerik.Windows.Documents.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.Flow">
+      <HintPath>..\lib\RCAJAX\2017.2.503.45\AdditionalLibraries\Bin45\Telerik.Windows.Documents.Flow.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.Spreadsheet">
+      <HintPath>..\lib\RCAJAX\2017.2.503.45\AdditionalLibraries\Bin45\Telerik.Windows.Documents.Spreadsheet.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.Spreadsheet.FormatProviders.OpenXml">
+      <HintPath>..\lib\RCAJAX\2017.2.503.45\AdditionalLibraries\Bin45\Telerik.Windows.Documents.Spreadsheet.FormatProviders.OpenXml.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Zip">
+      <HintPath>..\lib\RCAJAX\2017.2.503.45\AdditionalLibraries\Bin45\Telerik.Windows.Zip.dll</HintPath>
     </Reference>
     <Reference Include="ThoughtWorks.QRCode">
       <HintPath>..\lib\ThoughtWorks.QRCode.dll</HintPath>
@@ -1135,7 +1149,7 @@
     <Content Include="MaterialApplicationCollar\MaterialApplicationTest.aspx" />
     <Content Include="MaterialApplicationCollar\MaterialAppWindow.aspx" />
     <Content Include="MaterialApplicationCollar\MaterialBack.aspx" />
-    <Content Include="MaterialApplicationCollar\MaterialShowPlan.aspx" />
+    <Content Include="Plan\Import_ShowPlan.aspx" />
     <Content Include="MMSDb.dbml">
       <SubType>Designer</SubType>
       <Generator>MSLinqToSQLGenerator</Generator>
@@ -1162,10 +1176,6 @@
     <Content Include="Dal\MDemandDetailedListDraft_DS.xss">
       <DependentUpon>MDemandDetailedListDraft_DS.xsd</DependentUpon>
     </Content>
-    <Content Include="MaterialApplicationCollar\需求导入模板\型号物资导入模板.xls" />
-    <Content Include="MaterialApplicationCollar\需求导入模板\型号物资导入模板.xlsx" />
-    <Content Include="MaterialApplicationCollar\需求导入模板\车间物资导入模板.xls" />
-    <Content Include="MaterialApplicationCollar\需求导入模板\车间物资导入模板.xlsx" />
     <None Include="MMSDb.dbml.layout">
       <DependentUpon>MMSDb.dbml</DependentUpon>
     </None>
@@ -1193,6 +1203,7 @@
     <Content Include="Plan\MChangeRecordQuery.aspx" />
     <Content Include="Plan\MDemandChangeSubmit.aspx" />
     <Content Include="Plan\MDemandDetailedList.aspx" />
+    <Content Include="Plan\MDemandDetails.aspx" />
     <Content Include="Plan\MDemandMerge.aspx" />
     <Content Include="Plan\MDemandMergeList.aspx" />
     <Content Include="Plan\MDemandMergeListChange.aspx" />
@@ -1219,7 +1230,8 @@
     <Content Include="Plan\WriteReqOrderRecList.aspx" />
     <Content Include="Plan\MDemandDetailsCombine.aspx" />
     <Content Include="Plan\MDemandDetailsTreeList.aspx" />
-    <Content Include="MaterialApplicationCollar\MaterialPlanImport.aspx" />
+    <Content Include="Plan\Import_MaterialRequirement.aspx" />
+    <Content Include="Plan\Import_MDemandDetails.aspx" />
     <Content Include="Scripts\base64.js" />
     <Content Include="Scripts\CurrencyConversion.js" />
     <Content Include="Scripts\Date.js" />
@@ -1236,6 +1248,10 @@
     <Content Include="packages\Newtonsoft.Json.7.0.1\tools\install.ps1" />
     <Content Include="packages\repositories.config" />
     <Content Include="Plan\计划导入模板\计划导入模板.xls" />
+    <Content Include="Plan\物资导入模板\型号物资导入模板.xls" />
+    <Content Include="Plan\物资导入模板\型号物资导入模板.xlsx" />
+    <Content Include="Plan\物资导入模板\车间物资导入模板.xls" />
+    <Content Include="Plan\物资导入模板\车间物资导入模板.xlsx" />
     <None Include="Properties\PublishProfiles\local.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -1467,13 +1483,6 @@
     <Compile Include="App_Data\SqlStringConfig.cs" />
     <Compile Include="App_Data\TaskDataBody.cs" />
     <Compile Include="App_Data\Time_Task.cs" />
-    <Compile Include="App_GlobalResources\RadGrid.Main.designer.cs" />
-    <Compile Include="App_GlobalResources\RadGrid.Main.zh-CN.designer.cs" />
-    <Compile Include="App_GlobalResources\RadGrid.Main.zh-CN1.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RadGrid.Main.zh-CN.resx</DependentUpon>
-    </Compile>
     <Compile Include="BLL\UserService.cs" />
     <Compile Include="CommonHelper\ADHelper.cs" />
     <Compile Include="Dal\Account.Designer.cs">
@@ -1581,12 +1590,12 @@
     <Compile Include="MaterialApplicationCollar\MaterialBack.aspx.designer.cs">
       <DependentUpon>MaterialBack.aspx</DependentUpon>
     </Compile>
-    <Compile Include="MaterialApplicationCollar\MaterialShowPlan.aspx.cs">
-      <DependentUpon>MaterialShowPlan.aspx</DependentUpon>
+    <Compile Include="Plan\Import_ShowPlan.aspx.cs">
+      <DependentUpon>Import_ShowPlan.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="MaterialApplicationCollar\MaterialShowPlan.aspx.designer.cs">
-      <DependentUpon>MaterialShowPlan.aspx</DependentUpon>
+    <Compile Include="Plan\Import_ShowPlan.aspx.designer.cs">
+      <DependentUpon>Import_ShowPlan.aspx</DependentUpon>
     </Compile>
     <Compile Include="MMSDb.designer.cs">
       <DependentUpon>MMSDb.dbml</DependentUpon>
@@ -1701,6 +1710,13 @@
     </Compile>
     <Compile Include="Plan\MDemandDetailedList.aspx.designer.cs">
       <DependentUpon>MDemandDetailedList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Plan\MDemandDetails.aspx.cs">
+      <DependentUpon>MDemandDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Plan\MDemandDetails.aspx.designer.cs">
+      <DependentUpon>MDemandDetails.aspx</DependentUpon>
     </Compile>
     <Compile Include="Plan\MDemandMerge.aspx.cs">
       <DependentUpon>MDemandMerge.aspx</DependentUpon>
@@ -1877,12 +1893,19 @@
     <Compile Include="Plan\MDemandDetailsTreeList.aspx.designer.cs">
       <DependentUpon>MDemandDetailsTreeList.aspx</DependentUpon>
     </Compile>
-    <Compile Include="MaterialApplicationCollar\MaterialPlanImport.aspx.cs">
-      <DependentUpon>MaterialPlanImport.aspx</DependentUpon>
+    <Compile Include="Plan\Import_MaterialRequirement.aspx.cs">
+      <DependentUpon>Import_MaterialRequirement.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="MaterialApplicationCollar\MaterialPlanImport.aspx.designer.cs">
-      <DependentUpon>MaterialPlanImport.aspx</DependentUpon>
+    <Compile Include="Plan\Import_MaterialRequirement.aspx.designer.cs">
+      <DependentUpon>Import_MaterialRequirement.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Plan\Import_MDemandDetails.aspx.cs">
+      <DependentUpon>Import_MDemandDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Plan\Import_MDemandDetails.aspx.designer.cs">
+      <DependentUpon>Import_MDemandDetails.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings1.Designer.cs">
@@ -2180,19 +2203,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_GlobalResources\RadGrid.Main.resx">
-      <Generator>GlobalResourceProxyGenerator</Generator>
-      <LastGenOutput>RadGrid.Main1.designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="App_GlobalResources\RadGrid.Main.zh-CN.resx">
-      <Generator>GlobalResourceProxyGenerator</Generator>
-      <LastGenOutput>RadGrid.Main.zh-CN1.designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </Content>
-    <EmbeddedResource Include="Properties\licenses.licx" />
-  </ItemGroup>
-  <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
@@ -2234,7 +2244,11 @@
     </WebReferenceUrl>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_GlobalResources\" />
     <Folder Include="Plan\ImportExcel\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\licenses.licx" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -2259,6 +2273,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
+      <UserProperties UseAjaxifiedTemplates="True" UseJQuerySupport="True" />
     </VisualStudio>
   </ProjectExtensions>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

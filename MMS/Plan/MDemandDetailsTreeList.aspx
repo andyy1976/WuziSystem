@@ -1,5 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/index.Master" AutoEventWireup="true" CodeBehind="MDemandDetailsTreeList.aspx.cs" ValidateRequest="false" Inherits="mms.Plan.MDemandDetailsTreeList" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/index.Master" AutoEventWireup="true" CodeBehind="MDemandDetailsTreeList.aspx.cs" Inherits="mms.Plan.MDemandDetailsTreeList" %>
 <%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script type="text/javascript">
@@ -12,72 +11,204 @@
             }
         }
     </script>
-    <style>
-        .btn_margin1 {
-            margin-left: 10px;
-        }
-
-        .btn_margin2 {
-            margin-left: 50px;
-        }
-
-        .zt_3 {
-            color: green;
-            font-weight: bold;
-        }
-
-        .zt_1 {
-            color: red;
-            font-weight: bold;
-        }
-
-        .zt_2 {
-            color: blue;
-            font-weight: bold;
-        }
-
-        .span_1 {
-            margin-left: 15px;
-            font-size: 13px;
-        }
-
-        .span_0 {
-            color: black;
-        }
-    </style>
 </asp:Content>
-  
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:HiddenField ID="HiddenField" runat="server" Value="物资需求-->物资需求清单" ClientIDMode="Static" />
-    <telerik:RadTabStrip ID="RadTabStrip1" runat="server" ShowBaseLine="True" SelectedIndex="1">
-        <Tabs>
-            <telerik:RadTab Text="需要提交" TabIndex="0"></telerik:RadTab>
-            <telerik:RadTab Text="需求变更" TabIndex="1" Selected="True"></telerik:RadTab>
-        </Tabs>
-    </telerik:RadTabStrip>
-    <hr style="margin-top: 0px;" />
+    <asp:HiddenField ID="HiddenField" runat="server" Value="物资需求-->型号投产任务-->物资需求清单合并" ClientIDMode="Static" />
+    <telerik:RadScriptManager ID="RadScriptManager1" runat="server" AsyncPostBackTimeout="1800">
+         <Scripts>
+         <asp:ScriptReference Assembly="Telerik.Web.UI" Name="Telerik.Web.UI.Common.Core.js"></asp:ScriptReference>
+         <asp:ScriptReference Assembly="Telerik.Web.UI" Name="Telerik.Web.UI.Common.jQuery.js"></asp:ScriptReference>
+         <asp:ScriptReference Assembly="Telerik.Web.UI" Name="Telerik.Web.UI.Common.jQueryInclude.js"></asp:ScriptReference>
+        </Scripts>
+	</telerik:RadScriptManager>
+    <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server"  OnAjaxRequest="RadAjaxManager1_AjaxRequest">
+        <AjaxSettings>
+            <telerik:AjaxSetting AjaxControlID="RadAjaxManager1">
+                <UpdatedControls>
+                    <telerik:AjaxUpdatedControl ControlID="RadTreeList1"  />
+                </UpdatedControls>
+            </telerik:AjaxSetting>
+            <telerik:AjaxSetting AjaxControlID="RadTreeList1">
+                <UpdatedControls>
+                    <telerik:AjaxUpdatedControl ControlID="RadTreeList1"  />
+                    <telerik:AjaxUpdatedControl ControlID="RadNotificationAlert" />
+                </UpdatedControls>
+            </telerik:AjaxSetting>
+            <telerik:AjaxSetting AjaxControlID="RadBtn_Search">
+                <UpdatedControls>
+                    <telerik:AjaxUpdatedControl ControlID="RadTreeList1"  />
+                    <telerik:AjaxUpdatedControl ControlID="RadNotificationAlert" />   
+                </UpdatedControls>
+            </telerik:AjaxSetting>
+            <telerik:AjaxSetting AjaxControlID="chb_all">
+                <UpdatedControls>
+                    <telerik:AjaxUpdatedControl ControlID="RadTreeList1"/>
+                    <telerik:AjaxUpdatedControl ControlID="chb_all"/>
+                </UpdatedControls>
+            </telerik:AjaxSetting>
+        </AjaxSettings>
+    </telerik:RadAjaxManager>
+    <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" runat="server" Skin="Default"></telerik:RadAjaxLoadingPanel>
+    <telerik:RadCodeBlock runat="server">
+        <script type="text/javascript">
+            function AlphabetOnly(sender, eventArgs) {
+                var c = eventArgs.get_keyCode();
+                if ((c == 13)) {
+                    eventArgs.set_cancel(true);
+                }
+            }
 
-          <div style="width: 100%; margin: 0px auto;">
-            <table style="text-align:left;">
-                <tr>
-                    <td style="text-align:right;">物资编码：</td>
-                    <td><telerik:RadTextBox ID="RTB_ItemCode" runat="server" Width="120px"></telerik:RadTextBox></td>
-                    <td>零件类型：</td>
-                    <td>
-                        <telerik:RadDropDownList ID="RDDL_LingJian_Type" runat="server" Width="100px" AppendDataBoundItems="true">
-                           <Items><telerik:DropDownListItem Text="全部" Value="" /></Items>
-                        </telerik:RadDropDownList>
-                    </td>
-                    <td><telerik:RadButton ID="RB_Query" runat="server" Text="查询" OnClick="WZBH_Query_Click"></telerik:RadButton></td>
-                <%--     <td> <telerik:RadButton ID="RadBtnReturn" runat="server" Text="返回投产计划包列表" OnClick="RadBtnReturn_Click"></telerik:RadButton></td> --%>
-                </tr>
+            function refreshGrid(arg) {
+                if (!arg) {
+                    $find("<%= RadAjaxManager1.ClientID %>").ajaxRequest("Rebind");
+                }
+            }
+            function refreshGrid1()
+            {
+
+                $find("<%= RadAjaxManager1.ClientID %>").ajaxRequest("Rebind1");
+
+            }
+            function RefreshParent(sender, eventArgs)
+            {
+                document.location.reload();
+            }
+
+            function AlphabetOnly(sender, eventArgs)
+            {
+                var c = eventArgs.get_keyCode();
+                if ((c == 13)) {
+                    eventArgs.set_cancel(true);
+                }
+            }
+            var submintId;
+
+            function YesOrNoClicked(sender, args)
+            {
+                var oWnd = $find("<%=RadWindow.ClientID %>");
+                            oWnd.close();
+                            if (sender.get_text() == "是") {
+                                $find(submintId).click();
+                            }
+             }
+            function ShowMDemandCombineList(itemCode)
+            {
+
+                var win = $find("<%=RadWindowRecordWindow.ClientID %>");
+                win.set_title("物资需求计划合并清单");
+
+                window.radopen("/Plan/MDemandDetailsCombine.aspx?PackId=" + "<%= Request.QueryString["PackId"].ToString() %>" + "&itemCode1=" + itemCode, "RadWindowRecordWindow");
+             }
+            function confirmWindowSubmitCancel(sender, args)
+            {
+                var treeList = $find('<%= RadTreeList1.ClientID %>');
+
+                var selectedItems = treeList.get_selectedItems();
+                if (selectedItems.length <= 0)
+                {
+                    var rnal = $find("<%=RadNotificationAlert.ClientID %>");
+                                rnal.set_text("请选择一条以红颜色标记的合并过的数据记录");
+                                rnal.show();
+                                args.set_cancel(true);
+
+                }
+                else if (selectedItems.length > 1)
+                {
+                                var rnal = $find("<%=RadNotificationAlert.ClientID %>");
+                                rnal.set_text("请勿选择两条（含）以上的数据记录");
+                                rnal.show();
+                                args.set_cancel(true);
+                                return;
+                 }
+                else
+                {
+                    //  var combine_State = $(selectedItems[0].get_cell("Combine_State")).text();
+                    var combine_State = treeList.getCellByColumnUniqueName(selectedItems[0], "Combine_State").innerText;
+                    var parentId_For_Combine = treeList.getCellByColumnUniqueName(selectedItems[0], "ParentId_For_Combine").innerText;
+
+                    if (combine_State == 1 && parentId_For_Combine == 0)
+                    {
+                        //ShowMDemandCombineList(temp);
+                        $find("<%= RadWindow.ClientID %>").show();
+                                    submintId = sender.get_id();
+                                    args.set_cancel(true);
+
+
+                    }
+                    else
+                    {
+                                    var rnal = $find("<%=RadNotificationAlert.ClientID %>");
+                                    rnal.set_text("请选择一条以红颜色标记的合并过的数据记录");
+                                    rnal.show();
+                                    args.set_cancel(true)
+                     }
+
+                }
+             }
+
+            function confirmWindowSubmitCombineClicking(sender, args)
+            {
+                var treeList = $find('<%= RadTreeList1.ClientID %>');
+
+                var selectedItems = treeList.get_selectedItems();
+                if (selectedItems.length <= 0)
+                {
+                    var rnal = $find("<%=RadNotificationAlert.ClientID %>");
+                                rnal.set_text("请选择要合并的数据");
+                                rnal.show();
+                                args.set_cancel(true);
+                }
+                else
+                {
+                    var combineparentid = treeList.getCellByColumnUniqueName(selectedItems[0], "ParentId_For_Combine").innerText;
+                    if (combineparentid != 0)
+                    {
+                        var rnal = $find("<%=RadNotificationAlert.ClientID %>");
+                                    rnal.set_text("请务选择已经合并过的数据记录");
+                                    rnal.show();
+                                    args.set_cancel(true);
+                     }
+                    else
+                    {
+                        var temp = treeList.getCellByColumnUniqueName(selectedItems[0], "ItemCode1").innerText;
+                        //  var temp = selectedItems[0]["ItemCode1"].text;
+                        for (var i = 1; i < selectedItems.length; i++)
+                        {
+
+                            var combineparentid = treeList.getCellByColumnUniqueName(selectedItems[i], "ParentId_For_Combine").innerText;
+                            if (combineparentid != 0)
+                            {
+                                var rnal = $find("<%=RadNotificationAlert.ClientID %>");
+                                            rnal.set_text("请务选择已经合并的数据");
+                                            rnal.show();
+                                            args.set_cancel(true);
+                                            return;
+                             }
+                            //  var dataKeyValue = item.getDataKeyValue("OrderID");
+                            //    var itemCode1 = item["ItemCode1"].text;
+                            var itemCode1 = treeList.getCellByColumnUniqueName(selectedItems[i], "ItemCode1").innerText;
+                            if (itemCode1 != temp)
+                            {
+                                var rnal = $find("<%=RadNotificationAlert.ClientID %>");
+                                            rnal.set_text("请选择物资编码相同的数据");
+                                            rnal.show();
+                                            args.set_cancel(true)
+                                            return;
+                                        }
+                                    }
+                                    ShowMDemandCombineList(temp);
+                            }
+                    }
+              }
+                               
+
+
               
-            </table>
-        </div>
-    <div style="width: 100%; float: left;">
-        <div class="divContant">
-            <div class="divSiteMap add_divSiteMap" style="clear: both; width: 100%;">
-                <div class="divSiteMap" style="width: 100%; float: left; height: 30px; border-bottom-style: solid; border-bottom-width: 1px;">
+                    </script>
+                </telerik:RadCodeBlock>
+
+    <div style="width: 100%; margin: 0px auto;">
+       <div class="divSiteMap" style="width: 100%; float: left; height: 30px; border-bottom-style: solid; border-bottom-width:0px;">
                     <label style="float: left; margin-top: 0px;">型号：</label>
                     <span id="span_model" style="font-weight:bold; color:red;width:200px;" runat="server"></span>
                     <label style="float: left; margin-top: 0px;">计划包名称：</label>
@@ -86,15 +217,35 @@
                     <span id="span_plancode" style="font-weight:bold;width:200px;" runat="server"></span>
                     <label style="float: left">材料清单编号：</label>
                     <span id="span_DraftCode" style="font-weight:bold;width:200px;" runat="server"></span>
-                </div>
-                <div style="float: left; height: 40px; line-height: 40px;">
-                    <span style="font-weight: bold;font-size:20px;">物资需求清单</span>
-                </div>
-
-                <div style="float: left; height: 40px; line-height: 40px;">
-                    <asp:CheckBox ID="chb_all" runat="server" OnCheckedChanged="chb_all_CheckedChanged" AutoPostBack="True" Text="全选"/>
-                </div>
-                <div class="div_addclass" style="float: right; height: 40px; line-height: 40px;">
+        </div>
+        
+       <div style="width: 100%; height: 0px;  border-bottom-style: solid; border-bottom-width: 1px; margin: 5px 0; clear: both;"></div>
+         <table style="text-align:left;">
+                <tr>
+                    <td style="text-align:right;">物资编码：</td>
+                    <td><telerik:RadTextBox ID="RTB_ItemCode" runat="server" Width="120px">
+                          <ClientEvents OnKeyPress="AlphabetOnly" />
+                        </telerik:RadTextBox></td>
+                    <td>零件类型：</td>
+                    <td>
+                        <telerik:RadDropDownList ID="RDDL_LingJian_Type" runat="server" Width="100px" AppendDataBoundItems="true">
+                           <Items><telerik:DropDownListItem Text="全部" Value="" /></Items>
+                        </telerik:RadDropDownList>
+                    </td>
+                    <td>图号：</td>
+                    <td><telerik:RadTextBox ID="RTB_Drawing_No" runat="server" Width="100px">
+                          <ClientEvents OnKeyPress="AlphabetOnly" />
+                        </telerik:RadTextBox></td>
+                      <td>工艺路线：</td>
+                    <td><telerik:RadTextBox ID="Rad_TechLine" runat="server"  Width="100px">
+                         <ClientEvents OnKeyPress="AlphabetOnly" />
+                        </telerik:RadTextBox></td>
+                    <td><telerik:RadButton ID="RB_Query" runat="server" Text="查询" OnClick="WZBH_Query_Click"></telerik:RadButton></td>
+                </tr>
+            </table>
+       <div class="divSiteMap add_divSiteMap" style="clear: both; width: 100%;">
+           <div class="div_addclass" style="float: right; height: 40px; line-height: 40px;">
+                    <span style="font-size: 13px;color:red;"> <asp:CheckBox ID="chb_all" runat="server" OnCheckedChanged="chb_all_CheckedChanged" AutoPostBack="True" Text="全选"/></span>
                     <span style="font-size: 13px;">未提交：</span>
                     <label id="lbl_state_0" runat="server" style="color: green; font-weight: bold;">0</label>
                     <span style="margin-left: 20px; font-size: 13px;">已提交：</span>
@@ -108,244 +259,29 @@
                     <span style="margin-left: 20px; font-size: 13px;">有更改不可再提交：</span>
                     <label id="lbl_state_6" runat="server" style="color: red; font-weight: bold;">0</label>
                 </div>
-                <div style="width: 100%; height: 0px; border: solid #000 1px; margin: 5px 0; clear: both"></div>
-                <div style="clear: both; overflow: hidden"></div>
-               </div>
-            <div style="width: 100%; float: left;">
-                <telerik:RadCodeBlock ID="RadCodeBlock1" runat="server">
-
-                    <script type="text/javascript">
-                        function RefreshParent(sender, eventArgs) {
-                            document.location.reload();
-                        }
-
-                        var submintId;
-              
-                        function YesOrNoClicked(sender, args) {
-                            var oWnd = $find("<%=RadWindow.ClientID %>");
-                            oWnd.close();
-                            if (sender.get_text() == "是") {
-                                $find(submintId).click();
-                            }
-                        }
-                        function ShowMDemandMergeList() {
-                          
-                            var win = $find("<%=RadWindowRecordWindow.ClientID %>");
-                            win.set_title("物资需求计划清单");
-                            window.radopen("/Plan/MDemandMergeList.aspx", "RadWindowRecordWindow");
-                            return false;
-                        }
-                        function confirmWindowSubmitMerge(sender, args) {
-                                             
-                            var treeList= $find('<%= RadTreeList1.ClientID %>');
-                                  
-                            var selectedItems = treeList.get_selectedItems();
-
-                            if (selectedItems.length <= 0 ) {
-                                var rnal = $find("<%=RadNotificationAlert.ClientID %>");
-                                rnal.set_text("请选择要提交的数据");
-                                rnal.show();
-
-                            }
-                            else
-                            {
-                                for (var i = 0; i < selectedItems.length; i++) {
-
-                                    var combineparentid = treeList.getCellByColumnUniqueName(selectedItems[i], "ParentId_For_Combine").innerText;
-                                    if (combineparentid != 0)
-                                    {
-                                        var rnal = $find("<%=RadNotificationAlert.ClientID %>");
-                                        rnal.set_text("请务包含已经合并的数据记录");
-                                        rnal.show();
-                                        return;
-                                    }
-                                }
-
-
-                                ShowMDemandMergeList();
-                            }
-                        }
-
-                        function ShowMDemandCombineList(itemCode) {
-
-                            var win = $find("<%=RadWindowRecordWindow.ClientID %>");
-                            win.set_title("物资需求计划合并清单");
-                           
-                            window.radopen("/Plan/MDemandDetailsCombine.aspx?PackId=" + "<%= Request.QueryString["PackId"].ToString() %>"+"&itemCode1="+itemCode, "RadWindowRecordWindow");
-                             return false;
-                         }
-
-                        function confirmWindowSubmitCancel(sender, args) {
-                            var treeList = $find('<%= RadTreeList1.ClientID %>');
-                    
-                            var selectedItems = treeList.get_selectedItems();
-                            if (selectedItems.length <= 0)
-                            {
-                                var rnal = $find("<%=RadNotificationAlert.ClientID %>");
-                                       rnal.set_text("请选择一条以红颜色标记的合并过的数据记录");
-                                       rnal.show();
-                                       args.set_cancel(true);
-                                     
-                            }
-                            else  if (selectedItems.length>1)
-                            {
-                                var rnal = $find("<%=RadNotificationAlert.ClientID %>");
-                                  rnal.set_text("请勿选择两条（含）以上的数据记录");
-                                  rnal.show();
-                                  args.set_cancel(true);
-                                  return;
-                            }
-                            else
-                            {
-                              //  var combine_State = $(selectedItems[0].get_cell("Combine_State")).text();
-                                var combine_State = treeList.getCellByColumnUniqueName(selectedItems[0], "Combine_State").innerText;
-                                var parentId_For_Combine = treeList.getCellByColumnUniqueName(selectedItems[0], "ParentId_For_Combine").innerText;
-
-                                if (combine_State == 1 && parentId_For_Combine == 0) {
-                                    //ShowMDemandCombineList(temp);
-                                    $find("<%= RadWindow.ClientID %>").show();
-                                    submintId = sender.get_id();
-                                    args.set_cancel(true);
-                                    
-
-                                }
-                                else {
-                                    var rnal = $find("<%=RadNotificationAlert.ClientID %>");
-                                    rnal.set_text("请选择一条以红颜色标记的合并过的数据记录");
-                                    rnal.show();
-                                    args.set_cancel(true)
-                                }
-                            }
-
-                                 
-
-
-                        }
-
-                        function confirmWindowSubmitCombineClicking(sender, args)
-                        {
-                                  var treeList= $find('<%= RadTreeList1.ClientID %>');
-                                  
-                                 var selectedItems = treeList.get_selectedItems();
-                                   if (selectedItems.length <= 0) {
-                                       var rnal = $find("<%=RadNotificationAlert.ClientID %>");
-                                       rnal.set_text("请选择要合并的数据");
-                                       rnal.show();
-                                       args.set_cancel(true);
-                                   }
-                                   else
-                                   {
-                                   
-
-                                       var combineparentid = treeList.getCellByColumnUniqueName(selectedItems[0], "ParentId_For_Combine").innerText;
-                                       if (combineparentid != 0) {
-                                           var rnal = $find("<%=RadNotificationAlert.ClientID %>");
-                                           rnal.set_text("请务选择已经合并过的数据记录");
-                                           rnal.show();
-                                           args.set_cancel(true);
-                                       }
-                                       else
-                                       {
-                                           var temp = treeList.getCellByColumnUniqueName(selectedItems[0], "ItemCode1").innerText;
-                                           //  var temp = selectedItems[0]["ItemCode1"].text;
-                                           for (var i = 1; i < selectedItems.length; i++) {
-                                            
-                                               var combineparentid = treeList.getCellByColumnUniqueName(selectedItems[i], "ParentId_For_Combine").innerText;
-                                               if (combineparentid != 0) {
-                                                   var rnal = $find("<%=RadNotificationAlert.ClientID %>");
-                                                   rnal.set_text("请务选择已经合并的数据");
-                                                   rnal.show();
-                                                   args.set_cancel(true);
-                                                   return;
-                                               }
-                                               //  var dataKeyValue = item.getDataKeyValue("OrderID");
-                                               //    var itemCode1 = item["ItemCode1"].text;
-                                               var itemCode1 = treeList.getCellByColumnUniqueName(selectedItems[i], "ItemCode1").innerText;
-                                               if (itemCode1 != temp) {
-                                                   var rnal = $find("<%=RadNotificationAlert.ClientID %>");
-                                                   rnal.set_text("请选择物资编码相同的数据");
-                                                   rnal.show();
-                                                   args.set_cancel(true)
-                                                   return;
-                                               }
-                                           }
-                                           ShowMDemandCombineList(temp);
-                                       }
-                                   }
-                
-                        }
-
-              
-                        function refreshGrid1() {
-
-                            $find("<%= RadAjaxManager1.ClientID %>").ajaxRequest("Rebind1");
-
-                             }
-
-                        function refreshGrid() {
-                       
-                                $find("<%= RadAjaxManager1.ClientID %>").ajaxRequest("Rebind");
-                           
-                        }
-                    </script>
-                </telerik:RadCodeBlock>
-                <telerik:RadScriptManager ID="RadScriptManager1" runat="server">
-                    <Scripts>
-                        <asp:ScriptReference Assembly="Telerik.Web.UI" Name="Telerik.Web.UI.Common.Core.js"></asp:ScriptReference>
-                        <asp:ScriptReference Assembly="Telerik.Web.UI" Name="Telerik.Web.UI.Common.jQuery.js"></asp:ScriptReference>
-                        <asp:ScriptReference Assembly="Telerik.Web.UI" Name="Telerik.Web.UI.Common.jQueryInclude.js"></asp:ScriptReference>
-                    </Scripts>
-                </telerik:RadScriptManager>
-                <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server" OnAjaxRequest="RadAjaxManager1_AjaxRequest">
-                    <AjaxSettings>
-                        <telerik:AjaxSetting AjaxControlID="RadAjaxManager1">
-                            <UpdatedControls>
-                                <telerik:AjaxUpdatedControl ControlID="RadTreeList1" LoadingPanelID="RadAjaxLoadingPanelLoading" />
-                            </UpdatedControls>
-                        </telerik:AjaxSetting>
-                        <telerik:AjaxSetting AjaxControlID="RadTreeList1">
-                            <UpdatedControls>
-                                <telerik:AjaxUpdatedControl ControlID="RadTreeList1" />
-                                <telerik:AjaxUpdatedControl ControlID="RadNotificationAlert" />
-                            </UpdatedControls>
-                        </telerik:AjaxSetting>
-                        <telerik:AjaxSetting AjaxControlID="RadBtn_Search">
-                            <UpdatedControls>
-                                <telerik:AjaxUpdatedControl ControlID="RadTreeList1" LoadingPanelID="RadAjaxLoadingPanelLoading" />
-                                <telerik:AjaxUpdatedControl ControlID="span_DraftCode" />
-                                <telerik:AjaxUpdatedControl ControlID="span_model" />
-                                <telerik:AjaxUpdatedControl ControlID="span_plancode" />
-                                <telerik:AjaxUpdatedControl ControlID="RadNotificationAlert" />
-                                
-                            </UpdatedControls>
-                        </telerik:AjaxSetting>
-                        <telerik:AjaxSetting AjaxControlID="chb_all">
-                            <UpdatedControls>
-                                <telerik:AjaxUpdatedControl ControlID="RadTreeList1"/>
-                                <telerik:AjaxUpdatedControl ControlID="chb_all"/>
-                            </UpdatedControls>
-                        </telerik:AjaxSetting>
-                    </AjaxSettings>
-                </telerik:RadAjaxManager>
+           <div style="clear: both; overflow: hidden"></div>
+        </div>
+        
+                <telerik:RadAjaxPanel ID="RadAjaxPanel1" runat="server"  ClientEvents-OnRequestStart="onRequestStart">
          
-          <telerik:RadAjaxPanel ID="RadAjaxPanel1" runat="server" LoadingPanelID="RadAjaxLoadingPanelLoading" ClientEvents-OnRequestStart="onRequestStart">
-
-                      <telerik:RadTreeList RenderMode="Lightweight" Width="100%" ID="RadTreeList1" AutoGenerateColumns="false" AllowLoadOnDemand="true" AllowSorting="true" AllowPaging="true" PageSize="15" 
-                         OnItemDataBound="RadTreeList_MDemandDetails_ItemDataBound" OnItemSelected="RadTreeList1_SelectedIndexChanged" OnChildItemsDataBind="RadTreeList1_ChildItemsDataBind" OnNeedDataSource="RadTreeList1_NeedDataSource" OnUpdateCommand="RadTreeList1_UpdateCommand"
-                          DataKeyNames="ID" ParentDataKeyNames="ParentId_For_Combine" AllowMultiItemSelection="true" runat="server" >
-                        
-
-                        <AlternatingItemStyle HorizontalAlign="Center" Font-Size="13px"/>
-                        <ItemStyle HorizontalAlign="Center"  Font-Size="13px" />
-                        <HeaderStyle HorizontalAlign="Center" Font-Size="14px" />              
+                      <telerik:RadTreeList RenderMode="Lightweight" Width="100%" ID="RadTreeList1" AutoGenerateColumns="false" AllowSorting="true" 
+                         AllowLoadOnDemand="true"  OnItemDataBound="RadTreeList_MDemandDetails_ItemDataBound" 
+                          OnItemSelected="RadTreeList1_SelectedIndexChanged"  OnChildItemsDataBind="RadTreeList1_ChildItemsDataBind" OnNeedDataSource="RadTreeList1_NeedDataSource"
+                          DataKeyNames="ID" ParentDataKeyNames="ParentId_For_Combine" AllowMultiItemSelection="true" runat="server">
+                <AlternatingItemStyle HorizontalAlign="Center" />
+                <ItemStyle Font-Size="12px" HorizontalAlign="Center" />
+                <HeaderStyle Font-Size="13px" HorizontalAlign="Center"/>
+                <CommandItemStyle Font-Bold="true" Font-Size="16px" HorizontalAlign="Center" Height="40px" />
                           <ClientSettings>
                               <Selecting AllowItemSelection="true" AllowToggleSelection="true" />
                               <Scrolling AllowScroll="True" UseStaticHeaders="True" SaveScrollPosition="true" ScrollHeight="480px"></Scrolling>
                           </ClientSettings> 
-
-                         <ExportSettings IgnorePaging="false" OpenInNewWindow="true">
+                         <ExportSettings IgnorePaging="false"  OpenInNewWindow="true">
                            <Pdf  DefaultFontFamily="Arial Unicode MS" />
+
                          </ExportSettings>
+
+                             <CommandItemSettings ShowExportToExcelButton="true" ShowExportToWordButton="false" />
                           <Columns>
                              <telerik:TreeListTemplateColumn UniqueName="CheckBoxTemplateColumn" ItemStyle-Width="50px" HeaderStyle-Width="50px" >
                               <ItemTemplate >
@@ -393,13 +329,10 @@
                             <telerik:TreeListBoundColumn DataField="ItemCode1" HeaderText="物资<br />编码" ItemStyle-Width="100px" HeaderStyle-Width="100px" SortExpression="ItemCode1" UniqueName="ItemCode1">
                             </telerik:TreeListBoundColumn>
 
-                            <telerik:TreeListBoundColumn DataField="MaterialsDes" HeaderText="物资<br />描述" ItemStyle-Width="100px" HeaderStyle-Width="100px" SortExpression="MaterialsDes" UniqueName="MaterialsDes">
-                            </telerik:TreeListBoundColumn>
-
                             <telerik:TreeListBoundColumn DataField="NumCasesSum"  HeaderText="需求<br />件数" ItemStyle-Width="60px" HeaderStyle-Width="60px" SortExpression="NumCasesSum" UniqueName="NumCasesSum">
                             </telerik:TreeListBoundColumn>
 
-                            <telerik:TreeListBoundColumn DataField="DemandNumSum"  HeaderText="需求<br />数量" ItemStyle-Width="60px" HeaderStyle-Width="60px" SortExpression="DemandNumSum" UniqueName="DemandNumSum">
+                            <telerik:TreeListBoundColumn DataField="DemandNumSum"  HeaderText="需求<br />质量" ItemStyle-Width="60px" HeaderStyle-Width="60px" SortExpression="DemandNumSum" UniqueName="DemandNumSum">
                             </telerik:TreeListBoundColumn>
 
                             <telerik:TreeListBoundColumn DataField="Tech_Quantity"  HeaderText="工艺<br />数量" ItemStyle-Width="60px" HeaderStyle-Width="60px" SortExpression="Tech_Quantity" UniqueName="Tech_Quantity">
@@ -410,6 +343,8 @@
                             </telerik:TreeListBoundColumn>
                             <telerik:TreeListBoundColumn DataField="Mat_Comment" HeaderText="定额<br />备注" ItemStyle-Width="100px" HeaderStyle-Width="100px" SortExpression="Mat_Comment" UniqueName="Mat_Comment">
                             </telerik:TreeListBoundColumn>
+                            <telerik:TreeListBoundColumn DataField="DemandDate" HeaderText="需求日期" ItemStyle-Width="80px" HeaderStyle-Width="80px" SortExpression="DemandDate" UniqueName="DemandDate" Visible="true">
+                            </telerik:TreeListBoundColumn>
 
                          
                           
@@ -418,34 +353,37 @@
 
                             <telerik:TreeListBoundColumn DataField="ParentId_For_Combine" HeaderText="" ItemStyle-Width="20px" HeaderStyle-Width="20px" SortExpression="ParentId_For_Combine" UniqueName="ParentId_For_Combine" Visible="true">
                             </telerik:TreeListBoundColumn>
-                      
                         </Columns>
-                   
                     </telerik:RadTreeList>
-                       
-                      <div style="margin:5px 0 5px 4px;">
-       
-                           
-                                <telerik:RadButton ID="RadBtnCombineMergeList" runat="server" Text="合并相同编码清单" CssClass="floatcenter" Font-Bold="true" 
+         <div style="width: 100%; float: left;">
+
+                                <telerik:RadButton ID="RadBtnCombineMergeList" runat="server" Text="合并相同编码清单" CssClass="floatleft" Font-Bold="true" 
                                     CommandName="CombineMergeList" CausesValidation="true"  OnClientClicking="confirmWindowSubmitCombineClicking" >
                                 </telerik:RadButton>
 
-                                <telerik:RadButton ID="RB_Combine_Cancel" runat="server" Text="取消合并编码清单" CssClass="floatcenter" Font-Bold="true" 
+                                <telerik:RadButton ID="RB_Combine_Cancel" runat="server" Text="取消合并编码清单" CssClass="floatleft" Font-Bold="true" 
                                     CommandName="CancelCombine" OnClick="RB_Combine_Cancel_Click" OnClientClicking="confirmWindowSubmitCancel">
                                 </telerik:RadButton>
 
-                                <telerik:RadButton ID="RadBtnBuildMergeList" runat="server" Text="生成物资需求清单" CssClass="floatcenter" Font-Bold="true" 
-                                    CommandName="BuildMergeList" OnClientClicking="confirmWindowSubmitMerge">
-                                </telerik:RadButton>
-                                <telerik:RadButton ID="RadButton_ExportExcel" runat="server" Text="导出Excel" CssClass="floatright" Font-Bold="true" 
-                                    CommandName="ExportExcel" OnClick="RadButton_ExportExcel_Click">
+					     <telerik:RadButton ID="RadButton_ExportExcel" runat="server" Text="导出Excel" Font-Bold="true" CommandName="ExportExcel" OnClick="RadButton_ExportExcel_Click" CssClass="floatright"></telerik:RadButton>
+                         <telerik:RadButton ID="RadButton_ExportWord"  runat="server" Text="导出Word"  Font-Bold="true" CommandName="ExportWord" Visible="false"  OnClick="RadButton_ExportWord_Click"  CssClass="floatright"></telerik:RadButton>
+                         <telerik:RadButton ID="RadButton_ExportPDF"   runat="server" Text="导出PDF"   Font-Bold="true" CommandName="ExportPDF" Visible="false"   OnClick="RadButton_ExportPdf_Click"   CssClass="floatright"></telerik:RadButton>
 
-                                </telerik:RadButton>
                     </div>    
                              
-                          
-                      <telerik:RadWindow ID="RadWindow" runat="server" VisibleTitlebar="false"
-                   VisibleStatusbar="false" Modal="true" Behaviors="None" Height="120px" Width="320px">
+    
+                   </telerik:RadAjaxPanel>
+                </div>
+        <telerik:RadNotification ID="RadNotificationAlert" runat="server" Text="" Position="Center"
+                    AutoCloseDelay="4000" Width="240" Height="90" Title="提示" EnableRoundedCorners="true">
+    </telerik:RadNotification>
+    <%--弹出窗口--开始--%>
+    <telerik:RadWindowManager ID="RadWindowManager1" runat="server">
+      <Windows>
+            <telerik:RadWindow ID="RadWindowRecordWindow" runat="server" Title="物资需求清单-待提交" Left="50px" Top="50px"
+                            ReloadOnShow="true" ShowContentDuringLoad="false" VisibleTitlebar="true" VisibleStatusbar="false"
+                            Behaviors="Close,Maximize,Minimize" OnClientClose="RefreshParent" Modal="true" Width="1400px" Height="660px" />
+            <telerik:RadWindow ID="RadWindow" runat="server" VisibleTitlebar="false" VisibleStatusbar="false" Modal="true" Behaviors="None" Height="120px" Width="320px">
                  <ContentTemplate>
                 <div style="margin-top: 30px; float: left;">
                     <div style="width: 60px; padding-left: 15px; float: left;">
@@ -468,21 +406,7 @@
                 </div>
             </ContentTemplate>
         </telerik:RadWindow>
-                      <telerik:RadNotification ID="RadNotificationAlert" runat="server" Text="" Position="Center"
-                    AutoCloseDelay="4000" Width="240" Height="90" Title="提示" EnableRoundedCorners="true"  >
-                </telerik:RadNotification>
-                   </telerik:RadAjaxPanel>
-                     <%--弹出窗口--开始--%>
-                     <telerik:RadWindowManager ID="RadWindowManager1" runat="server">
-                    <Windows>
-                        <telerik:RadWindow ID="RadWindowRecordWindow" runat="server" Title="物资需求清单-待提交" Left="150px"
-                            ReloadOnShow="true" ShowContentDuringLoad="false" VisibleTitlebar="true" VisibleStatusbar="false"
-                            Behaviors="Close,Maximize,Minimize" OnClientClose="RefreshParent" Modal="true" Width="1400px" Height="660px" />
-                    </Windows>
-                </telerik:RadWindowManager>
-                     <%--结束--%>
-       
-            </div>
-        </div>
-    </div>
+      </Windows>
+    </telerik:RadWindowManager>
+    <%--结束--%>
 </asp:Content>

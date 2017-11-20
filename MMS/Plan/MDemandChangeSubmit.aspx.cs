@@ -93,8 +93,7 @@ namespace mms.Plan
                 }
                 else
                 {
-                   // Response.Redirect("~/Plan/MDemandDetails.aspx");
-                    Response.Redirect("~/Plan/MDemandDetailsTreeList.aspx");
+                    Response.Redirect("~/Plan/MDemandDetails.aspx");
                 }
             }
         }

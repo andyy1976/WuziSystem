@@ -57,19 +57,19 @@
                 <AjaxSettings>
                     <telerik:AjaxSetting AjaxControlID="RadGrid_UserManage_PWD">
                         <UpdatedControls>
-                            <telerik:AjaxUpdatedControl ControlID="RadGrid_UserManage_PWD" LoadingPanelID="RadAjaxLoadingPanelLoading" />
+                            <telerik:AjaxUpdatedControl ControlID="RadGrid_UserManage_PWD" LoadingPanelID="RadAjaxLoadingPanel1" />
                             <telerik:AjaxUpdatedControl ControlID="RadNotificationAlert" />
                         </UpdatedControls>
                     </telerik:AjaxSetting>
                     <telerik:AjaxSetting AjaxControlID="RTB_UserName">
                         <UpdatedControls>
-                            <telerik:AjaxUpdatedControl ControlID="RadGrid_UserManage_PWD" LoadingPanelID="RadAjaxLoadingPanelLoading" />
+                            <telerik:AjaxUpdatedControl ControlID="RadGrid_UserManage_PWD" LoadingPanelID="RadAjaxLoadingPanel1" />
                             <telerik:AjaxUpdatedControl ControlID="RadNotificationAlert" />
                         </UpdatedControls>
                     </telerik:AjaxSetting>
                     <telerik:AjaxSetting AjaxControlID="RadAjaxManager1">
                         <UpdatedControls>
-                            <telerik:AjaxUpdatedControl ControlID="RadGrid_UserManage_PWD" LoadingPanelID="RadAjaxLoadingPanelLoading" />
+                            <telerik:AjaxUpdatedControl ControlID="RadGrid_UserManage_PWD" LoadingPanelID="RadAjaxLoadingPanel1" />
                             <telerik:AjaxUpdatedControl ControlID="RadNotificationAlert" />
                         </UpdatedControls>
                     </telerik:AjaxSetting>
@@ -80,7 +80,7 @@
                     </telerik:AjaxSetting>
                 </AjaxSettings>
             </telerik:RadAjaxManager>
-            <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanelLoading" runat="server"></telerik:RadAjaxLoadingPanel>
+            <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" runat="server"></telerik:RadAjaxLoadingPanel>
             <div style="width:100%;">
                 <table>
                     <tr>
