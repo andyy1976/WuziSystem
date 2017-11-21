@@ -148,7 +148,7 @@
                        
                         </Columns>
                         	<CommandItemTemplate>
-							您选择的需要合并的物资需求清单数据记
+							您选择的需要合并的物资需求清单数据记录
                             
 					 	    <telerik:RadButton ID="RadButton_ExportExcel" runat="server" Text="导出Excel" Font-Bold="true" CommandName="ExportExcel" OnClick="RadButton_ExportExcel_Click" CssClass="floatright"></telerik:RadButton>
 	                        <telerik:RadButton ID="RadButton_ExportWord"  runat="server" Text="导出Word"  Font-Bold="true" CommandName="ExportWord" Visible="false"  OnClick="RadButton_ExportWord_Click"  CssClass="floatright"></telerik:RadButton>

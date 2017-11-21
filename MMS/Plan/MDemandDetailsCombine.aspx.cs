@@ -494,12 +494,10 @@ namespace mms.Plan
             {
                 string id =(e.Item as GridDataItem).GetDataKeyValue("ID").ToString();
               
-               /* RadTextBox rtbSpecialNeeds = e.Item.FindControl("rtb_SpecialNeeds") as RadTextBox;
-                if (GridSource.Select("ID='" + id + "'")[0]["Special_Needs"] != null)
-                {
-                    rtbSpecialNeeds.Text = GridSource.Select("ID='" + id + "'")[0]["Special_Needs"].ToString();
-                }
-    */
+             //   RadTextBox rtbSpecialNeeds = e.Item.FindControl("rtb_SpecialNeeds") as RadTextBox;
+               // rtbSpecialNeeds.Text = GridSource1.Select("ID='" + id + "'")[0]["Special_Needs"].ToString();
+                
+    
                 RadTextBox rtbDemandNumSum = e.Item.FindControl("DemandNumSum") as RadTextBox;
                 rtbDemandNumSum.Text = (GridSource1.Select("ID='" + id + "'")[0]["DemandNumSum"].ToString());
 
@@ -528,9 +526,9 @@ namespace mms.Plan
   
         protected void rtb_SpecialNeeds_TextChanged(object sender, EventArgs e)
         {
-            RadTextBox rtb = sender as RadTextBox;
-            string id = (rtb.Parent.Parent as GridDataItem).GetDataKeyValue("ID").ToString();
-            GridSource1.Select("Id='" + id + "'")[0]["Special_Needs"] = rtb.Text;
+         //   RadTextBox rtb = sender as RadTextBox;
+        //    string id = (rtb.Parent.Parent as GridDataItem).GetDataKeyValue("ID").ToString();
+         //   GridSource1.Select("Id='" + id + "'")[0]["Special_Needs"] = rtb.Text;
         }
 
         protected void RTB_MANUFACTURER_TextChanged(object sender, EventArgs e)

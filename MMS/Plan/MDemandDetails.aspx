@@ -56,12 +56,19 @@
                                 <telerik:AjaxUpdatedControl ControlID="hfFlag" />
                             </UpdatedControls>
                         </telerik:AjaxSetting>
-                <telerik:AjaxSetting AjaxControlID="RB_Submit">
-                    <UpdatedControls>
-                        <telerik:AjaxUpdatedControl ControlID="RadGrid_MDemandDetails" LoadingPanelID="RadAjaxLoadingPanel1" />
-                        <telerik:AjaxUpdatedControl ControlID="RadNotificationAlert" />
-                    </UpdatedControls>
-                </telerik:AjaxSetting>
+                        <telerik:AjaxSetting AjaxControlID="RB_Submit">
+                            <UpdatedControls>
+                                <telerik:AjaxUpdatedControl ControlID="RadGrid_MDemandDetails" LoadingPanelID="RadAjaxLoadingPanel1" />
+                                <telerik:AjaxUpdatedControl ControlID="RadNotificationAlert" />
+                            </UpdatedControls>
+                        </telerik:AjaxSetting>
+
+                       <telerik:AjaxSetting AjaxControlID="RadBtnBuildMergeList">
+                            <UpdatedControls>
+                                <telerik:AjaxUpdatedControl ControlID="RadGrid_MDemandDetails" LoadingPanelID="RadAjaxLoadingPanel1" />
+                                <telerik:AjaxUpdatedControl ControlID="RadNotificationAlert" />
+                            </UpdatedControls>
+                        </telerik:AjaxSetting>
                     </AjaxSettings>
                 </telerik:RadAjaxManager>
     <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" runat="server" MinDisplayTime="0"></telerik:RadAjaxLoadingPanel>  
@@ -174,8 +181,8 @@
                 </div>
            <div style="clear: both; overflow: hidden"></div>
         </div>
-                <telerik:RadAjaxPanel ID="RadAjaxPanel1" runat="server"  >
-        <telerik:RadGrid ID="RadGrid_MDemandDetails" runat="server" DataKeyNames="ID" Culture="zh-CN" GroupPanelPosition="Top"
+        <telerik:RadAjaxPanel ID="RadAjaxPanel1" runat="server"  >
+           <telerik:RadGrid ID="RadGrid_MDemandDetails" runat="server" DataKeyNames="ID" Culture="zh-CN" GroupPanelPosition="Top"
                     OnNeedDataSource="RadGrid_MDemandDetails_NeedDataSource"  OnItemDataBound="RadGrid_MDemandDetails_ItemDataBound"
                 AllowPaging="true" PageSize="20" PagerStyle-AlwaysVisible="True" AllowSorting="true" AllowMultiRowSelection="True" AutoGenerateColumns="False">
                 <AlternatingItemStyle HorizontalAlign="Center" />
@@ -206,7 +213,7 @@
                             <telerik:GridBoundColumn DataField="mstate"  HeaderText="提交<br />状态" ItemStyle-Width="60px" HeaderStyle-Width="60px" SortExpression="mstate" UniqueName="mstate">
                             </telerik:GridBoundColumn>
                      
-                            <telerik:GridBoundColumn DataField="LingJian_Type1" HeaderText="零件<br />类型" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
+                            <telerik:GridBoundColumn DataField="LingJian_Type1" HeaderText="零件<br />类型" ItemStyle-Width="100px" HeaderStyle-Width="100px" SortExpression="LingJian_Type1" UniqueName="LingJian_Type1"></telerik:GridBoundColumn>
             
                             <telerik:GridBoundColumn DataField="TDM_Description" HeaderText="产品<br />名称" ItemStyle-Width="100px" HeaderStyle-Width="100px" SortExpression="TDM_Description" UniqueName="TDM_Description">
                             </telerik:GridBoundColumn>
@@ -249,7 +256,7 @@
                             </telerik:GridBoundColumn>
                             <telerik:GridBoundColumn DataField="Technics_Comment" HeaderText="路线<br />备注" ItemStyle-Width="100px" HeaderStyle-Width="100px" SortExpression="Technics_Comment" UniqueName="Technics_Comment">
                             </telerik:GridBoundColumn>
-                            <telerik:GridBoundColumn DataField="Memo_Quantity"  HeaderText="定额<br />数量" ItemStyle-Width="60px" HeaderStyle-Width="60px" SortExpression="Memo_Quantity" UniqueName="Memo_Quantity">
+                            <telerik:GridBoundColumn DataField="Memo_Quantity"  HeaderText="备件<br />数量" ItemStyle-Width="60px" HeaderStyle-Width="60px" SortExpression="Memo_Quantity" UniqueName="Memo_Quantity">
                             </telerik:GridBoundColumn>
                             <telerik:GridBoundColumn DataField="Mat_Comment" HeaderText="定额<br />备注" ItemStyle-Width="100px" HeaderStyle-Width="100px" SortExpression="Mat_Comment" UniqueName="Mat_Comment">
                             </telerik:GridBoundColumn>
@@ -276,9 +283,6 @@
                             
                             <telerik:GridBoundColumn DataField="Manufacturer" HeaderText="生产<br />厂家" ItemStyle-Width="80px" HeaderStyle-Width="80px" SortExpression="Manufacturer" UniqueName="Manufacturer" Visible="true">
                             </telerik:GridBoundColumn>
-
-
-                     
                         </Columns>
 
                         <CommandItemTemplate>

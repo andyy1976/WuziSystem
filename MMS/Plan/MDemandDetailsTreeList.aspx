@@ -59,7 +59,8 @@
             }
 
             function refreshGrid(arg) {
-                if (!arg) {
+                if (!arg)
+                {
                     $find("<%= RadAjaxManager1.ClientID %>").ajaxRequest("Rebind");
                 }
             }
@@ -296,7 +297,7 @@
                             <telerik:TreeListBoundColumn DataField="mstate"  HeaderText="提交<br />状态" ItemStyle-Width="60px" HeaderStyle-Width="60px" SortExpression="mstate" UniqueName="mstate">
                             </telerik:TreeListBoundColumn>
                      
-                            <telerik:TreeListBoundColumn DataField="LingJian_Type1" HeaderText="零件<br />类型" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:TreeListBoundColumn>
+                            <telerik:TreeListBoundColumn DataField="LingJian_Type1" HeaderText="零件<br />类型" ItemStyle-Width="100px" HeaderStyle-Width="100px" SortExpression="LingJian_Type1" UniqueName="LingJian_Type1"></telerik:TreeListBoundColumn>
             
                             <telerik:TreeListBoundColumn DataField="TDM_Description" HeaderText="产品<br />名称" ItemStyle-Width="100px" HeaderStyle-Width="100px" SortExpression="TDM_Description" UniqueName="TDM_Description">
                             </telerik:TreeListBoundColumn>
@@ -339,7 +340,7 @@
                             </telerik:TreeListBoundColumn>
                             <telerik:TreeListBoundColumn DataField="Technics_Comment" HeaderText="路线<br />备注" ItemStyle-Width="100px" HeaderStyle-Width="100px" SortExpression="Technics_Comment" UniqueName="Technics_Comment">
                             </telerik:TreeListBoundColumn>
-                            <telerik:TreeListBoundColumn DataField="Memo_Quantity"  HeaderText="定额<br />数量" ItemStyle-Width="60px" HeaderStyle-Width="60px" SortExpression="Memo_Quantity" UniqueName="Memo_Quantity">
+                            <telerik:TreeListBoundColumn DataField="Memo_Quantity"  HeaderText="备件<br />数量" ItemStyle-Width="60px" HeaderStyle-Width="60px" SortExpression="Memo_Quantity" UniqueName="Memo_Quantity">
                             </telerik:TreeListBoundColumn>
                             <telerik:TreeListBoundColumn DataField="Mat_Comment" HeaderText="定额<br />备注" ItemStyle-Width="100px" HeaderStyle-Width="100px" SortExpression="Mat_Comment" UniqueName="Mat_Comment">
                             </telerik:TreeListBoundColumn>

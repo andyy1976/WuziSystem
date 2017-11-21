@@ -220,7 +220,8 @@
                 </tr>
                   <tr>
                     <td style="text-align: right;">物资描述：</td>
-                    <td colspan="5"> <asp:Label ID="lb1_MaterialsDes" runat="server"></asp:Label></td>
+                    <td colspan="5"> <asp:Label ID="lb1_MaterialsDes" runat="server" Width="750" MaxLength="200"></asp:Label></td>
+  
                 </tr>
                 <tr>
                     <th colspan="6" style="text-align: left; font-size: 14px; border-bottom: solid 1px #ccc;">业务审批流程</th>

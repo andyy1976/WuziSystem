@@ -810,7 +810,8 @@ namespace mms.Plan
                         GridSource1.Columns.Add("MAT_UNIT");
                         GridSource1.Columns.Add("Rough_Spec");
                         GridSource1.Columns.Add("Material_Mark");
-
+                        GridSource1.Columns.Add("CN_Material_State");
+                      
                         GridSource1.Columns.Add("DemandNumSum");
                         int rowsid = 1;
                         for (int i = 0; i < GridSource1.Rows.Count; i++)
@@ -873,6 +874,7 @@ namespace mms.Plan
             {
                 string Seg5 = dt.Rows[0]["Seg5"].ToString().Substring(0, 4);
                 GridSource1.Rows[i]["Material_Mark"] = dt.Rows[0]["Seg13"].ToString();
+                GridSource1.Rows[i]["CN_Material_State"] = "";
                 switch (Seg5)
                 {
                     case "YY01":
@@ -1056,6 +1058,7 @@ namespace mms.Plan
                     Mat_Weight = "",
                     Material_Code = "",
                     Material_Mark = "",
+                    
                     Material_Name = "",
                     Material_Spec = "",
                     Material_State = 0,
@@ -1189,11 +1192,12 @@ namespace mms.Plan
                            return;
                         }
                         */
-                        MDDLD.Material_Tech_Condition = item["Material_Tech_Condition"].Text.Trim();                    
+                        MDDLD.Material_Tech_Condition = item["Material_Tech_Condition"].Text.Trim();
 
-                      //  MDDLD.TDM_Description = item["TDM_Description"].Text.Trim();
+                        MDDLD.TDM_Description = item["TDM_Description"].Text.Trim();
 
                         MDDLD.Material_Name = item["Material_Name"].Text.Trim();
+                        MDDLD.CN_Material_State = item["CN_Material_State"].Text.Trim();
 
                         MDDLD.Material_Mark = item["Material_Mark"].Text.Trim();
     
@@ -1358,18 +1362,18 @@ namespace mms.Plan
 
 
                           strSQL = " Insert Into M_Demand_DetailedList_Draft ( PackId, DraftId,taskid,MDPId,Quantity,VerCode,Stage,DemandDate,Special_Needs,MaterialDept,"
-                              +" TaskCode,Drawing_No, Mat_Pro_Weight,Material_State, Combine_State,Material_Name, Material_Mark, ItemCode1, Mat_Unit, Mat_Rough_Weight,"
-                              +"Rough_Size, Rough_Spec, DemandNumSum, NumCasesSum,Material_Tech_Condition,Material_Code,TDM_Description,Technics_Line,LingJian_Type,"
+                              + " TaskCode,Drawing_No, Mat_Pro_Weight,Material_State, Combine_State,Material_Name, Material_Mark, CN_Material_State,ItemCode1, Mat_Unit, Mat_Rough_Weight,"
+                              + "Rough_Size, Rough_Spec, DemandNumSum, NumCasesSum,Material_Tech_Condition,Material_Code,TDM_Description,Technics_Line,LingJian_Type,"
                               +"Import_Date,User_ID,Urgency_Degre ,Secret_Level ,Use_Des ,Shipping_Address ,Certification  , Manufacturer , Attribute4 ,"
                               + "ParentId,ParentId_For_Combine,Is_del)" + " Values ("
                               + MDDLD.PackId + "," + DraftID + "," + MDDLD.TaskId + "," + MDDLD.MDPId + "," + MDDLD.Quantity + "," + MDDLD.VerCode + "," 
-                              + MDDLD.Stage + ",'" + MDDLD.DemandDate + "','" + MDDLD.Special_Needs + "','" + MDDLD.MaterialDept + "','" + MDDLD.TaskCode + "','" 
-                              + MDDLD.Drawing_No + "'," + MDDLD.Mat_Pro_Weight + ",0,0,'" +  MDDLD.Material_Name + "','" + MDDLD.Material_Mark + "','"
+                              + MDDLD.Stage + ",'" + MDDLD.DemandDate + "','" + MDDLD.Special_Needs + "','" + MDDLD.MaterialDept + "','" + MDDLD.TaskCode + "','"
+                              + MDDLD.Drawing_No + "'," + MDDLD.Mat_Pro_Weight + ",0,0,'" + MDDLD.Material_Name + "','" + MDDLD.Material_Mark + "','" + MDDLD.CN_Material_State + "','"
                               + MDDLD.ItemCode1 + "','" + MDDLD.Mat_Unit + "'," + MDDLD.Mat_Rough_Weight + ",'" + MDDLD.Rough_Size + "','" + MDDLD.Rough_Spec + "',"
                               + MDDLD.DemandNumSum + "," + MDDLD.NumCasesSum + ",'" + MDDLD.Material_Tech_Condition + "','" + MDDLD.Material_Code + "','"
-                              + MDDLD.TDM_Description + "','" + MDDLD.Technics_Line + "','" + MDDLD.LingJian_Type + "','" + MDDLD.Import_Date + "'," + userid + "','"
-                              + MDDLD.Urgency_Degre + "','" + MDDLD.Secret_Level + "','" + MDDLD.Use_Des + "','" + MDDLD.Shipping_Address + "'," + MDDLD.Certification + "',"
-                              + MDDLD.Manufacturer + "'," + MDDLD.Attribute4 + "'," 
+                              + MDDLD.TDM_Description + "','" + MDDLD.Technics_Line + "','" + MDDLD.LingJian_Type + "','" + MDDLD.Import_Date + "'," + userid + ",'"
+                              + MDDLD.Urgency_Degre + "','" + MDDLD.Secret_Level + "','" + MDDLD.Use_Des + "','" + MDDLD.Shipping_Address + "','" + MDDLD.Certification + "','"
+                              + MDDLD.Manufacturer + "','" + MDDLD.Attribute4 + "'," 
 
                               +"0,0,0)" + " select @@identity";
                             DBI.GetSingleValue(strSQL);

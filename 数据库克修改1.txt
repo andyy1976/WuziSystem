@@ -1,0 +1,11 @@
+数据库修改：
+表M_Demand_DetailList_Draft;
+的NumCasesSum字段改为INT类型
+存储过程
+Proc_Build_Merge_List：
+SecretLevel_Code=''2''
+改为SecretLevel_Code=''1''
+
+表GetBasicdata_T_Item  DICT_CLASS=''CUX_DM_URGENCY_LEVEL''的第一条记录的
+DICT_CODE值调整为“一般”
+

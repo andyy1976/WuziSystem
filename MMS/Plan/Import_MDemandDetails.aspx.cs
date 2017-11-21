@@ -101,10 +101,13 @@ namespace mms.Plan
        // public string itemCodeStr=",";
         protected void Page_Load(object sender, EventArgs e)
         {
-        //    ((ScriptManager)Master.FindControl("ScriptManager1")).RegisterPostBackControl(RadBtnCombineMergeList);  
+            if (Session["UserName"] == null || Session["UserId"] == null)
+            {
+                Response.Redirect("/Default.aspx");
+            }
             DBConn = ConfigurationManager.ConnectionStrings["MaterialManagerSystemConnectionString"].ToString();
             DBI = DBFactory.GetDBInterface(DBConn);
-            if (Session["UserId"] == null) { Response.Redirect("/Default.aspx"); }
+
             if (!IsPostBack)
             {
                 Common.CheckPermission(Session["UserName"].ToString(), "MDemandDetails", this.Page); 
@@ -131,7 +134,14 @@ namespace mms.Plan
                     this.span_model.InnerText = Model;
                     this.span_plancode.InnerText = PlanCode;
                     this.span_PlanName.InnerText = dt.Rows[0]["PlanName"].ToString();
-                    GridSource = Common.AddTableRowsID(GetDetailedListList());
+                    strSQL = " select LingJian_Type_Code, LingJian_Type_Name from Sys_LingJian_Info where Is_Del = 'false'";
+                    DataTable dtlingJianInfo = DBI.Execute(strSQL, true);
+                    RDDL_LingJian_Type.DataSource = dtlingJianInfo;
+                    RDDL_LingJian_Type.DataTextField = "LingJian_Type_Name";
+                    RDDL_LingJian_Type.DataValueField = "LingJian_Type_Code";
+                    RDDL_LingJian_Type.DataBind();
+
+                    GridSource = Common.AddTableRowsID(GetDetailedListByItemCode("","","",""));
                     this.ViewState["DraftId"] = draftid;
                     this.ViewState["DraftCode"] = DraftCode;
                     this.ViewState["PackId"] = PackId;
@@ -139,7 +149,7 @@ namespace mms.Plan
                     GetMaterialStateSum(DraftCode);
                     this.ViewState["flag"] = false;
                     this.hfFlag.Value = "0";
-                    RadTabStrip1.Tabs[1].NavigateUrl = "MDemandMergeListChange.aspx?PackId=" + PackId;
+                    RadTabStrip1.Tabs[1].NavigateUrl = "MDemandMergeListChange.aspx?PackId=" + PackId+"&fromPage=1";
 
                     Session["idStr"] = ",";
                     Session["otherStr"] = PackId + "," + draftid + "," + Model + "," + DraftCode;
@@ -173,17 +183,40 @@ namespace mms.Plan
             }
         }
 
-        protected DataTable GetDetailedListByItemCode(string ItemCode)
+        protected DataTable GetDetailedListByItemCode(string ItemCode, string lingjiantype, string drawingNum, string techline)
         {
             try
             {
-                string strSQL =
-                    " select * , 'false' as checked, case when is_del='1' then '取消提交' else case when Material_State = '7' then '取消提交' else '需重新提交' end  end as mstate" +
-                    " , Convert(nvarchar(50), (select Convert(int,sum(NumCasesSum)) from M_Demand_Merge_List where Correspond_Draft_Code = Convert(nvarchar(50), M_Demand_DetailedList_Draft.ID))) as quantity1" +
-                    " from M_Demand_DetailedList_Draft where PackId = '" + Request.QueryString["PackId"].ToString() + "' and ParentId_For_Combine = 0 " + " and ItemCode1='" + ItemCode + "' and ((Is_del = 'false' and Material_State in ('2','7')) or (Is_del = 'true' and Material_State in ('1','2','6','7')))" +
-                    " union all select *, 'false' as checked, '未提交' as mstate, '0' as quantity1" +
-                    " from M_Demand_DetailedList_Draft where PackId = '" + Request.QueryString["PackId"].ToString() + "' and ParentId_For_Combine = 0  " + " and ItemCode1='" + ItemCode + "' and is_del = 'false' and Material_State = '0' order by ID";
+                string strSQL = " select * , 'false' as checked, case when is_del='1' then '取消提交' else case when Material_State = '7' then '取消提交' else '需重新提交' end  end as mstate" +
+                  " , Convert(nvarchar(50), (select Convert(int,sum(NumCasesSum)) from M_Demand_Merge_List where Correspond_Draft_Code = Convert(nvarchar(50), M_Demand_DetailedList_Draft.ID))) as quantity1, " +
+                  "case when LingJian_Type='1' then '标准件' else case when LingJian_Type='2' then '成品件'  else case when LingJian_Type='3' then '通用件' else case when LingJian_Type='4' then '专用件' else case when LingJian_Type='5' then '组件'   else '其它' end  end end end end as LingJian_Type1 from M_Demand_DetailedList_Draft ";
 
+                strSQL += " where PackId = '" + Request.QueryString["PackId"].ToString() + "' and ParentId_For_Combine = 0 " + " and ItemCode1 like '%" + ItemCode + "%' and Drawing_No like '%" + drawingNum + "%' and Technics_Line like '%" + techline + "%' and ((Is_del = 'false' and Material_State in ('2','7')) or (Is_del = 'true' and Material_State in ('1','2','6','7')))";
+
+                if (lingjiantype == "6")
+                {
+                    strSQL += " and LingJian_Type not in (1,2,3,4,5)";
+                }
+                else
+                {
+                    strSQL += " and LingJian_Type like '%" + lingjiantype + "%'";
+                }
+               
+
+
+                strSQL += " union all select *, 'false' as checked, '未提交' as mstate, '0' as quantity1, "+
+                         "case when LingJian_Type='1' then '标准件' else case when LingJian_Type='2' then '成品件'  else case when LingJian_Type='3' then '通用件' else case when LingJian_Type='4' then '专用件' else case when LingJian_Type='5' then '组件'   else '其它' end  end end end end as LingJian_Type1 from M_Demand_DetailedList_Draft ";
+
+                strSQL += " where PackId = '" + Request.QueryString["PackId"].ToString() + "' and ParentId_For_Combine = 0  " + " and ItemCode1 like'%" + ItemCode + "%' and Drawing_No like '%" + drawingNum + "%' and Technics_Line like '%" + techline + "%' and is_del = 'false' and Material_State = '0'";
+                if (lingjiantype == "6")
+                {
+                      strSQL += " and LingJian_Type not in (1,2,3,4,5)";
+                }
+                else
+                {
+                      strSQL += " and LingJian_Type like '%" + lingjiantype + "%'";
+                }
+                strSQL += "order by ID";
                 return DBI.Execute(strSQL, true);
             }
             catch (Exception ex)
@@ -197,11 +230,15 @@ namespace mms.Plan
             try
             {
                 string strSQL =
-                    " select * , 'false' as checked, case when is_del='1' then '取消提交' else case when Material_State = '7' then '取消提交' else '需重新提交' end  end as mstate" +
-                    " , Convert(nvarchar(50), (select Convert(int,sum(NumCasesSum)) from M_Demand_Merge_List where Correspond_Draft_Code = Convert(nvarchar(50), M_Demand_DetailedList_Draft.ID))) as quantity1" +
-                    " from M_Demand_DetailedList_Draft where PackId = '" + Request.QueryString["PackId"].ToString() + "' and ParentId_For_Combine= 0" + " and ((Is_del = 'false' and Material_State in ('2','7')) or (Is_del = 'true' and Material_State in ('1','2','6','7')))" +
-                    " union all select *, 'false' as checked, '未提交' as mstate, '0' as quantity1" +
-                    " from M_Demand_DetailedList_Draft where PackId = '" + Request.QueryString["PackId"].ToString() + "' and ParentId_For_Combine= 0" + " and is_del = 'false' and Material_State = '0' order by ID";
+                    " select a.* , 'false' as checked, case when a.Is_del='1' then '取消提交' else case when Material_State = '7' then '取消提交' else '需重新提交' end  end as mstate" +
+                    " , Convert(nvarchar(50), (select Convert(int,sum(NumCasesSum)) from M_Demand_Merge_List where Correspond_Draft_Code = Convert(nvarchar(50), a.ID))) as quantity1, b.LingJian_Type_Name as LingJian_Type1";
+                strSQL += " from M_Demand_DetailedList_Draft as a left join Sys_LingJian_Info as b on b.LingJian_Type_Code = a.LingJian_Type";
+                strSQL += " where PackId = '" + Request.QueryString["PackId"].ToString() + "' and ParentId_For_Combine= 0" + " and Combine_State!= 2" + " and ((a.Is_del = 'false' and Material_State in ('2','7')) or (a.Is_del = 'true' and Material_State in ('1','2','6','7')))" +
+                    " union all select a.*, 'false' as checked, '未提交' as mstate, '0' as quantity1,b.LingJian_Type_Name as LingJian_Type1";
+                strSQL += " from M_Demand_DetailedList_Draft as a left join Sys_LingJian_Info as b on b.LingJian_Type_Code = a.LingJian_Type";
+                strSQL += " where PackId = '" + Request.QueryString["PackId"].ToString() + "' and ParentId_For_Combine= 0" + " and Combine_State!= 2" + " and a.Is_del = 'false' and Material_State = '0'";
+
+                strSQL += "order by a.ID";
 
                 return DBI.Execute(strSQL, true);
             }
@@ -247,9 +284,7 @@ namespace mms.Plan
 
         protected void RadGrid_MDemandDetails_ItemDataBound(object sender, GridItemEventArgs e)
         {
-           
-            if (e.Item is GridDataItem)   
-            
+            if (e.Item is GridDataItem)
             {
                 string id = (e.Item as GridDataItem).GetDataKeyValue("ID").ToString();
                 CheckBox cb = e.Item.FindControl("CheckBox1") as CheckBox;
@@ -260,52 +295,33 @@ namespace mms.Plan
                         cb.Checked = true;
                         e.Item.Selected = true;
                     }
-                }              
+                }
             }
         }
-
-  
-
-        protected void RadGrid1_PreRender(object sender, EventArgs e)
-        {
-            if (!Page.IsPostBack)
-            {
-              //  RadGrid_MDemandDetails.MasterTableView.Items[0].Expanded = true;
-           //     RadGrid_MDemandDetails.MasterTableView.Items[0].ChildItem.NestedTableViews[0].Items[0].Expanded = true;
-            }
-        }
-
         protected void WZBH_Query_Click(object sender, EventArgs e)
         {
-            string ItemCode = "";
-            if (this.RTB_ItemCode.Text.Trim() == "" )
+            
+           /* if (this.RTB_ItemCode.Text.Trim() == "" )
             {
                 RadNotificationAlert.Text = "请输入查询条件！";
                 RadNotificationAlert.Show();
             }
             else
             {
-
-                ItemCode = this.RTB_ItemCode.Text.Trim();
-
-
-                GridSource = GetDetailedListByItemCode(ItemCode);
+            */
+    
+                string ItemCode = this.RTB_ItemCode.Text.Trim();
+                string lingjiantype = RDDL_LingJian_Type.SelectedItem.Value;
+                string drawingNum = this.RTB_Drawing_No.Text.Trim();
+                string techline = this.Rad_TechLine.Text.Trim();
+                GridSource = GetDetailedListByItemCode(ItemCode, lingjiantype,drawingNum,techline);
                 RadGrid_MDemandDetails.DataSource = GridSource;
                 RadGrid_MDemandDetails.Rebind();
-            }
+         //   }
 
         }
 
 
-
-        protected void confirmWindowSubmitCombineServer(object sender, EventArgs e)
-        {
-
-
-
-
-        }
-      
         public void GetMergeParameter(string idStr, string dateStr)
         {
             Session["idStr"] = idStr == "" ? idStr : idStr.Substring(0, idStr.Length - 1);
@@ -320,30 +336,30 @@ namespace mms.Plan
             if (Session["idStr"].ToString().Substring(0,1) != ",") { Session["idStr"] = "," + Session["idStr"].ToString() + ","; }
             if (cb.Checked == true)
             {
+                GridSource.Select("ID='" + id + "'")[0]["checked"] = "true";
                 (cb.Parent.Parent as GridDataItem).Selected = true;
                 Session["idStr"] += id + ",";
-              
             }
             else
             {
+                GridSource.Select("ID='" + id + "'")[0]["checked"] = "false";
                 (cb.Parent.Parent as GridDataItem).Selected =false;
                 if (Session["idStr"].ToString().IndexOf("," + id + ",") != -1)
                 {
                     Session["idStr"] = Session["idStr"].ToString().Replace("," + id + ",", ",");
                 }
-              
             }
-          //  sethfFlag();
+            sethfFlag();
         }
         protected void ToggleSelectedState(object sender, EventArgs e)
         {
             CheckBox cb = sender as CheckBox;
             if (Session["idStr"].ToString().Substring(0, 1) != ",") { Session["idStr"] = "," + Session["idStr"].ToString() + ","; }
-
             foreach (GridDataItem dataitem in RadGrid_MDemandDetails.MasterTableView.Items)
             {
                 (dataitem.FindControl("CheckBox1") as CheckBox).Checked = cb.Checked;
                 string id = dataitem.GetDataKeyValue("ID").ToString();
+                GridSource.Select("ID='" + id + "'")[0]["checked"] = cb.Checked.ToString().ToLower();
                 dataitem.Selected = cb.Checked;
                 if (cb.Checked == true)
                 {
@@ -359,10 +375,9 @@ namespace mms.Plan
                     {
                         Session["idStr"] = Session["idStr"].ToString().Replace("," + id + ",", ",");
                     }
-
                 }
             }
-            //sethfFlag();
+            sethfFlag();
         }
 
         protected void sethfFlag()
@@ -377,6 +392,27 @@ namespace mms.Plan
             }
         }
 
+        protected void RadGrid_MDemandDetails_SelectedIndexChanged(object sender, EventArgs e)
+        {
+                Session["idStr"] = ",";
+    
+            string id = null;
+            foreach (GridDataItem dataitem in RadGrid_MDemandDetails.SelectedItems)
+            {
+                 id = dataitem.GetDataKeyValue("ID").ToString();
+              
+               
+                    if (Session["idStr"].ToString().IndexOf("," + id + ",") == -1)
+                    {
+                        Session["idStr"] += id + ",";
+                    }
+
+               
+            }
+
+        }
+
+
           
         protected void RadBtnReturn_Click(object sender, EventArgs e)
         {
@@ -386,11 +422,7 @@ namespace mms.Plan
         {
             if (e.Argument == "Rebind")
             {
-                Response.Redirect("~/Plan/MDemandMergeListChange.aspx?PackId=" + Request.QueryString["PackId"].ToString());
-            }
-            if (e.Argument == "Rebind1")
-            {
-                Response.Redirect("/Plan/MDemandDetails.aspx?PackId=" + Request.QueryString["PackId"].ToString());
+                Response.Redirect("~/Plan/MDemandMergeListChange.aspx?PackId=" + Request.QueryString["PackId"].ToString() + "&fromPage=1");
             }
             else
             {
@@ -424,7 +456,6 @@ namespace mms.Plan
         protected void chb_all_CheckedChanged(object sender, EventArgs e)
         {
             Session["idStr"] = ",";
-
             if (chb_all.Checked)
             {
                 this.chb_all.Text = "反选";
@@ -437,7 +468,8 @@ namespace mms.Plan
                 }
                 RadGrid_MDemandDetails.Rebind();
             }
-            else {
+            else
+            {
                 this.chb_all.Text = "全选";
                 this.RadGrid_MDemandDetails.Columns[0].Visible = true;
 
@@ -575,8 +607,6 @@ namespace mms.Plan
             RadGrid_MDemandDetails.ExportSettings.FileName = "型号物资需求清单-" + DateTime.Now.ToString("yyyy-MM-dd");
             RadGrid_MDemandDetails.MasterTableView.ExportToExcel();
         }
-
-
         protected void RadButton_ExportWord_Click(object sender, EventArgs e)
         {
             RadGrid_MDemandDetails.ExportSettings.FileName = "型号物资需求清单" + DateTime.Now.ToString("yyyy-MM-dd");

@@ -89,7 +89,7 @@
             function ShowMDemandChangeSubmit(PackId) {
                 var win = $find("<%=RadWindowRecordWindow.ClientID %>");
                 win.set_title("型号任务变更提交");
-                window.radopen("/Plan/MDemandChangeSubmit.aspx?PackId=" + PackId, "RadWindowRecordWindow");
+                window.radopen("/Plan/MDemandChangeSubmit.aspx?PackId=" + PackId + "&fromPage=" + Request.QueryString["PackId"], "RadWindowRecordWindow");
                 return false;
             }
             $(function () {

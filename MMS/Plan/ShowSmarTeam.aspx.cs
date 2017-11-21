@@ -46,7 +46,7 @@ namespace mms.Plan
                     }
                 }
 
-                RadTabStrip1.Tabs.FindTabByValue("3").NavigateUrl = "/Plan/ChangeMaterialQuota.aspx?PackId=" + Request.QueryString["PackId"].ToString();
+                RadTabStrip1.Tabs.FindTabByValue("3").NavigateUrl = "/Plan/ChangeMaterialQuota.aspx?PackId=" + Request.QueryString["PackId"].ToString() + "&fromPage=0"; 
 
                 string strSQL = " select LingJian_Type_Code, LingJian_Type_Name from Sys_LingJian_Info where Is_Del = 'false'";
                 DataTable dtlingJianInfo = DBI.Execute(strSQL, true);

@@ -65,6 +65,13 @@
     <telerik:RadCodeBlock runat="server">
         <script type="text/javascript">
             //同步窗口开始
+            function AlphabetOnly(sender, eventArgs) {
+                var c = eventArgs.get_keyCode();
+                if ((c == 13)) {
+                    eventArgs.set_cancel(true);
+                }
+            }
+
             function RefreshParent(sender, eventArgs) {
                 document.location.reload();
             }
@@ -145,7 +152,7 @@
                 window.location.href = "/Plan/ShowSmarTeam.aspx?PackId=" + PackId;
             }
             function ChangeMaterialQuota(PackId) {
-                window.location.href = "/Plan/ChangeMaterialQuota.aspx?PackId=" + PackId;
+                window.location.href = "/Plan/ChangeMaterialQuota.aspx?PackId=" + PackId + "&fromPage=0";
             }
             function ShowM_Change(PackId) {
                 window.location.href = "/Plan/ShowM_Change.aspx?PackId=" + PackId;
@@ -159,7 +166,7 @@
             }
             //需求变更
             function ShowMDemandMergeListUpdate(PackId) {
-                window.location.href = "/Plan/MDemandMergeListChange.aspx?PackId=" + PackId;
+                window.location.href = "/Plan/MDemandMergeListChange.aspx?PackId=" + PackId + "&fromPage=0";
             }
 
             //刷新页面
@@ -175,9 +182,13 @@
             <table>
                 <tr>
                     <td>型号：</td>
-                    <td><telerik:RadTextBox ID="RTB_Model" runat="server" Width="100px"></telerik:RadTextBox></td>
+                    <td><telerik:RadTextBox ID="RTB_Model" runat="server" Width="100px">
+                           <ClientEvents OnKeyPress="AlphabetOnly" />
+                        </telerik:RadTextBox></td>
                     <td>计划包名称：</td>
-                    <td><telerik:RadTextBox ID="RTB_PackageName" runat="server" Width="150px"></telerik:RadTextBox></td>
+                    <td><telerik:RadTextBox ID="RTB_PackageName" runat="server" Width="150px">
+                           <ClientEvents OnKeyPress="AlphabetOnly" />
+                        </telerik:RadTextBox></td>
                     <%--
                     <td>任务号：</td>
                     <td><telerik:RadTextBox ID="RTB_TaskCode" runat="server" Width="100px"></telerik:RadTextBox></td>
@@ -208,10 +219,13 @@
                     </td>
                     <td>编制人：</td>
                     <td>
-                        <telerik:RadTextBox ID="RTB_UserName" runat="server" Width="100px"></telerik:RadTextBox></td>
+                        <telerik:RadTextBox ID="RTB_UserName" runat="server" Width="100px">
+                               <ClientEvents OnKeyPress="AlphabetOnly" />
+                        </telerik:RadTextBox></td>
                     <td>编制时间：</td>
                     <td>
-                        <telerik:RadDatePicker ID="RDP_Start" runat="server" Width="100px"></telerik:RadDatePicker>
+                        <telerik:RadDatePicker ID="RDP_Start" runat="server" Width="100px">
+                        </telerik:RadDatePicker>
                         ～
                         <telerik:RadDatePicker ID="RDP_End" runat="server" Width="100px"></telerik:RadDatePicker>
                     </td>

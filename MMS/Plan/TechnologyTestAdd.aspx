@@ -100,11 +100,19 @@
                                 </UpdatedControls>
                             </telerik:AjaxSetting>
 
-                            <telerik:AjaxSetting AjaxControlID="RB_Import">
+                           <telerik:AjaxSetting AjaxControlID="RB_Import">
                                 <UpdatedControls>
                                     <telerik:AjaxUpdatedControl ControlID="RadGrid_TechnologyTestList" LoadingPanelID="RadAjaxLoadingPanel1" />
                                     <telerik:AjaxUpdatedControl ControlID="RadNotificationAlert" />
                                      <telerik:AjaxUpdatedControl ControlID="RadBtnSubmit" />
+                                      <telerik:AjaxUpdatedControl ControlID="hfBh" />
+                                </UpdatedControls>
+                            </telerik:AjaxSetting>
+
+                            <telerik:AjaxSetting AjaxControlID="RadBtnSubmit">
+                                <UpdatedControls>
+                                    <telerik:AjaxUpdatedControl ControlID="RadGrid_TechnologyTestList" LoadingPanelID="RadAjaxLoadingPanel1" />
+                                    <telerik:AjaxUpdatedControl ControlID="RadNotificationAlert" />
                                       <telerik:AjaxUpdatedControl ControlID="hfBh" />
                                 </UpdatedControls>
                             </telerik:AjaxSetting>
@@ -114,7 +122,7 @@
                                     <telerik:AjaxUpdatedControl ControlID="RadGrid_TechnologyTestList" LoadingPanelID="RadAjaxLoadingPanel1" />
                                     <telerik:AjaxUpdatedControl ControlID="RadNotificationAlert" />
                                      <telerik:AjaxUpdatedControl ControlID="RadBtnSubmit" />
-                                      <telerik:AjaxUpdatedControl ControlID="hfBh" />
+    
                                 </UpdatedControls>
                             </telerik:AjaxSetting>
 

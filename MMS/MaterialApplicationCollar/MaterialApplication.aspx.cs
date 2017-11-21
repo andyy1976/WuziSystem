@@ -21,6 +21,8 @@ namespace mms.MaterialApplicationCollar
             { 
                 Response.Redirect("/Default.aspx");
             }
+
+
             DBConn = ConfigurationManager.ConnectionStrings["MaterialManagerSystemConnectionString"].ToString();
             DBI = DBFactory.GetDBInterface(DBConn);
             if (!IsPostBack)
@@ -37,15 +39,15 @@ namespace mms.MaterialApplicationCollar
                 RDDL_DiaoDu.DataTextField = "UserName";
                 RDDL_DiaoDu.DataValueField = "DomainAccount";
                 RDDL_DiaoDu.DataBind();
-
+              
 
                 strSQL = " select * from Sys_UserInfo_PWD where ID = '" + Session["UserId"].ToString() + "'";
                 DataTable dtuserinfo = DBI.Execute(strSQL, true);
                 RTB_Applicant.Text = dtuserinfo.Rows[0]["UserName"].ToString();
                 RTB_ContactInformation.Text = dtuserinfo.Rows[0]["Phone"].ToString();
-           
 
-              //  strSQL = " select * from Sys_UserInfo_PWD where IsDel = 'false' and DomainAccount != '' and DomainAccount is not null" +
+                Session["UserAccount"] = dtuserinfo.Rows[0]["UserAccount"].ToString();
+                //  strSQL = " select * from Sys_UserInfo_PWD where IsDel = 'false' and DomainAccount != '' and DomainAccount is not null" +
                 //    " and ID in (select UserId from Sys_UserInRole where RoleID in (select ID from Sys_RoleInfo where RoleName like '%型%号%计%划%员%'))";
                 strSQL = " select * from V_Get_Sys_User_byRole where Isdel = 'false' and DomainAccount != '' and DomainAccount is not null and RoleName like '%型%号%计%划%员%' and Is_Del ='false'";
 
@@ -267,10 +269,10 @@ namespace mms.MaterialApplicationCollar
             {
 
                 strSQL = "declare @id int";
-                strSQL += " Insert into MaterialApplication (Type, Material_Id, Applicant, Dept, ApplicationTime, ContactInformation, TheMaterialWay, TaskCode, Drawing_No"
+                strSQL += " Insert into MaterialApplication (Type, Material_Id,Applicant, UserAccount,Dept, ApplicationTime, ContactInformation, TheMaterialWay, TaskCode, Drawing_No"
                     + " , Draft_Code, Quantity, FeedingTime, IsDispatch, IsConfirm, Remark, MaterialType, Material_Name, Material_Mark, CN_Material_State, Material_Tech_Condition"
                     + " , Rough_Spec, Mat_Rough_Weight,MaterialsDes, Mat_Unit, Rough_Size, PleaseTakeQuality, AppState, ReturnReason, Is_Del, ItemCode,DiaoDuApprove, XingHaoJiHuaYuanApprove, WuZiJiHuaYuanApprove)"
-                    + " values ('4',Null, '" + Applicant + "','" + deptCode + "','" + ApplicationTime + "','" + ContactInformation + "','" + TheMaterialWay + "','" + TaskCode + "','" + DrawingNo + "'"
+                    + " values ('4',Null, '" + Applicant + "','"  + Session["UserAccount"] + "','"+deptCode + "','" + ApplicationTime + "','" + ContactInformation + "','" + TheMaterialWay + "','" + TaskCode + "','" + DrawingNo + "'"
                     + " ,Null,'" + Quantity + "','" + FeedingTime + "','" + IsDispatch + "','" + IsConfirm + "','" + Remark + "'"
                     + " ,Null,'" + Material_Name + "','" + Material_Mark + "','" + CN_Material_State + "','" + Material_Tech_Condition + "'"
                     + " ,'" + Rough_Spec + "','" + Mat_Rough_Weight + "','" + MaterialsDes + "','" + Mat_Unit + "','" + Rough_Size + "','" + PleaseTakeQuality + "','1',Null,'false'"
@@ -376,10 +378,10 @@ namespace mms.MaterialApplicationCollar
             try
             {
             string strSQL = "declare @id int";
-            strSQL += " Insert into MaterialApplication (Type, Material_Id, Applicant, Dept, ApplicationTime, ContactInformation, TheMaterialWay, TaskCode, Drawing_No"
+            strSQL += " Insert into MaterialApplication (Type, Material_Id, Applicant, UserAccount,Dept, ApplicationTime, ContactInformation, TheMaterialWay, TaskCode, Drawing_No"
                 + " , Draft_Code, Quantity, FeedingTime, IsDispatch, IsConfirm, Remark, MaterialType, Material_Name, Material_Mark, CN_Material_State, Material_Tech_Condition"
                 + " , Rough_Spec, Mat_Rough_Weight, MaterialsDes,Mat_Unit, Rough_Size, PleaseTakeQuality, AppState, ReturnReason, Is_Del, ItemCode,DiaoDuApprove, XingHaoJiHuaYuanApprove, WuZiJiHuaYuanApprove)"
-                + " values ('4',Null, '" + Applicant + "','" + deptCode + "','" + ApplicationTime + "','" + ContactInformation + "','" + TheMaterialWay + "','" + TaskCode + "','" + DrawingNo + "'"
+                + " values ('4',Null, '" + Applicant + "','"+ Session["UserAccount"] + "','"+ deptCode + "','" + ApplicationTime + "','" + ContactInformation + "','" + TheMaterialWay + "','" + TaskCode + "','" + DrawingNo + "'"
                 + " ,Null,'" + Quantity + "','" + FeedingTime + "','" + IsDispatch + "','" + IsConfirm + "','" + Remark + "'"
                 + " ,Null,'" + Material_Name + "','" + Material_Mark + "','" + CN_Material_State + "','" + Material_Tech_Condition + "'"
                 + " ,'" + Rough_Spec + "','" + Mat_Rough_Weight + "','" + MaterialsDes + "','" + Mat_Unit + "','" + Rough_Size + "','" + PleaseTakeQuality + "','1',Null,'false'"

@@ -1,0 +1,18 @@
+数据库修改：
+表M_Demand_DetailList_Draft;
+的NumCasesSum字段改为INT类型
+存储过程
+Proc_Build_Merge_List：
+SecretLevel_Code=''2''
+改为SecretLevel_Code=''1''
+
+新建视图： V_Get_Sys_User_byRole
+
+SELECT   dbo.Sys_UserInfo_PWD.ID, dbo.Sys_UserInfo_PWD.UserAccount, dbo.Sys_UserInfo_PWD.PassWord, 
+                dbo.Sys_UserInfo_PWD.UserName, dbo.Sys_UserInfo_PWD.Dept, dbo.Sys_UserInfo_PWD.IsDel, 
+                dbo.Sys_UserInfo_PWD.DomainAccount, dbo.Sys_UserInfo_PWD.Phone, dbo.Sys_UserInRole.UserID, 
+                dbo.Sys_UserInRole.RoleID, dbo.Sys_RoleInfo.RoleName, dbo.Sys_RoleInfo.Is_Del
+FROM      dbo.Sys_RoleInfo INNER JOIN
+                dbo.Sys_UserInRole ON dbo.Sys_RoleInfo.ID = dbo.Sys_UserInRole.RoleID INNER JOIN
+                dbo.Sys_UserInfo_PWD ON dbo.Sys_UserInRole.UserID = dbo.Sys_UserInfo_PWD.ID
+

@@ -93,7 +93,15 @@ namespace mms.Plan
                 }
                 else
                 {
-                    Response.Redirect("~/Plan/MDemandDetails.aspx");
+                    if (Request.QueryString["fromPage"] == "1")
+                    {
+                        Response.Redirect("~/Plan/MDemandDetails.aspx");
+                    }
+                    else
+                    {
+                        Response.Redirect("~/Plan/import_MDemandDetails.aspx");
+                    }
+                  
                 }
             }
         }

@@ -524,7 +524,7 @@ namespace mms.Plan
         {
             if (e.Argument == "Rebind")
             {
-                Response.Redirect("~/Plan/MDemandMergeListChange.aspx?PackId=" + Request.QueryString["PackId"].ToString());
+                Response.Redirect("~/Plan/MDemandMergeListChange.aspx?PackId=" + Request.QueryString["PackId"].ToString()+"&fromPage=0");
             }
             else if (e.Argument == "Rebind1")
             {

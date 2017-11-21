@@ -47,8 +47,14 @@ namespace mms.Plan
                     this.span_model.InnerText = Model;
                     this.span_plancode.InnerText = PlanCode;
                     this.span_PlanName.InnerText = dt.Rows[0]["PlanName"].ToString();
-
-                    RadTabStrip1.Tabs[0].NavigateUrl = "MDemandDetails.aspx?PackId=" + packId;
+                    if (Request.QueryString["fromPage"] == "1")
+                    {
+                        RadTabStrip1.Tabs[0].NavigateUrl = "import_MDemandDetails.aspx?PackId=" + packId;
+                    }
+                    else
+                    {
+                        RadTabStrip1.Tabs[0].NavigateUrl = "MDemandDetails.aspx?PackId=" + packId;
+                    }
                     strSQL = "select * from GetBasicdata_T_Item where DICT_CLASS='CUX_DM_URGENCY_LEVEL'";
                     dt = DBI.Execute(strSQL, true);
                     RDDL_Urgency_Degre.DataSource = dt;

@@ -15,7 +15,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:HiddenField ID="hfFlag" runat="server" />
-    <asp:HiddenField ID="HiddenField" runat="server" Value="物资需求-->物资需求清单" ClientIDMode="Static" />
+    <asp:HiddenField ID="HiddenField" runat="server" Value="物资需求-->企业备料任务-->物资需求清单" ClientIDMode="Static" />
     <telerik:RadTabStrip ID="RadTabStrip1" runat="server" Skin="Silk" ShowBaseLine="True" >
         <Tabs>
             <telerik:RadTab Text="需要提交" TabIndex="0" Selected="true"></telerik:RadTab>
@@ -23,13 +23,13 @@
         </Tabs>
     </telerik:RadTabStrip>
     <telerik:RadScriptManager ID="RadScriptManager1" runat="server" AsyncPostBackTimeout="1800">
-                    <Scripts>
-                        <asp:ScriptReference Assembly="Telerik.Web.UI" Name="Telerik.Web.UI.Common.Core.js"></asp:ScriptReference>
-                        <asp:ScriptReference Assembly="Telerik.Web.UI" Name="Telerik.Web.UI.Common.jQuery.js"></asp:ScriptReference>
-                        <asp:ScriptReference Assembly="Telerik.Web.UI" Name="Telerik.Web.UI.Common.jQueryInclude.js"></asp:ScriptReference>
-                    </Scripts>
-                </telerik:RadScriptManager>
-    <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server" OnAjaxRequest="RadAjaxManager1_AjaxRequest">
+         <Scripts>
+         <asp:ScriptReference Assembly="Telerik.Web.UI" Name="Telerik.Web.UI.Common.Core.js"></asp:ScriptReference>
+         <asp:ScriptReference Assembly="Telerik.Web.UI" Name="Telerik.Web.UI.Common.jQuery.js"></asp:ScriptReference>
+         <asp:ScriptReference Assembly="Telerik.Web.UI" Name="Telerik.Web.UI.Common.jQueryInclude.js"></asp:ScriptReference>
+        </Scripts>
+	</telerik:RadScriptManager>
+    <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server"  OnAjaxRequest="RadAjaxManager1_AjaxRequest">
       			  <ClientEvents OnRequestStart="onRequestStart" />
                     <AjaxSettings>
           	  	  	    <telerik:AjaxSetting AjaxControlID="RadAjaxManager1">
@@ -50,12 +50,6 @@
                                 <telerik:AjaxUpdatedControl ControlID="RadNotificationAlert" />                 
                             </UpdatedControls>
                         </telerik:AjaxSetting>
-                <telerik:AjaxSetting AjaxControlID="RB_Submit">
-                    <UpdatedControls>
-                        <telerik:AjaxUpdatedControl ControlID="RadGrid_MDemandDetails" LoadingPanelID="RadAjaxLoadingPanel1" />
-                        <telerik:AjaxUpdatedControl ControlID="RadNotificationAlert" />
-                    </UpdatedControls>
-                </telerik:AjaxSetting>
                         <telerik:AjaxSetting AjaxControlID="chb_all">
                             <UpdatedControls>
                                 <telerik:AjaxUpdatedControl ControlID="RadGrid_MDemandDetails"/>
@@ -63,27 +57,42 @@
                                 <telerik:AjaxUpdatedControl ControlID="hfFlag" />
                             </UpdatedControls>
                         </telerik:AjaxSetting>
+                <telerik:AjaxSetting AjaxControlID="RB_Submit">
+                    <UpdatedControls>
+                        <telerik:AjaxUpdatedControl ControlID="RadGrid_MDemandDetails" LoadingPanelID="RadAjaxLoadingPanel1" />
+                        <telerik:AjaxUpdatedControl ControlID="RadNotificationAlert" />
+                    </UpdatedControls>
+                </telerik:AjaxSetting>
                     </AjaxSettings>
                 </telerik:RadAjaxManager>
     <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" runat="server" MinDisplayTime="0"></telerik:RadAjaxLoadingPanel>  
     <telerik:RadCodeBlock runat="server">
-                    <script type="text/javascript">
-                        function AlphabetOnly(sender, eventArgs) {
-                            var c = eventArgs.get_keyCode();
-                            if ((c == 13)) {
-                                eventArgs.set_cancel(true);
-                            }
-                        }
+        <script type="text/javascript">
+            function AlphabetOnly(sender, eventArgs) {
+                var c = eventArgs.get_keyCode();
+                if ((c == 13)) {
+                    eventArgs.set_cancel(true);
+                }
+            }
 
-                        function refreshGrid() {
-                       
-                                $find("<%= RadAjaxManager1.ClientID %>").ajaxRequest("Rebind");
-                           
-                        }
+            function refreshGrid(arg) {
+                if (!arg) {
+                    $find("<%= RadAjaxManager1.ClientID %>").ajaxRequest("Rebind");
+                }
+            }
 
-                        function RefreshParent(sender, eventArgs) {
-                            document.location.reload();
-                        }
+            function RefreshParent(sender, eventArgs)
+            {
+                document.location.reload();
+            }
+
+            function AlphabetOnly(sender, eventArgs)
+            {
+                var c = eventArgs.get_keyCode();
+                if ((c == 13)) {
+                    eventArgs.set_cancel(true);
+                }
+            }
                         var submintId;
               
                         function YesOrNoClicked(sender, args) {
@@ -109,7 +118,7 @@
                 </telerik:RadCodeBlock>
 
     <div style="width: 100%; margin: 0px auto;">
-       <div class="divSiteMap" style="width: 100%; float: left; height: 30px; border-bottom-style: solid; border-bottom-width:1px;">
+       <div class="divSiteMap" style="width: 100%; float: left; height: 30px; border-bottom-style: solid; border-bottom-width:0px;">
                     <label style="float: left; margin-top: 0px;">型号：</label>
                     <span id="span_model" style="font-weight:bold; color:red;width:200px;" runat="server"></span>
                     <label style="float: left; margin-top: 0px;">计划包名称：</label>
@@ -120,7 +129,7 @@
                     <span id="span_DraftCode" style="font-weight:bold;width:200px;" runat="server"></span>
         </div>
         
-       <div style="width: 100%; height: 0px;  border-bottom-style: solid; border-bottom-width: 0px; margin: 5px 0; clear: both;"></div>
+       <div style="width: 100%; height: 0px;  border-bottom-style: solid; border-bottom-width: 1px; margin: 5px 0; clear: both;"></div>
          <table style="text-align:left;">
                 <tr>
                     <td style="text-align:right;">物资编码：</td>
@@ -146,7 +155,8 @@
             </table>
        <div class="divSiteMap add_divSiteMap" style="clear: both; width: 100%;">
            <div class="div_addclass" style="float: right; height: 40px; line-height: 40px;">
-                    <span style="font-size: 13px;color:red;"> <asp:CheckBox ID="chb_all" runat="server" OnCheckedChanged="chb_all_CheckedChanged" AutoPostBack="True" Text="全选"/></span>
+                    <span style="font-size: 13px;color:red;"> 
+					<asp:CheckBox ID="chb_all" runat="server" OnCheckedChanged="chb_all_CheckedChanged" AutoPostBack="True" Text="全选"/></span>
                     <span style="font-size: 13px;">未提交：</span>
                     <label id="lbl_state_0" runat="server" style="color: green; font-weight: bold;">0</label>
                     <span style="margin-left: 20px; font-size: 13px;">已提交：</span>
@@ -162,6 +172,7 @@
                 </div>
            <div style="clear: both; overflow: hidden"></div>
         </div>
+                <telerik:RadAjaxPanel ID="RadAjaxPanel1" runat="server"  >
         <telerik:RadGrid ID="RadGrid_MDemandDetails" runat="server" DataKeyNames="ID" Culture="zh-CN" GroupPanelPosition="Top"
                     OnNeedDataSource="RadGrid_MDemandDetails_NeedDataSource"  OnItemDataBound="RadGrid_MDemandDetails_ItemDataBound"
                 AllowPaging="true" PageSize="20" PagerStyle-AlwaysVisible="True" AllowSorting="true" AllowMultiRowSelection="True" AutoGenerateColumns="False">
@@ -193,7 +204,7 @@
                             <telerik:GridBoundColumn DataField="mstate"  HeaderText="提交<br />状态" ItemStyle-Width="60px" HeaderStyle-Width="60px" SortExpression="mstate" UniqueName="mstate">
                             </telerik:GridBoundColumn>
                      
-                            <telerik:GridBoundColumn DataField="LingJian_Type1" HeaderText="零件<br />类型" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
+                            <telerik:GridBoundColumn DataField="LingJian_Type1" HeaderText="零件<br />类型" ItemStyle-Width="100px" HeaderStyle-Width="100px" SortExpression="LingJian_Type1" UniqueName="LingJian_Type1"></telerik:GridBoundColumn>
             
                             <telerik:GridBoundColumn DataField="TDM_Description" HeaderText="产品<br />名称" ItemStyle-Width="100px" HeaderStyle-Width="100px" SortExpression="TDM_Description" UniqueName="TDM_Description">
                             </telerik:GridBoundColumn>
@@ -236,7 +247,7 @@
                             </telerik:GridBoundColumn>
                             <telerik:GridBoundColumn DataField="Technics_Comment" HeaderText="路线<br />备注" ItemStyle-Width="100px" HeaderStyle-Width="100px" SortExpression="Technics_Comment" UniqueName="Technics_Comment">
                             </telerik:GridBoundColumn>
-                            <telerik:GridBoundColumn DataField="Memo_Quantity"  HeaderText="定额<br />数量" ItemStyle-Width="60px" HeaderStyle-Width="60px" SortExpression="Memo_Quantity" UniqueName="Memo_Quantity">
+                            <telerik:GridBoundColumn DataField="Memo_Quantity"  HeaderText="备件<br />数量" ItemStyle-Width="60px" HeaderStyle-Width="60px" SortExpression="Memo_Quantity" UniqueName="Memo_Quantity">
                             </telerik:GridBoundColumn>
                             <telerik:GridBoundColumn DataField="Mat_Comment" HeaderText="定额<br />备注" ItemStyle-Width="100px" HeaderStyle-Width="100px" SortExpression="Mat_Comment" UniqueName="Mat_Comment">
                             </telerik:GridBoundColumn>
@@ -277,6 +288,7 @@
                         </CommandItemTemplate>
                     </MasterTableView>
                 </telerik:RadGrid>
+                   </telerik:RadAjaxPanel>
     </div>
 
     <telerik:RadNotification ID="RadNotificationAlert" runat="server" Text="" Position="Center"

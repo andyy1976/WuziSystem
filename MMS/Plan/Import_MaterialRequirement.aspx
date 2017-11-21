@@ -364,7 +364,7 @@
                             <Columns>
                                 <telerik:GridClientSelectColumn UniqueName="ClientSelectColumn" ItemStyle-Width="30px" HeaderStyle-Width="30px"  >
                                 </telerik:GridClientSelectColumn>
-                                <telerik:GridBoundColumn DataField="ID" ItemStyle-Width="30px" HeaderStyle-Width="30px" HeaderText="序号" SortExpression="ID" UniqueName="ID"></telerik:GridBoundColumn>
+                                <telerik:GridBoundColumn DataField="ID" ItemStyle-Width="40px" HeaderStyle-Width="40px" HeaderText="序号" SortExpression="ID" UniqueName="ID"></telerik:GridBoundColumn>
                                     <telerik:GridTemplateColumn HeaderText="零件类型" ItemStyle-Width="80px" HeaderStyle-width="80px"  UniqueName="LingJian_Type">
                                         <HeaderStyle HorizontalAlign="Center"></HeaderStyle>
                                         <ItemTemplate>
@@ -375,6 +375,8 @@
                                         </telerik:RadComboBox>
                                        </ItemTemplate>
                                     </telerik:GridTemplateColumn>
+                                    <telerik:GridBoundColumn DataField="TDM_Description" ItemStyle-Width="100px" HeaderStyle-Width="100px" HeaderText="产品名称" SortExpression="TDM_Description" UniqueName="TDM_Description">
+                                    </telerik:GridBoundColumn>
                                     <telerik:GridBoundColumn DataField="Technics_Line"  ItemStyle-Width="100px" HeaderStyle-Width="100px" HeaderText="工艺路线" SortExpression="Technics_Line" UniqueName="Technics_Line">
                                     </telerik:GridBoundColumn>
                                     <telerik:GridBoundColumn DataField="Material_Mark" ItemStyle-Width="80px" HeaderStyle-Width="80px" HeaderText="物资牌号" SortExpression="Material_Mark" UniqueName="Material_Mark">
@@ -614,7 +616,7 @@
                                  <Columns>
                                      <telerik:GridClientSelectColumn UniqueName="ClientSelectColumn" ItemStyle-Width="30px" HeaderStyle-Width="30px"  >
                                      </telerik:GridClientSelectColumn>
-                                    <telerik:GridBoundColumn DataField="ID" HeaderText="编号" ItemStyle-Width="40px" HeaderStyle-Width="40px">
+                                    <telerik:GridBoundColumn DataField="ID" HeaderText="编号" ItemStyle-Width="50px" HeaderStyle-Width="50px">
                                     </telerik:GridBoundColumn>
                                     <telerik:GridBoundColumn DataField="TDM_Description" ItemStyle-Width="100px" HeaderStyle-Width="100px" HeaderText="产品名称" SortExpression="TDM_Description" UniqueName="TDM_Description">
                                     </telerik:GridBoundColumn>
@@ -626,7 +628,7 @@
                                     </telerik:GridBoundColumn>
                                     <telerik:GridBoundColumn DataField="Material_Mark" ItemStyle-Width="80px" HeaderStyle-Width="80px" HeaderText="物资牌号" SortExpression="Material_Mark" UniqueName="Material_Mark">
                                     </telerik:GridBoundColumn>
-                                    <telerik:GridBoundColumn DataField="CN_Material_State" ItemStyle-Width="80px" HeaderStyle-Width="80px" HeaderText="供应状态" SortExpression="CN_Material_State" UniqueName="CN_Material_State" Visible="true">
+                                    <telerik:GridBoundColumn DataField="CN_Material_State" ItemStyle-Width="80px" HeaderStyle-Width="80px" HeaderText="供应状态" SortExpression="x" UniqueName="CN_Material_State" Visible="true">
                                     </telerik:GridBoundColumn>
                                     <telerik:GridBoundColumn DataField="Material_Tech_Condition" ItemStyle-Width="120px" HeaderStyle-Width="120px" HeaderText="采用标准" SortExpression="Material_Tech_Condition" UniqueName="Material_Tech_Condition" Visible="true">
                                     </telerik:GridBoundColumn>

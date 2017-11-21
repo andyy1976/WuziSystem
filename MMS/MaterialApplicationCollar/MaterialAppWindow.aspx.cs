@@ -105,7 +105,7 @@ namespace mms.MaterialApplicationCollar
                     DataTable dtma = DBI.Execute(strSQL, true);
                     HFMDMLID.Value = dtma.Rows[0]["Material_ID"].ToString();
                     HFMDPLID.Value = dtma.Rows[0]["MDPLID"].ToString();
-
+                    Session["UserAccount"] = dtma.Rows[0]["UserAccount"].ToString();
                     RTB_Applicant.Text = dtma.Rows[0]["Applicant"].ToString();
                     RDP_ApplicationTime.SelectedDate = null;
                     if (dtma.Rows[0]["ApplicationTime"].ToString() != "" && Convert.ToDateTime(dtma.Rows[0]["ApplicationTime"].ToString()) >= RDP_ApplicationTime.MinDate)
@@ -306,10 +306,10 @@ namespace mms.MaterialApplicationCollar
                 if (HFMAID.Value == "")
                 {
                     strSQL = "declare @id int";
-                    strSQL += " Insert into MaterialApplication (Type, Material_Id, Applicant, Dept, ApplicationTime, ContactInformation, TheMaterialWay, TaskCode, Drawing_No"
+                    strSQL += " Insert into MaterialApplication (Type, Material_Id, Applicant, UserAccount,Dept, ApplicationTime, ContactInformation, TheMaterialWay, TaskCode, Drawing_No"
                         + " , Draft_Code, Quantity, FeedingTime, IsDispatch, IsConfirm, Remark, MaterialType, Material_Name, Material_Mark, CN_Material_State, Material_Tech_Condition"
                         + " , Rough_Spec, Mat_Rough_Weight,MaterialsDes, Mat_Unit, Rough_Size, PleaseTakeQuality, AppState, ReturnReason, Is_Del, ItemCode,DiaoDuApprove, XingHaoJiHuaYuanApprove, WuZiJiHuaYuanApprove, UserId, UserAccount)"
-                        + " values ('" + HFType.Value + "','" + HFMDMLID.Value + "', '" + Applicant + "','" + Dept + "','" + ApplicationTime + "','" + ContactInformation + "','" + TheMaterialWay + "','" + TaskCode + "','" + DrawingNo + "'"
+                        + " values ('" + HFType.Value + "','" + HFMDMLID.Value + "', '" + Applicant + "','" + Session["UserAccount"] + "','" + Dept + "','" + ApplicationTime + "','" + ContactInformation + "','" + TheMaterialWay + "','" + TaskCode + "','" + DrawingNo + "'"
                         + " ,Null,'" + Quantity + "','" + FeedingTime + "','" + IsDispatch + "','" + IsConfirm + "','" + Remark + "'"
                         + " ,Null,'" + Material_Name + "','" + Material_Mark + "','" + CN_Material_State + "','" + Material_Tech_Condition + "'"
                         + " ,'" + Rough_Spec + "','" + Mat_Rough_Weight + "','" + MaterialsDes + "','" + Mat_Unit + "','" + Rough_Size + "','" + PleaseTakeQuality + "','1',Null,'false'"

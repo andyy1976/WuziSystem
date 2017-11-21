@@ -150,7 +150,7 @@ namespace mms.Plan
                     GetMaterialStateSum(DraftCode);
                     this.ViewState["flag"] = false;
                     this.hfFlag.Value = "0";
-                    RadTabStrip1.Tabs[1].NavigateUrl = "MDemandMergeListChange.aspx?PackId=" + PackId;
+                    RadTabStrip1.Tabs[1].NavigateUrl = "MDemandMergeListChange.aspx?PackId=" + PackId + "&fromPage=0";
 
                     Session["idStr"] = ",";
                     Session["otherStr"] = PackId + "," + draftid + "," + Model + "," + DraftCode;
@@ -287,10 +287,20 @@ namespace mms.Plan
 
         protected void RadGrid_MDemandDetails_ItemDataBound(object sender, GridItemEventArgs e)
         {
-           
+            if (e.Item is GridDataItem)
+            {
+                string id = (e.Item as GridDataItem).GetDataKeyValue("ID").ToString();
+                CheckBox cb = e.Item.FindControl("CheckBox1") as CheckBox;
+                if (cb != null)
+                {
+                    if (GridSource.Select("ID='" + id + "'")[0]["checked"].ToString().ToLower() == "true")
+                    {
+                        cb.Checked = true;
+                        e.Item.Selected = true;
+                    }
+                }
+            }
         }
-
- 
         protected void WZBH_Query_Click(object sender, EventArgs e)
         {
             
@@ -329,12 +339,13 @@ namespace mms.Plan
             if (Session["idStr"].ToString().Substring(0,1) != ",") { Session["idStr"] = "," + Session["idStr"].ToString() + ","; }
             if (cb.Checked == true)
             {
+                GridSource.Select("ID='" + id + "'")[0]["checked"] = "true";
                 (cb.Parent.Parent as GridDataItem).Selected = true;
                 Session["idStr"] += id + ",";
-              
             }
             else
             {
+                GridSource.Select("ID='" + id + "'")[0]["checked"] = "false";
                 (cb.Parent.Parent as GridDataItem).Selected =false;
                 if (Session["idStr"].ToString().IndexOf("," + id + ",") != -1)
                 {
@@ -347,11 +358,11 @@ namespace mms.Plan
         {
             CheckBox cb = sender as CheckBox;
             if (Session["idStr"].ToString().Substring(0, 1) != ",") { Session["idStr"] = "," + Session["idStr"].ToString() + ","; }
-
             foreach (GridDataItem dataitem in RadGrid_MDemandDetails.MasterTableView.Items)
             {
                 (dataitem.FindControl("CheckBox1") as CheckBox).Checked = cb.Checked;
                 string id = dataitem.GetDataKeyValue("ID").ToString();
+                GridSource.Select("ID='" + id + "'")[0]["checked"] = cb.Checked.ToString().ToLower();
                 dataitem.Selected = cb.Checked;
                 if (cb.Checked == true)
                 {
@@ -414,7 +425,7 @@ namespace mms.Plan
         {
             if (e.Argument == "Rebind")
             {
-                Response.Redirect("~/Plan/MDemandMergeListChange.aspx?PackId=" + Request.QueryString["PackId"].ToString());
+                Response.Redirect("~/Plan/MDemandMergeListChange.aspx?PackId=" + Request.QueryString["PackId"].ToString()+"&fromPage=0");
             }
             else
             {
@@ -448,7 +459,6 @@ namespace mms.Plan
         protected void chb_all_CheckedChanged(object sender, EventArgs e)
         {
             Session["idStr"] = ",";
-
             if (chb_all.Checked)
             {
                 this.chb_all.Text = "反选";
@@ -458,11 +468,6 @@ namespace mms.Plan
                 {
                     GridSource.Rows[i]["checked"] = "true";
                     Session["idStr"] += GridSource.Rows[i]["ID"].ToString() + ",";
-                }
-
-                foreach (GridDataItem dataitem in RadGrid_MDemandDetails.MasterTableView.Items)
-                {
-                    dataitem.Selected = true;
                 }
                 RadGrid_MDemandDetails.Rebind();
             }
@@ -474,10 +479,6 @@ namespace mms.Plan
                 for (int i = 0; i < GridSource.Rows.Count; i++)
                 {
                     GridSource.Rows[i]["checked"] = "false";
-                }
-                foreach (GridDataItem dataitem in RadGrid_MDemandDetails.MasterTableView.Items)
-                {
-                    dataitem.Selected = false;
                 }
                 RadGrid_MDemandDetails.Rebind();
             }

@@ -102,7 +102,7 @@
                                 <telerik:GridBoundColumn DataField="Drawing_No" FilterControlAltText="Filter Drawing_No column" HeaderText="图号" SortExpression="Drawing_No" UniqueName="Drawing_No"
                                     HeaderStyle-width="100px" ItemStyle-Width="100px">
                                 </telerik:GridBoundColumn>
-                                 <telerik:GridBoundColumn DataField="TDM_Description" FilterControlAltText="Filter TaskCode column" HeaderText="产品名称" SortExpression="TaskCode" UniqueName="TaskCode"
+                                 <telerik:GridBoundColumn DataField="TDM_Description" FilterControlAltText="Filter TDM_Description column" HeaderText="产品名称" SortExpression="TDM_Description" UniqueName="TDM_Description"
                                      HeaderStyle-Width="100px" ItemStyle-Width="100px">
                                  </telerik:GridBoundColumn>
                                 <telerik:GridBoundColumn DataField="ItemCode1" FilterControlAltText="Filter ItemCode1 column" HeaderText="物资编码" SortExpression="ItemCode1" UniqueName="ItemCode1"
