@@ -46,7 +46,7 @@
         <telerik:RadCodeBlock ID="RadCodeBlock1" runat="server">
             <script type="text/javascript">
 
-                function AlphabetOnly(sender, eventArgs) {
+                function EnterKeyProcessing(sender, eventArgs) {
                     var c = eventArgs.get_keyCode();
                     if ((c == 13)) {
                         eventArgs.set_cancel(true);
@@ -134,9 +134,12 @@
                     </tr>
                     <tr>
                         <td style="text-align:right;">特殊需求：</td>
-                        <td><telerik:RadTextBox ID="RTB_Special_Needs" runat="server" OnKeyPress="AlphabetOnly" Width="160px"></telerik:RadTextBox></td>
+                        <td><telerik:RadTextBox ID="RTB_Special_Needs" runat="server" Width="160px">
+                                                      <ClientEvents OnKeyPress="EnterKeyProcessing" />
+                            </telerik:RadTextBox></td>
                         <td style="text-align:right;">紧急程度：</td>
-                        <td><telerik:RadDropDownList ID="RDDL_Urgency_Degre" runat="server" Width="160px" ></telerik:RadDropDownList></td>
+                        <td><telerik:RadDropDownList ID="RDDL_Urgency_Degre" runat="server" Width="160px" >
+                            </telerik:RadDropDownList></td>
                         <td style="text-align:right;">密级：</td>
                         <td><telerik:RadDropDownList ID="RDDL_Secret_Level" runat="server" Width="160px"></telerik:RadDropDownList></td>
                     </tr>
@@ -159,12 +162,16 @@
                         <td style="text-align:right;">需求时间：</td>
                         <td><telerik:RadDatePicker ID="RDP_DemandDate" runat="server" Width="160px"></telerik:RadDatePicker></td>
                         <td style="text-align:right;">生产厂家：</td>
-                        <td><telerik:RadTextBox ID="RTB_MANUFACTURER" runat="server" OnKeyPress="AlphabetOnly" Width="160px"></telerik:RadTextBox></td>
+                        <td><telerik:RadTextBox ID="RTB_MANUFACTURER" runat="server" Width="160px">
+                                                      <ClientEvents OnKeyPress="EnterKeyProcessing" />
+                            </telerik:RadTextBox></td>
                         <td><telerik:RadButton ID="RB_Search" runat="server" Text="搜索" AutoPostBack="false" OnClientClicking="ShowMANUFACTURER"></telerik:RadButton></td>
                     </tr>
                     <tr>
                         <td style="text-align: right;">变更原因：</td>
-                        <td><telerik:RadTextBox runat="server" OnKeyPress="AlphabetOnly" id="RTB_Reason"></telerik:RadTextBox></td>
+                        <td><telerik:RadTextBox runat="server" id="RTB_Reason">
+                                                      <ClientEvents OnKeyPress="EnterKeyProcessing" />
+                            </telerik:RadTextBox></td>
                     </tr>
                     <tr><td>&nbsp;</td></tr>
                     <tr>
@@ -182,8 +189,12 @@
         ReloadOnShow="false" ShowContentDuringLoad="false" VisibleTitlebar="true" VisibleStatusbar="false"
         Modal="true" Behaviors="Close,Maximize,Minimize" Height="430px" Width="700px">
         <ContentTemplate>
-            生产厂家名称：<telerik:RadTextBox ID="RTB_Seg4" runat="server" OnKeyPress="AlphabetOnly" Width="160px"></telerik:RadTextBox>
-            简称：<telerik:RadTextBox ID="RTB_Seg5" runat="server" OnKeyPress="AlphabetOnly" Width="160px"></telerik:RadTextBox>
+            生产厂家名称：<telerik:RadTextBox ID="RTB_Seg4" runat="server" Width="160px">
+                                          <ClientEvents OnKeyPress="EnterKeyProcessing" />
+                   </telerik:RadTextBox>
+            简称：<telerik:RadTextBox ID="RTB_Seg5" runat="server" Width="160px">
+                                          <ClientEvents OnKeyPress="EnterKeyProcessing" />
+               </telerik:RadTextBox>
             <telerik:RadButton ID="RB_SM" runat="server" Text="搜索" OnClick="RB_SM_Click"></telerik:RadButton>
             <telerik:RadGrid ID="RadGrid_MANUFACTURER" runat="server" AutoGenerateColumns="false" OnNeedDataSource="RadGrid_MANUFACTURER_NeedDataSource" Height="350px">
                  <ClientSettings Selecting-AllowRowSelect="true" EnableRowHoverStyle="true">

@@ -32,11 +32,11 @@ namespace mms.SystemMangement
                 RDDLMT.DataTextField = "Seg6";
                 RDDLMT.DataValueField = "Type";
                 RDDLMT.DataBind();
-                RDDLMT.SelectedIndex = 0;
+                //RDDLMT.SelectedIndex = 0;
               //  Telerik.Web.UI.DropDownListItem li = new Telerik.Web.UI.DropDownListItem("物资编码查询", "ItemCode");
               //  RDDLMT.Items.Add(li);
 
-                strSQL = "select top 5000 SEG3,SEG4 from GetCommItem_T_Item where SEG10 = 'N'";
+               // strSQL = "select top 5000 SEG3,SEG4 from GetCommItem_T_Item where SEG10 = 'N'";
              /*   string Material_Name = RTB_Material_Name.Text.Trim();
                 string Material_Paihao = RTB_Material_Paihao.Text.Trim();
                 string Material_Guige = RTB_Material_Guige.Text.Trim();

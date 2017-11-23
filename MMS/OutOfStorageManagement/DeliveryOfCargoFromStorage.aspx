@@ -45,7 +45,7 @@
     <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" runat="server"></telerik:RadAjaxLoadingPanel>
     <telerik:RadCodeBlock ID="RadCodeBlock1" runat="server">
         <script type="text/javascript">
-            function AlphabetOnly(sender, eventArgs) {
+            function EnterKeyProcessing(sender, eventArgs) {
                 var c = eventArgs.get_keyCode();
                 if ((c == 13)) {
                     eventArgs.set_cancel(true);
@@ -173,15 +173,25 @@
                 <div style="width: 100%;">
                     <div style="width: 100%; margin-top: 20px;">
                         物资名称：
-                        <telerik:RadTextBox ID="RTB_Material_Name" runat="server" OnKeyPress="AlphabetOnly" Width="100px"></telerik:RadTextBox>
+                        <telerik:RadTextBox ID="RTB_Material_Name" runat="server" Width="100px">
+                                                      <ClientEvents OnKeyPress="EnterKeyProcessing" />
+                        </telerik:RadTextBox>
                         物资编码：
-                        <telerik:RadTextBox ID="RTB_ItemCode1" runat="server" OnKeyPress="AlphabetOnly" Width="100px"></telerik:RadTextBox>
+                        <telerik:RadTextBox ID="RTB_ItemCode1" runat="server" Width="100px">
+                                                      <ClientEvents OnKeyPress="EnterKeyProcessing" />
+                        </telerik:RadTextBox>
                         物资牌号：
-                        <telerik:RadTextBox ID="RTB_Material_Mark" runat="server" OnKeyPress="AlphabetOnly" Width="100px"></telerik:RadTextBox>
+                        <telerik:RadTextBox ID="RTB_Material_Mark" runat="server" Width="100px">
+                                                      <ClientEvents OnKeyPress="EnterKeyProcessing" />
+                        </telerik:RadTextBox>
                         坯料规格：
-                        <telerik:RadTextBox ID="RTB_Rough_Spec" runat="server" OnKeyPress="AlphabetOnly" Width="100px"></telerik:RadTextBox>
+                        <telerik:RadTextBox ID="RTB_Rough_Spec" runat="server" Width="100px">
+                                                      <ClientEvents OnKeyPress="EnterKeyProcessing" />
+                        </telerik:RadTextBox>
                         物资尺寸：
-                        <telerik:RadTextBox ID="RTB_Rough_Size" runat="server" OnKeyPress="AlphabetOnly" Width="100px"></telerik:RadTextBox>
+                        <telerik:RadTextBox ID="RTB_Rough_Size" runat="server" Width="100px">
+                                                      <ClientEvents OnKeyPress="EnterKeyProcessing" />
+                        </telerik:RadTextBox>
                         <telerik:RadButton ID="RB_Search" runat="server" Text="搜索" OnClick="RB_Search_Click"></telerik:RadButton>
                     </div>
                     <div style="width: 100%;">

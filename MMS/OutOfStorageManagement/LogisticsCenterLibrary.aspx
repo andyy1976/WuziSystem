@@ -4,7 +4,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
     <script type="text/javascript">
-        function AlphabetOnly(sender, eventArgs) {
+        function EnterKeyProcessing(sender, eventArgs) {
             var c = eventArgs.get_keyCode();
             if ((c == 13)) {
                 eventArgs.set_cancel(true);
@@ -58,15 +58,25 @@
             </tr>
             <tr>                
                 <td style="text-align:right;">合格证号：</td>
-                <td><telerik:RadTextBox ID="RTB_hgz_no" runat="server" OnKeyPress="AlphabetOnly" Width="100px"></telerik:RadTextBox></td>
+                <td><telerik:RadTextBox ID="RTB_hgz_no" runat="server" Width="100px">
+                                              <ClientEvents OnKeyPress="EnterKeyProcessing" />
+                    </telerik:RadTextBox></td>
                 <td style="text-align:right;">任务号：</td>
-                <td><telerik:RadTextBox ID="RTB_jc_rwh" runat="server" OnKeyPress="AlphabetOnly" Width="100px"></telerik:RadTextBox></td>
+                <td><telerik:RadTextBox ID="RTB_jc_rwh" runat="server" Width="100px">
+                                              <ClientEvents OnKeyPress="EnterKeyProcessing" />
+                    </telerik:RadTextBox></td>
                 <td style="text-align:right;">图号：</td>
-                <td><telerik:RadTextBox ID="RTB_jc_th" runat="server" OnKeyPress="AlphabetOnly" Width="100px"></telerik:RadTextBox></td>
+                <td><telerik:RadTextBox ID="RTB_jc_th" runat="server" Width="100px">
+                                              <ClientEvents OnKeyPress="EnterKeyProcessing" />
+                    </telerik:RadTextBox></td>
                 <td style="text-align:right;">质检单号：</td>
-                <td><telerik:RadTextBox ID="RTB_hgz_zjdbillno" runat="server" OnKeyPress="AlphabetOnly" Width="100px"></telerik:RadTextBox></td>
+                <td><telerik:RadTextBox ID="RTB_hgz_zjdbillno" runat="server" Width="100px">
+                                              <ClientEvents OnKeyPress="EnterKeyProcessing" />
+                    </telerik:RadTextBox></td>
                 <td style="text-align:right;">质疑单号：</td>
-                <td><telerik:RadTextBox ID="RTB_hgz_zydh" runat="server" OnKeyPress="AlphabetOnly" Width="100px"></telerik:RadTextBox></td>
+                <td><telerik:RadTextBox ID="RTB_hgz_zydh" runat="server" Width="100px">
+                                              <ClientEvents OnKeyPress="EnterKeyProcessing" />
+                    </telerik:RadTextBox></td>
                 <td><telerik:RadButton ID="RB_Search" runat="server" Text ="搜索" OnClick="RB_Search_Click"></telerik:RadButton></td>
             </tr>
         </table>
@@ -82,7 +92,7 @@
                 <Scrolling AllowScroll="True" UseStaticHeaders="True" SaveScrollPosition="true" FrozenColumnsCount="3" ScrollHeight="600px"></Scrolling>
                 <Selecting AllowRowSelect="true" />
             </ClientSettings>
-             <ExportSettings HideStructureColumns="true" ExportOnlyData="true" IgnorePaging="false" OpenInNewWindow="true">
+             <ExportSettings HideStructureColumns="true" ExportOnlyData="true" IgnorePaging="true" OpenInNewWindow="true">
                        <Pdf  DefaultFontFamily="Arial Unicode MS" />
                      </ExportSettings>
                           <MasterTableView  CommandItemDisplay="Top">

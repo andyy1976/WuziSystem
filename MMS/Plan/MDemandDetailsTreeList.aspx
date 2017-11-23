@@ -51,14 +51,7 @@
     <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" runat="server" Skin="Default"></telerik:RadAjaxLoadingPanel>
     <telerik:RadCodeBlock runat="server">
         <script type="text/javascript">
-            function AlphabetOnly(sender, eventArgs) {
-                var c = eventArgs.get_keyCode();
-                if ((c == 13)) {
-                    eventArgs.set_cancel(true);
-                }
-            }
-
-            function refreshGrid(arg) {
+             function refreshGrid(arg) {
                 if (!arg)
                 {
                     $find("<%= RadAjaxManager1.ClientID %>").ajaxRequest("Rebind");
@@ -75,7 +68,7 @@
                 document.location.reload();
             }
 
-            function AlphabetOnly(sender, eventArgs)
+            function EnterKeyProcessing(sender, eventArgs)
             {
                 var c = eventArgs.get_keyCode();
                 if ((c == 13)) {
@@ -225,7 +218,7 @@
                 <tr>
                     <td style="text-align:right;">物资编码：</td>
                     <td><telerik:RadTextBox ID="RTB_ItemCode" runat="server" Width="120px">
-                          <ClientEvents OnKeyPress="AlphabetOnly" />
+                          <ClientEvents OnKeyPress="EnterKeyProcessing" />
                         </telerik:RadTextBox></td>
                     <td>零件类型：</td>
                     <td>
@@ -235,18 +228,19 @@
                     </td>
                     <td>图号：</td>
                     <td><telerik:RadTextBox ID="RTB_Drawing_No" runat="server" Width="100px">
-                          <ClientEvents OnKeyPress="AlphabetOnly" />
+                          <ClientEvents OnKeyPress="EnterKeyProcessing" />
                         </telerik:RadTextBox></td>
                       <td>工艺路线：</td>
                     <td><telerik:RadTextBox ID="Rad_TechLine" runat="server"  Width="100px">
-                         <ClientEvents OnKeyPress="AlphabetOnly" />
+                         <ClientEvents OnKeyPress="EnterKeyProcessing" />
                         </telerik:RadTextBox></td>
                     <td><telerik:RadButton ID="RB_Query" runat="server" Text="查询" OnClick="WZBH_Query_Click"></telerik:RadButton></td>
                 </tr>
             </table>
        <div class="divSiteMap add_divSiteMap" style="clear: both; width: 100%;">
            <div class="div_addclass" style="float: right; height: 40px; line-height: 40px;">
-                    <span style="font-size: 13px;color:red;"> <asp:CheckBox ID="chb_all" runat="server" OnCheckedChanged="chb_all_CheckedChanged" AutoPostBack="True" Text="全选"/></span>
+                    <span style="font-size: 13px;color:red;"> 
+					<asp:CheckBox ID="chb_all" runat="server" OnCheckedChanged="chb_all_CheckedChanged" AutoPostBack="True" Text="全选"/></span>
                     <span style="font-size: 13px;">未提交：</span>
                     <label id="lbl_state_0" runat="server" style="color: green; font-weight: bold;">0</label>
                     <span style="margin-left: 20px; font-size: 13px;">已提交：</span>
@@ -262,9 +256,7 @@
                 </div>
            <div style="clear: both; overflow: hidden"></div>
         </div>
-        
                 <telerik:RadAjaxPanel ID="RadAjaxPanel1" runat="server"  ClientEvents-OnRequestStart="onRequestStart">
-         
                       <telerik:RadTreeList RenderMode="Lightweight" Width="100%" ID="RadTreeList1" AutoGenerateColumns="false" AllowSorting="true" 
                          AllowLoadOnDemand="true"  OnItemDataBound="RadTreeList_MDemandDetails_ItemDataBound" 
                           OnItemSelected="RadTreeList1_SelectedIndexChanged"  OnChildItemsDataBind="RadTreeList1_ChildItemsDataBind" OnNeedDataSource="RadTreeList1_NeedDataSource"
@@ -277,9 +269,8 @@
                               <Selecting AllowItemSelection="true" AllowToggleSelection="true" />
                               <Scrolling AllowScroll="True" UseStaticHeaders="True" SaveScrollPosition="true" ScrollHeight="480px"></Scrolling>
                           </ClientSettings> 
-                         <ExportSettings IgnorePaging="false"  OpenInNewWindow="true">
-                           <Pdf  DefaultFontFamily="Arial Unicode MS" />
-
+                         <ExportSettings IgnorePaging="true"  OpenInNewWindow="true">
+                       <Pdf  DefaultFontFamily="Arial Unicode MS" />
                          </ExportSettings>
 
                              <CommandItemSettings ShowExportToExcelButton="true" ShowExportToWordButton="false" />
@@ -292,21 +283,23 @@
                                 <asp:CheckBox ID="headerChkbox" runat="server" OnCheckedChanged="ToggleSelectedState" AutoPostBack="True" />
                               </HeaderTemplate>
                             </telerik:TreeListTemplateColumn>
+                     
                             <telerik:TreeListBoundColumn DataField="ID" DataType="System.Int32" HeaderText="序号" ItemStyle-Width="50px" HeaderStyle-Width="50px" ReadOnly="True" SortExpression="ID" UniqueName="ID">
                             </telerik:TreeListBoundColumn>
                             <telerik:TreeListBoundColumn DataField="mstate"  HeaderText="提交<br />状态" ItemStyle-Width="60px" HeaderStyle-Width="60px" SortExpression="mstate" UniqueName="mstate">
                             </telerik:TreeListBoundColumn>
-                     
-                            <telerik:TreeListBoundColumn DataField="LingJian_Type1" HeaderText="零件<br />类型" ItemStyle-Width="100px" HeaderStyle-Width="100px" SortExpression="LingJian_Type1" UniqueName="LingJian_Type1"></telerik:TreeListBoundColumn>
-            
-                            <telerik:TreeListBoundColumn DataField="TDM_Description" HeaderText="产品<br />名称" ItemStyle-Width="100px" HeaderStyle-Width="100px" SortExpression="TDM_Description" UniqueName="TDM_Description">
-                            </telerik:TreeListBoundColumn>
                            
                             <telerik:TreeListBoundColumn DataField="Drawing_No"  HeaderText="图号" ItemStyle-Width="100px" HeaderStyle-Width="100px" SortExpression="Drawing_No" UniqueName="Drawing_No">
                             </telerik:TreeListBoundColumn>
-                            
-                            <telerik:TreeListBoundColumn DataField="TaskCode"  HeaderText="任务编号" ItemStyle-Width="100px" HeaderStyle-Width="100px" SortExpression="TaskCode" UniqueName="TaskCode">
+                            <telerik:TreeListBoundColumn DataField="TaskCode"  HeaderText="任务号" ItemStyle-Width="100px" HeaderStyle-Width="100px" SortExpression="TaskCode" UniqueName="TaskCode">
                             </telerik:TreeListBoundColumn>
+                            <telerik:TreeListBoundColumn DataField="TDM_Description" HeaderText="产品名称" ItemStyle-Width="100px" HeaderStyle-Width="100px" SortExpression="TDM_Description" UniqueName="TDM_Description">
+                            </telerik:TreeListBoundColumn>
+                                     
+                            <telerik:TreeListBoundColumn DataField="LingJian_Type1" HeaderText="零件类型" ItemStyle-Width="100px" HeaderStyle-Width="100px" SortExpression="LingJian_Type1" UniqueName="LingJian_Type1">
+                            </telerik:TreeListBoundColumn>
+            
+                     
                       
                             <telerik:TreeListBoundColumn DataField="Technics_Line"  HeaderText="工艺路线" ItemStyle-Width="100px" HeaderStyle-Width="100px" SortExpression="Technics_Line" UniqueName="Technics_Line">
                             </telerik:TreeListBoundColumn>
@@ -314,37 +307,54 @@
                             <telerik:TreeListBoundColumn DataField="Material_Name" HeaderText="材料名称" ItemStyle-Width="150px" HeaderStyle-Width="150px" SortExpression="Material_Name" UniqueName="Material_Name">
                             </telerik:TreeListBoundColumn>
 
-                            <telerik:TreeListBoundColumn DataField="Material_Mark" HeaderText="材料<br />牌号" ItemStyle-Width="80px" HeaderStyle-Width="80px" SortExpression="Material_Name" UniqueName="Material_Name"></telerik:TreeListBoundColumn>
-                            <telerik:TreeListBoundColumn DataField="CN_Material_State" HeaderText="材料<br />状态" ItemStyle-Width="80px" HeaderStyle-Width="80px" SortExpression="CN_Material_State" UniqueName="CN_Material_State"></telerik:TreeListBoundColumn>
+                            <telerik:TreeListBoundColumn DataField="Material_Mark" HeaderText="材料牌号" ItemStyle-Width="70px" HeaderStyle-Width="80px" SortExpression="Material_Name" UniqueName="Material_Name"></telerik:TreeListBoundColumn>
+                            <telerik:TreeListBoundColumn DataField="CN_Material_State" HeaderText="材料状态" ItemStyle-Width="70px" HeaderStyle-Width="80px" SortExpression="CN_Material_State" UniqueName="CN_Material_State"></telerik:TreeListBoundColumn>
                             <telerik:TreeListBoundColumn DataField="Material_Tech_Condition" HeaderText="技术条件" ItemStyle-Width="100px" HeaderStyle-Width="100px" SortExpression="Material_Tech_Condition" UniqueName="Material_Tech_Condition"> </telerik:TreeListBoundColumn>
-                            <telerik:TreeListBoundColumn DataField="Rough_Spec" HeaderText="胚料<br />规格" ItemStyle-Width="60px" HeaderStyle-Width="60px" SortExpression="Rough_Spec" UniqueName="Rough_Spec"></telerik:TreeListBoundColumn>
-                            <telerik:TreeListBoundColumn DataField="Rough_Size" HeaderText="胚料<br />尺寸" ItemStyle-Width="80px" HeaderStyle-Width="80px" SortExpression="Rough_Size" UniqueName="Rough_Size"></telerik:TreeListBoundColumn>
+                            <telerik:TreeListBoundColumn DataField="Rough_Spec" HeaderText="胚料规格" ItemStyle-Width="70px" HeaderStyle-Width="70px" SortExpression="Rough_Spec" UniqueName="Rough_Spec"></telerik:TreeListBoundColumn>
+                            <telerik:TreeListBoundColumn DataField="Rough_Size" HeaderText="胚料尺寸" ItemStyle-Width="70px" HeaderStyle-Width="70px" SortExpression="Rough_Size" UniqueName="Rough_Size"></telerik:TreeListBoundColumn>
                                                   
-                            <telerik:TreeListBoundColumn DataField="Mat_Unit" HeaderText="计量<br />单位" ItemStyle-Width="60px" HeaderStyle-Width="60px" SortExpression="Mat_Unit" UniqueName="Mat_Unit">
+                            <telerik:TreeListBoundColumn DataField="Mat_Unit" HeaderText="计量单位" ItemStyle-Width="70px" HeaderStyle-Width="70px" SortExpression="Mat_Unit" UniqueName="Mat_Unit">
                             </telerik:TreeListBoundColumn>
-                            <telerik:TreeListBoundColumn DataField="Mat_Rough_Weight" HeaderText="单件<br />质量" ItemStyle-Width="70px" HeaderStyle-Width="70px" SortExpression="Mat_Rough_Weight" UniqueName="Mat_Rough_Weight">
+                            <telerik:TreeListBoundColumn DataField="Mat_Rough_Weight" HeaderText="单件质量" ItemStyle-Width="70px" HeaderStyle-Width="70px" SortExpression="Mat_Rough_Weight" UniqueName="Mat_Rough_Weight">
                             </telerik:TreeListBoundColumn>
-                            <telerik:TreeListBoundColumn DataField="Mat_Pro_Weight"  HeaderText="产品<br />质量" ItemStyle-Width="80px" HeaderStyle-Width="80px" SortExpression="Mat_Pro_Weight" UniqueName="Mat_Pro_Weight">
-                            </telerik:TreeListBoundColumn>
-
-                            <telerik:TreeListBoundColumn DataField="ItemCode1" HeaderText="物资<br />编码" ItemStyle-Width="100px" HeaderStyle-Width="100px" SortExpression="ItemCode1" UniqueName="ItemCode1">
+                            <telerik:TreeListBoundColumn DataField="Mat_Pro_Weight"  HeaderText="每产品质量" ItemStyle-Width="80px" HeaderStyle-Width="80px" SortExpression="Mat_Pro_Weight" UniqueName="Mat_Pro_Weight">
                             </telerik:TreeListBoundColumn>
 
-                            <telerik:TreeListBoundColumn DataField="NumCasesSum"  HeaderText="需求<br />件数" ItemStyle-Width="60px" HeaderStyle-Width="60px" SortExpression="NumCasesSum" UniqueName="NumCasesSum">
+                            <telerik:TreeListBoundColumn DataField="ItemCode1" HeaderText="物资编码" ItemStyle-Width="100px" HeaderStyle-Width="100px" SortExpression="ItemCode1" UniqueName="ItemCode1">
                             </telerik:TreeListBoundColumn>
 
-                            <telerik:TreeListBoundColumn DataField="DemandNumSum"  HeaderText="需求<br />质量" ItemStyle-Width="60px" HeaderStyle-Width="60px" SortExpression="DemandNumSum" UniqueName="DemandNumSum">
+                            <telerik:TreeListBoundColumn DataField="NumCasesSum"  HeaderText="需求件数" ItemStyle-Width="70px" HeaderStyle-Width="70px" SortExpression="NumCasesSum" UniqueName="NumCasesSum">
                             </telerik:TreeListBoundColumn>
 
-                            <telerik:TreeListBoundColumn DataField="Tech_Quantity"  HeaderText="工艺<br />数量" ItemStyle-Width="60px" HeaderStyle-Width="60px" SortExpression="Tech_Quantity" UniqueName="Tech_Quantity">
+                            <telerik:TreeListBoundColumn DataField="DemandNumSum"  HeaderText="需求数量（重量）" ItemStyle-Width="70px" HeaderStyle-Width="70px" SortExpression="DemandNumSum" UniqueName="DemandNumSum">
                             </telerik:TreeListBoundColumn>
-                            <telerik:TreeListBoundColumn DataField="Technics_Comment" HeaderText="路线<br />备注" ItemStyle-Width="100px" HeaderStyle-Width="100px" SortExpression="Technics_Comment" UniqueName="Technics_Comment">
+
+                            <telerik:TreeListBoundColumn DataField="Tech_Quantity"  HeaderText="工艺数量" ItemStyle-Width="70px" HeaderStyle-Width="70px" SortExpression="Tech_Quantity" UniqueName="Tech_Quantity">
                             </telerik:TreeListBoundColumn>
-                            <telerik:TreeListBoundColumn DataField="Memo_Quantity"  HeaderText="备件<br />数量" ItemStyle-Width="60px" HeaderStyle-Width="60px" SortExpression="Memo_Quantity" UniqueName="Memo_Quantity">
+                            <telerik:TreeListBoundColumn DataField="Technics_Comment" HeaderText="路线备注" ItemStyle-Width="100px" HeaderStyle-Width="100px" SortExpression="Technics_Comment" UniqueName="Technics_Comment">
                             </telerik:TreeListBoundColumn>
-                            <telerik:TreeListBoundColumn DataField="Mat_Comment" HeaderText="定额<br />备注" ItemStyle-Width="100px" HeaderStyle-Width="100px" SortExpression="Mat_Comment" UniqueName="Mat_Comment">
+                            <telerik:TreeListBoundColumn DataField="Memo_Quantity"  HeaderText="备件数量" ItemStyle-Width="70px" HeaderStyle-Width="70px" SortExpression="Memo_Quantity" UniqueName="Memo_Quantity">
                             </telerik:TreeListBoundColumn>
-                            <telerik:TreeListBoundColumn DataField="DemandDate" HeaderText="需求日期" ItemStyle-Width="80px" HeaderStyle-Width="80px" SortExpression="DemandDate" UniqueName="DemandDate" Visible="true">
+                            <telerik:TreeListBoundColumn DataField="Mat_Comment" HeaderText="定额备注" ItemStyle-Width="100px" HeaderStyle-Width="100px" SortExpression="Mat_Comment" UniqueName="Mat_Comment">
+                            </telerik:TreeListBoundColumn>
+                            
+                            <telerik:TreeListBoundColumn DataField="DemandDate" HeaderText="需求日期" ItemStyle-Width="100px" HeaderStyle-Width="100px" SortExpression="DemandDate" UniqueName="DemandDate" Visible="true">
+                            </telerik:TreeListBoundColumn>
+                            <telerik:TreeListBoundColumn DataField="Special_Needs" HeaderText="特殊需求" ItemStyle-Width="80px" HeaderStyle-Width="80px" SortExpression="Special_Needs" UniqueName="Special_Needs" Visible="true">
+                            </telerik:TreeListBoundColumn>
+                            <telerik:TreeListBoundColumn DataField="Urgency_Degre" HeaderText="紧急程度" ItemStyle-Width="70px" HeaderStyle-Width="70px" SortExpression="Urgency_Degre" UniqueName="Urgency_Degre" Visible="true">
+                            </telerik:TreeListBoundColumn>
+                            <telerik:TreeListBoundColumn DataField="Secret_Level" HeaderText="密级" ItemStyle-Width="60px" HeaderStyle-Width="60px" SortExpression="Secret_Level" UniqueName="Secret_Level" Visible="true">
+                            </telerik:TreeListBoundColumn>
+                            <telerik:TreeListBoundColumn DataField="Use_Des" HeaderText="用途" ItemStyle-Width="80px" HeaderStyle-Width="80px" SortExpression="Use_Des" UniqueName="Use_Des" Visible="true">
+                            </telerik:TreeListBoundColumn>
+                            <telerik:TreeListBoundColumn DataField="Shipping_Address" HeaderText="配送地址" ItemStyle-Width="70px" HeaderStyle-Width="70px" SortExpression="Shipping_Address" UniqueName="Shipping_Address" Visible="true">
+                            </telerik:TreeListBoundColumn>
+                            <telerik:TreeListBoundColumn DataField="Certification" HeaderText="合格证" ItemStyle-Width="60px" HeaderStyle-Width="60px" SortExpression="Certification" UniqueName="Certification" Visible="true">
+                            </telerik:TreeListBoundColumn>
+                            <telerik:TreeListBoundColumn DataField="Attribute4" HeaderText="国产/进口" ItemStyle-Width="80px" HeaderStyle-Width="80px"  SortExpression="Attribute4" UniqueName="Attribute4">
+                            </telerik:TreeListBoundColumn>
+                            <telerik:TreeListBoundColumn DataField="Manufacturer" HeaderText="生产厂家" ItemStyle-Width="80px" HeaderStyle-Width="80px" SortExpression="Manufacturer" UniqueName="Manufacturer" Visible="true">
                             </telerik:TreeListBoundColumn>
 
                          
@@ -366,7 +376,7 @@
                                     CommandName="CancelCombine" OnClick="RB_Combine_Cancel_Click" OnClientClicking="confirmWindowSubmitCancel">
                                 </telerik:RadButton>
 
-					     <telerik:RadButton ID="RadButton_ExportExcel" runat="server" Text="导出Excel" Font-Bold="true" CommandName="ExportExcel" OnClick="RadButton_ExportExcel_Click" CssClass="floatright"></telerik:RadButton>
+					     <telerik:RadButton ID="RadButton_ExportExcel" runat="server" Text="导出Excel" Font-Bold="true" CommandName="ExportExcel" Visible="false"  OnClick="RadButton_ExportExcel_Click" CssClass="floatright"></telerik:RadButton>
                          <telerik:RadButton ID="RadButton_ExportWord"  runat="server" Text="导出Word"  Font-Bold="true" CommandName="ExportWord" Visible="false"  OnClick="RadButton_ExportWord_Click"  CssClass="floatright"></telerik:RadButton>
                          <telerik:RadButton ID="RadButton_ExportPDF"   runat="server" Text="导出PDF"   Font-Bold="true" CommandName="ExportPDF" Visible="false"   OnClick="RadButton_ExportPdf_Click"   CssClass="floatright"></telerik:RadButton>
 
@@ -375,7 +385,7 @@
     
                    </telerik:RadAjaxPanel>
                 </div>
-        <telerik:RadNotification ID="RadNotificationAlert" runat="server" Text="" Position="Center"
+    <telerik:RadNotification ID="RadNotificationAlert" runat="server" Text="" Position="Center"
                     AutoCloseDelay="4000" Width="240" Height="90" Title="提示" EnableRoundedCorners="true">
     </telerik:RadNotification>
     <%--弹出窗口--开始--%>
@@ -396,11 +406,11 @@
                         <br />
                         <br />
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <telerik:RadButton ID="RadButton3" runat="server" Text="是" AutoPostBack="false" OnClientClicked="YesOrNoClicked">
+                        <telerik:RadButton ID="RadButton1" runat="server" Text="是" AutoPostBack="false" OnClientClicked="YesOrNoClicked">
                             <Icon PrimaryIconCssClass="rbOk" />
                         </telerik:RadButton>
                         &nbsp;
-                        <telerik:RadButton ID="RadButton4" runat="server" Text="否" AutoPostBack="false" OnClientClicked="YesOrNoClicked">
+                        <telerik:RadButton ID="RadButton2" runat="server" Text="否" AutoPostBack="false" OnClientClicked="YesOrNoClicked">
                             <Icon PrimaryIconCssClass="rbCancel" />
                         </telerik:RadButton>
                     </div>

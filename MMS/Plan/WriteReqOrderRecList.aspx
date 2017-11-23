@@ -42,7 +42,16 @@
         </AjaxSettings>
     </telerik:RadAjaxManager>
     <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" runat="server" Skin="Default"></telerik:RadAjaxLoadingPanel>
-    <telerik:RadCodeBlock ID="RadCodeBlock1" runat="server"></telerik:RadCodeBlock>
+    <telerik:RadCodeBlock ID="RadCodeBlock1" runat="server">
+         <script type="text/javascript">
+             function EnterKeyProcessing(sender, eventArgs) {
+                 var c = eventArgs.get_keyCode();
+                 if ((c == 13)) {
+                     eventArgs.set_cancel(true);
+                 }
+             }
+        </script>
+    </telerik:RadCodeBlock>
     <div style="width:100%;">
         <telerik:RadTabStrip ID="RadTabStrip1" runat="server" Skin="Default" MultiPageID="RadMultiPage1" ShowBaseLine="true">
             <Tabs>
@@ -74,9 +83,13 @@
                             <td>～</td>
                             <td><telerik:RadDatePicker ID="RDP_End" runat="server" Width="120px"></telerik:RadDatePicker></td>
                             <td>需求头ID：</td>
-                            <td><telerik:RadTextBox ID="RTB_HeaderID" runat="server" OnKeyPress="AlphabetOnly" Width="120px"></telerik:RadTextBox></td>
+                            <td><telerik:RadTextBox ID="RTB_HeaderID" runat="server" Width="120px">
+                                                           <ClientEvents OnKeyPress="EnterKeyProcessing" />
+                                </telerik:RadTextBox></td>
                             <td>需求行ID：</td>
-                            <td><telerik:RadTextBox ID="RTB_LineID" runat="server" OnKeyPress="AlphabetOnly" Width="120px"></telerik:RadTextBox></td>
+                            <td><telerik:RadTextBox ID="RTB_LineID" runat="server" Width="120px">
+                                                           <ClientEvents OnKeyPress="EnterKeyProcessing" />
+                                </telerik:RadTextBox></td>
                             <td><telerik:RadButton ID="RB_Search" runat="server" Text="搜索" OnClick="RB_Search_Click"></telerik:RadButton></td>
                         </tr>
                     </table>
@@ -91,7 +104,7 @@
                         <HeaderStyle HorizontalAlign="Center" Font-Size="13px" />
 
                         <CommandItemStyle Font-Bold="true" Font-Size="16px" HorizontalAlign="Center" Height="40px" />
-                        <ExportSettings HideStructureColumns="true" ExportOnlyData="true" IgnorePaging="false" OpenInNewWindow="true">
+                        <ExportSettings HideStructureColumns="true" ExportOnlyData="true" IgnorePaging="true" OpenInNewWindow="true">
                         <Pdf  DefaultFontFamily="Arial Unicode MS" />
                         </ExportSettings>
                           <MasterTableView DataKeyNames="RowsId" CommandItemDisplay="Top">
@@ -140,9 +153,13 @@
                             <td>～</td>
                             <td><telerik:RadDatePicker ID="RDP_EndRco" runat="server" Width="120px"></telerik:RadDatePicker></td>
                             <td>需求行ID：</td>
-                            <td><telerik:RadTextBox ID="RTB_RQ_LineId" runat="server" OnKeyPress="AlphabetOnly" Width="120px"></telerik:RadTextBox></td>
+                            <td><telerik:RadTextBox ID="RTB_RQ_LineId" runat="server" Width="120px">
+                                                           <ClientEvents OnKeyPress="EnterKeyProcessing" />
+                                </telerik:RadTextBox></td>
                             <td>变更行ID：</td>
-                            <td><telerik:RadTextBox ID="RTB_RCO_LintId" runat="server" OnKeyPress="AlphabetOnly" Width="120px"></telerik:RadTextBox></td>
+                            <td><telerik:RadTextBox ID="RTB_RCO_LintId" runat="server" Width="120px">
+                                                           <ClientEvents OnKeyPress="EnterKeyProcessing" />
+                                </telerik:RadTextBox></td>
                             <td><telerik:RadButton ID="RB_SearchRco" runat="server" Text="搜索" OnClick="RB_SearchRco_Click"></telerik:RadButton></td>
                         </tr>
                     </table>

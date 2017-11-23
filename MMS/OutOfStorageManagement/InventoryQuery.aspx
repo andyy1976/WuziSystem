@@ -75,7 +75,7 @@
                         <Selecting AllowRowSelect="true" />
                         <Scrolling AllowScroll="True" ScrollHeight="600px" UseStaticHeaders="true"></Scrolling>
                     </ClientSettings>
-                        <ExportSettings HideStructureColumns="true" ExportOnlyData="true" IgnorePaging="false" OpenInNewWindow="true">
+                        <ExportSettings HideStructureColumns="true" ExportOnlyData="true" IgnorePaging="true" OpenInNewWindow="true">
                         <Pdf  DefaultFontFamily="Arial Unicode MS" />
                         </ExportSettings>
                     <MasterTableView CommandItemDisplay="Top">
@@ -124,7 +124,7 @@
                         <Selecting AllowRowSelect="true" />
                         <Scrolling AllowScroll="True" ScrollHeight="600px" UseStaticHeaders="true"></Scrolling>
                     </ClientSettings>
-                    <ExportSettings HideStructureColumns="true" ExportOnlyData="true" IgnorePaging="false" OpenInNewWindow="true">
+                    <ExportSettings HideStructureColumns="true" ExportOnlyData="true" IgnorePaging="true" OpenInNewWindow="true">
                        <Pdf  DefaultFontFamily="Arial Unicode MS" />
                      </ExportSettings>
                           <MasterTableView  CommandItemDisplay="Top">

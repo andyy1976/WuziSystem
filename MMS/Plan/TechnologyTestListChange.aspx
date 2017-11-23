@@ -39,6 +39,12 @@
     <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" runat="server" Skin="Default"></telerik:RadAjaxLoadingPanel>
     <telerik:RadCodeBlock ID="RadCodeBlock1" runat="server">
         <script type="text/javascript">
+            function EnterKeyProcessing(sender, eventArgs) {
+                var c = eventArgs.get_keyCode();
+                if ((c == 13)) {
+                    eventArgs.set_cancel(true);
+                }
+            }
             function ShowWin(ID) {
                 window.radopen("/Plan/TechnologyTestListUpdate.aspx?MDMLID=" + ID, "RadWindow1");
             }
@@ -66,18 +72,30 @@
             <table>
                 <tr>
                     <td>需求行号：</td>
-                    <td><telerik:RadTextBox ID="RTB_ID" runat="server" OnKeyPress="AlphabetOnly" Width="100px"></telerik:RadTextBox></td>
+                    <td><telerik:RadTextBox ID="RTB_ID" runat="server" Width="100px">
+                                                   <ClientEvents OnKeyPress="EnterKeyProcessing" />
+                        </telerik:RadTextBox></td>
                     <td>型号：</td>
-                    <td><telerik:RadTextBox ID="RTB_Project" runat="server" OnKeyPress="AlphabetOnly" Width="100px"></telerik:RadTextBox></td>
+                    <td><telerik:RadTextBox ID="RTB_Project" runat="server" Width="100px">
+                                                   <ClientEvents OnKeyPress="EnterKeyProcessing" />
+                        </telerik:RadTextBox></td>
                     <td>图号：</td>
-                    <td><telerik:RadTextBox ID="RTB_Drawing_No" runat="server" OnKeyPress="AlphabetOnly" Width="100px"></telerik:RadTextBox></td>
+                    <td><telerik:RadTextBox ID="RTB_Drawing_No" runat="server" Width="100px">
+                                                   <ClientEvents OnKeyPress="EnterKeyProcessing" />
+                        </telerik:RadTextBox></td>
                     <td>任务号：</td>
-                    <td><telerik:RadTextBox ID="RTB_TaskCode" runat="server" OnKeyPress="AlphabetOnly" Width="100px"></telerik:RadTextBox></td>
+                    <td><telerik:RadTextBox ID="RTB_TaskCode" runat="server" Width="100px">
+                                                   <ClientEvents OnKeyPress="EnterKeyProcessing" />
+                        </telerik:RadTextBox></td>
 
                     <td>物资名称：</td>
-                    <td><telerik:RadTextBox ID="RTB_Material_Name" runat="server" OnKeyPress="AlphabetOnly" Width="100px"></telerik:RadTextBox></td>
+                    <td><telerik:RadTextBox ID="RTB_Material_Name" runat="server" Width="100px">
+                                                   <ClientEvents OnKeyPress="EnterKeyProcessing" />
+                        </telerik:RadTextBox></td>
                     <td>物资编码：</td>
-                    <td><telerik:RadTextBox ID="RTB_ItemCode1" runat="server" OnKeyPress="AlphabetOnly" Width="100px"></telerik:RadTextBox></td>
+                    <td><telerik:RadTextBox ID="RTB_ItemCode1" runat="server" Width="100px">
+                                                   <ClientEvents OnKeyPress="EnterKeyProcessing" />
+                        </telerik:RadTextBox></td>
                     <td>申请时间：</td>
                     <td><telerik:RadDatePicker ID="RDPStart" runat="server" Width="100px"></telerik:RadDatePicker>
                       ～<telerik:RadDatePicker ID="RDPEnd" runat="server" Width="100px"></telerik:RadDatePicker></td>
@@ -97,7 +115,7 @@
                     <Selecting AllowRowSelect="true" />
                     <Scrolling AllowScroll="True" UseStaticHeaders="True" ScrollHeight="600px"></Scrolling>
                 </ClientSettings>
-                     <ExportSettings HideStructureColumns="true" ExportOnlyData="true" IgnorePaging="false" OpenInNewWindow="true">
+                     <ExportSettings HideStructureColumns="true" ExportOnlyData="true" IgnorePaging="true" OpenInNewWindow="true">
                        <Pdf  DefaultFontFamily="Arial Unicode MS" />
                      </ExportSettings>
                 <MasterTableView  AutoGenerateColumns="False" DataKeyNames="ID" CommandItemDisplay="Top">

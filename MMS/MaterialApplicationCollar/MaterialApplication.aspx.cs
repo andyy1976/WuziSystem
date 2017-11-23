@@ -83,8 +83,8 @@ namespace mms.MaterialApplicationCollar
                 RDDLMT.DataTextField = "Seg6";
                 RDDLMT.DataValueField = "Type";
                 RDDLMT.DataBind();
-                
 
+                //RDDLMT.SelectedIndex = 0;
                /* strSQL = "select top 1000 SEG3,SEG4 * from GetCommItem_T_Item where SEG10 = 'N'";
                 Session["gds"] = DBI.Execute(strSQL, true);
                 RadGrid1.DataSource = (Session["gds"] as DataTable);
@@ -281,7 +281,8 @@ namespace mms.MaterialApplicationCollar
                     + " values (@id, '" + Session["UserId"].ToString() + "',GetDate(),'申请') select @id";
 
                 id = DBI.GetSingleValue(strSQL).ToString();
-                RB_Submit.Visible = false;
+              //  RB_Submit.Visible = false;
+     
                 RadNotificationAlert.Text = "正在和流程平台通信中，请稍候";
                 RadNotificationAlert.Show();
                 K2BLL bll = new K2BLL();
@@ -441,115 +442,9 @@ namespace mms.MaterialApplicationCollar
         #region 物资编码查询
         protected void RDDLMT_SelectedIndexChanged(object sender, Telerik.Web.UI.DropDownListEventArgs e)
         {
-           // string value = RDDLMT.SelectedValue.ToString();
-         //   string prefix = RDDLMT.SelectedText.ToString() + ".";
-           // string strSQL = "";
-/*
-            RDDLMT1.SelectedIndex = 0;
-            RDDLMT2.SelectedIndex = 0;
-            RDDLMT3.SelectedIndex = 0;
-            RDDLMT4.SelectedIndex = 0;
-
-            RDDLMT1.Items.Clear();
-            RDDLMT2.Items.Clear();
-            RDDLMT3.Items.Clear();
-            RDDLMT4.Items.Clear();
-
-            if (value == "ItemCode")
-            {
-                div1.Visible = false;
-                div2.Visible = true;
-            }
-            else if (value != "")
-            {
-                strSQL = " select '' as Seg6 union select dbo.Get_StrArrayStrOfIndex(Seg6,'.',2) as Seg6"
-                    + " from [dbo].[GetCommItem_T_Item] where Seg6 like '" + prefix + "%'";
-                DataTable dt = Common.AddTableRowsID(DBI.Execute(strSQL, true));
-                RDDLMT1.DataSource = dt;
-                RDDLMT1.DataTextField = "Seg6";
-                RDDLMT1.DataValueField = "RowsId";
-                RDDLMT1.DataBind();
-
-                div1.Visible = true;
-                div2.Visible = false;
-            }
-            else
-            {
-                div1.Visible = false;
-                div2.Visible = false;
-            }
- * */
-        }
-/*
-        protected void RDDLMT1_SelectedIndexChanged(object sender, DropDownListEventArgs e)
-        {
-            string prefix = RDDLMT.SelectedText.ToString() + "." + RDDLMT1.SelectedText.ToString() + ".";
-            string value = RDDLMT1.SelectedValue.ToString();
-            string strSQL = "";
-
-            RDDLMT2.SelectedIndex = 0;
-            RDDLMT3.SelectedIndex = 0;
-            RDDLMT4.SelectedIndex = 0;
-            RDDLMT2.Items.Clear();
-            RDDLMT3.Items.Clear();
-            RDDLMT4.Items.Clear();
-
-            if (value != "")
-            {
-                strSQL = " select '' as Seg6 union select dbo.Get_StrArrayStrOfIndex(Seg6,'.',3) as Seg6"
-                    + " from [dbo].[GetCommItem_T_Item] where Seg6 like '" + prefix + "%'";
-                DataTable dt = Common.AddTableRowsID(DBI.Execute(strSQL, true));
-                RDDLMT2.DataSource = dt;
-                RDDLMT2.DataTextField = "Seg6";
-                RDDLMT2.DataValueField = "RowsId";
-                RDDLMT2.DataBind();
-            }
+           
         }
 
-        protected void RDDLMT2_SelectedIndexChanged(object sender, DropDownListEventArgs e)
-        {
-            string prefix = RDDLMT.SelectedText.ToString() + "." + RDDLMT1.SelectedText.ToString() + "." + RDDLMT2.SelectedText.ToString() + ".";
-            string value = RDDLMT2.SelectedValue.ToString();
-            string strSQL = "";
-
-            RDDLMT3.SelectedIndex = 0;
-            RDDLMT4.SelectedIndex = 0;
-            RDDLMT3.Items.Clear();
-            RDDLMT4.Items.Clear();
-
-            if (value != "")
-            {
-                strSQL = " select '' as Seg6 union select dbo.Get_StrArrayStrOfIndex(Seg6,'.',4) as Seg6"
-                    + " from [dbo].[GetCommItem_T_Item] where Seg6 like '" + prefix + "%'";
-                DataTable dt = Common.AddTableRowsID(DBI.Execute(strSQL, true));
-                RDDLMT3.DataSource = dt;
-                RDDLMT3.DataTextField = "Seg6";
-                RDDLMT3.DataValueField = "RowsId";
-                RDDLMT3.DataBind();
-            }
-        }
-
-        protected void RDDLMT3_SelectedIndexChanged(object sender, DropDownListEventArgs e)
-        {
-            string prefix = RDDLMT.SelectedText.ToString() + "." + RDDLMT1.SelectedText.ToString() + "." + RDDLMT2.SelectedText.ToString() + "." + RDDLMT3.SelectedText.ToString() + ".";
-            string value = RDDLMT2.SelectedValue.ToString();
-            string strSQL = "";
-
-            RDDLMT4.SelectedIndex = 0;
-            RDDLMT4.Items.Clear();
-
-            if (value != "")
-            {
-                strSQL = " select '' as Seg6 union select dbo.Get_StrArrayStrOfIndex(Seg6,'.',5) as Seg6"
-                    + " from [dbo].[GetCommItem_T_Item] where Seg6 like '" + prefix + "%'";
-                DataTable dt = Common.AddTableRowsID(DBI.Execute(strSQL, true));
-                RDDLMT4.DataSource = dt;
-                RDDLMT4.DataTextField = "Seg6";
-                RDDLMT4.DataValueField = "RowsId";
-                RDDLMT4.DataBind();
-            }
-        }
-        */
         protected void RB_Search_Click(object sender, EventArgs e)
         {
             string strSQL = "select * from GetCommItem_T_Item where SEG10 = 'N'";

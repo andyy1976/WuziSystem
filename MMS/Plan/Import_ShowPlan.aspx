@@ -54,7 +54,7 @@
     <telerik:RadCodeBlock runat="server">
         <script type="text/javascript">
 
-            function AlphabetOnly(sender, eventArgs) {
+            function EnterKeyProcessing(sender, eventArgs) {
                 var c = eventArgs.get_keyCode();
                 if ((c == 13)) {
                     eventArgs.set_cancel(true);
@@ -164,11 +164,11 @@
                 <tr>
                     <td>型号：</td>
                     <td><telerik:RadTextBox ID="RTB_Model" runat="server" Width="100px">
-                        <ClientEvents OnKeyPress="AlphabetOnly" />
+                        <ClientEvents OnKeyPress="EnterKeyProcessing" />
                         </telerik:RadTextBox></td>
                     <td>计划包名称：</td>
                     <td><telerik:RadTextBox ID="RTB_PackageName" runat="server" Width="150px">
-                        <ClientEvents OnKeyPress="AlphabetOnly" />
+                        <ClientEvents OnKeyPress="EnterKeyProcessing" />
                         </telerik:RadTextBox></td>
                     <%--
                     <td>任务号：</td>
@@ -201,7 +201,7 @@
                     <td>编制人：</td>
                     <td>
                         <telerik:RadTextBox ID="RTB_UserName" runat="server" Width="100px">
-                            <ClientEvents OnKeyPress="AlphabetOnly" />
+                            <ClientEvents OnKeyPress="EnterKeyProcessing" />
                         </telerik:RadTextBox></td>
                     <td>编制时间：</td>
                     <td>
@@ -317,7 +317,7 @@
                 Behaviors="Close,Maximize,Minimize" Modal="true" Width="1100px" Height="520px" />
             <telerik:RadWindow ID="RadWindowImportMaterialWindow" runat="server" Title="导入型号物资需求" Left="100px"
                             ReloadOnShow="true" ShowContentDuringLoad="false" VisibleTitlebar="true" VisibleStatusbar="false"
-                            Behaviors="Close,Maximize,Minimize" OnClientClose="RefreshParent"  Modal="true" Width="1300px" Height="620px" />
+                             Behaviors="Close,Maximize,Minimize" OnClientClose="RefreshParent"  Modal="true" Width="1300px" Height="620px" />
         </Windows>
     </telerik:RadWindowManager>
     <%-- 导入计划、查看计划--结束--%>

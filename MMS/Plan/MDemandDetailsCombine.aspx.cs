@@ -56,6 +56,7 @@ namespace mms.Plan
                     InitTable.Columns.Add("ROUCH_SPEC");
                     InitTable.Columns.Add("ROUGH_SIZE");
                     InitTable.Columns.Add("MaterialsDes");
+                    InitTable.Columns.Add("Special_Needs");
                     InitTable.Columns.Add("StandAlone");
                     InitTable.Columns.Add("ThisTimeOperation");
                     InitTable.Columns.Add("PredictDeliveryDate");
@@ -349,7 +350,7 @@ namespace mms.Plan
             public string Rough_Size { get; set; }
             public string Rough_Spec { get; set; }
             public string MaterialsDes { get; set; }
-            public int Special_Needs { get; set; }
+            public string Special_Needs { get; set; }
             public int Urgency_Degre { get; set; }
             public int Secret_Level { get; set; }
             public int Stage { get; set; }
@@ -410,9 +411,9 @@ namespace mms.Plan
           string Mat_Unit = GridSource1.Rows[0]["Mat_Unit"].ToString();
           string Mat_Rough_Weight = GridSource1.Rows[0]["Mat_Rough_Weight"].ToString();
           string Rough_Size = GridSource1.Rows[0]["Rough_Size"].ToString();
-
-          string Rough_Spec = GridSource1.Rows[0]["Rough_Spec"].ToString();
           string DemandNumSum = GridSource1.Rows[0]["DemandNumSum"].ToString();
+          string Rough_Spec = GridSource1.Rows[0]["Rough_Spec"].ToString();
+          string Special_Needs = GridSource1.Rows[0]["Special_Needs"].ToString();
           string Quantity = GridSource1.Rows[0]["Quantity"].ToString();
           string NumCasesSum = GridSource1.Rows[0]["NumCasesSum"].ToString();
           string taskid = GridSource1.Rows[0]["TaskId"].ToString();
@@ -422,7 +423,6 @@ namespace mms.Plan
           string DemandDate = GridSource1.Rows[0]["DemandDate"].ToString();
           string Mat_Pro_Weight = GridSource1.Rows[0]["Mat_Pro_Weight"].ToString();
 
-          string Comment = GridSource1.Rows[0]["Comment"].ToString();
           string MaterialDept = GridSource1.Rows[0]["MaterialDept"].ToString();
           string LingJian_Type = GridSource1.Rows[0]["LingJian_Type"].ToString();
           string Material_Code = GridSource1.Rows[0]["Material_Code"].ToString();
@@ -448,23 +448,14 @@ namespace mms.Plan
               {
                   strSQL = " Update M_Demand_DetailedList_Draft set ParentId_For_Combine = 0 ,Material_State = 0,Combine_State=1,Is_Del=0,Material_Name='" + Material_Name +
                    "',Material_Mark='" + Material_Mark + "',TaskCode='" + TaskCode + "',Drawing_No='" + Drawing_No + "',Mat_Pro_Weight='" + Mat_Pro_Weight + "',Mat_Unit='" + Mat_Unit + "',Mat_Rough_Weight='" + Mat_Rough_Weight + "',Rough_Size='" +
-                   Rough_Size + "',Rough_Spec='" + Rough_Spec + "',DemandNumSum='" + DemandNumSum + "',NumCasesSum='" + NumCasesSum + "'where Id=" + ID + " select @@identity";
+                   Rough_Size + "',Rough_Spec='" + Rough_Spec + "',Special_Needs='" + Special_Needs + "',DemandNumSum='" + DemandNumSum + "',NumCasesSum='" + NumCasesSum + "'where Id=" + ID + " select @@identity";
 
                   DBI.Execute(strSQL);
               }
               else
               {
-              //    strSQL = " Insert Into M_Demand_DetailedList_Draft ( PackId, DraftId,taskid,TaskCode,Drawing_No, Mat_Pro_Weight,Material_State, Combine_State,Material_Name, Material_Mark, ItemCode1, Mat_Unit, Mat_Rough_Weight, Rough_Size, Rough_Spec, DemandNumSum, NumCasesSum,ParentId_For_Combine,Is_del)"
-              //    + " Values (" + PackId + "," + DraftId + "," + taskid + ",'" + TaskCode + "','" + Drawing_No + "','"+ Mat_Pro_Weight+ "',0,1,'" +
-                    //               Material_Name + "','" + Material_Mark + "','" + ItemCode1 + "','" + Mat_Unit
-                      //             + "','" + Mat_Rough_Weight + "','" + Rough_Size + "','" + Rough_Spec + "'," + DemandNumSum + "," + NumCasesSum + ",0,0)" + " select @@identity";
-              //   ID= DBI.GetSingleValue(strSQL);
-
-             //    strSQL = " Insert Into M_Demand_DetailedList_Draft ( PackId, DraftId,taskid,MDPId,Quantity,Stage,DemandDate,Comment,MaterialDept,TaskCode,Drawing_No, Mat_Pro_Weight,Material_State, Combine_State,Material_Name, Material_Mark, ItemCode1, Mat_Unit, Mat_Rough_Weight, Rough_Size, Rough_Spec, DemandNumSum, NumCasesSum,Material_Tech_Condition,Material_Code,TDM_Description,Technics_Line,LingJian_Type,Import_Date,User_ID,ParentId,ParentId_For_Combine,Is_del)"
-                  //       + " Values (" + PackId + "," + DraftId + "," + taskid + "," + MDPId + "," + Quantity + "," + Stage + ",'" + DemandDate + "','" + Comment + "','" + MaterialDept + "','" + TaskCode + "','" + Drawing_No + "'," + Mat_Pro_Weight + ",0,0,'" +
-                      //            Material_Name + "','" + Material_Mark + "','" + ItemCode1 + "','" + Mat_Unit + "'," + Mat_Rough_Weight + ",'" + Rough_Size + "','" + Rough_Spec + "'," + mta.DemandNumSum + "," + mta.NumCasesSum + ",'" + mta.Material_Tech_Condition + "','" + mta.Material_Code + "','" + TDM_Description + "','" + TechnicsLine + "','" + LingJian_Type + "','" + Import_Date + "'," + userid + ",0,0,0)" + " select @@identity";
-                 strSQL = " Insert Into M_Demand_DetailedList_Draft ( PackId, DraftId,taskid,Quantity,Stage,DemandDate,Comment,MaterialDept,TaskCode,Drawing_No, Mat_Pro_Weight,Material_State, Combine_State,Material_Name, Material_Mark, ItemCode1, Mat_Unit, Mat_Rough_Weight, Rough_Size, Rough_Spec, DemandNumSum, NumCasesSum,Material_Tech_Condition,Material_Code,TDM_Description,Technics_Line,LingJian_Type,Import_Date,User_ID,ParentId,ParentId_For_Combine,Is_del)"
-                   + " Values (" + PackId + "," + DraftId + "," + taskid + "," +  Quantity + "," + Stage + ",'" + DemandDate + "','" + Comment + "','" + MaterialDept + "','" + TaskCode + "','" + Drawing_No + "'," + Mat_Pro_Weight + ",0,1,'" +
+                  strSQL = " Insert Into M_Demand_DetailedList_Draft ( PackId, DraftId,taskid,Quantity,Stage,DemandDate,Special_Needs,MaterialDept,TaskCode,Drawing_No, Mat_Pro_Weight,Material_State, Combine_State,Material_Name, Material_Mark, ItemCode1, Mat_Unit, Mat_Rough_Weight, Rough_Size, Rough_Spec, DemandNumSum, NumCasesSum,Material_Tech_Condition,Material_Code,TDM_Description,Technics_Line,LingJian_Type,Import_Date,User_ID,ParentId,ParentId_For_Combine,Is_del)"
+                   + " Values (" + PackId + "," + DraftId + "," + taskid + "," + Quantity + "," + Stage + ",'" + DemandDate + "','" + Special_Needs + "','" + MaterialDept + "','" + TaskCode + "','" + Drawing_No + "'," + Mat_Pro_Weight + ",0,1,'" +
                             Material_Name + "','" + Material_Mark + "','" + ItemCode1 + "','" + Mat_Unit + "'," + Mat_Rough_Weight + ",'" + Rough_Size + "','" + Rough_Spec + "'," + DemandNumSum + "," + NumCasesSum + ",'" + Material_Tech_Condition + "','" + Material_Code + "','" + TDM_Description + "','" + Technics_Line + "','" + LingJian_Type + "','" + Import_Date + "'," + userid + ",0,0,0)" + " select @@identity";
 
                  ID = DBI.GetSingleValue(strSQL);
@@ -494,10 +485,12 @@ namespace mms.Plan
             {
                 string id =(e.Item as GridDataItem).GetDataKeyValue("ID").ToString();
               
-             //   RadTextBox rtbSpecialNeeds = e.Item.FindControl("rtb_SpecialNeeds") as RadTextBox;
-               // rtbSpecialNeeds.Text = GridSource1.Select("ID='" + id + "'")[0]["Special_Needs"].ToString();
-                
-    
+               RadTextBox rtbSpecialNeeds = e.Item.FindControl("rtb_SpecialNeeds") as RadTextBox;
+               if (GridSource1.Select("ID='" + id + "'")[0]["Special_Needs"] != null)
+               {
+                   rtbSpecialNeeds.Text = GridSource1.Select("ID='" + id + "'")[0]["Special_Needs"].ToString();
+
+               }
                 RadTextBox rtbDemandNumSum = e.Item.FindControl("DemandNumSum") as RadTextBox;
                 rtbDemandNumSum.Text = (GridSource1.Select("ID='" + id + "'")[0]["DemandNumSum"].ToString());
 
@@ -526,9 +519,9 @@ namespace mms.Plan
   
         protected void rtb_SpecialNeeds_TextChanged(object sender, EventArgs e)
         {
-         //   RadTextBox rtb = sender as RadTextBox;
-        //    string id = (rtb.Parent.Parent as GridDataItem).GetDataKeyValue("ID").ToString();
-         //   GridSource1.Select("Id='" + id + "'")[0]["Special_Needs"] = rtb.Text;
+            RadTextBox rtb = sender as RadTextBox;
+            string id = (rtb.Parent.Parent as GridDataItem).GetDataKeyValue("ID").ToString();
+            GridSource1.Select("Id='" + id + "'")[0]["Special_Needs"] = rtb.Text;
         }
 
         protected void RTB_MANUFACTURER_TextChanged(object sender, EventArgs e)

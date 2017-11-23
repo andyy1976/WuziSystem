@@ -175,7 +175,7 @@
                         <Selecting AllowRowSelect="true" />
                         <Scrolling AllowScroll="true" ScrollHeight="200px" UseStaticHeaders="True" />
                     </ClientSettings>
-                     <ExportSettings HideStructureColumns="true" ExportOnlyData="true" IgnorePaging="false" OpenInNewWindow="true">
+                     <ExportSettings HideStructureColumns="true" ExportOnlyData="true" IgnorePaging="true" OpenInNewWindow="true">
                        <Pdf  DefaultFontFamily="Arial Unicode MS" />
                      </ExportSettings>
                     <MasterTableView AutoGenerateColumns="False" DataKeyNames="ID" CommandItemDisplay="Top">

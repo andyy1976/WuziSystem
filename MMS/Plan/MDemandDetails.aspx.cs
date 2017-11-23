@@ -101,7 +101,6 @@ namespace mms.Plan
        // public string itemCodeStr=",";
         protected void Page_Load(object sender, EventArgs e)
         {
-        //    ((ScriptManager)Master.FindControl("ScriptManager1")).RegisterPostBackControl(RadBtnCombineMergeList); 
             if (Session["UserName"] == null || Session["UserId"] == null)
             {
                 Response.Redirect("/Default.aspx");
@@ -282,8 +281,6 @@ namespace mms.Plan
                 throw new Exception("查询物资需求清单详表数据出错" + ex.Message.ToString());
             }
         }
-        
-
 
         protected void RadGrid_MDemandDetails_ItemDataBound(object sender, GridItemEventArgs e)
         {
@@ -488,7 +485,14 @@ namespace mms.Plan
         protected void RadButton_ExportExcel_Click(object sender, EventArgs e)
         {
             RadGrid_MDemandDetails.ExportSettings.FileName = "型号物资需求清单-" + DateTime.Now.ToString("yyyy-MM-dd");
+            RadGrid_MDemandDetails.Columns[0].Visible = false;
+            RadGrid_MDemandDetails.Columns[1].Visible = false;
+            RadGrid_MDemandDetails.Columns[2].Visible = false;
+            RadGrid_MDemandDetails.Columns[3].Visible = false;
+            RadGrid_MDemandDetails.ExportSettings.IgnorePaging = true;
+            RadGrid_MDemandDetails.ExportSettings.ExportOnlyData = true;
             RadGrid_MDemandDetails.MasterTableView.ExportToExcel();
+          //  RadGrid_MDemandDetails.Rebind();
         }
         protected void RadButton_ExportWord_Click(object sender, EventArgs e)
         {

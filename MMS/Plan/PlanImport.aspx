@@ -11,11 +11,6 @@
     <script src="../Scripts/jquery-1.4.1.min.js"></script>
     <script src="../Scripts/jquery-1.7.2.min.js"></script>
     <link type="text/css" rel="stylesheet" href="../Styles/Plan.css" />
-    <style type="text/css">
-        .RadUpload {
-            width:200px;
-        }
-    </style>
 </head>
 <body>
     <form id="form1" runat="server">

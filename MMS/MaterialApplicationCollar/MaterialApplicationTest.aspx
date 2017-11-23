@@ -41,7 +41,7 @@
     <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" runat="server" Skin="Default"></telerik:RadAjaxLoadingPanel>
     <telerik:RadCodeBlock runat="server">
         <script type="text/javascript">
-            function AlphabetOnly(sender, eventArgs) {
+            function EnterKeyProcessing(sender, eventArgs) {
                 var c = eventArgs.get_keyCode();
                 if ((c == 13)) {
                     eventArgs.set_cancel(true);
@@ -77,9 +77,13 @@
             <table>
                 <tr>
                     <td>任务号：</td>
-                    <td><telerik:RadTextBox ID="RTB_TaskCode" runat="server" OnKeyPress="AlphabetOnly" Width="100px"></telerik:RadTextBox></td>
+                    <td><telerik:RadTextBox ID="RTB_TaskCode" runat="server" Width="100px">
+                                                  <ClientEvents OnKeyPress="EnterKeyProcessing" />
+                        </telerik:RadTextBox></td>
                     <td>图号：</td>
-                    <td><telerik:RadTextBox ID="RTB_Drawing_No" runat="server" OnKeyPress="AlphabetOnly" Width="100px"></telerik:RadTextBox></td>
+                    <td><telerik:RadTextBox ID="RTB_Drawing_No" runat="server" Width="100px">
+                                                  <ClientEvents OnKeyPress="EnterKeyProcessing" />
+                        </telerik:RadTextBox></td>
                     <td><telerik:RadButton ID="RB_Search" runat="server" Text="搜索" OnClick="RB_Search_Click"></telerik:RadButton></td>
                 </tr>
             </table>
@@ -96,7 +100,7 @@
                 </ClientSettings>
                 <HeaderStyle HorizontalAlign="Center" Font-Size="13px" />
                 <CommandItemStyle Font-Bold="true" Font-Size="16px" HorizontalAlign="Center" Height="40px" />
-                <ExportSettings HideStructureColumns="true" ExportOnlyData="true" IgnorePaging="false" OpenInNewWindow="true">
+                <ExportSettings HideStructureColumns="true" ExportOnlyData="true" IgnorePaging="true" OpenInNewWindow="true">
                        <Pdf  DefaultFontFamily="Arial Unicode MS" />
                 </ExportSettings>
                 <MasterTableView DataKeyNames="ID" CommandItemDisplay="Top">

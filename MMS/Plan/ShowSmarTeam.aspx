@@ -67,7 +67,13 @@
     </telerik:RadAjaxManager>
     <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" runat="server"></telerik:RadAjaxLoadingPanel>
     <telerik:RadCodeBlock runat="server">
-        <script type="text/javascript">         
+        <script type="text/javascript">     
+            function EnterKeyProcessing(sender, eventArgs) {
+                var c = eventArgs.get_keyCode();
+                if ((c == 13)) {
+                    eventArgs.set_cancel(true);
+                }
+            }
         </script>
     </telerik:RadCodeBlock>
     <div style="width: 100%; margin: 0px auto;">
@@ -127,7 +133,9 @@
                             <tr>
                                 <td>产品名称：</td>
                                 <td>
-                                    <telerik:RadTextBox ID="RTB_TDM_Description_BOM" runat="server" OnKeyPress="AlphabetOnly" Width="100px"></telerik:RadTextBox></td>
+                                    <telerik:RadTextBox ID="RTB_TDM_Description_BOM" runat="server" Width="100px">
+                                                                  <ClientEvents OnKeyPress="EnterKeyProcessing" />
+                                    </telerik:RadTextBox></td>
                                 <td>零件类型：</td>
                                 <td>
                                     <telerik:RadDropDownList ID="RDDL_LingJian_Type_BOM" runat="server" Width="100px" AppendDataBoundItems="true">
@@ -138,10 +146,14 @@
                                 </td>
                                 <td>图号：</td>
                                 <td>
-                                    <telerik:RadTextBox ID="RTB_Drawing_No_BOM" runat="server" OnKeyPress="AlphabetOnly" Width="100px"></telerik:RadTextBox></td>
+                                    <telerik:RadTextBox ID="RTB_Drawing_No_BOM" runat="server" Width="100px">
+                                                                  <ClientEvents OnKeyPress="EnterKeyProcessing" />
+                                    </telerik:RadTextBox></td>
                                 <td>领料部门：</td>
                                 <td>
-                                    <telerik:RadTextBox ID="RTB_MaterialDept_BOM" runat="server" OnKeyPress="AlphabetOnly" Width="100px"></telerik:RadTextBox></td>
+                                    <telerik:RadTextBox ID="RTB_MaterialDept_BOM" runat="server" Width="100px">
+                                                                  <ClientEvents OnKeyPress="EnterKeyProcessing" />
+                                    </telerik:RadTextBox></td>
                                 <td>
                                     <telerik:RadButton ID="RB_Search_BOM" runat="server" Text="搜索" OnClick="RB_Search_BOM_Click"></telerik:RadButton>
                                 </td>
@@ -218,7 +230,9 @@
                             <tr>
                                 <td>产品名称：</td>
                                 <td>
-                                    <telerik:RadTextBox ID="RTB_TDM_Description_Defect" runat="server" OnKeyPress="AlphabetOnly" Width="100px"></telerik:RadTextBox></td>
+                                    <telerik:RadTextBox ID="RTB_TDM_Description_Defect" runat="server" Width="100px">
+                                                                  <ClientEvents OnKeyPress="EnterKeyProcessing" />
+                                    </telerik:RadTextBox></td>
                                 <td>零件类型：</td>
                                 <td>
                                     <telerik:RadDropDownList ID="RDDL_LingJian_Type_Defect" runat="server" Width="100px" AppendDataBoundItems="true">
@@ -229,7 +243,9 @@
                                 </td>
                                 <td>图号：</td>
                                 <td>
-                                    <telerik:RadTextBox ID="RTB_Drawing_No_Defect" runat="server" OnKeyPress="AlphabetOnly" Width="100px"></telerik:RadTextBox></td>
+                                    <telerik:RadTextBox ID="RTB_Drawing_No_Defect" runat="server" Width="100px">
+                                                                  <ClientEvents OnKeyPress="EnterKeyProcessing" />
+                                    </telerik:RadTextBox></td>
                                 <td>
                                     <telerik:RadButton ID="RB_Search_Defect" runat="server" Text="搜索" OnClick="RB_Search_Defect_Click"></telerik:RadButton>
                                 </td>
@@ -305,7 +321,9 @@
                             <tr>
                                 <td>产品名称：</td>
                                 <td>
-                                    <telerik:RadTextBox ID="RTB_TDM_Description_SubmitState" runat="server" OnKeyPress="AlphabetOnly" Width="100px"></telerik:RadTextBox></td>
+                                    <telerik:RadTextBox ID="RTB_TDM_Description_SubmitState" runat="server" Width="100px">
+                                                                  <ClientEvents OnKeyPress="EnterKeyProcessing" />
+                                    </telerik:RadTextBox></td>
                                 <td>零件类型：</td>
                                 <td>
                                     <telerik:RadDropDownList ID="RDDL_LingJian_Type_SubmitState" runat="server" Width="100px" AppendDataBoundItems="true">
@@ -316,7 +334,9 @@
                                 </td>
                                 <td>图号：</td>
                                 <td>
-                                    <telerik:RadTextBox ID="RTB_Drawing_No_SubmitState" runat="server" OnKeyPress="AlphabetOnly" Width="100px"></telerik:RadTextBox></td>
+                                    <telerik:RadTextBox ID="RTB_Drawing_No_SubmitState" runat="server" Width="100px">
+                                                                  <ClientEvents OnKeyPress="EnterKeyProcessing" />
+                                    </telerik:RadTextBox></td>
                                 <td>提交状态：</td>
                                 <td>
                                     <telerik:RadDropDownList ID="RDDL_SubmitState" runat="server" Width="100px">

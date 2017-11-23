@@ -133,6 +133,10 @@ namespace mms.Plan
                     InitTable.Columns.Add("Shipping_Address");
                     InitTable.Columns.Add("Certification");
                     InitTable.Columns.Add("Manufacturer");
+                    InitTable.Columns.Add("Tech_Quantity");
+                    InitTable.Columns.Add("Technics_Comment");
+                    InitTable.Columns.Add("Memo_Quantity");
+                    InitTable.Columns.Add("Mat_Comment");
 
                     InitTable.Columns.Add("Urgency_Degre");
                     InitTable.Columns.Add("Secret_Level");
@@ -393,8 +397,11 @@ namespace mms.Plan
                     strSQL =
                         " select * , 'false' as checked, case when is_del='1' then '取消提交' else case when Material_State = '7' then '取消提交' else '需重新提交' end  end as mstate" +
                         " , Convert(nvarchar(50), (select Convert(int,sum(NumCasesSum)) from M_Demand_Merge_List where Correspond_Draft_Code = Convert(nvarchar(50), M_Demand_DetailedList_Draft.ID))) as quantity1" +
+                        ",case when LingJian_Type='1' then '标准件' else case when LingJian_Type='2' then '成品件'  else case when LingJian_Type='3' then '通用件' else case when LingJian_Type='4' then '专用件' else case when LingJian_Type='5' then '组件'   else '其它' end  end end end end as LingJian_Type1" +
                         " from M_Demand_DetailedList_Draft where PackId = '" + Request.QueryString["PackId"].ToString() + "' and ParentId_For_Combine= 0" + " and Combine_State!= 2" + " and ((Is_del = 'false' and Material_State in ('2','7')) or (Is_del = 'true' and Material_State in ('1','2','6','7')))" +
                         " union all select *, 'false' as checked, '未提交' as mstate, '0' as quantity1" +
+                        ",case when LingJian_Type='1' then '标准件' else case when LingJian_Type='2' then '成品件'  else case when LingJian_Type='3' then '通用件' else case when LingJian_Type='4' then '专用件' else case when LingJian_Type='5' then '组件'   else '其它' end  end end end end as LingJian_Type1" +
+
                         " from M_Demand_DetailedList_Draft where PackId = '" + Request.QueryString["PackId"].ToString() +"' and TaskId='"+TaskID+ "' and ParentId_For_Combine= 0" + " and Combine_State!= 2" + " and is_del = 'false' and Material_State = '0' order by ID";
                 }
                 else
@@ -402,8 +409,11 @@ namespace mms.Plan
                     strSQL =
                       " select * , 'false' as checked, case when is_del='1' then '取消提交' else case when Material_State = '7' then '取消提交' else '需重新提交' end  end as mstate" +
                       " , Convert(nvarchar(50), (select Convert(int,sum(NumCasesSum)) from M_Demand_Merge_List where Correspond_Draft_Code = Convert(nvarchar(50), M_Demand_DetailedList_Draft.ID))) as quantity1" +
+                      ",case when LingJian_Type='1' then '标准件' else case when LingJian_Type='2' then '成品件' else case when LingJian_Type='3' then '通用件' else case when LingJian_Type='4' then '专用件' else case when LingJian_Type='5' then '组件'   else '其它' end  end end end end as LingJian_Type1" +
                       " from M_Demand_DetailedList_Draft where PackId = '" + Request.QueryString["PackId"].ToString() + "' and ParentId_For_Combine= 0" + " and Combine_State!= 2" + " and ((Is_del = 'false' and Material_State in ('2','7')) or (Is_del = 'true' and Material_State in ('1','2','6','7')))" +
                       " union all select *, 'false' as checked, '未提交' as mstate, '0' as quantity1" +
+                      ",case when LingJian_Type='1' then '标准件' else case when LingJian_Type='2' then '成品件' else case when LingJian_Type='3' then '通用件' else case when LingJian_Type='4' then '专用件' else case when LingJian_Type='5' then '组件'   else '其它' end  end end end end as LingJian_Type1" +
+
                       " from M_Demand_DetailedList_Draft where PackId = '" + Request.QueryString["PackId"].ToString() + "' and ParentId_For_Combine= 0" + " and Combine_State!= 2" + " and is_del = 'false' and Material_State = '0' order by ID";
  
                 }
@@ -537,10 +547,11 @@ namespace mms.Plan
                // RadComboBoxMaterialDept.FindItemByValue(GridSource1.Select("ID='" + id + "'")[0]["MaterialDept"].ToString()).Selected = true;
 
                 RadComboBox RDDL_LingJian_Type = e.Item.FindControl("RDDL_LingJian_Type") as RadComboBox;
-                RDDL_LingJian_Type.FindItemByText(GridSource1.Select("ID='" + id + "'")[0]["LingJian_Type"].ToString()).Selected = true;
-              
-           //      RadComboBox RadComboBoxStage = e.Item.FindControl("RadComboBoxStage") as RadComboBox;
-             //    RadComboBoxStage.FindItemByText(GridSource1.Select("ID='" + id + "'")[0]["stage"].ToString()).Selected = true;
+                if (GridSource1.Select("ID='" + id + "'")[0]["LingJian_Type"] != null)
+                {
+                    RDDL_LingJian_Type.FindItemByText(GridSource1.Select("ID='" + id + "'")[0]["LingJian_Type"].ToString()).Selected = true;
+                }
+         
 
                 RadComboBox rcbAddr = e.Item.FindControl("RadComboBoxShippingAddress") as RadComboBox;
                 string MaterialDept = dt.Rows[0]["DeptCode"].ToString();
@@ -584,11 +595,6 @@ namespace mms.Plan
                 {
                     rtbSpecialNeeds.Text = (GridSource1.Select("ID='" + id + "'")[0]["Special_Needs"].ToString());
                 }
-              //  RadTextBox rtbMANUFACTURER = e.Item.FindControl("RTB_MANUFACTURER") as RadTextBox;
-                //if (GridSource1.Select("ID='" + id + "'")[0]["MANUFACTURER"] != null)
-                //{
-                  //  rtbMANUFACTURER.Text = (GridSource1.Select("ID='" + id + "'")[0]["MANUFACTURER"].ToString());
-                //}
             }
         }
 
@@ -673,129 +679,154 @@ namespace mms.Plan
                               GridSource1.Columns[i].ColumnName = "stage";
                               columnscount++;
                               break;
-                           case "共计需求件数":
-                              GridSource1.Columns[i].ColumnName = "NumCasesSum";
-                              columnscount++;
-                              break;
-                      */
+                           */
+                   
+                    
                                 case "产品名称":
                                     GridSource1.Columns[i].ColumnName = "TDM_Description";
                                     columnscount++;
                                     break;
-
-
-
+                                case "零件类型":
+                                    GridSource1.Columns[i].ColumnName = "LingJian_Type";
+                                    columnscount++;
+                                    break;
 
                                 case "工艺路线":
                                     GridSource1.Columns[i].ColumnName = "Technics_Line";
                                     columnscount++;
                                     break;
 
-                                case "零件类型":
-                                    GridSource1.Columns[i].ColumnName = "LingJian_Type";
-                                    columnscount++;
-                                    break;
-                                case "技术条件":
-                                    GridSource1.Columns[i].ColumnName = "Material_Tech_Condition";
-                                    columnscount++;
-                                    break;
+
+                               case "材料名称":
+                                     GridSource1.Columns[i].ColumnName = "Material_Name";
+                                     columnscount++;
+                                     break;
+
+                               case "材料牌号":
+                                     GridSource1.Columns[i].ColumnName = "Material_Mark";
+                                     columnscount++;
+                                     break;
+
+                               case "材料状态":
+                                     GridSource1.Columns[i].ColumnName = "CN_Material_State";
+                                     columnscount++;
+                                     break;
+
+                               case "技术条件":
+                                     GridSource1.Columns[i].ColumnName = "Material_Tech_Condition";
+                                     columnscount++;
+                                     break;
                         
-                                case "物资尺寸":
-                                       GridSource1.Columns[i].ColumnName = "ROUGH_SIZE";
-                                       columnscount++;
-                                       break;
 
+                                 case "胚料规格":
+                                     GridSource1.Columns[i].ColumnName = "Rough_Spec";
+                                     columnscount++;
+                                     break;
 
+                                 case "胚料尺寸":
+                                     GridSource1.Columns[i].ColumnName = "ROUGH_SIZE";
+                                     columnscount++;
+                                     break;
+                                  
+                                 case "计量单位":
+                                     GridSource1.Columns[i].ColumnName = "MAT_UNIT";
+                                     columnscount++;
+                                     break;
+
+                                 case "单件质量":
+                                     GridSource1.Columns[i].ColumnName = "Mat_Rough_Weight";
+                                     columnscount++;
+                                     break;
+
+                                 case "每产品质量":
+                                     GridSource1.Columns[i].ColumnName = "Mat_Pro_Weight";
+                                     columnscount++;
+                                     break;
 
                                 case "物资编码":
                                     GridSource1.Columns[i].ColumnName = "ItemCode1";
                                     columnscount++;
                                     break;
 
-                                case "单件质量":
-                                    GridSource1.Columns[i].ColumnName = "Mat_Rough_Weight";
+
+                                case "需求件数":
+                                    GridSource1.Columns[i].ColumnName = "NumCasesSum";
                                     columnscount++;
                                     break;
 
-                                case "每产品质量":
-                                    GridSource1.Columns[i].ColumnName = "Mat_Pro_Weight";
+
+                                case "需求数量（重量）":
+                                    GridSource1.Columns[i].ColumnName = "DemandNumSum";
                                     columnscount++;
                                     break;
-                                   case "特殊需求":
-                                       GridSource1.Columns[i].ColumnName = "Special_Needs";
-                                       columnscount++;
-                                       break;
 
-                              
-                                /*  
-                                 case "物资名称":
-                                       GridSource1.Columns[i].ColumnName = "Material_Name";
-                                       columnscount++;
-                                       break;
-                                   case "物资规格":
-                                       GridSource1.Columns[i].ColumnName = "Rough_Spec";
-                                       columnscount++;
-                                       break;
-                                  
-                                   case "计量单位":
-                                       GridSource1.Columns[i].ColumnName = "MAT_UNIT";
-                                       columnscount++;
-                                       break;
-                                   case "物资牌号":
-                                       GridSource1.Columns[i].ColumnName = "Material_Mark";
-                                       columnscount++;
-                                       break;
-                                 */
+                                case "工艺数量":
+                                    GridSource1.Columns[i].ColumnName = "Tech_Quantity";
+                                    columnscount++;
+                                    break;
 
-                              
+                                case "路线备注":
+                                    GridSource1.Columns[i].ColumnName = "Technics_Comment";
+                                    columnscount++;
+                                    break;
+
+                                case "备件数量":
+                                    GridSource1.Columns[i].ColumnName = "Memo_Quantity";
+                                    columnscount++;
+                                    break;
+
+                                case "定额备注":
+                                    GridSource1.Columns[i].ColumnName = "Mat_Comment";
+                                    columnscount++;
+                                    break;
 
 
 
+                                case "需求日期":
+                                    GridSource1.Columns[i].ColumnName = "DemandDate";
+                                    columnscount++;
+                                    break;
 
-                                   case "需求时间":
-                                       GridSource1.Columns[i].ColumnName = "DemandDate";
-                                       columnscount++;
-                                       break;
+                                case "特殊需求":
+                                    GridSource1.Columns[i].ColumnName = "Special_Needs";
+                                    columnscount++;
+                                    break;
 
-                                   case "紧急程度":
-                                       GridSource1.Columns[i].ColumnName = "Urgency_Degre";
-                                       columnscount++;
-                                       break;
-                                   case "密级":
-                                       GridSource1.Columns[i].ColumnName = "Secret_Level";
-                                       columnscount++;
-                                       break;
+                                case "紧急程度":
+                                    GridSource1.Columns[i].ColumnName = "Urgency_Degre";
+                                    columnscount++;
+                                    break;
+                                case "密级":
+                                    GridSource1.Columns[i].ColumnName = "Secret_Level";
+                                    columnscount++;
+                                    break;
+                                case "用途":
+                                    GridSource1.Columns[i].ColumnName = "Use_Des";
+                                    columnscount++;
+                                    break;
+                                case "配送地址":
+                                    GridSource1.Columns[i].ColumnName = "Shipping_Address";
+                                    columnscount++;
+                                    break;
+                                case "合格证":
+                                    GridSource1.Columns[i].ColumnName = "Certification";
+                                    columnscount++;
+                                    break;
+                                case "国产/进口":
+                                    GridSource1.Columns[i].ColumnName = "Attribute4";
+                                    columnscount++;
+                                    break;
 
-                                   case "用途":
-                                       GridSource1.Columns[i].ColumnName = "Use_Des";
-                                       columnscount++;
-                                       break;
-                                   /*
-                                  case "研制阶段":
-                                      GridSource1.Columns[i].ColumnName = "stage";
-                                      columnscount++;
-                                      break;
-                                    */
-                                 
-
-                                   case "合格证":
-                                       GridSource1.Columns[i].ColumnName = "Certification";
-                                       columnscount++;
-                                       break;
-
-                                   case "配送地址":
-                                       GridSource1.Columns[i].ColumnName = "Shipping_Address";
-                                       columnscount++;
-                                       break;
-                                   case "国产/进口":
-                                       GridSource1.Columns[i].ColumnName = "Attribute4";
-                                       columnscount++;
-                                       break;
-                                   
+                                case "生产厂家":
+                                    GridSource1.Columns[i].ColumnName = "Manufacturer";
+                                    columnscount++;
+                                    break;
 
                             }
                         }
-                        if (columnscount < 15)
+
+                        GridSource1.Columns.Add("ID");     
+                        if (columnscount < 26)
                         {
                             GridSource1 = new System.Data.DataTable();
                             RadGridImport.Rebind();
@@ -804,41 +835,22 @@ namespace mms.Plan
                             RadNotificationAlert.Show();
                             return;
                         }
-
-                        GridSource1.Columns.Add("ID");
-                        GridSource1.Columns.Add("Material_Name");
-                        GridSource1.Columns.Add("MAT_UNIT");
-                        GridSource1.Columns.Add("Rough_Spec");
-                        GridSource1.Columns.Add("Material_Mark");
-                        GridSource1.Columns.Add("CN_Material_State");
-                      
-                        GridSource1.Columns.Add("DemandNumSum");
                         int rowsid = 1;
                         for (int i = 0; i < GridSource1.Rows.Count; i++)
                         {
                             string itemCode1 = GridSource1.Rows[i]["ItemCode1"].ToString();
-                             if (itemCode1!= "")
+                            if (itemCode1 != "")
                             {
-                          
                                 GridSource1.Rows[i]["ID"] = rowsid;
-                                rowsid++;
-                                Set_Txt_ByItemCode1(itemCode1,i);
-                               /*
-                                try
-                                {
-                                    double Mat_Rough_Weight = Convert.ToDouble(GridSource1.Rows[i]["Mat_Rough_Weight"]);
-                                    double NumCasesSum = Convert.ToDouble(GridSource1.Rows[i]["NumCasesSum"]);
-                                   GridSource1.Rows[i]["DemandNumSum"] = (Mat_Rough_Weight * NumCasesSum).ToString();
-                                }
-                                catch { GridSource1.Rows[i]["DemandNumSum"] = "0"; }
-                                */
+                                rowsid++; 
                             }
                             else
                             {
                                 GridSource1.Rows[i].Delete();
+                                RadNotificationAlert.Text = "物资编码不能为空";
+                                RadNotificationAlert.Show();
                             }
-                        }
-                
+                        }     
 
                         RadGridImport.Rebind();
                         HFGridItemsCount.Value = RadGridImport.Items.Count.ToString();
@@ -932,13 +944,16 @@ namespace mms.Plan
         {
             try
             {
-                for (int i = 0; i < RadGridImport.Items.Count; i++)
-                {
-                    GridSource1.Rows.RemoveAt(i);
-                }
+              //  for (int i = 0; i < RadGridImport.Items.Count; i++)
+               // {
+                   // GridSource1.Rows.RemoveAt(i);
+               // }
+                GridSource1.Dispose();
+                GridSource1 = new System.Data.DataTable();
                 RadGridImport.Rebind();
                 HFGridItemsCount.Value = RadGridImport.Items.Count.ToString();
-
+                RadNotificationAlert.Text = "清空成功！";
+                RadNotificationAlert.Show();
             }
             catch (Exception ex)
             {
@@ -1027,7 +1042,7 @@ namespace mms.Plan
                 int userid = Convert.ToInt32(Session["UserId"].ToString());
                 string strSQL = "";
               
-                int Submit_Type = Convert.ToInt32(this.ViewState["submit_type"].ToString());//1－工艺试验件；2－技术创新课题；3－车间备料
+                int Submit_Type = Convert.ToInt32(this.ViewState["submit_type"].ToString());//1－工艺试验件；2－技术创新课题；3－车间备料 4-型号物资导入
 
                 int PackId = Convert.ToInt32(Request.QueryString["PackId"].ToString());
 
@@ -1141,25 +1156,17 @@ namespace mms.Plan
                 MDDLD.Drawing_No = dt.Rows[0]["TaskDrawingCode"].ToString();
                 MDDLD.Import_Date = DateTime.Now;
      
-                MDDLD.NumCasesSum = Convert.ToDecimal(dt.Rows[0]["ProductionNum"].ToString());
-                MDDLD.Quantity = dt.Rows[0]["ProductionNum"].ToString();
-
+              //  MDDLD.NumCasesSum = Convert.ToDecimal(dt.Rows[0]["ProductionNum"].ToString());
+                //MDDLD.Quantity = dt.Rows[0]["ProductionNum"].ToString();
+             
+               
                 MDDLD.Stage = Convert.ToInt32(dt.Rows[0]["Stage"].ToString());
                 MDDLD.StandAlone = Convert.ToInt32(dt.Rows[0]["MatingNum"].ToString()); //单机配套数量
                 MDDLD.TaskCode = dt.Rows[0]["TaskCode"].ToString();
 
-                /*
-                 MDDLD.TaskCode = item["TaskCode"].Text.Trim();
-                if (MDDLD.TaskCode == "" || MDDLD.TaskCode == "&nbsp;")
-                {
-                    RadNotificationAlert.Text = "失败！第" + (i + 1).ToString() + "行，任务号：请输入任务号";
-                    RadNotificationAlert.Show();
-                    return;
-                }
-                */
                 MDDLD.TaskId = Convert.ToInt32(dt.Rows[0]["TaskID"].ToString());
                 MDDLD.ThisTimeOperation = Convert.ToInt32(dt.Rows[0]["ProductionNum"].ToString()); //投产数量
-                MDDLD.TDM_Description = dt.Rows[0]["ProductName"].ToString();
+                MDDLD.TDM_Description = dt.Rows[0]["ProductName"].ToString();//产品名称
                   GridItemCollection gridItems=null;
                   if (RadGridImport.SelectedItems.Count > 0)
                   {
@@ -1169,80 +1176,23 @@ namespace mms.Plan
                   {
                       gridItems = RadGridImport.Items;
                   }
+
                   for (int i = 0; i < gridItems.Count; i++)
                  {
                     if (gridItems[i] is GridDataItem)
                     {
                         GridDataItem item = gridItems[i] as GridDataItem;
-                        MDDLD.Material_Code = (i + 1).ToString();
-                       /*
-                        MDDLD.Mat_Weight = item["Mat_Weight"].Text.Trim(); ;
-                        MDDLD.Mat_Efficiency = item["Mat_Efficiency"].Text.Trim(); ;
-                        MDDLD.Mat_Comment = item["Mat_Comment"].Text.Trim(); ;
-                        MDDLD.Mat_Technics = item["Mat_Technics"].Text.Trim(); ;
-                        MDDLD.CN_Material_State = item["CN_Material_State"].Text.Trim(); 
-                       
-                        RadComboBox RadComboBoxStage = item.FindControl("RadComboBoxStage") as RadComboBox;
-                        MDDLD.Stage = Convert.ToInt32(RadComboBoxStage.SelectedValue);
-                        MDDLD.Drawing_No = item["DRAWING_NO"].Text.Trim();
-                        if (MDDLD.Drawing_No == "" || MDDLD.Drawing_No == "&nbsp;")
-                        {
-                           RadNotificationAlert.Text = "失败！第" + (i + 1).ToString() + "行，产品图号：请输入产品图号";
-                           RadNotificationAlert.Show();
-                           return;
-                        }
-                        */
+
+                        MDDLD.Technics_Line = item["Technics_Line"].Text.Trim();
+                        MDDLD.Material_Name = item["Material_Name"].Text.Trim();
+                        MDDLD.Material_Mark = item["Material_Mark"].Text.Trim();
+
+                        MDDLD.CN_Material_State = item["CN_Material_State"].Text.Trim();
                         MDDLD.Material_Tech_Condition = item["Material_Tech_Condition"].Text.Trim();
 
-                        MDDLD.TDM_Description = item["TDM_Description"].Text.Trim();
-
-                        MDDLD.Material_Name = item["Material_Name"].Text.Trim();
-                        MDDLD.CN_Material_State = item["CN_Material_State"].Text.Trim();
-
-                        MDDLD.Material_Mark = item["Material_Mark"].Text.Trim();
-    
-                        MDDLD.Technics_Line = item["Technics_Line"].Text.Trim();
-                        MDDLD.Special_Needs = item["Special_Needs"].Text.Trim();
-                        MDDLD.Manufacturer = item["MANUFACTURER"].Text.Trim();
-                        /*
-                        if (Special_Needs == "" || Special_Needs == "&nbsp;")
-                        {
-                            RadNotificationAlert.Text = "失败！第" + (i + 1).ToString() + "行，请输入特殊需求";
-                            RadNotificationAlert.Show();
-                            return;
-                        }
-                        */
-
-
-                        MDDLD.ItemCode1 = item["ItemCode1"].Text.Trim();
-
-
-
+                        MDDLD.Rough_Spec = item["Rough_Spec"].Text.Trim();
+                        MDDLD.Rough_Size = item["ROUGH_SIZE"].Text.Trim();
                         MDDLD.Mat_Unit = item["MAT_UNIT"].Text.Trim();
-
-                        RadComboBox RadDropDownListLingJian_Type = item.FindControl("RDDL_LingJian_Type") as RadComboBox;
-                        MDDLD.LingJian_Type = RadDropDownListLingJian_Type.SelectedValue;
-
-
-                        RadComboBox rcbAddr = item.FindControl("RadComboBoxShippingAddress") as RadComboBox;
-                        MDDLD.Shipping_Address = rcbAddr.SelectedValue;
-                    //    MDDLD.Shipping_Address = item["Shipping_Address"].Text.Trim();
-
-                        RadComboBox RadComboBoxUseDes = item.FindControl("RadComboBoxUseDes") as RadComboBox;
-                        MDDLD.Use_Des = RadComboBoxUseDes.SelectedValue;
-
-                        RadComboBox RadComboBoxSecretLevel = item.FindControl("RadComboBoxSecretLevel") as RadComboBox;
-                        MDDLD.Secret_Level = RadDropDownListLingJian_Type.SelectedValue;
-
-                        RadComboBox RadComboBoxUrgencyDegree = item.FindControl("RadComboBoxUrgencyDegree") as RadComboBox;
-                        MDDLD.Urgency_Degre = RadComboBoxUrgencyDegree.SelectedValue;
-
-                        RadComboBox RadComboBoxCertification = item.FindControl("RadComboBoxCertification") as RadComboBox;
-                        MDDLD.Certification = RadComboBoxCertification.SelectedValue;
-
-                        RadComboBox RadComboBoxAttribute4 = item.FindControl("RadComboBoxAttribute4") as RadComboBox;
-                        MDDLD.Attribute4 = RadComboBoxAttribute4.SelectedValue;
-   
 
 
                         MDDLD.Mat_Rough_Weight = item["Mat_Rough_Weight"].Text.Trim();
@@ -1252,7 +1202,7 @@ namespace mms.Plan
                         }
                         catch
                         {
-                            RadNotificationAlert.Text = "失败！第" + (i + 1).ToString() + "行，单件质量：请输入数字";
+                            RadNotificationAlert.Text = "单件质量，请输入数字！";
                             RadNotificationAlert.Show();
                             return;
                         }
@@ -1264,71 +1214,108 @@ namespace mms.Plan
                         }
                         catch
                         {
-                            RadNotificationAlert.Text = "失败！第" + (i + 1).ToString() + "行，每产品质量：请输入数字";
+                            RadNotificationAlert.Text = "每产品质量，请输入数字！";
                             RadNotificationAlert.Show();
                             return;
                         }
+                       
+      
+                        MDDLD.ItemCode1 = item["ItemCode1"].Text.Trim();
 
-
-                        MDDLD.Rough_Spec = item["Rough_Spec"].Text.Trim();
-                        MDDLD.Rough_Size = item["ROUGH_SIZE"].Text.Trim();
-                        if (MDDLD.Rough_Size == "" || MDDLD.Rough_Size == "&nbsp;")
-                        {
-                            RadNotificationAlert.Text = "失败！第" + (i + 1).ToString() + "行，物资尺寸：请输入物资尺寸";
-                            RadNotificationAlert.Show();
-                            return;
-                        }
-
-                        /*
-                        string NumCasesSum = item["NumCasesSum"].Text.Trim();
+                       
                         try
                         {
-                            Convert.ToInt32(NumCasesSum);
+                            MDDLD.NumCasesSum = Convert.ToDecimal(item["NumCasesSum"].Text.Trim());
+
                         }
                         catch
                         {
-                            RadNotificationAlert.Text = "失败！第" + (i + 1).ToString() + "行，共计需求件数：请输入数字";
+                            RadNotificationAlert.Text = "需求件数，请输入数字！";
                             RadNotificationAlert.Show();
                             return;
                         }
-                        MDDLD.NumCasesSum = Convert.ToInt32(NumCasesSum);
-                      
-                   
-                        
-                             
-                
 
-            
+                        MDDLD.Quantity = item["NumCasesSum"].Text.Trim();
 
-
-                        string DemandNumSum = item["DemandNumSum"].Text.Trim();
                         try
                         {
-                            Convert.ToDecimal(DemandNumSum);
+                            MDDLD.DemandNumSum = Convert.ToDecimal(item["DemandNumSum"].Text.Trim());
                         }
                         catch
                         {
-                            RadNotificationAlert.Text = "失败！第" + (i + 1).ToString() + "行，共计需求数量（kg）：请输入数字";
+                            RadNotificationAlert.Text = "需求数量（重量），请输入数字！";
                             RadNotificationAlert.Show();
                             return;
                         }
-                        MDDLD.DemandNumSum = Convert.ToDecimal(DemandNumSum);
-                         */
-                        MDDLD.DemandNumSum = Convert.ToDecimal(MDDLD.Mat_Rough_Weight) * MDDLD.NumCasesSum;
+     
+
+
+
+                        MDDLD.Technics_Comment = item["Technics_Comment"].Text.Trim();
+
+                        MDDLD.Tech_Quantity = item["Tech_Quantity"].Text.Trim();
+                        MDDLD.Mat_Comment = item["Mat_Comment"].Text.Trim();
+                        MDDLD.Memo_Quantity = item["Memo_Quantity"].Text.Trim();
 
                         string DemandDate = item["DemandDate"].Text.Trim();
+
                         try
                         {
+
                             Convert.ToDateTime(DemandDate);
                         }
                         catch
                         {
-                            RadNotificationAlert.Text = "失败！第" + (i + 1).ToString() + "行，需求时间：不是有效日期";
+                            RadNotificationAlert.Text = "需求日期，请输入正确的时间格式！";
                             RadNotificationAlert.Show();
                             return;
                         }
+     
+        
 
-                        MDDLD.DemandDate =DemandDate;
+                        MDDLD.DemandDate = DemandDate;
+
+
+                        RadTextBox RadTextBoxSpecial_Needs = item.FindControl("rtb_SpecialNeeds") as RadTextBox;
+                        MDDLD.Special_Needs = RadTextBoxSpecial_Needs.Text.ToString();
+                      //  MDDLD.Special_Needs = item["Special_Needs"].Text.Trim();
+                        /*
+                  if (Special_Needs == "" || Special_Needs == "&nbsp;")
+                  {
+                      RadNotificationAlert.Text = "失败！第" + (i + 1).ToString() + "行，请输入特殊需求";
+                      RadNotificationAlert.Show();
+                      return;
+                  }
+                  */
+
+                 
+
+                        RadComboBox RadDropDownListLingJian_Type = item.FindControl("RDDL_LingJian_Type") as RadComboBox;
+                        MDDLD.LingJian_Type = RadDropDownListLingJian_Type.SelectedValue;
+
+
+                        RadComboBox rcbAddr = item.FindControl("RadComboBoxShippingAddress") as RadComboBox;
+                        MDDLD.Shipping_Address = rcbAddr.SelectedValue;
+
+                        RadComboBox RadComboBoxUseDes = item.FindControl("RadComboBoxUseDes") as RadComboBox;
+                        MDDLD.Use_Des = RadComboBoxUseDes.SelectedValue;
+
+                        RadComboBox RadComboBoxSecretLevel = item.FindControl("RadComboBoxSecretLevel") as RadComboBox;
+                        MDDLD.Secret_Level = RadComboBoxSecretLevel.SelectedValue;
+
+                        RadComboBox RadComboBoxUrgencyDegree = item.FindControl("RadComboBoxUrgencyDegree") as RadComboBox;
+                        MDDLD.Urgency_Degre = RadComboBoxUrgencyDegree.SelectedValue;
+
+                        RadComboBox RadComboBoxCertification = item.FindControl("RadComboBoxCertification") as RadComboBox;
+                        MDDLD.Certification = RadComboBoxCertification.SelectedValue;
+
+                        RadComboBox RadComboBoxAttribute4 = item.FindControl("RadComboBoxAttribute4") as RadComboBox;
+                        MDDLD.Attribute4 = RadComboBoxAttribute4.SelectedValue;
+
+
+                        MDDLD.Manufacturer = item["MANUFACTURER"].Text.Trim();
+                  
+                    
                         RadComboBox RadComboBoxMaterialDept = item.FindControl("RadComboBoxMaterialDept") as RadComboBox;
                         MDDLD.MaterialDept = RadComboBoxMaterialDept.SelectedValue;
 
@@ -1357,7 +1344,7 @@ namespace mms.Plan
                                     return;
                                 }
 
-                            }
+                          }
                           MDDLD.MDPId = MDPID;
 
 
@@ -1365,6 +1352,7 @@ namespace mms.Plan
                               + " TaskCode,Drawing_No, Mat_Pro_Weight,Material_State, Combine_State,Material_Name, Material_Mark, CN_Material_State,ItemCode1, Mat_Unit, Mat_Rough_Weight,"
                               + "Rough_Size, Rough_Spec, DemandNumSum, NumCasesSum,Material_Tech_Condition,Material_Code,TDM_Description,Technics_Line,LingJian_Type,"
                               +"Import_Date,User_ID,Urgency_Degre ,Secret_Level ,Use_Des ,Shipping_Address ,Certification  , Manufacturer , Attribute4 ,"
+                              + "Tech_Quantity,Technics_Comment,Memo_Quantity,Mat_Comment,"
                               + "ParentId,ParentId_For_Combine,Is_del)" + " Values ("
                               + MDDLD.PackId + "," + DraftID + "," + MDDLD.TaskId + "," + MDDLD.MDPId + "," + MDDLD.Quantity + "," + MDDLD.VerCode + "," 
                               + MDDLD.Stage + ",'" + MDDLD.DemandDate + "','" + MDDLD.Special_Needs + "','" + MDDLD.MaterialDept + "','" + MDDLD.TaskCode + "','"
@@ -1373,8 +1361,8 @@ namespace mms.Plan
                               + MDDLD.DemandNumSum + "," + MDDLD.NumCasesSum + ",'" + MDDLD.Material_Tech_Condition + "','" + MDDLD.Material_Code + "','"
                               + MDDLD.TDM_Description + "','" + MDDLD.Technics_Line + "','" + MDDLD.LingJian_Type + "','" + MDDLD.Import_Date + "'," + userid + ",'"
                               + MDDLD.Urgency_Degre + "','" + MDDLD.Secret_Level + "','" + MDDLD.Use_Des + "','" + MDDLD.Shipping_Address + "','" + MDDLD.Certification + "','"
-                              + MDDLD.Manufacturer + "','" + MDDLD.Attribute4 + "'," 
-
+                              + MDDLD.Manufacturer + "','" + MDDLD.Attribute4 + "','"
+                              + MDDLD.Tech_Quantity + "','" + MDDLD.Technics_Comment + "','" + MDDLD.Memo_Quantity + "','" + MDDLD.Mat_Comment + "',"
                               +"0,0,0)" + " select @@identity";
                             DBI.GetSingleValue(strSQL);
                             // DBI.Execute(strSQL);

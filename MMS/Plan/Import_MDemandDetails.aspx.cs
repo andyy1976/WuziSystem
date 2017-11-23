@@ -605,7 +605,11 @@ namespace mms.Plan
         protected void RadButton_ExportExcel_Click(object sender, EventArgs e)
         {
             RadGrid_MDemandDetails.ExportSettings.FileName = "型号物资需求清单-" + DateTime.Now.ToString("yyyy-MM-dd");
+            RadGrid_MDemandDetails.Columns[0].Visible = false;
+            RadGrid_MDemandDetails.ExportSettings.IgnorePaging = true;
+            RadGrid_MDemandDetails.ExportSettings.ExportOnlyData = true;
             RadGrid_MDemandDetails.MasterTableView.ExportToExcel();
+          //  RadGrid_MDemandDetails.Rebind();
         }
         protected void RadButton_ExportWord_Click(object sender, EventArgs e)
         {

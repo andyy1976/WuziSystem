@@ -37,7 +37,7 @@
                         <ItemStyle HorizontalAlign="Center" />
                         <AlternatingItemStyle HorizontalAlign="Center" />
                         <CommandItemStyle Font-Bold="true" Font-Size="16px" HorizontalAlign="Center" Height="40px" />
-                        <ExportSettings HideStructureColumns="true" ExportOnlyData="true" IgnorePaging="false" OpenInNewWindow="true">
+                        <ExportSettings HideStructureColumns="true" ExportOnlyData="true" IgnorePaging="true" OpenInNewWindow="true">
                         <Pdf  DefaultFontFamily="Arial Unicode MS" />
                         </ExportSettings>
         <MasterTableView AutoGenerateColumns="False" DataKeyNames="Id" CommandItemDisplay="Top" EditMode="InPlace">

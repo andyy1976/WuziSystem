@@ -50,7 +50,7 @@
     </telerik:RadAjaxManager>
     <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" runat="server" Skin="Default"></telerik:RadAjaxLoadingPanel>
     <telerik:RadGrid ID="RadGrid_Permission" runat="server" Culture="zh-CN" GroupPanelPosition="Top" CellSpacing="-1" GridLines="Both" OnNeedDataSource="RadGrid_Permission_NeedDataSource" OnItemCommand="RadGrid_Permission_ItemCommand" OnItemDataBound="RadGrid_Permission_ItemDataBound">
-                        <ExportSettings HideStructureColumns="true" ExportOnlyData="true" IgnorePaging="false" OpenInNewWindow="true">
+                        <ExportSettings HideStructureColumns="true" ExportOnlyData="true" IgnorePaging="true" OpenInNewWindow="true">
                         <Pdf  DefaultFontFamily="Arial Unicode MS" />
                         </ExportSettings>
         <MasterTableView AutoGenerateColumns="False" DataKeyNames="ID" CommandItemDisplay="Top">

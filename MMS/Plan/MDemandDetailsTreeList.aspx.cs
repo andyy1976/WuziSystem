@@ -600,24 +600,20 @@ namespace mms.Plan
 
         protected void RadButton_ExportExcel_Click(object sender, EventArgs e)
         {
-          RadTreeList1.ExportSettings.FileName = "型号物资需求清单-" + DateTime.Now.ToString("yyyy-MM-dd");
-       //    RadTreeList1.ExportSettings.FileName = "ModelMaterialRequirements-" + DateTime.Now.ToString("yyyy-MM-dd");
+       //   RadTreeList1.ExportSettings.FileName = "型号物资需求清单-" + DateTime.Now.ToString("yyyy-MM-dd");
+           RadTreeList1.ExportSettings.FileName = "ModelMaterialRequirements-" + DateTime.Now.ToString("yyyy-MM-dd");
         //    RadTreeList1.ExportToExcel();
-           // RadTreeList1.GetColumn("ID").Visible = false;
-            RadTreeList1.Items[0].Visible = false;
-            RadTreeList1.Items[1].Visible = false;
-            RadTreeList1.Items[2].Visible = false;
+            RadTreeList1.Columns[0].Visible = false;
+            //RadTreeList1.Columns[1].Visible = false;
+            //RadTreeList1.Columns[2].Visible = false;
             RadTreeList1.ExportSettings.IgnorePaging = true;
           
-            RadTreeList1.ExportSettings.ExportMode = (TreeListExportMode)1;
-            RadTreeList1.ShowFooter = false;
-            RadTreeList1.Rebind();
+           // RadTreeList1.ExportSettings.ExportMode = (TreeListExportMode)1;
+          //  RadTreeList1.ShowFooter = false;
+            //RadTreeList1.Rebind();
            
-            RadTreeList1.ExportSettings.Excel.Format = (TreeListExcelFormat)Enum.Parse(typeof(TreeListExcelFormat), "Xlsx");
+          //  RadTreeList1.ExportSettings.Excel.Format = (TreeListExcelFormat)Enum.Parse(typeof(TreeListExcelFormat), "Xlsx");
             RadTreeList1.ExportToExcel();
-            RadTreeList1.Items[0].Visible = true;
-            RadTreeList1.Items[1].Visible = true;
-            RadTreeList1.Items[2].Visible = true;
         } 
         protected void RadButton_ExportWord_Click(object sender, EventArgs e)
         {

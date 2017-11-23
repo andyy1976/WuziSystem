@@ -65,7 +65,7 @@
     <telerik:RadCodeBlock runat="server">
         <script type="text/javascript">
             //同步窗口开始
-            function AlphabetOnly(sender, eventArgs) {
+            function EnterKeyProcessing(sender, eventArgs) {
                 var c = eventArgs.get_keyCode();
                 if ((c == 13)) {
                     eventArgs.set_cancel(true);
@@ -112,35 +112,7 @@
                 win.set_title("新增计划包");
                 window.radopen("/Plan/PlanImport.aspx?Type=0", "RadWindowImportWindow");
             }
-
-            //导入型号物资需求
-            function ImportMaterial(sender, args) {
-
-                var grid = $find('<%= RadGridP_Pack.ClientID %>');
-                var masterTableView = grid.get_masterTableView();
-
-                var selectedItems = masterTableView.get_selectedItems();
-                if (selectedItems.length <= 0) {
-                    var rnal = $find("<%=RadNotificationAlert.ClientID %>");
-                    rnal.set_text("请选择一条型号投产计划");
-                    rnal.show();
-
-
-                }
-                else if (selectedItems.length >1) {
-                    var rnal = $find("<%=RadNotificationAlert.ClientID %>");
-                    rnal.set_text("请勿选择多条型号投产计划");
-                    rnal.show();
-
-                }
-                else {
-                    var PackId = selectedItems[0].getDataKeyValue("PackID");
-                    var win = $find("<%=RadWindowImportMaterialWindow.ClientID %>");
-                    win.set_title("导入型号物资需求");
-                   
-                    window.radopen("/Plan/MDemandImport.aspx?PackId=" + PackId, "RadWindowImportMaterialWindow");
-                }
-            }
+     
             //查看计划包
             function ShowP_Pack_Task(PackId) {
                 var win = $find("<%=RadWindowImportWindow.ClientID %>");
@@ -183,11 +155,11 @@
                 <tr>
                     <td>型号：</td>
                     <td><telerik:RadTextBox ID="RTB_Model" runat="server" Width="100px">
-                           <ClientEvents OnKeyPress="AlphabetOnly" />
+                           <ClientEvents OnKeyPress="EnterKeyProcessing" />
                         </telerik:RadTextBox></td>
                     <td>计划包名称：</td>
                     <td><telerik:RadTextBox ID="RTB_PackageName" runat="server" Width="150px">
-                           <ClientEvents OnKeyPress="AlphabetOnly" />
+                           <ClientEvents OnKeyPress="EnterKeyProcessing" />
                         </telerik:RadTextBox></td>
                     <%--
                     <td>任务号：</td>
@@ -220,7 +192,7 @@
                     <td>编制人：</td>
                     <td>
                         <telerik:RadTextBox ID="RTB_UserName" runat="server" Width="100px">
-                               <ClientEvents OnKeyPress="AlphabetOnly" />
+                               <ClientEvents OnKeyPress="EnterKeyProcessing" />
                         </telerik:RadTextBox></td>
                     <td>编制时间：</td>
                     <td>
@@ -243,7 +215,7 @@
                 <ItemStyle HorizontalAlign="Center" />
                 <HeaderStyle HorizontalAlign="Center" Font-Size="13px" />
                 <CommandItemStyle Font-Bold="true" Font-Size="16px" HorizontalAlign="Center" Height="40px" />
-                <ExportSettings HideStructureColumns="true" ExportOnlyData="true" IgnorePaging="false" OpenInNewWindow="true">
+                <ExportSettings HideStructureColumns="true" ExportOnlyData="true" IgnorePaging="true" OpenInNewWindow="true">
                        <Pdf  DefaultFontFamily="Arial Unicode MS" />
                 </ExportSettings>
                 <ClientSettings EnableRowHoverStyle="true" >

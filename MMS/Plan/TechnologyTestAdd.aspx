@@ -11,11 +11,6 @@
     <script src="../Scripts/jquery-1.7.2.min.js"></script>
     <script src="../Scripts/PubFun.js"></script>
     <link type="text/css" rel="stylesheet" href="../Styles/TechnologyTestAdd.css" />
-	<style type="text/css">
-        .RadUpload {
-            width:200px;
-        }
-    </style>
     <script>       
         function CloseWindow1(args) {
             var oWindow = null;
@@ -209,7 +204,12 @@
                         <script type="text/javascript">
                             var deleteButtonID;
                             var importButtonID;
-
+                            function EnterKeyProcessing(sender, eventArgs) {
+                                var c = eventArgs.get_keyCode();
+                                if ((c == 13)) {
+                                    eventArgs.set_cancel(true);
+                                }
+                            }
                             function CloseWindow1(args) {
                                 var oWindow = null;
                                 if (window.radWindow) oWindow = window.radWindow;
@@ -337,9 +337,7 @@
 
              
                             function ShowItemCode() {
-                                //window.radopen("/Plan/QueryItemCode.aspx", "RadWindowRecordWindow");
-                                $find("<%=RadWindow1.ClientID %>").Show();
-                           
+                                $find("<%=RadWindow1.ClientID %>").Show();                          
                             }
                        
                             function ShowApprove(sender,args) {
@@ -814,15 +812,23 @@
                                                 </tr>
                                                 <tr>
                                                     <td style="width: 70px;">物资名称：</td>
-                                                    <td><telerik:RadTextBox ID="RTB_MaterialName" runat="server" OnKeyPress="AlphabetOnly" Width="100px"></telerik:RadTextBox></td>
+                                                    <td><telerik:RadTextBox ID="RTB_MaterialName" runat="server" Width="100px">
+                                                                                   <ClientEvents OnKeyPress="EnterKeyProcessing" />
+                                                        </telerik:RadTextBox></td>
                                                     <td style="width:70px">物资牌号：</td>
-                                                    <td><telerik:RadTextBox ID="RTB_MaterialPaihao" runat="server" OnKeyPress="AlphabetOnly"  Width="100px"></telerik:RadTextBox></td>
+                                                    <td><telerik:RadTextBox ID="RTB_MaterialPaihao" runat="server" Width="100px">
+                                                                                   <ClientEvents OnKeyPress="EnterKeyProcessing" />
+                                                        </telerik:RadTextBox></td>
 
                                                     <td style="width:70px">物资规格:</td>
-                                                    <td><telerik:RadTextBox ID="RTB_MaterialGuige" runat="server" OnKeyPress="AlphabetOnly" Width="100px"></telerik:RadTextBox></td>
+                                                    <td><telerik:RadTextBox ID="RTB_MaterialGuige" runat="server" Width="100px">
+                                                                                   <ClientEvents OnKeyPress="EnterKeyProcessing" />
+                                                        </telerik:RadTextBox></td>
 
                                                     <td style="width:70px">物资标准：</td>
-                                                    <td><telerik:RadTextBox ID="RTB_MaterialBiaozhun" runat="server" OnKeyPress="AlphabetOnly" Width="100px"></telerik:RadTextBox></td>
+                                                    <td><telerik:RadTextBox ID="RTB_MaterialBiaozhun" runat="server" Width="100px">
+                                                                                   <ClientEvents OnKeyPress="EnterKeyProcessing" />
+                                                        </telerik:RadTextBox></td>
 
                                                     <td style="width:200px" >
                                                         <telerik:RadButton ID="RB_Search" runat="server" Text="搜索" OnClick="RB_Search_Click"></telerik:RadButton>

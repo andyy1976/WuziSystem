@@ -1217,7 +1217,6 @@
     <Content Include="Plan\PlanImport.aspx" />
     <Content Include="Plan\PropertyName.xml" />
     <Content Include="Plan\PropertyNameDB.xml" />
-    <Content Include="Plan\QueryItemCode.aspx" />
     <Content Include="Plan\ShowM_Change.aspx" />
     <Content Include="Plan\ShowPlan.aspx" />
     <Content Include="Plan\ShowSmarTeam.aspx" />
@@ -1795,13 +1794,6 @@
     <Compile Include="Plan\PlanImport.aspx.designer.cs">
       <DependentUpon>PlanImport.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Plan\QueryItemCode.aspx.cs">
-      <DependentUpon>QueryItemCode.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Plan\QueryItemCode.aspx.designer.cs">
-      <DependentUpon>QueryItemCode.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Plan\ShowM_Change.aspx.cs">
       <DependentUpon>ShowM_Change.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2273,7 +2265,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties UseAjaxifiedTemplates="True" UseJQuerySupport="True" />
+      <UserProperties UseJQuerySupport="True" UseAjaxifiedTemplates="True" />
     </VisualStudio>
   </ProjectExtensions>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

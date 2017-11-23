@@ -1845,12 +1845,16 @@ namespace mms.Plan
         {
             try
             {
-                for (int i = 0; i < RadGridImport.Items.Count; i++)
-                {
-                    GridSource1.Rows.RemoveAt(i);
-                }
+             //   for (int i = 0; i < RadGridImport.Items.Count; i++)
+              //  {
+                 //   GridSource1.Rows.RemoveAt(i);
+             //   }
+                GridSource1.Dispose();
+                GridSource1 = new System.Data.DataTable();
                 RadGridImport.Rebind();
                 HFGridItemsCount.Value = RadGridImport.Items.Count.ToString();
+                RadNotificationAlert.Text = "清空成功！";
+                RadNotificationAlert.Show();
 
             }
             catch (Exception ex)
