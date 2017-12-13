@@ -136,16 +136,16 @@ namespace mms.Plan {
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_NumCasesSum;
+        protected global::Telerik.Web.UI.RadTextBox lbl_NumCasesSum;
         
         /// <summary>
-        /// RTB_Mat_Rough_Weight 控件。
+        /// lbl_Mat_Unit 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label RTB_Mat_Rough_Weight;
+        protected global::Telerik.Web.UI.RadTextBox lbl_Mat_Unit;
         
         /// <summary>
         /// lbl_DemandNumSum 控件。
@@ -154,7 +154,7 @@ namespace mms.Plan {
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_DemandNumSum;
+        protected global::Telerik.Web.UI.RadTextBox lbl_DemandNumSum;
         
         /// <summary>
         /// lbl_Rough_Spec 控件。
@@ -166,22 +166,22 @@ namespace mms.Plan {
         protected global::System.Web.UI.WebControls.Label lbl_Rough_Spec;
         
         /// <summary>
-        /// lbl_Rough_Size 控件。
+        /// lbl_Dinge_Size 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_Rough_Size;
+        protected global::System.Web.UI.WebControls.Label lbl_Dinge_Size;
         
         /// <summary>
-        /// lbl_Mat_Unit 控件。
+        /// RTB_Mat_Rough_Weight 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_Mat_Unit;
+        protected global::System.Web.UI.WebControls.Label RTB_Mat_Rough_Weight;
         
         /// <summary>
         /// RTB_Special_Needs 控件。
@@ -245,6 +245,15 @@ namespace mms.Plan {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::Telerik.Web.UI.RadDatePicker RDP_DemandDate;
+        
+        /// <summary>
+        /// RTB_ROUGH_SIZE 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadTextBox RTB_ROUGH_SIZE;
         
         /// <summary>
         /// RTB_MANUFACTURER 控件。

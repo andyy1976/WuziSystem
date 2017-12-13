@@ -91,21 +91,32 @@
             <tr>
                 <td style="text-align: right;">出库单号：</td>
                 <td>
-                    <telerik:RadTextBox ID="RTB_billno" runat="server" Width="100px"></telerik:RadTextBox></td>
+                    <telerik:RadTextBox ID="RTB_billno" runat="server" Width="100px">
+                          <ClientEvents OnKeyPress="EnterKeyProcessing" />
+                    </telerik:RadTextBox>
+                </td>
                 <td style="text-align: right;">单据日期：</td>
                 <td>
-                    <telerik:RadDatePicker ID="RDP_Startbilldate" runat="server" Width="100px"></telerik:RadDatePicker>
+                    <telerik:RadDatePicker ID="RDP_Startbilldate" runat="server" Width="100px" DateInput-ClientEvents-OnKeyPress='EnterKeyProcessing'>
+                    </telerik:RadDatePicker>
                 </td>
                 <td>～</td>
                 <td>
-                    <telerik:RadDatePicker ID="RDP_Endbilldate" runat="server" Width="120px"></telerik:RadDatePicker>
+                    <telerik:RadDatePicker ID="RDP_Endbilldate" runat="server" Width="120px" DateInput-ClientEvents-OnKeyPress='EnterKeyProcessing'>
+                    </telerik:RadDatePicker>
                 </td>
                 <td>物资编码：</td>
                 <td>
-                    <telerik:RadTextBox ID="RTB_invcode" runat="server" Width="100px"></telerik:RadTextBox></td>
+                    <telerik:RadTextBox ID="RTB_invcode" runat="server" Width="100px">
+                               <ClientEvents OnKeyPress="EnterKeyProcessing" />
+                    </telerik:RadTextBox>
+                </td>
                 <td style="text-align: right;">物资名称：</td>
                 <td>
-                    <telerik:RadTextBox ID="RTB_invname" runat="server" Width="100px"></telerik:RadTextBox></td>
+                    <telerik:RadTextBox ID="RTB_invname" runat="server" Width="100px">
+                                                       <ClientEvents OnKeyPress="EnterKeyProcessing" />
+                    </telerik:RadTextBox>
+                </td>
                 <td>签收状态：</td>
                 <td>
                     <telerik:RadDropDownList ID="RDDL_SignState" runat="server">
@@ -127,12 +138,14 @@
                 <td>
                     <telerik:RadTextBox ID="RTB_jc_rwh" runat="server" Width="100px">
                                                   <ClientEvents OnKeyPress="EnterKeyProcessing" />
-                    </telerik:RadTextBox></td>
+                    </telerik:RadTextBox>
+                </td>
                 <td style="text-align: right;">图号：</td>
                 <td>
                     <telerik:RadTextBox ID="RTB_jc_th" runat="server" Width="100px">
                                                   <ClientEvents OnKeyPress="EnterKeyProcessing" />
-                    </telerik:RadTextBox></td>
+                    </telerik:RadTextBox>
+                </td>
                 <td style="text-align: right;">质检单号：</td>
                 <td>
                     <telerik:RadTextBox ID="RTB_hgz_zjdbillno" runat="server" Width="100px">
@@ -142,7 +155,8 @@
                 <td>
                     <telerik:RadTextBox ID="RTB_hgz_zydh" runat="server" Width="100px">
                                                   <ClientEvents OnKeyPress="EnterKeyProcessing" />
-                    </telerik:RadTextBox></td>
+                    </telerik:RadTextBox>
+                </td>
                 <td>
                     <telerik:RadButton ID="RB_Search" runat="server" Text="搜索" OnClick="RB_Search_Click"></telerik:RadButton>
                 </td>

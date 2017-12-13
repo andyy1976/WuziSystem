@@ -32,6 +32,12 @@
             </telerik:RadAjaxManager>
             <telerik:RadCodeBlock ID="RadCodeBlock1" runat="server">
                 <script type="text/javascript">
+              function EnterKeyProcessing(sender, eventArgs) {
+                  var c = eventArgs.get_keyCode();
+                  if ((c == 13)) {
+                      eventArgs.set_cancel(true);
+                  }
+              }
                     var RBAddID;
                     function confirmWindow(sender, args) {
                         $find("<%=confirmWindow.ClientID %>").show();
@@ -72,17 +78,25 @@
                         <tr>
                             <td style="text-align: right;">产品名称：</td>
                             <td>
-                                <telerik:RadTextBox ID="RTB_ProductName" runat="server" Width="120px"></telerik:RadTextBox></td>
+                                <telerik:RadTextBox ID="RTB_ProductName" runat="server" Width="120px">
+                                      <ClientEvents OnKeyPress="EnterKeyProcessing" />
+                                </telerik:RadTextBox></td>
                             <td style="text-align: right;">产品图号：</td>
                             <td>
-                                <telerik:RadTextBox ID="RTB_DrawingNum" runat="server" Width="120px"></telerik:RadTextBox></td>
+                                <telerik:RadTextBox ID="RTB_DrawingNum" runat="server" Width="120px">
+                                      <ClientEvents OnKeyPress="EnterKeyProcessing" />
+                                </telerik:RadTextBox></td>
                             <td style="text-align: right;">任务号：</td>
                             <td>
-                                <telerik:RadTextBox ID="RTB_TaskNum" runat="server" Width="120px"></telerik:RadTextBox></td>
+                                <telerik:RadTextBox ID="RTB_TaskNum" runat="server" Width="120px">
+                                      <ClientEvents OnKeyPress="EnterKeyProcessing" />
+                                </telerik:RadTextBox></td>
                             <td>交付时间：</td>
                             <td>
-                                <telerik:RadDatePicker ID="RDP_StartDate" runat="server" Width="120px"></telerik:RadDatePicker>
-                                ～<telerik:RadDatePicker ID="RDP_EndDate" runat="server" Width="120px"></telerik:RadDatePicker>
+                                <telerik:RadDatePicker ID="RDP_StartDate" runat="server" Width="120px" DateInput-ClientEvents-OnKeyPress='EnterKeyProcessing'>
+                                </telerik:RadDatePicker>
+                                ～<telerik:RadDatePicker ID="RDP_EndDate" runat="server" Width="120px" DateInput-ClientEvents-OnKeyPress='EnterKeyProcessing'>
+                                 </telerik:RadDatePicker>
                             </td>
                             <td>
                                 <telerik:RadButton ID="RB_Query" runat="server" Text="筛选" OnClick="RB_Query_Click"></telerik:RadButton>

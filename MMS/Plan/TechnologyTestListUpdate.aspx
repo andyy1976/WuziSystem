@@ -17,6 +17,12 @@
             <div class="divContant">
                 <telerik:RadCodeBlock ID="RadCodeBlock1" runat="server">
                     <script type="text/javascript">
+                       function EnterKeyProcessing(sender, eventArgs) {
+                           var c = eventArgs.get_keyCode();
+                           if ((c == 13)) {
+                               eventArgs.set_cancel(true);
+                           }
+                       }
                         function CloseWindow1(args) {
                             var oWindow = null;
                             if (window.radWindow) oWindow = window.radWindow;
@@ -83,7 +89,8 @@
                             <UpdatedControls>
                                 <telerik:AjaxUpdatedControl ControlID="RTB_MaterialName" />
                                 <telerik:AjaxUpdatedControl ControlID="txt_Mat_Unit" />
-                                <telerik:AjaxUpdatedControl ControlID="txt_Rough_Size" />
+                                <telerik:AjaxUpdatedControl ControlID="RTB_Dinge_Size" />
+                                <telerik:AjaxUpdatedControl ControlID="RTB_Rough_Size" />
                                 <telerik:AjaxUpdatedControl ControlID="txt_Rough_Spec" />
                                 <telerik:AjaxUpdatedControl ControlID="RTB_Unit_Price" />
                                 <telerik:AjaxUpdatedControl ControlID="txt_DemandNumSum" />
@@ -124,7 +131,8 @@
                                     </td>
                                     <td class="technology_Div_detailcontent_title">申请时间：</td>
                                         <td class="technology_Div_detailcontent_content">
-                                            <telerik:RadDatePicker ID="span_apply_time" runat="server" Width="150px"></telerik:RadDatePicker>
+                                            <telerik:RadDatePicker ID="span_apply_time" runat="server" Width="150px" DateInput-ClientEvents-OnKeyPress='EnterKeyProcessing'>
+                                            </telerik:RadDatePicker>
                                         </td>
                       
                                     <td class="technology_Div_detailcontent_title">型号工程:</td>
@@ -146,21 +154,28 @@
                                 <tr>
                                     <td class="technology_Div_detailcontent_title">产品名称：</td>
                                     <td class="technology_Div_detailcontent_content">
-                                        <telerik:RadTextBox ID="RTB_TDM_Description" Width="150" MaxLength="50" runat="server"></telerik:RadTextBox>
+                                        <telerik:RadTextBox ID="RTB_TDM_Description" Width="150" MaxLength="50" runat="server">
+                                             <ClientEvents OnKeyPress="EnterKeyProcessing" />
+                                        </telerik:RadTextBox>
                                     </td>
                                     <td class="technology_Div_detailcontent_title">任务号：</td>
                                     <td class="technology_Div_detailcontent_content">
-                                        <telerik:RadTextBox ID="txt_TaskCode" Width="150" MaxLength="50" runat="server"></telerik:RadTextBox>
+                                        <telerik:RadTextBox ID="txt_TaskCode" Width="150" MaxLength="50" runat="server">
+                                             <ClientEvents OnKeyPress="EnterKeyProcessing" />
+                                        </telerik:RadTextBox>
                                         <asp:RequiredFieldValidator ID="rfv_TaskCode" ValidationGroup="1" runat="server" ErrorMessage="*" ControlToValidate="txt_TaskCode" ForeColor="Red"></asp:RequiredFieldValidator>
                                     </td>
                                     <td class="technology_Div_detailcontent_title">产品图号：</td>
                                     <td class="technology_Div_detailcontent_content">
-                                        <telerik:RadTextBox ID="txt_Drawing_No" Width="150" MaxLength="50" runat="server"></telerik:RadTextBox>
+                                        <telerik:RadTextBox ID="txt_Drawing_No" Width="150" MaxLength="50" runat="server">
+                                             <ClientEvents OnKeyPress="EnterKeyProcessing" />
+                                        </telerik:RadTextBox>
                                         <asp:RequiredFieldValidator ID="rfv_Drawing_No" ValidationGroup="1" runat="server" ErrorMessage="*" ControlToValidate="txt_Drawing_No" ForeColor="Red"></asp:RequiredFieldValidator>
                                     </td>
                                     <td class="technology_Div_detailcontent_title">需求时间：</td>
                                     <td class="technology_Div_detailcontent_content">
-                                        <telerik:RadDatePicker ID="RDP_DemandDate" runat="server" Width="150px"></telerik:RadDatePicker>
+                                        <telerik:RadDatePicker ID="RDP_DemandDate" runat="server" Width="150px" DateInput-ClientEvents-OnKeyPress='EnterKeyProcessing'>
+                                        </telerik:RadDatePicker>
                                     </td>
                                 </tr>
                             </table>
@@ -200,9 +215,9 @@
                                     <td class="technology_Div_detailcontent_content">
                                         <telerik:RadTextBox ID="txt_Rough_Spec" runat="server" MaxLength="30" Width="150"></telerik:RadTextBox>
                                     </td>
-                                    <td class="technology_Div_detailcontent_title">物资尺寸：</td>
+                                    <td class="technology_Div_detailcontent_title">胚料尺寸：</td>
                                     <td class="technology_Div_detailcontent_content">
-                                        <telerik:RadTextBox ID="txt_Rough_Size" runat="server" MaxLength="30" Width="150"></telerik:RadTextBox>
+                                        <telerik:RadTextBox ID="RTB_Dinge_Size" runat="server" MaxLength="30" Width="150"></telerik:RadTextBox>
                                     </td>
 
                                     <td class="technology_Div_detailcontent_title">计量单位：</td>
@@ -220,13 +235,13 @@
                                     </td>
                                     <td class="technology_Div_detailcontent_title">需求尺寸：</td>
                                     <td class="technology_Div_detailcontent_content">
-                                        <telerik:RadTextBox ID="RTB_Material_Size_Required" runat="server" Width="150" MaxLength="30"></telerik:RadTextBox>
+                                        <telerik:RadTextBox ID="RTB_Rough_Size" runat="server" Width="150" MaxLength="30"></telerik:RadTextBox>
                                     </td>
 
                           
-                                    <td class="technology_Div_detailcontent_title">需求量：</td>
+                                    <td class="technology_Div_detailcontent_title">需求数量：</td>
                                     <td class="technology_Div_detailcontent_content">
-                                        <telerik:RadTextBox ID="txt_DemandNumSum" Width="150" runat="server" MaxLength="5" onpaste="return false" onkeyup='clearNoNum(this)'></telerik:RadTextBox>
+                                        <telerik:RadTextBox ID="txt_DemandNumSum" Width="150" runat="server" MaxLength="5" onpaste="return false" onkeyup='clearNoDecimal(this)'></telerik:RadTextBox>
                                         <asp:RequiredFieldValidator ID="rfv_DemandNumSum" ValidationGroup="1" runat="server" ErrorMessage="*" ControlToValidate="txt_DemandNumSum" ForeColor="Red"></asp:RequiredFieldValidator>
                                     </td>
                                     <td class="technology_Div_detailcontent_title" style="width: 10%">需求件数：</td>
@@ -244,7 +259,7 @@
                                         <asp:SqlDataSource ID="SqlDataSourceSecretLevel" runat="server" ConnectionString='<%$ ConnectionStrings:MaterialManagerSystemConnectionString %>'
                                             SelectCommand="SELECT * FROM [Sys_SecretLevel] WHERE ([Is_Del] = 0)"></asp:SqlDataSource>
                                     </td>
-                                    <td class="technology_Div_detailcontent_title">总价（元）：</td>
+                                    <td class="technology_Div_detailcontent_title">总价(元)：</td>
                                     <td class="technology_Div_detailcontent_content">
                                         <telerik:RadTextBox ID="span_Sum_Price" runat="server" Width="150" EmptyMessage="0" MaxLength="10" onpaste="return false" onkeyup='clearNoNum(this)'></telerik:RadTextBox>
                            
@@ -256,8 +271,12 @@
                                     </td>
                                     <td class="technology_Div_detailcontent_title">用途：</td>
                                     <td class="technology_Div_detailcontent_content">
-                                            <telerik:RadComboBox ID="RadComboBoxUseDes" runat="server" Width="150">
+                                            <telerik:RadComboBox ID="RadComboBoxUseDes" runat="server" Width="150" DataSourceID="SqlDataSourceUseDes"
+                                            DataTextField="DICT_Name" DataValueField="DICT_Code">
                                             </telerik:RadComboBox>
+                                          <asp:SqlDataSource ID="SqlDataSourceUseDes" runat="server" ConnectionString='<%$ ConnectionStrings:MaterialManagerSystemConnectionString %>'
+                                         SelectCommand="select * from GetBasicdata_T_Item where DICT_CLASS='CUX_DM_USAGE'"></asp:SqlDataSource>
+
                                     </td>
                                 </tr>
                                 <tr>

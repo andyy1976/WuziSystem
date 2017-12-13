@@ -16,7 +16,8 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:HiddenField ID="HiddenField" runat="server" Value="物资申请-->申请单状态查询" ClientIDMode="Static" />
-    <telerik:RadScriptManager ID="RadScriptManager1" runat="server" AsyncPostBackTimeout="1800"></telerik:RadScriptManager>
+    <telerik:RadScriptManager ID="RadScriptManager1" runat="server" AsyncPostBackTimeout="1800">
+	</telerik:RadScriptManager>
     <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server" OnAjaxRequest="RadAjaxManager1_AjaxRequest">
         <ClientEvents OnRequestStart="onRequestStart" />
         <AjaxSettings>
@@ -158,8 +159,10 @@
                 <telerik:DropDownListItem Value="3" Text="已删除" />
             </Items>
         </telerik:RadDropDownList>
-        申请时间：<telerik:RadDatePicker ID="RDPStart" runat="server" Width="100px"></telerik:RadDatePicker>
-        ～<telerik:RadDatePicker ID="RDPEnd" runat="server" Width="100px"></telerik:RadDatePicker>
+        申请时间：<telerik:RadDatePicker ID="RDPStart" runat="server" Width="100px"  DateInput-ClientEvents-OnKeyPress='EnterKeyProcessing'>
+             </telerik:RadDatePicker>
+            ～<telerik:RadDatePicker ID="RDPEnd" runat="server" Width="100px"  DateInput-ClientEvents-OnKeyPress='EnterKeyProcessing'>
+             </telerik:RadDatePicker>
         物资编码：<telerik:RadTextBox ID="RTB_ItemCode1" runat="server" Width="100px">
                                       <ClientEvents OnKeyPress="EnterKeyProcessing" />
              </telerik:RadTextBox>
@@ -195,9 +198,11 @@
                     <telerik:GridBoundColumn DataField="Material_Id" UniqueName="Material_Id" HeaderText="需求行号" ColumnGroupName="Applicant" ItemStyle-Width="80px" HeaderStyle-Width="80px"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn DataField="RowsId" HeaderText="序号" ColumnGroupName="Applicant" ItemStyle-Width="50px" HeaderStyle-Width="50px" Visible="false"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn DataField="Quantity" HeaderText="请领件数" ColumnGroupName="Applicant" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="Mat_Unit" HeaderText="计量单位" UniqueName="Mat_Unit" ColumnGroupName="Applicant" ItemStyle-Width="70px" HeaderStyle-Width="70px"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn DataField="PleaseTakeQuality" HeaderText="申请数量" ColumnGroupName="Applicant" DataFormatString="{0:N0}" ItemStyle-Width="70px" HeaderStyle-Width="70px"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn DataField="Type1"  UniqueName="Type1" HeaderText="申请类型" ColumnGroupName="Applicant" ItemStyle-Width="70px" HeaderStyle-Width="70px"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn DataField="AppState1" UniqueName="AppState1" HeaderText="申请单状态" ColumnGroupName="Applicant"  ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="Rough_Size" HeaderText="需求尺寸" UniqueName="Rough_Size" ColumnGroupName="Applicant" ItemStyle-Width="70px" HeaderStyle-Width="70px"></telerik:GridBoundColumn>
 
                     <telerik:GridBoundColumn DataField="Applicant" HeaderText="申请人" ColumnGroupName="Applicant" ItemStyle-Width="70px" HeaderStyle-Width="70px"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn DataField="ApplicationTime" HeaderText="申请时间" ColumnGroupName="Applicant" ItemStyle-Width="70px" HeaderStyle-Width="70px"></telerik:GridBoundColumn>
@@ -208,14 +213,13 @@
                     <telerik:GridBoundColumn DataField="TDM_Description" HeaderText="产品名称" ColumnGroupName="ProductInfo" UniqueName="TDM_Description" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn DataField="Drawing_No" HeaderText="图号" ColumnGroupName="ProductInfo" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn DataField="ItemCode1" HeaderText="物资编码" ColumnGroupName="Material" UniqueName="ItemCode1" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="Material_Name" UniqueName="Material_Name" HeaderText="物资名称" ColumnGroupName="Material" ItemStyle-Width="120px" HeaderStyle-Width="120px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="Material_Name" HeaderText="物资名称" UniqueName="Material_Name" ColumnGroupName="Material" ItemStyle-Width="120px" HeaderStyle-Width="120px"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn DataField="Material_Mark" HeaderText="牌号" UniqueName="Material_Mark" ColumnGroupName="Material" ItemStyle-Width="70px" HeaderStyle-Width="70px"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn DataField="CN_Material_State" HeaderText="供应状态" UniqueName="CN_Material_State" ColumnGroupName="Material" ItemStyle-Width="70px" HeaderStyle-Width="70px"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn DataField="Material_Tech_Condition" HeaderText="采用标准" UniqueName="Material_Tech_Condition" ColumnGroupName="Material" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="Rough_Spec" UniqueName="Rough_Spec" HeaderText="规格"  ColumnGroupName="Material" ItemStyle-Width="80px" HeaderStyle-Width="80px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="Rough_Spec" HeaderText="规格" UniqueName="Rough_Spec" ColumnGroupName="Material" ItemStyle-Width="80px" HeaderStyle-Width="80px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="Dinge_Size" HeaderText="胚料尺寸" UniqueName="Dinge_Size" ColumnGroupName="Material" ItemStyle-Width="80px" HeaderStyle-Width="80px"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn DataField="Mat_Rough_Weight" HeaderText="单件定额质量" UniqueName="Mat_Rough_Weight" ColumnGroupName="Material" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="Mat_Unit" UniqueName="Mat_Unit" HeaderText="计量单位"  ColumnGroupName="Material" ItemStyle-Width="70px" HeaderStyle-Width="70px"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="Rough_Size"  UniqueName="Rough_Size" HeaderText="尺寸" ColumnGroupName="Material" ItemStyle-Width="70px" HeaderStyle-Width="70px"></telerik:GridBoundColumn>
 
                     <telerik:GridTemplateColumn HeaderText ="查询流程<br />平台信息"  ItemStyle-Width="70px" HeaderStyle-Width="70px">
                         <ItemTemplate>
@@ -224,9 +228,9 @@
                     </telerik:GridTemplateColumn>
                 </Columns>
    			    <CommandItemTemplate>
+                    <telerik:RadButton ID="RB_Delete" runat="server" Text="删除" CommandName="del" CssClass="floatleft" OnClientClicking="confirmRadWindowDelete"></telerik:RadButton>
+                    <telerik:RadButton ID="RB_Edit" runat="server" Text="修改"  Font-Bold="true" OnClientClicking="ShowWindow" CssClass="floatleft" AutoPostBack="true"  ></telerik:RadButton>
                     请领物资信息列表
-                    <telerik:RadButton ID="RB_Delete" runat="server" Text="删除" CommandName="del" CssClass="floatright" OnClientClicking="confirmRadWindowDelete"></telerik:RadButton>
-                    <telerik:RadButton ID="RB_Edit" runat="server" Text="修改"  OnClientClicking="ShowWindow" CssClass="floatright" AutoPostBack="false" ></telerik:RadButton>
 				    <telerik:RadButton ID="RadButton_ExportExcel" runat="server" Text="导出Excel" Font-Bold="true" CommandName="ExportExcel" OnClick="RadButton_ExportExcel_Click" CssClass="floatright"></telerik:RadButton>
                     <telerik:RadButton ID="RadButton_ExportWord"  runat="server" Text="导出Word"  Font-Bold="true" CommandName="ExportWord" Visible="false"  OnClick="RadButton_ExportWord_Click"  CssClass="floatright"></telerik:RadButton>
                     <telerik:RadButton ID="RadButton_ExportPDF"   runat="server" Text="导出PDF"   Font-Bold="true" CommandName="ExportPDF" Visible="false"   OnClick="RadButton_ExportPdf_Click"   CssClass="floatright"></telerik:RadButton>

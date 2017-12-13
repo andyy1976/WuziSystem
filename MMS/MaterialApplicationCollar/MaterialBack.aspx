@@ -6,7 +6,16 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <telerik:RadScriptManager ID="RadScriptManager1" runat="server"></telerik:RadScriptManager>
     <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server"></telerik:RadAjaxManager>
-    <telerik:RadCodeBlock ID="RadCodeBlock1" runat="server"></telerik:RadCodeBlock>
+    <telerik:RadCodeBlock ID="RadCodeBlock1" runat="server">
+         <script type="text/javascript">
+             function EnterKeyProcessing(sender, eventArgs) {
+                 var c = eventArgs.get_keyCode();
+                 if ((c == 13)) {
+                     eventArgs.set_cancel(true);
+                 }
+             }
+         </script>
+    </telerik:RadCodeBlock>
     <div style="width:100%;">
         <table>
             <tr>
@@ -19,11 +28,20 @@
                     </telerik:RadDropDownList>
                 </td>
                 <td>申请时间：</td>
-                <td><telerik:RadDatePicker ID="RDP_StartDate" runat="server" Width="120px"></telerik:RadDatePicker></td>
+                <td><telerik:RadDatePicker ID="RDP_StartDate" runat="server" Width="120px" DateInput-ClientEvents-OnKeyPress='EnterKeyProcessing'>
+                    </telerik:RadDatePicker>
+                </td>
                 <td> ～</td>
-                <td><telerik:RadDatePicker ID="RDP_EndDate" runat="server" Width="120px"></telerik:RadDatePicker></td>
+                <td>
+                    <telerik:RadDatePicker ID="RDP_EndDate" runat="server" Width="120px" DateInput-ClientEvents-OnKeyPress='EnterKeyProcessing'>
+                    </telerik:RadDatePicker>
+                </td>
                 <td>申请人：</td>
-                <td><telerik:RadTextBox ID="RTB_Applicant" runat="server" Width="120px"></telerik:RadTextBox></td>
+                <td>
+                    <telerik:RadTextBox ID="RTB_Applicant" runat="server" Width="120px">
+                      <ClientEvents OnKeyPress="EnterKeyProcessing" />
+                    </telerik:RadTextBox>
+                </td>
                 <td></td>
             </tr>
         </table>

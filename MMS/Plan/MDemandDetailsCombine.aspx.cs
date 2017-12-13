@@ -55,6 +55,7 @@ namespace mms.Plan
                     InitTable.Columns.Add("MAT_TECHNICS");
                     InitTable.Columns.Add("ROUCH_SPEC");
                     InitTable.Columns.Add("ROUGH_SIZE");
+                    InitTable.Columns.Add("DINGE_SIZE");
                     InitTable.Columns.Add("MaterialsDes");
                     InitTable.Columns.Add("Special_Needs");
                     InitTable.Columns.Add("StandAlone");
@@ -117,6 +118,7 @@ namespace mms.Plan
                     InitTable.Columns.Add("Mat_Unit");
                     InitTable.Columns.Add("Quantity");
                     InitTable.Columns.Add("Rough_Size");
+                    InitTable.Columns.Add("Dinge_Size");
                     InitTable.Columns.Add("Rough_Spec");
                     InitTable.Columns.Add("MaterialsDes");
                     InitTable.Columns.Add("Special_Needs");
@@ -348,6 +350,7 @@ namespace mms.Plan
             public int Quantity { get; set; }
             public string DemandDate { get; set; }
             public string Rough_Size { get; set; }
+            public string Dinge_Size { get; set; }
             public string Rough_Spec { get; set; }
             public string MaterialsDes { get; set; }
             public string Special_Needs { get; set; }
@@ -410,6 +413,7 @@ namespace mms.Plan
           string ItemCode1 = GridSource1.Rows[0]["ItemCode1"].ToString();
           string Mat_Unit = GridSource1.Rows[0]["Mat_Unit"].ToString();
           string Mat_Rough_Weight = GridSource1.Rows[0]["Mat_Rough_Weight"].ToString();
+          string Dinge_Size = GridSource1.Rows[0]["Dinge_Size"].ToString();
           string Rough_Size = GridSource1.Rows[0]["Rough_Size"].ToString();
           string DemandNumSum = GridSource1.Rows[0]["DemandNumSum"].ToString();
           string Rough_Spec = GridSource1.Rows[0]["Rough_Spec"].ToString();
@@ -431,8 +435,12 @@ namespace mms.Plan
 
           string Technics_Line = GridSource1.Rows[0]["Technics_Line"].ToString();
           string Material_Tech_Condition = GridSource1.Rows[0]["Material_Tech_Condition"].ToString();
-         
-        
+
+          string VerCode = GridSource1.Rows[0]["VerCode"].ToString();
+          string Technics_Comment = GridSource1.Rows[0]["Technics_Comment"].ToString();
+          string MDPId = GridSource1.Rows[0]["MDPId"].ToString();
+          string CN_Material_State = GridSource1.Rows[0]["CN_Material_State"].ToString();
+
           string parentId_For_Combine = GridSource1.Rows[0]["ParentId_For_Combine"].ToString();
 
           
@@ -447,16 +455,21 @@ namespace mms.Plan
               if (Combine_State == "2")
               {
                   strSQL = " Update M_Demand_DetailedList_Draft set ParentId_For_Combine = 0 ,Material_State = 0,Combine_State=1,Is_Del=0,Material_Name='" + Material_Name +
-                   "',Material_Mark='" + Material_Mark + "',TaskCode='" + TaskCode + "',Drawing_No='" + Drawing_No + "',Mat_Pro_Weight='" + Mat_Pro_Weight + "',Mat_Unit='" + Mat_Unit + "',Mat_Rough_Weight='" + Mat_Rough_Weight + "',Rough_Size='" +
-                   Rough_Size + "',Rough_Spec='" + Rough_Spec + "',Special_Needs='" + Special_Needs + "',DemandNumSum='" + DemandNumSum + "',NumCasesSum='" + NumCasesSum + "'where Id=" + ID + " select @@identity";
+                   "',Material_Mark='" + Material_Mark + "',TaskCode='" + TaskCode + "',Drawing_No='" + Drawing_No + "',Mat_Pro_Weight='" + Mat_Pro_Weight +
+                   "',Mat_Unit='" + Mat_Unit + "',Mat_Rough_Weight='" + Mat_Rough_Weight + "',Rough_Size='" + Rough_Size + "',Dinge_Size='" + Dinge_Size +
+                   "',VerCode='" + VerCode + "',Technics_Comment='" + Technics_Comment + "',MDPId='" + MDPId + "',CN_Material_State='" + CN_Material_State +
+                   "',Rough_Spec='" + Rough_Spec + "',Special_Needs='" + Special_Needs + "',DemandNumSum='" + DemandNumSum + "',NumCasesSum='" + NumCasesSum + "'where Id=" + ID + " select @@identity";
 
                   DBI.Execute(strSQL);
               }
               else
               {
-                  strSQL = " Insert Into M_Demand_DetailedList_Draft ( PackId, DraftId,taskid,Quantity,Stage,DemandDate,Special_Needs,MaterialDept,TaskCode,Drawing_No, Mat_Pro_Weight,Material_State, Combine_State,Material_Name, Material_Mark, ItemCode1, Mat_Unit, Mat_Rough_Weight, Rough_Size, Rough_Spec, DemandNumSum, NumCasesSum,Material_Tech_Condition,Material_Code,TDM_Description,Technics_Line,LingJian_Type,Import_Date,User_ID,ParentId,ParentId_For_Combine,Is_del)"
+                  strSQL = " Insert Into M_Demand_DetailedList_Draft ( PackId, DraftId,taskid,Quantity,Stage,DemandDate,Special_Needs,MaterialDept,TaskCode,Drawing_No, Mat_Pro_Weight,Material_State, Combine_State,Material_Name, Material_Mark, ItemCode1, Mat_Unit, Mat_Rough_Weight, Rough_Size, Dinge_Size,Rough_Spec, DemandNumSum, NumCasesSum,Material_Tech_Condition,VerCode,Technics_Comment,MDPId,CN_Material_State, Material_Code,TDM_Description,Technics_Line,LingJian_Type,Import_Date,User_ID,ParentId,ParentId_For_Combine,Is_del)"
                    + " Values (" + PackId + "," + DraftId + "," + taskid + "," + Quantity + "," + Stage + ",'" + DemandDate + "','" + Special_Needs + "','" + MaterialDept + "','" + TaskCode + "','" + Drawing_No + "'," + Mat_Pro_Weight + ",0,1,'" +
-                            Material_Name + "','" + Material_Mark + "','" + ItemCode1 + "','" + Mat_Unit + "'," + Mat_Rough_Weight + ",'" + Rough_Size + "','" + Rough_Spec + "'," + DemandNumSum + "," + NumCasesSum + ",'" + Material_Tech_Condition + "','" + Material_Code + "','" + TDM_Description + "','" + Technics_Line + "','" + LingJian_Type + "','" + Import_Date + "'," + userid + ",0,0,0)" + " select @@identity";
+                            Material_Name + "','" + Material_Mark + "','" + ItemCode1 + "','" + Mat_Unit + "'," + Mat_Rough_Weight + ",'" + Rough_Size + "','" +Dinge_Size+"','"
+                            + Rough_Spec + "'," + DemandNumSum + "," + NumCasesSum + ",'" + Material_Tech_Condition + "','"
+                             + VerCode + "','" + Technics_Comment + "'," + MDPId + ",'" + CN_Material_State + "','"  
+                            + Material_Code + "','" + TDM_Description + "','" + Technics_Line + "','" + LingJian_Type + "','" + Import_Date + "'," + userid + ",0,0,0)" + " select @@identity";
 
                  ID = DBI.GetSingleValue(strSQL);
 

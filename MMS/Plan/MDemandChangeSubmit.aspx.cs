@@ -42,6 +42,7 @@ namespace mms.Plan
                     InitTable.Columns.Add("Mat_Unit");
                     InitTable.Columns.Add("Quantity");
                     InitTable.Columns.Add("Rough_Size");
+                    InitTable.Columns.Add("Dinge_Size");
                     InitTable.Columns.Add("Rough_Spec");
                     InitTable.Columns.Add("MaterialsDes");
                     InitTable.Columns.Add("Special_Needs");
@@ -380,6 +381,7 @@ namespace mms.Plan
             public int Quantity { get; set; }
             public string DemandDate { get; set; }
             public string Rough_Size { get; set; }
+            public string Dinge_Size { get; set; }
             public string Rough_Spec { get; set; }
             public string MaterialsDes { get; set; }
             public int Special_Needs { get; set; }

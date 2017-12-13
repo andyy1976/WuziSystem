@@ -65,23 +65,24 @@ namespace mms.Plan
             lbl_ItemCode1.Text = dt.Rows[0]["ItemCode1"].ToString();
             lbl_MaterialDept.Text = dt.Rows[0]["Dept"].ToString();
             lbl_Rough_Spec.Text = dt.Rows[0]["Rough_Spec"].ToString();
-            lbl_Rough_Size.Text = dt.Rows[0]["Rough_Size"].ToString();
+            lbl_Dinge_Size.Text = dt.Rows[0]["Dinge_Size"].ToString();
+            RTB_ROUGH_SIZE.Text = dt.Rows[0]["Rough_Size"].ToString();
             lbl_Mat_Unit.Text = dt.Rows[0]["Mat_Unit"].ToString();
             RTB_Mat_Rough_Weight.Text = dt.Rows[0]["Mat_Rough_Weight"].ToString();
             RTB_Special_Needs.Text = dt.Rows[0]["Special_Needs"].ToString();
             lbl_NumCasesSum.Text = Convert.ToDouble(dt.Rows[0]["NumCasesSum"].ToString()).ToString();
             lbl_DemandNumSum.Text = Convert.ToDouble(dt.Rows[0]["DemandNumSum"].ToString()).ToString();
-            if (RDDL_Urgency_Degre.FindItemByValue(dt.Rows[0]["Urgency_Degre"].ToString()) != null)
+            if (RDDL_Urgency_Degre.FindItemByText(dt.Rows[0]["Urgency_Degre"].ToString()) != null)
             {
-                RDDL_Urgency_Degre.FindItemByValue(dt.Rows[0]["Urgency_Degre"].ToString()).Selected = true;
+                RDDL_Urgency_Degre.FindItemByText(dt.Rows[0]["Urgency_Degre"].ToString()).Selected = true;
             }
             if (RDDL_Secret_Level.FindItemByText(dt.Rows[0]["Secret_Level"].ToString()) != null)
             {
                 RDDL_Secret_Level.FindItemByText(dt.Rows[0]["Secret_Level"].ToString()).Selected = true;
             }
-            if (RDDL_Use_Des.FindItemByValue(dt.Rows[0]["Use_Des"].ToString()) != null)
+            if (RDDL_Use_Des.FindItemByText(dt.Rows[0]["Use_Des"].ToString()) != null)
             {
-                RDDL_Use_Des.FindItemByValue(dt.Rows[0]["Use_Des"].ToString()).Selected = true;
+                RDDL_Use_Des.FindItemByText(dt.Rows[0]["Use_Des"].ToString()).Selected = true;
             }
             if (RDDL_Certification.FindItemByText(dt.Rows[0]["Certification"].ToString()) != null)
             {
@@ -135,6 +136,8 @@ namespace mms.Plan
                 || RDDL_Secret_Level.SelectedText.ToString() != dt.Rows[0]["Secret_Level"].ToString() || RDDL_Use_Des.SelectedValue.ToString() != dt.Rows[0]["Use_Des"].ToString()
                 || RDDL_Shipping_Address.SelectedText.ToString() != dt.Rows[0]["Shipping_Address"].ToString() || RDDL_Certification.SelectedValue.ToString() != dt.Rows[0]["Certification"].ToString()
                 || Convert.ToDateTime(RDP_DemandDate.SelectedDate).ToString("yyyy-MM-dd") != Convert.ToDateTime(dt.Rows[0]["DemandDate"].ToString()).ToString("yyyy-MM-dd")
+                || lbl_NumCasesSum.Text.Trim() != dt.Rows[0]["NumCasesSum"].ToString() || lbl_Mat_Unit.Text.Trim() != dt.Rows[0]["Mat_Unit"].ToString()
+                || lbl_DemandNumSum.Text.Trim() != dt.Rows[0]["DemandNumSum"].ToString() || RTB_ROUGH_SIZE.Text.Trim() != dt.Rows[0]["Rough_Size"].ToString()
                 || RTB_MANUFACTURER.Text.Trim() != dt.Rows[0]["MANUFACTURER"].ToString() || RTB_Mat_Rough_Weight.Text.Trim() != dt.Rows[0]["Mat_Rough_Weight"].ToString())
             {
                 string ID = lbl_ID.Text;
@@ -144,10 +147,8 @@ namespace mms.Plan
                 string TaskCode = dt.Rows[0]["TaskCode"].ToString();
                 string DemandDate = Convert.ToDateTime(RDP_DemandDate.SelectedDate).ToString("yyyy-MM-dd");
                 string Material_Name = dt.Rows[0]["Material_Name"].ToString();
-                string NumCasesSum = dt.Rows[0]["NumCasesSum"].ToString();
-                string DemandNumSum = dt.Rows[0]["DemandNumSum"].ToString();
-                string Mat_Unit = dt.Rows[0]["Mat_Unit"].ToString();
-                string Rough_Size = dt.Rows[0]["Rough_Size"].ToString();
+              
+                string Dinge_Size = dt.Rows[0]["Dinge_Size"].ToString();
                 string Rough_Spec = dt.Rows[0]["Rough_Spec"].ToString();
                 string Unit_Price = dt.Rows[0]["Unit_Price"].ToString();
                 string Mat_Rough_Weight = dt.Rows[0]["Mat_Rough_Weight"].ToString();
@@ -158,6 +159,11 @@ namespace mms.Plan
                 string Certification = RDDL_Certification.SelectedValue.ToString();
                 string Special_Needs = RTB_Special_Needs.Text.Trim();
                 string Urgency_Degre = RDDL_Urgency_Degre.SelectedValue.ToString();
+                string NumCasesSum = lbl_NumCasesSum.Text.Trim();
+                string Rough_Size = RTB_ROUGH_SIZE.Text.Trim();
+                string DemandNumSum = lbl_DemandNumSum.Text.Trim();
+                string Mat_Unit = lbl_Mat_Unit.Text.Trim();
+
                 string MaterialDept = dt.Rows[0]["MaterialDept"].ToString();
                 string Shipping_Address = RDDL_Shipping_Address.SelectedText.ToString();
                 string MANUFACTURER = RTB_MANUFACTURER.Text.Trim();
@@ -214,6 +220,7 @@ namespace mms.Plan
                          DemandNumSum + "','" +
                          Mat_Unit + "','" +
                          Rough_Size + "','" +
+                         Dinge_Size + "','" +
                          Rough_Spec + "','" +
                          Unit_Price + "','" +
                          Mat_Rough_Weight + "','" +

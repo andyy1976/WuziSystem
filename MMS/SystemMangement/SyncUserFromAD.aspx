@@ -1,6 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="SyncUserFromAD.aspx.cs" Inherits="mms.SystemMangement.SyncUserFromAD" %>
-<%@ Register TagPrefix="telerik" Namespace="Telerik.Web.UI" Assembly="Telerik.Web.UI, Version=2015.3.930.45, Culture=neutral, PublicKeyToken=121fae78165ba3d4" %>
-
+<%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">

@@ -522,7 +522,7 @@ namespace mms
                                     mdml.PIECE = Convert.ToDecimal(originalValue);
                                     break;
                                 case "DIMENSION"://尺寸
-                                    mdml.Rough_Size = originalValue;
+                                    mdml.Rough_Size = originalValue;//需求尺寸
                                     mdml.DIMENSION = originalValue;
                                     break;
                                 case "MANUFACTURER_ID"://指定生产厂家

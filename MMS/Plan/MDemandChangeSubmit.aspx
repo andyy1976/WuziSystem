@@ -110,13 +110,15 @@
                         </telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="Quantity" FilterControlAltText="Filter Quantity column" HeaderText="物资件数"  SortExpression="Quantity" UniqueName="Quantity" HeaderStyle-Width="110">
                         </telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="Rough_Size" FilterControlAltText="Filter Rough_Size column" HeaderText="物资尺寸"  SortExpression="Rough_Size" UniqueName="Rough_Size" HeaderStyle-Width="110">
+                        <telerik:GridBoundColumn DataField="Dinge_Size" FilterControlAltText="Filter Dinge_Size column" HeaderText="胚料尺寸"  SortExpression="Dinge_Size" UniqueName="Rough_Size" HeaderStyle-Width="110">
                         </telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="Rough_Spec" FilterControlAltText="Filter Rough_Spec column" HeaderText="物资规格"  SortExpression="Rough_Spec" UniqueName="Rough_Spec" HeaderStyle-Width="110">
                         </telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="DemandNumSum" FilterControlAltText="Filter DemandNumSum column" HeaderText="共计需求数量(kg)"  SortExpression="DemandNumSum" UniqueName="DemandNumSum" HeaderStyle-Width="110">
                         </telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="NumCasesSum" FilterControlAltText="Filter NumCasesSum column" HeaderText="共计需求件数"  SortExpression="NumCasesSum" UniqueName="NumCasesSum" HeaderStyle-Width="110">
+                        </telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="Rough_Size" FilterControlAltText="Filter Rough_Size column" HeaderText="需求尺寸"  SortExpression="Rough_Size" UniqueName="Rough_Size" HeaderStyle-Width="110">
                         </telerik:GridBoundColumn>
                         
                     </Columns>

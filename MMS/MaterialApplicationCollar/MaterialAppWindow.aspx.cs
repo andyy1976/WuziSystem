@@ -17,14 +17,13 @@ namespace mms.MaterialApplicationCollar
         DBInterface DBI;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["UserId"] == null) 
+            if (Session["UserName"] == null || Session["UserId"] == null) 
             {
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "info", "CloseWindow();", true);
                 return;
             }
             DBConn = ConfigurationManager.ConnectionStrings["MaterialManagerSystemConnectionString"].ToString();
             DBI = DBFactory.GetDBInterface(DBConn);
-
             if (!IsPostBack)
             {
                 string strSQL = "";
@@ -50,12 +49,11 @@ namespace mms.MaterialApplicationCollar
                     lbltitle.Text = "无需求物料申请";
                 }
 
-                //  strSQL = " select * from Sys_UserInfo_PWD where Isdel = 'false' and DomainAccount != '' and DomainAccount is not null and Dept = (select Dept from Sys_UserInfo_PWD where ID = '" + Session["UserId"].ToString() + "')" +
-                //     " and ID in (select UserID from Sys_UserInRole where RoleID in (select ID from Sys_RoleInfo where RoleName like '%车%间%调%度%员%' and Is_Del ='false')) ";
+              //  strSQL = " select * from Sys_UserInfo_PWD where Isdel = 'false' and DomainAccount != '' and DomainAccount is not null and Dept = (select Dept from Sys_UserInfo_PWD where ID = '" + Session["UserId"].ToString() + "')" +
+               //     " and ID in (select UserID from Sys_UserInRole where RoleID in (select ID from Sys_RoleInfo where RoleName like '%车%间%调%度%员%' and Is_Del ='false')) ";
 
                 strSQL = " select * from V_Get_Sys_User_byRole where Isdel = 'false' and DomainAccount != '' and DomainAccount is not null and ID ='" + Session["UserId"].ToString() + "' and RoleName like '%车%间%调%度%员%' and Is_Del ='false'";
                 DataTable dtdd = DBI.Execute(strSQL, true);
-
                 RDDL_DiaoDu.DataSource = dtdd;
                 RDDL_DiaoDu.DataTextField = "UserName";
                 RDDL_DiaoDu.DataValueField = "DomainAccount";
@@ -67,11 +65,13 @@ namespace mms.MaterialApplicationCollar
                     DataTable dtuserinfo = DBI.Execute(strSQL, true);
                     RTB_Applicant.Text = dtuserinfo.Rows[0]["UserName"].ToString();
                     RTB_ContactInformation.Text = dtuserinfo.Rows[0]["Phone"].ToString();
+
+             	   Session["UserAccount"] = dtuserinfo.Rows[0]["UserAccount"].ToString();
                 }
                 //  strSQL = " select * from Sys_UserInfo_PWD where IsDel = 'false' and DomainAccount != '' and DomainAccount is not null" +
                 //    " and ID in (select UserId from Sys_UserInRole where RoleID in (select ID from Sys_RoleInfo where RoleName like '%型%号%计%划%员%'))";
                 strSQL = " select * from V_Get_Sys_User_byRole where Isdel = 'false' and DomainAccount != '' and DomainAccount is not null and RoleName like '%型%号%计%划%员%' and Is_Del ='false'";
-    
+
                 DataTable dtxh = DBI.Execute(strSQL, true);
                 RDDL_XingHao.DataSource = dtxh;
                 RDDL_XingHao.DataTextField = "UserName";
@@ -82,7 +82,6 @@ namespace mms.MaterialApplicationCollar
                 //   strSQL = " select * from Sys_UserInfo_PWD where IsDel = 'false' and DomainAccount != '' and DomainAccount is not null" +
                 //      " and ID in (select UserId from Sys_UserInRole where RoleID in (select ID from Sys_RoleInfo where RoleName like '%物%资%计%划%员%'))";
                 strSQL = " select * from V_Get_Sys_User_byRole where Isdel = 'false' and DomainAccount != '' and DomainAccount is not null and RoleName like '%物%资%计%划%员%' and Is_Del ='false'";
-
                 DataTable dtwz = DBI.Execute(strSQL, true);
                 RDDL_WuZi.DataSource = dtwz;
                 RDDL_WuZi.DataTextField = "UserName";
@@ -138,8 +137,8 @@ namespace mms.MaterialApplicationCollar
                     lbl_Mat_Rough_Weight.Text = dtma.Rows[0]["Mat_Rough_Weight"].ToString();
                     lb1_MaterialsDes.Text = dtma.Rows[0]["MaterialsDes"].ToString();
                     lbl_Mat_Unit.Text = dtma.Rows[0]["Mat_Unit"].ToString();
-                    lbl_Rough_Size.Text = dtma.Rows[0]["Rough_Size"].ToString();
-
+                    RTB_Rough_Size.Text = dtma.Rows[0]["Rough_Size"].ToString();
+                    lbl_Dinge_Size.Text = dtma.Rows[0]["Dinge_Size"].ToString();
                     RDDL_DiaoDu.SelectedIndex = 0;
                     RDDL_XingHao.SelectedIndex = 0;
                     RDDL_WuZi.SelectedIndex = 0;
@@ -166,7 +165,8 @@ namespace mms.MaterialApplicationCollar
 
                         lbl_Rough_Spec.Text = dt.Rows[0]["Rough_Spec"].ToString();
                         lbl_Mat_Unit.Text = dt.Rows[0]["Mat_Unit"].ToString();
-                        lbl_Rough_Size.Text = dt.Rows[0]["Rough_Size"].ToString();
+                        RTB_Rough_Size.Text = dt.Rows[0]["Rough_Size"].ToString();
+                        lbl_Dinge_Size.Text = dt.Rows[0]["Dinge_Size"].ToString();
                         //lbl_AppQuantity.Text = Convert.ToDouble(dt.Rows[0]["AppQuantity"].ToString()).ToString();
                         RTB_Quantity.Text = Convert.ToDouble(dt.Rows[0]["NumCasesSum"].ToString()).ToString();
                         RTB_PleaseTakeQuality.Text = Convert.ToDouble(dt.Rows[0]["DemandNumSum"].ToString()).ToString();
@@ -229,19 +229,16 @@ namespace mms.MaterialApplicationCollar
             string Dept = HF_DeptCode.Value;
             string ApplicationTime = RDP_ApplicationTime.SelectedDate.ToString();
             string ContactInformation = RTB_ContactInformation.Text.Trim();
-
-            string TaskCode = RTB_TaskCode.Text;
-            string DrawingNo = lbl_DrawingNo.Text;
-            string TheMaterialWay = RDDL_TheMaterialWay.SelectedItem.Text;
-            //string Draft_Code = ""; //lbl_Draft_Code.Text;
+            string TaskCode = RTB_TaskCode.Text.Trim();
+            string DrawingNo = lbl_DrawingNo.Text.Trim();
             string Quantity = RTB_Quantity.Text.Trim();
+            string PleaseTakeQuality = RTB_PleaseTakeQuality.Text.Trim();
+            string TheMaterialWay = RDDL_TheMaterialWay.SelectedItem.Text;
             string FeedingTime = RDP_FeedingTime.SelectedDate.ToString();
             string IsDispatch = RB_IsDispatch.Checked.ToString();
             string IsConfirm = RB_IsConfirm.Checked.ToString();
             string Remark = RTB_Remark.Text.Trim();
-
-            string PleaseTakeQuality = RTB_PleaseTakeQuality.Text.Trim();
-
+            string ItemCode = lbl_ItemCode.Text.Trim();
             string Material_Name = lbl_Material_Name.Text;
             string Material_Mark = lbl_Material_Mark.Text;
             string CN_Material_State = lbl_CN_Material_State.Text;
@@ -250,9 +247,8 @@ namespace mms.MaterialApplicationCollar
             string Mat_Rough_Weight = lbl_Mat_Rough_Weight.Text;
             string MaterialsDes = lb1_MaterialsDes.Text;
             string Mat_Unit = lbl_Mat_Unit.Text;
-            string Rough_Size = lbl_Rough_Size.Text;
-            string ItemCode = lbl_ItemCode.Text.Trim();
-
+            string Rough_Size = RTB_Rough_Size.Text;
+            string Dinge_Size = lbl_Dinge_Size.Text.Trim();
             var diaodu = RDDL_DiaoDu.SelectedValue;
             var xinghao = RDDL_XingHao.SelectedValue;
             var wuzi = RDDL_WuZi.SelectedValue;
@@ -308,11 +304,11 @@ namespace mms.MaterialApplicationCollar
                     strSQL = "declare @id int";
                     strSQL += " Insert into MaterialApplication (Type, Material_Id, Applicant, UserAccount,Dept, ApplicationTime, ContactInformation, TheMaterialWay, TaskCode, Drawing_No"
                         + " , Draft_Code, Quantity, FeedingTime, IsDispatch, IsConfirm, Remark, MaterialType, Material_Name, Material_Mark, CN_Material_State, Material_Tech_Condition"
-                        + " , Rough_Spec, Mat_Rough_Weight,MaterialsDes, Mat_Unit, Rough_Size, PleaseTakeQuality, AppState, ReturnReason, Is_Del, ItemCode,DiaoDuApprove, XingHaoJiHuaYuanApprove, WuZiJiHuaYuanApprove, UserId, UserAccount)"
+                        + " , Rough_Spec, Mat_Rough_Weight,MaterialsDes, Mat_Unit,Rough_Size,Dinge_Size,PleaseTakeQuality, AppState, ReturnReason, Is_Del, ItemCode,DiaoDuApprove, XingHaoJiHuaYuanApprove, WuZiJiHuaYuanApprove, UserId, UserAccount)"
                         + " values ('" + HFType.Value + "','" + HFMDMLID.Value + "', '" + Applicant + "','" + Session["UserAccount"] + "','" + Dept + "','" + ApplicationTime + "','" + ContactInformation + "','" + TheMaterialWay + "','" + TaskCode + "','" + DrawingNo + "'"
                         + " ,Null,'" + Quantity + "','" + FeedingTime + "','" + IsDispatch + "','" + IsConfirm + "','" + Remark + "'"
                         + " ,Null,'" + Material_Name + "','" + Material_Mark + "','" + CN_Material_State + "','" + Material_Tech_Condition + "'"
-                        + " ,'" + Rough_Spec + "','" + Mat_Rough_Weight + "','" + MaterialsDes + "','" + Mat_Unit + "','" + Rough_Size + "','" + PleaseTakeQuality + "','1',Null,'false'"
+                        + " ,'" + Rough_Spec + "','" + Mat_Rough_Weight + "','" + MaterialsDes + "','" + Mat_Unit + "','" + Rough_Size + "','" +Dinge_Size+"','"+ PleaseTakeQuality + "','1',Null,'false'"
                         + " ,'" + ItemCode + "','" +diaodu + "','" + xinghao + "','" + wuzi + "','" + Session["UserId"].ToString() + "'"
                         + " ,(select DomainAccount from Sys_UserInfo_PWD where Id = '" + Session["UserId"].ToString() + "'))" +
                         " select @id = @@identity"

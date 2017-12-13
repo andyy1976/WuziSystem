@@ -39,11 +39,11 @@ namespace mms
             PreparesMarerialsHeadModel headmodel = new PreparesMarerialsHeadModel()
             {
                 DeptApproveAccount = "TJ\\" + dtmdpl.Rows[0]["DeptApproveAccount"].ToString(),                                             //车间
-                PlanApproveAccount = dtmdpl.Rows[0]["Submit_Type"].ToString() == "3" ? "" : "TJ\\" + dtmdpl.Rows[0]["PlanOrTecApproveAccount"].ToString(),                    //工艺处（工艺处、生产处有一个就可以）
+                PlanApproveAccount = "TJ\\" + dtmdpl.Rows[0]["PlanOrTecApproveAccount"].ToString(),                    //工艺处（工艺处、生产处有一个就可以）
                 ProcessInstID = 0,                                                                                               //流程ID
                 RequestID = Convert.ToInt32(MDPLID),
                 SubmitDate = Convert.ToDateTime(dtmdpl.Rows[0]["Submit_Date"].ToString()).ToString("yyyy-MM-dd"),
-                TecApproveAccount = dtmdpl.Rows[0]["Submit_Type"].ToString() == "3" ? "TJ\\" + dtmdpl.Rows[0]["PlanOrTecApproveAccount"].ToString() : "",                     //生产处
+                TecApproveAccount = dtmdpl.Rows[0]["Submit_Type"].ToString() == "3" ? "TJ\\" + dtmdpl.Rows[0]["MaterialPlanApproveAccount"].ToString() : "",    //物资综合计划员
                 UserAccount = "TJ\\" + dtmdpl.Rows[0]["DomainAccount"].ToString(),
                 UserName = dtmdpl.Rows[0]["UserName"].ToString(),
                 AppState = dtmdpl.Rows[0]["Submit_Type"].ToString()
@@ -65,6 +65,7 @@ namespace mms
                     ProcessInstID = 0,                                                           //流程ID
                     Quantity = dtmdml.Rows[i]["NumCasesSum"].ToString(),
                     RoughSize = dtmdml.Rows[i]["Rough_Size"].ToString(),
+                //    DingeSize = dtmdml.Rows[i]["Dinge_Size"].ToString(),
                     RoughSpec = dtmdml.Rows[i]["Rough_Spec"].ToString(),
                     SecretLevel = dtmdml.Rows[i]["Secret_Level"].ToString(),
                     SpecialNeeds = dtmdml.Rows[i]["Special_Needs"].ToString(),
@@ -127,11 +128,11 @@ namespace mms
             PreparesMarerialsHeadModel headmodel = new PreparesMarerialsHeadModel()
             {
                 DeptApproveAccount = "TJ\\" + dtmdpl.Rows[0]["DeptApproveAccount"].ToString(),                                             //车间
-                PlanApproveAccount = dtmdpl.Rows[0]["Submit_Type"].ToString() == "3" ? "" : "TJ\\" + dtmdpl.Rows[0]["PlanOrTecApproveAccount"].ToString(),                    //工艺处（工艺处、生产处有一个就可以）
+                PlanApproveAccount = "TJ\\" + dtmdpl.Rows[0]["PlanOrTecApproveAccount"].ToString(),                    //工艺处（工艺处、生产处有一个就可以）
                 ProcessInstID = 0,                                                                                               //流程ID
                 RequestID = Convert.ToInt32(MDPLID),
                 SubmitDate = Convert.ToDateTime(dtmdpl.Rows[0]["Submit_Date"].ToString()).ToString("yyyy-MM-dd"),
-                TecApproveAccount = dtmdpl.Rows[0]["Submit_Type"].ToString() == "3" ? "TJ\\" + dtmdpl.Rows[0]["PlanOrTecApproveAccount"].ToString() : "",                     //生产处
+                TecApproveAccount = dtmdpl.Rows[0]["Submit_Type"].ToString() == "3" ? "TJ\\" + dtmdpl.Rows[0]["MaterialPlanApproveAccount"].ToString() : "",    //物资综合计划员
                 UserAccount = "TJ\\" + dtmdpl.Rows[0]["DomainAccount"].ToString(),
                 UserName = dtmdpl.Rows[0]["UserName"].ToString(),
                 AppState = dtmdpl.Rows[0]["Submit_Type"].ToString()
@@ -153,6 +154,7 @@ namespace mms
                     ProcessInstID = 0,                                                           //流程ID
                     Quantity = dtmdml.Rows[i]["NumCasesSum"].ToString(),
                     RoughSize = dtmdml.Rows[i]["Rough_Size"].ToString(),
+                 //   DingeSize = dtmdml.Rows[i]["Dinge_Size"].ToString(),
                     RoughSpec = dtmdml.Rows[i]["Rough_Spec"].ToString(),
                     SecretLevel = dtmdml.Rows[i]["Secret_Level"].ToString(),
                     SpecialNeeds = dtmdml.Rows[i]["Special_Needs"].ToString(),

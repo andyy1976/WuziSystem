@@ -29,7 +29,6 @@ namespace mms.Plan
             {
                 Response.Redirect("/Default.aspx");
             }
-    
             UserID = Session["UserId"].ToString();
             if (!IsPostBack)
             {
@@ -424,6 +423,7 @@ namespace mms.Plan
             public string Mat_Technics { get; set; }
             public string Rough_Spec { get; set; }
             public string Rough_Size { get; set; }
+            public string Dinge_Size { get; set; }
             public string MaterialsDes { get; set; }
             public string StandAlone { get; set; }
             public string ThisTimeOperation { get; set; }
@@ -534,6 +534,7 @@ namespace mms.Plan
                     MDDLD.Mat_Technics = dtGetByDrawingNoAndPhase.Rows[0]["CN_Mat_Technics"].ToString().Trim();
                     MDDLD.Rough_Spec = dtGetByDrawingNoAndPhase.Rows[0]["CN_Rough_Spec"].ToString().Trim();
                     MDDLD.Rough_Size = dtGetByDrawingNoAndPhase.Rows[0]["CN_Rough_Size"].ToString().Trim();
+                    MDDLD.Dinge_Size = dtGetByDrawingNoAndPhase.Rows[0]["CN_Rough_Size"].ToString().Trim();
                     MDDLD.CN_Material_State = dtGetByDrawingNoAndPhase.Rows[0]["CN_Material_State"].ToString();
 
                     MDDLD.Quantity = MDDLD.ThisTimeOperation;
@@ -588,6 +589,7 @@ namespace mms.Plan
                 MDDLD.Mat_Technics = dtGetChildren.Rows[i]["CN_Mat_Technics"].ToString().Trim();
                 MDDLD.Rough_Spec = dtGetChildren.Rows[i]["CN_Rough_Spec"].ToString().Trim();
                 MDDLD.Rough_Size = dtGetChildren.Rows[i]["CN_Rough_Size"].ToString().Trim();
+                MDDLD.Dinge_Size = dtGetChildren.Rows[i]["CN_Rough_Size"].ToString().Trim();
                 MDDLD.CN_Material_State = dtGetChildren.Rows[i]["CN_Material_State"].ToString();
 
                 //SmarTeam数据
@@ -673,7 +675,7 @@ namespace mms.Plan
                 + " (VerCode, Class_Id, Object_Id, Stage, Material_State, Material_Tech_Condition, Material_Code, ParentId, Material_Spec, TDM_Description"
                 + " , Material_Name, PackId, TaskId, DraftId, Drawing_No, Technics_Line, Technics_Comment, Material_Mark, ItemCode1, ItemCode2"
                 + " , MaterialsNum, Mat_Unit, Lingjian_Type, Mat_Rough_Weight, Mat_Pro_Weight, Mat_Weight, Mat_Efficiency, Mat_Comment, Mat_Technics, Rough_Spec"
-                + " , Rough_Size, MaterialsDes, StandAlone, ThisTimeOperation, PredictDeliveryDate, DemandNumSum, NumCasesSum, DemandDate, Quantity, Tech_Quantity"
+                + " , Rough_Size,Dinge_Size, MaterialsDes, StandAlone, ThisTimeOperation, PredictDeliveryDate, DemandNumSum, NumCasesSum, DemandDate, Quantity, Tech_Quantity"
                 + " , Memo_Quantity, Test_Quantity, Required_Quantity, Other_Quantity, Ballon_No, Comment, Is_allow_merge, Import_Date, User_ID, Is_del"
                 + " ,TaskCode, MaterialDept, MissingDescription, CN_Material_State)"
                 + " values ('1','" + MDDLD.Class_Id + "','" + MDDLD.Object_Id + "','" + MDDLD.Stage + "','0'"
@@ -682,7 +684,7 @@ namespace mms.Plan
                 + " ,'" + MDDLD.Technics_Line + "','" + MDDLD.Technics_Comment + "','" + MDDLD.Material_Mark + "','" + MDDLD.ItemCode1 + "','" + MDDLD.ItemCode2 + "'"
                 + " ,Null,'" + MDDLD.Mat_Unit + "','" + MDDLD.Lingjian_Type + "'," + (MDDLD.Mat_Rough_Weight == "" ? "Null" : "'" + MDDLD.Mat_Rough_Weight + "'") + "," + (MDDLD.Mat_Pro_Weight == "" ? "Null" : "'" + MDDLD.Mat_Pro_Weight + "'")
                 + " ,'" + MDDLD.Mat_Weight + "','" + MDDLD.Mat_Efficiency + "','" + MDDLD.Mat_Comment + "','" + MDDLD.Mat_Technics + "','" + MDDLD.Rough_Spec + "'"
-                + " ,'" + MDDLD.Rough_Size + "',''," + (MDDLD.StandAlone == "" ? "Null" : ("'" + MDDLD.StandAlone + "'")) + "," + (MDDLD.ThisTimeOperation == "" ? "Null" : "'" + MDDLD.ThisTimeOperation + "'") + "," + (MDDLD.PredictDeliveryDate == "" ? "Null" : "'" + MDDLD.PredictDeliveryDate + "'")
+                + " ,'" + MDDLD.Rough_Size + "','" + MDDLD.Dinge_Size + "',''," + (MDDLD.StandAlone == "" ? "Null" : ("'" + MDDLD.StandAlone + "'")) + "," + (MDDLD.ThisTimeOperation == "" ? "Null" : "'" + MDDLD.ThisTimeOperation + "'") + "," + (MDDLD.PredictDeliveryDate == "" ? "Null" : "'" + MDDLD.PredictDeliveryDate + "'")
                 + " ," + (MDDLD.DemandNumSum == "" ? "Null" : "'" + MDDLD.DemandNumSum + "'") + "," + (MDDLD.NumCasesSum == "" ? "Null" : "'" + MDDLD.NumCasesSum + "'") + ",Null," + (MDDLD.Quantity == "" ? "Null" : "'" + MDDLD.Quantity + "'") + ",'" + MDDLD.Tech_Quantity + "'"
                 + " ,'" + MDDLD.Memo_Quantity + "','" + MDDLD.Test_Quantity + "','" + MDDLD.Required_Quantity + "','" + MDDLD.Other_Quantity + "','" + MDDLD.Ballon_No + "'"
                 + " ,'" + MDDLD.Comment + "','false',GetDate(),'" + UserID + "','false'"
@@ -873,7 +875,12 @@ namespace mms.Plan
             {
                 throw new Exception("刷新页面出错，请按F5刷新！");
             }
+        }
 
+        protected void RadButton_ExportExcel_Click(object sender, EventArgs e)
+        {
+            RadGridP_Pack.ExportSettings.FileName = " 型号投产计划包列表" + DateTime.Now.ToString("yyyy-MM-dd");
+            RadGridP_Pack.MasterTableView.ExportToExcel();
         }
     }
 }

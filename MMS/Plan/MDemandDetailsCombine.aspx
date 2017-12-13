@@ -138,7 +138,9 @@
                             </telerik:GridBoundColumn>
                             <telerik:GridBoundColumn DataField="Mat_Pro_Weight" ItemStyle-Width="70px" HeaderStyle-Width="70px" HeaderText="每产品质量"   SortExpression="Mat_Pro_Weight" UniqueName="Mat_Pro_Weight">
                             </telerik:GridBoundColumn>
-                            <telerik:GridBoundColumn DataField="Rough_Size" ItemStyle-Width="70px" HeaderStyle-Width="70px" HeaderText="物资尺寸"  SortExpression="Rough_Size" UniqueName="Rough_Size">
+                            <telerik:GridBoundColumn DataField="Rough_Size" ItemStyle-Width="70px" HeaderStyle-Width="70px" HeaderText="需求尺寸"  SortExpression="Rough_Size" UniqueName="Rough_Size">
+                            </telerik:GridBoundColumn>
+                            <telerik:GridBoundColumn DataField="Dinge_Size" ItemStyle-Width="70px" HeaderStyle-Width="70px" HeaderText="胚料尺寸"  SortExpression="Dinge_Size" UniqueName="Dinge_Size">
                             </telerik:GridBoundColumn>
                             <telerik:GridBoundColumn DataField="DemandNumSum" ItemStyle-Width="70px" HeaderStyle-Width="70px" HeaderText="需求数量"   SortExpression="DemandNumSum" UniqueName="DemandNumSum">
                             </telerik:GridBoundColumn>
@@ -206,7 +208,8 @@
                                         <telerik:RadTextBox ID="Mat_Pro_Weight" runat="server" Width="70px" AutoPostBack="true" OnTextChanged="Mat_Mat_Pro_Weight_TextChanged"></telerik:RadTextBox>
                                     </ItemTemplate>
                                 </telerik:GridTemplateColumn>
-
+                                <telerik:GridBoundColumn DataField="Dinge_Size" ItemStyle-Width="70px" HeaderStyle-Width="70px" HeaderText="胚料尺寸"  SortExpression="Dinge_Size" UniqueName="Dinge_Size" Visible="false" >
+                                </telerik:GridBoundColumn>
 
                                 <telerik:GridTemplateColumn DataField="Mat_Rough_Weight" ItemStyle-Width="70px" HeaderStyle-Width="70px" HeaderText="单件质量"  SortExpression="Mat_Rough_Weight" UniqueName="Mat_Rough_Weight">
                                    <ItemTemplate>
@@ -214,7 +217,7 @@
                                     </ItemTemplate>
                                 </telerik:GridTemplateColumn>
 
-                                <telerik:GridTemplateColumn DataField="Rough_Size" ItemStyle-Width="70px" HeaderStyle-Width="70px" HeaderText="物资尺寸"  SortExpression="Rough_Size" UniqueName="Rough_Size">
+                                <telerik:GridTemplateColumn DataField="Rough_Size" ItemStyle-Width="70px" HeaderStyle-Width="70px" HeaderText="需求尺寸"  SortExpression="Rough_Size" UniqueName="Rough_Size">
                                    <ItemTemplate>
                                         <telerik:RadTextBox ID="Rough_Size" runat="server" Width="70px" AutoPostBack="true" OnTextChanged="Rough_Size_TextChanged"></telerik:RadTextBox>
                                     </ItemTemplate>

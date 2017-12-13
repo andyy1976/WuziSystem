@@ -107,11 +107,13 @@
                     <telerik:RadTextBox ID="RTB_billno" runat="server" Width="100px"></telerik:RadTextBox></td>
                 <td style="text-align: right;">单据日期：</td>
                 <td>
-                    <telerik:RadDatePicker ID="RDP_Startbilldate" runat="server" Width="100px"></telerik:RadDatePicker>
+                    <telerik:RadDatePicker ID="RDP_Startbilldate" runat="server" Width="100px" DateInput-ClientEvents-OnKeyPress='EnterKeyProcessing'>
+                    </telerik:RadDatePicker>
                 </td>
                 <td>～</td>
                 <td>
-                    <telerik:RadDatePicker ID="RDP_Endbilldate" runat="server" Width="120px"></telerik:RadDatePicker>
+                    <telerik:RadDatePicker ID="RDP_Endbilldate" runat="server" Width="120px" DateInput-ClientEvents-OnKeyPress='EnterKeyProcessing'>
+                    </telerik:RadDatePicker>
                 </td>
                 <td>物资编码：</td>
                 <td>
@@ -329,7 +331,8 @@
                             <telerik:RadTextBox ID="RTB_ReturnApplyUser" runat="server" Width="120px"></telerik:RadTextBox></td>
                         <td style="text-align: right; width: 100px;">退库时间：</td>
                         <td style="width: 140px;">
-                            <telerik:RadDatePicker ID="RDP_ApplicationTime" runat="server" Width="120px"></telerik:RadDatePicker>
+                            <telerik:RadDatePicker ID="RDP_ApplicationTime" runat="server" Width="120px" DateInput-ClientEvents-OnKeyPress='EnterKeyProcessing'>
+                            </telerik:RadDatePicker>
                         </td>
                         <td style="text-align: right; width: 100px;">联系方式：</td>
                         <td style="width: 140px;">

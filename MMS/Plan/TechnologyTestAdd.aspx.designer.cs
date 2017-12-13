@@ -733,13 +733,13 @@ namespace mms.Plan {
         protected global::Telerik.Web.UI.RadTextBox txt_Rough_Spec;
         
         /// <summary>
-        /// txt_Rough_Size 控件。
+        /// RTB_Dinge_Size 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::Telerik.Web.UI.RadTextBox txt_Rough_Size;
+        protected global::Telerik.Web.UI.RadTextBox RTB_Dinge_Size;
         
         /// <summary>
         /// txt_Mat_Unit 控件。
@@ -778,13 +778,13 @@ namespace mms.Plan {
         protected global::Telerik.Web.UI.RadTextBox RTB_Unit_Price;
         
         /// <summary>
-        /// RTB_Material_Size_Required 控件。
+        /// RTB_Rough_Size 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::Telerik.Web.UI.RadTextBox RTB_Material_Size_Required;
+        protected global::Telerik.Web.UI.RadTextBox RTB_Rough_Size;
         
         /// <summary>
         /// txt_DemandNumSum 控件。

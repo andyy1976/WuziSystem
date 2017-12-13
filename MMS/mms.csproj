@@ -14,16 +14,16 @@
     <RootNamespace>mms</RootNamespace>
     <AssemblyName>mms</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <UseIISExpress>true</UseIISExpress>
-    <IISExpressSSLPort />
-    <IISExpressAnonymousAuthentication>disabled</IISExpressAnonymousAuthentication>
-    <IISExpressWindowsAuthentication>enabled</IISExpressWindowsAuthentication>
-    <IISExpressUseClassicPipelineMode />
     <SccProjectName>SAK</SccProjectName>
     <SccLocalPath>SAK</SccLocalPath>
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
     <UseGlobalApplicationHostFile />
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication>disabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>enabled</IISExpressWindowsAuthentication>
+    <IISExpressUseClassicPipelineMode />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -89,31 +89,20 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
-    <Reference Include="Telerik.Web.Spreadsheet">
-      <HintPath>..\lib\RCAJAX\2017.2.503.45\AdditionalLibraries\Bin45\Telerik.Web.Spreadsheet.dll</HintPath>
+    <Reference Include="Telerik.Web.Design, Version=2017.2.503.45, Culture=neutral, PublicKeyToken=121fae78165ba3d4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Telerik.Web.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Web.Device.Detection">
+      <HintPath>..\lib\Telerik.Web.Device.Detection.dll</HintPath>
     </Reference>
     <Reference Include="Telerik.Web.UI, Version=2017.2.503.45, Culture=neutral, PublicKeyToken=121fae78165ba3d4, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\teleric new\Telerik.Web.UI.dll</HintPath>
+      <HintPath>..\lib\Telerik.Web.UI.dll</HintPath>
     </Reference>
     <Reference Include="Telerik.Web.UI.Skins, Version=2017.2.503.45, Culture=neutral, PublicKeyToken=121fae78165ba3d4, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\teleric new\Telerik.Web.UI.Skins.dll</HintPath>
-    </Reference>
-    <Reference Include="Telerik.Windows.Documents.Core">
-      <HintPath>..\lib\RCAJAX\2017.2.503.45\AdditionalLibraries\Bin45\Telerik.Windows.Documents.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Telerik.Windows.Documents.Flow">
-      <HintPath>..\lib\RCAJAX\2017.2.503.45\AdditionalLibraries\Bin45\Telerik.Windows.Documents.Flow.dll</HintPath>
-    </Reference>
-    <Reference Include="Telerik.Windows.Documents.Spreadsheet">
-      <HintPath>..\lib\RCAJAX\2017.2.503.45\AdditionalLibraries\Bin45\Telerik.Windows.Documents.Spreadsheet.dll</HintPath>
-    </Reference>
-    <Reference Include="Telerik.Windows.Documents.Spreadsheet.FormatProviders.OpenXml">
-      <HintPath>..\lib\RCAJAX\2017.2.503.45\AdditionalLibraries\Bin45\Telerik.Windows.Documents.Spreadsheet.FormatProviders.OpenXml.dll</HintPath>
-    </Reference>
-    <Reference Include="Telerik.Windows.Zip">
-      <HintPath>..\lib\RCAJAX\2017.2.503.45\AdditionalLibraries\Bin45\Telerik.Windows.Zip.dll</HintPath>
+      <HintPath>..\lib\Telerik.Web.UI.Skins.dll</HintPath>
     </Reference>
     <Reference Include="ThoughtWorks.QRCode">
       <HintPath>..\lib\ThoughtWorks.QRCode.dll</HintPath>
@@ -2253,7 +2242,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>1196</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
@@ -2265,7 +2254,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties UseJQuerySupport="True" UseAjaxifiedTemplates="True" />
+      <UserProperties UseAjaxifiedTemplates="True" UseJQuerySupport="True" />
     </VisualStudio>
   </ProjectExtensions>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

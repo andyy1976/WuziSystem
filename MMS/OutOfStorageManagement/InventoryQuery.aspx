@@ -47,7 +47,12 @@
     <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" runat="server" Skin="Default"></telerik:RadAjaxLoadingPanel>
     <telerik:RadCodeBlock ID="RadCodeBlock1" runat="server">
         <script type="text/javascript">
-            
+        function EnterKeyProcessing(sender, eventArgs) {
+            var c = eventArgs.get_keyCode();
+            if ((c == 13)) {
+                eventArgs.set_cancel(true);
+            }
+        }
         </script>
     </telerik:RadCodeBlock>
     <asp:HiddenField ID="HF_DeptID" runat="server" />
@@ -60,10 +65,16 @@
     <telerik:RadMultiPage ID="RadMultiPage1" runat="server">
         <telerik:RadPageView ID="RadPageView1" runat="server" Selected="true">
             <div style="width:100%; margin-top:20px;">
-                日期：<telerik:RadDatePicker ID="RDP_Start1" runat="server" Width="100px"></telerik:RadDatePicker>
-                ～<telerik:RadDatePicker ID="RDP_End1" runat="server" Width="100px"></telerik:RadDatePicker>
-                物资名称：<telerik:RadTextBox ID="RTB_Material_Name1" runat="server" Width="100px"></telerik:RadTextBox>
-                物资编码：<telerik:RadTextBox ID="RTB_ItemCode11" runat="server" Width="100px"></telerik:RadTextBox>
+                日期：<telerik:RadDatePicker ID="RDP_Start1" runat="server" Width="100px" DateInput-ClientEvents-OnKeyPress='EnterKeyProcessing'>
+                      </telerik:RadDatePicker>
+                    ～<telerik:RadDatePicker ID="RDP_End1" runat="server" Width="100px" DateInput-ClientEvents-OnKeyPress='EnterKeyProcessing'>
+                      </telerik:RadDatePicker>
+                物资名称：<telerik:RadTextBox ID="RTB_Material_Name1" runat="server" Width="100px">
+                                                    <ClientEvents OnKeyPress="EnterKeyProcessing" />
+                     </telerik:RadTextBox>
+                物资编码：<telerik:RadTextBox ID="RTB_ItemCode11" runat="server" Width="100px">
+                                                    <ClientEvents OnKeyPress="EnterKeyProcessing" />
+                     </telerik:RadTextBox>
                 <telerik:RadButton ID="RB_Query1" runat="server" Text="库存查询" OnClick="RB_Query1_Click"></telerik:RadButton>
             </div>
             <div style="width:100%;">

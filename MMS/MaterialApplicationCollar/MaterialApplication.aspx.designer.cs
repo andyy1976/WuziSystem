@@ -175,6 +175,15 @@ namespace mms.MaterialApplicationCollar {
         protected global::Telerik.Web.UI.RadTextBox RTB_PleaseTakeQuality;
         
         /// <summary>
+        /// RTB_Rough_Size 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadTextBox RTB_Rough_Size;
+        
+        /// <summary>
         /// RTB_Remark 控件。
         /// </summary>
         /// <remarks>
@@ -274,13 +283,13 @@ namespace mms.MaterialApplicationCollar {
         protected global::Telerik.Web.UI.RadTextBox RTB_Rough_Spec;
         
         /// <summary>
-        /// RTB_Rough_Size 控件。
+        /// RTB_Dinge_Size 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::Telerik.Web.UI.RadTextBox RTB_Rough_Size;
+        protected global::Telerik.Web.UI.RadTextBox RTB_Dinge_Size;
         
         /// <summary>
         /// RTB_Mat_Unit 控件。

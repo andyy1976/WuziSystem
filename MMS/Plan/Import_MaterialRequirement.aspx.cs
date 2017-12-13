@@ -52,6 +52,7 @@ namespace mms.Plan
             public string Mat_Technics { get; set; }
             public string Rough_Spec { get; set; }
             public string Rough_Size { get; set; }
+            public string Dinge_Size { get; set; }
             public string MaterialsDes { get; set; }
             public System.Nullable<int> StandAlone { get; set; }
             public System.Nullable<int> ThisTimeOperation { get; set; }
@@ -87,7 +88,7 @@ namespace mms.Plan
             public string Shipping_Address { get; set; }
             public string Certification { get; set; }
             public string Manufacturer { get; set; }
-            public string Attribute4 { get; set; } 
+            public string Attribute4 { get; set; }
         }
          #endregion
         private static DataTable GridSource1;
@@ -122,6 +123,7 @@ namespace mms.Plan
                     InitTable.Columns.Add("NumCasesSum");
                     InitTable.Columns.Add("Mat_Unit");
                     InitTable.Columns.Add("Quantity");
+                    InitTable.Columns.Add("Dinge_Size");
                     InitTable.Columns.Add("Rough_Size");
                     InitTable.Columns.Add("Rough_Spec");
                     InitTable.Columns.Add("DemandDate");
@@ -395,26 +397,57 @@ namespace mms.Plan
                 if (TaskID != "")
                 {
                     strSQL =
-                        " select * , 'false' as checked, case when is_del='1' then '取消提交' else case when Material_State = '7' then '取消提交' else '需重新提交' end  end as mstate" +
+                        " select M_Demand_DetailedList_Draft.* , 'false' as checked, case when is_del='1' then '取消提交' else case when Material_State = '7' then '取消提交' else '需重新提交' end  end as mstate" +
                         " , Convert(nvarchar(50), (select Convert(int,sum(NumCasesSum)) from M_Demand_Merge_List where Correspond_Draft_Code = Convert(nvarchar(50), M_Demand_DetailedList_Draft.ID))) as quantity1" +
+                       
+                        ",CUX_DM_URGENCY_LEVEL.DICT_Name as UrgencyDegre, CUX_DM_USAGE.DICT_Name as UseDes " +
                         ",case when LingJian_Type='1' then '标准件' else case when LingJian_Type='2' then '成品件'  else case when LingJian_Type='3' then '通用件' else case when LingJian_Type='4' then '专用件' else case when LingJian_Type='5' then '组件'   else '其它' end  end end end end as LingJian_Type1" +
-                        " from M_Demand_DetailedList_Draft where PackId = '" + Request.QueryString["PackId"].ToString() + "' and ParentId_For_Combine= 0" + " and Combine_State!= 2" + " and ((Is_del = 'false' and Material_State in ('2','7')) or (Is_del = 'true' and Material_State in ('1','2','6','7')))" +
-                        " union all select *, 'false' as checked, '未提交' as mstate, '0' as quantity1" +
-                        ",case when LingJian_Type='1' then '标准件' else case when LingJian_Type='2' then '成品件'  else case when LingJian_Type='3' then '通用件' else case when LingJian_Type='4' then '专用件' else case when LingJian_Type='5' then '组件'   else '其它' end  end end end end as LingJian_Type1" +
+                       
+                        " from M_Demand_DetailedList_Draft"+
+                        " left join GetBasicdata_T_Item as CUX_DM_URGENCY_LEVEL on CUX_DM_URGENCY_LEVEL.DICT_CODE = M_Demand_DetailedList_Draft.Urgency_Degre and DICT_CLASS='CUX_DM_URGENCY_LEVEL'" +
+                        " left join GetBasicdata_T_Item as CUX_DM_USAGE on CUX_DM_USAGE.DICT_CODE = M_Demand_DetailedList_Draft.Use_Des and CUX_DM_USAGE.DICT_CLASS='CUX_DM_USAGE'"+
 
-                        " from M_Demand_DetailedList_Draft where PackId = '" + Request.QueryString["PackId"].ToString() +"' and TaskId='"+TaskID+ "' and ParentId_For_Combine= 0" + " and Combine_State!= 2" + " and is_del = 'false' and Material_State = '0' order by ID";
+                        "where PackId = '" + Request.QueryString["PackId"].ToString() + "' and ParentId_For_Combine= 0" + " and Combine_State!= 2" + " and ((Is_del = 'false' and Material_State in ('2','7')) or (Is_del = 'true' and Material_State in ('1','2','6','7')))" +
+
+                        " union all select M_Demand_DetailedList_Draft.*, 'false' as checked, '未提交' as mstate, '0' as quantity1" +
+                        ",CUX_DM_URGENCY_LEVEL.DICT_Name as UrgencyDegre, CUX_DM_USAGE.DICT_Name as UseDes " +
+                        ",case when LingJian_Type='1' then '标准件' else case when LingJian_Type='2' then '成品件'  else case when LingJian_Type='3' then '通用件' else case when LingJian_Type='4' then '专用件' else case when LingJian_Type='5' then '组件' else '其它' end  end end end end as LingJian_Type1" +
+    
+                        " from M_Demand_DetailedList_Draft "+
+                       " left join GetBasicdata_T_Item as CUX_DM_URGENCY_LEVEL on CUX_DM_URGENCY_LEVEL.DICT_CODE = M_Demand_DetailedList_Draft.Urgency_Degre and DICT_CLASS='CUX_DM_URGENCY_LEVEL'" +
+                       " left join GetBasicdata_T_Item as CUX_DM_USAGE on CUX_DM_USAGE.DICT_CODE = M_Demand_DetailedList_Draft.Use_Des and CUX_DM_USAGE.DICT_CLASS='CUX_DM_USAGE'"+
+   
+                        "where PackId = '" + Request.QueryString["PackId"].ToString() +"' and TaskId='"+TaskID+ "' and ParentId_For_Combine= 0" + " and Combine_State!= 2" + " and is_del = 'false' and Material_State = '0' order by ID";
                 }
                 else
                 {
                     strSQL =
-                      " select * , 'false' as checked, case when is_del='1' then '取消提交' else case when Material_State = '7' then '取消提交' else '需重新提交' end  end as mstate" +
+                      " select M_Demand_DetailedList_Draft.* , 'false' as checked, case when is_del='1' then '取消提交' else case when Material_State = '7' then '取消提交' else '需重新提交' end  end as mstate" +
                       " , Convert(nvarchar(50), (select Convert(int,sum(NumCasesSum)) from M_Demand_Merge_List where Correspond_Draft_Code = Convert(nvarchar(50), M_Demand_DetailedList_Draft.ID))) as quantity1" +
+
+                        ",CUX_DM_URGENCY_LEVEL.DICT_Name as UrgencyDegre, CUX_DM_USAGE.DICT_Name as UseDes " +
+
                       ",case when LingJian_Type='1' then '标准件' else case when LingJian_Type='2' then '成品件' else case when LingJian_Type='3' then '通用件' else case when LingJian_Type='4' then '专用件' else case when LingJian_Type='5' then '组件'   else '其它' end  end end end end as LingJian_Type1" +
-                      " from M_Demand_DetailedList_Draft where PackId = '" + Request.QueryString["PackId"].ToString() + "' and ParentId_For_Combine= 0" + " and Combine_State!= 2" + " and ((Is_del = 'false' and Material_State in ('2','7')) or (Is_del = 'true' and Material_State in ('1','2','6','7')))" +
-                      " union all select *, 'false' as checked, '未提交' as mstate, '0' as quantity1" +
+                      " from M_Demand_DetailedList_Draft"+
+
+                      " left join GetBasicdata_T_Item as CUX_DM_URGENCY_LEVEL on CUX_DM_URGENCY_LEVEL.DICT_CODE = M_Demand_DetailedList_Draft.Urgency_Degre and DICT_CLASS='CUX_DM_URGENCY_LEVEL'" +
+                      " left join GetBasicdata_T_Item as CUX_DM_USAGE on CUX_DM_USAGE.DICT_CODE = M_Demand_DetailedList_Draft.Use_Des and CUX_DM_USAGE.DICT_CLASS='CUX_DM_USAGE'" +
+
+
+                      "where PackId = '" + Request.QueryString["PackId"].ToString() + "' and ParentId_For_Combine= 0" + " and Combine_State!= 2" + " and ((Is_del = 'false' and Material_State in ('2','7')) or (Is_del = 'true' and Material_State in ('1','2','6','7')))" +
+
+
+                      " union all select M_Demand_DetailedList_Draft.*, 'false' as checked, '未提交' as mstate, '0' as quantity1" +
+
+                       ",CUX_DM_URGENCY_LEVEL.DICT_Name as UrgencyDegre, CUX_DM_USAGE.DICT_Name as UseDes " +
+
                       ",case when LingJian_Type='1' then '标准件' else case when LingJian_Type='2' then '成品件' else case when LingJian_Type='3' then '通用件' else case when LingJian_Type='4' then '专用件' else case when LingJian_Type='5' then '组件'   else '其它' end  end end end end as LingJian_Type1" +
 
-                      " from M_Demand_DetailedList_Draft where PackId = '" + Request.QueryString["PackId"].ToString() + "' and ParentId_For_Combine= 0" + " and Combine_State!= 2" + " and is_del = 'false' and Material_State = '0' order by ID";
+                      " from M_Demand_DetailedList_Draft"+
+                      " left join GetBasicdata_T_Item as CUX_DM_URGENCY_LEVEL on CUX_DM_URGENCY_LEVEL.DICT_CODE = M_Demand_DetailedList_Draft.Urgency_Degre and DICT_CLASS='CUX_DM_URGENCY_LEVEL'" +
+                      " left join GetBasicdata_T_Item as CUX_DM_USAGE on CUX_DM_USAGE.DICT_CODE = M_Demand_DetailedList_Draft.Use_Des and CUX_DM_USAGE.DICT_CLASS='CUX_DM_USAGE'" +
+
+                      "where PackId = '" + Request.QueryString["PackId"].ToString() + "' and ParentId_For_Combine= 0" + " and Combine_State!= 2" + " and is_del = 'false' and Material_State = '0' order by ID";
  
                 }
                 return DBI.Execute(strSQL, true);
@@ -560,34 +593,34 @@ namespace mms.Plan
                 BindDDlShipping_Addr(rcbAddr, MaterialDept);
                 if (GridSource1.Select("ID='" + id + "'")[0]["Shipping_Address"] != null)
                 {
-                    rcbAddr.FindItemByValue(GridSource1.Select("ID='" + id + "'")[0]["Shipping_Address"].ToString()).Selected = true;
+                    rcbAddr.FindItemByText(GridSource1.Select("ID='" + id + "'")[0]["Shipping_Address"].ToString()).Selected = true;
                 }
                 RadComboBox RadComboBoxUseDes = e.Item.FindControl("RadComboBoxUseDes") as RadComboBox;
                 if (GridSource1.Select("ID='" + id + "'")[0]["Use_Des"] != null)
                 {
-                    RadComboBoxUseDes.FindItemByValue(GridSource1.Select("ID='" + id + "'")[0]["Use_Des"].ToString()).Selected = true;
+                    RadComboBoxUseDes.FindItemByText(GridSource1.Select("ID='" + id + "'")[0]["Use_Des"].ToString()).Selected = true;
                 }
                 RadComboBox RadComboBoxSecretLevel = e.Item.FindControl("RadComboBoxSecretLevel") as RadComboBox;
                 if (GridSource1.Select("ID='" + id + "'")[0]["Secret_Level"] != null)
                 {
-                    RadComboBoxSecretLevel.FindItemByValue(GridSource1.Select("ID='" + id + "'")[0]["Secret_Level"].ToString()).Selected = true;
-                    //RadComboBoxSecretLevel.FindItemByValue("内部").Selected = true;
+                    RadComboBoxSecretLevel.FindItemByText(GridSource1.Select("ID='" + id + "'")[0]["Secret_Level"].ToString()).Selected = true;
+                    //RadComboBoxSecretLevel.FindItemByText("内部").Selected = true;
                 }
                 RadComboBox RadComboBoxUrgencyDegree = e.Item.FindControl("RadComboBoxUrgencyDegree") as RadComboBox;
                 if (GridSource1.Select("ID='" + id + "'")[0]["Urgency_Degre"] != null)
                 {
-                    RadComboBoxUrgencyDegree.FindItemByValue(GridSource1.Select("ID='" + id + "'")[0]["Urgency_Degre"].ToString()).Selected = true;
+                    RadComboBoxUrgencyDegree.FindItemByText(GridSource1.Select("ID='" + id + "'")[0]["Urgency_Degre"].ToString()).Selected = true;
                     //RadComboBoxUrgencyDegree.FindItemByText("一般").Selected = true;
                 }
                 RadComboBox RadComboBoxCertification = e.Item.FindControl("RadComboBoxCertification") as RadComboBox;
                 if (GridSource1.Select("ID='" + id + "'")[0]["Certification"] != null)
                 {
-                    RadComboBoxCertification.FindItemByValue(GridSource1.Select("ID='" + id + "'")[0]["Certification"].ToString()).Selected = true;
+                    RadComboBoxCertification.FindItemByText(GridSource1.Select("ID='" + id + "'")[0]["Certification"].ToString()).Selected = true;
                 }
                 RadComboBox RadComboBoxAttribute4 = e.Item.FindControl("RadComboBoxAttribute4") as RadComboBox;
                 if (GridSource1.Select("ID='" + id + "'")[0]["Attribute4"] != null)
                 {
-                    RadComboBoxAttribute4.FindItemByValue(GridSource1.Select("ID='" + id + "'")[0]["Attribute4"].ToString()).Selected = true;
+                    RadComboBoxAttribute4.FindItemByText(GridSource1.Select("ID='" + id + "'")[0]["Attribute4"].ToString()).Selected = true;
                 }
 
                 RadTextBox rtbSpecialNeeds = e.Item.FindControl("rtb_SpecialNeeds") as RadTextBox;
@@ -697,22 +730,22 @@ namespace mms.Plan
                                     break;
 
 
-                               case "材料名称":
+                               case "物资名称":
                                      GridSource1.Columns[i].ColumnName = "Material_Name";
                                      columnscount++;
                                      break;
 
-                               case "材料牌号":
+                               case "物资牌号":
                                      GridSource1.Columns[i].ColumnName = "Material_Mark";
                                      columnscount++;
                                      break;
 
-                               case "材料状态":
+                               case "供应状态":
                                      GridSource1.Columns[i].ColumnName = "CN_Material_State";
                                      columnscount++;
                                      break;
 
-                               case "技术条件":
+                               case "技术标准":
                                      GridSource1.Columns[i].ColumnName = "Material_Tech_Condition";
                                      columnscount++;
                                      break;
@@ -723,15 +756,12 @@ namespace mms.Plan
                                      columnscount++;
                                      break;
 
-                                 case "胚料尺寸":
+                                 case "需求尺寸":
                                      GridSource1.Columns[i].ColumnName = "ROUGH_SIZE";
                                      columnscount++;
                                      break;
                                   
-                                 case "计量单位":
-                                     GridSource1.Columns[i].ColumnName = "MAT_UNIT";
-                                     columnscount++;
-                                     break;
+                   
 
                                  case "单件质量":
                                      GridSource1.Columns[i].ColumnName = "Mat_Rough_Weight";
@@ -747,15 +777,24 @@ namespace mms.Plan
                                     GridSource1.Columns[i].ColumnName = "ItemCode1";
                                     columnscount++;
                                     break;
-
-
+                                case "胚料尺寸":
+                                    GridSource1.Columns[i].ColumnName = "Dinge_Size";
+                                    columnscount++;
+                                    break;
+                                case "特殊需求":
+                                    GridSource1.Columns[i].ColumnName = "Special_Needs";
+                                    columnscount++;
+                                    break;
                                 case "需求件数":
                                     GridSource1.Columns[i].ColumnName = "NumCasesSum";
                                     columnscount++;
                                     break;
 
-
-                                case "需求数量（重量）":
+                                case "计量单位":
+                                    GridSource1.Columns[i].ColumnName = "MAT_UNIT";
+                                    columnscount++;
+                                    break;
+                                case "需求数量":
                                     GridSource1.Columns[i].ColumnName = "DemandNumSum";
                                     columnscount++;
                                     break;
@@ -787,10 +826,7 @@ namespace mms.Plan
                                     columnscount++;
                                     break;
 
-                                case "特殊需求":
-                                    GridSource1.Columns[i].ColumnName = "Special_Needs";
-                                    columnscount++;
-                                    break;
+                            
 
                                 case "紧急程度":
                                     GridSource1.Columns[i].ColumnName = "Urgency_Degre";
@@ -826,7 +862,7 @@ namespace mms.Plan
                         }
 
                         GridSource1.Columns.Add("ID");     
-                        if (columnscount < 26)
+                        if (columnscount < 27)
                         {
                             GridSource1 = new System.Data.DataTable();
                             RadGridImport.Rebind();
@@ -903,7 +939,7 @@ namespace mms.Plan
                         GridSource1.Rows[i]["Material_Name"] = dt.Rows[0]["Seg12"].ToString();
                         GridSource1.Rows[i]["MAT_UNIT"] = dt.Rows[0]["Seg7"].ToString();
                         GridSource1.Rows[i]["Rough_Spec"] = dt.Rows[0]["Seg15"].ToString();
-                        GridSource1.Rows[i]["ROUGH_SIZE"] = dt.Rows[0]["Seg16"].ToString();
+                        GridSource1.Rows[i]["DINGE_SIZE"] = dt.Rows[0]["Seg16"].ToString();
                         break;
                     case "YY04":
                     case "YY05":
@@ -1094,6 +1130,7 @@ namespace mms.Plan
                     Quantity = "",
                     Required_Quantity = "",
                     Rough_Size = "",
+                    Dinge_Size="",
                     Rough_Spec = "",
                     Stage = null,
                     StandAlone = null,   //单机配套数量
@@ -1193,7 +1230,7 @@ namespace mms.Plan
                         MDDLD.Rough_Spec = item["Rough_Spec"].Text.Trim();
                         MDDLD.Rough_Size = item["ROUGH_SIZE"].Text.Trim();
                         MDDLD.Mat_Unit = item["MAT_UNIT"].Text.Trim();
-
+                        MDDLD.Dinge_Size = item["Dinge_Size"].Text.Trim();
 
                         MDDLD.Mat_Rough_Weight = item["Mat_Rough_Weight"].Text.Trim();
                         try
@@ -1221,7 +1258,7 @@ namespace mms.Plan
                        
       
                         MDDLD.ItemCode1 = item["ItemCode1"].Text.Trim();
-
+                        MDDLD.Dinge_Size = item["Dinge_Size"].Text.Trim();
                        
                         try
                         {
@@ -1350,18 +1387,18 @@ namespace mms.Plan
 
                           strSQL = " Insert Into M_Demand_DetailedList_Draft ( PackId, DraftId,taskid,MDPId,Quantity,VerCode,Stage,DemandDate,Special_Needs,MaterialDept,"
                               + " TaskCode,Drawing_No, Mat_Pro_Weight,Material_State, Combine_State,Material_Name, Material_Mark, CN_Material_State,ItemCode1, Mat_Unit, Mat_Rough_Weight,"
-                              + "Rough_Size, Rough_Spec, DemandNumSum, NumCasesSum,Material_Tech_Condition,Material_Code,TDM_Description,Technics_Line,LingJian_Type,"
-                              +"Import_Date,User_ID,Urgency_Degre ,Secret_Level ,Use_Des ,Shipping_Address ,Certification  , Manufacturer , Attribute4 ,"
+                              + "Rough_Size,Dinge_Size, Rough_Spec, DemandNumSum, NumCasesSum,Material_Tech_Condition,Material_Code,TDM_Description,Technics_Line,LingJian_Type,"
+                              + "Import_Date,User_ID,Urgency_Degre ,Secret_Level ,Use_Des ,Shipping_Address ,Certification  , Manufacturer , Attribute4 ,"
                               + "Tech_Quantity,Technics_Comment,Memo_Quantity,Mat_Comment,"
                               + "ParentId,ParentId_For_Combine,Is_del)" + " Values ("
                               + MDDLD.PackId + "," + DraftID + "," + MDDLD.TaskId + "," + MDDLD.MDPId + "," + MDDLD.Quantity + "," + MDDLD.VerCode + "," 
                               + MDDLD.Stage + ",'" + MDDLD.DemandDate + "','" + MDDLD.Special_Needs + "','" + MDDLD.MaterialDept + "','" + MDDLD.TaskCode + "','"
                               + MDDLD.Drawing_No + "'," + MDDLD.Mat_Pro_Weight + ",0,0,'" + MDDLD.Material_Name + "','" + MDDLD.Material_Mark + "','" + MDDLD.CN_Material_State + "','"
-                              + MDDLD.ItemCode1 + "','" + MDDLD.Mat_Unit + "'," + MDDLD.Mat_Rough_Weight + ",'" + MDDLD.Rough_Size + "','" + MDDLD.Rough_Spec + "',"
+                              + MDDLD.ItemCode1 + "','" + MDDLD.Mat_Unit + "'," + MDDLD.Mat_Rough_Weight + ",'" + MDDLD.Rough_Size + "','" + MDDLD.Dinge_Size + "','" + MDDLD.Rough_Spec + "',"
                               + MDDLD.DemandNumSum + "," + MDDLD.NumCasesSum + ",'" + MDDLD.Material_Tech_Condition + "','" + MDDLD.Material_Code + "','"
                               + MDDLD.TDM_Description + "','" + MDDLD.Technics_Line + "','" + MDDLD.LingJian_Type + "','" + MDDLD.Import_Date + "'," + userid + ",'"
                               + MDDLD.Urgency_Degre + "','" + MDDLD.Secret_Level + "','" + MDDLD.Use_Des + "','" + MDDLD.Shipping_Address + "','" + MDDLD.Certification + "','"
-                              + MDDLD.Manufacturer + "','" + MDDLD.Attribute4 + "','"
+                              + MDDLD.Manufacturer + "','" + MDDLD.Attribute4 + "','" 
                               + MDDLD.Tech_Quantity + "','" + MDDLD.Technics_Comment + "','" + MDDLD.Memo_Quantity + "','" + MDDLD.Mat_Comment + "',"
                               +"0,0,0)" + " select @@identity";
                             DBI.GetSingleValue(strSQL);

@@ -1,0 +1,39 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:x='urn:schemas-microsoft-com:office:excel' xmlns='http://www.w3.org/TR/REC-html40'>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style>
+
+</style>
+<!--[if gte mso 9]>
+
+<![endif]-->
+</head>
+<body>
+	<div id="ctl00_ContentPlaceHolder1_RadGrid_MDemandDetails_GridData" class="rgDataDiv" style="overflow-x:auto;overflow-y:auto;width:100%;height:600px;">
+
+<table rules="all" border="1" id="ctl00_ContentPlaceHolder1_RadGrid_MDemandDetails_ctl00" style="width:100%;table-layout:auto;empty-cells:show;">
+	<thead>
+		<tr>
+			<th scope="col">需求行号</th><th scope="col">任务号</th><th scope="col">图号</th><th scope="col">零件类型</th><th scope="col">工艺路线</th><th scope="col">材料名称</th><th scope="col">材料牌号</th><th scope="col">材料状态</th><th scope="col">技术条件</th><th scope="col">胚料规格</th><th scope="col">胚料尺寸</th><th scope="col">单件质量</th><th scope="col">每产品质量</th><th scope="col">物资编码</th><th scope="col">需求尺寸</th><th scope="col">特殊需求</th><th scope="col">需求件数</th><th scope="col">计量单位</th><th scope="col">需求数量</th><th scope="col">工艺数量</th><th scope="col">路线备注</th><th scope="col">备件数量</th><th scope="col">定额备注</th><th scope="col">需求日期</th><th scope="col">紧急程度</th><th scope="col">密级</th><th scope="col">用途</th><th scope="col">配送地址</th><th scope="col">合格证</th><th scope="col">国产/进口</th><th scope="col">生产厂家</th>
+		</tr>
+	</thead><tbody>
+	<tr>
+		<td style="mso-number-format:0;">38648</td><td>dd</td><td>33</td><td>标准件</td><td>3-11-3-(56)</td><td>环氧玻璃布层压板</td><td>3240</td><td>&nbsp;</td><td>YS/T212-1994</td><td>δ0.4</td><td>300*500</td><td>7.695</td><td>15.39</td><td>YY00080080</td><td>&nbsp;</td><td>&nbsp;</td><td>3</td><td>千克</td><td>23.09</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>2017-09-06</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+	</tr><tr>
+		<td style="mso-number-format:0;">38649</td><td>dd</td><td>33</td><td>其它</td><td>53-58-53-(56)</td><td>环氧玻璃布层压板</td><td>3240</td><td>&nbsp;</td><td>YS/T212-1994</td><td>δ0.4</td><td>300*500</td><td>0.174</td><td>0.348</td><td>YY00080080</td><td>&nbsp;</td><td>&nbsp;</td><td>3</td><td>千克</td><td>0.52</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>2017-09-06</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+	</tr><tr>
+		<td style="mso-number-format:0;">38650</td><td>dd</td><td>33</td><td>标准件</td><td>3-11-3-(56)</td><td>环氧玻璃布层压板</td><td>3240</td><td>&nbsp;</td><td>YS/T212-1994</td><td>δ0.4</td><td>300*500</td><td>7.695</td><td>15.39</td><td>YY00080080</td><td>&nbsp;</td><td>a</td><td>3</td><td>千克</td><td>23.09</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>2017-09-06</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+	</tr><tr>
+		<td style="mso-number-format:0;">38659</td><td>dd</td><td>33</td><td>标准件</td><td>3-11-3-(56)</td><td>环氧玻璃布层压板</td><td>3240</td><td>&nbsp;</td><td>YS/T212-1994</td><td>δ0.4</td><td>300*500</td><td>7.695</td><td>15.39</td><td>YY00080080</td><td>&nbsp;</td><td>&nbsp;</td><td>3</td><td>千克</td><td>23.09</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>2017-09-06</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+	</tr><tr>
+		<td style="mso-number-format:0;">38660</td><td>dd</td><td>33</td><td>其它</td><td>53-58-53-(56)</td><td>环氧玻璃布层压板</td><td>3240</td><td>&nbsp;</td><td>YS/T212-1994</td><td>δ0.4</td><td>300*500</td><td>0.174</td><td>0.348</td><td>YY00080080</td><td>&nbsp;</td><td>&nbsp;</td><td>3</td><td>千克</td><td>0.52</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>2017-09-06</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+	</tr><tr>
+		<td style="mso-number-format:0;">38673</td><td>dd</td><td>33</td><td>组件</td><td>3-11-3-(56)</td><td>环氧玻璃布层压板</td><td>3240</td><td>&nbsp;</td><td>YS/T212-1994</td><td>δ0.4</td><td>300*500</td><td>7.695</td><td>15.39</td><td>YY00080080</td><td>&nbsp;</td><td>&nbsp;</td><td>3</td><td>千克</td><td>23.09</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>2017-09-06</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+	</tr><tr>
+		<td style="mso-number-format:0;">38676</td><td>dd</td><td>33</td><td>通用件</td><td>53-58-53-(56)</td><td>环氧玻璃布层压板</td><td>3240</td><td>&nbsp;</td><td>YS/T212-1994</td><td>δ0.4</td><td>300*500</td><td>0.174</td><td>0.348</td><td>YY00080080</td><td>&nbsp;</td><td>&nbsp;</td><td>3</td><td>千克</td><td>0.52</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>2017-09-06</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+	</tr>
+	</tbody>
+
+</table>	</div>
+</body></html>

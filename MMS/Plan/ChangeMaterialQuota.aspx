@@ -135,9 +135,10 @@
                 <div>
                     <table>
                         <tr>
-                            <td>更改单号：<telerik:RadTextBox ID="RTB_CN_CHANGEREPORT_NO" runat="server" Width="120px">
+                            <td>更改单号：
+                                <telerik:RadTextBox ID="RTB_CN_CHANGEREPORT_NO" runat="server" Width="120px">
                                                           <ClientEvents OnKeyPress="EnterKeyProcessing" />
-                                     </telerik:RadTextBox>
+                                </telerik:RadTextBox>
                                 <asp:HiddenField ID="HFChange" runat="server" />
                                 <asp:Label ID="lblMessage" runat="server" ForeColor="Red"></asp:Label>
                             </td>

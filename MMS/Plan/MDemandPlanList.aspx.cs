@@ -42,6 +42,7 @@ namespace mms.Plan
                     InitTable.Columns.Add("Mat_Unit");
                     InitTable.Columns.Add("Quantity");
                     InitTable.Columns.Add("Rough_Size");
+                    InitTable.Columns.Add("Dinge_Size");
                     InitTable.Columns.Add("MaterialsDes");
                     InitTable.Columns.Add("Special_Needs");
                     InitTable.Columns.Add("Urgency_Degre");

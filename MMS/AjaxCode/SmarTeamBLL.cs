@@ -80,6 +80,7 @@ namespace mms
                     Quantity = dt.Rows[i]["ProductionNum"].ToString(),
                     Required_Quantity = "",
                     Rough_Size = "",
+                    Dinge_Size = "",
                     Rough_Spec = "",
                     Stage = Convert.ToInt32(dt.Rows[i]["Stage"].ToString()),
                     StandAlone = Convert.ToInt32(dt.Rows[i]["MatingNum"].ToString()),   //单机配套数量
@@ -141,6 +142,7 @@ namespace mms
                     MDDLD.Mat_Technics = dtGetByDrawingNoAndPhase.Rows[0]["CN_Mat_Technics"].ToString().Trim();
                     MDDLD.Rough_Spec = dtGetByDrawingNoAndPhase.Rows[0]["CN_Rough_Spec"].ToString().Trim();
                     MDDLD.Rough_Size = dtGetByDrawingNoAndPhase.Rows[0]["CN_Rough_Size"].ToString().Trim();
+                    MDDLD.Dinge_Size = dtGetByDrawingNoAndPhase.Rows[0]["CN_Rough_Size"].ToString().Trim();
                     MDDLD.CN_Material_State = dtGetByDrawingNoAndPhase.Rows[0]["CN_Material_State"].ToString();
                     
                     ListMDDLD.Add(MDDLD);
@@ -221,6 +223,7 @@ namespace mms
                     PredictDeliveryDate = null,
                     Quantity = "",
                     Required_Quantity = "",
+                    Dinge_Size = dtGetChildren.Rows[i]["CN_Rough_Size"].ToString().Trim(),
                     Rough_Size = dtGetChildren.Rows[i]["CN_Rough_Size"].ToString().Trim(),
                     Rough_Spec = dtGetChildren.Rows[i]["CN_Rough_Spec"].ToString().Trim(),
                     Stage = Convert.ToInt32(dtGetChildren.Rows[i]["Phase"].ToString().Trim()),

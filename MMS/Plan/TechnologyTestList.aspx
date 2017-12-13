@@ -41,8 +41,12 @@
                       </telerik:RadDropDownList>
                     </td>
                     <td>申请时间：</td>
-                    <td><telerik:RadDatePicker ID="RDPStart" runat="server" Width="100px"></telerik:RadDatePicker>
-                      ～<telerik:RadDatePicker ID="RDPEnd" runat="server" Width="100px"></telerik:RadDatePicker></td>
+                    <td>
+                        <telerik:RadDatePicker ID="RDPStart" runat="server" Width="100px" DateInput-ClientEvents-OnKeyPress='EnterKeyProcessing'>
+                        </telerik:RadDatePicker>
+                      ～<telerik:RadDatePicker ID="RDPEnd" runat="server" Width="100px" DateInput-ClientEvents-OnKeyPress='EnterKeyProcessing'>
+                       </telerik:RadDatePicker>
+                    </td>
                     <td><telerik:RadButton ID="RB_Search" runat="server" Text="搜索" OnClick="RB_Search_Click"></telerik:RadButton></td>
                 </tr>
             </table>
@@ -54,6 +58,13 @@
             <div class="divViewPanel">
                 <telerik:RadCodeBlock ID="RadCodeBlock1" runat="server">
                     <script type="text/javascript">
+
+                        function EnterKeyProcessing(sender, eventArgs) {
+                            var c = eventArgs.get_keyCode();
+                            if ((c == 13)) {
+                                eventArgs.set_cancel(true);
+                            }
+                        }
                         function RefreshParent(sender, eventArgs) {
                             document.location.reload();
                         }

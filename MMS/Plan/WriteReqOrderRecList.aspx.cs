@@ -34,7 +34,7 @@ namespace mms.Plan
         {
             var strSql = "";
             strSql =
-                " select WriteReqOrder_RecList.USER_RQ_LINE_ID, ERR_MSG , Material_Name, Rough_Size, Rough_Spec" +
+                " select WriteReqOrder_RecList.USER_RQ_LINE_ID, ERR_MSG , Material_Name, Rough_Size,Dinge_Size, Rough_Spec" +
                 " , Special_Needs, a.Dict_Name as Urgency_Degre, Secret_Level,Use_Des, Shipping_Address, Certification, MANUFACTURER" +
                 " from WriteReqOrder_RecList join M_Demand_Merge_List on M_Demand_Merge_List.ID = WriteReqOrder_RecList.USER_RQ_LINE_ID " +
                 " left join GetBasicdata_T_Item as a on a.DICT_CODE = M_Demand_Merge_List.Urgency_Degre and a.DICT_CLASS='CUX_DM_URGENCY_LEVEL'" +
@@ -78,7 +78,7 @@ namespace mms.Plan
                         " else Column_Changed end" +
                         " as Column_Changed, Original_Value, Changed_Value" +
                         " , M_Demand_Merge_List.ID" +
-                        " , Material_Name, Rough_Size, Rough_Spec" +
+                        " , Material_Name, Rough_Size, Dinge_Size,Rough_Spec" +
                         " , Special_Needs, a.Dict_Name as Urgency_Degre, Secret_Level, Use_Des, Shipping_Address, Certification, MANUFACTURER" +
                         " from WriteRcoOrder_RecList" +
                         " join M_Change_Record on M_Change_Record.ID = WriteRcoOrder_RecList.USER_RCO_LINE_ID" +

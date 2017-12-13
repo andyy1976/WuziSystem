@@ -1,8 +1,17 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/index.Master" CodeBehind="Import_ShowPlan.aspx.cs" Inherits="mms.Plan.Import_ShowPlan" %>
 
 <%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
-
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <script type="text/javascript">
+        function onRequestStart(sender, args) {
+            if (args.get_eventTarget().indexOf("RadButton_ExportExcel") >= 0 || args.get_eventTarget().indexOf("RadButton_ExportWord") >= 0 || args.get_eventTarget().indexOf("RadButton_ExportPDF") >= 0)
+			{
+
+                args.set_enableAjax(false);
+
+            }
+        }
+    </script>
     <script src="../Scripts/jquery-1.4.1.min.js"></script>
     <script src="../Scripts/jquery-1.7.2.min.js"></script>
    
@@ -19,6 +28,7 @@
     <asp:HiddenField ID="HiddenField" runat="server" Value="物资需求-->型号投产计划" ClientIDMode="Static" />
     <telerik:RadScriptManager ID="RadScriptManager1" runat="server" AsyncPostBackTimeout="1800"></telerik:RadScriptManager>
     <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server" OnAjaxRequest="RadAjaxManager1_AjaxRequest">
+        <ClientEvents OnRequestStart="onRequestStart" />
         <AjaxSettings>
             <telerik:AjaxSetting AjaxControlID="RadAjaxManager1">
                 <UpdatedControls>
@@ -53,7 +63,7 @@
     <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel2" runat="server" Skin="Default" GroupingText="同步中，结束前请不要有任何操作"></telerik:RadAjaxLoadingPanel>
     <telerik:RadCodeBlock runat="server">
         <script type="text/javascript">
-
+            //同步窗口开始
             function EnterKeyProcessing(sender, eventArgs) {
                 var c = eventArgs.get_keyCode();
                 if ((c == 13)) {
@@ -205,9 +215,11 @@
                         </telerik:RadTextBox></td>
                     <td>编制时间：</td>
                     <td>
-                        <telerik:RadDatePicker ID="RDP_Start" runat="server" Width="100px"></telerik:RadDatePicker>
+                        <telerik:RadDatePicker ID="RDP_Start" runat="server" Width="100px" DateInput-ClientEvents-OnKeyPress='EnterKeyProcessing'>
+                        </telerik:RadDatePicker>
                         ～
-                        <telerik:RadDatePicker ID="RDP_End" runat="server" Width="100px"></telerik:RadDatePicker>
+                        <telerik:RadDatePicker ID="RDP_End" runat="server" Width="100px" DateInput-ClientEvents-OnKeyPress='EnterKeyProcessing'>
+                        </telerik:RadDatePicker>
                     </td>
                     <td>
                         <telerik:RadButton ID="RB_Query" runat="server" Text="筛选" OnClick="RB_Query_Click"></telerik:RadButton>
@@ -223,6 +235,9 @@
                 <ItemStyle HorizontalAlign="Center" />
                 <HeaderStyle HorizontalAlign="Center" Font-Size="13px" />
                 <CommandItemStyle Font-Bold="true" Font-Size="16px" HorizontalAlign="Center" Height="40px" />
+                <ExportSettings HideStructureColumns="true" ExportOnlyData="true" IgnorePaging="true" OpenInNewWindow="true">
+                       <Pdf  DefaultFontFamily="Arial Unicode MS" />
+                </ExportSettings>
                 <ClientSettings EnableRowHoverStyle="true" >
                     <Selecting AllowRowSelect="true" />
                     <Scrolling AllowScroll="True" UseStaticHeaders="True" ScrollHeight="600px"></Scrolling>
@@ -231,7 +246,7 @@
                     <CommandItemTemplate>
                         型号投产计划包列表
                         <telerik:RadButton ID="RB_Add" runat="server" Text="新增计划包" CssClass="floatleft" AutoPostBack="false" OnClientClicked="ImportPlan" Visible="false"></telerik:RadButton>
-                    <%-- <telerik:RadButton ID="RB_Import" runat="server" Text="导入物资需求" CssClass="floatleft" AutoPostBack="false" OnClientClicked="ImportMaterial" Visible="true"></telerik:RadButton> --%>   
+                        <telerik:RadButton ID="RadButton_ExportExcel" runat="server" Text="导出Excel" Font-Bold="true" CommandName="ExportExcel" OnClick="RadButton_ExportExcel_Click" CssClass="floatright"></telerik:RadButton>
                     </CommandItemTemplate>
                     <Columns>
                         <telerik:GridBoundColumn DataField="RowsID" HeaderText="序号" ItemStyle-Width="50px" HeaderStyle-Width="50px">
@@ -244,7 +259,17 @@
                                 <telerik:RadButton ID="RB_State" runat="server" AutoPostBack="false" ToolTip="点击查看计划包数据" Width="20px" Height="20px"></telerik:RadButton>
                             </ItemTemplate>
                         </telerik:GridTemplateColumn>
-                        <telerik:GridTemplateColumn HeaderText="物资导入" ItemStyle-Width="150px" HeaderStyle-Width="150px">
+                        <telerik:GridTemplateColumn HeaderText="材料定额变更" ItemStyle-Width="100px" HeaderStyle-Width="100px">
+                            <ItemTemplate>
+                                <telerik:RadButton ID="RB_Change" runat="server" AutoPostBack="false" ButtonType="ToggleButton" Text="进入变更" ToolTip="点击进入变更" ForeColor="Blue"></telerik:RadButton>
+                            </ItemTemplate>
+                        </telerik:GridTemplateColumn>
+                        <telerik:GridTemplateColumn HeaderText="变更查询" ItemStyle-Width="80px" HeaderStyle-Width="80px">
+                            <ItemTemplate>
+                                <telerik:RadButton ID="RB_ChangeList" runat="server" AutoPostBack="false" ButtonType="ToggleButton" ToolTip="点击查询变更单" ForeColor="Blue"></telerik:RadButton>
+                            </ItemTemplate>
+                        </telerik:GridTemplateColumn>
+                        <telerik:GridTemplateColumn HeaderText="物资导入" ItemStyle-Width="120px" HeaderStyle-Width="120px">
                             <ItemStyle HorizontalAlign="Center" />
                             <ItemTemplate>
                                 <telerik:RadButton ID="RB_ADD_1" runat="server" ButtonType="ToggleButton" Text="导入物资需求" ToolTip="点击通过Excel导入型号物资需求"
@@ -254,7 +279,6 @@
                                 <telerik:RadButton ID="RB_Synchronization1" runat="server" AutoPostBack="false" ButtonType="ToggleButton" ToolTip="点击查看BOM与定额" Visible="false" ForeColor="Blue"></telerik:RadButton>
                             </ItemTemplate>
                         </telerik:GridTemplateColumn>
-         
 
                         <telerik:GridTemplateColumn HeaderText="物资需求清单管理" ItemStyle-Width="150px" HeaderStyle-Width="150px">
                             <ItemStyle HorizontalAlign="Center" />
@@ -317,7 +341,7 @@
                 Behaviors="Close,Maximize,Minimize" Modal="true" Width="1100px" Height="520px" />
             <telerik:RadWindow ID="RadWindowImportMaterialWindow" runat="server" Title="导入型号物资需求" Left="100px"
                             ReloadOnShow="true" ShowContentDuringLoad="false" VisibleTitlebar="true" VisibleStatusbar="false"
-                             Behaviors="Close,Maximize,Minimize" OnClientClose="RefreshParent"  Modal="true" Width="1300px" Height="620px" />
+                            Behaviors="Close,Maximize,Minimize" OnClientClose="RefreshParent"  Modal="true" Width="1300px" Height="620px" />
         </Windows>
     </telerik:RadWindowManager>
     <%-- 导入计划、查看计划--结束--%>

@@ -46,6 +46,14 @@
         <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" runat="server" Skin="Default"  MinDisplayTime="0"></telerik:RadAjaxLoadingPanel>
         <telerik:RadCodeBlock runat="server">
             <script type="text/javascript">
+
+                function EnterKeyProcessing(sender, eventArgs) {
+                    var c = eventArgs.get_keyCode();
+                    if ((c == 13)) {
+                        eventArgs.set_cancel(true);
+                    }
+                }
+
                 function CloseWindow1(sender,args){
                     var oWindow = null;
                     if (window.radWindow) oWindow = window.radWindow;
@@ -72,7 +80,10 @@
                 <div class="divSiteMap" style="width: 100%; float: none; height: 30px; border-bottom-style: solid; border-bottom-width: 0px;">
                     <label style="margin-left: 10px; float: left;color:red;">型号：</label><span id="span_model" style="float: left;color:red;" runat="server"></span>
                     <label style="margin-left: 50px; float: left">基准物资材料清单号：</label><span id="span_listNo" style="float: left;" runat="server"></span>
-                   <label style="margin-left: 50px; float: right"> 需求时间：<telerik:RadDatePicker runat="server" id="RDP_DemandDate" Width="100px"></telerik:RadDatePicker></label>
+                    <label style="margin-left: 50px; float: right"> 需求时间：
+                       <telerik:RadDatePicker runat="server" id="RDP_DemandDate" Width="100px" DateInput-ClientEvents-OnKeyPress='EnterKeyProcessing'>
+                       </telerik:RadDatePicker>
+                   </label>
     
                 </div>
                 <div class="divViewPanel">
@@ -114,7 +125,7 @@
                                 <telerik:GridBoundColumn DataField="Mat_Unit" FilterControlAltText="Filter Mat_Unit column" HeaderText="计量单位" SortExpression="Mat_Unit" UniqueName="Mat_Unit"
                                      HeaderStyle-width="70px" ItemStyle-Width="70px">
                                 </telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn DataField="Rough_Size" FilterControlAltText="Filter Rough_Size column" HeaderText="物资尺寸" SortExpression="Rough_Size" UniqueName="Rough_Size"
+                                <telerik:GridBoundColumn DataField="Dinge_Size" FilterControlAltText="Filter Rough_Size column" HeaderText="胚料尺寸" SortExpression="Dinge_Size" UniqueName="Dinge_Size"
                                      HeaderStyle-width="70px" ItemStyle-Width="70px">
                                 </telerik:GridBoundColumn>
                                 <telerik:GridBoundColumn DataField="Rough_Spec" FilterControlAltText="Filter Rough_Spec column" HeaderText="物资规格" SortExpression="Rough_Spec" UniqueName="Rough_Spec"
@@ -162,7 +173,7 @@
                                     <ItemTemplate>
                                         <telerik:RadComboBox ID="RadComboBoxUseDes" runat="server" Width="80px" AutoPostBack="true"
                                             OnSelectedIndexChanged="RadComboBoxUseDes_SelectedIndexChanged"
-                                            Culture="zh-CN" DataSourceID="SqlDataSourceUseDes" DataTextField="DICT_Name" DataValueField="DICT_Name">
+                                            Culture="zh-CN" DataSourceID="SqlDataSourceUseDes" DataTextField="DICT_Name" DataValueField="DICT_Code">
                                             <Items>
                                             </Items>
                                         </telerik:RadComboBox>
@@ -197,11 +208,14 @@
                                         <telerik:RadTextBox ID="RTB_MANUFACTURER" runat="server" Width="80px" AutoPostBack="true" OnTextChanged="RTB_MANUFACTURER_TextChanged"></telerik:RadTextBox>
                                     </ItemTemplate>
                                 </telerik:GridTemplateColumn>
-                                <telerik:GridBoundColumn DataField="DemandNumSum" HeaderText="需求质量" SortExpression="DemandNumSum" UniqueName="DemandNumSum" 
+                                <telerik:GridBoundColumn DataField="DemandNumSum" HeaderText="需求数量" SortExpression="DemandNumSum" UniqueName="DemandNumSum" 
                                      HeaderStyle-width="80px" ItemStyle-Width="60px">
                                 </telerik:GridBoundColumn>
                                 <telerik:GridBoundColumn DataField="NumCasesSum" HeaderText="需求件数" SortExpression="NumCasesSum" UniqueName="NumCasesSum" 
                                      HeaderStyle-width="80px" ItemStyle-Width="60px">
+                                </telerik:GridBoundColumn>
+                                <telerik:GridBoundColumn DataField="Rough_Size"  HeaderText="需求尺寸" SortExpression="Rough_Size" UniqueName="Rough_Size"
+                                     HeaderStyle-width="70px" ItemStyle-Width="70px">
                                 </telerik:GridBoundColumn>
                                 <telerik:GridBoundColumn DataField="stage1" HeaderText="研制阶段" SortExpression="stage1" UniqueName="stage1"  HeaderStyle-width="80px"
                                      ItemStyle-Width="60px">

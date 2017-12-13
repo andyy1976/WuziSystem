@@ -51,7 +51,7 @@
     <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" runat="server" Skin="Default"></telerik:RadAjaxLoadingPanel>
     <telerik:RadCodeBlock runat="server">
         <script type="text/javascript">
-             function refreshGrid(arg) {
+            function refreshGrid(arg) {
                 if (!arg)
                 {
                     $find("<%= RadAjaxManager1.ClientID %>").ajaxRequest("Rebind");
@@ -264,7 +264,6 @@
                 <AlternatingItemStyle HorizontalAlign="Center" />
                 <ItemStyle Font-Size="12px" HorizontalAlign="Center" />
                 <HeaderStyle Font-Size="13px" HorizontalAlign="Center"/>
-                <CommandItemStyle Font-Bold="true" Font-Size="16px" HorizontalAlign="Center" Height="40px" />
                           <ClientSettings>
                               <Selecting AllowItemSelection="true" AllowToggleSelection="true" />
                               <Scrolling AllowScroll="True" UseStaticHeaders="True" SaveScrollPosition="true" ScrollHeight="480px"></Scrolling>
@@ -273,7 +272,6 @@
                        <Pdf  DefaultFontFamily="Arial Unicode MS" />
                          </ExportSettings>
 
-                             <CommandItemSettings ShowExportToExcelButton="true" ShowExportToWordButton="false" />
                           <Columns>
                              <telerik:TreeListTemplateColumn UniqueName="CheckBoxTemplateColumn" ItemStyle-Width="50px" HeaderStyle-Width="50px" >
                               <ItemTemplate >
@@ -286,7 +284,7 @@
                      
                             <telerik:TreeListBoundColumn DataField="ID" DataType="System.Int32" HeaderText="序号" ItemStyle-Width="50px" HeaderStyle-Width="50px" ReadOnly="True" SortExpression="ID" UniqueName="ID">
                             </telerik:TreeListBoundColumn>
-                            <telerik:TreeListBoundColumn DataField="mstate"  HeaderText="提交<br />状态" ItemStyle-Width="60px" HeaderStyle-Width="60px" SortExpression="mstate" UniqueName="mstate">
+                            <telerik:TreeListBoundColumn DataField="mstate"  HeaderText="提交状态" ItemStyle-Width="70px" HeaderStyle-Width="70px" SortExpression="mstate" UniqueName="mstate">
                             </telerik:TreeListBoundColumn>
                            
                             <telerik:TreeListBoundColumn DataField="Drawing_No"  HeaderText="图号" ItemStyle-Width="100px" HeaderStyle-Width="100px" SortExpression="Drawing_No" UniqueName="Drawing_No">
@@ -311,22 +309,25 @@
                             <telerik:TreeListBoundColumn DataField="CN_Material_State" HeaderText="材料状态" ItemStyle-Width="70px" HeaderStyle-Width="80px" SortExpression="CN_Material_State" UniqueName="CN_Material_State"></telerik:TreeListBoundColumn>
                             <telerik:TreeListBoundColumn DataField="Material_Tech_Condition" HeaderText="技术条件" ItemStyle-Width="100px" HeaderStyle-Width="100px" SortExpression="Material_Tech_Condition" UniqueName="Material_Tech_Condition"> </telerik:TreeListBoundColumn>
                             <telerik:TreeListBoundColumn DataField="Rough_Spec" HeaderText="胚料规格" ItemStyle-Width="70px" HeaderStyle-Width="70px" SortExpression="Rough_Spec" UniqueName="Rough_Spec"></telerik:TreeListBoundColumn>
-                            <telerik:TreeListBoundColumn DataField="Rough_Size" HeaderText="胚料尺寸" ItemStyle-Width="70px" HeaderStyle-Width="70px" SortExpression="Rough_Size" UniqueName="Rough_Size"></telerik:TreeListBoundColumn>
+                            <telerik:TreeListBoundColumn DataField="Dinge_Size" HeaderText="胚料尺寸" ItemStyle-Width="70px" HeaderStyle-Width="70px" SortExpression="Dinge_Size" UniqueName="Dinge_Size"></telerik:TreeListBoundColumn>
                                                   
-                            <telerik:TreeListBoundColumn DataField="Mat_Unit" HeaderText="计量单位" ItemStyle-Width="70px" HeaderStyle-Width="70px" SortExpression="Mat_Unit" UniqueName="Mat_Unit">
-                            </telerik:TreeListBoundColumn>
+
                             <telerik:TreeListBoundColumn DataField="Mat_Rough_Weight" HeaderText="单件质量" ItemStyle-Width="70px" HeaderStyle-Width="70px" SortExpression="Mat_Rough_Weight" UniqueName="Mat_Rough_Weight">
                             </telerik:TreeListBoundColumn>
-                            <telerik:TreeListBoundColumn DataField="Mat_Pro_Weight"  HeaderText="每产品质量" ItemStyle-Width="80px" HeaderStyle-Width="80px" SortExpression="Mat_Pro_Weight" UniqueName="Mat_Pro_Weight">
+                            <telerik:TreeListBoundColumn DataField="Mat_Pro_Weight"  HeaderText="每产品质量" ItemStyle-Width="90px" HeaderStyle-Width="90px" SortExpression="Mat_Pro_Weight" UniqueName="Mat_Pro_Weight">
                             </telerik:TreeListBoundColumn>
 
                             <telerik:TreeListBoundColumn DataField="ItemCode1" HeaderText="物资编码" ItemStyle-Width="100px" HeaderStyle-Width="100px" SortExpression="ItemCode1" UniqueName="ItemCode1">
                             </telerik:TreeListBoundColumn>
+                            <telerik:TreeListBoundColumn DataField="Rough_Size" HeaderText="需求尺寸" ItemStyle-Width="70px" HeaderStyle-Width="70px" SortExpression="Rough_Size" UniqueName="Rough_Size"></telerik:TreeListBoundColumn>
+                            <telerik:TreeListBoundColumn DataField="Special_Needs" HeaderText="特殊需求" ItemStyle-Width="80px" HeaderStyle-Width="80px" SortExpression="Special_Needs" UniqueName="Special_Needs" Visible="true">
+                            </telerik:TreeListBoundColumn>
 
                             <telerik:TreeListBoundColumn DataField="NumCasesSum"  HeaderText="需求件数" ItemStyle-Width="70px" HeaderStyle-Width="70px" SortExpression="NumCasesSum" UniqueName="NumCasesSum">
                             </telerik:TreeListBoundColumn>
-
-                            <telerik:TreeListBoundColumn DataField="DemandNumSum"  HeaderText="需求数量（重量）" ItemStyle-Width="70px" HeaderStyle-Width="70px" SortExpression="DemandNumSum" UniqueName="DemandNumSum">
+                            <telerik:TreeListBoundColumn DataField="Mat_Unit" HeaderText="计量单位" ItemStyle-Width="70px" HeaderStyle-Width="70px" SortExpression="Mat_Unit" UniqueName="Mat_Unit">
+                            </telerik:TreeListBoundColumn>
+                            <telerik:TreeListBoundColumn DataField="DemandNumSum"  HeaderText="需求数量" ItemStyle-Width="70px" HeaderStyle-Width="70px" SortExpression="DemandNumSum" UniqueName="DemandNumSum">
                             </telerik:TreeListBoundColumn>
 
                             <telerik:TreeListBoundColumn DataField="Tech_Quantity"  HeaderText="工艺数量" ItemStyle-Width="70px" HeaderStyle-Width="70px" SortExpression="Tech_Quantity" UniqueName="Tech_Quantity">
@@ -340,13 +341,12 @@
                             
                             <telerik:TreeListBoundColumn DataField="DemandDate" HeaderText="需求日期" ItemStyle-Width="100px" HeaderStyle-Width="100px" SortExpression="DemandDate" UniqueName="DemandDate" Visible="true">
                             </telerik:TreeListBoundColumn>
-                            <telerik:TreeListBoundColumn DataField="Special_Needs" HeaderText="特殊需求" ItemStyle-Width="80px" HeaderStyle-Width="80px" SortExpression="Special_Needs" UniqueName="Special_Needs" Visible="true">
-                            </telerik:TreeListBoundColumn>
-                            <telerik:TreeListBoundColumn DataField="Urgency_Degre" HeaderText="紧急程度" ItemStyle-Width="70px" HeaderStyle-Width="70px" SortExpression="Urgency_Degre" UniqueName="Urgency_Degre" Visible="true">
+
+                            <telerik:TreeListBoundColumn DataField="UrgencyDegre" HeaderText="紧急程度" ItemStyle-Width="70px" HeaderStyle-Width="70px" SortExpression="UrgencyDegre" UniqueName="UrgencyDegre" Visible="true">
                             </telerik:TreeListBoundColumn>
                             <telerik:TreeListBoundColumn DataField="Secret_Level" HeaderText="密级" ItemStyle-Width="60px" HeaderStyle-Width="60px" SortExpression="Secret_Level" UniqueName="Secret_Level" Visible="true">
                             </telerik:TreeListBoundColumn>
-                            <telerik:TreeListBoundColumn DataField="Use_Des" HeaderText="用途" ItemStyle-Width="80px" HeaderStyle-Width="80px" SortExpression="Use_Des" UniqueName="Use_Des" Visible="true">
+                            <telerik:TreeListBoundColumn DataField="UseDes" HeaderText="用途" ItemStyle-Width="80px" HeaderStyle-Width="80px" SortExpression="UseDes" UniqueName="UseDes" Visible="true">
                             </telerik:TreeListBoundColumn>
                             <telerik:TreeListBoundColumn DataField="Shipping_Address" HeaderText="配送地址" ItemStyle-Width="70px" HeaderStyle-Width="70px" SortExpression="Shipping_Address" UniqueName="Shipping_Address" Visible="true">
                             </telerik:TreeListBoundColumn>
@@ -359,10 +359,10 @@
 
                          
                           
-                            <telerik:TreeListBoundColumn DataField="Combine_State"  HeaderText="合并<br />状态" ItemStyle-Width="100px" HeaderStyle-Width="100px" SortExpression="Combine_State"  UniqueName="Combine_State" Visible="true"> 
+                            <telerik:TreeListBoundColumn DataField="Combine_State"  HeaderText="合并状态" ItemStyle-Width="70px" HeaderStyle-Width="100px" SortExpression="Combine_State"  UniqueName="Combine_State" Visible="true"> 
                             </telerik:TreeListBoundColumn>
 
-                            <telerik:TreeListBoundColumn DataField="ParentId_For_Combine" HeaderText="" ItemStyle-Width="20px" HeaderStyle-Width="20px" SortExpression="ParentId_For_Combine" UniqueName="ParentId_For_Combine" Visible="true">
+                            <telerik:TreeListBoundColumn DataField="ParentId_For_Combine" HeaderText="父ID" ItemStyle-Width="50px" HeaderStyle-Width="50px" SortExpression="ParentId_For_Combine" UniqueName="ParentId_For_Combine" Visible="true">
                             </telerik:TreeListBoundColumn>
                         </Columns>
                     </telerik:RadTreeList>

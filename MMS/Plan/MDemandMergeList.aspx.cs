@@ -44,6 +44,7 @@ namespace mms.Plan
                     InitTable.Columns.Add("Mat_Unit");
                     InitTable.Columns.Add("Quantity");
                     InitTable.Columns.Add("Rough_Size");
+                    InitTable.Columns.Add("Dinge_Size");
                     InitTable.Columns.Add("Rough_Spec");
                     InitTable.Columns.Add("MaterialsDes");
                     InitTable.Columns.Add("Special_Needs");
@@ -218,6 +219,7 @@ namespace mms.Plan
             public int Quantity { get; set; }
             public string DemandDate { get; set; }
             public string Rough_Size { get; set; }
+            public string Dinge_Size { get; set; }
             public string Rough_Spec { get; set; }
             public string MaterialsDes { get; set; }
             public int Special_Needs { get; set; }
@@ -385,25 +387,25 @@ namespace mms.Plan
              
               //  rcbAddr.CssClass = id;
                 BindDDlShipping_Addr(rcbAddr, MaterialDept);
-                rcbAddr.FindItemByValue(GridSource.Select("ID='" + id + "'")[0]["Shipping_Addr_Id"].ToString()).Selected = true;
+                rcbAddr.FindItemByText(GridSource.Select("ID='" + id + "'")[0]["Shipping_Addr_Id"].ToString()).Selected = true;
 
                 RadTextBox rtbSpecialNeeds = e.Item.FindControl("rtb_SpecialNeeds") as RadTextBox;
                // rtbSpecialNeeds.CssClass = id;
                 rtbSpecialNeeds.Text = (GridSource.Select("ID='" + id + "'")[0]["Special_Needs"].ToString());
 
             //   RadComboBox RadComboBoxUseDes = e.Item.FindControl("RadComboBoxUseDes") as RadComboBox;
-            //   RadComboBoxUseDes.FindItemByValue(GridSource.Select("ID='" + id + "'")[0]["Use_Des"].ToString()).Selected = true;
+                //   RadComboBoxUseDes.FindItemByText(GridSource.Select("ID='" + id + "'")[0]["Use_Des"].ToString()).Selected = true;
               
                RadComboBox RadComboBoxSecretLevel = e.Item.FindControl("RadComboBoxSecretLevel") as RadComboBox;
-              //RadComboBoxSecretLevel.FindItemByValue(GridSource.Select("ID='" + id + "'")[0]["Secret_Level"].ToString()).Selected = true;
-               RadComboBoxSecretLevel.FindItemByValue("内部").Selected = true;
+               //RadComboBoxSecretLevel.FindItemByText(GridSource.Select("ID='" + id + "'")[0]["Secret_Level"].ToString()).Selected = true;
+               RadComboBoxSecretLevel.FindItemByText("内部").Selected = true;
 
                RadComboBox RadComboBoxUrgencyDegre = e.Item.FindControl("RadComboBoxUrgencyDegre") as RadComboBox;
-             //  RadComboBoxUrgencyDegre.FindItemByValue(GridSource.Select("ID='" + id + "'")[0]["Urgency_Degre"].ToString()).Selected = true;
+               //  RadComboBoxUrgencyDegre.FindItemByText(GridSource.Select("ID='" + id + "'")[0]["Urgency_Degre"].ToString()).Selected = true;
                RadComboBoxUrgencyDegre.FindItemByText("一般").Selected = true;
 
                RadComboBox RadComboBoxCertification = e.Item.FindControl("RadComboBoxCertification") as RadComboBox;
-               RadComboBoxCertification.FindItemByValue(GridSource.Select("ID='" + id + "'")[0]["Certification"].ToString()).Selected = true;
+               RadComboBoxCertification.FindItemByText(GridSource.Select("ID='" + id + "'")[0]["Certification"].ToString()).Selected = true;
             
             }
         }

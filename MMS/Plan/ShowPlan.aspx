@@ -23,7 +23,6 @@
             text-decoration: underline;
         }
     </style>
-
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:HiddenField ID="HiddenField" runat="server" Value="物资需求-->型号投产计划" ClientIDMode="Static" />
@@ -71,7 +70,6 @@
                     eventArgs.set_cancel(true);
                 }
             }
-
             function RefreshParent(sender, eventArgs) {
                 document.location.reload();
             }
@@ -130,7 +128,7 @@
                 window.location.href = "/Plan/ShowM_Change.aspx?PackId=" + PackId;
             }
             function ShowMDemandDetails(PackId) {
-                window.location.href = "/Plan/MDemandDetails.aspx?PackId=" + PackId;
+                window.location.href = "/Plan/MDemandDetails.aspx?PackId=" + PackId+"&fromPage=1";
             }
 
             function ShowMDemandDetailsTreeList(PackId) {
@@ -155,11 +153,11 @@
                 <tr>
                     <td>型号：</td>
                     <td><telerik:RadTextBox ID="RTB_Model" runat="server" Width="100px">
-                           <ClientEvents OnKeyPress="EnterKeyProcessing" />
+                        <ClientEvents OnKeyPress="EnterKeyProcessing" />
                         </telerik:RadTextBox></td>
                     <td>计划包名称：</td>
                     <td><telerik:RadTextBox ID="RTB_PackageName" runat="server" Width="150px">
-                           <ClientEvents OnKeyPress="EnterKeyProcessing" />
+                        <ClientEvents OnKeyPress="EnterKeyProcessing" />
                         </telerik:RadTextBox></td>
                     <%--
                     <td>任务号：</td>
@@ -192,14 +190,15 @@
                     <td>编制人：</td>
                     <td>
                         <telerik:RadTextBox ID="RTB_UserName" runat="server" Width="100px">
-                               <ClientEvents OnKeyPress="EnterKeyProcessing" />
+                            <ClientEvents OnKeyPress="EnterKeyProcessing" />
                         </telerik:RadTextBox></td>
                     <td>编制时间：</td>
                     <td>
-                        <telerik:RadDatePicker ID="RDP_Start" runat="server" Width="100px">
+                        <telerik:RadDatePicker ID="RDP_Start" runat="server" Width="100px" DateInput-ClientEvents-OnKeyPress='EnterKeyProcessing'>
                         </telerik:RadDatePicker>
                         ～
-                        <telerik:RadDatePicker ID="RDP_End" runat="server" Width="100px"></telerik:RadDatePicker>
+                        <telerik:RadDatePicker ID="RDP_End" runat="server" Width="100px" DateInput-ClientEvents-OnKeyPress='EnterKeyProcessing'>
+                        </telerik:RadDatePicker>
                     </td>
                     <td>
                         <telerik:RadButton ID="RB_Query" runat="server" Text="筛选" OnClick="RB_Query_Click"></telerik:RadButton>
@@ -272,7 +271,6 @@
                                 <telerik:RadButton ID="RB_Combine" runat="server" AutoPostBack="false" ButtonType="ToggleButton" ToolTip="" ForeColor="Blue"></telerik:RadButton>
                             </ItemTemplate>
                         </telerik:GridTemplateColumn>
-
                         <telerik:GridTemplateColumn HeaderText="需求变更" ItemStyle-Width="80px" HeaderStyle-Width="80px">
                             <ItemTemplate>
                                 <telerik:RadButton ID="RB_MergeListUpdate" runat="server" Text="更改需求" AutoPostBack="false" ForeColor="Blue" ButtonType="ToggleButton" ToolTip="点击进入需求变更"></telerik:RadButton>

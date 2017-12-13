@@ -35,6 +35,25 @@
             </telerik:RadAjaxManager>
             <telerik:RadCodeBlock ID="RadCodeBlock1" runat="server">
                 <script type="text/javascript">
+                    $(document).ready(function ()
+                    {
+                        $(".CommonSymbols").click(function ()
+                        {
+                            var a = $(this).text();
+                            var remark = $("#<%=RTB_Remark.ClientID%>").text();
+                            remark += a;
+                            $("#<%=RTB_Remark.ClientID%>").text(remark);
+                        $("#<%=RTB_Remark.ClientID%>").focus();
+                        });
+                    });
+
+                    function EnterKeyProcessing(sender, eventArgs)
+                    {
+                        var c = eventArgs.get_keyCode();
+                        if ((c == 13)) {
+                            eventArgs.set_cancel(true);
+                        }
+                    }
                     function CloseWindow(args) {
                         var oWindow = null;
                         if (window.radWindow) oWindow = window.radWindow;
@@ -47,18 +66,6 @@
                     function OnClientHidden(sender, args) {
                         CloseWindow();
                     }
-
-                    $(document).ready(function ()
-                    {
-                        $(".CommonSymbols").click(function ()
-                        {
-                            var a = $(this).text();
-                            var remark = $("#<%=RTB_Remark.ClientID%>").text();
-                            remark += a;
-                            $("#<%=RTB_Remark.ClientID%>").text(remark);
-                        $("#<%=RTB_Remark.ClientID%>").focus();
-                        });
-                    });
 
                     function ShowRadWindowSubmit(sender, args)
                     {
@@ -112,14 +119,19 @@
                 <tr>
                     <td style="width: 140px; text-align: right;">申请人：</td>
                     <td style="width: 160px;">
-                        <telerik:RadTextBox ID="RTB_Applicant" runat="server" Width="120px"  Enabled="false"></telerik:RadTextBox></td>
+                        <telerik:RadTextBox ID="RTB_Applicant" runat="server" Width="120px"  Enabled="false">
+                              <ClientEvents OnKeyPress="EnterKeyProcessing" />
+                        </telerik:RadTextBox></td>
                     <td style="text-align: right; width: 100px;">申请时间：</td>
                     <td style="width: 160px;">
-                        <telerik:RadDatePicker ID="RDP_ApplicationTime" runat="server" Width="120px"></telerik:RadDatePicker>
+                        <telerik:RadDatePicker ID="RDP_ApplicationTime" runat="server" Width="120px" DateInput-ClientEvents-OnKeyPress='EnterKeyProcessing'>
+                        </telerik:RadDatePicker>
                     </td>
                     <td style="text-align: right; width: 100px;">联系方式：</td>
                     <td style="width: 160px;">
-                        <telerik:RadTextBox ID="RTB_ContactInformation" runat="server" Width="120px"></telerik:RadTextBox></td>
+                        <telerik:RadTextBox ID="RTB_ContactInformation" runat="server" Width="120px">
+                              <ClientEvents OnKeyPress="EnterKeyProcessing" />
+                        </telerik:RadTextBox></td>
                 </tr>
                 <tr>
                     <th colspan="6" style="text-align: left; font-size: 14px; border-bottom: solid 1px #ccc;">请领信息</th>
@@ -127,14 +139,18 @@
                 <tr>
                     <td style="text-align: right;">任务号：</td>
                     <td>
-                        <telerik:RadTextBox ID="RTB_TaskCode" runat="server"></telerik:RadTextBox>
+                        <telerik:RadTextBox ID="RTB_TaskCode" runat="server">
+                              <ClientEvents OnKeyPress="EnterKeyProcessing" />
+                        </telerik:RadTextBox>
                     </td>
                     <td style="text-align: right;">图号：</td>
                     <td>
                         <asp:Label ID="lbl_DrawingNo" runat="server"></asp:Label></td>
                     <td style="text-align: right;">申请件数：</td>
                     <td>
-                        <telerik:RadTextBox ID="RTB_Quantity" runat="server" Width="120px" Enabled="true"></telerik:RadTextBox>
+                        <telerik:RadTextBox ID="RTB_Quantity" runat="server" onpaste="return false" onkeyup='clearNoNum(this)' Width="120px" Enabled="true">
+                              <ClientEvents OnKeyPress="EnterKeyProcessing" />
+                        </telerik:RadTextBox>
                     </td>
                 </tr>
                 <tr>
@@ -149,15 +165,29 @@
                     </td>
                     <td style="text-align: right;">要求供料时间：</td>
                     <td>
-                        <telerik:RadDatePicker ID="RDP_FeedingTime" runat="server" Width="120px"></telerik:RadDatePicker>
+                        <telerik:RadDatePicker ID="RDP_FeedingTime" runat="server" Width="120px" DateInput-ClientEvents-OnKeyPress='EnterKeyProcessing'>
+                        </telerik:RadDatePicker>
                     </td>
-                    <td style="text-align: right;">申请数量(单件定额质量*申请件数）：</td>
-                    <td><telerik:RadTextBox ID="RTB_PleaseTakeQuality" runat="server" Width="120px" Enabled="true"></telerik:RadTextBox></td>
+                    <td style="text-align: right;">申请数量：</td>
+                    <td>
+                        <telerik:RadTextBox ID="RTB_PleaseTakeQuality" runat="server" onpaste="return false" onkeyup='clearNoDecimal(this)' Width="120px" Enabled="true">
+                          <ClientEvents OnKeyPress="EnterKeyProcessing" />
+                        </telerik:RadTextBox>
+                    </td>
                 </tr>
                 <tr>
+                    <td style="text-align: right;">需求尺寸：</td>
+                    <td>
+                        <telerik:RadTextBox ID="RTB_Rough_Size" runat="server">
+                          <ClientEvents OnKeyPress="EnterKeyProcessing" />
+                        </telerik:RadTextBox>
+                    </td>
                     <td style="text-align: right;">备注：</td>
-                    <td colspan="4">
-                        <telerik:RadTextBox ID="RTB_Remark" runat="server" TextMode="MultiLine" Rows="3" Columns="70"></telerik:RadTextBox></td>
+                    <td colspan="2">
+                        <telerik:RadTextBox ID="RTB_Remark" runat="server" TextMode="MultiLine" Rows="3" Columns="70">
+                              <ClientEvents OnKeyPress="EnterKeyProcessing" />
+                        </telerik:RadTextBox>
+                    </td>
                     <td>
                         <telerik:RadButton ID="RB_IsDispatch" runat="server" ButtonType="ToggleButton" ToggleType="CheckBox" Text="急件" AutoPostBack="false"></telerik:RadButton><br />
                         <telerik:RadButton ID="RB_IsConfirm" runat="server" ButtonType="ToggleButton" ToggleType="CheckBox" Text="确认调拨" Checked="true" AutoPostBack="false"></telerik:RadButton>
@@ -208,8 +238,10 @@
                         <asp:Label ID="lbl_Rough_Spec" runat="server"></asp:Label></td>
                 </tr>
                 <tr>
-                    <td style="text-align: right;">单个零件尺寸：</td>
-                    <td><asp:Label ID="lbl_Rough_Size" runat="server"></asp:Label></td>
+                    <td style="text-align: right;">胚料尺寸：</td>
+                    <td>
+                    <asp:Label ID="lbl_Dinge_Size" runat="server"></asp:Label>
+                    </td>
 
                     <td style="text-align: right;">计量单位：</td>
                     <td><asp:Label ID="lbl_Mat_Unit" runat="server"></asp:Label></td>

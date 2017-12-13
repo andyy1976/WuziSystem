@@ -53,6 +53,7 @@ namespace mms.Plan
                     InitTable.Columns.Add("MAT_TECHNICS");
                     InitTable.Columns.Add("ROUCH_SPEC");
                     InitTable.Columns.Add("ROUGH_SIZE");
+                    InitTable.Columns.Add("DINGE_SIZE");
                     InitTable.Columns.Add("MaterialsDes");
                     InitTable.Columns.Add("StandAlone");
                     InitTable.Columns.Add("ThisTimeOperation");
@@ -93,7 +94,6 @@ namespace mms.Plan
        // public string itemCodeStr=",";
         protected void Page_Load(object sender, EventArgs e)
         {
-        //    ((ScriptManager)Master.FindControl("ScriptManager1")).RegisterPostBackControl(RadBtnCombineMergeList); 
             if (Session["UserName"] == null || Session["UserId"] == null)
             {
                 Response.Redirect("/Default.aspx");
@@ -178,11 +178,20 @@ namespace mms.Plan
         {
             try
             {
-                string strSQL = " select * , 'false' as checked, case when is_del='1' then '取消提交' else case when Material_State = '7' then '取消提交' else '需重新提交' end  end as mstate" +
+                string strSQL = " select M_Demand_DetailedList_Draft.* , 'false' as checked, case when is_del='1' then '取消提交' else case when Material_State = '7' then '取消提交' else '需重新提交' end  end as mstate" +
                   " , Convert(nvarchar(50), (select Convert(int,sum(NumCasesSum)) from M_Demand_Merge_List where Correspond_Draft_Code = Convert(nvarchar(50), M_Demand_DetailedList_Draft.ID))) as quantity1, " +
-                  "case when LingJian_Type='1' then '标准件' else case when LingJian_Type='2' then '成品件'  else case when LingJian_Type='3' then '通用件' else case when LingJian_Type='4' then '专用件' else case when LingJian_Type='5' then '组件'   else '其它' end  end end end end as LingJian_Type1 from M_Demand_DetailedList_Draft ";
 
-                strSQL += " where PackId = '" + Request.QueryString["PackId"].ToString() + "' and ParentId_For_Combine = 0 " + " and ItemCode1 like '%" + ItemCode + "%' and Drawing_No like '%" + drawingNum + "%' and Technics_Line like '%" + techline + "%' and ((Is_del = 'false' and Material_State in ('2','7')) or (Is_del = 'true' and Material_State in ('1','2','6','7')))";
+                  "CUX_DM_URGENCY_LEVEL.DICT_Name as UrgencyDegre, CUX_DM_USAGE.DICT_Name as UseDes ,"+
+               //  " GetCustInfo_T_ACCT_SITE.ADDRESS as ADDRESS, " +
+              //    "case when Stage ='1' then 'M' when stage='2' then 'C' when Stage='3' then 'S' when Stage='4' then 'D' else Convert(nvarchar(50),Stage) end as Stage1, " +
+
+                  "case when LingJian_Type='1' then '标准件' else case when LingJian_Type='2' then '成品件'  else case when LingJian_Type='3' then '通用件' else case when LingJian_Type='4' then '专用件' else case when LingJian_Type='5' then '组件'   else '其它' end  end end end end as LingJian_Type1 from M_Demand_DetailedList_Draft " +
+
+                  " left join GetBasicdata_T_Item as CUX_DM_URGENCY_LEVEL on CUX_DM_URGENCY_LEVEL.DICT_CODE = M_Demand_DetailedList_Draft.Urgency_Degre and DICT_CLASS='CUX_DM_URGENCY_LEVEL'" +
+                  " left join GetBasicdata_T_Item as CUX_DM_USAGE on CUX_DM_USAGE.DICT_CODE = M_Demand_DetailedList_Draft.Use_Des and CUX_DM_USAGE.DICT_CLASS='CUX_DM_USAGE'";
+                    //   " left join GetCustInfo_T_ACCT_SITE on Convert(nvarchar(50),GetCustInfo_T_ACCT_SITE.LOCATION_ID) = M_Demand_DetailedList_Draft.Shipping_Address";
+
+                  strSQL += " where PackId = '" + Request.QueryString["PackId"].ToString() + "' and ParentId_For_Combine = 0 " + " and ItemCode1 like '%" + ItemCode + "%' and Drawing_No like '%" + drawingNum + "%' and Technics_Line like '%" + techline + "%' and ((Is_del = 'false' and Material_State in ('2','7')) or (Is_del = 'true' and Material_State in ('1','2','6','7')))";
 
                 if (lingjiantype == "6")
                 {
@@ -192,11 +201,20 @@ namespace mms.Plan
                 {
                     strSQL += " and LingJian_Type like '%" + lingjiantype + "%'";
                 }
-               
 
 
-                strSQL += " union all select *, 'false' as checked, '未提交' as mstate, '0' as quantity1, "+
-                         "case when LingJian_Type='1' then '标准件' else case when LingJian_Type='2' then '成品件'  else case when LingJian_Type='3' then '通用件' else case when LingJian_Type='4' then '专用件' else case when LingJian_Type='5' then '组件'   else '其它' end  end end end end as LingJian_Type1 from M_Demand_DetailedList_Draft ";
+
+                strSQL += " union all select M_Demand_DetailedList_Draft.*, 'false' as checked, '未提交' as mstate, '0' as quantity1, " +
+
+                  "CUX_DM_URGENCY_LEVEL.DICT_Name as UrgencyDegre, CUX_DM_USAGE.DICT_Name as UseDes ," +
+                    //"GetCustInfo_T_ACCT_SITE.ADDRESS as ADDRESS, " +
+                    //     "case when Stage ='1' then 'M' when stage='2' then 'C' when Stage='3' then 'S' when Stage='4' then 'D' else Convert(nvarchar(50),Stage) end as Stage1, " +
+
+                  "case when LingJian_Type='1' then '标准件' else case when LingJian_Type='2' then '成品件'  else case when LingJian_Type='3' then '通用件' else case when LingJian_Type='4' then '专用件' else case when LingJian_Type='5' then '组件'   else '其它' end  end end end end as LingJian_Type1 from M_Demand_DetailedList_Draft " +
+
+                  " left join GetBasicdata_T_Item as CUX_DM_URGENCY_LEVEL on CUX_DM_URGENCY_LEVEL.DICT_CODE = M_Demand_DetailedList_Draft.Urgency_Degre and DICT_CLASS='CUX_DM_URGENCY_LEVEL'" +
+                  " left join GetBasicdata_T_Item as CUX_DM_USAGE on CUX_DM_USAGE.DICT_CODE = M_Demand_DetailedList_Draft.Use_Des and CUX_DM_USAGE.DICT_CLASS='CUX_DM_USAGE'";
+              //    " left join GetCustInfo_T_ACCT_SITE on Convert(nvarchar(50),GetCustInfo_T_ACCT_SITE.LOCATION_ID) = M_Demand_DetailedList_Draft.Shipping_Address";
 
                 strSQL += " where PackId = '" + Request.QueryString["PackId"].ToString() + "' and ParentId_For_Combine = 0  " + " and ItemCode1 like'%" + ItemCode + "%' and Drawing_No like '%" + drawingNum + "%' and Technics_Line like '%" + techline + "%' and is_del = 'false' and Material_State = '0'";
                 if (lingjiantype == "6")
@@ -307,8 +325,6 @@ namespace mms.Plan
                 throw new Exception("获取物资需求清单信息出错" + ex.Message.ToString());
             }
         }
-
- 
         protected void WZBH_Query_Click(object sender, EventArgs e)
         {
             

@@ -97,8 +97,12 @@
                                                    <ClientEvents OnKeyPress="EnterKeyProcessing" />
                         </telerik:RadTextBox></td>
                     <td>申请时间：</td>
-                    <td><telerik:RadDatePicker ID="RDPStart" runat="server" Width="100px"></telerik:RadDatePicker>
-                      ～<telerik:RadDatePicker ID="RDPEnd" runat="server" Width="100px"></telerik:RadDatePicker></td>
+                    <td>
+                        <telerik:RadDatePicker ID="RDPStart" runat="server" Width="100px" DateInput-ClientEvents-OnKeyPress='EnterKeyProcessing'>
+                        </telerik:RadDatePicker>
+                      ～<telerik:RadDatePicker ID="RDPEnd" runat="server" Width="100px" DateInput-ClientEvents-OnKeyPress='EnterKeyProcessing'>
+                       </telerik:RadDatePicker>
+                    </td>
                     <td><telerik:RadButton ID="RB_Search" runat="server" Text="搜索" OnClick="RB_Search_Click"></telerik:RadButton></td>
                 </tr>
             </table>
@@ -162,7 +166,7 @@
         <Windows>
             <telerik:RadWindow ID="RadWindow1" runat="server" Title="修改需求" Left="150px" Top="20"
                 ReloadOnShow="true" ShowContentDuringLoad="false" VisibleTitlebar="true" VisibleStatusbar="false"
-                Behaviors="Close,Maximize,Minimize" OnClientClose="RefreshParent" Modal="true" Width="1300px" Height="680px" />
+                Behaviors="Close,Maximize,Minimize" OnClientClose="RefreshParent" Modal="true" Width="1300px" Height="600px" />
         </Windows>
     </telerik:RadWindowManager>
     <%--修改需求弹窗--结束--%>

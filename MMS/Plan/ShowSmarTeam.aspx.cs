@@ -79,7 +79,7 @@ namespace mms.Plan
             string PackID = string.IsNullOrEmpty(Request.QueryString["PackID"]) ? "1" : Request.QueryString["PackID"].ToString();
             string strSQL = " select a.Id, VerCode, Class_Id, Object_Id, Stage, Material_State, Material_Tech_Condition, Material_Code, Material_Spec, TDM_Description, Material_Name, PackId";
             strSQL += " , TaskId, DraftId, Drawing_No, Technics_Line, Technics_Comment, Material_Mark, ItemCode1, ItemCode2, MaterialsNum, Mat_Unit, LingJian_Type, Mat_Rough_Weight, Mat_Pro_Weight";
-            strSQL += " , Mat_Weight, Mat_Efficiency, Mat_Comment, Mat_Technics, Rough_Spec, Rough_Size, MaterialsDes, StandAlone, ThisTimeOperation, PredictDeliveryDate, DemandNumSum, NumCasesSum";
+            strSQL += " , Mat_Weight, Mat_Efficiency, Mat_Comment, Mat_Technics, Rough_Spec, Rough_Size,Dinge_Size, MaterialsDes, StandAlone, ThisTimeOperation, PredictDeliveryDate, DemandNumSum, NumCasesSum";
             strSQL += ", DemandDate, Quantity, Tech_Quantity, Memo_Quantity, Test_Quantity, Required_Quantity, Other_Quantity, Ballon_No, Comment, Is_allow_merge, Import_Date, User_ID, JSGS_Des";
             strSQL += " , a.Is_del, TaskCode, MaterialDept, MissingDescription, MDPId, CN_Material_State, b.LingJian_Type_Name as LingJian_Type1";
             if (Session["SSTBOMWhere"] != null)
@@ -112,10 +112,10 @@ namespace mms.Plan
             string PackID = string.IsNullOrEmpty(Request.QueryString["PackID"]) ? "1" : Request.QueryString["PackID"].ToString();
             string strSQL = " create table #test ( Id int, ParentId int, Material_Code nvarchar(max),TDM_Description nvarchar(max),LingJian_Type nvarchar(max),"
                 + " Material_Name nvarchar(max),Drawing_No nvarchar(max),Technics_Line nvarchar(max),MaterialDept nvarchar(max), ItemCode1 nvarchar(max),Quantity nvarchar(max),Mat_Unit nvarchar(max),"
-                + " Mat_Rough_Weight nvarchar(50),Mat_Pro_Weight nvarchar(50),Rough_Size nvarchar(50),Rough_Spec nvarchar(50),DemandNumSum nvarchar(50),"
+                + " Mat_Rough_Weight nvarchar(50),Mat_Pro_Weight nvarchar(50),Rough_Size nvarchar(50),Dinge_Size nvarchar(50),Rough_Spec nvarchar(50),DemandNumSum nvarchar(50),"
                 + " NumCasesSum nvarchar(max),DemandDate nvarchar(max),i int, MissingDescription nvarchar(max), Material_Mark nvarchar(max))  "
                 + " insert into #test select ID ,ParentID,Material_Code ,TDM_Description ,LingJian_Type ,Material_Name ,Drawing_No ,Technics_Line ,MaterialDept,ItemCode1 ,"
-                + " Quantity ,Mat_Unit ,Mat_Rough_Weight ,Mat_Pro_Weight ,Rough_Size ,Rough_Spec ,DemandNumSum ,NumCasesSum ,DemandDate ,'1' ,MissingDescription, Material_Mark"
+                + " Quantity ,Mat_Unit ,Mat_Rough_Weight ,Mat_Pro_Weight ,Rough_Size ,Dinge_Size,Rough_Spec ,DemandNumSum ,NumCasesSum ,DemandDate ,'1' ,MissingDescription, Material_Mark"
                 + " from [dbo].[M_Demand_DetailedList_Draft] "
                 + " where packid = '" + PackID + "' and (Material_State = '4' or Material_State = '5' or Material_State = '6') and Is_del = 'false'";
             if (Session["SSTDefectWhere"] == null)
@@ -124,7 +124,7 @@ namespace mms.Plan
                  + " while (select count(*) from [dbo].[M_Demand_DetailedList_Draft] where ID in (select ParentID from #test where i = @i)) <> 0"
                  + " begin insert into #test "
                  + " select ID ,ParentID ,Material_Code ,TDM_Description ,LingJian_Type ,Material_Name ,Drawing_No ,Technics_Line ,MaterialDept ,ItemCode1 ,"
-                 + " Quantity ,Mat_Unit ,Mat_Rough_Weight ,Mat_Pro_Weight ,Rough_Size ,Rough_Spec ,DemandNumSum ,NumCasesSum ,DemandDate ,@i + 1, '',''"
+                 + " Quantity ,Mat_Unit ,Mat_Rough_Weight ,Mat_Pro_Weight ,Rough_Size ,Dinge_Size,Rough_Spec ,DemandNumSum ,NumCasesSum ,DemandDate ,@i + 1, '',''"
                  + " from [dbo].[M_Demand_DetailedList_Draft]"
                  + " where packid = '" + PackID + "' and ID in (select ParentID from #test where i = @i) and ID not in (select ID from #test) and Is_del = 'false'"
                  + " select @i = @i + 1 end "
@@ -135,7 +135,7 @@ namespace mms.Plan
                 strSQL += Session["SSTDefectWhere"].ToString();
                 strSQL += " select a.Id , 0 as ParentId , Material_Code ,TDM_Description ,LingJian_Type ,"
                 + " Material_Name ,Drawing_No ,Technics_Line ,MaterialDept , ItemCode1 ,Quantity ,Mat_Unit ,"
-                + " Mat_Rough_Weight ,Mat_Pro_Weight ,Rough_Size ,Rough_Spec ,DemandNumSum ,"
+                + " Mat_Rough_Weight ,Mat_Pro_Weight ,Rough_Size,Dinge_Size,Rough_Spec ,DemandNumSum ,"
                 + " NumCasesSum ,DemandDate ,i , MissingDescription , Material_Mark "
                 + " ,LingJian_Type_Name as LingJian_Type1 from #test as a left join Sys_LingJian_Info as b on b.LingJian_Type_Code = a.LingJian_Type order by Id";
             }
@@ -147,10 +147,10 @@ namespace mms.Plan
             string PackID = string.IsNullOrEmpty(Request.QueryString["PackID"]) ? "1" : Request.QueryString["PackID"].ToString();
             string strSQL = " create table #test1 ( Id int, ParentId int, Material_Code nvarchar(max),TDM_Description nvarchar(max),LingJian_Type nvarchar(max),"
                 + " Material_Name nvarchar(max),Drawing_No nvarchar(max),Technics_Line nvarchar(max),MaterialDept nvarchar(max), ItemCode1 nvarchar(max),Quantity nvarchar(max),Mat_Unit nvarchar(max),"
-                + " Mat_Rough_Weight nvarchar(50),Mat_Pro_Weight nvarchar(50),Rough_Size nvarchar(50),Rough_Spec nvarchar(50),DemandNumSum nvarchar(50),"
+                + " Mat_Rough_Weight nvarchar(50),Mat_Pro_Weight nvarchar(50),Rough_Size nvarchar(50),Dinge_Size nvarchar(50),Rough_Spec nvarchar(50),DemandNumSum nvarchar(50),"
                 + " NumCasesSum nvarchar(max),DemandDate nvarchar(max),i int, MissingDescription nvarchar(max), Material_Mark nvarchar(max), Material_State1 nvarchar(50))  "
                 + " insert into #test1 select ID ,ParentID,Material_Code ,TDM_Description ,LingJian_Type ,Material_Name ,Drawing_No ,Technics_Line ,MaterialDept,ItemCode1 ,"
-                + " Quantity ,Mat_Unit ,Mat_Rough_Weight ,Mat_Pro_Weight ,Rough_Size ,Rough_Spec ,DemandNumSum ,NumCasesSum ,DemandDate ,'1' ,MissingDescription, Material_Mark "
+                + " Quantity ,Mat_Unit ,Mat_Rough_Weight ,Mat_Pro_Weight ,Rough_Size ,Dinge_Size,Rough_Spec ,DemandNumSum ,NumCasesSum ,DemandDate ,'1' ,MissingDescription, Material_Mark "
                 + " ,case when Material_state = '0' or Material_state = '2' then '未提交' when Material_state = '1' then '已提交'  else '' end"
                 + " from [dbo].[M_Demand_DetailedList_Draft] "
                 + " where packid = '" + PackID + "' and (Material_State = '0' or Material_State = '1' or Material_State = '2') and Is_del = 'false'";
@@ -160,7 +160,7 @@ namespace mms.Plan
                     + " while (select count(*) from [dbo].[M_Demand_DetailedList_Draft] where ID in (select ParentID from #test1 where i = @i)) <> 0"
                     + " begin insert into #test1 "
                     + " select ID ,ParentID ,Material_Code ,TDM_Description ,LingJian_Type ,Material_Name ,Drawing_No ,Technics_Line ,MaterialDept ,ItemCode1 ,"
-                    + " Quantity ,Mat_Unit ,Mat_Rough_Weight ,Mat_Pro_Weight ,Rough_Size ,Rough_Spec ,DemandNumSum ,NumCasesSum ,DemandDate ,@i + 1, '','',''"
+                    + " Quantity ,Mat_Unit ,Mat_Rough_Weight ,Mat_Pro_Weight ,Rough_Size ,Dinge_Size,Rough_Spec ,DemandNumSum ,NumCasesSum ,DemandDate ,@i + 1, '','',''"
                     + " from [dbo].[M_Demand_DetailedList_Draft]"
                     + " where packid = '" + PackID + "' and ID in (select ParentID from #test1 where i = @i) and ID not in (select ID from #test1) and Is_del = 'false'"
                     + " select @i = @i + 1 end "
@@ -171,7 +171,7 @@ namespace mms.Plan
                 strSQL += Session["SSTSubmitStateWhere"].ToString();
                 strSQL += " select a.Id , 0 as ParentId , Material_Code ,TDM_Description ,LingJian_Type ,"
                     + " Material_Name ,Drawing_No ,Technics_Line ,MaterialDept , ItemCode1 ,Quantity ,Mat_Unit ,"
-                    + " Mat_Rough_Weight ,Mat_Pro_Weight ,Rough_Size ,Rough_Spec ,DemandNumSum ,"
+                    + " Mat_Rough_Weight ,Mat_Pro_Weight ,Rough_Size ,Dinge_Size,Rough_Spec ,DemandNumSum ,"
                     + " NumCasesSum ,DemandDate ,i , MissingDescription , Material_Mark , Material_State1 "
                     + " ,LingJian_Type_Name as LingJian_Type1 from #test1 as a left join Sys_LingJian_Info as b on b.LingJian_Type_Code = a.LingJian_Type order by Id";
             }
@@ -348,6 +348,7 @@ namespace mms.Plan
             public string Mat_Technics { get; set; }
             public string Rough_Spec { get; set; }
             public string Rough_Size { get; set; }
+            public string Dinge_Size { get; set; }
             public string MaterialsDes { get; set; }
             public string StandAlone { get; set; }
             public string ThisTimeOperation { get; set; }
@@ -426,6 +427,7 @@ namespace mms.Plan
                 MDDLD.Mat_Technics = dtGetByDrawingNoAndPhase.Rows[0]["CN_Mat_Technics"].ToString().Trim();
                 MDDLD.Rough_Spec = dtGetByDrawingNoAndPhase.Rows[0]["CN_Rough_Spec"].ToString().Trim();
                 MDDLD.Rough_Size = dtGetByDrawingNoAndPhase.Rows[0]["CN_Rough_Size"].ToString().Trim();
+                MDDLD.Dinge_Size = dtGetByDrawingNoAndPhase.Rows[0]["CN_Rough_Size"].ToString().Trim();
                 MDDLD.Id = id;
 
                 if (ParentId == "0")
@@ -528,7 +530,7 @@ namespace mms.Plan
             strSQL += " ,ItemCode2 = '" + MDDLD.ItemCode2 + "', Mat_Unit = '" + MDDLD.Mat_Unit + "',Lingjian_Type = '" + MDDLD.Lingjian_Type + "'";
             strSQL += " ,Mat_Rough_Weight = '" + MDDLD.Mat_Rough_Weight + "', Mat_Pro_Weight = '" + MDDLD.Mat_Pro_Weight + "', Mat_Weight = '" + MDDLD.Mat_Weight + "'";
             strSQL += " , Mat_Efficiency = '" + MDDLD.Mat_Efficiency + "', Mat_Comment = '" + MDDLD.Mat_Comment + "',Mat_Technics = '" + MDDLD.Mat_Technics + "' ";
-            strSQL += " ,Rough_Spec = '" + MDDLD.Rough_Spec + "', Rough_Size = '" + MDDLD.Rough_Size + "',Quantity = '" + MDDLD.Quantity + "'";
+            strSQL += " ,Rough_Spec = '" + MDDLD.Rough_Spec + "', Rough_Size = '" + MDDLD.Rough_Size + "', Dinge_Size = '" + MDDLD.Dinge_Size + "',Quantity = '" + MDDLD.Quantity + "'";
             strSQL += " ,NumCasesSum = '" + MDDLD.NumCasesSum + "', Material_State = '0', DemandNumSum = null, MissingDescription = '', MaterialDept = '' ";
             strSQL += " where ID = '" + MDDLD.Id + "'";
             DBI.Execute(strSQL);

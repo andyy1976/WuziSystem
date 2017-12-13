@@ -21,8 +21,6 @@ namespace mms.MaterialApplicationCollar
             { 
                 Response.Redirect("/Default.aspx");
             }
-
-
             DBConn = ConfigurationManager.ConnectionStrings["MaterialManagerSystemConnectionString"].ToString();
             DBI = DBFactory.GetDBInterface(DBConn);
             if (!IsPostBack)
@@ -57,8 +55,9 @@ namespace mms.MaterialApplicationCollar
                 RDDL_XingHao.DataValueField = "DomainAccount";
                 RDDL_XingHao.DataBind();
 
-             //   strSQL = " select * from Sys_UserInfo_PWD where IsDel = 'false' and DomainAccount != '' and DomainAccount is not null" +
-              //      " and ID in (select UserId from Sys_UserInRole where RoleID in (select ID from Sys_RoleInfo where RoleName like '%物%资%计%划%员%'))";
+  
+                //   strSQL = " select * from Sys_UserInfo_PWD where IsDel = 'false' and DomainAccount != '' and DomainAccount is not null" +
+                //      " and ID in (select UserId from Sys_UserInRole where RoleID in (select ID from Sys_RoleInfo where RoleName like '%物%资%计%划%员%'))";
                 strSQL = " select * from V_Get_Sys_User_byRole where Isdel = 'false' and DomainAccount != '' and DomainAccount is not null and RoleName like '%物%资%计%划%员%' and Is_Del ='false'";
                 DataTable dtwz = DBI.Execute(strSQL, true);
                 RDDL_WuZi.DataSource = dtwz;
@@ -118,6 +117,7 @@ namespace mms.MaterialApplicationCollar
                 RTB_CN_Material_State.Text = "";
                 RTB_Material_Tech_Condition.Text = "";
                 RTB_MaterialsDes.Text = dt.Rows[0]["SEG4"].ToString();
+
                 switch (dt.Rows[0]["Seg5"].ToString().Substring(0, 4))
                 {
                     case "YY01":
@@ -126,7 +126,7 @@ namespace mms.MaterialApplicationCollar
                         RTB_Material_Mark.Text = "";
                         RTB_Material_Name.Text = dt.Rows[0]["Seg21"].ToString();
                         RTB_Mat_Unit.Text = dt.Rows[0]["Seg7"].ToString();
-                        RTB_Rough_Size.Text = "";
+                        RTB_Dinge_Size.Text = "";
                         RTB_Rough_Spec.Text = dt.Rows[0]["Seg13"].ToString();
                         break;
                     case "YY02":
@@ -135,7 +135,7 @@ namespace mms.MaterialApplicationCollar
                         RTB_Material_Mark.Text = "";
                         RTB_Material_Name.Text = dt.Rows[0]["Seg12"].ToString();
                         RTB_Mat_Unit.Text = dt.Rows[0]["Seg7"].ToString();
-                        RTB_Rough_Size.Text = "";
+                        RTB_Dinge_Size.Text = "";
                         RTB_Rough_Spec.Text = dt.Rows[0]["Seg15"].ToString();                        
                         break;
                     case "YY03":
@@ -143,7 +143,7 @@ namespace mms.MaterialApplicationCollar
                         { lblMSG.Text = "已失效！"; }
                         RTB_Material_Name.Text = dt.Rows[0]["Seg12"].ToString();
                         RTB_Mat_Unit.Text = dt.Rows[0]["Seg7"].ToString();
-                        RTB_Rough_Size.Text = dt.Rows[0]["Seg16"].ToString();
+                        RTB_Dinge_Size.Text = dt.Rows[0]["Seg16"].ToString();
                         RTB_Rough_Spec.Text = dt.Rows[0]["Seg15"].ToString();
                         break;
                     case "YY04":
@@ -151,7 +151,7 @@ namespace mms.MaterialApplicationCollar
                         { lblMSG.Text = "已失效！"; }
                         RTB_Material_Name.Text = dt.Rows[0]["Seg12"].ToString();
                         RTB_Mat_Unit.Text = dt.Rows[0]["Seg7"].ToString();
-                        RTB_Rough_Size.Text = "";
+                        RTB_Dinge_Size.Text = "";
                         RTB_Rough_Spec.Text = dt.Rows[0]["Seg14"].ToString();
                         break;
                     case "YY05":
@@ -159,7 +159,7 @@ namespace mms.MaterialApplicationCollar
                         { lblMSG.Text = "已失效！"; }
                         RTB_Material_Name.Text = dt.Rows[0]["Seg12"].ToString();
                         RTB_Mat_Unit.Text = dt.Rows[0]["Seg7"].ToString();
-                        RTB_Rough_Size.Text = "";
+                        RTB_Dinge_Size.Text = "";
                         RTB_Rough_Spec.Text = dt.Rows[0]["Seg14"].ToString();
                         RTB_Material_Tech_Condition.Text = dt.Rows[0]["SEG16"].ToString();
                         break;
@@ -168,7 +168,7 @@ namespace mms.MaterialApplicationCollar
                         { lblMSG.Text = "已失效！"; }
                         RTB_Material_Name.Text = dt.Rows[0]["Seg12"].ToString();
                         RTB_Mat_Unit.Text = dt.Rows[0]["Seg7"].ToString();
-                        RTB_Rough_Size.Text = "";
+                        RTB_Dinge_Size.Text = "";
                         RTB_Rough_Spec.Text = dt.Rows[0]["Seg14"].ToString();
                         break;
                     case "YY07":
@@ -176,7 +176,7 @@ namespace mms.MaterialApplicationCollar
                         { lblMSG.Text = "已失效！"; }
                         RTB_Material_Name.Text = dt.Rows[0]["Seg20"].ToString();
                         RTB_Mat_Unit.Text = dt.Rows[0]["Seg7"].ToString();
-                        RTB_Rough_Size.Text = "";
+                        RTB_Dinge_Size.Text = "";
                         RTB_Rough_Spec.Text = dt.Rows[0]["Seg14"].ToString();
                         break;
                     case "YY08":
@@ -184,7 +184,7 @@ namespace mms.MaterialApplicationCollar
                         { lblMSG.Text = "已失效！"; }
                         RTB_Material_Name.Text = dt.Rows[0]["Seg12"].ToString();
                         RTB_Mat_Unit.Text = dt.Rows[0]["Seg7"].ToString();
-                        RTB_Rough_Size.Text = "";
+                        RTB_Dinge_Size.Text = "";
                         RTB_Rough_Spec.Text = dt.Rows[0]["Seg14"].ToString();
                         break;
                     case "YY09":
@@ -192,13 +192,13 @@ namespace mms.MaterialApplicationCollar
                         { lblMSG.Text = "已失效！"; }
                         RTB_Material_Name.Text = dt.Rows[0]["Seg12"].ToString();
                         RTB_Mat_Unit.Text = dt.Rows[0]["Seg7"].ToString();
-                        RTB_Rough_Size.Text = "";
+                        RTB_Dinge_Size.Text = "";
                         RTB_Rough_Spec.Text = dt.Rows[0]["Seg14"].ToString();
                         break;
                     default:
                         RTB_Material_Name.Text = "";
                         RTB_Mat_Unit.Text = "";
-                        RTB_Rough_Size.Text = "";
+                        RTB_Dinge_Size.Text = "";
                         RTB_Rough_Spec.Text = "";
                         break;
                 }
@@ -211,8 +211,8 @@ namespace mms.MaterialApplicationCollar
 
         protected void RB_Submit_Click(object sender, EventArgs e)
         {
-            string deptCode = HF_DeptCode.Value.ToString();
             string Applicant = RTB_Applicant.Text.Trim();
+            string deptCode = HF_DeptCode.Value.ToString();
             string ApplicationTime = RDP_ApplicationTime.SelectedDate.ToString();
             string ContactInformation = RTB_ContactInformation.Text.Trim();
             string TaskCode = RTB_TaskCode.Text.Trim();
@@ -234,6 +234,7 @@ namespace mms.MaterialApplicationCollar
             string MaterialsDes = RTB_MaterialsDes.Text.Trim();
             string Mat_Unit = RTB_Mat_Unit.Text.Trim();
             string Rough_Size = RTB_Rough_Size.Text.Trim();
+            string Dinge_Size = RTB_Dinge_Size.Text.Trim();
             string DiaoDu = RDDL_DiaoDu.SelectedValue.ToString();
             string XingHao = RDDL_XingHao.SelectedValue.ToString();
             string WuZi = RDDL_WuZi.SelectedValue.ToString();
@@ -271,11 +272,11 @@ namespace mms.MaterialApplicationCollar
                 strSQL = "declare @id int";
                 strSQL += " Insert into MaterialApplication (Type, Material_Id,Applicant, UserAccount,Dept, ApplicationTime, ContactInformation, TheMaterialWay, TaskCode, Drawing_No"
                     + " , Draft_Code, Quantity, FeedingTime, IsDispatch, IsConfirm, Remark, MaterialType, Material_Name, Material_Mark, CN_Material_State, Material_Tech_Condition"
-                    + " , Rough_Spec, Mat_Rough_Weight,MaterialsDes, Mat_Unit, Rough_Size, PleaseTakeQuality, AppState, ReturnReason, Is_Del, ItemCode,DiaoDuApprove, XingHaoJiHuaYuanApprove, WuZiJiHuaYuanApprove)"
+                    + " , Rough_Spec, Mat_Rough_Weight,MaterialsDes, Mat_Unit, Rough_Size, Dinge_Size,PleaseTakeQuality, AppState, ReturnReason, Is_Del, ItemCode,DiaoDuApprove, XingHaoJiHuaYuanApprove, WuZiJiHuaYuanApprove)"
                     + " values ('4',Null, '" + Applicant + "','"  + Session["UserAccount"] + "','"+deptCode + "','" + ApplicationTime + "','" + ContactInformation + "','" + TheMaterialWay + "','" + TaskCode + "','" + DrawingNo + "'"
                     + " ,Null,'" + Quantity + "','" + FeedingTime + "','" + IsDispatch + "','" + IsConfirm + "','" + Remark + "'"
                     + " ,Null,'" + Material_Name + "','" + Material_Mark + "','" + CN_Material_State + "','" + Material_Tech_Condition + "'"
-                    + " ,'" + Rough_Spec + "','" + Mat_Rough_Weight + "','" + MaterialsDes + "','" + Mat_Unit + "','" + Rough_Size + "','" + PleaseTakeQuality + "','1',Null,'false'"
+                    + " ,'" + Rough_Spec + "','" + Mat_Rough_Weight + "','" + MaterialsDes + "','" + Mat_Unit + "','" + Rough_Size + "','" + Dinge_Size + "','" + PleaseTakeQuality + "','1',Null,'false'"
                     + " ,'" + ItemCode + "','" + DiaoDu + "','" + XingHao + "','" + WuZi + "') select @id = @@identity"
                     + " Insert into MaterialApplication_Log (MaterialApplicationId, Operation_UserId, Operation_Time, Operation_Remark)"
                     + " values (@id, '" + Session["UserId"].ToString() + "',GetDate(),'申请') select @id";
@@ -347,6 +348,7 @@ namespace mms.MaterialApplicationCollar
             string MaterialsDes = RTB_MaterialsDes.Text.Trim();
             string Mat_Unit = RTB_Mat_Unit.Text.Trim();
             string Rough_Size = RTB_Rough_Size.Text.Trim();
+            string Dinge_Size = RTB_Dinge_Size.Text.Trim();
             string DiaoDu = RDDL_DiaoDu.SelectedValue.ToString();
             string XingHao = RDDL_XingHao.SelectedValue.ToString();
             string WuZi = RDDL_WuZi.SelectedValue.ToString();
@@ -381,11 +383,11 @@ namespace mms.MaterialApplicationCollar
             string strSQL = "declare @id int";
             strSQL += " Insert into MaterialApplication (Type, Material_Id, Applicant, UserAccount,Dept, ApplicationTime, ContactInformation, TheMaterialWay, TaskCode, Drawing_No"
                 + " , Draft_Code, Quantity, FeedingTime, IsDispatch, IsConfirm, Remark, MaterialType, Material_Name, Material_Mark, CN_Material_State, Material_Tech_Condition"
-                + " , Rough_Spec, Mat_Rough_Weight, MaterialsDes,Mat_Unit, Rough_Size, PleaseTakeQuality, AppState, ReturnReason, Is_Del, ItemCode,DiaoDuApprove, XingHaoJiHuaYuanApprove, WuZiJiHuaYuanApprove)"
+                + " , Rough_Spec, Mat_Rough_Weight, MaterialsDes,Mat_Unit,Rough_Size,Dinge_Size, PleaseTakeQuality, AppState, ReturnReason, Is_Del, ItemCode,DiaoDuApprove, XingHaoJiHuaYuanApprove, WuZiJiHuaYuanApprove)"
                 + " values ('4',Null, '" + Applicant + "','"+ Session["UserAccount"] + "','"+ deptCode + "','" + ApplicationTime + "','" + ContactInformation + "','" + TheMaterialWay + "','" + TaskCode + "','" + DrawingNo + "'"
                 + " ,Null,'" + Quantity + "','" + FeedingTime + "','" + IsDispatch + "','" + IsConfirm + "','" + Remark + "'"
                 + " ,Null,'" + Material_Name + "','" + Material_Mark + "','" + CN_Material_State + "','" + Material_Tech_Condition + "'"
-                + " ,'" + Rough_Spec + "','" + Mat_Rough_Weight + "','" + MaterialsDes + "','" + Mat_Unit + "','" + Rough_Size + "','" + PleaseTakeQuality + "','1',Null,'false'"
+                + " ,'" + Rough_Spec + "','" + Mat_Rough_Weight + "','" + MaterialsDes + "','" + Mat_Unit + "','" + Rough_Size + "','" + Dinge_Size + "','" + PleaseTakeQuality + "','1',Null,'false'"
                 + " ,'" + ItemCode + "','" + DiaoDu + "','" + XingHao + "','" + WuZi + "') select @id = @@identity"
                 + " Insert into MaterialApplication_Log (MaterialApplicationId, Operation_UserId, Operation_Time, Operation_Remark)"
                 + " values (@id, '" + Session["UserId"].ToString() + "',GetDate(),'编辑') select @id";
@@ -432,6 +434,7 @@ namespace mms.MaterialApplicationCollar
             RTB_MaterialsDes.Text="";
             RTB_Mat_Unit.Text = "";
             RTB_Rough_Size.Text = "";
+            RTB_Dinge_Size.Text = "";
             RDDL_DiaoDu.SelectedIndex = 0;
             RDDL_XingHao.SelectedIndex = 0;
             RDDL_WuZi.SelectedIndex = 0;

@@ -128,7 +128,8 @@ namespace mms.Plan
                     txt_NumCasesSum.Text = dt.Rows[0]["NumCasesSum"].ToString();
                     txt_DemandNumSum.Text = dt.Rows[0]["DemandNumSum"].ToString();
                     txt_Mat_Unit.Text = dt.Rows[0]["Mat_Unit"].ToString();
-                    txt_Rough_Size.Text = dt.Rows[0]["Rough_Size"].ToString();
+                    RTB_Rough_Size.Text = dt.Rows[0]["Rough_Size"].ToString();
+                    RTB_Dinge_Size.Text = dt.Rows[0]["Dinge_Size"].ToString();
                     txt_Rough_Spec.Text = dt.Rows[0]["Rough_Spec"].ToString();
                     RTB_Mat_Rough_Weight.Text = dt.Rows[0]["Mat_Rough_Weight"].ToString();
                     RTB_Unit_Price.Text = dt.Rows[0]["Unit_Price"].ToString();
@@ -249,15 +250,7 @@ namespace mms.Plan
             RadComboBoxShipping_Address.DataBind();
         }
 
-        protected void BindUseDes()
-        {
-            string strSQL = "select * from GetBasicdata_T_Item where DICT_CLASS='CUX_DM_USAGE'";
-            RadComboBoxUseDes.DataSource = DBI.Execute(strSQL, true);
-            RadComboBoxUseDes.DataTextField = "DICT_Name";
-            RadComboBoxUseDes.DataValueField = "DICT_Code";
-            RadComboBoxUseDes.DataBind();
-        }
-
+  
         protected void BindUrgencyDegre()
         {
             string strSQL = " select * from GetBasicdata_T_Item where DICT_CLASS='CUX_DM_URGENCY_LEVEL'";
@@ -320,7 +313,8 @@ namespace mms.Plan
             string NumCasesSum = txt_NumCasesSum.Text.Trim();
             string DemandNumSum = txt_DemandNumSum.Text.Trim();
             string Mat_Unit = txt_Mat_Unit.Text.Trim();
-            string Rough_Size = txt_Rough_Size.Text.Trim();
+            string Rough_Size = RTB_Rough_Size.Text.Trim();
+            string Dinge_Size = RTB_Dinge_Size.Text.Trim();
             string Rough_Spec = txt_Rough_Spec.Text.Trim();
             string Unit_Price = RTB_Unit_Price.Text.Trim();
             string Mat_Rough_Weight = RTB_Mat_Rough_Weight.Text.Trim();
@@ -372,7 +366,7 @@ namespace mms.Plan
             if (Drawing_No != dt.Rows[0]["Drawing_No"].ToString() || TaskCode != dt.Rows[0]["TaskCode"].ToString() || Convert.ToDateTime(DemandDate) != Convert.ToDateTime(dt.Rows[0]["DemandDate"].ToString())
                 || MaterialDept != dt.Rows[0]["MaterialDept"].ToString() || Convert.ToDecimal(NumCasesSum) != Convert.ToDecimal(dt.Rows[0]["NumCasesSum"].ToString())
                 || Convert.ToDecimal(DemandNumSum) != Convert.ToDecimal(dt.Rows[0]["DemandNumSum"].ToString()) || Mat_Unit != dt.Rows[0]["Mat_Unit"].ToString()
-                || Rough_Size != dt.Rows[0]["Rough_Size"].ToString() || Rough_Spec != dt.Rows[0]["Rough_Spec"].ToString()
+                || Rough_Size != dt.Rows[0]["Rough_Size"].ToString() || Dinge_Size != dt.Rows[0]["Dinge_Size"].ToString() || Rough_Spec != dt.Rows[0]["Rough_Spec"].ToString()
                 || Special_Needs != dt.Rows[0]["Special_Needs"].ToString() || Urgency_Degre != dt.Rows[0]["Urgency_Degre"].ToString()
                 || Secret_Level != dt.Rows[0]["Secret_Level"].ToString() || Stage != dt.Rows[0]["Stage"].ToString() || Use_Des != dt.Rows[0]["Use_Des"].ToString()
                 || Shipping_Address != dt.Rows[0]["Shipping_Address"].ToString() || Certification != dt.Rows[0]["Certification"].ToString()
@@ -415,6 +409,7 @@ namespace mms.Plan
                                  DemandNumSum + "','" +
                                  Mat_Unit + "','" +
                                  Rough_Size + "','" +
+                                 Dinge_Size + "','" +
                                  Rough_Spec + "','" +
                                  Unit_Price + "','" +
                                  Mat_Rough_Weight + "','" +

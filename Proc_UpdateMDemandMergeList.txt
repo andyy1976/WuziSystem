@@ -1,6 +1,6 @@
 USE [mms]
 GO
-/****** Object:  StoredProcedure [dbo].[Proc_UpdateMDemandMergeList]    Script Date: 2017-11-07 16:03:03 ******/
+/****** Object:  StoredProcedure [dbo].[Proc_UpdateMDemandMergeList]    Script Date: 2017-12-13 20:39:08 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -28,6 +28,7 @@ ALTER PROCEDURE [dbo].[Proc_UpdateMDemandMergeList]
 	@DemandNumSum nvarchar(50),
 	@Mat_Unit nvarchar(50),
 	@Rough_Size nvarchar(50),
+	@Dinge_Size nvarchar(50),
 	@Rough_Spec  varchar(50),
 	@Unit_Price nvarchar(50),
 	@Mat_Rough_Weight nvarchar(50),
@@ -62,6 +63,7 @@ BEGIN transaction T
 	@DemandNumSum1 varchar(50),
 	@Mat_Unit1 nvarchar(50),
 	@Rough_Size1 nvarchar(50),
+	@Dinge_Size1 nvarchar(50),
 	@Rough_Spec1  varchar(50),
 	@Unit_Price1 varchar(50),
 	@Mat_Rough_Weight1 varchar(50),
@@ -99,6 +101,7 @@ BEGIN transaction T
 		@DemandNumSum1 = DemandNumSum,
 		@Mat_Unit1 = Mat_Unit,
 		@Rough_Size1 = Rough_Size,
+		@Dinge_Size1 = Dinge_Size,
 		@Rough_Spec1  = Rough_Spec,
 		@Unit_Price1 = Unit_Price,
 		@Mat_Rough_Weight1 = Mat_Rough_Weight,
@@ -137,6 +140,7 @@ BEGIN transaction T
 		DemandNumSum = case when  @DemandNumSum = '' then '0' else @DemandNumSum end ,
 		Mat_Unit = @Mat_Unit ,
 		Rough_Size = @Rough_Size ,
+		Dinge_Size = @Dinge_Size ,
 		Rough_Spec = @Rough_Spec ,
 		Unit_Price = case when @Unit_Price = '' then null else @Unit_Price end,
 		Mat_Rough_Weight = @Mat_Rough_Weight,
@@ -156,7 +160,7 @@ BEGIN transaction T
 
 	if (@Special_Needs != @Special_Needs1 or Convert(decimal(18,4),@NumCasesSum) != Convert(decimal(18,4),@NumCasesSum1) 
 		or Convert(decimal(18,4),@DemandNumSum) != Convert(decimal(18,4),@DemandNumSum1)
-		or @Rough_Size != @Rough_Size1 or @MANUFACTURER != @MANUFACTURER1 or Convert(datetime,@DemandDate) != Convert(datetime,@DemandDate1)
+		or @Rough_Size != @Rough_Size1 or @Dinge_Size != @Dinge_Size1 or @MANUFACTURER != @MANUFACTURER1 or Convert(datetime,@DemandDate) != Convert(datetime,@DemandDate1)
 		or @Urgency_Degre != @Urgency_Degre1 or @REQUESTER != @REQUESTER1 or @REQUESTER_PHONE != @REQUESTER_PHONE1
 		or @Secret_Level != @Secret_Level1 or @Stage != @Stage1 or @Use_Des = @Use_Des1 or @TaskCode != @TaskCode1
 		or @SUBJECT != @SUBJECT1 or @MaterialDept != @MaterialDept1 or @Shipping_Address != @Shipping_Address1
@@ -183,6 +187,10 @@ BEGIN transaction T
 		if @Rough_Size != @Rough_Size1 begin
 			Insert into M_Change_Record (Change_Code, Change_Evidence_Id, Correspond_Draft_Code, MDPId, MDMId, Change_Date, Change_State, [User_ID], Column_Changed, Original_Value, Changed_Value)
 			values  ('', Null , @MDDLDID, @MDPLId,  @id, @curdate, '6', @userId, 'DIMENSION', @Rough_Size1, @Rough_Size)
+		end
+		if @Dinge_Size != @Dinge_Size1 begin
+			Insert into M_Change_Record (Change_Code, Change_Evidence_Id, Correspond_Draft_Code, MDPId, MDMId, Change_Date, Change_State, [User_ID], Column_Changed, Original_Value, Changed_Value)
+			values  ('', Null , @MDDLDID, @MDPLId,  @id, @curdate, '6', @userId, 'DINGE_SIZE', @Dinge_Size1, @Dinge_Size)
 		end
 		if @MANUFACTURER != @MANUFACTURER1 begin
 			Insert into M_Change_Record (Change_Code, Change_Evidence_Id, Correspond_Draft_Code, MDPId, MDMId, Change_Date, Change_State, [User_ID], Column_Changed, Original_Value, Changed_Value)

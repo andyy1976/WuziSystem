@@ -45,12 +45,14 @@ namespace mms.Plan
                     InitTable.Columns.Add("TaskCode");
                     InitTable.Columns.Add("MaterialDept");
                     InitTable.Columns.Add("ItemCode1");
+                    InitTable.Columns.Add("Dinge_Size");
                     InitTable.Columns.Add("DemandNumSum");
                     InitTable.Columns.Add("NumCasesSum");
                     InitTable.Columns.Add("Mat_Rough_Weight");
                     InitTable.Columns.Add("Mat_Unit");
                     InitTable.Columns.Add("Quantity");
                     InitTable.Columns.Add("Rough_Size");
+                    InitTable.Columns.Add("Dinge_Size");
                     InitTable.Columns.Add("Rough_Spec");
                     InitTable.Columns.Add("DemandDate");
                     InitTable.Columns.Add("Special_Needs");
@@ -296,10 +298,10 @@ namespace mms.Plan
                 //{
                 //    flag = false; err = "“坯料规格”不得为空！";
                 //}
-                //if (string.IsNullOrEmpty(span_Rough_Size.InnerText) || span_Rough_Size.InnerText == "")
-                //{
-                //    flag = false; err = "“物资尺寸”不得为空！";
-                //}
+                if (string.IsNullOrEmpty(RTB_Rough_Size.Text.Trim()) || RTB_Rough_Size.Text.Trim() == "")
+                {
+                    flag = false; err = "“需求尺寸”不得为空！";
+                }
                 //if (string.IsNullOrEmpty(span_Mat_Unit.InnerText) || span_Mat_Unit.InnerText == "")
                 //{
                 //    flag = false; err = "“计量单位”不得为空！";
@@ -362,7 +364,8 @@ namespace mms.Plan
             mta.DemandNumSum = Convert.ToDecimal(txt_DemandNumSum.Text);
             mta.Mat_Unit = txt_Mat_Unit.Text;//span_Mat_Unit.InnerText;
             mta.Quantity = Convert.ToInt32(txt_NumCasesSum.Text);//txt_Quantity
-            mta.Rough_Size = txt_Rough_Size.Text;//span_Rough_Size.InnerText;
+            mta.Rough_Size = RTB_Rough_Size.Text;//span_Rough_Size.InnerText;
+            mta.Dinge_Size = RTB_Dinge_Size.Text;
             mta.Rough_Spec = txt_Rough_Spec.Text;//span_Rough_Spec.InnerText;
             mta.Mat_Rough_Weight = RTB_Mat_Rough_Weight.Text;
             mta.Special_Needs = rtb_SpecialNeeds.Text;
@@ -379,7 +382,7 @@ namespace mms.Plan
             mta.CN_Material_State = RTB_CN_Material_State.Text.Trim();
             mta.Material_Tech_Condition = RTB_Material_Tech_Condition.Text.Trim(); ;        
 
-            mta.Material_Size_Required = RTB_Material_Size_Required.Text;
+            mta.Dinge_Size = RTB_Dinge_Size.Text;
             mta.TDM_Description = RTB_TDM_Description.Text;
 
             mta.MaterialsDes = RTB_MaterialsDes.Text; 
@@ -412,7 +415,7 @@ namespace mms.Plan
             RTB_Material_Mark.Text = "";
             RTB_CN_Material_State.Text = "";
             RTB_Material_Tech_Condition.Text = "";
-            RTB_Material_Size_Required.Text = "";
+            RTB_Dinge_Size.Text = "";
             RTB_MaterialsDes.Text = "";
             RTB_TDM_Description.Text = "";
             txt_ItemCode1.Text = "";
@@ -422,7 +425,8 @@ namespace mms.Plan
             RTB_Mat_Rough_Weight.Text = "";
             txt_Mat_Unit.Text = "";//span_Mat_Unit.InnerHtml = "";
             //txt_Quantity.Text = "";
-            txt_Rough_Size.Text = "";//span_Rough_Size.InnerHtml = "";
+            RTB_Rough_Size.Text = "";//span_Rough_Size.InnerHtml = "";
+            RTB_Dinge_Size.Text = "";
             txt_Rough_Spec.Text = "";//span_Rough_Spec.InnerHtml = "";
             RTB_Unit_Price.Text = "";//span_Unit_Price.InnerHtml = "";
             span_Sum_Price.Text = "";
@@ -457,8 +461,8 @@ namespace mms.Plan
                          mta.TaskCode + "','" +mta.MaterialDept + "','" + mta.ItemCode1 + "','" + 
                          mta.DemandNumSum + "','" + mta.NumCasesSum +"','" +mta.Mat_Rough_Weight+"','"+
                          mta.Material_Tech_Condition + "','" + mta.CN_Material_State + "','" + mta.Material_Mark + "','" +
-                         mta.Material_Size_Required + "','" + mta.TDM_Description + "','" + mta.MaterialsDes + "','" +
-                         mta.Mat_Unit + "','" + mta.Quantity + "','" + mta.Rough_Size + "','" + mta.Rough_Spec + "','" +
+                         mta.TDM_Description + "','" + mta.MaterialsDes + "','" +
+                         mta.Mat_Unit + "','" + mta.Quantity + "','" + mta.Rough_Size + "','" + mta.Dinge_Size + "','"+ mta.Rough_Spec + "','" +
                          mta.DemandDate + "','" + mta.Special_Needs + "','" + mta.Urgency_Degre + "','" +
                          mta.Secret_Level + "','" +
                          mta.Stage + "','" + mta.Use_Des + "','" + mta.Shipping_Address + "','" + mta.Certification +
@@ -500,6 +504,7 @@ namespace mms.Plan
             public int Quantity { get; set; }
             public DateTime DemandDate { get; set; }
             public string Rough_Size { get; set; }
+            public string Dinge_Size { get; set; }
             public string Rough_Spec { get; set; }
             public string Mat_Rough_Weight { get; set; }
             public string MaterialsDes { get; set; }
@@ -526,7 +531,6 @@ namespace mms.Plan
             public string CN_Material_State { get; set; }
             public string Material_Tech_Condition { get; set; }
             public string TDM_Description { get; set; }
-            public string Material_Size_Required { get; set; }
             public string Material_Mark { get; set; }
         }
         protected DataTable GetTechnologyTestList(string MDPId, string Submit_Type)
@@ -1175,7 +1179,7 @@ namespace mms.Plan
                         RTB_Material_Mark.Text = "";
                         RTB_Material_Name.Text = dt.Rows[0]["Seg21"].ToString();
                         txt_Mat_Unit.Text = dt.Rows[0]["Seg7"].ToString();
-                        txt_Rough_Size.Text = "";
+                        RTB_Dinge_Size.Text = "";
                         txt_Rough_Spec.Text = dt.Rows[0]["Seg13"].ToString();
                         RTB_Unit_Price.Text = dt.Rows[0]["Seg31"].ToString();
                         break;
@@ -1183,14 +1187,14 @@ namespace mms.Plan
                         RTB_Material_Mark.Text = "";
                         RTB_Material_Name.Text = dt.Rows[0]["Seg12"].ToString();
                         txt_Mat_Unit.Text = dt.Rows[0]["Seg7"].ToString();
-                        txt_Rough_Size.Text = "";
+                        RTB_Dinge_Size.Text = "";
                         txt_Rough_Spec.Text = dt.Rows[0]["Seg15"].ToString();
                         RTB_Unit_Price.Text = dt.Rows[0]["Seg25"].ToString();
                         break;
                     case "YY03":
                         RTB_Material_Name.Text = dt.Rows[0]["Seg12"].ToString();
                         txt_Mat_Unit.Text = dt.Rows[0]["Seg7"].ToString();
-                        txt_Rough_Size.Text = dt.Rows[0]["Seg16"].ToString();
+                        RTB_Dinge_Size.Text = dt.Rows[0]["Seg16"].ToString();
                         txt_Rough_Spec.Text = dt.Rows[0]["Seg15"].ToString();
                         RTB_Unit_Price.Text = "0";
                         span_Sum_Price.Text = "0";//span_Sum_Price.InnerHtml = "0";
@@ -1198,14 +1202,14 @@ namespace mms.Plan
                     case "YY04":
                         RTB_Material_Name.Text = dt.Rows[0]["Seg12"].ToString();
                         txt_Mat_Unit.Text = dt.Rows[0]["Seg7"].ToString();
-                        txt_Rough_Size.Text = "";
+                        RTB_Dinge_Size.Text = "";
                         txt_Rough_Spec.Text = dt.Rows[0]["Seg14"].ToString();
                         RTB_Unit_Price.Text = dt.Rows[0]["Seg23"].ToString();
                         break;
                     case "YY05":
                         RTB_Material_Name.Text = dt.Rows[0]["Seg12"].ToString();
                         txt_Mat_Unit.Text = dt.Rows[0]["Seg7"].ToString();
-                        txt_Rough_Size.Text = "";
+                        RTB_Dinge_Size.Text = "";
                         txt_Rough_Spec.Text = dt.Rows[0]["Seg14"].ToString();
                         RTB_Unit_Price.Text = dt.Rows[0]["Seg23"].ToString();
                         RTB_Material_Tech_Condition.Text = dt.Rows[0]["SEG16"].ToString();
@@ -1213,28 +1217,28 @@ namespace mms.Plan
                     case "YY06":
                         RTB_Material_Name.Text = dt.Rows[0]["Seg12"].ToString();
                         txt_Mat_Unit.Text = dt.Rows[0]["Seg7"].ToString();
-                        txt_Rough_Size.Text = "";
+                        RTB_Dinge_Size.Text = "";
                         txt_Rough_Spec.Text = dt.Rows[0]["Seg14"].ToString();
                         RTB_Unit_Price.Text = dt.Rows[0]["Seg23"].ToString();
                         break;
                     case "YY07":
                         RTB_Material_Name.Text = dt.Rows[0]["Seg20"].ToString();
                         txt_Mat_Unit.Text = dt.Rows[0]["Seg7"].ToString();
-                        txt_Rough_Size.Text = "";
+                        RTB_Dinge_Size.Text = "";
                         txt_Rough_Spec.Text = dt.Rows[0]["Seg14"].ToString();
                         RTB_Unit_Price.Text = dt.Rows[0]["Seg25"].ToString();
                         break;
                     case "YY08":
                         RTB_Material_Name.Text = dt.Rows[0]["Seg12"].ToString();
                         txt_Mat_Unit.Text = dt.Rows[0]["Seg7"].ToString();
-                        txt_Rough_Size.Text = "";
+                        RTB_Dinge_Size.Text = "";
                         txt_Rough_Spec.Text = dt.Rows[0]["Seg14"].ToString();
                         RTB_Unit_Price.Text = dt.Rows[0]["Seg21"].ToString();
                         break;
                     case "YY09":
                         RTB_Material_Name.Text = dt.Rows[0]["Seg12"].ToString();
                         txt_Mat_Unit.Text = dt.Rows[0]["Seg7"].ToString();
-                        txt_Rough_Size.Text = "";
+                        RTB_Dinge_Size.Text = "";
                         txt_Rough_Spec.Text = dt.Rows[0]["Seg14"].ToString();
                         RTB_Unit_Price.Text = dt.Rows[0]["Seg21"].ToString();
                    
@@ -1242,7 +1246,7 @@ namespace mms.Plan
                     default:
                         RTB_Material_Name.Text = "";
                         txt_Mat_Unit.Text = "";
-                        txt_Rough_Size.Text = "";
+                        RTB_Dinge_Size.Text = "";
                         txt_Rough_Spec.Text = "";
                         RTB_Unit_Price.Text = "0";
                         span_Sum_Price.Text = "0";
@@ -1473,28 +1477,28 @@ namespace mms.Plan
           
 
                  RadComboBox RadComboBoxSecretLevel = e.Item.FindControl("RadComboBoxSecretLevel") as RadComboBox;
-                 RadComboBoxSecretLevel.FindItemByValue(GridSource1.Select("ID='" + id + "'")[0]["Secret_Level"].ToString()).Selected = true;
+                 RadComboBoxSecretLevel.FindItemByText(GridSource1.Select("ID='" + id + "'")[0]["Secret_Level"].ToString()).Selected = true;
                 // RadComboBoxSecretLevel.FindItemByText("内部").Selected = true;
                  
 
                  RadComboBox RadComboBoxCertification = e.Item.FindControl("RadComboBoxCertification") as RadComboBox;
-                 RadComboBoxCertification.FindItemByValue(GridSource1.Select("ID='" + id + "'")[0]["Certification"].ToString()).Selected = true;
+                 RadComboBoxCertification.FindItemByText(GridSource1.Select("ID='" + id + "'")[0]["Certification"].ToString()).Selected = true;
              
                  RadDropDownList RDDL_Project = e.Item.FindControl("RDDL_Project1") as RadDropDownList;
-              
-                 RDDL_Project.FindItemByValue(GridSource1.Select("ID='" + id + "'")[0]["Project"].ToString()).Selected = true;
+
+                 RDDL_Project.FindItemByText(GridSource1.Select("ID='" + id + "'")[0]["Project"].ToString()).Selected = true;
               
                  RadComboBox RadComboBoxStage = e.Item.FindControl("RadComboBoxStage") as RadComboBox;
-                 RadComboBoxStage.FindItemByValue(GridSource1.Select("ID='" + id + "'")[0]["stage"].ToString()).Selected = true;
+                 RadComboBoxStage.FindItemByText(GridSource1.Select("ID='" + id + "'")[0]["stage"].ToString()).Selected = true;
 
                  RadComboBox RadComboBoxAttribute4 = e.Item.FindControl("RadComboBoxAttribute4") as RadComboBox;
-                 RadComboBoxAttribute4.FindItemByValue(GridSource1.Select("ID='" + id + "'")[0]["Attribute4"].ToString()).Selected = true;
+                 RadComboBoxAttribute4.FindItemByText(GridSource1.Select("ID='" + id + "'")[0]["Attribute4"].ToString()).Selected = true;
 
                  RadComboBox RadComboBoxUrgencyDegree = e.Item.FindControl("RadComboBoxUrgencyDegree") as RadComboBox;
                  RadComboBoxUrgencyDegree.FindItemByText(GridSource1.Select("ID='" + id + "'")[0]["Urgency_Degre"].ToString()).Selected = true;
              //    RadComboBoxUrgencyDegree.FindItemByText("一般").Selected = true;
                  RadComboBox RadComboBoxUseDes = e.Item.FindControl("RadComboBoxUseDes") as RadComboBox;
-                 RadComboBoxUseDes.FindItemByValue(GridSource1.Select("ID='" + id + "'")[0]["Use_Des"].ToString()).Selected = true;
+                 RadComboBoxUseDes.FindItemByText(GridSource1.Select("ID='" + id + "'")[0]["Use_Des"].ToString()).Selected = true;
          
                
             }
@@ -1553,10 +1557,7 @@ namespace mms.Plan
                                     columnscount++;
                                     break;
 
-                                case "产品名称":
-                                    GridSource1.Columns[i].ColumnName = "TDM_Description";
-                                    columnscount++;
-                                    break;
+                               
                                 case "产品图号":
                                     GridSource1.Columns[i].ColumnName = "DRAWING_NO";
                                     columnscount++;
@@ -1565,7 +1566,16 @@ namespace mms.Plan
                                     GridSource1.Columns[i].ColumnName = "TaskCode";
                                     columnscount++;
                                     break;
-                         
+
+                                case "产品名称":
+                                    GridSource1.Columns[i].ColumnName = "TDM_Description";
+                                    columnscount++;
+                                    break;
+
+                                case "物资名称":
+                                    GridSource1.Columns[i].ColumnName = "Material_Name";
+                                    columnscount++;
+                                    break;
                                    case "物资牌号":
                                        GridSource1.Columns[i].ColumnName = "Material_Mark";
                                        columnscount++;
@@ -1586,7 +1596,7 @@ namespace mms.Plan
                                        GridSource1.Columns[i].ColumnName = "Rough_Spec";
                                        columnscount++;
                                        break;
-                                   case "尺寸":
+                                   case "需求尺寸":
                                        GridSource1.Columns[i].ColumnName = "ROUGH_SIZE";
                                        columnscount++;
                                        break;
@@ -1596,8 +1606,8 @@ namespace mms.Plan
                                        break;
 
 
-                                   case "需求尺寸":
-                                       GridSource1.Columns[i].ColumnName = "Material_Size_Required";
+                                   case "胚料尺寸":
+                                       GridSource1.Columns[i].ColumnName = "Dinge_Size";
                                        columnscount++;
                                        break;
 
@@ -1606,10 +1616,7 @@ namespace mms.Plan
                                        columnscount++;
                                        break;
                                    /*
-                                  case "计量单位":
-                                      GridSource1.Columns[i].ColumnName = "MAT_UNIT";
-                                      columnscount++;
-                                      break;
+                                 
                                     case "单件定额质量":
                                       GridSource1.Columns[i].ColumnName = "Mat_Rough_Weight";
                                       columnscount++;
@@ -1620,9 +1627,12 @@ namespace mms.Plan
                                        GridSource1.Columns[i].ColumnName = "NumCasesSum";
                                        columnscount++;
                                        break;
-                           
+                                   case "计量单位":
+                                       GridSource1.Columns[i].ColumnName = "MAT_UNIT";
+                                       columnscount++;
+                                       break;
 
-                                case "共计需求数量（重量）":
+                                case "需求数量":
                                        GridSource1.Columns[i].ColumnName = "DemandNumSum";
                                        columnscount++;
                                        break;
@@ -1689,7 +1699,7 @@ namespace mms.Plan
                             
                             }
                         }
-                        if (columnscount < 20)
+                        if (columnscount < 24)
                         {
                             GridSource1 = new System.Data.DataTable();
                             RadGridImport.Rebind();
@@ -1700,11 +1710,11 @@ namespace mms.Plan
                         }
 
                         GridSource1.Columns.Add("ID");
-                        GridSource1.Columns.Add("Material_Name");
+                       // GridSource1.Columns.Add("Material_Name");
                      //   GridSource1.Columns.Add("Material_Mark");
                       //  GridSource1.Columns.Add("CN_Material_State");
                      // GridSource1.Columns.Add("Material_Tech_Condition");
-                        GridSource1.Columns.Add("MAT_UNIT");
+                    //    GridSource1.Columns.Add("MAT_UNIT");
                     //    GridSource1.Columns.Add("Rough_Spec");
                       //  GridSource1.Columns.Add("Unit_Price");
                         GridSource1.Columns.Add("Sum_Price");
@@ -1723,7 +1733,7 @@ namespace mms.Plan
                                    
                                   double unitPrice=  Convert.ToDouble(GridSource1.Rows[i]["Unit_Price"]);
                                   double demandnumSum=  Convert.ToDouble(GridSource1.Rows[i]["DemandNumSum"]);
-                                    GridSource1.Rows[i]["Sum_Price"] =( unitPrice*demandnumSum).ToString();
+                                  GridSource1.Rows[i]["Sum_Price"] =( unitPrice*demandnumSum).ToString();
                                 }
                                 catch
                                 {
@@ -1781,52 +1791,52 @@ namespace mms.Plan
                 {
                     case "YY01":
                      //   GridSource1.Rows[i]["Material_Mark"] = "";
-                        GridSource1.Rows[i]["Material_Name"] = dt.Rows[0]["Seg21"].ToString();
-                        GridSource1.Rows[i]["MAT_UNIT"] = dt.Rows[0]["Seg7"].ToString();
+                  //      GridSource1.Rows[i]["Material_Name"] = dt.Rows[0]["Seg21"].ToString();
+                    //    GridSource1.Rows[i]["MAT_UNIT"] = dt.Rows[0]["Seg7"].ToString();
                     //    GridSource1.Rows[i]["Rough_Spec"] = dt.Rows[0]["Seg13"].ToString();
                    
                         break;
                     case "YY02":
                      //   GridSource1.Rows[i]["Material_Mark"] = "";
-                        GridSource1.Rows[i]["Material_Name"] = dt.Rows[0]["Seg12"].ToString();
-                        GridSource1.Rows[i]["MAT_UNIT"] = dt.Rows[0]["Seg7"].ToString();
+                     //   GridSource1.Rows[i]["Material_Name"] = dt.Rows[0]["Seg12"].ToString();
+                     //   GridSource1.Rows[i]["MAT_UNIT"] = dt.Rows[0]["Seg7"].ToString();
                    //     GridSource1.Rows[i]["Rough_Spec"] = dt.Rows[0]["Seg15"].ToString();
 
                         break;
                     case "YY03":
-                        GridSource1.Rows[i]["Material_Name"] = dt.Rows[0]["Seg12"].ToString();
-                        GridSource1.Rows[i]["MAT_UNIT"] = dt.Rows[0]["Seg7"].ToString();
+                     //   GridSource1.Rows[i]["Material_Name"] = dt.Rows[0]["Seg12"].ToString();
+                     //   GridSource1.Rows[i]["MAT_UNIT"] = dt.Rows[0]["Seg7"].ToString();
                       //  GridSource1.Rows[i]["Rough_Spec"] = dt.Rows[0]["Seg15"].ToString();
 
-                       // GridSource1.Rows[i]["ROUGH_SIZE"] = dt.Rows[0]["Seg16"].ToString();
+                       // GridSource1.Rows[i]["DINGE_SIZE"] = dt.Rows[0]["Seg16"].ToString();
                         break;
                 
                     case "YY05":
                       //  GridSource1.Rows[i]["Material_Tech_Condition"] = dt.Rows[0]["SEG16"].ToString();;
-                        GridSource1.Rows[i]["Material_Name"] = dt.Rows[0]["Seg12"].ToString();
-                        GridSource1.Rows[i]["MAT_UNIT"] = dt.Rows[0]["Seg7"].ToString();
+                    //    GridSource1.Rows[i]["Material_Name"] = dt.Rows[0]["Seg12"].ToString();
+                     //   GridSource1.Rows[i]["MAT_UNIT"] = dt.Rows[0]["Seg7"].ToString();
                  //       GridSource1.Rows[i]["Rough_Spec"] = dt.Rows[0]["Seg14"].ToString();
                         break;
                     case "YY04":
                     case "YY06":
-                        GridSource1.Rows[i]["Material_Name"] = dt.Rows[0]["Seg12"].ToString();
-                        GridSource1.Rows[i]["MAT_UNIT"] = dt.Rows[0]["Seg7"].ToString();
+                  //      GridSource1.Rows[i]["Material_Name"] = dt.Rows[0]["Seg12"].ToString();
+                    //    GridSource1.Rows[i]["MAT_UNIT"] = dt.Rows[0]["Seg7"].ToString();
                     //    GridSource1.Rows[i]["Rough_Spec"] = dt.Rows[0]["Seg14"].ToString();
                         break;
                     case "YY07":
-                        GridSource1.Rows[i]["Material_Name"] = dt.Rows[0]["Seg20"].ToString();
-                        GridSource1.Rows[i]["MAT_UNIT"] = dt.Rows[0]["Seg7"].ToString();
+                    //    GridSource1.Rows[i]["Material_Name"] = dt.Rows[0]["Seg20"].ToString();
+                     //   GridSource1.Rows[i]["MAT_UNIT"] = dt.Rows[0]["Seg7"].ToString();
                 //        GridSource1.Rows[i]["Rough_Spec"] = dt.Rows[0]["Seg14"].ToString();
                         break;
                     case "YY08":
                     case "YY09":
-                        GridSource1.Rows[i]["Material_Name"] = dt.Rows[0]["Seg12"].ToString();
-                        GridSource1.Rows[i]["MAT_UNIT"] = dt.Rows[0]["Seg7"].ToString();
+                   //     GridSource1.Rows[i]["Material_Name"] = dt.Rows[0]["Seg12"].ToString();
+                    //    GridSource1.Rows[i]["MAT_UNIT"] = dt.Rows[0]["Seg7"].ToString();
                   //      GridSource1.Rows[i]["Rough_Spec"] = dt.Rows[0]["Seg14"].ToString();
                         break;
                     default:
-                        GridSource1.Rows[i]["Material_Name"] = "";
-                        GridSource1.Rows[i]["MAT_UNIT"] = "";
+                   //     GridSource1.Rows[i]["Material_Name"] = "";
+                     //   GridSource1.Rows[i]["MAT_UNIT"] = "";
                      //   GridSource1.Rows[i]["Rough_Spec"] = "";
                         break;
                 }
@@ -1990,10 +2000,18 @@ namespace mms.Plan
                         string ROUGH_SIZE = item["ROUGH_SIZE"].Text.Trim();
                         if (ROUGH_SIZE == "" || ROUGH_SIZE == "&nbsp;")
                         {
-                            RadNotificationAlert.Text = "失败！第" + (i + 1).ToString() + "行，物资尺寸：请输入物资尺寸";
+                            RadNotificationAlert.Text = "失败！第" + (i + 1).ToString() + "行，需求尺寸：请输入需求尺寸";
                             RadNotificationAlert.Show();
                             return;
                         }
+
+                        string DINGE_SIZE = item["DINGE_SIZE"].Text.Trim();
+                      /*  if (DINGE_SIZE == "" || DINGE_SIZE == "&nbsp;")
+                        {
+                            RadNotificationAlert.Text = "失败！第" + (i + 1).ToString() + "行，定额需求尺寸：请输入需求尺寸";
+                            RadNotificationAlert.Show();
+                            return;
+                        }*/
 
                         string NumCasesSum = item["NumCasesSum"].Text.Trim();
                         try
@@ -2090,13 +2108,13 @@ namespace mms.Plan
                         string Material_Mark = item["Material_Mark"].Text.Trim();
                         string CN_Material_State = item["CN_Material_State"].Text.Trim();
                         string Material_Tech_Condition = item["Material_Tech_Condition"].Text.Trim();
-                        string Material_Size_Required = item["Material_Size_Required"].Text.Trim();
+                        string Dinge_Size = item["Dinge_Size"].Text.Trim();
                         string TDM_Description = item["TDM_Description"].Text.Trim();
                         string MaterialsDes = item["MaterialsDes"].Text.Trim();
                         mta.Material_Mark = Material_Mark;
                         mta.CN_Material_State = CN_Material_State;
                         mta.Material_Tech_Condition = Material_Tech_Condition;
-                        mta.Material_Size_Required = Material_Size_Required;
+                        mta.Dinge_Size = Dinge_Size;
                         mta.MaterialsDes = MaterialsDes;
                         mta.TDM_Description = TDM_Description;
                         mta.Drawing_No = DRAWING_NO;
@@ -2109,6 +2127,7 @@ namespace mms.Plan
                         mta.Mat_Unit = MAT_UNIT;
                         mta.Quantity = Convert.ToInt32(NumCasesSum);
                         mta.Rough_Size = ROUGH_SIZE;
+                        mta.Dinge_Size =DINGE_SIZE;
                         mta.Rough_Spec = Rough_Spec;
                         mta.Special_Needs = Special_Needs;
 
@@ -2158,8 +2177,8 @@ namespace mms.Plan
                                  mta.TaskCode + "','" + mta.MaterialDept + "','" + mta.ItemCode1 + "','" + mta.DemandNumSum + "','" +
                                  mta.NumCasesSum + "','" + mta.Mat_Rough_Weight + "','" + 
                                  mta.Material_Tech_Condition + "','" + mta.CN_Material_State + "','" + mta.Material_Mark + "','" +
-                                 mta.Material_Size_Required + "','" + mta.TDM_Description + "','" + mta.MaterialsDes + "','" +
-                                 mta.Mat_Unit + "','" + mta.Quantity + "','" + mta.Rough_Size + "','" + mta.Rough_Spec + "','" +
+                                 mta.TDM_Description + "','" + mta.MaterialsDes + "','" +
+                                 mta.Mat_Unit + "','" + mta.Quantity + "','" + mta.Rough_Size + "','" + mta.Dinge_Size + "','" + mta.Rough_Spec + "','" +
                                  mta.DemandDate + "','" + mta.Special_Needs + "','" + mta.Urgency_Degre + "','" +
                                  mta.Secret_Level + "','" +
                                  mta.Stage + "','" + mta.Use_Des + "','" + mta.Shipping_Address + "','" + mta.Certification +

@@ -79,19 +79,21 @@
                         <telerik:GridBoundColumn DataField="Drawing_No" HeaderText="产品图号" ItemStyle-Width="100" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="ItemCode1" HeaderText="物资编码" ItemStyle-Width="100" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="Material_Name" HeaderText="物资名称" ItemStyle-Width="100" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="Rough_Size" HeaderText="物资尺寸" ItemStyle-Width="100" HeaderStyle-Width="100px"> </telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="Rough_Spec" HeaderText="物资规格" ItemStyle-Width="100" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="DemandNumSum" HeaderText="共计需求<br />数量(kg)" ItemStyle-Width="70" HeaderStyle-Width="70px"></telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="NumCasesSum" HeaderText="共计需求<br />件数" ItemStyle-Width="70" HeaderStyle-Width="70px"></telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="Dinge_Size" HeaderText="胚料尺寸" ItemStyle-Width="100" HeaderStyle-Width="100px"> </telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="Rough_Spec" HeaderText="胚料规格" ItemStyle-Width="100" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="DemandNumSum" HeaderText="共计数量" ItemStyle-Width="70" HeaderStyle-Width="70px"></telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="NumCasesSum" HeaderText="需求件数" ItemStyle-Width="70" HeaderStyle-Width="70px"></telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="Rough_Size" HeaderText="需求尺寸" ItemStyle-Width="70" HeaderStyle-Width="70px"> </telerik:GridBoundColumn>
+
                         <telerik:GridBoundColumn DataField="Special_Needs" HeaderText="特殊需求" ItemStyle-Width="100" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="Urgency_Degre1" HeaderText="紧急程度" ItemStyle-Width="70" HeaderStyle-Width="70px"></telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="Secret_Level" HeaderText="密级" ItemStyle-Width="50" HeaderStyle-Width="50px"></telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="Phase1" HeaderText="研制<br />阶段" ItemStyle-Width="50" HeaderStyle-Width="50px"></telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="Secret_Level" HeaderText="密级" ItemStyle-Width="70" HeaderStyle-Width="70px"></telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="Phase1" HeaderText="研制阶段" ItemStyle-Width="70" HeaderStyle-Width="70px"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="Use_Des1" HeaderText="用途" ItemStyle-Width="100" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="Shipping_Address" HeaderText="配送地址" ItemStyle-Width="100" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="Certification" HeaderText="合格证" ItemStyle-Width="60" HeaderStyle-Width="60px"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="Manufacturer" HeaderText="生产厂家" ItemStyle-Width="100" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="MaterialDept" HeaderText="领料<br />部门" ItemStyle-Width="50" HeaderStyle-Width="50px"></telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="MaterialDept" HeaderText="领料部门" ItemStyle-Width="80" HeaderStyle-Width="80px"></telerik:GridBoundColumn>
                     </Columns>
                 </MasterTableView>
             </telerik:RadGrid>

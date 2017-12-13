@@ -60,7 +60,9 @@
                                     </telerik:GridBoundColumn>
                                     <telerik:GridBoundColumn DataField="Quantity" FilterControlAltText="Filter Quantity column" HeaderText="物资件数" SortExpression="Quantity" UniqueName="Quantity">
                                     </telerik:GridBoundColumn>
-                                    <telerik:GridBoundColumn DataField="ROUGH_SIZE" FilterControlAltText="Filter ROUGH_SIZE column" HeaderText="物资尺寸" SortExpression="ROUGH_SIZE" UniqueName="ROUGH_SIZE">
+                                    <telerik:GridBoundColumn DataField="DINGE_SIZE" FilterControlAltText="Filter DINGE_SIZE column" HeaderText="胚料尺寸" SortExpression="DINGE_SIZE" UniqueName="DINGE_SIZE">
+                                    </telerik:GridBoundColumn>
+                                    <telerik:GridBoundColumn DataField="ROUGH_SIZE" FilterControlAltText="Filter ROUGH_SIZE column" HeaderText="需求尺寸" SortExpression="ROUGH_SIZE" UniqueName="ROUGH_SIZE">
                                     </telerik:GridBoundColumn>
                                     <telerik:GridBoundColumn DataField="SpecialNeeds" FilterControlAltText="Filter SpecialNeeds column" HeaderText="特殊需求" SortExpression="SpecialNeeds" UniqueName="SpecialNeeds">
                                     </telerik:GridBoundColumn>

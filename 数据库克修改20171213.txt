@@ -1,0 +1,9 @@
+m_change_flow
+
+M_Demand_DetailedList_Draft
+M_Demand_Merge_List
+MaterialApplication
+
+Dinge_Size	nvarchar(50)	Checked 胚料尺寸
+
+Rough_Size nvarchar(50)那个作为需求尺寸

@@ -9,6 +9,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
     <link type="text/css" rel="stylesheet" href="/Styles/Plan.css" />
+    <script src="../Scripts/jquery-1.4.1.min.js"></script>
+    <script src="../Scripts/jquery-1.7.2.min.js"></script>
+    <script src="../Scripts/PubFun.js"></script>
     <style type="text/css">
         body {
             font-size:13px;
@@ -115,19 +118,32 @@
                     </tr>
                     <tr>
                         <td style="text-align:right;">需求件数：</td>
-                        <td><asp:Label ID="lbl_NumCasesSum" runat="server"></asp:Label></td>
-                        <td style="text-align:right;">单件质量：</td>
-                        <td><asp:Label ID="RTB_Mat_Rough_Weight" runat="server"></asp:Label></td>
-                        <td style="text-align:right;">需求量：</td>
-                        <td><asp:Label ID="lbl_DemandNumSum" runat="server"></asp:Label></td>
+                        <td>
+                            <telerik:RadTextBox ID="lbl_NumCasesSum" runat="server" Width="160px" onpaste="return false" onkeyup='clearNoNum(this)'>
+                                 <ClientEvents OnKeyPress="EnterKeyProcessing" />
+                            </telerik:RadTextBox>
+                        </td>
+                       <td style="text-align:right;">计量单位：</td>
+                       <td>
+                            <telerik:RadTextBox ID="lbl_Mat_Unit" runat="server" Width="160px" >
+                                 <ClientEvents OnKeyPress="EnterKeyProcessing" />
+                            </telerik:RadTextBox>
+                        </td>
+                        <td style="text-align:right;">需求数量：</td>
+                        <td>
+                            <telerik:RadTextBox ID="lbl_DemandNumSum" runat="server" Width="160px" onpaste="return false" onkeyup='clearNoDecimal(this)'>
+                                 <ClientEvents OnKeyPress="EnterKeyProcessing" />
+                            </telerik:RadTextBox>
+                        </td>
                     </tr>
                     <tr>
                         <td style="text-align:right;">规格：</td>
                         <td><asp:Label ID="lbl_Rough_Spec" runat="server"></asp:Label></td>
-                        <td style="text-align:right;">尺寸：</td>
-                        <td><asp:Label ID="lbl_Rough_Size" runat="server"></asp:Label></td>
-                        <td style="text-align:right;">计量单位：</td>
-                        <td><asp:Label ID="lbl_Mat_Unit" runat="server"></asp:Label></td>
+                        <td style="text-align:right;">胚料尺寸：</td>
+                        <td><asp:Label ID="lbl_Dinge_Size" runat="server"></asp:Label></td>
+                        <td style="text-align:right;">单件质量：</td>
+                        <td><asp:Label ID="RTB_Mat_Rough_Weight" runat="server"></asp:Label></td>
+                       
                     </tr>
                     <tr>
                         <th colspan="6" style="text-align:left; border-bottom:1px #ccc solid;">需求信息</th>
@@ -160,7 +176,16 @@
                     </tr>
                     <tr>
                         <td style="text-align:right;">需求时间：</td>
-                        <td><telerik:RadDatePicker ID="RDP_DemandDate" runat="server" Width="160px"></telerik:RadDatePicker></td>
+                        <td>
+                            <telerik:RadDatePicker ID="RDP_DemandDate" runat="server" Width="160px" DateInput-ClientEvents-OnKeyPress='EnterKeyProcessing'>
+                            </telerik:RadDatePicker>
+                        </td>
+                        <td style="text-align:right;">尺寸：</td>
+                        <td>
+                            <telerik:RadTextBox ID="RTB_ROUGH_SIZE" runat="server" Width="160px">
+                                                      <ClientEvents OnKeyPress="EnterKeyProcessing" />
+                         </telerik:RadTextBox>
+                        </td>
                         <td style="text-align:right;">生产厂家：</td>
                         <td><telerik:RadTextBox ID="RTB_MANUFACTURER" runat="server" Width="160px">
                                                       <ClientEvents OnKeyPress="EnterKeyProcessing" />
@@ -171,7 +196,8 @@
                         <td style="text-align: right;">变更原因：</td>
                         <td><telerik:RadTextBox runat="server" id="RTB_Reason">
                                                       <ClientEvents OnKeyPress="EnterKeyProcessing" />
-                            </telerik:RadTextBox></td>
+                            </telerik:RadTextBox>
+                        </td>
                     </tr>
                     <tr><td>&nbsp;</td></tr>
                     <tr>

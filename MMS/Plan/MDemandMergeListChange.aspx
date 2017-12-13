@@ -47,6 +47,15 @@
     <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" runat="server" MinDisplayTime="0"></telerik:RadAjaxLoadingPanel>  
     <telerik:RadCodeBlock runat="server">
         <script type="text/javascript">
+
+
+            function EnterKeyProcessing(sender, eventArgs) {
+                var c = eventArgs.get_keyCode();
+                if ((c == 13)) {
+                    eventArgs.set_cancel(true);
+                }
+            }
+
             function ShowWin(ID) {
                 window.radopen("/Plan/MDemandMergeListUpdate.aspx?MDMLID=" + ID, "RadWindow1");
             }
@@ -81,9 +90,15 @@
                     <td style="text-align:right;">图号：</td>
                     <td><telerik:RadTextBox ID="RTB_Drawing_No" runat="server" Width="120px"></telerik:RadTextBox></td>
                     <td style="text-align:right;">提交日期：</td>
-                    <td><telerik:RadDatePicker ID="RDP_SubmitDateStart" runat="server" Width="120px"></telerik:RadDatePicker></td>
+                    <td>
+                        <telerik:RadDatePicker ID="RDP_SubmitDateStart" runat="server" Width="120px" DateInput-ClientEvents-OnKeyPress='EnterKeyProcessing'>
+                        </telerik:RadDatePicker>
+                    </td>
                     <td>～</td>
-                    <td><telerik:RadDatePicker ID="RDP_SubmitDateEnd" runat="server" Width="120px"></telerik:RadDatePicker></td>
+                    <td>
+                        <telerik:RadDatePicker ID="RDP_SubmitDateEnd" runat="server" Width="120px" DateInput-ClientEvents-OnKeyPress='EnterKeyProcessing'>
+                        </telerik:RadDatePicker>
+                    </td>
                 </tr>
                 <tr>
                     <td style="text-align:right;">紧急程度：</td>
@@ -105,9 +120,15 @@
                         </Items>
                         </telerik:RadDropDownList></td>
                     <td>需求时间：</td>
-                    <td><telerik:RadDatePicker ID="RDP_DemandDateStart" runat="server" Width="120px"></telerik:RadDatePicker></td>
+                    <td>
+                        <telerik:RadDatePicker ID="RDP_DemandDateStart" runat="server" Width="120px" DateInput-ClientEvents-OnKeyPress='EnterKeyProcessing'>
+                        </telerik:RadDatePicker>
+                    </td>
                     <td>～</td>
-                    <td><telerik:RadDatePicker ID="RDP_DemandDateEnd" runat="server" Width="120px"></telerik:RadDatePicker></td>
+                    <td>
+                        <telerik:RadDatePicker ID="RDP_DemandDateEnd" runat="server" Width="120px" DateInput-ClientEvents-OnKeyPress='EnterKeyProcessing'>
+                        </telerik:RadDatePicker>
+                    </td>
                     <td><telerik:RadButton ID="RB_Query" runat="server" Text="查询" OnClick="RB_Query_Click"></telerik:RadButton></td>
                 </tr>
             </table>

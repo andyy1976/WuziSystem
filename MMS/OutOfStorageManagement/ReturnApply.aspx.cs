@@ -432,6 +432,7 @@ namespace mms.OutOfStorageManagement
                     ma.retrunapply_T_Item_ID = datarow["ID"].ToString();
                     ma.ReturnReason = "";
                     ma.Rough_Size = datarow["jc_cc"].ToString();
+                 //   ma.Dinge_Size = datarow["jc_cc"].ToString();
                     ma.Rough_Spec = datarow["invscale"].ToString();
                     ma.TaskCode = datarow["jc_rwh"].ToString();
                     ma.TheMaterialWay = "";                                                        ///////////////////
@@ -473,6 +474,7 @@ namespace mms.OutOfStorageManagement
                     ma.ReturnReason = "";
                     ma.Rough_Size = maold.Rough_Size;
                     ma.Rough_Spec = maold.Rough_Spec;
+                 //   ma.Dinge_Size = maold.Dinge_Size;
                     ma.TaskCode =maold.TaskCode;
                     ma.TheMaterialWay = maold.TheMaterialWay; 
                     ma.TuiKuContext = datarow["billno"].ToString() + "-" + datarow["crowno"].ToString();
