@@ -29,6 +29,10 @@
                             else if (window.frameElement.radWindow) oWindow = window.frameElement.radWindow;
                             oWindow.close();
                         }
+
+                        function OnClientHidden(sender, args) {
+                            CloseWindow();
+                        }
                         function CloseWindow(args) {
                             var oWindow = null;
                             if (window.radWindow) oWindow = window.radWindow;
@@ -306,7 +310,7 @@
                                     <td class="technology_Div_detailcontent_title">领料部门：</td>
                                     <td class="technology_Div_detailcontent_content">
                                         <telerik:RadComboBox ID="RadComboBoxMaterialDept" AutoPostBack="true" AppendDataBoundItems="true" runat="server"
-                                            OnSelectedIndexChanged="RadComboBoxMaterialDept_SelectedIndexChanged" Width="150" Enabled="False">
+                                           Width="150" Enabled="False">
                                         </telerik:RadComboBox>
                                     </td>
                                 </tr>
@@ -348,6 +352,9 @@
      <telerik:RadNotification ID="RadNotificationAlert" runat="server" Text="" Position="Center"
             AutoCloseDelay="4000" Width="300" Title="提示" EnableRoundedCorners="true">
         </telerik:RadNotification>
+           <telerik:RadNotification ID="RadNotificationAlert1" runat="server" Text="" Position="Center" 
+                AutoCloseDelay="2000" Width="300" Title="提示" OnClientHidden="OnClientHidden"  EnableRoundedCorners="true">
+            </telerik:RadNotification>
         <telerik:RadWindow ID="RadWindowDelete" runat="server" VisibleTitlebar="false"
             VisibleStatusbar="false" Modal="true" Behaviors="None" Height="120px" Width="320px">
             <ContentTemplate>

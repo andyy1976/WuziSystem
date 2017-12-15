@@ -559,7 +559,8 @@ namespace mms.Plan
         {
             if (e.Item is GridDataItem)
             {
-                string id = (e.Item as GridDataItem).GetDataKeyValue("ID").ToString();
+              
+                /*  string id = (e.Item as GridDataItem).GetDataKeyValue("ID").ToString();
                 if (Session["UserId"] == null)
                 {
                     RadNotificationAlert.Text = "登录超时，请重新登录！" ;
@@ -577,9 +578,8 @@ namespace mms.Plan
                 RadComboBoxMaterialDept.DataTextField = "Dept";
                 RadComboBoxMaterialDept.DataValueField = "DeptCode";
                 RadComboBoxMaterialDept.DataBind();
-               // RadComboBoxMaterialDept.FindItemByValue(GridSource1.Select("ID='" + id + "'")[0]["MaterialDept"].ToString()).Selected = true;
-
-                RadComboBox RDDL_LingJian_Type = e.Item.FindControl("RDDL_LingJian_Type") as RadComboBox;
+*/
+         /*       RadComboBox RDDL_LingJian_Type = e.Item.FindControl("RDDL_LingJian_Type") as RadComboBox;
                 if (GridSource1.Select("ID='" + id + "'")[0]["LingJian_Type"] != null)
                 {
                     RDDL_LingJian_Type.FindItemByText(GridSource1.Select("ID='" + id + "'")[0]["LingJian_Type"].ToString()).Selected = true;
@@ -628,6 +628,7 @@ namespace mms.Plan
                 {
                     rtbSpecialNeeds.Text = (GridSource1.Select("ID='" + id + "'")[0]["Special_Needs"].ToString());
                 }
+          */
             }
         }
 
@@ -693,26 +694,26 @@ namespace mms.Plan
                             {
     
 
-                          /*
-                               case "产品图号":
+                         
+                               case "图号":
                                     GridSource1.Columns[i].ColumnName = "DRAWING_NO";
                                     columnscount++;
                                     break;
-                               
-                          case "任务号":
-                              GridSource1.Columns[i].ColumnName = "TaskCode";
-                              columnscount++;
-                              break;
+                               /*    
+                             case "任务号":
+                                 GridSource1.Columns[i].ColumnName = "TaskCode";
+                                 columnscount++;
+                                 break;
 
-                          case "产品编号":
-                              GridSource1.Columns[i].ColumnName = "Material_Code";
-                              columnscount++;
-                              break;
-                          case "研制阶段":
-                              GridSource1.Columns[i].ColumnName = "stage";
-                              columnscount++;
-                              break;
-                           */
+                             case "产品编号":
+                                 GridSource1.Columns[i].ColumnName = "Material_Code";
+                                 columnscount++;
+                                 break;
+                             case "研制阶段":
+                                 GridSource1.Columns[i].ColumnName = "stage";
+                                 columnscount++;
+                                 break;
+                              */
                    
                     
                                 case "产品名称":
@@ -1089,7 +1090,7 @@ namespace mms.Plan
                     CN_Material_State = "",
                     Special_Needs = "",
                     DemandDate = "",
-                    DemandNumSum = null,
+                    DemandNumSum = 0,
                     DraftId = null,
                     Drawing_No = "",
 
@@ -1099,7 +1100,7 @@ namespace mms.Plan
                     ItemCode1 = "",
                     ItemCode2 = "",
                     JSGS_Des = "",
-                    LingJian_Type = "",
+                    LingJian_Type = null,
                     Mat_Comment = "",
                     Mat_Efficiency = "",
                     Mat_Pro_Weight = "",
@@ -1190,7 +1191,7 @@ namespace mms.Plan
 
           //  for (int j = 0; j < dt.Rows.Count; j++)
           //  {
-                MDDLD.Drawing_No = dt.Rows[0]["TaskDrawingCode"].ToString();
+            //    MDDLD.Drawing_No = dt.Rows[0]["TaskDrawingCode"].ToString();
                 MDDLD.Import_Date = DateTime.Now;
      
               //  MDDLD.NumCasesSum = Convert.ToDecimal(dt.Rows[0]["ProductionNum"].ToString());
@@ -1219,7 +1220,7 @@ namespace mms.Plan
                     if (gridItems[i] is GridDataItem)
                     {
                         GridDataItem item = gridItems[i] as GridDataItem;
-
+                        MDDLD.Drawing_No = item["Drawing_No"].Text.Trim();
                         MDDLD.Technics_Line = item["Technics_Line"].Text.Trim();
                         MDDLD.Material_Name = item["Material_Name"].Text.Trim();
                         MDDLD.Material_Mark = item["Material_Mark"].Text.Trim();
@@ -1313,20 +1314,11 @@ namespace mms.Plan
                         MDDLD.DemandDate = DemandDate;
 
 
-                        RadTextBox RadTextBoxSpecial_Needs = item.FindControl("rtb_SpecialNeeds") as RadTextBox;
-                        MDDLD.Special_Needs = RadTextBoxSpecial_Needs.Text.ToString();
-                      //  MDDLD.Special_Needs = item["Special_Needs"].Text.Trim();
-                        /*
-                  if (Special_Needs == "" || Special_Needs == "&nbsp;")
-                  {
-                      RadNotificationAlert.Text = "失败！第" + (i + 1).ToString() + "行，请输入特殊需求";
-                      RadNotificationAlert.Show();
-                      return;
-                  }
-                  */
-
+                //RadTextBox RadTextBoxSpecial_Needs = item.FindControl("rtb_SpecialNeeds") as RadTextBox;
+                   //     MDDLD.Special_Needs = RadTextBoxSpecial_Needs.Text.ToString();
+          
                  
-
+                        /*
                         RadComboBox RadDropDownListLingJian_Type = item.FindControl("RDDL_LingJian_Type") as RadComboBox;
                         MDDLD.LingJian_Type = RadDropDownListLingJian_Type.SelectedValue;
 
@@ -1348,16 +1340,136 @@ namespace mms.Plan
 
                         RadComboBox RadComboBoxAttribute4 = item.FindControl("RadComboBoxAttribute4") as RadComboBox;
                         MDDLD.Attribute4 = RadComboBoxAttribute4.SelectedValue;
+                         */
+                        MDDLD.Special_Needs = item["Special_Needs"].Text.Trim();
+                        string LingJian_Type = item["LingJian_Type"].Text.Trim();
 
+                        strSQL = "select LingJian_Type_Code, LingJian_Type_Name from Sys_LingJian_Info where Is_Del = 'false'";
+                       DataTable dtTemp = DBI.Execute(strSQL, true);
+                       for (int count = 0; count < dtTemp.Rows.Count; count++)
+                        {
+                            if (LingJian_Type == dtTemp.Rows[count]["LingJian_Type_Name"].ToString())
+                            {
+                                MDDLD.LingJian_Type = dtTemp.Rows[count]["LingJian_Type_Code"].ToString();
+                                break;
+                            }
 
+                        }
+                        if (MDDLD.LingJian_Type == null)
+                        {
+                            RadNotificationAlert.Text = "零件类型输入错误，正确的选项为：标准件,成品件,通用件,专用件,组件,其它，请选择其中之一！";
+                            RadNotificationAlert.Show();
+                            return;
+                        }
+                     
+
+                        strSQL = " select Sys_UserInfo_PWD.ID as UserID, Sys_DeptEnum.ID as DeptID,  DeptCode, Sys_DeptEnum.Dept, UserName, DomainAccount from Sys_UserInfo_PWD" +
+                                        " join Sys_DeptEnum on Convert(nvarchar(50),Sys_DeptEnum.ID) = Sys_UserInfo_PWD.Dept " +
+                                        " where Sys_UserInfo_PWD.ID = '" + userid + "'";
+                        dtTemp = DBI.Execute(strSQL, true);
+
+                        string MaterialDept = dtTemp.Rows[0]["DeptCode"].ToString();
+
+                         strSQL = "select KeyWord from Sys_Dict" + " join Sys_Dept_ShipAddr on Sys_Dept_ShipAddr.Shipping_Addr_Id = '2-'+ Convert(nvarchar(50),Sys_Dict.KeyWordCode)" +
+                         " where TypeID = '2' and Dept_Id = (select ID from Sys_DeptEnum where DeptCode = '" + MaterialDept + "')";
+                         dtTemp = DBI.Execute(strSQL, true);
+
+                        MDDLD.Shipping_Address = item["Shipping_Address"].Text.Trim();
+                        if (MDDLD.Shipping_Address != dtTemp.Rows[0]["KeyWord"].ToString())
+                        {
+                            RadNotificationAlert.Text = "配送地址输入不正确，正确的选项为：" + dtTemp.Rows[0]["KeyWord"].ToString();
+                            RadNotificationAlert.Show();
+                            return;
+
+                        }
+
+                      
+                   
+                     
+                   
+                        string Use_Des = item["Use_Des"].Text.Trim();
+
+                        strSQL = " Select * From GetBasicdata_T_Item where DICT_CLASS='CUX_DM_USAGE' and ENABLED_FLAG='Y'";// +PackId + "'";
+                        dtTemp = DBI.Execute(strSQL, true);
+                        for (int count = 0; count < dtTemp.Rows.Count; count++)
+                        {
+                            if (Use_Des == dtTemp.Rows[count]["DICT_NAME"].ToString())
+                            {
+                                MDDLD.Use_Des = dtTemp.Rows[count]["DICT_CODE"].ToString();
+                                break;
+                            }
+
+                        }
+                        if (MDDLD.Use_Des == null)
+                        {
+                            RadNotificationAlert.Text = "用途输入错误，正确的选项为：弹上/箭上,辅料,工装,中间料，请选择其中之一！";
+                            RadNotificationAlert.Show();
+                            return;
+                        }
+
+                        MDDLD.Secret_Level = item["Secret_Level"].Text.Trim();
+
+                        strSQL = "SELECT * FROM [Sys_SecretLevel] WHERE ([Is_Del] = 0)";
+                        dtTemp = DBI.Execute(strSQL, true);
+                        bool inputIsRight = false;
+                        for (int count = 0; count < dtTemp.Rows.Count; count++)
+                        {
+                            if (MDDLD.Secret_Level == dtTemp.Rows[count]["SecretLevel_Name"].ToString())
+                            {
+                                inputIsRight = true;
+                                break;
+
+                            }
+
+                        }
+                        if (!inputIsRight)
+                        {
+                            RadNotificationAlert.Text = "密级输入错误，正确的选项为：内部,秘密,机密，请选择其中之一！";
+                            RadNotificationAlert.Show();
+                            return;
+                        }
+                        string Urgency_Degre = item["Urgency_Degre"].Text.Trim();
+                        strSQL = " Select * From GetBasicdata_T_Item where DICT_CLASS='CUX_DM_URGENCY_LEVEL' and ENABLED_FLAG='Y'";// +PackId + "'";
+                        dtTemp = DBI.Execute(strSQL, true);
+                        for (int count = 0; count < dtTemp.Rows.Count; count++)
+                        {
+                            if (Urgency_Degre == dtTemp.Rows[count]["DICT_NAME"].ToString())
+                            {
+                                MDDLD.Urgency_Degre = dtTemp.Rows[count]["DICT_CODE"].ToString();
+                                break;
+                            }
+
+                        }
+                        if( MDDLD.Urgency_Degre ==null)
+                        {
+                            RadNotificationAlert.Text = "紧急程度输入错误，正确的选项为：一般，急，特急，请选择其中之一！";
+                            RadNotificationAlert.Show();
+                            return;
+                        }
+                     
+                     
+                  
+
+                        MDDLD.Certification = item["Certification"].Text.Trim();
+                        if (MDDLD.Certification != "Y" && MDDLD.Certification != "N")
+                        {
+                            RadNotificationAlert.Text = "合格证列输入错误，正确的选项为：Y,N，请选择其中之一！";
+                            RadNotificationAlert.Show();
+                            return;
+                        }
+                        MDDLD.Attribute4 = item["Attribute4"].Text.Trim();
+                        if (MDDLD.Attribute4 != "国产" && MDDLD.Attribute4 != "进口")
+                        {
+                            RadNotificationAlert.Text = "国产/进口列输入错误，正确的选项为：国产,进口，请选择其中之一！";
+                            RadNotificationAlert.Show();
+                            return;
+                        }
                         MDDLD.Manufacturer = item["MANUFACTURER"].Text.Trim();
                   
                     
-                        RadComboBox RadComboBoxMaterialDept = item.FindControl("RadComboBoxMaterialDept") as RadComboBox;
-                        MDDLD.MaterialDept = RadComboBoxMaterialDept.SelectedValue;
+                      //  RadComboBox RadComboBoxMaterialDept = item.FindControl("RadComboBoxMaterialDept") as RadComboBox;
+                        MDDLD.MaterialDept = RadComboBox_Dept.SelectedValue;
 
-                       
-                       
                     
                         try
                         {
@@ -1414,14 +1526,14 @@ namespace mms.Plan
                     }
                 }
           //  }
-    
+                  GridSource = Common.AddTableRowsID(GetDetailedListList());
+                  RadGrid_DemandDetailedList.Rebind();
 
               //  RadBtnSubmit.Visible = true;
                 RadNotificationAlert.Text = "导入成功！";
                 RadNotificationAlert.Show();
 
-                GridSource = Common.AddTableRowsID(GetDetailedListList());
-                RadGrid_DemandDetailedList.Rebind();
+               
            
              
 
@@ -1500,7 +1612,7 @@ namespace mms.Plan
 
             RadComboBox_Dept.DataSource = dt;
             RadComboBox_Dept.DataTextField = "Dept";
-            RadComboBox_Dept.DataValueField = "DeptID";
+            RadComboBox_Dept.DataValueField = "DeptCode";
             RadComboBox_Dept.DataBind();
 
         

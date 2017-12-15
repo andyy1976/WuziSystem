@@ -260,10 +260,7 @@ namespace mms.Plan
             RadComboBoxUrgencyDegre.DataBind();
 
         }
-        protected void RadComboBoxMaterialDept_SelectedIndexChanged(object sender, RadComboBoxSelectedIndexChangedEventArgs e)
-        {
-            BindDDlAddress(RadComboBoxMaterialDept.SelectedValue);
-        }
+
 
         protected int GetConfirmedQuantity(string MDMLID)
         {
@@ -444,14 +441,16 @@ namespace mms.Plan
                         }
                         else
                         {
-                            Page.ClientScript.RegisterStartupScript(this.GetType(), "info", "CloseWindow();", true);
+                            RadNotificationAlert1.Text = "保存成功！";
+                            RadNotificationAlert1.Show();
+                          //  Page.ClientScript.RegisterStartupScript(this.GetType(), "info", "CloseWindow();", true);
                         }
                     }
                     else
                     {
                         //RadBtnSubmit.Visible = true;
-                        RadNotificationAlert.Text = "保存成功！";
-                        RadNotificationAlert.Show();
+                        RadNotificationAlert1.Text = "保存成功！";
+                        RadNotificationAlert1.Show();
                     }
                   
                 }
@@ -514,9 +513,9 @@ namespace mms.Plan
 
                     if (result == "")
                     {
-                        RadNotificationAlert.Text = "进入流程平台！";
-                        RadNotificationAlert.Show();
-                        Page.ClientScript.RegisterStartupScript(this.GetType(), "info", "CloseWindow1();", true);
+                        RadNotificationAlert1.Text = "进入流程平台！";
+                        RadNotificationAlert1.Show();
+                    //    Page.ClientScript.RegisterStartupScript(this.GetType(), "info", "CloseWindow1();", true);
                     }
                     else
                     {

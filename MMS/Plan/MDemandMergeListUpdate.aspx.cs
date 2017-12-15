@@ -151,7 +151,7 @@ namespace mms.Plan
                 string Dinge_Size = dt.Rows[0]["Dinge_Size"].ToString();
                 string Rough_Spec = dt.Rows[0]["Rough_Spec"].ToString();
                 string Unit_Price = dt.Rows[0]["Unit_Price"].ToString();
-                string Mat_Rough_Weight = dt.Rows[0]["Mat_Rough_Weight"].ToString();
+               
                 string Sum_Price = dt.Rows[0]["Sum_Price"].ToString();
                 string Secret_Level = RDDL_Secret_Level.SelectedText.ToString();
                 string Stage = dt.Rows[0]["Stage"].ToString();
@@ -164,6 +164,7 @@ namespace mms.Plan
                 string DemandNumSum = lbl_DemandNumSum.Text.Trim();
                 string Mat_Unit = lbl_Mat_Unit.Text.Trim();
 
+                string Mat_Rough_Weight = RTB_Mat_Rough_Weight.Text.Trim();
                 string MaterialDept = dt.Rows[0]["MaterialDept"].ToString();
                 string Shipping_Address = RDDL_Shipping_Address.SelectedText.ToString();
                 string MANUFACTURER = RTB_MANUFACTURER.Text.Trim();
@@ -247,7 +248,8 @@ namespace mms.Plan
                 var result = bll.WriteRcoOrderRepeat(MDPLID);
                 if (result == "")
                 {
-                    Page.ClientScript.RegisterStartupScript(this.GetType(), "info", "CloseWindow();", true);
+                    RadNotificationAlert1.Text = "保存成功！";
+                    RadNotificationAlert1.Show();
                 }
                 else
                 {

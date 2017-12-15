@@ -183,7 +183,7 @@ namespace mms.Plan
                         RadBtnSubmit.Visible = false;
                     }
                     GridSource = Common.AddTableRowsID(GetTechnologyTestList(this.hfBh.Value, Request.QueryString["SubmitType"].ToString()));
-                    //BindDDlDept();
+   
 
                     BindDeptUserAddress();
 
@@ -306,13 +306,15 @@ namespace mms.Plan
                 //{
                 //    flag = false; err = "“计量单位”不得为空！";
                 //}
-                if (Convert.ToInt32(txt_DemandNumSum.Text) == 0)
+                if (Convert.ToDecimal(txt_DemandNumSum.Text) == 0)
                 {
-                    flag = false; err = "“共计需求量”必须大于0！";
+                    flag = false; 
+                    err = "“共计需求量”必须大于0！";
                 }
                 if (Convert.ToInt32(txt_NumCasesSum.Text) == 0)
                 {
-                    flag = false; err = "“共计需求件数”必须大于0！";
+                    flag = false;
+                    err = "“共计需求件数”必须大于0！";
                 }
                 //if (string.IsNullOrEmpty(span_proposer.InnerText) || span_proposer.InnerText == "")
                 //{
@@ -705,7 +707,7 @@ namespace mms.Plan
 
             RadComboBox_Dept.DataSource = dt;
             RadComboBox_Dept.DataTextField = "Dept";
-            RadComboBox_Dept.DataValueField = "DeptID";
+            RadComboBox_Dept.DataValueField = "DeptCode";
             RadComboBox_Dept.DataBind();
 
             RadComboBoxMaterialDept1.DataSource = dt;
@@ -730,16 +732,7 @@ namespace mms.Plan
            
         }
 
-        private void BindDDlDept()
-        {
-            string strSQL = "SELECT * FROM [Sys_DeptEnum] WHERE ([Is_Del] = 0) order by dept";
-            DataTable dt = DBI.Execute(strSQL, true);
-            RadComboBox_Dept.DataSource = dt;
-            RadComboBox_Dept.DataTextField = "Dept";
-            RadComboBox_Dept.DataValueField = "Id";
-            RadComboBox_Dept.DataBind(); 
-        }
-
+      
         protected void RadComboBox_Dept_SelectedIndexChanged(object sender, RadComboBoxSelectedIndexChangedEventArgs e)
         {
             if (RadComboBox_Dept.SelectedValue != "0") {
@@ -754,19 +747,6 @@ namespace mms.Plan
         }
     
     
-        protected void RadComboBoxMaterialDept_SelectedIndexChanged1(object sender, RadComboBoxSelectedIndexChangedEventArgs e)
-        {
-            RadComboBoxShipping_Address.Items.Clear();
-            string strSQL = "select KeyWord from Sys_Dict" +
-                " join Sys_Dept_ShipAddr on Sys_Dept_ShipAddr.Shipping_Addr_Id = '2-'+ Convert(nvarchar(50),Sys_Dict.KeyWordCode)" +
-                " where TypeID = '2' and Dept_Id = (select ID from Sys_DeptEnum where DeptCode = '" + RadComboBoxMaterialDept1.SelectedValue + "')";
-            DataTable dt = DBI.Execute(strSQL, true);
-            RadComboBoxShipping_Address.DataSource = dt;
-            RadComboBoxShipping_Address.DataTextField = "KeyWord";
-            RadComboBoxShipping_Address.DataValueField = "KeyWord";
-            RadComboBoxShipping_Address.DataBind();
-        }
-
         #region 提交辅料需求清单
         public void WriteReqOrderRepeat(string MDPLID)
         {
@@ -1436,7 +1416,7 @@ namespace mms.Plan
         {
             if (e.Item is GridDataItem)
             {
-                string id = (e.Item as GridDataItem).GetDataKeyValue("ID").ToString();
+              /*  string id = (e.Item as GridDataItem).GetDataKeyValue("ID").ToString();
                 if (Session["UserId"] == null)
                 {
                     RadNotificationAlert.Text = "登录超时，请重新登录！";
@@ -1500,7 +1480,7 @@ namespace mms.Plan
                  RadComboBox RadComboBoxUseDes = e.Item.FindControl("RadComboBoxUseDes") as RadComboBox;
                  RadComboBoxUseDes.FindItemByText(GridSource1.Select("ID='" + id + "'")[0]["Use_Des"].ToString()).Selected = true;
          
-               
+               */
             }
         }
 
@@ -2028,7 +2008,7 @@ namespace mms.Plan
                         string DemandNumSum = item["DemandNumSum"].Text.Trim();
                         try
                         {
-                            Convert.ToInt32(DemandNumSum);
+                            Convert.ToDecimal(DemandNumSum);
                         }
                         catch
                         {
@@ -2040,7 +2020,7 @@ namespace mms.Plan
                         string Unit_Price = item["Unit_Price"].Text.Trim();
                         try
                         {
-                            Convert.ToInt32(Unit_Price);
+                            Convert.ToDecimal(Unit_Price);
                         }
                         catch
                         {
@@ -2069,40 +2049,45 @@ namespace mms.Plan
                             return;
                         }
 
+                       
+                     
+             
 
-                        RadComboBox RadComboBoxMaterialDept = item.FindControl("RadComboBoxMaterialDept") as RadComboBox;
-                        string MaterialDept = RadComboBoxMaterialDept.SelectedValue; 
+                      //  RadComboBox RadComboBoxMaterialDept = item.FindControl("RadComboBoxMaterialDept") as RadComboBox;
+                       
 
-           
-                        RadComboBox RadComboBoxUrgency_Degree = item.FindControl("RadComboBoxUrgencyDegree") as RadComboBox;
-                        string Urgency_Degre = RadComboBoxUrgency_Degree.SelectedValue; 
+                        /*
+                                     RadComboBox RadComboBoxUrgency_Degree = item.FindControl("RadComboBoxUrgencyDegree") as RadComboBox;
+                                     string Urgency_Degre = RadComboBoxUrgency_Degree.SelectedValue; 
 
                  
-                        RadComboBox RadComboBoxSecret_Level = item.FindControl("RadComboBoxSecretLevel") as RadComboBox;
-                        string Secret_Level = RadComboBoxSecret_Level.SelectedValue; 
+                                     RadComboBox RadComboBoxSecret_Level = item.FindControl("RadComboBoxSecretLevel") as RadComboBox;
+                                     string Secret_Level = RadComboBoxSecret_Level.SelectedValue; 
 
                   
 
-                        RadComboBox RadComboBoxStage = item.FindControl("RadComboBoxStage") as RadComboBox;
-                        string Stage = RadComboBoxStage.SelectedValue; 
+                                     RadComboBox RadComboBoxStage = item.FindControl("RadComboBoxStage") as RadComboBox;
+                                     string Stage = RadComboBoxStage.SelectedValue; 
 
-                        RadComboBox RadComboBoxUseDes = item.FindControl("RadComboBoxUseDes") as RadComboBox;
-                        string Use_Des = RadComboBoxUseDes.SelectedValue;
+                                     RadComboBox RadComboBoxUseDes = item.FindControl("RadComboBoxUseDes") as RadComboBox;
+                                     string Use_Des = RadComboBoxUseDes.SelectedValue;
 
-                        RadComboBox RadComboBoxShipping_Address = item.FindControl("RadComboBoxShippingAddress") as RadComboBox;
-                        string Shipping_Address = RadComboBoxShipping_Address.SelectedItem.Text; 
+                                     RadComboBox RadComboBoxShipping_Address = item.FindControl("RadComboBoxShippingAddress") as RadComboBox;
+                                     string Shipping_Address = RadComboBoxShipping_Address.SelectedItem.Text; 
 
                    
-                        RadComboBox RadComboBoxCertification = item.FindControl("RadComboBoxCertification") as RadComboBox;
-                        string Certification = RadComboBoxCertification.SelectedValue;
+                                     RadComboBox RadComboBoxCertification = item.FindControl("RadComboBoxCertification") as RadComboBox;
+                                     string Certification = RadComboBoxCertification.SelectedValue;
 
 
-                        RadComboBox RadComboBoxAttribute4 = item.FindControl("RadComboBoxAttribute4") as RadComboBox;
-                        string Attribute4 = RadComboBoxAttribute4.SelectedValue;
+                                     RadComboBox RadComboBoxAttribute4 = item.FindControl("RadComboBoxAttribute4") as RadComboBox;
+                                     string Attribute4 = RadComboBoxAttribute4.SelectedValue;
                         
-                        RadDropDownList RadDropDownListProject = item.FindControl("RDDL_Project1") as RadDropDownList;
-                        string Project = RadDropDownListProject.SelectedValue;
-                 
+                                     RadDropDownList RadDropDownListProject = item.FindControl("RDDL_Project1") as RadDropDownList;
+                                     string Project = RadDropDownListProject.SelectedValue;
+                              */
+
+
                         M_Demand_Merge_List mta = new M_Demand_Merge_List();
 
                         string Material_Mark = item["Material_Mark"].Text.Trim();
@@ -2131,17 +2116,156 @@ namespace mms.Plan
                         mta.Rough_Spec = Rough_Spec;
                         mta.Special_Needs = Special_Needs;
 
-                        mta.MaterialDept = MaterialDept;
-                        mta.Urgency_Degre = Urgency_Degre;
-                        mta.Secret_Level = Secret_Level;
-                        mta.Stage = Stage;
-                        mta.Use_Des = Use_Des;
-                        mta.Shipping_Address = Shipping_Address;
-                        mta.Certification = Certification;
-                        mta.Project = Project;
+                      
+
+                    
+                        string Project = item["Project"].Text.Trim();
+
+                        strSQL = "select DICT_Code, DICT_Name from GetBasicdata_T_Item  where DICT_CLASS = 'CUX_DM_PROJECT' and ENABLED_FLAG = 'Y' order by DICT_Name";
+                        DataTable dtTemp = DBI.Execute(strSQL, true);
+                        string projectStr = null;
+                        for (int count = 0; count < dtTemp.Rows.Count; count++)
+                        {
+                            if (Project == dtTemp.Rows[count]["DICT_Name"].ToString())
+                            {
+                                mta.Project = dtTemp.Rows[count]["DICT_Code"].ToString();
+                                projectStr += dtTemp.Rows[count]["DICT_Name"].ToString()+"，";
+                                break;
+                            }
+
+                        }
+                        if (mta.Project == null)
+                        {
+                            RadNotificationAlert.Text = "型号输入错误，正确的选项为："+projectStr+"请选择其中之一！";
+                            RadNotificationAlert.Show();
+                            return;
+                        }
+
+                        string stage = item["Stage"].Text.Trim();
+
+                        strSQL = "select * from Sys_Phase order by Code";
+                        dtTemp = DBI.Execute(strSQL, true);
+                        for (int count = 0; count < dtTemp.Rows.Count; count++)
+                        {
+                            if (stage == dtTemp.Rows[count]["Phase"].ToString())
+                            {
+                                mta.Stage = dtTemp.Rows[count]["Code"].ToString();
+                                break;
+                            }
+
+                        }
+                        if (mta.Stage == null)
+                        {
+                            RadNotificationAlert.Text = "研制阶段输入错误，正确的选项为：M,C,S,D，请选择其中之一！";
+                            RadNotificationAlert.Show();
+                            return;
+                        }
+                        mta.MaterialDept = RadComboBox_Dept.SelectedValue;
+                      //  strSQL = " select Sys_UserInfo_PWD.ID as UserID, Sys_DeptEnum.ID as DeptID,  DeptCode, Sys_DeptEnum.Dept, UserName, DomainAccount from Sys_UserInfo_PWD" +
+                                 //      " join Sys_DeptEnum on Convert(nvarchar(50),Sys_DeptEnum.ID) = Sys_UserInfo_PWD.Dept " +
+                                   //    " where Sys_UserInfo_PWD.ID = '" + userid + "'";
+                    //    dtTemp = DBI.Execute(strSQL, true);
+
+                     //   string MaterialDept = dtTemp.Rows[0]["DeptCode"].ToString();
+                        strSQL = "select KeyWord from Sys_Dict" + " join Sys_Dept_ShipAddr on Sys_Dept_ShipAddr.Shipping_Addr_Id = '2-'+ Convert(nvarchar(50),Sys_Dict.KeyWordCode)" +
+                        " where TypeID = '2' and Dept_Id = (select ID from Sys_DeptEnum where DeptCode = '" + mta.MaterialDept + "')";
+                        dtTemp = DBI.Execute(strSQL, true);
+
+                        mta.Shipping_Address = item["Shipping_Address"].Text.Trim();
+                        if (mta.Shipping_Address != dtTemp.Rows[0]["KeyWord"].ToString())
+                        {
+                            RadNotificationAlert.Text = "配送地址输入不正确，正确的选项为：" + dtTemp.Rows[0]["KeyWord"].ToString();
+                            RadNotificationAlert.Show();
+                            return;
+
+                        }
+
+
+
+
+
+                        string Use_Des = item["Use_Des"].Text.Trim();
+
+                        strSQL = " Select * From GetBasicdata_T_Item where DICT_CLASS='CUX_DM_USAGE' and ENABLED_FLAG='Y'";// +PackId + "'";
+                        dtTemp = DBI.Execute(strSQL, true);
+                        for (int count = 0; count < dtTemp.Rows.Count; count++)
+                        {
+                            if (Use_Des == dtTemp.Rows[count]["DICT_NAME"].ToString())
+                            {
+                                mta.Use_Des = dtTemp.Rows[count]["DICT_CODE"].ToString();
+                                break;
+                            }
+
+                        }
+                        if (mta.Use_Des == null)
+                        {
+                            RadNotificationAlert.Text = "用途输入错误，正确的选项为：弹上/箭上,辅料,工装,中间料，请选择其中之一！";
+                            RadNotificationAlert.Show();
+                            return;
+                        }
+
+                        mta.Secret_Level = item["Secret_Level"].Text.Trim();
+
+                        strSQL = "SELECT * FROM [Sys_SecretLevel] WHERE ([Is_Del] = 0)";
+                        dtTemp = DBI.Execute(strSQL, true);
+                        bool inputIsRight = false;
+                        for (int count = 0; count < dtTemp.Rows.Count; count++)
+                        {
+                            if (mta.Secret_Level == dtTemp.Rows[count]["SecretLevel_Name"].ToString())
+                            {
+                                inputIsRight = true;
+                                break;
+
+                            }
+
+                        }
+                        if (!inputIsRight)
+                        {
+                            RadNotificationAlert.Text = "密级输入错误，正确的选项为：内部,秘密,机密，请选择其中之一！";
+                            RadNotificationAlert.Show();
+                            return;
+                        }
+                        string Urgency_Degre = item["Urgency_Degre"].Text.Trim();
+                        strSQL = " Select * From GetBasicdata_T_Item where DICT_CLASS='CUX_DM_URGENCY_LEVEL' and ENABLED_FLAG='Y'";// +PackId + "'";
+                        dtTemp = DBI.Execute(strSQL, true);
+                        for (int count = 0; count < dtTemp.Rows.Count; count++)
+                        {
+                            if (Urgency_Degre == dtTemp.Rows[count]["DICT_NAME"].ToString())
+                            {
+                                mta.Urgency_Degre = dtTemp.Rows[count]["DICT_CODE"].ToString();
+                                break;
+                            }
+
+                        }
+                        if (mta.Urgency_Degre == null)
+                        {
+                            RadNotificationAlert.Text = "紧急程度输入错误，正确的选项为：一般，急，特急，请选择其中之一！";
+                            RadNotificationAlert.Show();
+                            return;
+                        }
+
+
+
+
+                        mta.Certification = item["Certification"].Text.Trim();
+                        if (mta.Certification != "Y" && mta.Certification != "N")
+                        {
+                            RadNotificationAlert.Text = "合格证列输入错误，正确的选项为：Y,N，请选择其中之一！";
+                            RadNotificationAlert.Show();
+                            return;
+                        }
+                        mta.Attribute4 = item["Attribute4"].Text.Trim();
+                        if (mta.Attribute4 != "国产" && mta.Attribute4 != "进口")
+                        {
+                            RadNotificationAlert.Text = "国产/进口列输入错误，正确的选项为：国产,进口，请选择其中之一！";
+                            RadNotificationAlert.Show();
+                            return;
+                        }
+                       
+                 
 
                         
-                         mta.Attribute4 = Attribute4;
+                    
                            
                         mta.Unit_Price = Convert.ToDecimal(Unit_Price); 
                         mta.Sum_Price = mta.Unit_Price*mta.Quantity;

@@ -54,7 +54,7 @@ namespace mms.Plan
                         " when  Column_Changed = 'SPECIAL_REQUEST' then '特殊要求'" +
                         " when Column_Changed = 'QUANTITY' then '需求数量'" +
                         " when Column_Changed = 'PIECE' then '件数'" +
-                        " when Column_Changed = 'DIMENSION' then '尺寸'" +
+                        " when Column_Changed = 'DIMENSION' then '需求尺寸'" +
                         " when Column_Changed = 'MANUFACTURER_ID' then '指定生产厂家'" +
                         " when Column_Changed = 'RQ_DATE' then '需求时间'" +
                         " when Column_Changed = 'URGENCY_LEVEL' then '紧急程度'" +

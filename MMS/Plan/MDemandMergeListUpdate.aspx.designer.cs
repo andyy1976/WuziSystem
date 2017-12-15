@@ -181,7 +181,7 @@ namespace mms.Plan {
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label RTB_Mat_Rough_Weight;
+        protected global::Telerik.Web.UI.RadTextBox RTB_Mat_Rough_Weight;
         
         /// <summary>
         /// RTB_Special_Needs 控件。
@@ -389,5 +389,14 @@ namespace mms.Plan {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::Telerik.Web.UI.RadNotification RadNotificationAlert;
+        
+        /// <summary>
+        /// RadNotificationAlert1 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadNotification RadNotificationAlert1;
     }
 }

@@ -142,7 +142,11 @@
                         <td style="text-align:right;">胚料尺寸：</td>
                         <td><asp:Label ID="lbl_Dinge_Size" runat="server"></asp:Label></td>
                         <td style="text-align:right;">单件质量：</td>
-                        <td><asp:Label ID="RTB_Mat_Rough_Weight" runat="server"></asp:Label></td>
+                         <td>
+                             <telerik:RadTextBox ID="RTB_Mat_Rough_Weight" runat="server" Width="160px" onpaste="return false" onkeyup='clearNoDecimal(this)'>
+                                 <ClientEvents OnKeyPress="EnterKeyProcessing" />
+                            </telerik:RadTextBox>
+                        </td>
                        
                     </tr>
                     <tr>
@@ -180,7 +184,7 @@
                             <telerik:RadDatePicker ID="RDP_DemandDate" runat="server" Width="160px" DateInput-ClientEvents-OnKeyPress='EnterKeyProcessing'>
                             </telerik:RadDatePicker>
                         </td>
-                        <td style="text-align:right;">尺寸：</td>
+                        <td style="text-align:right;">需求尺寸：</td>
                         <td>
                             <telerik:RadTextBox ID="RTB_ROUGH_SIZE" runat="server" Width="160px">
                                                       <ClientEvents OnKeyPress="EnterKeyProcessing" />
@@ -263,6 +267,10 @@
     <%-- 删除弹出窗口--结束--%> 
         <telerik:RadNotification ID="RadNotificationAlert" runat="server" Text="" Position="Center"
             AutoCloseDelay="4000" Width="300" Title="提示" EnableRoundedCorners="true">
+        </telerik:RadNotification>
+      
+           <telerik:RadNotification ID="RadNotificationAlert1" runat="server" Text="" Position="Center"
+            AutoCloseDelay="4000" Width="300" Title="提示"  OnClientHidden="CloseWindow" EnableRoundedCorners="true">
         </telerik:RadNotification>
     </form>
 </body>

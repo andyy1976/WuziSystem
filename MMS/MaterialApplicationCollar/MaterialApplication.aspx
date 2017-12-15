@@ -279,9 +279,11 @@
                     <td>
                         <table style="width:100%; margin:0px; padding:0px;">
                             <tr>
-                                <td><telerik:RadTextBox ID="RTB_ItemCode" runat="server" Width="110px" OnTextChanged="RTB_ItemCode_TextChanged" AutoPostBack="true">
+                                <td>
+                                    <telerik:RadTextBox ID="RTB_ItemCode" runat="server" Width="110px" OnTextChanged="RTB_ItemCode_TextChanged" AutoPostBack="true">
                                                   <ClientEvents OnKeyPress="EnterKeyProcessing" />
-                                    </telerik:RadTextBox></td>
+                                    </telerik:RadTextBox>
+                                </td>
                                 <td><asp:Label ID="lblMSG" runat="server" Text="*" ForeColor="Red" Visible="false"></asp:Label></td>
                                 <td><telerik:RadButton ID="RB_Search" runat="server" Text ="搜索" AutoPostBack="false" OnClientClicking="ShowItemCode" ButtonType="ToggleButton" ForeColor="Blue"></telerik:RadButton></td>
                             </tr>
@@ -297,25 +299,32 @@
                           <ClientEvents OnKeyPress="EnterKeyProcessing" />
                          </telerik:RadTextBox></td>
                     <td style="text-align: right;">物资牌号：</td>
-                    <td><telerik:RadTextBox ID="RTB_Material_Mark" runat="server">
+                    <td>
+                        <telerik:RadTextBox ID="RTB_Material_Mark" runat="server">
                           <ClientEvents OnKeyPress="EnterKeyProcessing" />
-                        </telerik:RadTextBox></td>
+                        </telerik:RadTextBox>
+                    </td>
                 </tr>
                 <tr>
                     <td style="text-align: right;">供应状态：</td>
-                    <td><telerik:RadTextBox ID="RTB_CN_Material_State" runat="server">
+                    <td>
+                        <telerik:RadTextBox ID="RTB_CN_Material_State" runat="server">
                           <ClientEvents OnKeyPress="EnterKeyProcessing" />
-                        </telerik:RadTextBox></td>
+                        </telerik:RadTextBox>
+                    </td>
                     <td style="text-align: right;">采用标准：</td>
-                    <td><telerik:RadTextBox ID="RTB_Material_Tech_Condition" runat="server">
+                    <td>
+                        <telerik:RadTextBox ID="RTB_Material_Tech_Condition" runat="server">
                           <ClientEvents OnKeyPress="EnterKeyProcessing" />
-                        </telerik:RadTextBox></td>
+                        </telerik:RadTextBox>
+                    </td>
 
                     <td style="text-align: right;">胚料规格：</td>
                     <td>
                         <telerik:RadTextBox ID="RTB_Rough_Spec" runat="server">
                           <ClientEvents OnKeyPress="EnterKeyProcessing" />
-                        </telerik:RadTextBox></td>
+                        </telerik:RadTextBox>
+                    </td>
                 </tr>
                 <tr>
                     <td style="text-align: right;">胚料尺寸：</td>

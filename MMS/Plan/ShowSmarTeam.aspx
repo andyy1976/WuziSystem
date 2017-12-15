@@ -191,12 +191,12 @@
                                 <telerik:TreeListBoundColumn DataField="Quantity" HeaderText="物资件数"></telerik:TreeListBoundColumn>
                                 <telerik:TreeListBoundColumn DataField="Mat_Unit" HeaderText="计量单位"></telerik:TreeListBoundColumn>
                                 <telerik:TreeListBoundColumn DataField="Mat_Rough_Weight" HeaderText="单件质量"></telerik:TreeListBoundColumn>
-                                <telerik:TreeListBoundColumn DataField="Mat_Pro_Weight" HeaderText="每产品<br />质量"></telerik:TreeListBoundColumn>
+                                <telerik:TreeListBoundColumn DataField="Mat_Pro_Weight" HeaderText="每产品质量"></telerik:TreeListBoundColumn>
                                 <telerik:TreeListBoundColumn DataField="Dinge_Size" HeaderText="胚料尺寸"></telerik:TreeListBoundColumn>
                                 <telerik:TreeListBoundColumn DataField="Rough_Spec" HeaderText="物资规格"></telerik:TreeListBoundColumn>
                                 <telerik:TreeListBoundColumn DataField="Rough_Size" HeaderText="需求尺寸"></telerik:TreeListBoundColumn>
-                                <telerik:TreeListBoundColumn DataField="DemandNumSum" HeaderText="需求数量(kg)" ItemStyle-HorizontalAlign="Center"></telerik:TreeListBoundColumn>
-                                <telerik:TreeListBoundColumn DataField="NumCasesSum" HeaderText="需求件数" ItemStyle-HorizontalAlign="Center"></telerik:TreeListBoundColumn>
+                                <telerik:TreeListBoundColumn DataField="DemandNumSum" HeaderText="需求数量(kg)"></telerik:TreeListBoundColumn>
+                                <telerik:TreeListBoundColumn DataField="NumCasesSum" HeaderText="需求件数"></telerik:TreeListBoundColumn>
                             </Columns>
                         </telerik:RadTreeList>
                     </div>
@@ -284,7 +284,7 @@
                                 <telerik:TreeListBoundColumn DataField="Quantity" HeaderText="物资件数"></telerik:TreeListBoundColumn>
                                 <telerik:TreeListBoundColumn DataField="Mat_Unit" HeaderText="计量单位"></telerik:TreeListBoundColumn>
                                 <telerik:TreeListBoundColumn DataField="Mat_Rough_Weight" HeaderText="单件质量"></telerik:TreeListBoundColumn>
-                                <telerik:TreeListBoundColumn DataField="Mat_Pro_Weight" HeaderText="每产品<br />质量"></telerik:TreeListBoundColumn>
+                                <telerik:TreeListBoundColumn DataField="Mat_Pro_Weight" HeaderText="每产品质量"></telerik:TreeListBoundColumn>
                                 <telerik:TreeListBoundColumn DataField="Dinge_Size" HeaderText="胚料尺寸"></telerik:TreeListBoundColumn>
                                 <telerik:TreeListBoundColumn DataField="Rough_Spec" HeaderText="物资规格"></telerik:TreeListBoundColumn>
                                 <telerik:TreeListBoundColumn DataField="Rough_Size" HeaderText="需求尺寸"></telerik:TreeListBoundColumn>

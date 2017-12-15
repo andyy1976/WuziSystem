@@ -1204,8 +1204,12 @@
     <Content Include="Plan\M_Demand_DetailedList_DraftBOM.aspx" />
     <Content Include="Plan\M_Demand_Merge_List.aspx" />
     <Content Include="Plan\PlanImport.aspx" />
-    <Content Include="Plan\PropertyName.xml" />
-    <Content Include="Plan\PropertyNameDB.xml" />
+    <Content Include="Plan\PropertyName.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Plan\PropertyNameDB.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Plan\ShowM_Change.aspx" />
     <Content Include="Plan\ShowPlan.aspx" />
     <Content Include="Plan\ShowSmarTeam.aspx" />
@@ -2254,7 +2258,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties UseAjaxifiedTemplates="True" UseJQuerySupport="True" />
+      <UserProperties UseJQuerySupport="True" UseAjaxifiedTemplates="True" />
     </VisualStudio>
   </ProjectExtensions>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -10,7 +10,7 @@
     <script src="../Scripts/jquery-1.4.1.min.js"></script>
     <script src="../Scripts/jquery-1.7.2.min.js"></script>
     <script src="../Scripts/PubFun.js"></script>
-    <link type="text/css" rel="stylesheet" href="../Styles/TechnologyTestAdd.css" />
+    <link type="text/css" rel="stylesheet" href="../Styles/Plan.css" />
     <script>       
         function CloseWindow1(args) {
             var oWindow = null;
@@ -444,32 +444,24 @@
                         <CommandItemSettings ShowExportToExcelButton="false" ShowAddNewRecordButton="false" ShowRefreshButton="false" />
                         <CommandItemTemplate>
                           从Excel导入的物资需求列表
-                         <telerik:RadButton ID="RB_Import" runat="server" Text="导入" OnClick="RBImport_Click" OnClientClicking="ShowRadWindowImport"></telerik:RadButton>
-                         <telerik:RadButton ID="RB_Delete" runat="server" Text="删除"  OnClick="RBDelete_Click" OnClientClicking="ShowRadWindowDelete"></telerik:RadButton>
-                         <telerik:RadButton ID="RB_Clear" runat="server" Text="清空"  OnClick="RBClear_Click" OnClientClicking="ShowRadWindowClear"></telerik:RadButton> 
+                         <telerik:RadButton ID="RB_Import" runat="server" Text="导入"  Font-Bold="true" OnClick="RBImport_Click" OnClientClicking="ShowRadWindowImport" CssClass="floatleft"></telerik:RadButton>
+                         <telerik:RadButton ID="RB_Delete" runat="server" Text="删除"  Font-Bold="true" OnClick="RBDelete_Click" OnClientClicking="ShowRadWindowDelete" CssClass="floatright"></telerik:RadButton>
+                         <telerik:RadButton ID="RB_Clear" runat="server" Text="清空"   Font-Bold="true" OnClick="RBClear_Click" OnClientClicking="ShowRadWindowClear" CssClass="floatright"></telerik:RadButton> 
                         </CommandItemTemplate>
                             <Columns>
                                 <telerik:GridClientSelectColumn UniqueName="ClientSelectColumn" ItemStyle-Width="30px" HeaderStyle-Width="30px"  >
                                 </telerik:GridClientSelectColumn>
-                                <telerik:GridBoundColumn DataField="ID" ItemStyle-Width="40px" HeaderStyle-Width="40px" HeaderText="序号" SortExpression="ID" UniqueName="ID"></telerik:GridBoundColumn>
-                                    <telerik:GridTemplateColumn HeaderText="型号工程" ItemStyle-Width="80px" HeaderStyle-Width="80px" UniqueName="Project">
-                                        <HeaderStyle HorizontalAlign="Center"></HeaderStyle>
-                                        <ItemTemplate>
-                                         <telerik:RadDropDownList ID="RDDL_Project1" runat="server" AutoPostBack="true"
-                                            Culture="zh-CN" DataSourceID="SqlDataSourceProject" DataTextField="DICT_Name" DataValueField="DICT_Name">
-                                            <Items>
-                                            </Items>
-                                        </telerik:RadDropDownList>
-                                       </ItemTemplate>
-                                    </telerik:GridTemplateColumn>
-
+                             
+                                    <telerik:GridBoundColumn DataField="Project" ItemStyle-Width="80px" HeaderStyle-Width="80px" HeaderText="型号" SortExpression="Project" UniqueName="Project">
+                                    </telerik:GridBoundColumn>
                                     <telerik:GridBoundColumn DataField="TaskCode" ItemStyle-Width="80px" HeaderStyle-Width="80px" HeaderText="任务编号" SortExpression="TaskCode" UniqueName="TaskCode">
                                     </telerik:GridBoundColumn>
                                     <telerik:GridBoundColumn DataField="DRAWING_NO" ItemStyle-Width="80px" HeaderStyle-Width="80px" HeaderText="产品图号" SortExpression="DRAWING_NO" UniqueName="DRAWING_NO">
                                     </telerik:GridBoundColumn>
                                     <telerik:GridBoundColumn DataField="TDM_Description" ItemStyle-Width="100px" HeaderStyle-Width="100px" HeaderText="产品名称" SortExpression="TDM_Description" UniqueName="TDM_Description">
                                     </telerik:GridBoundColumn>
-
+                                    <telerik:GridBoundColumn DataField="Stage" ItemStyle-Width="80px" HeaderStyle-Width="80px" HeaderText="研制阶段" SortExpression="Stage" UniqueName="Stage">
+                                    </telerik:GridBoundColumn>
                                     <telerik:GridBoundColumn DataField="Material_Name" ItemStyle-Width="120px" HeaderStyle-Width="120px" HeaderText="物资名称" SortExpression="Material_Name" UniqueName="Material_Name">
                                     </telerik:GridBoundColumn>  
                                     <telerik:GridBoundColumn DataField="Material_Mark" ItemStyle-Width="80px" HeaderStyle-Width="80px" HeaderText="物资牌号" SortExpression="Material_Mark" UniqueName="Material_Mark">
@@ -514,89 +506,25 @@
                                     <telerik:GridBoundColumn DataField="DemandDate" ItemStyle-Width="120px" HeaderStyle-Width="120px" HeaderText="需求时间" DataFormatString="{0:yyyy-MM-dd}" SortExpression="DemandDate" UniqueName="DemandDate" >
                                     </telerik:GridBoundColumn>
 
-                                   <telerik:GridTemplateColumn HeaderText="紧急程度" ItemStyle-Width="70px" HeaderStyle-Width="70px" UniqueName="Urgency_Degre">
-                                    <HeaderStyle HorizontalAlign="Center"></HeaderStyle>
-                                    <ItemTemplate>
-                                        <telerik:RadComboBox ID="RadComboBoxUrgencyDegree" runat="server" Width="60px" AutoPostBack="true"
-                                           Culture="zh-CN" DataSourceID="SqlDataSourceUrgencyDegree" DataTextField="DICT_Name" DataValueField="DICT_Code">
-                                            <Items>
-                                            </Items>
-                                        </telerik:RadComboBox>
-                                    </ItemTemplate>
-                                </telerik:GridTemplateColumn>
-
-                                 <telerik:GridTemplateColumn HeaderText="密级" ItemStyle-Width="80px" HeaderStyle-Width="80px" UniqueName="Secret_Level" >
-                                    <HeaderStyle HorizontalAlign="Center"></HeaderStyle>
-                                    <ItemTemplate>
-                                        <telerik:RadComboBox ID="RadComboBoxSecretLevel" runat="server" AutoPostBack="true"
-                                            Culture="zh-CN" DataSourceID="SqlDataSourceSecretLevel" DataTextField="SecretLevel_Name" DataValueField="SecretLevel_Name">
-                                            <Items>
-                                            </Items>
-                                        </telerik:RadComboBox>
-                                    </ItemTemplate>
-                                </telerik:GridTemplateColumn>
-
-                                 <telerik:GridTemplateColumn HeaderText="用途" HeaderStyle-HorizontalAlign="Center" UniqueName="Use_Des"
-                                     HeaderStyle-width="70px" ItemStyle-Width="70px">
-                                    <HeaderStyle HorizontalAlign="Center"></HeaderStyle>
-                                    <ItemTemplate>
-                                        <telerik:RadComboBox ID="RadComboBoxUseDes" runat="server" Width="70px" AutoPostBack="true"
-                                            Culture="zh-CN" DataSourceID="SqlDataSourceUseDes" DataTextField="DICT_Name" DataValueField="DICT_Code">
-                                            <Items>
-                                            </Items>
-                                        </telerik:RadComboBox>
-                                    </ItemTemplate>
-                                </telerik:GridTemplateColumn>
-
-                                <telerik:GridTemplateColumn HeaderText="研制阶段" ItemStyle-Width="80px" HeaderStyle-Width="80px" UniqueName="stage">
-                                    <HeaderStyle HorizontalAlign="Center"></HeaderStyle>
-                                    <ItemTemplate>
-                                          <telerik:RadComboBox ID="RadComboBoxStage" runat="server" AutoPostBack="true"
-                                            Culture="zh-CN" DataSourceID="SqlDataSourceStage" DataTextField="Phase" DataValueField="Code">
-                                            <Items>
-                                            </Items>
-                                        </telerik:RadComboBox>
-                                  </ItemTemplate>
-                                </telerik:GridTemplateColumn>
-
-                                    <telerik:GridTemplateColumn HeaderText="合格证" ItemStyle-Width="60px"  HeaderStyle-width="60px"  UniqueName="Certification">
-                                    <HeaderStyle HorizontalAlign="Center"></HeaderStyle>
-                                    <ItemTemplate>
-                                        <telerik:RadComboBox ID="RadComboBoxCertification" runat="server" AutoPostBack="true" >
-                                            <Items>
-                                                <telerik:RadComboBoxItem Text="Y" Value="Y" />
-                                                <telerik:RadComboBoxItem Text="N" Value="N" />
-                                            </Items>
-                                        </telerik:RadComboBox>
-                                    </ItemTemplate>
-                                </telerik:GridTemplateColumn>
-                             
-                                <telerik:GridTemplateColumn HeaderText="配送地址" ItemStyle-Width="80px" HeaderStyle-Width="80px" UniqueName="Shipping_Address">
-                                    <HeaderStyle HorizontalAlign="Center"></HeaderStyle>
-                                    <ItemTemplate>
-                                        <telerik:RadComboBox ID="RadComboBoxShippingAddress" runat="server" Culture="zh-CN"
-                                            AutoPostBack="true">
-                                        </telerik:RadComboBox>
-                                    </ItemTemplate>
-                                </telerik:GridTemplateColumn>
-                               
-
-                                 <telerik:GridTemplateColumn HeaderText="国产/进口" ItemStyle-Width="80px" HeaderStyle-Width="80px" UniqueName="Attribute4" >
-                                    <HeaderStyle HorizontalAlign="Center"></HeaderStyle>
-                                    <ItemTemplate>
-                                        <telerik:RadComboBox ID="RadComboBoxAttribute4" runat="server" AutoPostBack="true" >
-                                            <Items>
-                                                <telerik:RadComboBoxItem Text="国产" Value="国产" />
-                                                <telerik:RadComboBoxItem Text="进口" Value="进口" />
-                                            </Items>
-                                        </telerik:RadComboBox>
-                                    </ItemTemplate>
-                                </telerik:GridTemplateColumn>
+                                    <telerik:GridBoundColumn DataField="Urgency_Degre" ItemStyle-Width="60px" HeaderStyle-Width="60px" HeaderText="紧急程度" SortExpression="Urgency_Degre" UniqueName="Urgency_Degre">
+                                    </telerik:GridBoundColumn>
+                                    <telerik:GridBoundColumn DataField="Secret_Level" ItemStyle-Width="80px" HeaderStyle-Width="80px" HeaderText="密级" SortExpression="Secret_Level" UniqueName="Secret_Level">
+                                    </telerik:GridBoundColumn>
+                                    <telerik:GridBoundColumn DataField="Use_Des" ItemStyle-Width="80px" HeaderStyle-Width="80px" HeaderText="用途" SortExpression="Use_Des" UniqueName="Use_Des">
+                                    </telerik:GridBoundColumn>
+                            
+                                    <telerik:GridBoundColumn DataField="Certification" HeaderText="合格证" ItemStyle-Width="60px" HeaderStyle-Width="60px" SortExpression="Certification" UniqueName="Certification" Visible="true">
+                                    </telerik:GridBoundColumn>
+                                    <telerik:GridBoundColumn DataField="Shipping_Address"  HeaderText="配送地址" ItemStyle-Width="80px" HeaderStyle-Width="80px" SortExpression="Shipping_Address" UniqueName="Shipping_Address">
+                                    </telerik:GridBoundColumn>
+                                
+                                    <telerik:GridBoundColumn DataField="Attribute4" ItemStyle-Width="80px" HeaderStyle-Width="80px" HeaderText="国产/进口" SortExpression="Attribute4" UniqueName="Attribute4">
+                                    </telerik:GridBoundColumn>
 
                                 <telerik:GridTemplateColumn HeaderText="领料部门" ItemStyle-Width="80px" HeaderStyle-Width="80px" UniqueName="MaterialDept" Visible="false">
                                        <ItemTemplate>
                                           <telerik:RadComboBox ID="RadComboBoxMaterialDept" AutoPostBack="true" AppendDataBoundItems="true" runat="server"
-                                            OnSelectedIndexChanged="RadComboBoxMaterialDept_SelectedIndexChanged" Enabled="False">
+                                            Enabled="False">
                                         </telerik:RadComboBox>
                                        </ItemTemplate>
                                 </telerik:GridTemplateColumn>
@@ -725,7 +653,8 @@
                                     </telerik:GridBoundColumn>
                                     <telerik:GridBoundColumn DataField="TDM_Description" ItemStyle-Width="100px" HeaderStyle-Width="100px" HeaderText="产品名称" SortExpression="TDM_Description" UniqueName="TDM_Description">
                                     </telerik:GridBoundColumn>
-
+                                    <telerik:GridBoundColumn DataField="stage1" ItemStyle-Width="80px" HeaderStyle-Width="80px" HeaderText="研制阶段" SortExpression="stage1" UniqueName="stage1">
+                                    </telerik:GridBoundColumn>
                                     <telerik:GridBoundColumn DataField="Material_Name" ItemStyle-Width="120px" HeaderStyle-Width="120px" HeaderText="物资名称" SortExpression="Material_Name" UniqueName="Material_Name">
                                     </telerik:GridBoundColumn> 
                                     <telerik:GridBoundColumn DataField="Material_Mark" ItemStyle-Width="80px" HeaderStyle-Width="80px" HeaderText="物资牌号" SortExpression="Material_Mark" UniqueName="Material_Mark">
@@ -769,8 +698,7 @@
                                     </telerik:GridBoundColumn>
                                     <telerik:GridBoundColumn DataField="UseDes" ItemStyle-Width="80px" HeaderStyle-Width="80px" HeaderText="用途" SortExpression="UseDes" UniqueName="UseDes">
                                     </telerik:GridBoundColumn>
-                                    <telerik:GridBoundColumn DataField="stage1" ItemStyle-Width="80px" HeaderStyle-Width="80px" HeaderText="研制阶段" SortExpression="stage1" UniqueName="stage1">
-                                    </telerik:GridBoundColumn>
+
                                     <telerik:GridBoundColumn DataField="Certification" HeaderText="合格证" ItemStyle-Width="60px" HeaderStyle-Width="60px" SortExpression="Certification" UniqueName="Certification" Visible="true">
                                     </telerik:GridBoundColumn>
                                     <telerik:GridBoundColumn DataField="Shipping_Address"  HeaderText="配送地址" ItemStyle-Width="80px" HeaderStyle-Width="80px" SortExpression="Shipping_Address" UniqueName="Shipping_Address">
@@ -1194,7 +1122,7 @@
                                     <td class="technology_Div_detailcontent_title">领料部门：</td>
                                     <td class="technology_Div_detailcontent_content">
                                         <telerik:RadComboBox ID="RadComboBoxMaterialDept1" AutoPostBack="true" AppendDataBoundItems="true" runat="server"
-                                            OnSelectedIndexChanged="RadComboBoxMaterialDept_SelectedIndexChanged1" Width="150" Enabled="False">
+                                           Width="150" Enabled="False">
                                         </telerik:RadComboBox>
                                     </td>
                                 </tr>
@@ -1224,7 +1152,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+
     </form>
 </body>
 </html>

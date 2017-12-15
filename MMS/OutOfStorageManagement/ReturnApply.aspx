@@ -104,7 +104,9 @@
             <tr>
                 <td style="text-align: right;">出库单号：</td>
                 <td>
-                    <telerik:RadTextBox ID="RTB_billno" runat="server" Width="100px"></telerik:RadTextBox></td>
+                    <telerik:RadTextBox ID="RTB_billno" runat="server" Width="100px">
+                         <ClientEvents OnKeyPress="EnterKeyProcessing" />
+                    </telerik:RadTextBox></td>
                 <td style="text-align: right;">单据日期：</td>
                 <td>
                     <telerik:RadDatePicker ID="RDP_Startbilldate" runat="server" Width="100px" DateInput-ClientEvents-OnKeyPress='EnterKeyProcessing'>
@@ -117,10 +119,14 @@
                 </td>
                 <td>物资编码：</td>
                 <td>
-                    <telerik:RadTextBox ID="RTB_invcode" runat="server" Width="100px"></telerik:RadTextBox></td>
+                    <telerik:RadTextBox ID="RTB_invcode" runat="server" Width="100px">
+                         <ClientEvents OnKeyPress="EnterKeyProcessing" />
+                    </telerik:RadTextBox></td>
                 <td style="text-align: right;">物资名称：</td>
                 <td>
-                    <telerik:RadTextBox ID="RTB_invname" runat="server" Width="100px"></telerik:RadTextBox></td>
+                    <telerik:RadTextBox ID="RTB_invname" runat="server" Width="100px">
+                         <ClientEvents OnKeyPress="EnterKeyProcessing" />
+                    </telerik:RadTextBox></td>
                 <td>退库状态：</td>
                 <td>
                     <telerik:RadDropDownList ID="RDDL_ReturnApplyState" runat="server">
@@ -249,7 +255,7 @@
                     <telerik:GridBoundColumn DataField="manufacturer" HeaderText="生产<br />厂家" ItemStyle-Width="200px" HeaderStyle-Width="200px"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn DataField="manufacturdate" HeaderText="生产<br />日期" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn DataField="invbatch" HeaderText="批次号<br />（帐卡号）" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="jc_cc" HeaderText="尺寸" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="jc_cc" HeaderText="需求尺寸" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn DataField="hgz_no" HeaderText="合格<br />证号" ItemStyle-Width="140px" HeaderStyle-Width="140px"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn DataField="hgzbz" HeaderText="单据体<br />备注" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn DataField="jc_rwh" HeaderText="任务号" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>

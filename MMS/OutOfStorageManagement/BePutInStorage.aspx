@@ -38,6 +38,13 @@
     <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" runat="server"></telerik:RadAjaxLoadingPanel>
     <telerik:RadCodeBlock ID="RadCodeBlock1" runat="server">
         <script type="text/javascript">
+
+            function EnterKeyProcessing(sender, eventArgs) {
+                var c = eventArgs.get_keyCode();
+                if ((c == 13)) {
+                    eventArgs.set_cancel(true);
+                }
+            }
             function RTB_BarCodeValueChanged(sender, args) {
              
                 if (args.get_newValue() == "") {
@@ -111,7 +118,7 @@
                     <telerik:RadTextBox ID="RTB_BarCode" runat="server" Width="600px" Height="60px"
                         Font-Size="40px" AutoPostBack="true" OnTextChanged="RTB_BarCode_TextChanged"
                         FocusedStyle-HorizontalAlign="Center" FocusedStyle-ForeColor="Black" EnabledStyle-HorizontalAlign="Center">
-                        <ClientEvents OnFocus="RTB_BarCodeClick" OnValueChanged="RTB_BarCodeValueChanged" />
+                        <ClientEvents OnFocus="RTB_BarCodeClick" OnValueChanged="RTB_BarCodeValueChanged OnKeyPress="EnterKeyProcessing"" />
                     </telerik:RadTextBox>
                 </div>
                 <div style="width:100%;">
@@ -133,13 +140,15 @@
                                 <telerik:GridBoundColumn DataField="Material_State" HeaderText="物资状态" UniqueName="Material_State"></telerik:GridBoundColumn>
                                 <telerik:GridBoundColumn DataField="Material_Tech_Condition" HeaderText="技术条件" UniqueName="Material_Tech_Condition"></telerik:GridBoundColumn>
                                 <telerik:GridBoundColumn DataField="Rough_Spec" HeaderText="坯料规格" UniqueName="Rough_Spec"></telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn DataField="Rough_Size" HeaderText="物资尺寸" UniqueName="Rough_Size"></telerik:GridBoundColumn>
+                                <telerik:GridBoundColumn DataField="Rough_Size" HeaderText="胚料尺寸" UniqueName="Rough_Size"></telerik:GridBoundColumn>
                                 <telerik:GridBoundColumn DataField="Mat_Unit" HeaderText="计量单位" UniqueName="Mat_Unit"></telerik:GridBoundColumn>
                                 <telerik:GridBoundColumn DataField="Mat_Rough_Weight" HeaderText="单件质量" UniqueName="Mat_Rough_Weight"></telerik:GridBoundColumn>
                                 <telerik:GridBoundColumn DataField="Mat_Rough_Weight" HeaderText="单件质量" UniqueName="Mat_Rough_Weight"></telerik:GridBoundColumn>
                                 <telerik:GridTemplateColumn HeaderText="入库数量">
                                     <ItemTemplate>
-                                        <telerik:RadTextBox ID="RTB_Quantity" runat="server" Width="100px" Text='<%#Eval("Quantity") %>'></telerik:RadTextBox>
+                                        <telerik:RadTextBox ID="RTB_Quantity" runat="server" Width="100px" Text='<%#Eval("Quantity") %>'>
+                                              <ClientEvents OnKeyPress="EnterKeyProcessing" />
+                                        </telerik:RadTextBox>
                                     </ItemTemplate>
                                 </telerik:GridTemplateColumn>
                                 <telerik:GridBoundColumn DataField="BarCode" HeaderText="条码" UniqueName="BarCode"></telerik:GridBoundColumn>
@@ -168,42 +177,68 @@
                 </tr>
                 <tr>
                     <td style="width:140px; text-align:right;">物资编码：</td>
-                    <td style="width:200px;"><telerik:RadTextBox ID="RTB_ItemCode1" runat="server" Width="180px" AutoPostBack="true" OnTextChanged="RTB_ItemCode1_TextChanged"></telerik:RadTextBox></td>
+                    <td style="width:200px;">
+                        <telerik:RadTextBox ID="RTB_ItemCode1" runat="server" Width="180px" AutoPostBack="true" OnTextChanged="RTB_ItemCode1_TextChanged">
+                              <ClientEvents OnKeyPress="EnterKeyProcessing" />
+                        </telerik:RadTextBox></td>
                     <td style="width:100px; text-align:right;">物资名称：</td>
-                    <td style="width:200px;"><telerik:RadTextBox ID="RTB_Material_Name" runat="server" Width="180px"></telerik:RadTextBox></td>
+                    <td style="width:200px;">
+                        <telerik:RadTextBox ID="RTB_Material_Name" runat="server" Width="180px">
+                          <ClientEvents OnKeyPress="EnterKeyProcessing" />
+                       </telerik:RadTextBox>
+                    </td>
                 </tr>
                 <tr>
                     <td style="text-align:right;">材料类型：</td>
-                    <td><telerik:RadTextBox ID="RTB_Material_Type" runat="server" Width="180px"></telerik:RadTextBox></td>
+                    <td><telerik:RadTextBox ID="RTB_Material_Type" runat="server" Width="180px">
+                          <ClientEvents OnKeyPress="EnterKeyProcessing" />
+                        </telerik:RadTextBox></td>
                     <td style="text-align:right;">物资牌号：</td>
-                    <td><telerik:RadTextBox ID="RTB_Material_Mark" runat="server" Width="180px"></telerik:RadTextBox></td>
+                    <td><telerik:RadTextBox ID="RTB_Material_Mark" runat="server" Width="180px">
+                          <ClientEvents OnKeyPress="EnterKeyProcessing" />
+                        </telerik:RadTextBox></td>
                 </tr>
                 <tr>
                     <td style="text-align:right;">物资状态：</td>
-                    <td><telerik:RadTextBox ID="RTB_Material_State" runat="server" Width="180px"></telerik:RadTextBox></td>
+                    <td><telerik:RadTextBox ID="RTB_Material_State" runat="server" Width="180px">
+                          <ClientEvents OnKeyPress="EnterKeyProcessing" />
+                        </telerik:RadTextBox></td>
                     <td style="text-align:right;">技术条件：</td>
-                    <td><telerik:RadTextBox ID="RTB_Material_Tech_Condition" runat="server" Width="180px"></telerik:RadTextBox></td>
+                    <td><telerik:RadTextBox ID="RTB_Material_Tech_Condition" runat="server" Width="180px">
+                          <ClientEvents OnKeyPress="EnterKeyProcessing" />
+                        </telerik:RadTextBox></td>
                 </tr>
                 <tr>
                     <td style="text-align:right;">坯料规格：</td>
-                    <td><telerik:RadTextBox ID="RTB_Rough_Spec" runat="server" Width="180px"></telerik:RadTextBox></td>
-                    <td style="text-align:right;">物资尺寸：</td>
-                    <td><telerik:RadTextBox ID="RTB_Rough_Size" runat="server" Width="180px"></telerik:RadTextBox></td>
+                    <td><telerik:RadTextBox ID="RTB_Rough_Spec" runat="server" Width="180px">
+                          <ClientEvents OnKeyPress="EnterKeyProcessing" />
+                        </telerik:RadTextBox></td>
+                    <td style="text-align:right;">胚料尺寸：</td>
+                    <td><telerik:RadTextBox ID="RTB_Rough_Size" runat="server" Width="180px">
+                          <ClientEvents OnKeyPress="EnterKeyProcessing" />
+                        </telerik:RadTextBox></td>
                 </tr>
                 <tr>
                     <td style="text-align:right;">计量单位：</td>
-                    <td><telerik:RadTextBox ID="RTB_Mat_Unit" runat="server" Width="180px"></telerik:RadTextBox></td>
+                    <td><telerik:RadTextBox ID="RTB_Mat_Unit" runat="server" Width="180px">
+                          <ClientEvents OnKeyPress="EnterKeyProcessing" />
+                        </telerik:RadTextBox></td>
                     <td style="text-align:right;">单件质量：</td>
-                    <td><telerik:RadTextBox ID="RTB_Mat_Rough_Weight" runat="server" Width="180px"></telerik:RadTextBox></td>
+                    <td><telerik:RadTextBox ID="RTB_Mat_Rough_Weight" runat="server" Width="180px">
+                          <ClientEvents OnKeyPress="EnterKeyProcessing" />
+                        </telerik:RadTextBox></td>
                 </tr>
                 <tr>
                     <td colspan="4" style="font-weight:bold; text-align:left;">入库信息：</td>
                 </tr>
                 <tr>
                     <td style="text-align:right;">入库数量：</td>
-                    <td><telerik:RadTextBox ID="RTB_Quantity1" runat="server" Width="180px"></telerik:RadTextBox></td>
+                    <td><telerik:RadTextBox ID="RTB_Quantity1" runat="server" Width="180px">
+                        </telerik:RadTextBox></td>
                     <td style="text-align:right;">条码：</td>
-                    <td><telerik:RadTextBox ID="RTB_BarCode1" runat="server" Width="180px"></telerik:RadTextBox></td>
+                    <td><telerik:RadTextBox ID="RTB_BarCode1" runat="server" Width="180px">
+                          <ClientEvents OnKeyPress="EnterKeyProcessing" />
+                        </telerik:RadTextBox></td>
                 </tr>
                 <tr>
                     <td colspan="2" style="text-align:center;"><telerik:RadButton ID="RB_Add1" runat="server" Text="入库" OnClientClicking="confirmWindow" OnClick="RB_Add1_Click"></telerik:RadButton></td>

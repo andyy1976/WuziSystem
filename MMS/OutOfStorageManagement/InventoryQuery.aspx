@@ -157,7 +157,7 @@
                                 <telerik:GridBoundColumn DataField="Material_State" HeaderText="物资状态" UniqueName="Material_State"></telerik:GridBoundColumn>
                                 <telerik:GridBoundColumn DataField="Material_Tech_Condition" HeaderText="技术条件" UniqueName="Material_Tech_Condition"></telerik:GridBoundColumn>
                                 <telerik:GridBoundColumn DataField="Rough_Spec" HeaderText="坯料规格" UniqueName="Rough_Spec"></telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn DataField="Rough_Size" HeaderText="物资尺寸" UniqueName="Rough_Size"></telerik:GridBoundColumn>
+                                <telerik:GridBoundColumn DataField="Rough_Size" HeaderText="胚料尺寸" UniqueName="Rough_Size"></telerik:GridBoundColumn>
                                 <telerik:GridBoundColumn DataField="Mat_Unit" HeaderText="计量单位" UniqueName="Mat_Unit"></telerik:GridBoundColumn>
                                 <telerik:GridBoundColumn DataField="Mat_Rough_Weight" HeaderText="单件质量" UniqueName="Mat_Rough_Weight"></telerik:GridBoundColumn>
                                 <telerik:GridBoundColumn DataField="Quantity" HeaderText="出库数量" ItemStyle-HorizontalAlign="Right"></telerik:GridBoundColumn>
