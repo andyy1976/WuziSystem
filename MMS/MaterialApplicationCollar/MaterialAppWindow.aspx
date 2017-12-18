@@ -9,7 +9,9 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
     <link href="../Styles/Plan.css" rel="stylesheet" />
+    <script src="../Scripts/jquery-1.4.1.min.js"></script>
     <script src="../Scripts/jquery-1.7.2.min.js"></script>
+    <script src="../Scripts/PubFun.js"></script>
     <style type="text/css">
         .CommonSymbols {
             color: blue;

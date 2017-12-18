@@ -182,15 +182,6 @@ namespace mms.MaterialApplicationCollar {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::Telerik.Web.UI.RadDatePicker RDP_FeedingTime;
-
-        /// <summary>
-        /// RTB_Rough_Size 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadTextBox RTB_Rough_Size;
         
         /// <summary>
         /// RTB_PleaseTakeQuality 控件。
@@ -200,6 +191,15 @@ namespace mms.MaterialApplicationCollar {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::Telerik.Web.UI.RadTextBox RTB_PleaseTakeQuality;
+        
+        /// <summary>
+        /// RTB_Rough_Size 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadTextBox RTB_Rough_Size;
         
         /// <summary>
         /// RTB_Remark 控件。

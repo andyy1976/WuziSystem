@@ -116,8 +116,10 @@ namespace mms.MaterialApplicationCollar
                     lbl_DrawingNo.Text = dtma.Rows[0]["Drawing_No"].ToString();
                     RTB_Quantity.Text = dtma.Rows[0]["Quantity"].ToString();
                     RDDL_TheMaterialWay.SelectedIndex = 0;
-                    if(RDDL_TheMaterialWay.FindItemByText(dtma.Rows[0]["TheMaterialWay"].ToString()) != null)
+                    if (RDDL_TheMaterialWay.FindItemByText(dtma.Rows[0]["TheMaterialWay"].ToString()) != null)
+                    {
                         RDDL_TheMaterialWay.FindItemByText(dtma.Rows[0]["TheMaterialWay"].ToString()).Selected = true;
+                    }
                     RDP_FeedingTime.SelectedDate = null;
                     if (dtma.Rows[0]["FeedingTime"].ToString() != "" && Convert.ToDateTime(dtma.Rows[0]["FeedingTime"].ToString()) >= RDP_FeedingTime.MinDate)
                     {
@@ -143,11 +145,17 @@ namespace mms.MaterialApplicationCollar
                     RDDL_XingHao.SelectedIndex = 0;
                     RDDL_WuZi.SelectedIndex = 0;
                     if (RDDL_DiaoDu.FindItemByValue(dtma.Rows[0]["DiaoDuApprove"].ToString()) != null)
+                    {
                         RDDL_DiaoDu.FindItemByValue(dtma.Rows[0]["DiaoDuApprove"].ToString()).Selected = true;
+                    }
                     if (RDDL_DiaoDu.FindItemByValue(dtma.Rows[0]["XingHaoJiHuaYuanApprove"].ToString()) != null)
+                    {
                         RDDL_DiaoDu.FindItemByValue(dtma.Rows[0]["XingHaoJiHuaYuanApprove"].ToString()).Selected = true;
+                    }
                     if (RDDL_DiaoDu.FindItemByValue(dtma.Rows[0]["WuZiJiHuaYuanApprove"].ToString()) != null)
+                    {
                         RDDL_DiaoDu.FindItemByValue(dtma.Rows[0]["WuZiJiHuaYuanApprove"].ToString()).Selected = true;
+                    }
 
                 }
                 //新增

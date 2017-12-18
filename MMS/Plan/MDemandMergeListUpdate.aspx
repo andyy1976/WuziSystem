@@ -37,12 +37,13 @@
                         <telerik:AjaxUpdatedControl ControlID="RadGrid_MANUFACTURER" />
                     </UpdatedControls>
                 </telerik:AjaxSetting>
-               <%-- <telerik:AjaxSetting AjaxControlID="RB_Update">
+               <telerik:AjaxSetting AjaxControlID="RB_Update">
                     <UpdatedControls>
                         <telerik:AjaxUpdatedControl ControlID="Panel1" LoadingPanelID="RadAjaxLoadingPanel1" />
                         <telerik:AjaxUpdatedControl ControlID="RadNotificationAlert" />
+                        <telerik:AjaxUpdatedControl ControlID="RadNotificationAlert1"/>
                     </UpdatedControls>
-                </telerik:AjaxSetting>--%>
+                </telerik:AjaxSetting>
             </AjaxSettings>
         </telerik:RadAjaxManager>
         <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" runat="server"></telerik:RadAjaxLoadingPanel>

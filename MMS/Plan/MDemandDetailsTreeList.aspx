@@ -376,7 +376,7 @@
                                     CommandName="CancelCombine" OnClick="RB_Combine_Cancel_Click" OnClientClicking="confirmWindowSubmitCancel">
                                 </telerik:RadButton>
 
-					     <telerik:RadButton ID="RadButton_ExportExcel" runat="server" Text="导出Excel" Font-Bold="true" CommandName="ExportExcel" Visible="false"  OnClick="RadButton_ExportExcel_Click" CssClass="floatright"></telerik:RadButton>
+					     <telerik:RadButton ID="RadButton_ExportExcel" runat="server" Text="导出Excel" Font-Bold="true" CommandName="ExportExcel" Visible="true"  OnClick="RadButton_ExportExcel_Click" CssClass="floatright"></telerik:RadButton>
                          <telerik:RadButton ID="RadButton_ExportWord"  runat="server" Text="导出Word"  Font-Bold="true" CommandName="ExportWord" Visible="false"  OnClick="RadButton_ExportWord_Click"  CssClass="floatright"></telerik:RadButton>
                          <telerik:RadButton ID="RadButton_ExportPDF"   runat="server" Text="导出PDF"   Font-Bold="true" CommandName="ExportPDF" Visible="false"   OnClick="RadButton_ExportPdf_Click"   CssClass="floatright"></telerik:RadButton>
 

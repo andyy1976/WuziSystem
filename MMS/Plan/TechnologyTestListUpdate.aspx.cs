@@ -109,9 +109,15 @@ namespace mms.Plan
            
                     strSQL = " select Dept from Sys_UserInfo_PWD where ID = '" + dt.Rows[0]["User_ID"].ToString() +"'";
                     string dept = DBI.GetSingleValue(strSQL).ToString();
-                    RadComboBox_Dept.FindItemByValue(dept).Selected = true;
+                    if (RadComboBox_Dept.FindItemByValue(dept) != null)
+                    {
+                        RadComboBox_Dept.FindItemByValue(dept).Selected = true;
+                    }
                     BindDDlUserInfo(RadComboBox_Dept.SelectedValue);
-                    RadComboBox_User.FindItemByValue(dt.Rows[0]["User_ID"].ToString()).Selected = true;
+                    if( RadComboBox_User.FindItemByValue(dt.Rows[0]["User_ID"].ToString())!=null)
+                    {
+                        RadComboBox_User.FindItemByValue(dt.Rows[0]["User_ID"].ToString()).Selected = true;
+                    }
                     span_apply_time.SelectedDate = Convert.ToDateTime(dt.Rows[0]["Submit_Date"].ToString());
                     txt_TaskCode.Text = dt.Rows[0]["TaskCode"].ToString();
                     txt_Drawing_No.Text = dt.Rows[0]["Drawing_No"].ToString();
@@ -135,37 +141,50 @@ namespace mms.Plan
                     RTB_Unit_Price.Text = dt.Rows[0]["Unit_Price"].ToString();
                     span_Sum_Price.Text = dt.Rows[0]["Sum_Price"].ToString();
                     if (RadComboBoxSecretLevel.FindItemByText(dt.Rows[0]["Secret_Level"].ToString()) != null)
-                    RadComboBoxSecretLevel.FindItemByText(dt.Rows[0]["Secret_Level"].ToString()).Selected = true;
-
+                    {
+                        RadComboBoxSecretLevel.FindItemByText(dt.Rows[0]["Secret_Level"].ToString()).Selected = true;
+                    }
                     strSQL = " select * from Sys_Phase order by Code";
                     RadComboBoxStage.DataSource = DBI.Execute(strSQL, true);
                     RadComboBoxStage.DataValueField = "Code";
                     RadComboBoxStage.DataTextField = "Phase";
                     RadComboBoxStage.DataBind();
 
-                    if (RadComboBoxStage.FindItemByValue(dt.Rows[0]["Stage"].ToString())!= null)
-                    RadComboBoxStage.FindItemByValue(dt.Rows[0]["Stage"].ToString()).Selected = true; ;
-
+                    if (RadComboBoxStage.FindItemByValue(dt.Rows[0]["Stage"].ToString()) != null)
+                    {
+                        RadComboBoxStage.FindItemByValue(dt.Rows[0]["Stage"].ToString()).Selected = true; ;
+                    }
                     strSQL = " select DICT_Code, DICT_Name from GetBasicdata_T_Item  where DICT_CLASS = 'CUX_DM_PROJECT' and ENABLED_FLAG = 'Y' order by DICT_Name";
                     RDDL_Project.DataSource = DBI.Execute(strSQL, true);
                     RDDL_Project.DataValueField = "DICT_Code";
                     RDDL_Project.DataTextField = "DICT_Name";
                     RDDL_Project.DataBind();
                     if (RDDL_Project.FindItemByValue(dt.Rows[0]["Project"].ToString()) != null)
+                    {
                         RDDL_Project.FindItemByValue(dt.Rows[0]["Project"].ToString()).Selected = true;
-
+                    }
                     if (RadComboBoxUseDes.FindItemByValue(dt.Rows[0]["Use_Des"].ToString()) != null)
-                    RadComboBoxUseDes.FindItemByValue(dt.Rows[0]["Use_Des"].ToString()).Selected = true;
+                    {
+                        RadComboBoxUseDes.FindItemByValue(dt.Rows[0]["Use_Des"].ToString()).Selected = true;
+                    }
                     if (RadComboBoxCertification.FindItemByValue(dt.Rows[0]["Certification"].ToString()) != null)
-                    RadComboBoxCertification.FindItemByValue(dt.Rows[0]["Certification"].ToString()).Selected = true ;
+                    {
+                        RadComboBoxCertification.FindItemByValue(dt.Rows[0]["Certification"].ToString()).Selected = true;
+                    }
                     rtb_SpecialNeeds.Text = dt.Rows[0]["Special_Needs"].ToString();
-                    if (RadComboBoxUrgencyDegre.FindItemByValue(dt.Rows[0]["Urgency_Degre"].ToString())!= null)
-                    RadComboBoxUrgencyDegre.FindItemByValue(dt.Rows[0]["Urgency_Degre"].ToString()).Selected = true;
+                    if (RadComboBoxUrgencyDegre.FindItemByValue(dt.Rows[0]["Urgency_Degre"].ToString()) != null)
+                    {
+                        RadComboBoxUrgencyDegre.FindItemByValue(dt.Rows[0]["Urgency_Degre"].ToString()).Selected = true;
+                    }
                     if (RadComboBoxMaterialDept.FindItemByValue(dt.Rows[0]["MaterialDept"].ToString()) != null)
-                    RadComboBoxMaterialDept.FindItemByValue(dt.Rows[0]["MaterialDept"].ToString()).Selected = true;
+                    {
+                        RadComboBoxMaterialDept.FindItemByValue(dt.Rows[0]["MaterialDept"].ToString()).Selected = true;
+                    }
                     BindDDlAddress(RadComboBoxMaterialDept.SelectedValue);
-                    if (RadComboBoxShipping_Address.FindItemByText(dt.Rows[0]["Shipping_Address"].ToString())!= null)
-                    RadComboBoxShipping_Address.FindItemByText(dt.Rows[0]["Shipping_Address"].ToString()).Selected = true;
+                    if (RadComboBoxShipping_Address.FindItemByText(dt.Rows[0]["Shipping_Address"].ToString()) != null)
+                    {
+                        RadComboBoxShipping_Address.FindItemByText(dt.Rows[0]["Shipping_Address"].ToString()).Selected = true;
+                    }
                     if (dt.Rows[0]["Attribute4"].ToString() == "进口") {
                         RB_Attribute42.Checked = true;
                     }

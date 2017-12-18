@@ -40,6 +40,7 @@ namespace mms
             PreparesMarerialsBodyModel[] listbodymodel = new PreparesMarerialsBodyModel[dtmdml.Rows.Count];
             PreparesMarerialsHeadModel headmodel = new PreparesMarerialsHeadModel()
             {
+                RequestType = 1,
                 DeptApproveAccount = "TJ\\" + dtmdpl.Rows[0]["DeptApproveAccount"].ToString(),                                             //车间
                 PlanApproveAccount = "TJ\\" + dtmdpl.Rows[0]["PlanOrTecApproveAccount"].ToString(),                    //工艺处（工艺处、生产处有一个就可以）
                 ProcessInstID = 0,                                                                                               //流程ID
@@ -130,12 +131,13 @@ namespace mms
             PreparesMarerialsBodyModel[] listbodymodel = new PreparesMarerialsBodyModel[dtmdml.Rows.Count];
             PreparesMarerialsHeadModel headmodel = new PreparesMarerialsHeadModel()
             {
-                DeptApproveAccount = "TJ\\" + dtmdpl.Rows[0]["DeptApproveAccount"].ToString(),                                             //车间
-                PlanApproveAccount = "TJ\\" + dtmdpl.Rows[0]["PlanOrTecApproveAccount"].ToString(),                    //工艺处（工艺处、生产处有一个就可以）
+                RequestType=0,
+                DeptApproveAccount = "TJ\\" + dtmdpl.Rows[0]["DeptApproveAccountChange"].ToString(),                                             //车间
+                PlanApproveAccount = "TJ\\" + dtmdpl.Rows[0]["PlanOrTecApproveAccountChange"].ToString(),                    //工艺处（工艺处、生产处有一个就可以）
                 ProcessInstID = 0,                                                                                               //流程ID
                 RequestID = Convert.ToInt32(MDPLID),
                 SubmitDate = Convert.ToDateTime(dtmdpl.Rows[0]["Submit_Date"].ToString()).ToString("yyyy-MM-dd"),
-                TecApproveAccount = dtmdpl.Rows[0]["Submit_Type"].ToString() == "3" ? "TJ\\" + dtmdpl.Rows[0]["MaterialPlanApproveAccount"].ToString() : "",    //物资综合计划员
+                TecApproveAccount = dtmdpl.Rows[0]["Submit_Type"].ToString() == "3" ? "TJ\\" + dtmdpl.Rows[0]["MaterialPlanApproveAccountChange"].ToString() : "",    //物资综合计划员
                 UserAccount = "TJ\\" + dtmdpl.Rows[0]["DomainAccount"].ToString(),
                 UserName = dtmdpl.Rows[0]["UserName"].ToString(),
                 AppState = dtmdpl.Rows[0]["Submit_Type"].ToString()

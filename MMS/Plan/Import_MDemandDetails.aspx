@@ -250,11 +250,11 @@
                             </telerik:GridBoundColumn>
                             
 
-                            <telerik:GridBoundColumn DataField="UrgencyDegre" HeaderText="紧急程度" ItemStyle-Width="70px" HeaderStyle-Width="70px" SortExpression="UrgencyDegre" UniqueName="UrgencyDegre" Visible="true">
+                            <telerik:GridBoundColumn DataField="Urgency_Degre" HeaderText="紧急程度" ItemStyle-Width="70px" HeaderStyle-Width="70px" SortExpression="Urgency_Degre" UniqueName="Urgency_Degre" Visible="true">
                             </telerik:GridBoundColumn>
                             <telerik:GridBoundColumn DataField="Secret_Level" HeaderText="密级" ItemStyle-Width="60px" HeaderStyle-Width="60px" SortExpression="Secret_Level" UniqueName="Secret_Level" Visible="true">
                             </telerik:GridBoundColumn>
-                            <telerik:GridBoundColumn DataField="UseDes" HeaderText="用途" ItemStyle-Width="80px" HeaderStyle-Width="80px" SortExpression="UseDes" UniqueName="UseDes" Visible="true">
+                            <telerik:GridBoundColumn DataField="Use_Des" HeaderText="用途" ItemStyle-Width="80px" HeaderStyle-Width="80px" SortExpression="Use_Des" UniqueName="Use_Des" Visible="true">
                             </telerik:GridBoundColumn>
                             <telerik:GridBoundColumn DataField="Shipping_Address" HeaderText="配送地址" ItemStyle-Width="70px" HeaderStyle-Width="70px" SortExpression="Shipping_Address" UniqueName="Shipping_Address" Visible="true">
                             </telerik:GridBoundColumn>
