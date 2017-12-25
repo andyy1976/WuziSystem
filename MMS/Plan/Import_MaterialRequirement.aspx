@@ -392,7 +392,7 @@
                                     </telerik:GridBoundColumn>
                                     <telerik:GridBoundColumn DataField="Material_Tech_Condition" ItemStyle-Width="120px" HeaderStyle-Width="120px" HeaderText="技术条件" SortExpression="Material_Tech_Condition" UniqueName="Material_Tech_Condition" Visible="true">
                                     </telerik:GridBoundColumn>
-                                    <telerik:GridBoundColumn DataField="Rough_Spec" ItemStyle-Width="80px" HeaderStyle-Width="80px" HeaderText="胚料规格" SortExpression="Rough_Spec" UniqueName="Rough_Spec">
+                                    <telerik:GridBoundColumn DataField="Rough_Spec" ItemStyle-Width="100px" HeaderStyle-Width="100px" HeaderText="胚料规格" SortExpression="Rough_Spec" UniqueName="Rough_Spec">
                                     </telerik:GridBoundColumn>
                                     <telerik:GridBoundColumn DataField="Dinge_Size" ItemStyle-Width="80px" HeaderStyle-Width="80px" HeaderText="胚料尺寸" SortExpression="Dinge_Size" UniqueName="Dinge_Size" Visible="true">
                                     </telerik:GridBoundColumn>
@@ -405,7 +405,7 @@
                                     <telerik:GridBoundColumn DataField="ItemCode1" ItemStyle-Width="80px" HeaderStyle-Width="80px" HeaderText="物资编码" SortExpression="ItemCode1" UniqueName="ItemCode1">
                                     </telerik:GridBoundColumn>
                                 
-                                    <telerik:GridBoundColumn DataField="ROUGH_SIZE" ItemStyle-Width="80px" HeaderStyle-Width="80px" HeaderText="需求尺寸" SortExpression="ROUGH_SIZE" UniqueName="ROUGH_SIZE">
+                                    <telerik:GridBoundColumn DataField="ROUGH_SIZE" ItemStyle-Width="100px" HeaderStyle-Width="100px" HeaderText="需求尺寸" SortExpression="ROUGH_SIZE" UniqueName="ROUGH_SIZE">
                                     </telerik:GridBoundColumn>
                                    <telerik:GridBoundColumn DataField="Special_Needs" ItemStyle-Width="80px" HeaderStyle-Width="80px" HeaderText="特殊需求" SortExpression="Special_Needs" UniqueName="Special_Needs">
                                     </telerik:GridBoundColumn>
@@ -594,8 +594,8 @@
                                     <telerik:GridBoundColumn DataField="Material_Mark" HeaderText="物资牌号" ItemStyle-Width="70px" HeaderStyle-Width="80px" SortExpression="Material_Name" UniqueName="Material_Name"></telerik:GridBoundColumn>
                                     <telerik:GridBoundColumn DataField="CN_Material_State" HeaderText="供应状态" ItemStyle-Width="70px" HeaderStyle-Width="80px" SortExpression="CN_Material_State" UniqueName="CN_Material_State"></telerik:GridBoundColumn>
                                     <telerik:GridBoundColumn DataField="Material_Tech_Condition" HeaderText="技术标准" ItemStyle-Width="100px" HeaderStyle-Width="100px" SortExpression="Material_Tech_Condition" UniqueName="Material_Tech_Condition"> </telerik:GridBoundColumn>
-                                    <telerik:GridBoundColumn DataField="Rough_Spec" HeaderText="胚料规格" ItemStyle-Width="70px" HeaderStyle-Width="70px" SortExpression="Rough_Spec" UniqueName="Rough_Spec"></telerik:GridBoundColumn>
-                                    <telerik:GridBoundColumn DataField="Dinge_Size" HeaderText="胚料尺寸" ItemStyle-Width="70px" HeaderStyle-Width="70px" SortExpression="Dinge_Size" UniqueName="Dinge_Size"></telerik:GridBoundColumn>
+                                    <telerik:GridBoundColumn DataField="Rough_Spec" HeaderText="胚料规格" ItemStyle-Width="100px" HeaderStyle-Width="100px" SortExpression="Rough_Spec" UniqueName="Rough_Spec"></telerik:GridBoundColumn>
+                                    <telerik:GridBoundColumn DataField="Dinge_Size" HeaderText="胚料尺寸" ItemStyle-Width="100px" HeaderStyle-Width="100px" SortExpression="Dinge_Size" UniqueName="Dinge_Size"></telerik:GridBoundColumn>
                                                   
 
                                     <telerik:GridBoundColumn DataField="Mat_Rough_Weight" HeaderText="单件质量" ItemStyle-Width="70px" HeaderStyle-Width="70px" SortExpression="Mat_Rough_Weight" UniqueName="Mat_Rough_Weight">
@@ -605,7 +605,7 @@
 
                                     <telerik:GridBoundColumn DataField="ItemCode1" HeaderText="物资编码" ItemStyle-Width="100px" HeaderStyle-Width="100px" SortExpression="ItemCode1" UniqueName="ItemCode1">
                                     </telerik:GridBoundColumn>
-                                    <telerik:GridBoundColumn DataField="Rough_Size" HeaderText="需求尺寸" ItemStyle-Width="70px" HeaderStyle-Width="70px" SortExpression="Rough_Size" UniqueName="Rough_Size">
+                                    <telerik:GridBoundColumn DataField="Rough_Size" HeaderText="需求尺寸" ItemStyle-Width="100px" HeaderStyle-Width="100px" SortExpression="Rough_Size" UniqueName="Rough_Size">
                                     </telerik:GridBoundColumn>
                                     <telerik:GridBoundColumn DataField="Special_Needs" HeaderText="特殊需求" ItemStyle-Width="80px" HeaderStyle-Width="80px" SortExpression="Special_Needs" UniqueName="Special_Needs" Visible="true">
                                     </telerik:GridBoundColumn>   

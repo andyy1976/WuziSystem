@@ -470,7 +470,7 @@
                                     </telerik:GridBoundColumn>
                                     <telerik:GridBoundColumn DataField="Material_Tech_Condition" ItemStyle-Width="120px" HeaderStyle-Width="120px" HeaderText="技术标准" SortExpression="Material_Tech_Condition" UniqueName="Material_Tech_Condition" Visible="true">
                                     </telerik:GridBoundColumn>
-                                    <telerik:GridBoundColumn DataField="Rough_Spec" ItemStyle-Width="80px" HeaderStyle-Width="80px" HeaderText="规格" SortExpression="Rough_Spec" UniqueName="Rough_Spec">
+                                    <telerik:GridBoundColumn DataField="Rough_Spec" ItemStyle-Width="100px" HeaderStyle-Width="100px" HeaderText="规格" SortExpression="Rough_Spec" UniqueName="Rough_Spec">
                                     </telerik:GridBoundColumn>
                                     <telerik:GridBoundColumn DataField="Dinge_Size" ItemStyle-Width="80px" HeaderStyle-Width="80px" HeaderText="胚料尺寸" SortExpression="Dinge_Size" UniqueName="Dinge_Size" Visible="true">
                                     </telerik:GridBoundColumn>
@@ -480,7 +480,7 @@
                                     <telerik:GridBoundColumn DataField="MaterialsDes" ItemStyle-Width="120px" HeaderStyle-Width="120px" HeaderText="物资描述" SortExpression="MaterialsDes" UniqueName="MaterialsDes" Visible="false">
                                     </telerik:GridBoundColumn> 
 
-                                    <telerik:GridBoundColumn DataField="ROUGH_SIZE" ItemStyle-Width="80px" HeaderStyle-Width="80px" HeaderText="需求尺寸" SortExpression="ROUGH_SIZE" UniqueName="ROUGH_SIZE">
+                                    <telerik:GridBoundColumn DataField="ROUGH_SIZE" ItemStyle-Width="100px" HeaderStyle-Width="100px" HeaderText="需求尺寸" SortExpression="ROUGH_SIZE" UniqueName="ROUGH_SIZE">
                                     </telerik:GridBoundColumn>
                                     <telerik:GridBoundColumn DataField="Special_Needs" ItemStyle-Width="80px" HeaderStyle-Width="80px" HeaderText="特殊需求" SortExpression="Special_Needs" UniqueName="Special_Needs">
                                     </telerik:GridBoundColumn>
@@ -506,7 +506,7 @@
                                     <telerik:GridBoundColumn DataField="DemandDate" ItemStyle-Width="120px" HeaderStyle-Width="120px" HeaderText="需求时间" DataFormatString="{0:yyyy-MM-dd}" SortExpression="DemandDate" UniqueName="DemandDate" >
                                     </telerik:GridBoundColumn>
 
-                                    <telerik:GridBoundColumn DataField="Urgency_Degre" ItemStyle-Width="60px" HeaderStyle-Width="60px" HeaderText="紧急程度" SortExpression="Urgency_Degre" UniqueName="Urgency_Degre">
+                                    <telerik:GridBoundColumn DataField="Urgency_Degre" ItemStyle-Width="80px" HeaderStyle-Width="80px" HeaderText="紧急程度" SortExpression="Urgency_Degre" UniqueName="Urgency_Degre">
                                     </telerik:GridBoundColumn>
                                     <telerik:GridBoundColumn DataField="Secret_Level" ItemStyle-Width="80px" HeaderStyle-Width="80px" HeaderText="密级" SortExpression="Secret_Level" UniqueName="Secret_Level">
                                     </telerik:GridBoundColumn>
@@ -663,7 +663,7 @@
                                     </telerik:GridBoundColumn>
                                     <telerik:GridBoundColumn DataField="Material_Tech_Condition" ItemStyle-Width="120px" HeaderStyle-Width="120px" HeaderText="技术标准" SortExpression="Material_Tech_Condition" UniqueName="Material_Tech_Condition" Visible="true">
                                     </telerik:GridBoundColumn>
-                                    <telerik:GridBoundColumn DataField="Rough_Spec" ItemStyle-Width="80px" HeaderStyle-Width="80px" HeaderText="规格" SortExpression="Rough_Spec" UniqueName="Rough_Spec">
+                                    <telerik:GridBoundColumn DataField="Rough_Spec" ItemStyle-Width="100px" HeaderStyle-Width="100px" HeaderText="规格" SortExpression="Rough_Spec" UniqueName="Rough_Spec">
                                     </telerik:GridBoundColumn>
 
                                     <telerik:GridBoundColumn DataField="Dinge_Size" ItemStyle-Width="80px" HeaderStyle-Width="80px" HeaderText="胚料尺寸" SortExpression="Dinge_Size" UniqueName="Dinge_Size" Visible="true">
@@ -672,7 +672,7 @@
                                     </telerik:GridBoundColumn>
                       
                                    
-                                    <telerik:GridBoundColumn DataField="ROUGH_SIZE" ItemStyle-Width="80px" HeaderStyle-Width="80px" HeaderText="需求尺寸" SortExpression="ROUGH_SIZE" UniqueName="ROUGH_SIZE">
+                                    <telerik:GridBoundColumn DataField="ROUGH_SIZE" ItemStyle-Width="100px" HeaderStyle-Width="100px" HeaderText="需求尺寸" SortExpression="ROUGH_SIZE" UniqueName="ROUGH_SIZE">
                                     </telerik:GridBoundColumn>
                                     <telerik:GridBoundColumn DataField="Special_Needs" ItemStyle-Width="80px" HeaderStyle-Width="80px" HeaderText="特殊需求" SortExpression="Special_Needs" UniqueName="Special_Needs">
                                     </telerik:GridBoundColumn>
@@ -692,7 +692,7 @@
 
                                     <telerik:GridBoundColumn DataField="DemandDate" ItemStyle-Width="120px" HeaderStyle-Width="120px" HeaderText="需求时间" DataFormatString="{0:yyyy-MM-dd}" SortExpression="DemandDate" UniqueName="DemandDate" >
                                     </telerik:GridBoundColumn>
-                                    <telerik:GridBoundColumn DataField="UrgencyDegre" ItemStyle-Width="60px" HeaderStyle-Width="60px" HeaderText="紧急程度" SortExpression="UrgencyDegre" UniqueName="UrgencyDegre">
+                                    <telerik:GridBoundColumn DataField="UrgencyDegre" ItemStyle-Width="80px" HeaderStyle-Width="80px" HeaderText="紧急程度" SortExpression="UrgencyDegre" UniqueName="UrgencyDegre">
                                     </telerik:GridBoundColumn>
                                     <telerik:GridBoundColumn DataField="Secret_Level" ItemStyle-Width="80px" HeaderStyle-Width="80px" HeaderText="密级" SortExpression="Secret_Level" UniqueName="Secret_Level">
                                     </telerik:GridBoundColumn>

@@ -125,8 +125,8 @@
                                 <telerik:GridBoundColumn DataField="ERR_MSG" HeaderText="提交失败原因" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
                                 <telerik:GridBoundColumn DataField="Material_Name" HeaderText="物资名称" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
                                 <telerik:GridBoundColumn DataField="Dinge_Size" HeaderText="胚料尺寸" ItemStyle-Width="80px" HeaderStyle-Width="80px"></telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn DataField="Rough_Spec" HeaderText="规格" ItemStyle-Width="80px" HeaderStyle-Width="80px"></telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn DataField="Rough_Size" HeaderText="需求尺寸" ItemStyle-Width="80px" HeaderStyle-Width="80px"></telerik:GridBoundColumn>
+                                <telerik:GridBoundColumn DataField="Rough_Spec" HeaderText="规格" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
+                                <telerik:GridBoundColumn DataField="Rough_Size" HeaderText="需求尺寸" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
 
                                 <telerik:GridBoundColumn DataField="Special_Needs" HeaderText="特殊需求" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
                                 <telerik:GridBoundColumn DataField="Urgency_Degre" HeaderText="紧急程度" ItemStyle-Width="80px" HeaderStyle-Width="80px"></telerik:GridBoundColumn>
@@ -198,8 +198,8 @@
                                 <telerik:GridBoundColumn DataField="Changed_Value" HeaderText="变更值" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
                                 <telerik:GridBoundColumn DataField="Material_Name" HeaderText="物资名称" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
                                 <telerik:GridBoundColumn DataField="Dinge_Size" HeaderText="胚料尺寸" ItemStyle-Width="80px" HeaderStyle-Width="80px"></telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn DataField="Rough_Spec" HeaderText="规格" ItemStyle-Width="80px" HeaderStyle-Width="80px"></telerik:GridBoundColumn>
-                                 <telerik:GridBoundColumn DataField="Rough_Size" HeaderText="需求尺寸" ItemStyle-Width="80px" HeaderStyle-Width="80px"></telerik:GridBoundColumn>
+                                <telerik:GridBoundColumn DataField="Rough_Spec" HeaderText="规格" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
+                                 <telerik:GridBoundColumn DataField="Rough_Size" HeaderText="需求尺寸" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
                                 <telerik:GridBoundColumn DataField="Special_Needs" HeaderText="特殊需求" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
                                 <telerik:GridBoundColumn DataField="Urgency_Degre" HeaderText="紧急程度" ItemStyle-Width="80px" HeaderStyle-Width="80px"></telerik:GridBoundColumn>
                                 <telerik:GridBoundColumn DataField="Secret_Level" HeaderText="密级" ItemStyle-Width="80px" HeaderStyle-Width="80px"></telerik:GridBoundColumn>

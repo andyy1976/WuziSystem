@@ -121,7 +121,7 @@
                         <telerik:GridBoundColumn DataField="NumCasesSum" HeaderText="需求件数" DataFormatString="{0:N0}" ItemStyle-HorizontalAlign="Right" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="Mat_Unit" HeaderText="计量单位" UniqueName="Mat_Unit" ColumnGroupName="Material" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="DemandNumSum" HeaderText="需求量" DataFormatString="{0:N0}" ItemStyle-HorizontalAlign="Right" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="Rough_Size" HeaderText="需求尺寸" UniqueName="Rough_Size" ColumnGroupName="Material" ItemStyle-Width="70px" HeaderStyle-Width="70px"></telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="Rough_Size" HeaderText="需求尺寸" UniqueName="Rough_Size" ColumnGroupName="Material" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="ID" UniqueName="ID" HeaderText="需求行号" ItemStyle-HorizontalAlign="Right" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
                       </Columns>
                     <CommandItemTemplate>

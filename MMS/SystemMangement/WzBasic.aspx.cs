@@ -194,11 +194,18 @@ namespace mms.SystemMangement
             string ItemCode = RTB_ItemCode.Text.Trim();
             strSQL += " and SEG3 like '%" + ItemCode + "%'";
             strSQL += " and Seg4 like '%" + Material_Name + "%'";
-            strSQL += " and Seg4 like '%" + Material_Paihao + "%'";
-
-            strSQL += " and Seg4 like '%" + Material_Guige + "%'";
-
-            strSQL += " and Seg4 like '%" + Material_Biaozhun + "%'";
+            if (Material_Paihao != "")
+            {
+                strSQL += " and SEG4 like '%牌号(" + Material_Paihao + "%'";
+            }
+            if (Material_Guige != "")
+            {
+                strSQL += " and SEG4 like '%规格(" + Material_Guige + "%'";
+            }
+            if (Material_Biaozhun != "")
+            {
+                strSQL += " and SEG4 like '%采用标准(%" + Material_Biaozhun + "%'";
+            }
             string MTv = RDDLMT.SelectedValue.ToString();
             if (MTv == "")
             {

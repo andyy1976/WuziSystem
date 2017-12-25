@@ -308,7 +308,7 @@
                             <telerik:TreeListBoundColumn DataField="Material_Mark" HeaderText="材料牌号" ItemStyle-Width="70px" HeaderStyle-Width="80px" SortExpression="Material_Name" UniqueName="Material_Name"></telerik:TreeListBoundColumn>
                             <telerik:TreeListBoundColumn DataField="CN_Material_State" HeaderText="材料状态" ItemStyle-Width="70px" HeaderStyle-Width="80px" SortExpression="CN_Material_State" UniqueName="CN_Material_State"></telerik:TreeListBoundColumn>
                             <telerik:TreeListBoundColumn DataField="Material_Tech_Condition" HeaderText="技术条件" ItemStyle-Width="100px" HeaderStyle-Width="100px" SortExpression="Material_Tech_Condition" UniqueName="Material_Tech_Condition"> </telerik:TreeListBoundColumn>
-                            <telerik:TreeListBoundColumn DataField="Rough_Spec" HeaderText="胚料规格" ItemStyle-Width="70px" HeaderStyle-Width="70px" SortExpression="Rough_Spec" UniqueName="Rough_Spec"></telerik:TreeListBoundColumn>
+                            <telerik:TreeListBoundColumn DataField="Rough_Spec" HeaderText="胚料规格" ItemStyle-Width="100px" HeaderStyle-Width="100px" SortExpression="Rough_Spec" UniqueName="Rough_Spec"></telerik:TreeListBoundColumn>
                             <telerik:TreeListBoundColumn DataField="Dinge_Size" HeaderText="胚料尺寸" ItemStyle-Width="70px" HeaderStyle-Width="70px" SortExpression="Dinge_Size" UniqueName="Dinge_Size"></telerik:TreeListBoundColumn>
                                                   
 
@@ -319,7 +319,7 @@
 
                             <telerik:TreeListBoundColumn DataField="ItemCode1" HeaderText="物资编码" ItemStyle-Width="100px" HeaderStyle-Width="100px" SortExpression="ItemCode1" UniqueName="ItemCode1">
                             </telerik:TreeListBoundColumn>
-                            <telerik:TreeListBoundColumn DataField="Rough_Size" HeaderText="需求尺寸" ItemStyle-Width="70px" HeaderStyle-Width="70px" SortExpression="Rough_Size" UniqueName="Rough_Size"></telerik:TreeListBoundColumn>
+                            <telerik:TreeListBoundColumn DataField="Rough_Size" HeaderText="需求尺寸" ItemStyle-Width="100px" HeaderStyle-Width="100px" SortExpression="Rough_Size" UniqueName="Rough_Size"></telerik:TreeListBoundColumn>
                             <telerik:TreeListBoundColumn DataField="Special_Needs" HeaderText="特殊需求" ItemStyle-Width="80px" HeaderStyle-Width="80px" SortExpression="Special_Needs" UniqueName="Special_Needs" Visible="true">
                             </telerik:TreeListBoundColumn>
 

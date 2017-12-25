@@ -83,7 +83,7 @@
                         <telerik:GridBoundColumn DataField="Rough_Spec" HeaderText="胚料规格" ItemStyle-Width="100" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="DemandNumSum" HeaderText="共计数量" ItemStyle-Width="70" HeaderStyle-Width="70px"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="NumCasesSum" HeaderText="需求件数" ItemStyle-Width="70" HeaderStyle-Width="70px"></telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="Rough_Size" HeaderText="需求尺寸" ItemStyle-Width="70" HeaderStyle-Width="70px"> </telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="Rough_Size" HeaderText="需求尺寸" ItemStyle-Width="100" HeaderStyle-Width="100px"> </telerik:GridBoundColumn>
 
                         <telerik:GridBoundColumn DataField="Special_Needs" HeaderText="特殊需求" ItemStyle-Width="100" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="Urgency_Degre1" HeaderText="紧急程度" ItemStyle-Width="70" HeaderStyle-Width="70px"></telerik:GridBoundColumn>

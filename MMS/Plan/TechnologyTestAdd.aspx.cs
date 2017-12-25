@@ -1358,13 +1358,22 @@ namespace mms.Plan
             string Material_Paihao = RTB_MaterialPaihao.Text.Trim();
             string Material_Guige = RTB_MaterialGuige.Text.Trim();
             string Material_Biaozhun = RTB_MaterialBiaozhun.Text.Trim();
-            strSQL += " and SEG4 like '%" + Material_Name + "%'";
-            strSQL += " and SEG4 like '%" + Material_Paihao + "%'";
-
-            strSQL += " and SEG4 like '%" + Material_Guige + "%'";
-
-            strSQL += " and SEG4 like '%" + Material_Biaozhun + "%'";
-        
+            if (Material_Name != "")
+            {
+                strSQL += " and SEG4 like '%" + Material_Name + "%'";
+            }
+            if (Material_Paihao != "")
+            {
+                strSQL += " and SEG4 like '%牌号(" + Material_Paihao + "%'";
+            }
+            if (Material_Guige != "")
+            {
+                strSQL += " and SEG4 like '%规格(" + Material_Guige + "%'";
+            }
+            if (Material_Biaozhun != "")
+            {
+                strSQL += " and SEG4 like '%采用标准(%" + Material_Biaozhun + "%'";
+            }
             string MTv = RDDLMT.SelectedValue.ToString();
             if (MTv == "")
             {
@@ -1707,7 +1716,13 @@ namespace mms.Plan
                             {
                                 GridSource1.Rows[i]["ID"] = rowsid;
                                 rowsid++;
-                                Set_Txt_ByItemCode1(itemCode1,i);
+                                if (! Set_Txt_ByItemCode1(itemCode1, i))
+                                {
+                                    RadNotificationAlert.Text = "第" + i.ToString() +"行物资编码不存在";
+                                    RadNotificationAlert.Show();
+                                    GridSource1.Rows[i].Delete();
+                                    return;
+                                }
                                 try
                                 {
                                    
@@ -1755,7 +1770,7 @@ namespace mms.Plan
             }
         }
 
-        protected void Set_Txt_ByItemCode1(string ItemCode1,int i)
+        protected bool Set_Txt_ByItemCode1(string ItemCode1,int i)
         {
    
             string strSQL = " select * from GetCommItem_T_Item where seg3 = '" + ItemCode1 + "'";
@@ -1820,13 +1835,14 @@ namespace mms.Plan
                      //   GridSource1.Rows[i]["Rough_Spec"] = "";
                         break;
                 }
+                return true;
             }
             else
             {
-                RadNotificationAlert.Text = "物资编码不存在";
-                RadNotificationAlert.Show();
-                GridSource1.Rows[i].Delete();
-                return;
+               // RadNotificationAlert.Text = "物资编码不存在";
+              //  RadNotificationAlert.Show();
+              //  GridSource1.Rows[i].Delete();
+                return false;
             }
         }
 

@@ -129,7 +129,7 @@
                                      HeaderStyle-width="70px" ItemStyle-Width="70px">
                                 </telerik:GridBoundColumn>
                                 <telerik:GridBoundColumn DataField="Rough_Spec" FilterControlAltText="Filter Rough_Spec column" HeaderText="物资规格" SortExpression="Rough_Spec" UniqueName="Rough_Spec"
-                                     HeaderStyle-width="70px" ItemStyle-Width="70px">
+                                     HeaderStyle-width="100px" ItemStyle-Width="100px">
                                 </telerik:GridBoundColumn>
 
                                  <telerik:GridBoundColumn DataField="Material_Mark" FilterControlAltText="Filter Material_Mark column" HeaderText="物资牌号" SortExpression="Material_Mark" UniqueName="Material_Mark"
@@ -215,7 +215,7 @@
                                      HeaderStyle-width="80px" ItemStyle-Width="60px">
                                 </telerik:GridBoundColumn>
                                 <telerik:GridBoundColumn DataField="Rough_Size"  HeaderText="需求尺寸" SortExpression="Rough_Size" UniqueName="Rough_Size"
-                                     HeaderStyle-width="70px" ItemStyle-Width="70px">
+                                     HeaderStyle-width="100px" ItemStyle-Width="100px">
                                 </telerik:GridBoundColumn>
                                 <telerik:GridBoundColumn DataField="stage1" HeaderText="研制阶段" SortExpression="stage1" UniqueName="stage1"  HeaderStyle-width="80px"
                                      ItemStyle-Width="60px">

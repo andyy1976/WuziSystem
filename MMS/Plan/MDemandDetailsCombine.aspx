@@ -138,7 +138,7 @@
                             </telerik:GridBoundColumn>
                             <telerik:GridBoundColumn DataField="Mat_Pro_Weight" ItemStyle-Width="70px" HeaderStyle-Width="70px" HeaderText="每产品质量"   SortExpression="Mat_Pro_Weight" UniqueName="Mat_Pro_Weight">
                             </telerik:GridBoundColumn>
-                            <telerik:GridBoundColumn DataField="Rough_Size" ItemStyle-Width="70px" HeaderStyle-Width="70px" HeaderText="需求尺寸"  SortExpression="Rough_Size" UniqueName="Rough_Size">
+                            <telerik:GridBoundColumn DataField="Rough_Size" ItemStyle-Width="100px" HeaderStyle-Width="100px" HeaderText="需求尺寸"  SortExpression="Rough_Size" UniqueName="Rough_Size">
                             </telerik:GridBoundColumn>
                             <telerik:GridBoundColumn DataField="Dinge_Size" ItemStyle-Width="70px" HeaderStyle-Width="70px" HeaderText="胚料尺寸"  SortExpression="Dinge_Size" UniqueName="Dinge_Size">
                             </telerik:GridBoundColumn>
@@ -217,13 +217,13 @@
                                     </ItemTemplate>
                                 </telerik:GridTemplateColumn>
 
-                                <telerik:GridTemplateColumn DataField="Rough_Size" ItemStyle-Width="70px" HeaderStyle-Width="70px" HeaderText="需求尺寸"  SortExpression="Rough_Size" UniqueName="Rough_Size">
+                                <telerik:GridTemplateColumn DataField="Rough_Size" ItemStyle-Width="100px" HeaderStyle-Width="100px" HeaderText="需求尺寸"  SortExpression="Rough_Size" UniqueName="Rough_Size">
                                    <ItemTemplate>
-                                        <telerik:RadTextBox ID="Rough_Size" runat="server" Width="70px" AutoPostBack="true" OnTextChanged="Rough_Size_TextChanged"></telerik:RadTextBox>
+                                        <telerik:RadTextBox ID="Rough_Size" runat="server" Width="100px" AutoPostBack="true" OnTextChanged="Rough_Size_TextChanged"></telerik:RadTextBox>
                                     </ItemTemplate>
                                 </telerik:GridTemplateColumn>
                             
-                                <telerik:GridBoundColumn DataField="Rough_Spec" ItemStyle-Width="70px" HeaderStyle-Width="70px" HeaderText="物资规格"  SortExpression="Rough_Spec" UniqueName="Rough_Spec" Visible="false" >
+                                <telerik:GridBoundColumn DataField="Rough_Spec" ItemStyle-Width="100px" HeaderStyle-Width="100px" HeaderText="物资规格"  SortExpression="Rough_Spec" UniqueName="Rough_Spec" Visible="false" >
                                 </telerik:GridBoundColumn>
 
                                 <telerik:GridTemplateColumn ItemStyle-Width="70px" HeaderStyle-Width="70px" HeaderText="特殊需求"  UniqueName="Special_Needs" >

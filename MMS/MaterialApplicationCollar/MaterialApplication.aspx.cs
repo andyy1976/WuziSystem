@@ -456,11 +456,18 @@ namespace mms.MaterialApplicationCollar
             string Material_Guige = RTB_Material_Guige.Text.Trim();
             string Material_Biaozhun = RTB_Material_Biaozhun.Text.Trim();
             strSQL += " and SEG4 like '%" + Material_Name + "%'";
-            strSQL += " and SEG4 like '%" + Material_Paihao + "%'";
-
-            strSQL += " and SEG4 like '%" + Material_Guige + "%'";
-
-            strSQL += " and SEG4 like '%" + Material_Biaozhun + "%'";
+            if (Material_Paihao != "")
+            {
+                strSQL += " and SEG4 like '%牌号(" + Material_Paihao + "%'";
+            }
+            if (Material_Guige != "")
+            {
+                strSQL += " and SEG4 like '%规格(" + Material_Guige + "%'";
+            }
+            if (Material_Biaozhun != "")
+            {
+                strSQL += " and SEG4 like '%采用标准(%" + Material_Biaozhun + "%'";
+            }
             string MTv = RDDLMT.SelectedValue.ToString();
             if (MTv == "")
             {
