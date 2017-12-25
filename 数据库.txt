@@ -1,0 +1,9 @@
+Special_Needs	nvarchar(200)	Checked
+Urgency_Degre	nvarchar(100)	Checked
+Secret_Level	nvarchar(100)	Checked
+Use_Des	nvarchar(100)	Checked
+Shipping_Address	nvarchar(100)	Checked
+Certification	nvarchar(100)	Checked
+MANUFACTURER	nvarchar(240)	Checked
+ATTRIBUTE4	nvarchar(240)	Checked
+Dinge_Size	nchar(50)	Checked
