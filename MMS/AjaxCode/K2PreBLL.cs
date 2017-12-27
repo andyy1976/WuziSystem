@@ -28,7 +28,7 @@ namespace mms
                 " join Sys_UserInfo_PWD on Sys_UserInfo_PWD.ID = M_Demand_Plan_List.User_ID where M_Demand_Plan_List.ID = '" + MDPLID + "'";
             DataTable dtmdpl = DBI.Execute(strSql, true);
             strSql = " select b.DICT_Name as UseDes, M_Demand_Merge_List.*, Dept, a.DICT_Name as Urgency" +
-                  "case when Stage ='1' then 'M' when stage='2' then 'C' when Stage='3' then 'S' when Stage='4' then 'D' else Convert(nvarchar(50),Stage) end as Stage1, " +
+                  ",case when Stage ='1' then 'M' when stage='2' then 'C' when Stage='3' then 'S' when Stage='4' then 'D' else Convert(nvarchar(50),Stage) end as Stage1 " +
 
                 " from M_Demand_Merge_List" +
                 " left join Sys_DeptEnum on Sys_DeptEnum.DeptCode = M_Demand_Merge_List.MaterialDept" +

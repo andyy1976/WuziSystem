@@ -412,12 +412,12 @@ namespace mms.Plan
             mta.Material_Name = RTB_Material_Name.Text.Trim();
 
             SaveTechnologyNoSubmit(mta);
-
+            /*
             RTB_Material_Name.Text = "";
             RTB_Material_Mark.Text = "";
             RTB_CN_Material_State.Text = "";
             RTB_Material_Tech_Condition.Text = "";
-            RTB_Dinge_Size.Text = "";
+           
             RTB_MaterialsDes.Text = "";
             RTB_TDM_Description.Text = "";
             txt_ItemCode1.Text = "";
@@ -434,6 +434,7 @@ namespace mms.Plan
             span_Sum_Price.Text = "";
             rtb_SpecialNeeds.Text = "";
             DemandDate.SelectedDate = DateTime.Now;
+             */
         }
         protected void SaveTechnologyNoSubmit(M_Demand_Merge_List mta)
         {
@@ -655,9 +656,11 @@ namespace mms.Plan
 
                     if (result == "")
                     {
-                        RadNotificationAlert.Text = "进入流程平台！";
-                        RadNotificationAlert.Show();
-                        Page.ClientScript.RegisterStartupScript(this.GetType(), "info", "CloseWindow1();", true);
+                      //  RadNotificationAlert.Text = "进入流程平台！";
+                        //RadNotificationAlert.Show();
+                        //Page.ClientScript.RegisterStartupScript(this.GetType(), "info", "CloseWindow1();", true);
+                        RadNotificationAlert1.Text = "申请成功！进入流程平台";
+                        RadNotificationAlert1.Show();
                     }
                     else {
                         RadNotificationAlert.Text = result;
@@ -1151,23 +1154,22 @@ namespace mms.Plan
                 string Seg5 = dt.Rows[0]["Seg5"].ToString().Substring(0, 4);
                 RTB_MaterialsDes.Text = dt.Rows[0]["SEG4"].ToString();
                 RTB_Material_Mark.Text = dt.Rows[0]["SEG13"].ToString();
-                RTB_CN_Material_State.Text = "";
-                RTB_Material_Tech_Condition.Text = "";
+
                 switch (Seg5)
                 {
                     case "YY01":
-                        RTB_Material_Mark.Text = "";
+                        //RTB_Material_Mark.Text = "";
                         RTB_Material_Name.Text = dt.Rows[0]["Seg21"].ToString();
                         txt_Mat_Unit.Text = dt.Rows[0]["Seg7"].ToString();
-                        RTB_Dinge_Size.Text = "";
+                     
                         txt_Rough_Spec.Text = dt.Rows[0]["Seg13"].ToString();
                         RTB_Unit_Price.Text = dt.Rows[0]["Seg31"].ToString();
                         break;
                     case "YY02":
-                        RTB_Material_Mark.Text = "";
+                        //RTB_Material_Mark.Text = "";
                         RTB_Material_Name.Text = dt.Rows[0]["Seg12"].ToString();
                         txt_Mat_Unit.Text = dt.Rows[0]["Seg7"].ToString();
-                        RTB_Dinge_Size.Text = "";
+            
                         txt_Rough_Spec.Text = dt.Rows[0]["Seg15"].ToString();
                         RTB_Unit_Price.Text = dt.Rows[0]["Seg25"].ToString();
                         break;
@@ -1176,20 +1178,18 @@ namespace mms.Plan
                         txt_Mat_Unit.Text = dt.Rows[0]["Seg7"].ToString();
                         RTB_Dinge_Size.Text = dt.Rows[0]["Seg16"].ToString();
                         txt_Rough_Spec.Text = dt.Rows[0]["Seg15"].ToString();
-                        RTB_Unit_Price.Text = "0";
-                        span_Sum_Price.Text = "0";//span_Sum_Price.InnerHtml = "0";
                         break;
                     case "YY04":
                         RTB_Material_Name.Text = dt.Rows[0]["Seg12"].ToString();
                         txt_Mat_Unit.Text = dt.Rows[0]["Seg7"].ToString();
-                        RTB_Dinge_Size.Text = "";
+                    
                         txt_Rough_Spec.Text = dt.Rows[0]["Seg14"].ToString();
                         RTB_Unit_Price.Text = dt.Rows[0]["Seg23"].ToString();
                         break;
                     case "YY05":
                         RTB_Material_Name.Text = dt.Rows[0]["Seg12"].ToString();
                         txt_Mat_Unit.Text = dt.Rows[0]["Seg7"].ToString();
-                        RTB_Dinge_Size.Text = "";
+                     
                         txt_Rough_Spec.Text = dt.Rows[0]["Seg14"].ToString();
                         RTB_Unit_Price.Text = dt.Rows[0]["Seg23"].ToString();
                         RTB_Material_Tech_Condition.Text = dt.Rows[0]["SEG16"].ToString();
@@ -1197,39 +1197,33 @@ namespace mms.Plan
                     case "YY06":
                         RTB_Material_Name.Text = dt.Rows[0]["Seg12"].ToString();
                         txt_Mat_Unit.Text = dt.Rows[0]["Seg7"].ToString();
-                        RTB_Dinge_Size.Text = "";
+                       
                         txt_Rough_Spec.Text = dt.Rows[0]["Seg14"].ToString();
                         RTB_Unit_Price.Text = dt.Rows[0]["Seg23"].ToString();
                         break;
                     case "YY07":
                         RTB_Material_Name.Text = dt.Rows[0]["Seg20"].ToString();
                         txt_Mat_Unit.Text = dt.Rows[0]["Seg7"].ToString();
-                        RTB_Dinge_Size.Text = "";
+                      
                         txt_Rough_Spec.Text = dt.Rows[0]["Seg14"].ToString();
                         RTB_Unit_Price.Text = dt.Rows[0]["Seg25"].ToString();
                         break;
                     case "YY08":
                         RTB_Material_Name.Text = dt.Rows[0]["Seg12"].ToString();
                         txt_Mat_Unit.Text = dt.Rows[0]["Seg7"].ToString();
-                        RTB_Dinge_Size.Text = "";
+                       
                         txt_Rough_Spec.Text = dt.Rows[0]["Seg14"].ToString();
                         RTB_Unit_Price.Text = dt.Rows[0]["Seg21"].ToString();
                         break;
                     case "YY09":
                         RTB_Material_Name.Text = dt.Rows[0]["Seg12"].ToString();
                         txt_Mat_Unit.Text = dt.Rows[0]["Seg7"].ToString();
-                        RTB_Dinge_Size.Text = "";
+                        
                         txt_Rough_Spec.Text = dt.Rows[0]["Seg14"].ToString();
                         RTB_Unit_Price.Text = dt.Rows[0]["Seg21"].ToString();
                    
                         break;
                     default:
-                        RTB_Material_Name.Text = "";
-                        txt_Mat_Unit.Text = "";
-                        RTB_Dinge_Size.Text = "";
-                        txt_Rough_Spec.Text = "";
-                        RTB_Unit_Price.Text = "0";
-                        span_Sum_Price.Text = "0";
                         break;
                 }
                 try
@@ -1907,7 +1901,7 @@ namespace mms.Plan
                 return;
             }
 
-            try
+            //try
             {
            
                 string DBContractConn =
@@ -2340,12 +2334,14 @@ namespace mms.Plan
              
 
             }
-            catch (Exception ex)
+          /* 
+           catch (Exception ex)
             {
                 RadNotificationAlert.Text = "失败！" + ex.Message.ToString();
                 RadNotificationAlert.Show();
                 return;
             }
+            */
         }
 
   

@@ -108,7 +108,8 @@
                                 <UpdatedControls>
                                     <telerik:AjaxUpdatedControl ControlID="RadGrid_TechnologyTestList" LoadingPanelID="RadAjaxLoadingPanel1" />
                                     <telerik:AjaxUpdatedControl ControlID="RadNotificationAlert" />
-                                      <telerik:AjaxUpdatedControl ControlID="hfBh" />
+                                    <telerik:AjaxUpdatedControl ControlID="RadNotificationAlert1" />
+                                    <telerik:AjaxUpdatedControl ControlID="hfBh" />
                                 </UpdatedControls>
                             </telerik:AjaxSetting>
 
@@ -116,6 +117,7 @@
                                 <UpdatedControls>
                                     <telerik:AjaxUpdatedControl ControlID="RadGrid_TechnologyTestList" LoadingPanelID="RadAjaxLoadingPanel1" />
                                     <telerik:AjaxUpdatedControl ControlID="RadNotificationAlert" />
+
                                      <telerik:AjaxUpdatedControl ControlID="RadBtnSubmit" />
                                        <telerik:AjaxUpdatedControl ControlID="hfBh" />    
                                 </UpdatedControls>
@@ -716,6 +718,9 @@
 				        <telerik:RadNotification ID="RadNotificationAlert" runat="server" Text="" Position="Center"
 				            AutoCloseDelay="4000" Width="300" Title="提示" EnableRoundedCorners="true"  >
 				        </telerik:RadNotification>
+                        <telerik:RadNotification ID="RadNotificationAlert1" runat="server" Text="" Position="Center" 
+                            AutoCloseDelay="2000" Width="300" Title="提示" OnClientHidden="CloseWindow1"  EnableRoundedCorners="true">
+                        </telerik:RadNotification>
                         <telerik:RadWindow ID="confirmDeleteWindow" runat="server" VisibleTitlebar="false"
                             VisibleStatusbar="false" Modal="true" Behaviors="None" Height="120px" Width="320px">
                             <ContentTemplate>
@@ -1075,7 +1080,7 @@
                                     </td>
                                     <td class="technology_Div_detailcontent_title">总价（元）：</td>
                                     <td class="technology_Div_detailcontent_content">
-                                        <telerik:RadTextBox ID="span_Sum_Price" runat="server" Width="150" EmptyMessage="0" MaxLength="10" onpaste="return false" onkeyup='clearNoNum(this)'>
+                                        <telerik:RadTextBox ID="span_Sum_Price" runat="server" Width="150" EmptyMessage="0" MaxLength="10" onpaste="return false" onkeyup='clearNoDecimal(this)'>
                                               <ClientEvents OnKeyPress="EnterKeyProcessing" />
                                         </telerik:RadTextBox>
                            

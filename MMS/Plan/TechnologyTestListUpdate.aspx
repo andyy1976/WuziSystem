@@ -265,7 +265,7 @@
                                     </td>
                                     <td class="technology_Div_detailcontent_title">总价(元)：</td>
                                     <td class="technology_Div_detailcontent_content">
-                                        <telerik:RadTextBox ID="span_Sum_Price" runat="server" Width="150" EmptyMessage="0" MaxLength="10" onpaste="return false" onkeyup='clearNoNum(this)'></telerik:RadTextBox>
+                                        <telerik:RadTextBox ID="span_Sum_Price" runat="server" Width="150" EmptyMessage="0" MaxLength="10" onpaste="return false" onkeyup='clearNoDecimal(this)'></telerik:RadTextBox>
                            
                                     </td>
                                     <td class="technology_Div_detailcontent_title">研制阶段：</td>

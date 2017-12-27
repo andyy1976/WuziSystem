@@ -1063,7 +1063,7 @@ namespace mms.Plan
          
 
 
-            try
+          //  try
             {
                 if (Session["UserId"] == null)
                 {
@@ -1216,7 +1216,7 @@ namespace mms.Plan
                   }
 
                   for (int i = 0; i < gridItems.Count; i++)
-                 {
+                  {
                     if (gridItems[i] is GridDataItem)
                     {
                         GridDataItem item = gridItems[i] as GridDataItem;
@@ -1345,8 +1345,8 @@ namespace mms.Plan
                         string LingJian_Type = item["LingJian_Type"].Text.Trim();
 
                         strSQL = "select LingJian_Type_Code, LingJian_Type_Name from Sys_LingJian_Info where Is_Del = 'false'";
-                       DataTable dtTemp = DBI.Execute(strSQL, true);
-                       for (int count = 0; count < dtTemp.Rows.Count; count++)
+                        DataTable dtTemp = DBI.Execute(strSQL, true);
+                        for (int count = 0; count < dtTemp.Rows.Count; count++)
                         {
                             if (LingJian_Type == dtTemp.Rows[count]["LingJian_Type_Name"].ToString())
                             {
@@ -1473,7 +1473,7 @@ namespace mms.Plan
                     
                         try
                         {
-                          if (this.hfBh.Value != null && this.hfBh.Value != "")
+                            if (this.hfBh.Value != null && this.hfBh.Value != "")
                             {
                                 MDPID = Convert.ToInt32(this.hfBh.Value);
                             }
@@ -1492,9 +1492,8 @@ namespace mms.Plan
                                     RadNotificationAlert.Show();
                                     return;
                                 }
-
-                          }
-                          MDDLD.MDPId = MDPID;
+                           }
+                           MDDLD.MDPId = MDPID;
 
 
                           strSQL = " Insert Into M_Demand_DetailedList_Draft ( PackId, DraftId,taskid,MDPId,Quantity,VerCode,Stage,DemandDate,Special_Needs,MaterialDept,"
@@ -1517,7 +1516,6 @@ namespace mms.Plan
                             // DBI.Execute(strSQL);
                         }
                         catch (Exception e1)
-                        
                         {
                             RadNotificationAlert.Text = "导入失败！第" + (i + 1).ToString() + "行，发生错误" + e1.Message.ToString();
                             RadNotificationAlert.Show();
@@ -1529,21 +1527,17 @@ namespace mms.Plan
                   GridSource = Common.AddTableRowsID(GetDetailedListList());
                   RadGrid_DemandDetailedList.Rebind();
 
-              //  RadBtnSubmit.Visible = true;
-                RadNotificationAlert.Text = "导入成功！";
-                RadNotificationAlert.Show();
-
-               
-           
-             
-
+                  //  RadBtnSubmit.Visible = true;
+                    RadNotificationAlert.Text = "导入成功！";
+                    RadNotificationAlert.Show();
             }
-            catch (Exception ex)
+            /*catch (Exception ex)
             {
                 RadNotificationAlert.Text = "失败！" + ex.Message.ToString();
                 RadNotificationAlert.Show();
                 return;
             }
+             */
         }
 
 
