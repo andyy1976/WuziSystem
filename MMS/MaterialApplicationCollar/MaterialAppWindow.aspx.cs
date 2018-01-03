@@ -141,20 +141,18 @@ namespace mms.MaterialApplicationCollar
                     lbl_Mat_Unit.Text = dtma.Rows[0]["Mat_Unit"].ToString();
                     RTB_Rough_Size.Text = dtma.Rows[0]["Rough_Size"].ToString();
                     lbl_Dinge_Size.Text = dtma.Rows[0]["Dinge_Size"].ToString();
-                    RDDL_DiaoDu.SelectedIndex = 0;
-                    RDDL_XingHao.SelectedIndex = 0;
-                    RDDL_WuZi.SelectedIndex = 0;
+               
                     if (RDDL_DiaoDu.FindItemByValue(dtma.Rows[0]["DiaoDuApprove"].ToString()) != null)
                     {
                         RDDL_DiaoDu.FindItemByValue(dtma.Rows[0]["DiaoDuApprove"].ToString()).Selected = true;
                     }
-                    if (RDDL_DiaoDu.FindItemByValue(dtma.Rows[0]["XingHaoJiHuaYuanApprove"].ToString()) != null)
+                    if (RDDL_XingHao.FindItemByValue(dtma.Rows[0]["XingHaoJiHuaYuanApprove"].ToString()) != null)
                     {
-                        RDDL_DiaoDu.FindItemByValue(dtma.Rows[0]["XingHaoJiHuaYuanApprove"].ToString()).Selected = true;
+                        RDDL_XingHao.FindItemByValue(dtma.Rows[0]["XingHaoJiHuaYuanApprove"].ToString()).Selected = true;
                     }
-                    if (RDDL_DiaoDu.FindItemByValue(dtma.Rows[0]["WuZiJiHuaYuanApprove"].ToString()) != null)
+                    if (RDDL_WuZi.FindItemByValue(dtma.Rows[0]["WuZiJiHuaYuanApprove"].ToString()) != null)
                     {
-                        RDDL_DiaoDu.FindItemByValue(dtma.Rows[0]["WuZiJiHuaYuanApprove"].ToString()).Selected = true;
+                        RDDL_WuZi.FindItemByValue(dtma.Rows[0]["WuZiJiHuaYuanApprove"].ToString()).Selected = true;
                     }
 
                 }
@@ -310,10 +308,10 @@ namespace mms.MaterialApplicationCollar
                 if (HFMAID.Value == "")
                 {
                     strSQL = "declare @id int";
-                    strSQL += " Insert into MaterialApplication (Type, Material_Id, Applicant, UserAccount,Dept, ApplicationTime, ContactInformation, TheMaterialWay, TaskCode, Drawing_No"
+                    strSQL += " Insert into MaterialApplication (Type, Material_Id, Applicant, Dept, ApplicationTime, ContactInformation, TheMaterialWay, TaskCode, Drawing_No"
                         + " , Draft_Code, Quantity, FeedingTime, IsDispatch, IsConfirm, Remark, MaterialType, Material_Name, Material_Mark, CN_Material_State, Material_Tech_Condition"
                         + " , Rough_Spec, Mat_Rough_Weight,MaterialsDes, Mat_Unit,Rough_Size,Dinge_Size,PleaseTakeQuality, AppState, ReturnReason, Is_Del, ItemCode,DiaoDuApprove, XingHaoJiHuaYuanApprove, WuZiJiHuaYuanApprove, UserId, UserAccount)"
-                        + " values ('" + HFType.Value + "','" + HFMDMLID.Value + "', '" + Applicant + "','" + Session["UserAccount"] + "','" + Dept + "','" + ApplicationTime + "','" + ContactInformation + "','" + TheMaterialWay + "','" + TaskCode + "','" + DrawingNo + "'"
+                        + " values ('" + HFType.Value + "','" + HFMDMLID.Value + "', '" + Applicant + "','" + Dept + "','" + ApplicationTime + "','" + ContactInformation + "','" + TheMaterialWay + "','" + TaskCode + "','" + DrawingNo + "'"
                         + " ,Null,'" + Quantity + "','" + FeedingTime + "','" + IsDispatch + "','" + IsConfirm + "','" + Remark + "'"
                         + " ,Null,'" + Material_Name + "','" + Material_Mark + "','" + CN_Material_State + "','" + Material_Tech_Condition + "'"
                         + " ,'" + Rough_Spec + "','" + Mat_Rough_Weight + "','" + MaterialsDes + "','" + Mat_Unit + "','" + Rough_Size + "','" +Dinge_Size+"','"+ PleaseTakeQuality + "','1',Null,'false'"

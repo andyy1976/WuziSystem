@@ -27,8 +27,10 @@
             <table>
                 <tr>
                     <td>编号：</td>
-                    <td><telerik:RadTextBox ID="RTB_MDP_Code" runat="server" Width="100px"></telerik:RadTextBox></td>
-                    <td> 物资清单状态：</td>  
+                    <td><telerik:RadTextBox ID="RTB_MDP_Code" runat="server" Width="100px">
+                          <ClientEvents OnKeyPress="EnterKeyProcessing" />
+                        </telerik:RadTextBox></td>
+                    <td> 领用单状态：</td>  
                     <td><telerik:RadDropDownList ID="RDDL_AppState" runat="server" Width="100px">
                         <Items>
                             <telerik:DropDownListItem Value="" Text="全部" />

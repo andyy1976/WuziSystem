@@ -150,7 +150,7 @@
                         <asp:Label ID="lbl_DrawingNo" runat="server"></asp:Label></td>
                     <td style="text-align: right;">申请件数：</td>
                     <td>
-                        <telerik:RadTextBox ID="RTB_Quantity" runat="server" onpaste="return false" onkeyup='clearNoNum(this)' Width="120px" Enabled="true">
+                        <telerik:RadTextBox ID="RTB_Quantity" runat="server" onpaste="return false" onkeyup='clearNoDecimal(this)' Width="120px" Enabled="true">
                               <ClientEvents OnKeyPress="EnterKeyProcessing" />
                         </telerik:RadTextBox>
                     </td>

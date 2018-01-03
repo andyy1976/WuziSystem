@@ -209,7 +209,7 @@
                     </td>
                     <td style="text-align: right;">申请件数：</td>
                     <td>
-                        <telerik:RadTextBox ID="RTB_Quantity" runat="server" onpaste="return false" onkeyup='clearNoNum(this)'>
+                        <telerik:RadTextBox ID="RTB_Quantity" runat="server" onpaste="return false" onkeyup='clearNoDecimal(this)'>
                               <ClientEvents OnKeyPress="EnterKeyProcessing" />
                         </telerik:RadTextBox>
                     </td>

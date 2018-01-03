@@ -108,10 +108,12 @@ namespace mms.Plan
                 " , Special_Needs, Secret_Level, Shipping_Address, Material_Name, Manufacturer" +
                 " , CUX_DM_URGENCY_LEVEL.DICT_Name as UrgencyDegre, CUX_DM_USAGE.DICT_Name as UseDes , Convert(float, NumCasesSum) as NumCasesSum1" +
                 " , isnull((select top 1 Submission_Status from GetRqStatus_T_Item where USER_RQ_LINE_ID = M_Demand_Merge_List.ID order by SUBMITED_SYNC_STATUS desc),'已提交') as State" +
+                " , CUX_DM_PROJECT.DICT_Name as Model"+
                 " from M_Demand_Merge_List join M_Demand_Plan_List on M_Demand_Plan_List.ID = M_Demand_Merge_List.MDPID" +
                 " join Sys_DeptEnum on Sys_DeptEnum.DeptCode = M_Demand_Merge_List.MaterialDept" +
                 " left join GetBasicdata_T_Item as CUX_DM_URGENCY_LEVEL on CUX_DM_URGENCY_LEVEL.DICT_CODE = M_Demand_Merge_List.Urgency_Degre and DICT_CLASS='CUX_DM_URGENCY_LEVEL'" +
                 " left join GetBasicdata_T_Item as CUX_DM_USAGE on CUX_DM_USAGE.DICT_CODE = M_Demand_Merge_List.Use_Des and CUX_DM_USAGE.DICT_CLASS='CUX_DM_USAGE'" +
+                " left join GetBasicdata_T_Item as CUX_DM_PROJECT on CUX_DM_PROJECT.DICT_CODE = M_Demand_Merge_List.Project and CUX_DM_PROJECT.DICT_CLASS='CUX_DM_PROJECT'" +
                 " where M_Demand_Plan_List.Submit_Type = '" + Request.QueryString["t"].ToString() + "' and Submit_State = '4' and Is_Submit = 'true' " + strWhere + " order by M_Demand_Plan_List.ID desc, M_Demand_Merge_List.ID desc";
             DataTable dt = DBI.Execute(strSQL, true);
             this.ViewState["_gds"] = dt;

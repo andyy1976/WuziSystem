@@ -463,7 +463,7 @@ namespace mms.Plan
                 strSQL = @"exec Proc_Save_Technology_Apply_NoSubmit '" + mta.MDPId + "','" + mta.Drawing_No + "','" +
                          mta.TaskCode + "','" +mta.MaterialDept + "','" + mta.ItemCode1 + "','" + 
                          mta.DemandNumSum + "','" + mta.NumCasesSum +"','" +mta.Mat_Rough_Weight+"','"+
-                         mta.Material_Tech_Condition + "','" + mta.CN_Material_State + "','" + mta.Material_Mark + "','" +
+                         mta.Material_Mark + "','" + mta.CN_Material_State + "','" + mta.Material_Tech_Condition + "','" +
                          mta.TDM_Description + "','" + mta.MaterialsDes + "','" +
                          mta.Mat_Unit + "','" + mta.Quantity + "','" + mta.Rough_Size + "','" + mta.Dinge_Size + "','"+ mta.Rough_Spec + "','" +
                          mta.DemandDate + "','" + mta.Special_Needs + "','" + mta.Urgency_Degre + "','" +
@@ -1712,10 +1712,10 @@ namespace mms.Plan
                                 rowsid++;
                                 if (! Set_Txt_ByItemCode1(itemCode1, i))
                                 {
-                                    RadNotificationAlert.Text = "第" + i.ToString() +"行物资编码不存在";
-                                    RadNotificationAlert.Show();
-                                    GridSource1.Rows[i].Delete();
-                                    return;
+                                    //RadNotificationAlert.Text = "第" + i.ToString() +"行物资编码不存在";
+                                    //RadNotificationAlert.Show();
+                                    //GridSource1.Rows[i].Delete();
+                                  //  return;
                                 }
                                 try
                                 {
@@ -2309,8 +2309,8 @@ namespace mms.Plan
 
                         strSQL = @"exec Proc_Save_Technology_Apply_NoSubmit '" + mta.MDPId + "','" + mta.Drawing_No + "','" +
                                  mta.TaskCode + "','" + mta.MaterialDept + "','" + mta.ItemCode1 + "','" + mta.DemandNumSum + "','" +
-                                 mta.NumCasesSum + "','" + mta.Mat_Rough_Weight + "','" + 
-                                 mta.Material_Tech_Condition + "','" + mta.CN_Material_State + "','" + mta.Material_Mark + "','" +
+                                 mta.NumCasesSum + "','" + mta.Mat_Rough_Weight + "','" +
+                                 mta.Material_Mark + "','" + mta.CN_Material_State + "','" + mta.Material_Tech_Condition + "','" +
                                  mta.TDM_Description + "','" + mta.MaterialsDes + "','" +
                                  mta.Mat_Unit + "','" + mta.Quantity + "','" + mta.Rough_Size + "','" + mta.Dinge_Size + "','" + mta.Rough_Spec + "','" +
                                  mta.DemandDate + "','" + mta.Special_Needs + "','" + mta.Urgency_Degre + "','" +

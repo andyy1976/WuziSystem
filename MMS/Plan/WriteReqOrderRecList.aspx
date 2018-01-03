@@ -86,11 +86,11 @@
                                 <telerik:RadDatePicker ID="RDP_End" runat="server" Width="120px" DateInput-ClientEvents-OnKeyPress='EnterKeyProcessing'>
                                 </telerik:RadDatePicker>
                             </td>
-                            <td>需求头ID：</td>
+                            <td>需求计划ID：</td>
                             <td><telerik:RadTextBox ID="RTB_HeaderID" runat="server" Width="120px">
                                                            <ClientEvents OnKeyPress="EnterKeyProcessing" />
                                 </telerik:RadTextBox></td>
-                            <td>需求行ID：</td>
+                            <td>需求行号：</td>
                             <td><telerik:RadTextBox ID="RTB_LineID" runat="server" Width="120px">
                                                            <ClientEvents OnKeyPress="EnterKeyProcessing" />
                                 </telerik:RadTextBox></td>

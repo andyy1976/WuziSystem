@@ -47,18 +47,13 @@
         <div style="width: 100%; margin: 0px auto;">
             <table style="text-align:left;">
                 <tr>
-                    <td style="text-align:right;">任务类型：</td>
+                      <td>需求行号：</td>
                     <td>
-                        <telerik:RadDropDownList ID="RDDL_Task" runat="server" Width="120" AppendDataBoundItems="true">
-                            <Items>
-                                <telerik:DropDownListItem Value="" Text="全部" />
-                                <telerik:DropDownListItem Value="0" Text="型号投产计划任务" />
-                                <%--  <telerik:DropDownListItem Value="1" Text="工艺试验件任务" />--%>
-                                <telerik:DropDownListItem Value="2" Text="技术创新课题任务" />
-                                <telerik:DropDownListItem Value="3" Text="车间备料任务"/>
-                            </Items>
-                        </telerik:RadDropDownList>
+                        <telerik:RadTextBox ID="RTB_ID" runat="server" Width="120px">
+                                                  <ClientEvents OnKeyPress="EnterKeyProcessing" />
+                        </telerik:RadTextBox>
                     </td>
+                   
                     <td style="text-align:right;">物资编码：</td>
                     <td><telerik:RadTextBox ID="RTB_ItemCode" runat="server" Width="120px">
                         <ClientEvents OnKeyPress="EnterKeyProcessing" />
@@ -81,8 +76,6 @@
                         <telerik:RadDatePicker ID="RDP_SubmitDateEnd" runat="server" Width="120px" DateInput-ClientEvents-OnKeyPress='EnterKeyProcessing'>
                         </telerik:RadDatePicker>
                     </td>
-                </tr>
-                <tr>
                     <td style="text-align:right;"><%--提交状态：--%></td>
                     <td><telerik:RadDropDownList ID="RDDL_State" runat="server" Width="120px" AppendDataBoundItems="true" Visible="false">
                         <Items>
@@ -91,6 +84,22 @@
                             <telerik:DropDownListItem Value="1" Text="已提交" />
                         </Items>
                         </telerik:RadDropDownList></td>
+                </tr>
+                <tr>
+                     <td style="text-align:right;">任务类型：</td>
+                    <td>
+                        <telerik:RadDropDownList ID="RDDL_Task" runat="server" Width="120" AppendDataBoundItems="true">
+                            <Items>
+                                <telerik:DropDownListItem Value="" Text="全部" />
+                                <telerik:DropDownListItem Value="0" Text="型号投产计划任务" />
+                                <%--  <telerik:DropDownListItem Value="1" Text="工艺试验件任务" />--%>
+                                <telerik:DropDownListItem Value="2" Text="技术创新课题任务" />
+                                <telerik:DropDownListItem Value="3" Text="车间备料任务"/>
+                            </Items>
+                        </telerik:RadDropDownList>
+                    </td>
+                   
+                    
                     <td style="text-align:right;">紧急程度：</td>
                     <td><telerik:RadDropDownList ID="RDDL_Urgency_Degre" runat="server" Width="120px" AppendDataBoundItems="true">
                             <Items>

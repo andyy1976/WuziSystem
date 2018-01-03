@@ -116,19 +116,19 @@ namespace mms.MaterialApplicationCollar
         }
 		protected void RadButton_ExportExcel_Click(object sender, EventArgs e)
         {
-            RadGridMDML.ExportSettings.FileName = "请领物资信息列表--试验件" + DateTime.Now.ToString("yyyy-MM-dd");
+            RadGridMDML.ExportSettings.FileName = "物资信息列表--试验件" + DateTime.Now.ToString("yyyy-MM-dd");
             RadGridMDML.MasterTableView.ExportToExcel();
         }
 
         protected void RadButton_ExportWord_Click(object sender, EventArgs e)
         {
-            RadGridMDML.ExportSettings.FileName = "请领物资信息列表--试验件" + DateTime.Now.ToString("yyyy-MM-dd");
+            RadGridMDML.ExportSettings.FileName = "物资信息列表--试验件" + DateTime.Now.ToString("yyyy-MM-dd");
             RadGridMDML.MasterTableView.ExportToWord();
         }
 
         protected void RadButton_ExportPdf_Click(object sender, EventArgs e)
         {
-            RadGridMDML.ExportSettings.FileName = "请领物资信息列表--试验件" + DateTime.Now.ToString("yyyy-MM-dd");
+            RadGridMDML.ExportSettings.FileName = "物资信息列表--试验件" + DateTime.Now.ToString("yyyy-MM-dd");
             RadGridMDML.ExportSettings.IgnorePaging = true;
             RadGridMDML.MasterTableView.ExportToPdf();
             RadGridMDML.ExportSettings.IgnorePaging = false;

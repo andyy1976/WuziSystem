@@ -45,9 +45,13 @@ namespace mms.MaterialApplicationCollar
         public void GetMDML()
         {
             string strSQL = " select M_Demand_Merge_List.* "
+                    + " , CUX_DM_PROJECT.DICT_Name as Model"
+                    +" , (select Phase from Sys_Phase where Code = M_Demand_Merge_List.Stage) as Stage1" 
+
                     + " from M_Demand_Merge_List"
-                    + " where Submit_Type = '2' and Is_submit = 'true' and MaterialDept = '" + HF_DeptCode.Value + "'"
-                    + " and ID not in (select Material_ID from MaterialApplication where Is_del = 'false' and Material_ID is not null)";
+                    + " left join GetBasicdata_T_Item as CUX_DM_PROJECT on CUX_DM_PROJECT.DICT_CODE = M_Demand_Merge_List.Project and DICT_CLASS='CUX_DM_PROJECT'" 
+                    + " where Submit_Type = '3' and Is_submit = 'true' and MaterialDept = '" + HF_DeptCode.Value + "'"
+                    + " and M_Demand_Merge_List.ID not in (select Material_ID from MaterialApplication where Is_del = 'false' and Material_ID is not null)";
             if (Session["StrWhere"] != null)
             {
                 strSQL += Session["StrWhere"].ToString();
@@ -159,19 +163,19 @@ namespace mms.MaterialApplicationCollar
         }
 		protected void RadButton_ExportExcel_Click(object sender, EventArgs e)
         {
-            RadGridMDML.ExportSettings.FileName = "请领物资信息列表--技术创新" + DateTime.Now.ToString("yyyy-MM-dd");
+            RadGridMDML.ExportSettings.FileName = "物资信息列表--技术创新" + DateTime.Now.ToString("yyyy-MM-dd");
             RadGridMDML.MasterTableView.ExportToExcel();
         }
 
         protected void RadButton_ExportWord_Click(object sender, EventArgs e)
         {
-            RadGridMDML.ExportSettings.FileName = "请领物资信息列表--技术创新" + DateTime.Now.ToString("yyyy-MM-dd");
+            RadGridMDML.ExportSettings.FileName = "物资信息列表--技术创新" + DateTime.Now.ToString("yyyy-MM-dd");
             RadGridMDML.MasterTableView.ExportToWord();
         }
 
         protected void RadButton_ExportPdf_Click(object sender, EventArgs e)
         {
-            RadGridMDML.ExportSettings.FileName = "请领物资信息列表--技术创新" + DateTime.Now.ToString("yyyy-MM-dd");
+            RadGridMDML.ExportSettings.FileName = "物资信息列表--技术创新" + DateTime.Now.ToString("yyyy-MM-dd");
             RadGridMDML.ExportSettings.IgnorePaging = true;
             RadGridMDML.MasterTableView.ExportToPdf();
             RadGridMDML.ExportSettings.IgnorePaging = false;

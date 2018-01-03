@@ -14,9 +14,10 @@ namespace mms.MaterialApplicationCollar
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            this.ViewState["GridSource"] = new DataTable();
             if (!IsPostBack)
             {
-                this.ViewState["GridSource"] = new DataTable ();
+             
 
                 try
                 {

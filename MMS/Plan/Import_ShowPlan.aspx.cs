@@ -32,6 +32,7 @@ namespace mms.Plan
             UserID = Session["UserId"].ToString();
             if (!IsPostBack)
             {
+              //  Common.CheckPermission(Session["UserName"].ToString(), "MDemandImport", this.Page);
                 Common.CheckPermission(Session["UserName"].ToString(), "ShowPlan", this.Page);
                 Session["P_PackWhere"] = null;
                 Session["GridSource"] = GetP_Pack();

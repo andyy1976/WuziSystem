@@ -191,7 +191,7 @@
                       </Columns>
                     <CommandItemTemplate>
                         <telerik:RadButton ID="RB_FillInApp" runat="server" Text="填写申请单" Font-Bold="true" OnClientClicking="ShowWindow" CssClass="floatleft" AutoPostBack="true"></telerik:RadButton>
-                        请领物资信息列表--型号投产
+                        物资信息列表--型号投产
 				        <telerik:RadButton ID="RadButton_ExportExcel" runat="server" Text="导出Excel" Font-Bold="true" CommandName="ExportExcel" OnClick="RadButton_ExportExcel_Click" CssClass="floatright"></telerik:RadButton>
                         <telerik:RadButton ID="RadButton_ExportWord"  runat="server" Text="导出Word"  Font-Bold="true" CommandName="ExportWord" Visible="false"  OnClick="RadButton_ExportWord_Click"  CssClass="floatright"></telerik:RadButton>
                         <telerik:RadButton ID="RadButton_ExportPDF"   runat="server" Text="导出PDF"   Font-Bold="true" CommandName="ExportPDF" Visible="false"   OnClick="RadButton_ExportPdf_Click"   CssClass="floatright"></telerik:RadButton>

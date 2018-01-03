@@ -16,17 +16,64 @@
     <asp:HiddenField ID="HiddenField" runat="server" Value="物资查询-->物资需求申请状态" ClientIDMode="Static" />
     <telerik:RadScriptManager ID="RadScriptManager1" runat="server">
 	</telerik:RadScriptManager>
-    <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server">
+   
+    <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server" >
              <ClientEvents OnRequestStart="onRequestStart" />
+      
     </telerik:RadAjaxManager>
     <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" runat="server" Skin="Default"></telerik:RadAjaxLoadingPanel>
-    <telerik:RadCodeBlock ID="RadCodeBlock1" runat="server"></telerik:RadCodeBlock>
+    <telerik:RadCodeBlock ID="RadCodeBlock1" runat="server">
+        <script type="text/javascript">
+            function EnterKeyProcessing(sender, eventArgs) {
+                var c = eventArgs.get_keyCode();
+                if ((c == 13)) {
+                    eventArgs.set_cancel(true);
+                }
+            }
+             </script>
+    </telerik:RadCodeBlock>
     <div style="width:100%;">
-        <div style="width:100%;">
-
+         <div style="width: 100%; margin: 0px auto;">
+            <table style="text-align:left;">
+                <tr>
+                      <td>需求行号：</td>
+                    <td>
+                        <telerik:RadTextBox ID="RTB_ID" runat="server" Width="120px">
+                                                  <ClientEvents OnKeyPress="EnterKeyProcessing" />
+                        </telerik:RadTextBox>
+                    </td>
+                   
+                    <td style="text-align:right;">物资名称：</td>
+                    <td><telerik:RadTextBox ID="RTB_Material_Name" runat="server" Width="120px">
+                        <ClientEvents OnKeyPress="EnterKeyProcessing" />
+                        </telerik:RadTextBox></td>
+              
+                    <td style="text-align:right;"><%--确认日期：--%></td>
+                    <td>
+                        <telerik:RadDatePicker ID="RDP_ConfirmDateStart" runat="server" Width="120px" DateInput-ClientEvents-OnKeyPress='EnterKeyProcessing' Visible="false">
+                        </telerik:RadDatePicker>
+                    </td>
+                    <td>～</td>
+                    <td>
+                        <telerik:RadDatePicker ID="RDP_ConfirmDateEnd" runat="server" Width="120px" DateInput-ClientEvents-OnKeyPress='EnterKeyProcessing' Visible="false">
+                        </telerik:RadDatePicker>
+                    </td>
+                    <td style="text-align:right;">提交状态：</td>
+                    <td><telerik:RadDropDownList ID="RDDL_State" runat="server" Width="120px" AppendDataBoundItems="true" Visible="true">
+                        <Items>
+                            <telerik:DropDownListItem Value="" Text="全部" />
+                            <telerik:DropDownListItem Value="物流已认领" Text="物流已认领" />
+                            <telerik:DropDownListItem Value="物流已确认" Text="物流已确认" />
+                            <telerik:DropDownListItem Value="用户已提交" Text="用户已提交" />
+                            <telerik:DropDownListItem Value="物流已退回" Text="物流已退回" />
+                        </Items>
+                        </telerik:RadDropDownList></td>
+                     <td><telerik:RadButton ID="RB_Query" runat="server" Text="查询" OnClick="RB_Query_Click"></telerik:RadButton></td>
+                </tr>
+            </table>
         </div>
         <div style="width:100%;">
-            <telerik:RadGrid ID="RadGrid1" runat="server" AutoGenerateColumns="false" OnNeedDataSource="RadGrid1_NeedDataSource" 
+            <telerik:RadGrid ID="RadGrid1" runat="server" AutoGenerateColumns="false" HtmlEncode="false" OnNeedDataSource="RadGrid1_NeedDataSource" 
                 AllowPaging="true" PageSize="20" PagerStyle-AlwaysVisible="True">
                 <AlternatingItemStyle HorizontalAlign="Center" />
                 <ItemStyle HorizontalAlign="Center" />
@@ -50,14 +97,14 @@
              
                     <Columns>
                         <telerik:GridBoundColumn DataField="RQ_No" HeaderText="需求编号" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="User_RQ_ID" HeaderText="用户需<br />求ID" HeaderStyle-Width="70px"></telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="User_RQ_Line_ID" HeaderText="用户需<br />求行ID" HeaderStyle-Width="70px"></telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="User_RQ_ID" HeaderText="需求ID" HeaderStyle-Width="70px" DataFormatString="{0:F0}"></telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="User_RQ_Line_ID" HeaderText="需求行号" HeaderStyle-Width="70px" DataFormatString="{0:F0}"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="Material_Name" HeaderText="物资名称" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="NumCasesSum" HeaderText="需求件数" HeaderStyle-Width="70px"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="DemandNumSum" HeaderText="需求数" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="User_RQ_No" HeaderText="用户需求编号" HeaderStyle-Width="150px"></telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="Confirmed_Quantity" HeaderText="确认需求<br />数量" HeaderStyle-Width="70px"></telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="Confirmed_RQ_Date" HeaderText="确认需求时间" HeaderStyle-Width="150px" DataFormatString="{0:yyyy/MM/dd}"></telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="Confirmed_Quantity" HeaderText="确认需求数量" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="Confirmed_RQ_Date" HeaderText="确认需求时间" HeaderStyle-Width="150px"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="Confirmed_Item_ID" HeaderText="确认物资编码" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="Confirmed_Item_Revision" HeaderText="确认物资版本" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="Test_material_Quantity" HeaderText="化验料数量" HeaderStyle-Width="100px"></telerik:GridBoundColumn>

@@ -120,7 +120,7 @@
                     <tr>
                         <td style="text-align:right;">需求件数：</td>
                         <td>
-                            <telerik:RadTextBox ID="lbl_NumCasesSum" runat="server" Width="160px" onpaste="return false" onkeyup='clearNoNum(this)'>
+                            <telerik:RadTextBox ID="lbl_NumCasesSum" runat="server" Width="160px" onpaste="return false" onkeyup='clearNoDecimal(this)'>
                                  <ClientEvents OnKeyPress="EnterKeyProcessing" />
                             </telerik:RadTextBox>
                         </td>

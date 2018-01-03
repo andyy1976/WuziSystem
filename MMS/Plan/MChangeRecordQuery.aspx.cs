@@ -55,6 +55,7 @@ namespace mms.Plan
 
         protected void RB_Query_Click(object sender, EventArgs e)
         {
+            string ID = RTB_ID.Text.Trim();
             string type = RDDL_Task.SelectedValue.ToString();
             string startSubmitDate = RDP_SubmitDateStart.SelectedDate.ToString();
             string endSubmitDate = RDP_SubmitDateEnd.SelectedDate.ToString();
@@ -97,6 +98,10 @@ namespace mms.Plan
             {
                 strSQL += " and Urgency_Degre = '" + Urgency_Degre + "'";
             }
+            if (ID != "")
+            {
+                strSQL += " and M_Demand_Merge_List.ID like '%" + ID + "%'";
+            }
             if (dept != "")
             {
                 strSQL += " and DeptCode = '" + dept + "'";
@@ -119,7 +124,7 @@ namespace mms.Plan
 
         protected void GetMDemandMergeList(string strWhere)
         {
-            string strSQL = " select M_Demand_Merge_List.ID, TaskCode, Drawing_No, ItemCode1, NumCasesSum, DemandNumSum, Dept, DemandDate, Submit_Date, Special_Needs, Secret_Level" +
+            string strSQL = " select M_Demand_Merge_List.ID, TDM_Description,TaskCode, Drawing_No, ItemCode1, NumCasesSum, DemandNumSum, Dept, DemandDate, Submit_Date, Special_Needs, Secret_Level" +
                 " , CUX_DM_URGENCY_LEVEL.DICT_Name as UrgencyDegre, CUX_DM_USAGE.DICT_Name as UseDes , M_Demand_Merge_List.Shipping_Address" +
                 " , Column_Changed, Original_Value, Changed_Value" +
                 " , M_Demand_Merge_List.Material_Name" +

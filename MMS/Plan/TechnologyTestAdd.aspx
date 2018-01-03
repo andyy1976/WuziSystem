@@ -1035,14 +1035,14 @@
                                         <asp:RequiredFieldValidator ID="rfv_Mat_Unit" ValidationGroup="1" runat="server" ErrorMessage="*" ControlToValidate="txt_Mat_Unit" ForeColor="Red"></asp:RequiredFieldValidator>
                                     </td>
                                     <td class="technology_Div_detailcontent_title">单件质量：</td>
-                                    <td><telerik:RadTextBox ID="RTB_Mat_Rough_Weight" runat="server" MaxLength="10" Width="150" onpaste="return false" onkeyup='clearNoNum(this)'>
+                                    <td><telerik:RadTextBox ID="RTB_Mat_Rough_Weight" runat="server" MaxLength="10" Width="150" onpaste="return false" onkeyup='clearNoDecimal(this)'>
                                           <ClientEvents OnKeyPress="EnterKeyProcessing" />
                                         </telerik:RadTextBox></td>
                                  </tr>
                                 <tr>
                                     <td class="technology_Div_detailcontent_title">单价(元）：</td>
                                     <td class="technology_Div_detailcontent_content">
-                                        <telerik:RadTextBox ID="RTB_Unit_Price" runat="server" MaxLength="10" Width="150" EmptyMessage="0" onpaste="return false" onkeyup='clearNoNum(this)'>
+                                        <telerik:RadTextBox ID="RTB_Unit_Price" runat="server" MaxLength="10" Width="150" EmptyMessage="0" onpaste="return false" onkeyup='clearNoDecimal(this)'>
                                               <ClientEvents OnKeyPress="EnterKeyProcessing" />
                                         </telerik:RadTextBox>
                                     </td>
@@ -1063,7 +1063,7 @@
                                     </td>
                                     <td class="technology_Div_detailcontent_title" style="width: 10%">需求件数：</td>
                                     <td class="technology_Div_detailcontent_content">
-                                        <telerik:RadTextBox ID="txt_NumCasesSum" ClientIDMode="Static" Width="150" runat="server" MaxLength="5" onpaste="return false" onkeyup='clearNoNum(this)'>
+                                        <telerik:RadTextBox ID="txt_NumCasesSum" ClientIDMode="Static" Width="150" runat="server" MaxLength="5" onpaste="return false" onkeyup='clearNoDecimal(this)'>
                                               <ClientEvents OnKeyPress="EnterKeyProcessing" />
                                         </telerik:RadTextBox>
                                         <asp:RequiredFieldValidator ID="rfv_NumCasesSum" ValidationGroup="1" runat="server" ErrorMessage="*" ControlToValidate="txt_NumCasesSum" ForeColor="Red"></asp:RequiredFieldValidator>

@@ -151,7 +151,7 @@
                 <telerik:DropDownListItem Value="4" Text="无需求" />
             </Items>
         </telerik:RadDropDownList>
-        物资清单状态：<telerik:RadDropDownList ID="RDDL_AppState" runat="server" Width="100px">
+        领用单状态：<telerik:RadDropDownList ID="RDDL_AppState" runat="server" Width="100px">
             <Items>
                 <telerik:DropDownListItem Value="" Text="全部" />
                 <telerik:DropDownListItem Value="1" Text="已申请" />
@@ -206,13 +206,13 @@
 
                     <telerik:GridBoundColumn DataField="Applicant" HeaderText="申请人" ColumnGroupName="Applicant" ItemStyle-Width="70px" HeaderStyle-Width="70px"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn DataField="ApplicationTime" HeaderText="申请时间" ColumnGroupName="Applicant" ItemStyle-Width="70px" HeaderStyle-Width="70px"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="Project" HeaderText="型号" ColumnGroupName="ProductInfo" ItemStyle-Width="50px" HeaderStyle-Width="50px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="Model" HeaderText="型号" ColumnGroupName="ProductInfo" ItemStyle-Width="50px" HeaderStyle-Width="50px" Visible="true"></telerik:GridBoundColumn>
              
                     <telerik:GridBoundColumn DataField="TaskCode" HeaderText="任务号" ColumnGroupName="ProductInfo" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="Stage" HeaderText="阶段" ColumnGroupName="ProductInfo" ItemStyle-Width="50px" HeaderStyle-Width="50px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="Stage1" HeaderText="阶段" ColumnGroupName="ProductInfo" ItemStyle-Width="50px" HeaderStyle-Width="50px"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn DataField="TDM_Description" HeaderText="产品名称" ColumnGroupName="ProductInfo" UniqueName="TDM_Description" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn DataField="Drawing_No" HeaderText="图号" ColumnGroupName="ProductInfo" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="ItemCode1" HeaderText="物资编码" ColumnGroupName="Material" UniqueName="ItemCode1" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="ItemCode2" HeaderText="物资编码" ColumnGroupName="Material" UniqueName="ItemCode2" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn DataField="Material_Name" HeaderText="物资名称" UniqueName="Material_Name" ColumnGroupName="Material" ItemStyle-Width="120px" HeaderStyle-Width="120px"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn DataField="Material_Mark" HeaderText="牌号" UniqueName="Material_Mark" ColumnGroupName="Material" ItemStyle-Width="70px" HeaderStyle-Width="70px"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn DataField="CN_Material_State" HeaderText="供应状态" UniqueName="CN_Material_State" ColumnGroupName="Material" ItemStyle-Width="70px" HeaderStyle-Width="70px"></telerik:GridBoundColumn>
@@ -230,7 +230,7 @@
    			    <CommandItemTemplate>
                     <telerik:RadButton ID="RB_Delete" runat="server" Text="删除" CommandName="del" CssClass="floatleft" OnClientClicking="confirmRadWindowDelete"></telerik:RadButton>
                     <telerik:RadButton ID="RB_Edit" runat="server" Text="修改"  Font-Bold="true" OnClientClicking="ShowWindow" CssClass="floatleft" AutoPostBack="true"  ></telerik:RadButton>
-                    请领物资信息列表
+                    物资信息列表
 				    <telerik:RadButton ID="RadButton_ExportExcel" runat="server" Text="导出Excel" Font-Bold="true" CommandName="ExportExcel" OnClick="RadButton_ExportExcel_Click" CssClass="floatright"></telerik:RadButton>
                     <telerik:RadButton ID="RadButton_ExportWord"  runat="server" Text="导出Word"  Font-Bold="true" CommandName="ExportWord" Visible="false"  OnClick="RadButton_ExportWord_Click"  CssClass="floatright"></telerik:RadButton>
                     <telerik:RadButton ID="RadButton_ExportPDF"   runat="server" Text="导出PDF"   Font-Bold="true" CommandName="ExportPDF" Visible="false"   OnClick="RadButton_ExportPdf_Click"   CssClass="floatright"></telerik:RadButton>
@@ -268,7 +268,7 @@
         <Windows>
             <telerik:RadWindow ID="RadWindowApp" runat="server" Title="型号物资申请" Left="150px"
                 ReloadOnShow="true" ShowContentDuringLoad="false" VisibleTitlebar="true" VisibleStatusbar="false"
-                Behaviors="Close,Maximize,Minimize" Modal="true" Width="1000px" Height="680px" />
+                Behaviors="Close,Maximize,Minimize" Modal="true" Width="1000px" Height="660px" />
             <telerik:RadWindow ID="RadWindowK2" runat="server" Title="型号物资申请" Left="150px"
                 ReloadOnShow="true" ShowContentDuringLoad="false" VisibleTitlebar="true" VisibleStatusbar="false"
                 Behaviors="Close,Maximize,Minimize" Modal="true" Width="800px" Height="400px" />

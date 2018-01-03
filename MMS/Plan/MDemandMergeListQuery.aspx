@@ -148,7 +148,7 @@
                         </CommandItemTemplate>
                     <Columns>
                         <telerik:GridBoundColumn DataField="ID" HeaderText="需求行号" ItemStyle-Width="80px" HeaderStyle-Width="80px"></telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="Project" HeaderText="型号" ItemStyle-Width="80px" HeaderStyle-Width="80px"></telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="Model" HeaderText="型号" ItemStyle-Width="80px" HeaderStyle-Width="80px"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="TaskCode" HeaderText="任务号" ItemStyle-Width="120px" HeaderStyle-Width="120px"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="Drawing_No" HeaderText="图号" ItemStyle-Width="120px" HeaderStyle-Width="120px"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="TDM_Description" HeaderText="产品名称" ItemStyle-Width="120px" HeaderStyle-Width="120px"></telerik:GridBoundColumn>
