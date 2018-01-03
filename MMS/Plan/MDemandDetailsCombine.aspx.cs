@@ -468,7 +468,7 @@ namespace mms.Plan
                    + " Values (" + PackId + "," + DraftId + "," + taskid + "," + Quantity + "," + Stage + ",'" + DemandDate + "','" + Special_Needs + "','" + MaterialDept + "','" + TaskCode + "','" + Drawing_No + "'," + Mat_Pro_Weight + ",0,1,'" +
                             Material_Name + "','" + Material_Mark + "','" + ItemCode1 + "','" + Mat_Unit + "'," + Mat_Rough_Weight + ",'" + Rough_Size + "','" +Dinge_Size+"','"
                             + Rough_Spec + "'," + DemandNumSum + "," + NumCasesSum + ",'" + Material_Tech_Condition + "','"
-                             + VerCode + "','" + Technics_Comment + "'," + MDPId + ",'" + CN_Material_State + "','"  
+                             + VerCode + "','" + Technics_Comment + "','" + MDPId + "','" + CN_Material_State + "','"  
                             + Material_Code + "','" + TDM_Description + "','" + Technics_Line + "','" + LingJian_Type + "','" + Import_Date + "'," + userid + ",0,0,0)" + " select @@identity";
 
                  ID = DBI.GetSingleValue(strSQL);
