@@ -148,13 +148,13 @@ namespace mms.MaterialApplicationCollar {
         protected global::Telerik.Web.UI.RadTextBox RTB_TaskCode;
         
         /// <summary>
-        /// lbl_DrawingNo 控件。
+        /// RTB_DrawingNo 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_DrawingNo;
+        protected global::Telerik.Web.UI.RadTextBox RTB_DrawingNo;
         
         /// <summary>
         /// RTB_Quantity 控件。

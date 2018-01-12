@@ -647,7 +647,7 @@
                                     </telerik:GridTemplateColumn>
                                     <telerik:GridBoundColumn DataField="rownum" DataType="System.Int32" ItemStyle-Width="50px" HeaderStyle-Width="50px" HeaderText="序号" SortExpression="rownum" UniqueName="rownum" visible="false">
                                     </telerik:GridBoundColumn>
-                                    <telerik:GridBoundColumn DataField="Project" ItemStyle-Width="80px" HeaderStyle-Width="80px" HeaderText="型号工程" SortExpression="Project" UniqueName="Project">
+                                    <telerik:GridBoundColumn DataField="Model" ItemStyle-Width="80px" HeaderStyle-Width="80px" HeaderText="型号工程" SortExpression="Model" UniqueName="Model">
                                     </telerik:GridBoundColumn>
                                     <telerik:GridBoundColumn DataField="TaskCode" ItemStyle-Width="80px" HeaderStyle-Width="80px" HeaderText="任务编号" SortExpression="TaskCode" UniqueName="TaskCode">
                                     </telerik:GridBoundColumn>

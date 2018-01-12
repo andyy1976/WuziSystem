@@ -24,10 +24,38 @@
              <ClientEvents OnRequestStart="onRequestStart" />
     </telerik:RadAjaxManager>
     <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" runat="server" Skin="Default"></telerik:RadAjaxLoadingPanel>
-    <telerik:RadCodeBlock ID="RadCodeBlock1" runat="server"></telerik:RadCodeBlock>
+    <telerik:RadCodeBlock ID="RadCodeBlock1" runat="server">
+                <script type="text/javascript">
+                    function EnterKeyProcessing(sender, eventArgs) {
+                        var c = eventArgs.get_keyCode();
+                        if ((c == 13)) {
+                            eventArgs.set_cancel(true);
+                        }
+                    }
+             </script>
+    </telerik:RadCodeBlock>
     <div style="width:100%;">
         <div style="width:100%;">
-
+ <table style="text-align:left;">
+                <tr>
+                      <td>变更申请编号：</td>
+                    <td>
+                        <telerik:RadTextBox ID="RTB_RCO_No" runat="server" Width="120px">
+                                                  <ClientEvents OnKeyPress="EnterKeyProcessing" />
+                        </telerik:RadTextBox>
+                    </td>
+                   
+                    <td style="text-align:right;">物资名称：</td>
+                    <td><telerik:RadTextBox ID="RTB_Material_Name" runat="server" Width="120px">
+                        <ClientEvents OnKeyPress="EnterKeyProcessing" />
+                        </telerik:RadTextBox></td>
+              
+                  
+              
+             
+                     <td><telerik:RadButton ID="RB_Query" runat="server" Text="查询" OnClick="RB_Query_Click"></telerik:RadButton></td>
+                </tr>
+            </table>
         </div>
         <div style="width:100%;">
             <telerik:RadGrid ID="RadGrid1" runat="server" AutoGenerateColumns="false" 
@@ -59,7 +87,7 @@
                         <telerik:GridBoundColumn DataField="Column_Changed" HeaderText="变更字段" HeaderStyle-Width="100px" UniqueName="Column_Changed"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="Original_Value" HeaderText="原值" HeaderStyle-Width="70px"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="Changed_Value" HeaderText="变更值" HeaderStyle-Width="70px"></telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="RCO_No" HeaderText="变更申请号" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="RCO_No" HeaderText="变更申请编号" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="User_RCO_No" HeaderText="用户变更<br />申请号" HeaderStyle-Width="180px"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="User_RCO_ID" HeaderText="用户变更<br />申请ID" HeaderStyle-Width="70px"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="RCO_Status" HeaderText="变更申<br />请状态" HeaderStyle-Width="80px"></telerik:GridBoundColumn>

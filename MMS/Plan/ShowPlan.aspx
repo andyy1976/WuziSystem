@@ -238,7 +238,7 @@
                                 <telerik:RadButton ID="RB_State" runat="server" AutoPostBack="false" ToolTip="点击查看计划包数据" Width="20px" Height="20px"></telerik:RadButton>
                             </ItemTemplate>
                         </telerik:GridTemplateColumn>
-                        <telerik:GridTemplateColumn HeaderText="BOM管理" ItemStyle-Width="120px" HeaderStyle-Width="120px">
+                        <telerik:GridTemplateColumn HeaderText="BOM管理" ItemStyle-Width="150px" HeaderStyle-Width="150px">
                             <ItemStyle HorizontalAlign="Center" />
                             <ItemTemplate>
                                 <telerik:RadButton ID="RB_NotSynchron" runat="server" ButtonType="ToggleButton" Text="同步BOM与定额" ToolTip="点击同步SmarTeam"

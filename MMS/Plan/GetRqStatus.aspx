@@ -53,7 +53,7 @@
                         <telerik:RadDatePicker ID="RDP_ConfirmDateStart" runat="server" Width="120px" DateInput-ClientEvents-OnKeyPress='EnterKeyProcessing' Visible="false">
                         </telerik:RadDatePicker>
                     </td>
-                    <td>～</td>
+                    <td></td>
                     <td>
                         <telerik:RadDatePicker ID="RDP_ConfirmDateEnd" runat="server" Width="120px" DateInput-ClientEvents-OnKeyPress='EnterKeyProcessing' Visible="false">
                         </telerik:RadDatePicker>

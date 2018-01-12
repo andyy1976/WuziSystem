@@ -113,7 +113,7 @@ namespace mms.MaterialApplicationCollar
                     }
                     RTB_ContactInformation.Text = dtma.Rows[0]["ContactInformation"].ToString();
                     RTB_TaskCode.Text = dtma.Rows[0]["TaskCode"].ToString();
-                    lbl_DrawingNo.Text = dtma.Rows[0]["Drawing_No"].ToString();
+                    RTB_DrawingNo.Text = dtma.Rows[0]["Drawing_No"].ToString();
                     RTB_Quantity.Text = dtma.Rows[0]["Quantity"].ToString();
                     RDDL_TheMaterialWay.SelectedIndex = 0;
                     if (RDDL_TheMaterialWay.FindItemByText(dtma.Rows[0]["TheMaterialWay"].ToString()) != null)
@@ -177,7 +177,7 @@ namespace mms.MaterialApplicationCollar
                         RTB_Quantity.Text = Convert.ToDouble(dt.Rows[0]["NumCasesSum"].ToString()).ToString();
                         RTB_PleaseTakeQuality.Text = Convert.ToDouble(dt.Rows[0]["DemandNumSum"].ToString()).ToString();
                         RTB_TaskCode.Text = dt.Rows[0]["TaskCode"].ToString();
-                        lbl_DrawingNo.Text = dt.Rows[0]["Drawing_No"].ToString();
+                        RTB_DrawingNo.Text = dt.Rows[0]["Drawing_No"].ToString();
                         lbl_ItemCode.Text = dt.Rows[0]["ItemCode1"].ToString();
                         lbl_Material_Name.Text = dt.Rows[0]["Material_Name"].ToString();
 
@@ -236,7 +236,7 @@ namespace mms.MaterialApplicationCollar
             string ApplicationTime = RDP_ApplicationTime.SelectedDate.ToString();
             string ContactInformation = RTB_ContactInformation.Text.Trim();
             string TaskCode = RTB_TaskCode.Text.Trim();
-            string DrawingNo = lbl_DrawingNo.Text.Trim();
+            string DrawingNo = RTB_DrawingNo.Text.Trim();
             string Quantity = RTB_Quantity.Text.Trim();
             string PleaseTakeQuality = RTB_PleaseTakeQuality.Text.Trim();
             string TheMaterialWay = RDDL_TheMaterialWay.SelectedItem.Text;

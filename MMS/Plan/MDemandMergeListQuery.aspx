@@ -82,9 +82,7 @@
                         <telerik:RadDatePicker ID="RDP_SubmitDateEnd" runat="server" Width="120px" DateInput-ClientEvents-OnKeyPress='EnterKeyProcessing'>
                         </telerik:RadDatePicker>
                     </td>
-                </tr>
-                <tr>
-                    <td style="text-align:right;"><%--提交状态：--%></td>
+                     <td style="text-align:right;"><%--提交状态：--%></td>
                     <td><telerik:RadDropDownList ID="RDDL_State" runat="server" Width="120px" AppendDataBoundItems="true" Visible="false">
                         <Items>
                             <telerik:DropDownListItem Value="" Text="全部" />
@@ -92,6 +90,15 @@
                             <telerik:DropDownListItem Value="1" Text="已提交" />
                         </Items>
                         </telerik:RadDropDownList></td>
+                </tr>
+                <tr>
+                     <td>需求行号：</td>
+                    <td>
+                        <telerik:RadTextBox ID="RTB_ID" runat="server" Width="120px">
+                                                  <ClientEvents OnKeyPress="EnterKeyProcessing" />
+                        </telerik:RadTextBox>
+                    </td>
+                   
                     <td style="text-align:right;">紧急程度：</td>
                     <td><telerik:RadDropDownList ID="RDDL_Urgency_Degre" runat="server" Width="120px" AppendDataBoundItems="true">
                             <Items>
@@ -154,6 +161,7 @@
                         <telerik:GridBoundColumn DataField="TDM_Description" HeaderText="产品名称" ItemStyle-Width="120px" HeaderStyle-Width="120px"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="ItemCode1" HeaderText="物资编码" ItemStyle-Width="80px" HeaderStyle-Width="80px"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="Material_Name" HeaderText="物资名称" ItemStyle-Width="120px" HeaderStyle-Width="120px"></telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="Rough_Size" HeaderText="需求尺寸" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="NumCasesSum" HeaderText="需求件数" ItemStyle-Width="80px" HeaderStyle-Width="80px"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="DemandNumSum" HeaderText="需求量" ItemStyle-Width="80px" HeaderStyle-Width="80px"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="Dept" HeaderText="领料部门" ItemStyle-Width="80px" HeaderStyle-Width="80px"></telerik:GridBoundColumn>

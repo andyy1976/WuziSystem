@@ -145,9 +145,14 @@
                               <ClientEvents OnKeyPress="EnterKeyProcessing" />
                         </telerik:RadTextBox>
                     </td>
+                   
                     <td style="text-align: right;">图号：</td>
                     <td>
-                        <asp:Label ID="lbl_DrawingNo" runat="server"></asp:Label></td>
+                        <telerik:RadTextBox ID="RTB_DrawingNo" runat="server">
+                              <ClientEvents OnKeyPress="EnterKeyProcessing" />
+                        </telerik:RadTextBox>
+                    </td>
+                   
                     <td style="text-align: right;">申请件数：</td>
                     <td>
                         <telerik:RadTextBox ID="RTB_Quantity" runat="server" onpaste="return false" onkeyup='clearNoDecimal(this)' Width="120px" Enabled="true">

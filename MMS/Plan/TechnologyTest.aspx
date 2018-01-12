@@ -199,6 +199,9 @@
                             </telerik:GridBoundColumn>
                             <telerik:GridBoundColumn DataField="Material_Name" HeaderText="物资名称" HeaderStyle-Width="100px" ItemStyle-Width="100px">
                             </telerik:GridBoundColumn>
+                            <telerik:GridBoundColumn DataField="Rough_Size" HeaderText="需求尺寸" ItemStyle-Width="100px" HeaderStyle-Width="100px">
+                            </telerik:GridBoundColumn>
+
                             <telerik:GridBoundColumn DataField="NumCasesSum" HeaderText="需求件数" HeaderStyle-Width="70px" ItemStyle-Width="70px">
                             </telerik:GridBoundColumn>
                             <telerik:GridBoundColumn DataField="DemandNumSum" HeaderText="需求量" HeaderStyle-Width="60px" ItemStyle-Width="60px">

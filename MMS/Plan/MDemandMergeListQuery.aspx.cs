@@ -65,7 +65,7 @@ namespace mms.Plan
             string State = RDDL_State.SelectedValue.ToString();
             string startDemandDate = RDP_DemandDateStart.SelectedDate.ToString();
             string endDemandDate = RDP_DemandDateEnd.SelectedDate.ToString();
-
+            string ID = RTB_ID.Text.Trim();
             string strSQL = "";
             if (type != "")
             {
@@ -111,7 +111,10 @@ namespace mms.Plan
             {
                 strSQL += " and DemandDate < '" + Convert.ToDateTime(endDemandDate).AddDays(1).ToString("yyyy-MM-dd") + "'";
             }
-
+            if (ID != "")
+            {
+                strSQL += " and M_Demand_Merge_List.ID like '%" + ID + "%'";
+            }
             GetMDemandMergeList(strSQL);
         }
 

@@ -84,11 +84,17 @@
             <table style="text-align:left;">
                 <tr>
                     <td style="text-align:right;">物资编码：</td>
-                    <td><telerik:RadTextBox ID="RTB_ItemCode" runat="server" Width="120px"></telerik:RadTextBox></td>
+                    <td><telerik:RadTextBox ID="RTB_ItemCode" runat="server" Width="120px">
+                         <ClientEvents OnKeyPress="EnterKeyProcessing" />
+                        </telerik:RadTextBox></td>
                     <td style="text-align:right;">任务号：</td>
-                    <td><telerik:RadTextBox ID="RTB_Task" runat="server" Width="120px"></telerik:RadTextBox></td>
+                    <td><telerik:RadTextBox ID="RTB_Task" runat="server" Width="120px">
+                         <ClientEvents OnKeyPress="EnterKeyProcessing" />
+                        </telerik:RadTextBox></td>
                     <td style="text-align:right;">图号：</td>
-                    <td><telerik:RadTextBox ID="RTB_Drawing_No" runat="server" Width="120px"></telerik:RadTextBox></td>
+                    <td><telerik:RadTextBox ID="RTB_Drawing_No" runat="server" Width="120px">
+                         <ClientEvents OnKeyPress="EnterKeyProcessing" />
+                        </telerik:RadTextBox></td>
                     <td style="text-align:right;">提交日期：</td>
                     <td>
                         <telerik:RadDatePicker ID="RDP_SubmitDateStart" runat="server" Width="120px" DateInput-ClientEvents-OnKeyPress='EnterKeyProcessing'>

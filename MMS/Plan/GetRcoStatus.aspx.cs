@@ -32,6 +32,36 @@ namespace mms.Plan
             }
         }
 
+        protected void RB_Query_Click(object sender, EventArgs e)
+        {
+            string RCO_No = RTB_RCO_No.Text.Trim();
+
+
+
+            string Material_Name = RTB_Material_Name.Text.Trim();
+
+      
+
+            string strSQL = "";
+
+   
+
+            if (Material_Name != "")
+            {
+                strSQL += " and M_Demand_Merge_List.Material_Name = '" + Material_Name + "'";
+            }
+
+            if (RCO_No != "")
+            {
+                strSQL += " and GetRcoStatus_T_Item.RCO_No like '%" + RCO_No + "%'";
+            }
+
+
+            this.ViewState["GridSource"] = GetRcoStatus_T_Item(strSQL);
+            RadGrid1.Rebind();
+
+        }
+
         protected DataTable GetRcoStatus_T_Item(string strWhere)
         {
             string strSQL = "select GetRcoStatus_T_Item.*, Material_Name, M_Change_Record.Column_Changed,M_Change_Record.Original_Value,M_Change_Record.Changed_Value from GetRcoStatus_T_Item" +
