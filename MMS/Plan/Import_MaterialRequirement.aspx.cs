@@ -194,7 +194,7 @@ namespace mms.Plan
                  
                    this.hfBh.Value = "";
                    this.hfTaskId.Value = "";
-                   this.ViewState["submit_type"] = "4";
+                   this.ViewState["submit_type"] = "0";
                     GridSource = Common.AddTableRowsID(GetDetailedListList());
                     Session["gds"] = null;         
                     this.span_apply_time1.InnerText = DateTime.Now.ToString("yyyy-MM-dd"); 
@@ -1079,7 +1079,7 @@ namespace mms.Plan
                 int userid = Convert.ToInt32(Session["UserId"].ToString());
                 string strSQL = "";
               
-                int Submit_Type = Convert.ToInt32(this.ViewState["submit_type"].ToString());//1－工艺试验件；2－技术创新课题；3－车间备料 4-型号物资导入
+                int Submit_Type = Convert.ToInt32(this.ViewState["submit_type"].ToString());//1－工艺试验件；2－技术创新课题；3－车间备料 0-型号物资导入
 
                 int PackId = Convert.ToInt32(Request.QueryString["PackId"].ToString());
 

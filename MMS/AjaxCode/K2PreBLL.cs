@@ -49,7 +49,7 @@ namespace mms
                 TecApproveAccount = dtmdpl.Rows[0]["Submit_Type"].ToString() == "3" ? "TJ\\" + dtmdpl.Rows[0]["MaterialPlanApproveAccount"].ToString() : "",    //物资综合计划员
                 UserAccount = "TJ\\" + dtmdpl.Rows[0]["DomainAccount"].ToString(),
                 UserName = dtmdpl.Rows[0]["UserName"].ToString(),
-                AppState = dtmdpl.Rows[0]["Submit_Type"].ToString()
+                AppState = dtmdpl.Rows[0]["Submit_Type"].ToString()//好像有问题？方云超备注
                 //Is_Del = dtmdpl.Rows[0][""].ToString()
             };
             for (int i = 0; i < dtmdml.Rows.Count; i++)
