@@ -18,9 +18,10 @@
           <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="UserAccount" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="SubmitDate" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="DeptApproveAccount" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="TecApproveAccount" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="PlanApproveAccount" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DiaoDuApproveAccount" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="KeTiApproveAccount" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="JiHuaXingHaoApproveAccount" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ZongHeApproveAccount" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="AppState" type="s:string" />
           <s:element minOccurs="1" maxOccurs="1" name="Is_Del" type="s:boolean" />
         </s:sequence>
@@ -41,6 +42,7 @@
           <s:element minOccurs="0" maxOccurs="1" name="MatUnit" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="Quantity" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="RoughSize" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DingeSize" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="RoughSpec" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="DemandDate" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="SpecialNeeds" type="s:string" />

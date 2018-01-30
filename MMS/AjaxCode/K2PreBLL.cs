@@ -40,16 +40,17 @@ namespace mms
             PreparesMarerialsBodyModel[] listbodymodel = new PreparesMarerialsBodyModel[dtmdml.Rows.Count];
             PreparesMarerialsHeadModel headmodel = new PreparesMarerialsHeadModel()
             {
-                RequestType = 1,
-                DeptApproveAccount = "TJ\\" + dtmdpl.Rows[0]["DeptApproveAccount"].ToString(),                                             //车间
-                PlanApproveAccount = "TJ\\" + dtmdpl.Rows[0]["PlanOrTecApproveAccount"].ToString(),                    //工艺处（工艺处、生产处有一个就可以）
+                RequestType = dtmdpl.Rows[0]["Submit_Type"] != null ? int.Parse(dtmdpl.Rows[0]["Submit_Type"].ToString()) : 0,
+                DiaoDuApproveAccount = "TJ\\" + dtmdpl.Rows[0]["DeptApproveAccount"].ToString(),                                             //车间
+                KeTiApproveAccount = "TJ\\" + dtmdpl.Rows[0]["PlanOrTecApproveAccount"].ToString(),                    //工艺处（工艺处、生产处有一个就可以）
                 ProcessInstID = 0,                                                                                               //流程ID
                 RequestID = Convert.ToInt32(MDPLID),
                 SubmitDate = Convert.ToDateTime(dtmdpl.Rows[0]["Submit_Date"].ToString()).ToString("yyyy-MM-dd"),
-                TecApproveAccount = dtmdpl.Rows[0]["Submit_Type"].ToString() == "3" ? "TJ\\" + dtmdpl.Rows[0]["MaterialPlanApproveAccount"].ToString() : "",    //物资综合计划员
+                JiHuaXingHaoApproveAccount = dtmdpl.Rows[0]["Submit_Type"].ToString() == "3" ? "TJ\\" + dtmdpl.Rows[0]["PlanOrTecApproveAccount"].ToString() : "",
+                ZongHeApproveAccount = dtmdpl.Rows[0]["Submit_Type"].ToString() == "3" ? "TJ\\" + dtmdpl.Rows[0]["MaterialPlanApproveAccount"].ToString() : "",    //物资综合计划员
                 UserAccount = "TJ\\" + dtmdpl.Rows[0]["DomainAccount"].ToString(),
-                UserName = dtmdpl.Rows[0]["UserName"].ToString(),
-                AppState = dtmdpl.Rows[0]["Submit_Type"].ToString()//好像有问题？方云超备注
+                UserName = dtmdpl.Rows[0]["UserName"].ToString()
+                //AppState = string.Empty
                 //Is_Del = dtmdpl.Rows[0][""].ToString()
             };
             for (int i = 0; i < dtmdml.Rows.Count; i++)
@@ -68,7 +69,7 @@ namespace mms
                     ProcessInstID = 0,                                                           //流程ID
                     Quantity = dtmdml.Rows[i]["NumCasesSum"].ToString(),
                     RoughSize = dtmdml.Rows[i]["Rough_Size"].ToString(),
-                //    DingeSize = dtmdml.Rows[i]["Dinge_Size"].ToString(),
+                    DingeSize = dtmdml.Rows[i]["Dinge_Size"].ToString(),
                     RoughSpec = dtmdml.Rows[i]["Rough_Spec"].ToString(),
                     SecretLevel = dtmdml.Rows[i]["Secret_Level"].ToString(),
                     SpecialNeeds = dtmdml.Rows[i]["Special_Needs"].ToString(),
@@ -131,16 +132,17 @@ namespace mms
             PreparesMarerialsBodyModel[] listbodymodel = new PreparesMarerialsBodyModel[dtmdml.Rows.Count];
             PreparesMarerialsHeadModel headmodel = new PreparesMarerialsHeadModel()
             {
-                RequestType=0,
-                DeptApproveAccount = "TJ\\" + dtmdpl.Rows[0]["DeptApproveAccountChange"].ToString(),                                             //车间
-                PlanApproveAccount = "TJ\\" + dtmdpl.Rows[0]["PlanOrTecApproveAccountChange"].ToString(),                    //工艺处（工艺处、生产处有一个就可以）
+                RequestType = dtmdpl.Rows[0]["Submit_Type"] != null ? int.Parse(dtmdpl.Rows[0]["Submit_Type"].ToString()) : 0,
+                DiaoDuApproveAccount = "TJ\\" + dtmdpl.Rows[0]["DeptApproveAccountChange"].ToString(),                                             //车间
+                KeTiApproveAccount = "TJ\\" + dtmdpl.Rows[0]["PlanOrTecApproveAccountChange"].ToString(),                    //工艺处（工艺处、生产处有一个就可以）
                 ProcessInstID = 0,                                                                                               //流程ID
                 RequestID = Convert.ToInt32(MDPLID),
                 SubmitDate = Convert.ToDateTime(dtmdpl.Rows[0]["Submit_Date"].ToString()).ToString("yyyy-MM-dd"),
-                TecApproveAccount = dtmdpl.Rows[0]["Submit_Type"].ToString() == "3" ? "TJ\\" + dtmdpl.Rows[0]["MaterialPlanApproveAccountChange"].ToString() : "",    //物资综合计划员
+                JiHuaXingHaoApproveAccount = dtmdpl.Rows[0]["Submit_Type"].ToString() == "3" ? "TJ\\" + dtmdpl.Rows[0]["PlanOrTecApproveAccountChange"].ToString() : "",
+                ZongHeApproveAccount = dtmdpl.Rows[0]["Submit_Type"].ToString() == "3" ? "TJ\\" + dtmdpl.Rows[0]["MaterialPlanApproveAccountChange"].ToString() : "",    //物资综合计划员
                 UserAccount = "TJ\\" + dtmdpl.Rows[0]["DomainAccount"].ToString(),
-                UserName = dtmdpl.Rows[0]["UserName"].ToString(),
-                AppState = dtmdpl.Rows[0]["Submit_Type"].ToString()
+                UserName = dtmdpl.Rows[0]["UserName"].ToString()
+                //AppState = string.Empty;
                 //Is_Del = dtmdpl.Rows[0][""].ToString()
             };
             for (int i = 0; i < dtmdml.Rows.Count; i++)
@@ -159,7 +161,7 @@ namespace mms
                     ProcessInstID = 0,                                                           //流程ID
                     Quantity = dtmdml.Rows[i]["NumCasesSum"].ToString(),
                     RoughSize = dtmdml.Rows[i]["Rough_Size"].ToString(),
-                 //   DingeSize = dtmdml.Rows[i]["Dinge_Size"].ToString(),
+                    DingeSize = dtmdml.Rows[i]["Dinge_Size"].ToString(),
                     RoughSpec = dtmdml.Rows[i]["Rough_Spec"].ToString(),
                     SecretLevel = dtmdml.Rows[i]["Secret_Level"].ToString(),
                     SpecialNeeds = dtmdml.Rows[i]["Special_Needs"].ToString(),
