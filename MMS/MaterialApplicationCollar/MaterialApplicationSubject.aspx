@@ -83,30 +83,42 @@
             <table>
                 <tr>
                     <td>需求行号：</td>
-                    <td><telerik:RadTextBox ID="RTB_ID" runat="server" Width="100px">
+                    <td>
+                        <telerik:RadTextBox ID="RTB_ID" runat="server" Width="100px">
                                                   <ClientEvents OnKeyPress="EnterKeyProcessing" />
-                        </telerik:RadTextBox></td>
+                        </telerik:RadTextBox>
+                    </td>
                     <td>型号：</td>
-                    <td><telerik:RadTextBox ID="RTB_Project" runat="server" Width="100px">
+                    <td>
+                        <telerik:RadTextBox ID="RTB_Project" runat="server" Width="100px">
                                                   <ClientEvents OnKeyPress="EnterKeyProcessing" />
-                        </telerik:RadTextBox></td>
+                        </telerik:RadTextBox>
+                    </td>
                     <td>图号：</td>
-                    <td><telerik:RadTextBox ID="RTB_Drawing_No" runat="server" Width="100px">
+                    <td>
+                        <telerik:RadTextBox ID="RTB_Drawing_No" runat="server" Width="100px">
                                                   <ClientEvents OnKeyPress="EnterKeyProcessing" />
-                        </telerik:RadTextBox></td>
+                        </telerik:RadTextBox>
+                    </td>
                     <td>任务号：</td>
-                    <td><telerik:RadTextBox ID="RTB_TaskCode" runat="server" Width="100px">
+                    <td>
+                        <telerik:RadTextBox ID="RTB_TaskCode" runat="server" Width="100px">
                                                   <ClientEvents OnKeyPress="EnterKeyProcessing" />
-                        </telerik:RadTextBox></td>
+                        </telerik:RadTextBox>
+                    </td>
 
                     <td>物资名称：</td>
-                    <td><telerik:RadTextBox ID="RTB_Material_Name" runat="server" Width="100px">
+                    <td>
+                        <telerik:RadTextBox ID="RTB_Material_Name" runat="server" Width="100px">
                                                   <ClientEvents OnKeyPress="EnterKeyProcessing" />
-                        </telerik:RadTextBox></td>
+                        </telerik:RadTextBox>
+                    </td>
                     <td>物资编码：</td>
-                    <td><telerik:RadTextBox ID="RTB_ItemCode1" runat="server" Width="100px">
+                    <td>
+                        <telerik:RadTextBox ID="RTB_ItemCode1" runat="server" Width="100px">
                                                   <ClientEvents OnKeyPress="EnterKeyProcessing" />
-                        </telerik:RadTextBox></td>
+                        </telerik:RadTextBox>
+                    </td>
                     <td>申请时间：</td>
                     <td>
                         <telerik:RadDatePicker ID="RDPStart" runat="server" Width="100px" DateInput-ClientEvents-OnKeyPress='EnterKeyProcessing'>
@@ -165,6 +177,7 @@
                         <telerik:GridBoundColumn DataField="Dinge_Size" HeaderText="胚料尺寸" UniqueName="Dinge_Size" ColumnGroupName="Material" ItemStyle-Width="80px" HeaderStyle-Width="80px"></telerik:GridBoundColumn>
 
                         <telerik:GridBoundColumn DataField="Mat_Rough_Weight" HeaderText="单件定额质量" ItemStyle-Width="100px" HeaderStyle-Width="100px" UniqueName="Mat_Rough_Weight" ColumnGroupName="Material"></telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="Special_Needs" HeaderText="特殊需求" UniqueName="Special_Needs" ColumnGroupName="Material" ItemStyle-Width="80px" HeaderStyle-Width="80px"></telerik:GridBoundColumn>
                       </Columns>
                     <CommandItemTemplate>
                         <telerik:RadButton ID="RB_FillInApp" runat="server" Text="填写申请单" Font-Bold="true" OnClientClicking="ShowWindow" CssClass="floatleft" AutoPostBack="true"></telerik:RadButton>

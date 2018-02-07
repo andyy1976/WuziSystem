@@ -188,16 +188,16 @@
         <elementListCompartment Id="68e8fd41-b4a9-422a-83ab-2d8bb40acffb" absoluteBounds="24.765, 19.21, 1.9700000000000002, 3.112762451171875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="92647cf7-88a8-452b-b15a-460a36c96647" absoluteBounds="24.75, 23.75, 2, 11.886609293619792">
+    <classShape Id="92647cf7-88a8-452b-b15a-460a36c96647" absoluteBounds="24.75, 23.75, 2, 12.077628987630213">
       <DataClassMoniker Name="/MMSDbDataContext/M_Demand_DetailedList_Draft" />
       <nestedChildShapes>
-        <elementListCompartment Id="3e4aa918-ef9b-42e6-80bc-6f505a996a28" absoluteBounds="24.765, 24.21, 1.9700000000000002, 11.326609293619791" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="3e4aa918-ef9b-42e6-80bc-6f505a996a28" absoluteBounds="24.765, 24.21, 1.9700000000000002, 11.517628987630207" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="2bd896cf-66ae-467b-9075-f13561fc3c75" absoluteBounds="0.75, 25.75, 2, 18.763318277994788">
+    <classShape Id="2bd896cf-66ae-467b-9075-f13561fc3c75" absoluteBounds="0.75, 25.75, 2, 18.954337972005213">
       <DataClassMoniker Name="/MMSDbDataContext/M_Demand_Merge_List" />
       <nestedChildShapes>
-        <elementListCompartment Id="962ea8e0-09ab-4263-b593-d8245d4e0764" absoluteBounds="0.765, 26.21, 1.9700000000000002, 18.203318277994789" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="962ea8e0-09ab-4263-b593-d8245d4e0764" absoluteBounds="0.765, 26.21, 1.9700000000000002, 18.394337972005207" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
     <classShape Id="f0e0e488-3a10-4530-91bf-cb3d2664f0ee" absoluteBounds="3.75, 25.75, 2, 3.2907230631510416">

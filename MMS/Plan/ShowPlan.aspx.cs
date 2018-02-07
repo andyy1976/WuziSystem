@@ -903,11 +903,11 @@ namespace mms.Plan
 
             //计算物资需求量（kg)
             //物资名称中不含‘棒’的，物资需求量（kg） = 单件质量 * 共计需求件数
-            strSQL = " Update M_Demand_DetailedList_Draft set DemandNumSum = Mat_Rough_Weight * NumCasesSum";
+            strSQL = " Update M_Demand_DetailedList_Draft set DemandNumSum = Mat_Rough_Weight * NumCasesSum";//可以把这块去掉，移到smartteambll.cs中去计算
             strSQL += " where PackID = '" + PackID + "' and Material_State = '0' and Material_Name not like '%棒%'";
             //物资名称中含‘棒’的，物资需求量（kg）的计算            
             //物资名称中含‘棒’，物资尺寸为‘L=' +数字的，物资需求量（kg） = 单件质量 * 共计需求件数
-            strSQL += " Update M_Demand_DetailedList_Draft set DemandNumSum = Mat_Rough_Weight * NumCasesSum"
+            strSQL += " Update M_Demand_DetailedList_Draft set DemandNumSum = Mat_Rough_Weight * NumCasesSum"////可以把这块去掉，移到smartteambll.cs中去计算
                 + " where PackID = '" + PackID + "' and Material_State = '0' and Material_Name like '%棒%'"
                 + " and (substring(Replace(Rough_Size,' ',''),1,2) = 'l=' or substring(Replace(Rough_Size,' ',''),1,2) = 'L=') and  IsNumeric (substring(Replace(Rough_Size,' ',''),3,len(Replace(Rough_Size,' ','')))) = 1";
             //物资名称中含‘棒’，物资尺寸以‘L=’+非数字

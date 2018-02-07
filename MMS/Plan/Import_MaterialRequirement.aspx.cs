@@ -778,7 +778,7 @@ namespace mms.Plan
                                     GridSource1.Columns[i].ColumnName = "ItemCode1";
                                     columnscount++;
                                     break;
-                                case "胚料尺寸":
+                                case "坯料尺寸":
                                     GridSource1.Columns[i].ColumnName = "Dinge_Size";
                                     columnscount++;
                                     break;

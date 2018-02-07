@@ -85,6 +85,7 @@
                                     <telerik:AjaxUpdatedControl ControlID="RadGridImport" />
                                     <telerik:AjaxUpdatedControl ControlID="HFGridItemsCount" />
                                     <telerik:AjaxUpdatedControl ControlID="RadNotificationAlert" />
+                                     <telerik:AjaxUpdatedControl ControlID="RadNotificationAlert1" />
                                     <telerik:AjaxUpdatedControl ControlID="HFFileName" />
                                 </UpdatedControls>
                             </telerik:AjaxSetting>
@@ -92,6 +93,7 @@
                                 <UpdatedControls>
                                     <telerik:AjaxUpdatedControl ControlID="RadGrid_TechnologyTestList" LoadingPanelID="RadAjaxLoadingPanel1" />
                                     <telerik:AjaxUpdatedControl ControlID="RadNotificationAlert" />
+                                     <telerik:AjaxUpdatedControl ControlID="RadNotificationAlert1" />
                                 </UpdatedControls>
                             </telerik:AjaxSetting>
 
@@ -117,7 +119,7 @@
                                 <UpdatedControls>
                                     <telerik:AjaxUpdatedControl ControlID="RadGrid_TechnologyTestList" LoadingPanelID="RadAjaxLoadingPanel1" />
                                     <telerik:AjaxUpdatedControl ControlID="RadNotificationAlert" />
-
+                                     <telerik:AjaxUpdatedControl ControlID="RadNotificationAlert1" />
                                      <telerik:AjaxUpdatedControl ControlID="RadBtnSubmit" />
                                        <telerik:AjaxUpdatedControl ControlID="hfBh" />    
                                 </UpdatedControls>
@@ -137,6 +139,7 @@
                                 <UpdatedControls>
                                     <telerik:AjaxUpdatedControl ControlID="RadGridImport" LoadingPanelID="RadAjaxLoadingPanel1" />
                                     <telerik:AjaxUpdatedControl ControlID="RadNotificationAlert" />
+                                    <telerik:AjaxUpdatedControl ControlID="RadNotificationAlert1" />
                                     <telerik:AjaxUpdatedControl ControlID="HFGridItemsCount" />
                                 </UpdatedControls>
                        </telerik:AjaxSetting>

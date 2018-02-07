@@ -120,7 +120,7 @@ namespace mms.Plan
 
         protected void GetMDemandMergeList(string strWhere)
         {
-            string strSQL = " select M_Demand_Merge_List.ID, M_Demand_Merge_List.Material_Name,M_Demand_Merge_List.Project, M_Demand_Merge_List.TaskCode,M_Demand_Merge_List.TDM_Description, Drawing_No, ItemCode1, NumCasesSum, DemandNumSum, Dept, DemandDate, M_Demand_Merge_List.Submit_Date, Special_Needs, Secret_Level" +
+            string strSQL = " select M_Demand_Merge_List.ID, M_Demand_Merge_List.Material_Name,M_Demand_Merge_List.Project, M_Demand_Merge_List.TaskCode,M_Demand_Merge_List.TDM_Description, Drawing_No, ItemCode1, NumCasesSum, DemandNumSum, Dept, DemandDate, M_Demand_Merge_List.Submit_Date, REQUESTER,Mat_Unit,Rough_Size,Special_Needs, Secret_Level" +
                 " , CUX_DM_URGENCY_LEVEL.DICT_Name as UrgencyDegre, CUX_DM_USAGE.DICT_Name as UseDes, Shipping_Address" + //, GetCustInfo_T_ACCT_SITE.ADDRESS as ADDRESS
                 ", CUX_DM_PROJECT.DICT_Name as Model"+
                 " , isnull((select top 1 Submission_Status from GetRqStatus_T_Item where USER_RQ_LINE_ID = M_Demand_Merge_List.ID order by SUBMITED_SYNC_STATUS desc),'已提交') as State" +

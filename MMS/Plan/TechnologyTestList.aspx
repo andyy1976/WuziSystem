@@ -30,7 +30,7 @@
                     <td><telerik:RadTextBox ID="RTB_MDP_Code" runat="server" Width="100px">
                           <ClientEvents OnKeyPress="EnterKeyProcessing" />
                         </telerik:RadTextBox></td>
-                    <td> 领用单状态：</td>  
+                    <td>提交状态/备料状态：</td>  
                     <td><telerik:RadDropDownList ID="RDDL_AppState" runat="server" Width="100px">
                         <Items>
                             <telerik:DropDownListItem Value="" Text="全部" />

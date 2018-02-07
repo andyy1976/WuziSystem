@@ -100,7 +100,8 @@ namespace mms.MaterialApplicationCollar
                     HFMAID.Value = Request.QueryString["MAID"].ToString();
 
 
-                    strSQL = " select * , (select MDPID from M_Demand_Merge_List where ID = MaterialApplication.Material_Id) as MDPLID from MaterialApplication where ID = '" + HFMAID.Value + "'";
+                    //strSQL = " select * , (select MDPID from M_Demand_Merge_List where ID = MaterialApplication.Material_Id) as MDPLID from MaterialApplication where ID = '" + HFMAID.Value + "'";
+                    strSQL = " select * ,M_Demand_Merge_List.MDPID as MDPLID,M_Demand_Merge_List.Special_Needs from MaterialApplication left join M_Demand_Merge_List on ID = MaterialApplication.Material_Id where ID = '" + HFMAID.Value + "'";
                     DataTable dtma = DBI.Execute(strSQL, true);
                     HFMDMLID.Value = dtma.Rows[0]["Material_ID"].ToString();
                     HFMDPLID.Value = dtma.Rows[0]["MDPLID"].ToString();
@@ -126,7 +127,7 @@ namespace mms.MaterialApplicationCollar
                         RDP_FeedingTime.SelectedDate = Convert.ToDateTime(dtma.Rows[0]["FeedingTime"].ToString());
                     }
                     RTB_PleaseTakeQuality.Text = dtma.Rows[0]["PleaseTakeQuality"].ToString();
-                    RTB_Remark.Text = dtma.Rows[0]["Remark"].ToString();
+                    RTB_Remark.Text = dtma.Rows[0]["Special_Needs"].ToString(); //dtma.Rows[0]["Remark"].ToString();
                     RB_IsDispatch.Checked = Convert.ToBoolean(dtma.Rows[0]["IsDispatch"].ToString());
                     RB_IsConfirm.Checked = Convert.ToBoolean(dtma.Rows[0]["IsConfirm"].ToString());
 
@@ -169,17 +170,26 @@ namespace mms.MaterialApplicationCollar
 
                         HFMDPLID.Value = dt.Rows[0]["MDPID"].ToString();
 
+                        lbl_ItemCode.Text = dt.Rows[0]["ItemCode1"].ToString();
+                        lbl_Material_Name.Text = dt.Rows[0]["Material_Name"].ToString();
+                        lbl_Material_Mark.Text = dt.Rows[0]["Material_Mark"].ToString();
+
+                        lbl_CN_Material_State.Text = dt.Rows[0]["CN_Material_State"].ToString();
+                        lbl_Material_Tech_Condition.Text = dt.Rows[0]["Material_Tech_Condition"].ToString();
                         lbl_Rough_Spec.Text = dt.Rows[0]["Rough_Spec"].ToString();
+
+                        lbl_Mat_Rough_Weight.Text = dt.Rows[0]["Mat_Rough_Weight"].ToString();
+                        lb1_MaterialsDes.Text = dt.Rows[0]["MaterialsDes"].ToString();
                         lbl_Mat_Unit.Text = dt.Rows[0]["Mat_Unit"].ToString();
                         RTB_Rough_Size.Text = dt.Rows[0]["Rough_Size"].ToString();
                         lbl_Dinge_Size.Text = dt.Rows[0]["Dinge_Size"].ToString();
+
                         //lbl_AppQuantity.Text = Convert.ToDouble(dt.Rows[0]["AppQuantity"].ToString()).ToString();
                         RTB_Quantity.Text = Convert.ToDouble(dt.Rows[0]["NumCasesSum"].ToString()).ToString();
                         RTB_PleaseTakeQuality.Text = Convert.ToDouble(dt.Rows[0]["DemandNumSum"].ToString()).ToString();
                         RTB_TaskCode.Text = dt.Rows[0]["TaskCode"].ToString();
                         RTB_DrawingNo.Text = dt.Rows[0]["Drawing_No"].ToString();
-                        lbl_ItemCode.Text = dt.Rows[0]["ItemCode1"].ToString();
-                        lbl_Material_Name.Text = dt.Rows[0]["Material_Name"].ToString();
+                        RTB_Remark.Text = dt.Rows[0]["Special_Needs"].ToString(); //dtma.Rows[0]["Remark"].ToString();//by fyc
 
                         if (HFType.Value == "0")
                         {
@@ -187,7 +197,7 @@ namespace mms.MaterialApplicationCollar
                             string mddldid = Correspond_Draft_Code.Split(',')[0];
                             strSQL = " select TDM_Description, Material_Name, Material_Mark, CN_Material_State, Material_Tech_Condition, Mat_Rough_Weight ,MaterialsDes from M_Demand_DetailedList_Draft where Id = '" + mddldid + "'";
                             DataTable dtmddld = DBI.Execute(strSQL, true);
-
+                            lbl_Dinge_Size.Text = dtmddld.Rows[0]["Dinge_Size"].ToString();
                             lbl_Material_Mark.Text = dtmddld.Rows[0]["Material_Mark"].ToString();
                             lbl_CN_Material_State.Text = dtmddld.Rows[0]["CN_Material_State"].ToString();
                             lbl_Material_Tech_Condition.Text = dtmddld.Rows[0]["Material_Tech_Condition"].ToString();

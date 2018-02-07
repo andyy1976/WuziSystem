@@ -117,7 +117,7 @@
                     <span id="span_model" style="font-weight:bold; color:red;width:200px;" runat="server"></span>
                     <label style="float: left; margin-top: 0px;">计划包名称：</label>
                     <span id="span_PlanName" style="font-weight:bold; width:200px;" runat="server"></span>
-                    <label style="float: left; margin-top: 0px;">对应型号投产计划编号：</label>
+                    <label style="float: left; margin-top: 0px;">对应企业备料计划编号：</label>
                     <span id="span_plancode" style="font-weight:bold;width:200px;" runat="server"></span>
                     <label style="float: left">材料清单编号：</label>
                     <span id="span_DraftCode" style="font-weight:bold;width:200px;" runat="server"></span>

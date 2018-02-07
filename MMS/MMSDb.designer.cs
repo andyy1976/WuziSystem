@@ -20430,6 +20430,8 @@ namespace mms
 		
 		private string _MDML_Id;
 		
+		private string _Dinge_Size;
+		
     #region 可扩展性方法定义
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -20550,6 +20552,8 @@ namespace mms
     partial void OnCN_Material_StateChanged();
     partial void OnMDML_IdChanging(string value);
     partial void OnMDML_IdChanged();
+    partial void OnDinge_SizeChanging(string value);
+    partial void OnDinge_SizeChanged();
     #endregion
 		
 		public M_Demand_DetailedList_Draft()
@@ -21176,7 +21180,7 @@ namespace mms
 				}
 			}
 		}
-		 public string Dinge_Size { get; set; }
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Rough_Size", DbType="NVarChar(MAX)")]
 		public string Rough_Size
 		{
@@ -21717,6 +21721,26 @@ namespace mms
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Dinge_Size", DbType="NVarChar(MAX)")]
+		public string Dinge_Size
+		{
+			get
+			{
+				return this._Dinge_Size;
+			}
+			set
+			{
+				if ((this._Dinge_Size != value))
+				{
+					this.OnDinge_SizeChanging(value);
+					this.SendPropertyChanging();
+					this._Dinge_Size = value;
+					this.SendPropertyChanged("Dinge_Size");
+					this.OnDinge_SizeChanged();
+				}
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -21932,6 +21956,8 @@ namespace mms
 		
 		private string _Material_Name;
 		
+		private string _Dinge_Size;
+		
     #region 可扩展性方法定义
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -22124,6 +22150,8 @@ namespace mms
     partial void OnATTRIBUTE15Changed();
     partial void OnMaterial_NameChanging(string value);
     partial void OnMaterial_NameChanged();
+    partial void OnDinge_SizeChanging(string value);
+    partial void OnDinge_SizeChanged();
     #endregion
 		
 		public M_Demand_Merge_List()
@@ -24011,6 +24039,26 @@ namespace mms
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Dinge_Size", CanBeNull=false)]
+		public string Dinge_Size
+		{
+			get
+			{
+				return this._Dinge_Size;
+			}
+			set
+			{
+				if ((this._Dinge_Size != value))
+				{
+					this.OnDinge_SizeChanging(value);
+					this.SendPropertyChanging();
+					this._Dinge_Size = value;
+					this.SendPropertyChanged("Dinge_Size");
+					this.OnDinge_SizeChanged();
+				}
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -25236,7 +25284,7 @@ namespace mms
 				}
 			}
 		}
-        public string Dinge_Size { get; set; }
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Rough_Size", DbType="NVarChar(MAX)")]
 		public string Rough_Size
 		{

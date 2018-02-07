@@ -25,7 +25,7 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:HiddenField ID="HiddenField" runat="server" Value="物资需求-->型号投产计划" ClientIDMode="Static" />
+    <asp:HiddenField ID="HiddenField" runat="server" Value="物资需求-->企业备料计划" ClientIDMode="Static" />
     <telerik:RadScriptManager ID="RadScriptManager1" runat="server" AsyncPostBackTimeout="1800"></telerik:RadScriptManager>
     <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server" OnAjaxRequest="RadAjaxManager1_AjaxRequest">
         <ClientEvents OnRequestStart="onRequestStart" />
@@ -104,14 +104,14 @@
                 var selectedItems = masterTableView.get_selectedItems();
                 if (selectedItems.length <= 0) {
                     var rnal = $find("<%=RadNotificationAlert.ClientID %>");
-                    rnal.set_text("请选择一条型号投产计划");
+                    rnal.set_text("请选择一条企业备料计划");
                     rnal.show();
 
 
                 }
                 else if (selectedItems.length >1) {
                     var rnal = $find("<%=RadNotificationAlert.ClientID %>");
-                    rnal.set_text("请勿选择多条型号投产计划");
+                    rnal.set_text("请勿选择多条企业备料计划");
                     rnal.show();
 
                 }
@@ -244,7 +244,7 @@
                 </ClientSettings>
                 <MasterTableView CommandItemDisplay="Top" DataKeyNames="PackID" ClientDataKeyNames="PackID">
                     <CommandItemTemplate>
-                        型号投产计划包列表
+                        企业备料计划包列表
                         <telerik:RadButton ID="RB_Add" runat="server" Text="新增计划包" CssClass="floatleft" AutoPostBack="false" OnClientClicked="ImportPlan" Visible="false"></telerik:RadButton>
                         <telerik:RadButton ID="RadButton_ExportExcel" runat="server" Text="导出Excel" Font-Bold="true" CommandName="ExportExcel" OnClick="RadButton_ExportExcel_Click" CssClass="floatright"></telerik:RadButton>
                     </CommandItemTemplate>

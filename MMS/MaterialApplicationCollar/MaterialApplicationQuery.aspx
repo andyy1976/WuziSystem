@@ -151,12 +151,15 @@
                 <telerik:DropDownListItem Value="4" Text="无需求" />
             </Items>
         </telerik:RadDropDownList>
-        领用单状态：<telerik:RadDropDownList ID="RDDL_AppState" runat="server" Width="100px">
+       申请单状态：<telerik:RadDropDownList ID="RDDL_AppState" runat="server" Width="100px">
             <Items>
                 <telerik:DropDownListItem Value="" Text="全部" />
-                <telerik:DropDownListItem Value="1" Text="已申请" />
-                <telerik:DropDownListItem Value="2" Text="已退回" />
-                <telerik:DropDownListItem Value="3" Text="已删除" />
+                <telerik:DropDownListItem Value="1" Text="已申请未审批" />
+                <telerik:DropDownListItem Value="2" Text="开始审批" />
+                <telerik:DropDownListItem Value="3" Text="取消审批" />
+                <telerik:DropDownListItem Value="4" Text="已审批已通过" />
+                <telerik:DropDownListItem Value="5" Text="已审批未通过" />
+                <telerik:DropDownListItem Value="6" Text="物流中心退单" />
             </Items>
         </telerik:RadDropDownList>
         申请时间：<telerik:RadDatePicker ID="RDPStart" runat="server" Width="100px"  DateInput-ClientEvents-OnKeyPress='EnterKeyProcessing'>
@@ -221,6 +224,7 @@
                     <telerik:GridBoundColumn DataField="Rough_Spec" HeaderText="规格" UniqueName="Rough_Spec" ColumnGroupName="Material" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn DataField="Dinge_Size" HeaderText="胚料尺寸" UniqueName="Dinge_Size" ColumnGroupName="Material" ItemStyle-Width="80px" HeaderStyle-Width="80px"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn DataField="Mat_Rough_Weight" HeaderText="单件定额质量" UniqueName="Mat_Rough_Weight" ColumnGroupName="Material" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="Special_Needs" HeaderText="特殊需求" UniqueName="Special_Needs" ColumnGroupName="Material" ItemStyle-Width="80px" HeaderStyle-Width="80px"></telerik:GridBoundColumn>
 
                     <telerik:GridTemplateColumn HeaderText ="查询流程<br />平台信息"  ItemStyle-Width="70px" HeaderStyle-Width="70px">
                         <ItemTemplate>
@@ -231,7 +235,7 @@
    			    <CommandItemTemplate>
                     <telerik:RadButton ID="RB_Delete" runat="server" Text="删除" CommandName="del" CssClass="floatleft" OnClientClicking="confirmRadWindowDelete"></telerik:RadButton>
                     <telerik:RadButton ID="RB_Edit" runat="server" Text="修改"  Font-Bold="true" OnClientClicking="ShowWindow" CssClass="floatleft" AutoPostBack="true"  ></telerik:RadButton>
-                    物资信息列表
+                    申请单列表
 				    <telerik:RadButton ID="RadButton_ExportExcel" runat="server" Text="导出Excel" Font-Bold="true" CommandName="ExportExcel" OnClick="RadButton_ExportExcel_Click" CssClass="floatright"></telerik:RadButton>
                     <telerik:RadButton ID="RadButton_ExportWord"  runat="server" Text="导出Word"  Font-Bold="true" CommandName="ExportWord" Visible="false"  OnClick="RadButton_ExportWord_Click"  CssClass="floatright"></telerik:RadButton>
                     <telerik:RadButton ID="RadButton_ExportPDF"   runat="server" Text="导出PDF"   Font-Bold="true" CommandName="ExportPDF" Visible="false"   OnClick="RadButton_ExportPdf_Click"   CssClass="floatright"></telerik:RadButton>

@@ -160,11 +160,13 @@ namespace mms.Plan
                 string strSQL =
                         " select (ROW_NUMBER() OVER (ORDER BY M_Demand_Merge_List.ID)) AS rownum, MDP_Code" +
                         " , CUX_DM_URGENCY_LEVEL.DICT_Name as UrgencyDegre, CUX_DM_USAGE.DICT_Name as UseDes" + // , GetCustInfo_T_ACCT_SITE.ADDRESS as ADDRESS" +
+                        " , CUX_DM_PROJECT.DICT_Name as Model" +
                         " , (select Phase from Sys_Phase where Code = M_Demand_Merge_List.Stage) as Stage1" +
                         " , M_Demand_Merge_List.*" +
                         " from M_Demand_Merge_List join M_Demand_Plan_List on M_Demand_Plan_List.Id = M_Demand_Merge_List.MDPId" +
                         " left join GetBasicdata_T_Item as CUX_DM_URGENCY_LEVEL on CUX_DM_URGENCY_LEVEL.DICT_CODE = M_Demand_Merge_List.Urgency_Degre and DICT_CLASS='CUX_DM_URGENCY_LEVEL'" +
                         " left join GetBasicdata_T_Item as CUX_DM_USAGE on CUX_DM_USAGE.DICT_CODE = M_Demand_Merge_List.Use_Des and CUX_DM_USAGE.DICT_CLASS='CUX_DM_USAGE'" +
+                        " left join GetBasicdata_T_Item as CUX_DM_PROJECT on CUX_DM_PROJECT.DICT_CODE = M_Demand_Merge_List.Project and CUX_DM_PROJECT.DICT_CLASS='CUX_DM_PROJECT'" +
                         " where MDPId = '" + MDPID + "'";
                 return DBI.Execute(strSQL, true);
             }
@@ -180,11 +182,13 @@ namespace mms.Plan
             string strSql =
                        " select (ROW_NUMBER() OVER (ORDER BY M_Demand_Merge_List.ID)) AS rownum, MDP_Code" +
                        " , CUX_DM_URGENCY_LEVEL.DICT_Name as UrgencyDegre, CUX_DM_USAGE.DICT_Name as UseDes" + // , GetCustInfo_T_ACCT_SITE.ADDRESS as ADDRESS" +
+                       ", CUX_DM_PROJECT.DICT_Name as Model" +
                        " , (select Phase from Sys_Phase where Code = M_Demand_Merge_List.Stage) as Stage1" +
                        " , M_Demand_Merge_List.*" +
                        " from M_Demand_Merge_List join M_Demand_Plan_List on M_Demand_Plan_List.Id = M_Demand_Merge_List.MDPId" +
                        " left join GetBasicdata_T_Item as CUX_DM_URGENCY_LEVEL on CUX_DM_URGENCY_LEVEL.DICT_CODE = M_Demand_Merge_List.Urgency_Degre and DICT_CLASS='CUX_DM_URGENCY_LEVEL'" +
                        " left join GetBasicdata_T_Item as CUX_DM_USAGE on CUX_DM_USAGE.DICT_CODE = M_Demand_Merge_List.Use_Des and CUX_DM_USAGE.DICT_CLASS='CUX_DM_USAGE'" +
+                       " left join GetBasicdata_T_Item as CUX_DM_PROJECT on CUX_DM_PROJECT.DICT_CODE = M_Demand_Merge_List.Project and CUX_DM_PROJECT.DICT_CLASS='CUX_DM_PROJECT'" +
                        " where MDPId = '" + MDPLID + "'";
             dt = DBI.Execute(strSql, true);
             return dt;

@@ -137,9 +137,15 @@
                             </telerik:GridBoundColumn>
                             <telerik:GridBoundColumn DataField="TaskCode" HeaderText="任务号" HeaderStyle-Width="100px" ItemStyle-Width="100px">
                             </telerik:GridBoundColumn>
+                             <telerik:GridBoundColumn DataField="Model" HeaderText="型号" HeaderStyle-Width="70px" ItemStyle-Width="70px">
+                            </telerik:GridBoundColumn>
                             <telerik:GridBoundColumn DataField="ItemCode1" HeaderText="物资编码" HeaderStyle-Width="100px" ItemStyle-Width="100px">
                             </telerik:GridBoundColumn>
                             <telerik:GridBoundColumn DataField="Material_Name" HeaderText="物资名称" HeaderStyle-Width="100px" ItemStyle-Width="100px">
+                            </telerik:GridBoundColumn>
+                               <telerik:GridBoundColumn DataField="RQ_DATE" HeaderText="需求时间" HeaderStyle-Width="100px" ItemStyle-Width="100px" DataFormatString="{0:yyyy/MM/dd}">
+                            </telerik:GridBoundColumn>
+                               <telerik:GridBoundColumn DataField="Mat_Unit" HeaderText="计量单位" HeaderStyle-Width="70px" ItemStyle-Width="70px">
                             </telerik:GridBoundColumn>
                             <telerik:GridBoundColumn DataField="NumCasesSum" HeaderText="需求件数" HeaderStyle-Width="70px" ItemStyle-Width="70px">
                             </telerik:GridBoundColumn>
@@ -195,6 +201,8 @@
                             </telerik:GridBoundColumn>
                             <telerik:GridBoundColumn DataField="TaskCode" HeaderText="任务号" HeaderStyle-Width="100px" ItemStyle-Width="100px">
                             </telerik:GridBoundColumn>
+                             <telerik:GridBoundColumn DataField="Model" HeaderText="型号" HeaderStyle-Width="70px" ItemStyle-Width="70px">
+                            </telerik:GridBoundColumn>
                             <telerik:GridBoundColumn DataField="ItemCode1" HeaderText="物资编码" HeaderStyle-Width="100px" ItemStyle-Width="100px">
                             </telerik:GridBoundColumn>
                             <telerik:GridBoundColumn DataField="Material_Name" HeaderText="物资名称" HeaderStyle-Width="100px" ItemStyle-Width="100px">
@@ -205,6 +213,10 @@
                             <telerik:GridBoundColumn DataField="NumCasesSum" HeaderText="需求件数" HeaderStyle-Width="70px" ItemStyle-Width="70px">
                             </telerik:GridBoundColumn>
                             <telerik:GridBoundColumn DataField="DemandNumSum" HeaderText="需求量" HeaderStyle-Width="60px" ItemStyle-Width="60px">
+                            </telerik:GridBoundColumn>
+                             <telerik:GridBoundColumn DataField="RQ_DATE" HeaderText="需求时间" HeaderStyle-Width="100px" ItemStyle-Width="100px" DataFormatString="{0:yyyy/MM/dd}">
+                            </telerik:GridBoundColumn>
+                            <telerik:GridBoundColumn DataField="Mat_Unit" HeaderText="计量单位" HeaderStyle-Width="70px" ItemStyle-Width="70px">
                             </telerik:GridBoundColumn>
                             <telerik:GridBoundColumn DataField="Special_Needs" HeaderText="特殊需求" HeaderStyle-Width="100px" ItemStyle-Width="100px">
                             </telerik:GridBoundColumn>

@@ -327,7 +327,7 @@
                                 </telerik:GridTemplateColumn>
                             </Columns>
                             <CommandItemTemplate>
-                                型号投产计划任务列表
+                                企业备料计划任务列表
                                 <asp:RadioButtonList ID="RBL_IsSpreadAll" runat="server" RepeatDirection="Horizontal" CssClass="floatright" AutoPostBack="true" OnSelectedIndexChanged="RBL_IsSpreadAll_SelectedIndexChanged">
                                     <asp:ListItem Value="false" Text="全否"></asp:ListItem>
                                     <asp:ListItem Value="true" Text="全是"></asp:ListItem>

@@ -584,8 +584,17 @@ namespace mms.Plan
                 string ID = dataitem.GetDataKeyValue("ID").ToString();
                 string MDPId = table.Rows[e.Item.DataSetIndex]["MDPId"].ToString();
                 DeleteTechnology(MDPId, ID);
-                GridSource = Common.AddTableRowsID(GetTechnologyTestList(MDPId, this.ViewState["submit_type"].ToString()));
-                RadGrid_TechnologyTestList.DataSource = GridSource;
+                if (GridSource.Rows.Count == 1)
+                {
+                    RadNotificationAlert1.Text = "记录全部删除，将退出当前页面";
+                    RadNotificationAlert1.Show();
+                }
+                else
+                {
+                    GridSource = Common.AddTableRowsID(GetTechnologyTestList(MDPId, this.ViewState["submit_type"].ToString()));
+                    RadGrid_TechnologyTestList.DataSource = GridSource;
+                    RadGrid_TechnologyTestList.Rebind();
+                }
             }
         }
 
@@ -1592,7 +1601,7 @@ namespace mms.Plan
                                        break;
 
 
-                                   case "胚料尺寸":
+                                   case "坯料尺寸":
                                        GridSource1.Columns[i].ColumnName = "Dinge_Size";
                                        columnscount++;
                                        break;
@@ -2332,6 +2341,7 @@ namespace mms.Plan
                 RadNotificationAlert.Show();
            
                 GridSource = Common.AddTableRowsID(GetTechnologyTestList(MDPId.ToString(), Submit_Type.ToString()));
+                RadGrid_TechnologyTestList.DataSource = GridSource;
                 RadGrid_TechnologyTestList.Rebind();
            
              
