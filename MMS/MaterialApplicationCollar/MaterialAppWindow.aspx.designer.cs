@@ -319,6 +319,51 @@ namespace mms.MaterialApplicationCollar {
         protected global::System.Web.UI.WebControls.Label lb1_MaterialsDes;
         
         /// <summary>
+        /// RadComboBoxSecretLevel 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadComboBox RadComboBoxSecretLevel;
+        
+        /// <summary>
+        /// SqlDataSourceSecretLevel 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceSecretLevel;
+        
+        /// <summary>
+        /// RadComboBoxUseDes 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadComboBox RadComboBoxUseDes;
+        
+        /// <summary>
+        /// SqlDataSourceUseDes 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceUseDes;
+        
+        /// <summary>
+        /// RadComboBoxIsApply 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadComboBox RadComboBoxIsApply;
+        
+        /// <summary>
         /// RDDL_DiaoDu 控件。
         /// </summary>
         /// <remarks>

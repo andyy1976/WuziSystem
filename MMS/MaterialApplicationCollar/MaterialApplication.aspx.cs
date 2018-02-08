@@ -239,6 +239,10 @@ namespace mms.MaterialApplicationCollar
             string XingHao = RDDL_XingHao.SelectedValue.ToString();
             string WuZi = RDDL_WuZi.SelectedValue.ToString();
 
+            var securityLevel = RadComboBoxSecretLevel.SelectedValue;
+            var Usage = RadComboBoxUseDes.SelectedValue;
+            var isApply = RadComboBoxIsApply.SelectedValue;
+
             if (lblMSG.Visible == true) { RadNotificationAlert.Text = "该物资编码不存在，不能提交"; RadNotificationAlert.Show(); return; }
             if (Applicant == "") { RadNotificationAlert.Text = "失败！请输入申请人"; RadNotificationAlert.Show(); return; }
             if (ApplicationTime == "") { RadNotificationAlert.Text = "失败！请输入申请时间"; RadNotificationAlert.Show(); return; }
@@ -272,10 +276,12 @@ namespace mms.MaterialApplicationCollar
                 strSQL = "declare @id int";
                 strSQL += " Insert into MaterialApplication (Type, Material_Id,Applicant, UserAccount,Dept, ApplicationTime, ContactInformation, TheMaterialWay, TaskCode, Drawing_No"
                     + " , Draft_Code, Quantity, FeedingTime, IsDispatch, IsConfirm, Remark, MaterialType, Material_Name, Material_Mark, CN_Material_State, Material_Tech_Condition"
+                     + " , SECURITY_LEVEL,USAGE,Is_Apply"
                     + " , Rough_Spec, Mat_Rough_Weight,MaterialsDes, Mat_Unit, Rough_Size, Dinge_Size,PleaseTakeQuality, AppState, ReturnReason, Is_Del, ItemCode,DiaoDuApprove, XingHaoJiHuaYuanApprove, WuZiJiHuaYuanApprove)"
                     + " values ('4',Null, '" + Applicant + "','"  + Session["UserAccount"] + "','"+deptCode + "','" + ApplicationTime + "','" + ContactInformation + "','" + TheMaterialWay + "','" + TaskCode + "','" + DrawingNo + "'"
                     + " ,Null,'" + Quantity + "','" + FeedingTime + "','" + IsDispatch + "','" + IsConfirm + "','" + Remark + "'"
                     + " ,Null,'" + Material_Name + "','" + Material_Mark + "','" + CN_Material_State + "','" + Material_Tech_Condition + "'"
+                    + " ,'" + securityLevel + "','" + Usage + "','" + isApply + "'"
                     + " ,'" + Rough_Spec + "','" + Mat_Rough_Weight + "','" + MaterialsDes + "','" + Mat_Unit + "','" + Rough_Size + "','" + Dinge_Size + "','" + PleaseTakeQuality + "','1',Null,'false'"
                     + " ,'" + ItemCode + "','" + DiaoDu + "','" + XingHao + "','" + WuZi + "') select @id = @@identity"
                     + " Insert into MaterialApplication_Log (MaterialApplicationId, Operation_UserId, Operation_Time, Operation_Remark)"
@@ -353,6 +359,10 @@ namespace mms.MaterialApplicationCollar
             string XingHao = RDDL_XingHao.SelectedValue.ToString();
             string WuZi = RDDL_WuZi.SelectedValue.ToString();
 
+            var securityLevel = RadComboBoxSecretLevel.SelectedValue;
+            var Usage = RadComboBoxUseDes.SelectedValue;
+            var isApply = RadComboBoxIsApply.SelectedValue;
+
             if (lblMSG.Visible == true) { RadNotificationAlert.Text = "该物资编码不存在，不能保存"; RadNotificationAlert.Show(); return; }
             if (Applicant == "") { RadNotificationAlert.Text = "失败！请输入申请人"; RadNotificationAlert.Show(); return; }
             if (ApplicationTime == "") { RadNotificationAlert.Text = "失败！请输入申请时间"; RadNotificationAlert.Show(); return; }
@@ -383,10 +393,12 @@ namespace mms.MaterialApplicationCollar
             string strSQL = "declare @id int";
             strSQL += " Insert into MaterialApplication (Type, Material_Id, Applicant, UserAccount,Dept, ApplicationTime, ContactInformation, TheMaterialWay, TaskCode, Drawing_No"
                 + " , Draft_Code, Quantity, FeedingTime, IsDispatch, IsConfirm, Remark, MaterialType, Material_Name, Material_Mark, CN_Material_State, Material_Tech_Condition"
+                + " , SECURITY_LEVEL,USAGE,Is_Apply"
                 + " , Rough_Spec, Mat_Rough_Weight, MaterialsDes,Mat_Unit,Rough_Size,Dinge_Size, PleaseTakeQuality, AppState, ReturnReason, Is_Del, ItemCode,DiaoDuApprove, XingHaoJiHuaYuanApprove, WuZiJiHuaYuanApprove)"
                 + " values ('4',Null, '" + Applicant + "','"+ Session["UserAccount"] + "','"+ deptCode + "','" + ApplicationTime + "','" + ContactInformation + "','" + TheMaterialWay + "','" + TaskCode + "','" + DrawingNo + "'"
                 + " ,Null,'" + Quantity + "','" + FeedingTime + "','" + IsDispatch + "','" + IsConfirm + "','" + Remark + "'"
                 + " ,Null,'" + Material_Name + "','" + Material_Mark + "','" + CN_Material_State + "','" + Material_Tech_Condition + "'"
+                  + " ,'" + securityLevel + "','" + Usage + "','" + isApply + "'"
                 + " ,'" + Rough_Spec + "','" + Mat_Rough_Weight + "','" + MaterialsDes + "','" + Mat_Unit + "','" + Rough_Size + "','" + Dinge_Size + "','" + PleaseTakeQuality + "','1',Null,'false'"
                 + " ,'" + ItemCode + "','" + DiaoDu + "','" + XingHao + "','" + WuZi + "') select @id = @@identity"
                 + " Insert into MaterialApplication_Log (MaterialApplicationId, Operation_UserId, Operation_Time, Operation_Remark)"

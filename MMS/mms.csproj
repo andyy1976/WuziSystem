@@ -1582,6 +1582,9 @@
     <Compile Include="MaterialApplicationCollar\MaterialBack.aspx.designer.cs">
       <DependentUpon>MaterialBack.aspx</DependentUpon>
     </Compile>
+    <Compile Include="MMSDb.cs">
+      <DependentUpon>MMSDb.dbml</DependentUpon>
+    </Compile>
     <Compile Include="Plan\Import_ShowPlan.aspx.cs">
       <DependentUpon>Import_ShowPlan.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2258,7 +2261,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties UseAjaxifiedTemplates="True" UseJQuerySupport="True" />
+      <UserProperties UseJQuerySupport="True" UseAjaxifiedTemplates="True" />
     </VisualStudio>
   </ProjectExtensions>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

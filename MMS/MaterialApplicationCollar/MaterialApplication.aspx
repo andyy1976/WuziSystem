@@ -357,6 +357,33 @@
                      </td>
   
                 </tr>
+                        <tr>
+                   <td  style="text-align: right;">密级：</td>
+                           <td>
+                                        <telerik:RadComboBox ID="RadComboBoxSecretLevel" runat="server" DataSourceID="SqlDataSourceSecretLevel"
+                                            DataTextField="SecretLevel_Name" DataValueField="SecretLevel_Name" Width="150">
+                                        </telerik:RadComboBox>
+                                        <asp:SqlDataSource ID="SqlDataSourceSecretLevel" runat="server" ConnectionString='<%$ ConnectionStrings:MaterialManagerSystemConnectionString %>'
+                                            SelectCommand="SELECT * FROM [Sys_SecretLevel] WHERE ([Is_Del] = 0)"></asp:SqlDataSource>
+                           </td>
+                           <td  style="text-align: right;">用途：</td>
+                           <td >
+                                        <telerik:RadComboBox ID="RadComboBoxUseDes" runat="server" DataSourceID="SqlDataSourceUseDes"
+                                            DataTextField="DICT_Name" DataValueField="DICT_CODE" Width="150">
+                                        </telerik:RadComboBox>
+                                        <asp:SqlDataSource ID="SqlDataSourceUseDes" runat="server" ConnectionString='<%$ ConnectionStrings:MaterialManagerSystemConnectionString %>'
+                                            SelectCommand="select * from GetBasicdata_T_Item where DICT_CLASS='CUX_DM_USAGE' and ENABLED_FLAG = 'Y'"></asp:SqlDataSource>
+                          </td>
+                          <td  style="text-align: right;">是否开证：</td>
+                          <td >
+                                        <telerik:RadComboBox ID="RadComboBoxIsApply" runat="server" Width="150">
+                                            <Items>
+                                                <telerik:RadComboBoxItem Text="Y" Value="Y" />
+                                                <telerik:RadComboBoxItem Text="N" Value="N" />
+                                            </Items>
+                                        </telerik:RadComboBox>
+                          </td>                                   
+                </tr>
                 <tr>
                     <th colspan="6" style="text-align: left; font-size: 14px; border-bottom: solid 1px #ccc;">业务审批流程</th>
                 </tr>

@@ -101,7 +101,7 @@ namespace mms.MaterialApplicationCollar
 
 
                     //strSQL = " select * , (select MDPID from M_Demand_Merge_List where ID = MaterialApplication.Material_Id) as MDPLID from MaterialApplication where ID = '" + HFMAID.Value + "'";
-                    strSQL = " select * ,M_Demand_Merge_List.MDPID as MDPLID,M_Demand_Merge_List.Special_Needs from MaterialApplication left join M_Demand_Merge_List on ID = MaterialApplication.Material_Id where ID = '" + HFMAID.Value + "'";
+                    strSQL = " select * ,M_Demand_Merge_List.MDPID as MDPLID,M_Demand_Merge_List.Special_Needs ,M_Demand_Merge_List.SECURITY_LEVEL,M_Demand_Merge_List.USAGE from MaterialApplication left join M_Demand_Merge_List on ID = MaterialApplication.Material_Id where ID = '" + HFMAID.Value + "'";
                     DataTable dtma = DBI.Execute(strSQL, true);
                     HFMDMLID.Value = dtma.Rows[0]["Material_ID"].ToString();
                     HFMDPLID.Value = dtma.Rows[0]["MDPLID"].ToString();
@@ -142,7 +142,14 @@ namespace mms.MaterialApplicationCollar
                     lbl_Mat_Unit.Text = dtma.Rows[0]["Mat_Unit"].ToString();
                     RTB_Rough_Size.Text = dtma.Rows[0]["Rough_Size"].ToString();
                     lbl_Dinge_Size.Text = dtma.Rows[0]["Dinge_Size"].ToString();
-               
+                    if (RadComboBoxSecretLevel.FindItemByValue(dtma.Rows[0]["USAGE"].ToString()) != null)
+                    {
+                        RadComboBoxSecretLevel.FindItemByValue(dtma.Rows[0]["USAGE"].ToString()).Selected = true;
+                    }
+                    if (RadComboBoxUseDes.FindItemByValue(dtma.Rows[0]["SECURITY_LEVEL"].ToString()) != null)
+                    {
+                        RadComboBoxUseDes.FindItemByValue(dtma.Rows[0]["SECURITY_LEVEL"].ToString()).Selected = true;
+                    }
                     if (RDDL_DiaoDu.FindItemByValue(dtma.Rows[0]["DiaoDuApprove"].ToString()) != null)
                     {
                         RDDL_DiaoDu.FindItemByValue(dtma.Rows[0]["DiaoDuApprove"].ToString()).Selected = true;
@@ -195,7 +202,7 @@ namespace mms.MaterialApplicationCollar
                         {
                             string Correspond_Draft_Code = dt.Rows[0]["Correspond_Draft_Code"].ToString();
                             string mddldid = Correspond_Draft_Code.Split(',')[0];
-                            strSQL = " select TDM_Description, Material_Name, Material_Mark, CN_Material_State, Material_Tech_Condition, Mat_Rough_Weight ,MaterialsDes from M_Demand_DetailedList_Draft where Id = '" + mddldid + "'";
+                            strSQL = " select TDM_Description, Material_Name, Material_Mark, CN_Material_State, Material_Tech_Condition, Mat_Rough_Weight ,MaterialsDes,Dinge_Size from M_Demand_DetailedList_Draft where Id = '" + mddldid + "'";
                             DataTable dtmddld = DBI.Execute(strSQL, true);
                             lbl_Dinge_Size.Text = dtmddld.Rows[0]["Dinge_Size"].ToString();
                             lbl_Material_Mark.Text = dtmddld.Rows[0]["Material_Mark"].ToString();
@@ -268,7 +275,9 @@ namespace mms.MaterialApplicationCollar
             var diaodu = RDDL_DiaoDu.SelectedValue;
             var xinghao = RDDL_XingHao.SelectedValue;
             var wuzi = RDDL_WuZi.SelectedValue;
-
+            var securityLevel = RadComboBoxSecretLevel.SelectedValue;
+            var Usage = RadComboBoxUseDes.SelectedValue;
+            var isApply = RadComboBoxIsApply.SelectedValue;
             if (Applicant == "")
             {
                 RadNotificationAlert.Text = "请输入申请人！";
@@ -320,10 +329,12 @@ namespace mms.MaterialApplicationCollar
                     strSQL = "declare @id int";
                     strSQL += " Insert into MaterialApplication (Type, Material_Id, Applicant, Dept, ApplicationTime, ContactInformation, TheMaterialWay, TaskCode, Drawing_No"
                         + " , Draft_Code, Quantity, FeedingTime, IsDispatch, IsConfirm, Remark, MaterialType, Material_Name, Material_Mark, CN_Material_State, Material_Tech_Condition"
+                        + " , SECURITY_LEVEL,USAGE,Is_Apply"
                         + " , Rough_Spec, Mat_Rough_Weight,MaterialsDes, Mat_Unit,Rough_Size,Dinge_Size,PleaseTakeQuality, AppState, ReturnReason, Is_Del, ItemCode,DiaoDuApprove, XingHaoJiHuaYuanApprove, WuZiJiHuaYuanApprove, UserId, UserAccount)"
                         + " values ('" + HFType.Value + "','" + HFMDMLID.Value + "', '" + Applicant + "','" + Dept + "','" + ApplicationTime + "','" + ContactInformation + "','" + TheMaterialWay + "','" + TaskCode + "','" + DrawingNo + "'"
                         + " ,Null,'" + Quantity + "','" + FeedingTime + "','" + IsDispatch + "','" + IsConfirm + "','" + Remark + "'"
                         + " ,Null,'" + Material_Name + "','" + Material_Mark + "','" + CN_Material_State + "','" + Material_Tech_Condition + "'"
+                        + " ,'" + securityLevel+"','"+Usage+"','"+isApply+"'"
                         + " ,'" + Rough_Spec + "','" + Mat_Rough_Weight + "','" + MaterialsDes + "','" + Mat_Unit + "','" + Rough_Size + "','" +Dinge_Size+"','"+ PleaseTakeQuality + "','1',Null,'false'"
                         + " ,'" + ItemCode + "','" +diaodu + "','" + xinghao + "','" + wuzi + "','" + Session["UserId"].ToString() + "'"
                         + " ,(select DomainAccount from Sys_UserInfo_PWD where Id = '" + Session["UserId"].ToString() + "'))" +
@@ -352,6 +363,9 @@ namespace mms.MaterialApplicationCollar
                         + " , IsConfirm = '" + IsConfirm + "', Remark = '" + Remark + "', ReturnReason = '', AppState = '1'"
                         + " , DiaoDuApprove = '" + diaodu + "', XingHaoJiHuaYuanApprove = '" + xinghao + "', WuZiJiHuaYuanApprove = '" + wuzi + "', TaskCode = '" + TaskCode
                         + "', PleaseTakeQuality = '" + PleaseTakeQuality + "'"
+                        + ", SECURITY_LEVEL = '" + securityLevel + "'"
+                        + ", USAGE = '" + Usage + "'"
+                        + ", Is_Apply = '" + isApply + "'"
                         + " where ID = '" + HFMAID.Value + "'";
                     strSQL += " Insert into MaterialApplication_Log (MaterialApplicationId, Operation_UserId, Operation_Time, Operation_Remark)"
                         + " values ('" + HFMAID.Value + "', '" + Session["UserId"].ToString() + "',GetDate(),'重新提交' + @sql)";

@@ -297,6 +297,7 @@
                                 </telerik:GridClientSelectColumn>
                                 <telerik:GridBoundColumn DataField="RowsID" HeaderText="序号" ItemStyle-Width="40px" HeaderStyle-Width="40px">
                                 </telerik:GridBoundColumn>
+               
                                 <telerik:GridBoundColumn DataField="TaskCode" HeaderText="任务号" ItemStyle-Width="80px" HeaderStyle-Width="80px">
                                 </telerik:GridBoundColumn>                  
                                 <telerik:GridBoundColumn DataField="TaskDrawingCode" HeaderText="图号" ItemStyle-Width="80px" HeaderStyle-Width="80px">
@@ -368,6 +369,8 @@
                                     <telerik:GridBoundColumn DataField="ID" ItemStyle-Width="40px" HeaderStyle-Width="40px" HeaderText="序号" SortExpression="ID" UniqueName="ID">
                                     </telerik:GridBoundColumn>
 
+                                    <telerik:GridBoundColumn DataField="Project" ItemStyle-Width="80px" HeaderStyle-Width="80px" HeaderText="型号" SortExpression="Project" UniqueName="Project" Visible="false">
+                                    </telerik:GridBoundColumn>
                                     <telerik:GridBoundColumn DataField="Drawing_No" ItemStyle-Width="80px" HeaderStyle-Width="80px" HeaderText="图号" SortExpression="Drawing_No" UniqueName="Drawing_No">
                                     </telerik:GridBoundColumn>
                                     <telerik:GridBoundColumn DataField="TaskCode" HeaderText="任务号" ItemStyle-Width="80px" HeaderStyle-Width="80px" Visible="false">
@@ -392,9 +395,9 @@
                                     </telerik:GridBoundColumn>
                                     <telerik:GridBoundColumn DataField="Material_Tech_Condition" ItemStyle-Width="120px" HeaderStyle-Width="120px" HeaderText="技术条件" SortExpression="Material_Tech_Condition" UniqueName="Material_Tech_Condition" Visible="true">
                                     </telerik:GridBoundColumn>
-                                    <telerik:GridBoundColumn DataField="Rough_Spec" ItemStyle-Width="100px" HeaderStyle-Width="100px" HeaderText="胚料规格" SortExpression="Rough_Spec" UniqueName="Rough_Spec">
+                                    <telerik:GridBoundColumn DataField="Rough_Spec" ItemStyle-Width="100px" HeaderStyle-Width="100px" HeaderText="坯料规格" SortExpression="Rough_Spec" UniqueName="Rough_Spec">
                                     </telerik:GridBoundColumn>
-                                    <telerik:GridBoundColumn DataField="Dinge_Size" ItemStyle-Width="80px" HeaderStyle-Width="80px" HeaderText="胚料尺寸" SortExpression="Dinge_Size" UniqueName="Dinge_Size" Visible="true">
+                                    <telerik:GridBoundColumn DataField="Dinge_Size" ItemStyle-Width="80px" HeaderStyle-Width="80px" HeaderText="坯料尺寸" SortExpression="Dinge_Size" UniqueName="Dinge_Size" Visible="true">
                                     </telerik:GridBoundColumn>
 
                                     <telerik:GridBoundColumn DataField="Mat_Rough_Weight" ItemStyle-Width="80px" HeaderStyle-Width="80px" HeaderText="单件质量" SortExpression="Mat_Rough_Weight" UniqueName="Mat_Rough_Weight" Visible="true">
@@ -574,7 +577,8 @@
                                     </telerik:GridTemplateColumn>
                                     <telerik:GridBoundColumn DataField="ID" HeaderText="编号" ItemStyle-Width="50px" HeaderStyle-Width="50px">
                                     </telerik:GridBoundColumn>
-                               
+                                    <telerik:GridBoundColumn DataField="Model" ItemStyle-Width="80px" HeaderStyle-Width="80px" HeaderText="型号工程" SortExpression="Model" UniqueName="Model" Visible="false">
+                                    </telerik:GridBoundColumn>
                                     <telerik:GridBoundColumn DataField="Drawing_No"  HeaderText="图号" ItemStyle-Width="100px" HeaderStyle-Width="100px" SortExpression="Drawing_No" UniqueName="Drawing_No">
                                     </telerik:GridBoundColumn>
                                     <telerik:GridBoundColumn DataField="TaskCode"  HeaderText="任务号" ItemStyle-Width="100px" HeaderStyle-Width="100px" SortExpression="TaskCode" UniqueName="TaskCode">
