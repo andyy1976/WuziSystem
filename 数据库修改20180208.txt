@@ -1,0 +1,3 @@
+SECURITY_LEVEL	nvarchar(80)	Checked
+USAGE	nvarchar(50)	Checked
+Is_Apply	nvarchar(10)	Checked
