@@ -257,8 +257,7 @@
                                 <tr>
                                     <td class="technology_Div_detailcontent_title">密级：</td>
                                     <td class="technology_Div_detailcontent_content">
-                                        <telerik:RadComboBox ID="RadComboBoxSecretLevel" runat="server" DataSourceID="SqlDataSourceSecretLevel"
-                                            DataTextField="SecretLevel_Name" DataValueField="SecretLevel_Name" Width="150">
+                                        <telerik:RadComboBox ID="RadComboBoxSecretLevel" runat="server" AppendDataBoundItems="true"  Width="150">
                                         </telerik:RadComboBox>
                                         <asp:SqlDataSource ID="SqlDataSourceSecretLevel" runat="server" ConnectionString='<%$ ConnectionStrings:MaterialManagerSystemConnectionString %>'
                                             SelectCommand="SELECT * FROM [Sys_SecretLevel] WHERE ([Is_Del] = 0)"></asp:SqlDataSource>
@@ -275,9 +274,8 @@
                                     </td>
                                     <td class="technology_Div_detailcontent_title">用途：</td>
                                     <td class="technology_Div_detailcontent_content">
-                                            <telerik:RadComboBox ID="RadComboBoxUseDes" runat="server" Width="150" DataSourceID="SqlDataSourceUseDes"
-                                            DataTextField="DICT_Name" DataValueField="DICT_Code">
-                                            </telerik:RadComboBox>
+                                            <telerik:RadDropDownList ID="RadComboBoxUseDes" runat="server" Width="150" AppendDataBoundItems="true">
+                                            </telerik:RadDropDownList>
                                           <asp:SqlDataSource ID="SqlDataSourceUseDes" runat="server" ConnectionString='<%$ ConnectionStrings:MaterialManagerSystemConnectionString %>'
                                          SelectCommand="select * from GetBasicdata_T_Item where DICT_CLASS='CUX_DM_USAGE'"></asp:SqlDataSource>
 
@@ -301,8 +299,7 @@
                                     </td>
                                     <td class="technology_Div_detailcontent_title">紧急程度：</td>
                                     <td class="technology_Div_detailcontent_content">
-                                        <telerik:RadComboBox ID="RadComboBoxUrgencyDegre" runat="server" DataSourceID="SqlDataSourceUrgencyDegre"
-                                            DataTextField="DICT_Name" DataValueField="DICT_CODE" Width="150">
+                                        <telerik:RadComboBox ID="RadComboBoxUrgencyDegre" runat="server" AppendDataBoundItems="true" Width="150">
                                         </telerik:RadComboBox>
                                         <asp:SqlDataSource ID="SqlDataSourceUrgencyDegre" runat="server" ConnectionString='<%$ ConnectionStrings:MaterialManagerSystemConnectionString %>'
                                             SelectCommand="select * from GetBasicdata_T_Item where DICT_CLASS='CUX_DM_URGENCY_LEVEL' and ENABLED_FLAG = 'Y'"></asp:SqlDataSource>

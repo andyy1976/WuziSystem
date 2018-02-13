@@ -850,7 +850,7 @@
                                             <HeaderStyle HorizontalAlign="Center" Font-Size="13px" />
                                             <ClientSettings EnableRowHoverStyle="true">
                                                 <Selecting AllowRowSelect="true" />
-                                                <Scrolling AllowScroll="True" UseStaticHeaders="True" SaveScrollPosition="true" FrozenColumnsCount="3" ScrollHeight="300px"></Scrolling>
+                                                <Scrolling AllowScroll="True" UseStaticHeaders="True" SaveScrollPosition="true" FrozenColumnsCount="3"></Scrolling>
                                             </ClientSettings>
                                             <MasterTableView DataKeyNames="SEG3">
                                                 <Columns>

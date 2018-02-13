@@ -135,7 +135,7 @@
                             </telerik:GridBoundColumn>
                             <telerik:GridBoundColumn DataField="DRAWING_NO" HeaderText="产品图号" HeaderStyle-Width="100px" ItemStyle-Width="100px">
                             </telerik:GridBoundColumn>
-                            <telerik:GridBoundColumn DataField="TaskCode" HeaderText="任务号" HeaderStyle-Width="100px" ItemStyle-Width="100px">
+                            <telerik:GridBoundColumn DataField="TaskCode" HeaderText="任务号" HeaderStyle-Width="150px" ItemStyle-Width="150px">
                             </telerik:GridBoundColumn>
                              <telerik:GridBoundColumn DataField="Model" HeaderText="型号" HeaderStyle-Width="70px" ItemStyle-Width="70px">
                             </telerik:GridBoundColumn>
@@ -199,7 +199,7 @@
                             </telerik:GridBoundColumn>
                             <telerik:GridBoundColumn DataField="DRAWING_NO" HeaderText="产品图号" HeaderStyle-Width="100px" ItemStyle-Width="100px">
                             </telerik:GridBoundColumn>
-                            <telerik:GridBoundColumn DataField="TaskCode" HeaderText="任务号" HeaderStyle-Width="100px" ItemStyle-Width="100px">
+                            <telerik:GridBoundColumn DataField="TaskCode" HeaderText="任务号" HeaderStyle-Width="150px" ItemStyle-Width="150px">
                             </telerik:GridBoundColumn>
                              <telerik:GridBoundColumn DataField="Model" HeaderText="型号" HeaderStyle-Width="70px" ItemStyle-Width="70px">
                             </telerik:GridBoundColumn>

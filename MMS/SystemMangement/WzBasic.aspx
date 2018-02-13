@@ -123,7 +123,7 @@
             <PagerStyle AlwaysVisible="true" />
             <ClientSettings EnableRowHoverStyle="true">
                 <Selecting AllowRowSelect="true" />
-                <Scrolling AllowScroll="True" UseStaticHeaders="True" SaveScrollPosition="true" FrozenColumnsCount="3" ScrollHeight="600px"></Scrolling>
+                <Scrolling AllowScroll="True" UseStaticHeaders="True" SaveScrollPosition="true" FrozenColumnsCount="3"></Scrolling>
             </ClientSettings>
               <AlternatingItemStyle HorizontalAlign="Center" />
                 <ItemStyle HorizontalAlign="Center" />

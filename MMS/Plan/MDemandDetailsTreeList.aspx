@@ -266,7 +266,7 @@
                 <HeaderStyle Font-Size="13px" HorizontalAlign="Center"/>
                           <ClientSettings>
                               <Selecting AllowItemSelection="true" AllowToggleSelection="true" />
-                              <Scrolling AllowScroll="True" UseStaticHeaders="True" SaveScrollPosition="true" ScrollHeight="480px"></Scrolling>
+                              <Scrolling AllowScroll="True" UseStaticHeaders="True" SaveScrollPosition="true"></Scrolling>
                           </ClientSettings> 
                          <ExportSettings IgnorePaging="true"  OpenInNewWindow="true">
                        <Pdf  DefaultFontFamily="Arial Unicode MS" />

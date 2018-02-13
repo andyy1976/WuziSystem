@@ -171,7 +171,7 @@
             <HeaderStyle HorizontalAlign="Center" Font-Size="13px" />
             <CommandItemStyle Font-Bold="true" Font-Size="16px" HorizontalAlign="Center" Height="40px" />
             <ClientSettings Selecting-AllowRowSelect="true" EnableRowHoverStyle="true">
-                <Scrolling AllowScroll="True" UseStaticHeaders="True" SaveScrollPosition="true" FrozenColumnsCount="4" ScrollHeight="600px"></Scrolling>
+                <Scrolling AllowScroll="True" UseStaticHeaders="True" SaveScrollPosition="true" FrozenColumnsCount="4"></Scrolling>
                 <Selecting AllowRowSelect="true" />
             </ClientSettings>
  			<ExportSettings HideStructureColumns="true" ExportOnlyData="true" IgnorePaging="true" OpenInNewWindow="true">

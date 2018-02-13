@@ -140,9 +140,15 @@ namespace mms.Plan
                     RTB_Mat_Rough_Weight.Text = dt.Rows[0]["Mat_Rough_Weight"].ToString();
                     RTB_Unit_Price.Text = dt.Rows[0]["Unit_Price"].ToString();
                     span_Sum_Price.Text = dt.Rows[0]["Sum_Price"].ToString();
-                    if (RadComboBoxSecretLevel.FindItemByText(dt.Rows[0]["Secret_Level"].ToString()) != null)
+                    strSQL = " SELECT * FROM [Sys_SecretLevel] WHERE ([Is_Del] = 0)";
+                    RadComboBoxSecretLevel.DataSource = DBI.Execute(strSQL, true);
+                    RadComboBoxSecretLevel.DataValueField = "SecretLevel_Name";
+                    RadComboBoxSecretLevel.DataTextField = "SecretLevel_Name";
+                    RadComboBoxSecretLevel.DataBind();
+
+                    if (RadComboBoxSecretLevel.FindItemByValue(dt.Rows[0]["Secret_Level"].ToString()) != null)
                     {
-                        RadComboBoxSecretLevel.FindItemByText(dt.Rows[0]["Secret_Level"].ToString()).Selected = true;
+                        RadComboBoxSecretLevel.FindItemByValue(dt.Rows[0]["Secret_Level"].ToString()).Selected = true;
                     }
                     strSQL = " select * from Sys_Phase order by Code";
                     RadComboBoxStage.DataSource = DBI.Execute(strSQL, true);
@@ -163,6 +169,12 @@ namespace mms.Plan
                     {
                         RDDL_Project.FindItemByValue(dt.Rows[0]["Project"].ToString()).Selected = true;
                     }
+
+                    strSQL = " select DICT_Code, DICT_Name from GetBasicdata_T_Item  where DICT_CLASS = 'CUX_DM_USAGE' and ENABLED_FLAG = 'Y' order by DICT_Name";
+                    RadComboBoxUseDes.DataSource = DBI.Execute(strSQL, true);
+                    RadComboBoxUseDes.DataValueField = "DICT_Code";
+                    RadComboBoxUseDes.DataTextField = "DICT_Name";
+                    RadComboBoxUseDes.DataBind();
                     if (RadComboBoxUseDes.FindItemByValue(dt.Rows[0]["Use_Des"].ToString()) != null)
                     {
                         RadComboBoxUseDes.FindItemByValue(dt.Rows[0]["Use_Des"].ToString()).Selected = true;
@@ -172,6 +184,13 @@ namespace mms.Plan
                         RadComboBoxCertification.FindItemByValue(dt.Rows[0]["Certification"].ToString()).Selected = true;
                     }
                     rtb_SpecialNeeds.Text = dt.Rows[0]["Special_Needs"].ToString();
+
+                    strSQL = " select DICT_Code, DICT_Name from GetBasicdata_T_Item  where DICT_CLASS = 'CUX_DM_URGENCY_LEVEL' and ENABLED_FLAG = 'Y' order by DICT_Name";
+                    RadComboBoxUrgencyDegre.DataSource = DBI.Execute(strSQL, true);
+                    RadComboBoxUrgencyDegre.DataValueField = "DICT_Code";
+                    RadComboBoxUrgencyDegre.DataTextField = "DICT_Name";
+                    RadComboBoxUrgencyDegre.DataBind();
+
                     if (RadComboBoxUrgencyDegre.FindItemByValue(dt.Rows[0]["Urgency_Degre"].ToString()) != null)
                     {
                         RadComboBoxUrgencyDegre.FindItemByValue(dt.Rows[0]["Urgency_Degre"].ToString()).Selected = true;

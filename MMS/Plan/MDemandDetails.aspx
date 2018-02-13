@@ -178,7 +178,7 @@
                 <CommandItemStyle Font-Bold="true" Font-Size="16px" HorizontalAlign="Center" Height="40px" />
                 <ClientSettings Selecting-AllowRowSelect="true"  EnablePostBackOnRowClick="true" EnableRowHoverStyle="true">
                     <Selecting AllowRowSelect="true" />
-                    <Scrolling AllowScroll="True" UseStaticHeaders="True" SaveScrollPosition="true" FrozenColumnsCount="3" ScrollHeight="600px"></Scrolling>
+                    <Scrolling AllowScroll="True" UseStaticHeaders="True" SaveScrollPosition="true" FrozenColumnsCount="3"></Scrolling>
                 </ClientSettings>
                 <ExportSettings HideStructureColumns="true" ExportOnlyData="true" IgnorePaging="true" OpenInNewWindow="true">
                        <Pdf  DefaultFontFamily="Arial Unicode MS" />
@@ -289,7 +289,7 @@
                     <Windows>
                         <telerik:RadWindow ID="RadWindowRecordWindow" runat="server" Title="物资需求计划清单-待提交" Left="50px" Top="50px"
                             ReloadOnShow="true" ShowContentDuringLoad="false" VisibleTitlebar="true" VisibleStatusbar="false"
-                            Behaviors="Close,Maximize,Minimize" OnClientClose="RefreshParent" Modal="true" Width="1200px" Height="600px" />
+                            Behaviors="Close,Maximize,Minimize" OnClientClose="RefreshParent" Modal="true" Width="1200px" Height="500px" />
                     </Windows>
                 </telerik:RadWindowManager>
     <%--结束--%>
