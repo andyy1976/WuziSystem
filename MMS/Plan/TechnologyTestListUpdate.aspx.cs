@@ -389,13 +389,14 @@ namespace mms.Plan
             if (Drawing_No == "") { RadNotificationAlert.Text = "图号不能为空！"; RadNotificationAlert.Show(); return; }
             if (TaskCode == "") { RadNotificationAlert.Text = "任务号不能为空！"; RadNotificationAlert.Show(); return; }
             if (NumCasesSum == "") { RadNotificationAlert.Text = "需求件数不能为空！"; RadNotificationAlert.Show(); return; }
-            int confirmedQuantiy=GetConfirmedQuantity(ID);
-            if (Convert.ToDecimal(NumCasesSum) <confirmedQuantiy )
-            {
-                RadNotificationAlert.Text = "需求件数不能小于已发货件数！" + confirmedQuantiy.ToString();
-                RadNotificationAlert.Show(); return; 
-            }
+           
             if (DemandNumSum == "") {RadNotificationAlert.Text = "需求量不能为空！"; RadNotificationAlert.Show(); return;}
+            int confirmedQuantiy = GetConfirmedQuantity(ID);
+            if (Convert.ToDecimal(DemandNumSum) < confirmedQuantiy)
+            {
+                RadNotificationAlert.Text = "需求数量不能小于已发货数量！" + confirmedQuantiy.ToString();
+                RadNotificationAlert.Show(); return;
+            }
             if (Rough_Size == "") { RadNotificationAlert.Text = "物资尺寸不能为空！"; RadNotificationAlert.Show(); return; }
 
             if (Drawing_No != dt.Rows[0]["Drawing_No"].ToString() || TaskCode != dt.Rows[0]["TaskCode"].ToString() || Convert.ToDateTime(DemandDate) != Convert.ToDateTime(dt.Rows[0]["DemandDate"].ToString())
@@ -508,6 +509,161 @@ namespace mms.Plan
 
         protected void RadBtnSubmit_Click(object sender, EventArgs e)
         {
+            DataTable dt = GetMDemandMergeList(Request.QueryString["MDMLID"].ToString());
+
+            string ID = Request.QueryString["MDMLID"].ToString();
+            string REQUESTER = RadComboBox_User.SelectedItem.Text.Trim();
+            string REQUESTER_PHONE = dt.Rows[0]["REQUESTER_PHONE"].ToString();
+            string Drawing_No = txt_Drawing_No.Text.Trim();
+            string TaskCode = txt_TaskCode.Text.Trim();
+            string DemandDate = "";
+            try
+            {
+                DemandDate = Convert.ToDateTime(RDP_DemandDate.SelectedDate).ToString("yyyy-MM-dd");
+            }
+            catch
+            {
+                RadNotificationAlert.Text = "需求时间不能为空！"; RadNotificationAlert.Show(); return;
+            }
+            string Material_Name = RTB_MaterialName.Text.Trim();
+
+            string Project = RDDL_Project.SelectedValue;
+            string TDM_Description = RTB_TDM_Description.Text.Trim();
+            string Material_Mark = RTB_Material_Mark.Text.Trim();
+            string CN_Material_State = RTB_CN_Material_State.Text.Trim();
+            string Material_Tech_Condition = RTB_Material_Tech_Condition.Text.Trim();
+            string MaterialsDes = RTB_MaterialsDes.Text.Trim();
+
+
+            string NumCasesSum = txt_NumCasesSum.Text.Trim();
+            string DemandNumSum = txt_DemandNumSum.Text.Trim();
+            string Mat_Unit = txt_Mat_Unit.Text.Trim();
+            string Rough_Size = RTB_Rough_Size.Text.Trim();
+            string Dinge_Size = RTB_Dinge_Size.Text.Trim();
+            string Rough_Spec = txt_Rough_Spec.Text.Trim();
+            string Unit_Price = RTB_Unit_Price.Text.Trim();
+            string Mat_Rough_Weight = RTB_Mat_Rough_Weight.Text.Trim();
+            string Sum_Price = span_Sum_Price.Text.Trim();
+            string Secret_Level = RadComboBoxSecretLevel.SelectedValue;
+            string Stage = RadComboBoxStage.SelectedValue;
+            string Use_Des = RadComboBoxUseDes.SelectedValue;
+            string Certification = RadComboBoxCertification.SelectedValue;
+            string Special_Needs = rtb_SpecialNeeds.Text;
+            string Urgency_Degre = RadComboBoxUrgencyDegre.SelectedValue;
+            string MaterialDept = RadComboBoxMaterialDept.SelectedValue;
+            string Shipping_Address = RadComboBoxShipping_Address.SelectedItem.Text;
+            string MANUFACTURER = dt.Rows[0]["MANUFACTURER"].ToString();
+            string SUBJECT = dt.Rows[0]["SUBJECT"].ToString();
+            string UserID = Session["UserId"].ToString();
+            string Attribute4 = "";
+            if (this.ViewState["Submit_Type"].ToString() == "3")
+            {
+                if (RB_Attribute41.Checked == true)
+                {
+                    Attribute4 = RB_Attribute41.Text.Trim();
+                }
+                else
+                {
+                    Attribute4 = RB_Attribute42.Text.Trim();
+                }
+            }
+            string reason = RTB_Reason.Text.Trim();
+            if (reason == "")
+            {
+                RadNotificationAlert.Text = "请输入变更原因!";
+                RadNotificationAlert.Show();
+                return;
+            }
+
+            if (REQUESTER == "") { RadNotificationAlert.Text = "申请人不能为空！"; RadNotificationAlert.Show(); return; }
+            if (Drawing_No == "") { RadNotificationAlert.Text = "图号不能为空！"; RadNotificationAlert.Show(); return; }
+            if (TaskCode == "") { RadNotificationAlert.Text = "任务号不能为空！"; RadNotificationAlert.Show(); return; }
+            if (NumCasesSum == "") { RadNotificationAlert.Text = "需求件数不能为空！"; RadNotificationAlert.Show(); return; }
+           
+            if (DemandNumSum == "") { RadNotificationAlert.Text = "需求量不能为空！"; RadNotificationAlert.Show(); return; }
+            int confirmedQuantiy = GetConfirmedQuantity(ID);
+            if (Convert.ToDecimal(DemandNumSum) < confirmedQuantiy)
+            {
+                RadNotificationAlert.Text = "需求数量不能小于已发货数量！" + confirmedQuantiy.ToString();
+                RadNotificationAlert.Show(); return;
+            }
+            if (Rough_Size == "") { RadNotificationAlert.Text = "物资尺寸不能为空！"; RadNotificationAlert.Show(); return; }
+            if (Drawing_No != dt.Rows[0]["Drawing_No"].ToString() || TaskCode != dt.Rows[0]["TaskCode"].ToString() || Convert.ToDateTime(DemandDate) != Convert.ToDateTime(dt.Rows[0]["DemandDate"].ToString())
+               || MaterialDept != dt.Rows[0]["MaterialDept"].ToString() || Convert.ToDecimal(NumCasesSum) != Convert.ToDecimal(dt.Rows[0]["NumCasesSum"].ToString())
+               || Convert.ToDecimal(DemandNumSum) != Convert.ToDecimal(dt.Rows[0]["DemandNumSum"].ToString()) || Mat_Unit != dt.Rows[0]["Mat_Unit"].ToString()
+               || Rough_Size != dt.Rows[0]["Rough_Size"].ToString() || Dinge_Size != dt.Rows[0]["Dinge_Size"].ToString() || Rough_Spec != dt.Rows[0]["Rough_Spec"].ToString()
+               || Special_Needs != dt.Rows[0]["Special_Needs"].ToString() || Urgency_Degre != dt.Rows[0]["Urgency_Degre"].ToString()
+               || Secret_Level != dt.Rows[0]["Secret_Level"].ToString() || Stage != dt.Rows[0]["Stage"].ToString() || Use_Des != dt.Rows[0]["Use_Des"].ToString()
+               || Shipping_Address != dt.Rows[0]["Shipping_Address"].ToString() || Certification != dt.Rows[0]["Certification"].ToString()
+               || Attribute4 != dt.Rows[0]["Attribute4"].ToString() || Material_Name != dt.Rows[0]["Material_Name"].ToString()
+               || Project != dt.Rows[0]["Project"].ToString() || TDM_Description != dt.Rows[0]["TDM_Description"].ToString()
+               || Material_Mark != dt.Rows[0]["Material_Mark"].ToString() || CN_Material_State != dt.Rows[0]["CN_Material_State"].ToString()
+               || Material_Tech_Condition != dt.Rows[0]["Material_Tech_Condition"].ToString() || MaterialsDes != dt.Rows[0]["MaterialsDes"].ToString()
+               || Unit_Price != dt.Rows[0]["Unit_Price"].ToString() || Mat_Rough_Weight != dt.Rows[0]["Mat_Rough_Weight"].ToString())
+            {
+                if (Special_Needs != dt.Rows[0]["Special_Needs"].ToString() && Special_Needs == "")
+                {
+                    RadNotificationAlert.Text = "修改后的特殊需求不能为空";
+                    RadNotificationAlert.Show();
+                    return;
+                }
+                if (Shipping_Address != dt.Rows[0]["Shipping_Address"].ToString() && Shipping_Address == "")
+                {
+                    RadNotificationAlert.Text = "修改后的配送地址不能为空";
+                    RadNotificationAlert.Show();
+                    return;
+                }
+
+                try
+                {
+                    string strSQL = @"exec Proc_UpdateMDemandMergeList '" + ID + "','" +
+                                 REQUESTER + "','" +
+                                 REQUESTER_PHONE + "','" +
+                                 Drawing_No + "','" +
+                                 TaskCode + "','" +
+                                 DemandDate + "','" +
+                                 Material_Name + "','" +
+                                 Project + "','" +
+                                 TDM_Description + "','" +
+                                 Material_Mark + "','" +
+                                 CN_Material_State + "','" +
+                                 Material_Tech_Condition + "','" +
+                                 MaterialsDes + "','" +
+                                 NumCasesSum + "','" +
+                                 DemandNumSum + "','" +
+                                 Mat_Unit + "','" +
+                                 Rough_Size + "','" +
+                                 Dinge_Size + "','" +
+                                 Rough_Spec + "','" +
+                                 Unit_Price + "','" +
+                                 Mat_Rough_Weight + "','" +
+                                 Sum_Price + "','" +
+                                 Secret_Level + "','" +
+                                 Stage + "','" +
+                                 Use_Des + "','" +
+                                 Certification + "','" +
+                                 Special_Needs + "','" +
+                                 Urgency_Degre + "','" +
+                                 MaterialDept + "','" +
+                                 Shipping_Address + "','" +
+                                 MANUFACTURER + "','" +
+                                 SUBJECT + "','" +
+                                 UserID + "','" +
+                                 reason.Replace(",", "，") + "'";
+                    DataTable dtmd = DBI.Execute(strSQL, true);
+
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("保存需求更改信息出错" + ex.Message.ToString());
+                }
+
+            }
+            else
+            {
+                RadNotificationAlert.Text = "修改后的数据没变化!!!";
+                RadNotificationAlert.Show();
+            }
             if (this.MDPLID.Value != null && this.MDPLID.Value != "")
             {
                 string approveAccount1 = RDDL_ApproveAccount1.SelectedValue;
@@ -542,7 +698,7 @@ namespace mms.Plan
                 //ModifyTechnologySubmit(this.MDPLID.Value);
                 // WriteReqOrderRepeat(MDPLID.Value);
                 //Response.Redirect("/Plan/MDemandMergeListState.aspx?MDPID=" + MDPLID.Value);
-
+                  
                 K2PreBLL k2prebll = new K2PreBLL();
                 try
                 {

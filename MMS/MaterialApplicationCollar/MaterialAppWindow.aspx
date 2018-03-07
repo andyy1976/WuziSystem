@@ -104,7 +104,10 @@
             <asp:HiddenField ID="HFMDMLID" runat="server" />
             <asp:HiddenField runat="server" id="HFMDPLID"/>
             <asp:HiddenField ID="HFMAID" runat="server" />
-
+            <asp:HiddenField ID="Quantity_Left" runat="server" />
+            <asp:HiddenField ID="DemandNum_Left" runat="server" />
+            <asp:HiddenField ID="Quantity_Applied" runat="server" />
+            <asp:HiddenField ID="DemandNum_Applied" runat="server" />
             <table id="table2" style="margin: 0px auto; text-align: left; font-size: 13px;">
                 <tr>
                     <th colspan="6" style="text-align: center;">

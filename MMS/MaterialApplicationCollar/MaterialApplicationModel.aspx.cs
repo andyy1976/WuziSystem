@@ -52,7 +52,8 @@ namespace mms.MaterialApplicationCollar
                     + " join P_Pack on P_Pack.PackId = M_Demand_Merge_List.PackId  left join Sys_Model on Convert(nvarchar(50),Sys_Model.ID) = P_Pack.Model "
                     + " left join Sys_Phase on Sys_Phase.Code =  M_Demand_Merge_List.Stage"
                     + " where Submit_Type = '0' and Is_submit = 'true' and MaterialDept = '" + HF_DeptCode.Value + "'"
-                    + " and M_Demand_Merge_List.ID not in (select Material_ID from MaterialApplication where Is_del = 'false' and Material_ID is not null)";
+                    + "and Quantity_Left>0 and DemandNum_Left>0";
+                   // + " and M_Demand_Merge_List.ID not in (select Material_ID from MaterialApplication where Is_del = 'false' and Material_ID is not null)";
             if (Session["StrWhere"] != null)
             {
                 strSQL += Session["StrWhere"].ToString();

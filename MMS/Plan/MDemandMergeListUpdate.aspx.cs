@@ -160,8 +160,15 @@ namespace mms.Plan
                 string Special_Needs = RTB_Special_Needs.Text.Trim();
                 string Urgency_Degre = RDDL_Urgency_Degre.SelectedValue.ToString();
                 string NumCasesSum = lbl_NumCasesSum.Text.Trim();
+               
                 string Rough_Size = RTB_ROUGH_SIZE.Text.Trim();
                 string DemandNumSum = lbl_DemandNumSum.Text.Trim();
+                int confirmedQuantiy = GetConfirmedQuantity(ID);
+                if (Convert.ToDecimal(DemandNumSum) < confirmedQuantiy)
+                {
+                    RadNotificationAlert.Text = "需求数量不能小于已发货数量！" + confirmedQuantiy.ToString();
+                    RadNotificationAlert.Show(); return;
+                }
                 string Mat_Unit = lbl_Mat_Unit.Text.Trim();
 
                 string Mat_Rough_Weight = RTB_Mat_Rough_Weight.Text.Trim();
@@ -265,6 +272,17 @@ namespace mms.Plan
             }
         }
 
+        protected int GetConfirmedQuantity(string MDMLID)
+        {
+            string strSQL = " select CONFIRMED_QUANTITY  from GetRqStatus_T_Item where SUBMISSION_STATUS='物流已确认' and USER_RQ_LINE_ID = '" + MDMLID + "'";
+            DataTable dt = DBI.Execute(strSQL, true);
+            int confirmedQuantity = 0;
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                confirmedQuantity += Convert.ToInt32(dt.Rows[i]["CONFIRMED_QUANTITY"].ToString());
+            }
+            return confirmedQuantity;
+        }
         #region 提交变更单
 
         public void WriteRcoOrderRepeat(string MDPLID)

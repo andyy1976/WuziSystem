@@ -1138,6 +1138,7 @@
     <Content Include="MaterialApplicationCollar\MaterialApplicationTest.aspx" />
     <Content Include="MaterialApplicationCollar\MaterialAppWindow.aspx" />
     <Content Include="MaterialApplicationCollar\MaterialBack.aspx" />
+    <Content Include="MaterialApplicationCollar\MaterialApplicationList.aspx" />
     <Content Include="Plan\Import_ShowPlan.aspx" />
     <Content Include="MMSDb.dbml">
       <SubType>Designer</SubType>
@@ -1581,6 +1582,13 @@
     </Compile>
     <Compile Include="MaterialApplicationCollar\MaterialBack.aspx.designer.cs">
       <DependentUpon>MaterialBack.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MaterialApplicationCollar\MaterialApplicationList.aspx.cs">
+      <DependentUpon>MaterialApplicationList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MaterialApplicationCollar\MaterialApplicationList.aspx.designer.cs">
+      <DependentUpon>MaterialApplicationList.aspx</DependentUpon>
     </Compile>
     <Compile Include="MMSDb.cs">
       <DependentUpon>MMSDb.dbml</DependentUpon>
@@ -2261,7 +2269,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties UseJQuerySupport="True" UseAjaxifiedTemplates="True" />
+      <UserProperties UseAjaxifiedTemplates="True" UseJQuerySupport="True" />
     </VisualStudio>
   </ProjectExtensions>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

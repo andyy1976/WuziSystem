@@ -5,8 +5,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
-using Camc.Web.Library;
 using System.Configuration;
+using Camc.Web.Library;
+using Telerik.Web.UI;
 
 namespace mms.Plan
 {
@@ -49,6 +50,19 @@ namespace mms.Plan
 
                 GetMDemandMergeList("");
             }
+        }
+        protected void RadAjaxManager1_AjaxRequest(object sender, AjaxRequestEventArgs e)
+        {
+            if (e.Argument == "Rebind")
+            {
+                GetMDemandMergeList("");
+                RadGrid1.Rebind();
+            }
+            else
+            {
+                throw new Exception("刷新页面出错，请按F5刷新！");
+            }
+
         }
 
         protected void RB_Query_Click(object sender, EventArgs e)
@@ -120,7 +134,7 @@ namespace mms.Plan
 
         protected void GetMDemandMergeList(string strWhere)
         {
-            string strSQL = " select M_Demand_Merge_List.ID, M_Demand_Merge_List.Material_Name,M_Demand_Merge_List.Project, M_Demand_Merge_List.TaskCode,M_Demand_Merge_List.TDM_Description, Drawing_No, ItemCode1, NumCasesSum, DemandNumSum, Dept, DemandDate, M_Demand_Merge_List.Submit_Date, REQUESTER,Mat_Unit,Rough_Size,Special_Needs, Secret_Level" +
+            string strSQL = " select M_Demand_Merge_List.ID, M_Demand_Merge_List.Material_Name,M_Demand_Merge_List.Project, M_Demand_Merge_List.TaskCode,M_Demand_Merge_List.TDM_Description, Drawing_No, ItemCode1, Quantity_Applied,DemandNum_Applied,NumCasesSum, DemandNumSum, Dept, DemandDate, M_Demand_Merge_List.Submit_Date, REQUESTER,Mat_Unit,Rough_Size,Special_Needs, Secret_Level" +
                 " , CUX_DM_URGENCY_LEVEL.DICT_Name as UrgencyDegre, CUX_DM_USAGE.DICT_Name as UseDes, Shipping_Address" + //, GetCustInfo_T_ACCT_SITE.ADDRESS as ADDRESS
                 ", CUX_DM_PROJECT.DICT_Name as Model"+
                 " , isnull((select top 1 Submission_Status from GetRqStatus_T_Item where USER_RQ_LINE_ID = M_Demand_Merge_List.ID order by SUBMITED_SYNC_STATUS desc),'已提交') as State" +
@@ -131,12 +145,23 @@ namespace mms.Plan
                 " left join GetBasicdata_T_Item as CUX_DM_USAGE on CUX_DM_USAGE.DICT_CODE = M_Demand_Merge_List.Use_Des and CUX_DM_USAGE.DICT_CLASS='CUX_DM_USAGE'" +
                 " left join GetBasicdata_T_Item as CUX_DM_PROJECT on CUX_DM_PROJECT.DICT_CODE = M_Demand_Merge_List.Project and CUX_DM_PROJECT.DICT_CLASS='CUX_DM_PROJECT'" +
                 //" left join GetCustInfo_T_ACCT_SITE on Convert(nvarchar(50),GetCustInfo_T_ACCT_SITE.LOCATION_ID) = M_Demand_Merge_List.Shipping_Address" +
-                " where M_Demand_Merge_List.Is_submit = 'true' and M_Demand_Plan_List.Submit_state = '4'" + strWhere + " order by Submit_Date desc, ID desc";
+              //  " where M_Demand_Merge_List.Is_submit = 'true'" + strWhere + " order by Submit_Date desc, ID desc";
+                " where M_Demand_Merge_List.Is_submit = 'true' and M_Demand_Merge_List.Quantity_Left>0 and M_Demand_Plan_List.Submit_state = '4'" + strWhere + " order by Submit_Date desc, ID desc";
             DataTable dt = DBI.Execute(strSQL, true);
             this.ViewState["_gds"] = dt;
             RadGrid1.Rebind();
         }
-
+        protected void RadGridMDML_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (RadGrid1.SelectedItems.Count > 0)
+            {
+                HFMDMLID.Value = ((RadGrid1.SelectedItems[0]) as GridDataItem).GetDataKeyValue("ID").ToString();
+            }
+            else
+            {
+                HFMDMLID.Value = "";
+            }
+        }
         protected void RadGrid1_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
         {
             RadGrid1.DataSource = this.ViewState["_gds"];

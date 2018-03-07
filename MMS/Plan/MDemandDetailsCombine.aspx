@@ -229,7 +229,7 @@
                                 <telerik:GridTemplateColumn ItemStyle-Width="70px" HeaderStyle-Width="70px" HeaderText="特殊需求"  UniqueName="Special_Needs" >
                                     <HeaderStyle HorizontalAlign="Center"></HeaderStyle>
                                     <ItemTemplate>
-                                        <telerik:RadTextBox ID="rtb_SpecialNeeds" runat="server" Width="70" AutoPostBack="true" MaxLength="20" EmptyMessage="无" OnTextChanged="rtb_SpecialNeeds_TextChanged"></telerik:RadTextBox>
+                                        <telerik:RadTextBox ID="rtb_SpecialNeeds" runat="server" Width="70" AutoPostBack="true" MaxLength="50" EmptyMessage="无" OnTextChanged="rtb_SpecialNeeds_TextChanged"></telerik:RadTextBox>
                                     </ItemTemplate>
                                 </telerik:GridTemplateColumn>
                                 

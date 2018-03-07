@@ -116,6 +116,12 @@ namespace mms.MaterialApplicationCollar
                     RTB_TaskCode.Text = dtma.Rows[0]["TaskCode"].ToString();
                     RTB_DrawingNo.Text = dtma.Rows[0]["Drawing_No"].ToString();
                     RTB_Quantity.Text = dtma.Rows[0]["Quantity"].ToString();
+                    RTB_PleaseTakeQuality.Text = dtma.Rows[0]["PleaseTakeQuality"].ToString();
+                    DemandNum_Left.Value = (Convert.ToDecimal(dtma.Rows[0]["DemandNum_Left"].ToString()) + Convert.ToDecimal(RTB_PleaseTakeQuality.Text)).ToString();
+                    Quantity_Left.Value = (Convert.ToDecimal(dtma.Rows[0]["Quantity_Left"].ToString())+Convert.ToDecimal(RTB_Quantity.Text)).ToString();
+                    DemandNum_Applied.Value = (Convert.ToDecimal(dtma.Rows[0]["DemandNum_Applied"].ToString())- Convert.ToDecimal(RTB_PleaseTakeQuality.Text)).ToString();
+                    Quantity_Applied.Value = (Convert.ToDecimal(dtma.Rows[0]["Quantity_Applied"].ToString())-Convert.ToDecimal(RTB_Quantity.Text)).ToString();
+
                     RDDL_TheMaterialWay.SelectedIndex = 0;
                     if (RDDL_TheMaterialWay.FindItemByText(dtma.Rows[0]["TheMaterialWay"].ToString()) != null)
                     {
@@ -126,7 +132,8 @@ namespace mms.MaterialApplicationCollar
                     {
                         RDP_FeedingTime.SelectedDate = Convert.ToDateTime(dtma.Rows[0]["FeedingTime"].ToString());
                     }
-                    RTB_PleaseTakeQuality.Text = dtma.Rows[0]["PleaseTakeQuality"].ToString();
+                    
+
                     RTB_Remark.Text = dtma.Rows[0]["Special_Needs"].ToString(); //dtma.Rows[0]["Remark"].ToString();
                     RB_IsDispatch.Checked = Convert.ToBoolean(dtma.Rows[0]["IsDispatch"].ToString());
                     RB_IsConfirm.Checked = Convert.ToBoolean(dtma.Rows[0]["IsConfirm"].ToString());
@@ -192,8 +199,12 @@ namespace mms.MaterialApplicationCollar
                         lbl_Dinge_Size.Text = dt.Rows[0]["Dinge_Size"].ToString();
 
                         //lbl_AppQuantity.Text = Convert.ToDouble(dt.Rows[0]["AppQuantity"].ToString()).ToString();
-                        RTB_Quantity.Text = Convert.ToDouble(dt.Rows[0]["NumCasesSum"].ToString()).ToString();
-                        RTB_PleaseTakeQuality.Text = Convert.ToDouble(dt.Rows[0]["DemandNumSum"].ToString()).ToString();
+                        RTB_Quantity.Text = dt.Rows[0]["Quantity_Left"].ToString();
+                        RTB_PleaseTakeQuality.Text = dt.Rows[0]["DemandNum_Left"].ToString();
+                        DemandNum_Left.Value = dt.Rows[0]["DemandNum_Left"].ToString();
+                        Quantity_Left.Value=dt.Rows[0]["Quantity_Left"].ToString();
+                        DemandNum_Applied.Value = dt.Rows[0]["DemandNum_Applied"].ToString();
+                        Quantity_Applied.Value = dt.Rows[0]["Quantity_Applied"].ToString();
                         RTB_TaskCode.Text = dt.Rows[0]["TaskCode"].ToString();
                         RTB_DrawingNo.Text = dt.Rows[0]["Drawing_No"].ToString();
                         RTB_Remark.Text = dt.Rows[0]["Special_Needs"].ToString(); //dtma.Rows[0]["Remark"].ToString();//by fyc
@@ -320,7 +331,42 @@ namespace mms.MaterialApplicationCollar
                 RadNotificationAlert.Show();
                 return;                
             }
+            if (Quantity == "")
+            {
+                RadNotificationAlert.Text = "请输入申请件数";
+                RadNotificationAlert.Show();
+                return;
+            }
+            if (PleaseTakeQuality == "")
+            {
+                RadNotificationAlert.Text = "请输入申请数量";
+                RadNotificationAlert.Show();
+                return;
+            }
 
+            if (Quantity_Left.Value != "")
+            {
+
+                if (Convert.ToDecimal(Quantity) > Convert.ToDecimal(Quantity_Left.Value))
+                {
+
+                    RadNotificationAlert.Text = "申请件数不能大于剩余件数";
+                    RadNotificationAlert.Show();
+                    return;
+                }
+            }
+
+            if (DemandNum_Left.Value != "")
+            {
+
+                if (Convert.ToDecimal(PleaseTakeQuality) > Convert.ToDecimal(DemandNum_Left.Value))
+                {
+
+                    RadNotificationAlert.Text = "申请数量不能大于剩余数量";
+                    RadNotificationAlert.Show();
+                    return;
+                }
+            }
             try
             {
                 string strSQL = "";
@@ -373,6 +419,19 @@ namespace mms.MaterialApplicationCollar
 
                 }
 
+                string demandNum_Applied = (Convert.ToDecimal(DemandNum_Applied.Value) + Convert.ToDecimal(PleaseTakeQuality)).ToString();
+                string quantity_Applied = (Convert.ToDecimal(Quantity_Applied.Value) + Convert.ToDecimal(Quantity)).ToString();
+                string demandNum_Left = (Convert.ToDecimal(DemandNum_Left.Value) - Convert.ToDecimal(PleaseTakeQuality)).ToString();
+                string quantity_Left = (Convert.ToDecimal(Quantity_Left.Value) - Convert.ToDecimal(Quantity)).ToString();
+                strSQL =
+                     " Update M_Demand_Merge_List set Quantity_Applied = '" + quantity_Applied + "',DemandNum_Applied='" + demandNum_Applied +
+                    "',DemandNum_Left='" + demandNum_Left + "',Quantity_Left='" + quantity_Left +
+
+                                "' where ID = '" + HFMDMLID.Value + "'";
+
+
+                DBI.Execute(strSQL);
+
                 K2BLL k2Bll = new K2BLL();
                 var result = k2Bll.StartNewProcess(HFMAID.Value);
                 if (result == "")
@@ -382,6 +441,19 @@ namespace mms.MaterialApplicationCollar
                         " values('" + HFMAID.Value + "','" + Session["UserId"].ToString() + "',GetDate() " +
                         " ,'进入流程平台:调度员：' + '" + diaodu + "' + '型号计划员：' + '" + xinghao + "' +'物资计划员：' + '" + wuzi + "')";
                     DBI.Execute(strSQL);
+                   /* string demandNum_Applied = (Convert.ToDecimal(DemandNum_Applied.Value) + Convert.ToDecimal(PleaseTakeQuality)).ToString();
+                    string quantity_Applied = (Convert.ToDecimal(Quantity_Applied.Value) + Convert.ToDecimal(Quantity)).ToString();
+                    string demandNum_Left = (Convert.ToDecimal(DemandNum_Left.Value)- Convert.ToDecimal(PleaseTakeQuality)).ToString();
+                    string quantity_Left = (Convert.ToDecimal(Quantity_Left.Value) - Convert.ToDecimal(Quantity)).ToString();
+                    strSQL =
+                         " Update M_Demand_Merge_List set Quantity_Applied = '" + quantity_Applied +"',DemandNum_Applied='"+demandNum_Applied+
+                        "',DemandNum_Left='" + demandNum_Left +"',Quantity_Left='"+quantity_Left+
+                                   
+                                    "' where ID = '" + HFMDMLID.Value + "'";
+                      
+                     
+                    DBI.Execute(strSQL);
+                    * */
                     RadNotificationAlert1.Text = "申请成功！进入流程平台";
                     RadNotificationAlert1.Show();
                  // _timer = new System.Timers.Timer(5000);

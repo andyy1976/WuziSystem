@@ -1,0 +1,4 @@
+Quantity_Applied	decimal(18, 0)	Checked
+Quantity_Left	decimal(18, 0)	Checked
+DemandNum_Applied	decimal(18, 2)	Checked
+DemandNum_Left	decimal(18, 2)	Checked

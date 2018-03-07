@@ -245,12 +245,12 @@
                           
                                     <td class="technology_Div_detailcontent_title">需求数量：</td>
                                     <td class="technology_Div_detailcontent_content">
-                                        <telerik:RadTextBox ID="txt_DemandNumSum" Width="150" runat="server" MaxLength="5" onpaste="return false" onkeyup='clearNoDecimal(this)'></telerik:RadTextBox>
+                                        <telerik:RadTextBox ID="txt_DemandNumSum" Width="150" runat="server" MaxLength="10" onpaste="return false" onkeyup='clearNoDecimal(this)'></telerik:RadTextBox>
                                         <asp:RequiredFieldValidator ID="rfv_DemandNumSum" ValidationGroup="1" runat="server" ErrorMessage="*" ControlToValidate="txt_DemandNumSum" ForeColor="Red"></asp:RequiredFieldValidator>
                                     </td>
                                     <td class="technology_Div_detailcontent_title" style="width: 10%">需求件数：</td>
                                     <td class="technology_Div_detailcontent_content">
-                                        <telerik:RadTextBox ID="txt_NumCasesSum" ClientIDMode="Static" Width="150" runat="server" MaxLength="5" onpaste="return false" onkeyup='clearNoDecimal(this)'></telerik:RadTextBox>
+                                        <telerik:RadTextBox ID="txt_NumCasesSum" ClientIDMode="Static" Width="150" runat="server" MaxLength="10" onpaste="return false" onkeyup='clearNoDecimal(this)'></telerik:RadTextBox>
                                         <asp:RequiredFieldValidator ID="rfv_NumCasesSum" ValidationGroup="1" runat="server" ErrorMessage="*" ControlToValidate="txt_NumCasesSum" ForeColor="Red"></asp:RequiredFieldValidator>
                                     </td>
                                 </tr>
@@ -320,7 +320,7 @@
 
                                     <td class="technology_Div_detailcontent_title">特殊需求：</td>
                                     <td class="technology_Div_detailcontent_content">
-                                        <telerik:RadTextBox ID="rtb_SpecialNeeds" runat="server" Width="150" MaxLength="20" EmptyMessage="无"></telerik:RadTextBox>
+                                        <telerik:RadTextBox ID="rtb_SpecialNeeds" runat="server" Width="150" MaxLength="50" EmptyMessage="无"></telerik:RadTextBox>
                                         <%-- <asp:RequiredFieldValidator ID="rfv_SpecialNeeds" ValidationGroup="1" runat="server" ErrorMessage="*" ControlToValidate="rtb_SpecialNeeds" ForeColor="Red"></asp:RequiredFieldValidator>--%>
                                     </td>
                                     <td class="technology_Div_detailcontent_title">变更原因：</td>

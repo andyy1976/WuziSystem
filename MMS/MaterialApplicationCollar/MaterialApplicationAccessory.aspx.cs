@@ -46,12 +46,13 @@ namespace mms.MaterialApplicationCollar
         {
             string strSQL = " select M_Demand_Merge_List.* "
                     + " , CUX_DM_PROJECT.DICT_Name as Model"
-                    +" , (select Phase from Sys_Phase where Code = M_Demand_Merge_List.Stage) as Stage1" 
+                    + " , (select Phase from Sys_Phase where Code = M_Demand_Merge_List.Stage) as Stage1"
 
                     + " from M_Demand_Merge_List"
-                    + " left join GetBasicdata_T_Item as CUX_DM_PROJECT on CUX_DM_PROJECT.DICT_CODE = M_Demand_Merge_List.Project and DICT_CLASS='CUX_DM_PROJECT'" 
+                    + " left join GetBasicdata_T_Item as CUX_DM_PROJECT on CUX_DM_PROJECT.DICT_CODE = M_Demand_Merge_List.Project and DICT_CLASS='CUX_DM_PROJECT'"
                     + " where Submit_Type = '3' and Is_submit = 'true' and MaterialDept = '" + HF_DeptCode.Value + "'"
-                    + " and M_Demand_Merge_List.ID not in (select Material_ID from MaterialApplication where Is_del = 'false' and Material_ID is not null)";
+                    + "and Quantity_Left>0 and DemandNum_Left>0";
+                   // + " and M_Demand_Merge_List.ID not in (select Material_ID from MaterialApplication where Is_del = 'false' and Material_ID is not null)";
             if (Session["StrWhere"] != null)
             {
                 strSQL += Session["StrWhere"].ToString();
@@ -144,7 +145,7 @@ namespace mms.MaterialApplicationCollar
             catch { }
             if (ID != "")
             {
-                Session["StrWhere"] += " and ID like '%" + ID + "%'";
+                Session["StrWhere"] += " and M_Demand_Merge_List.ID like '%" + ID + "%'";
             }
             GetMDML();
             RadGridMDML.Rebind();

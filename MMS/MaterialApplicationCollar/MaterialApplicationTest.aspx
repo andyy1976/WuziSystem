@@ -36,6 +36,11 @@
                     <telerik:AjaxUpdatedControl ControlID="RadGridMDML" LoadingPanelID="RadAjaxLoadingPanel1" />
                 </UpdatedControls>
             </telerik:AjaxSetting>
+            <telerik:AjaxSetting AjaxControlID="RB_FillInApp">
+                <UpdatedControls>
+                    <telerik:AjaxUpdatedControl ControlID="RadNotificationAlert" LoadingPanelID="RadAjaxLoadingPanel1" />
+                </UpdatedControls>
+            </telerik:AjaxSetting>
         </AjaxSettings>
     </telerik:RadAjaxManager>
     <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" runat="server" Skin="Default"></telerik:RadAjaxLoadingPanel>
@@ -48,12 +53,32 @@
                 }
             }
 
-            function refreshGrid(arg) {
+            function refreshGrid(arg) 
+            {
                 if (!arg) {
                     $find("<%= RadAjaxManager1.ClientID %>").ajaxRequest("Rebind");
                 }
             }
-           function ShowWindow(sender, args) {
+            function ShowWindow1(sender, args) {
+                var grid = $find("<%=RadGridMDML.ClientID%>");
+                if (grid._selectedIndexes.length == 0) {
+                    $find("<%=RadNotificationAlert.ClientID%>").set_text("请选择需求行");
+                    $find("<%=RadNotificationAlert.ClientID%>").show();
+                    return;
+                }
+                else {
+                    var win = $find("<%=RadWindowManager1.ClientID %>");
+                    var ID = $get("<%=HFMDMLID.ClientID%>").value;
+                    if (ID == "") {
+                        $find("<%=RadNotificationAlert.ClientID%>").set_text("请选择需求行");
+                        $find("<%=RadNotificationAlert.ClientID%>").show();
+                        return;
+                    }
+                    window.radopen("/MaterialApplicationCollar/MaterialApplicationList.aspx?MDMLID=" + ID, "RadWindowList");
+                }
+            }
+            function ShowWindow(sender, args)
+            {
                 var grid = $find("<%=RadGridMDML.ClientID%>");
                 if (grid._selectedIndexes.length == 0) {
                     $find("<%=RadNotificationAlert.ClientID%>").set_text("请选择申请行");
@@ -126,6 +151,7 @@
                       </Columns>
                     <CommandItemTemplate>
                         <telerik:RadButton ID="RB_FillInApp" runat="server" Text="填写申请单" Font-Bold="true" OnClientClicking="ShowWindow" CssClass="floatleft" AutoPostBack="true"></telerik:RadButton>
+                        <telerik:RadButton ID="RB_ViewApplyRecord" runat="server" Text="查看申请记录" Font-Bold="true" OnClientClicking="ShowWindow1" CssClass="floatleft" AutoPostBack="true"></telerik:RadButton>
                         物资信息列表--试验件                        
 				        <telerik:RadButton ID="RadButton_ExportExcel" runat="server" Text="导出Excel" Font-Bold="true" CommandName="ExportExcel" OnClick="RadButton_ExportExcel_Click" CssClass="floatright"></telerik:RadButton>
                         <telerik:RadButton ID="RadButton_ExportWord"  runat="server" Text="导出Word"  Font-Bold="true" CommandName="ExportWord" Visible="false"  OnClick="RadButton_ExportWord_Click"  CssClass="floatright"></telerik:RadButton>
@@ -141,6 +167,9 @@
             <telerik:RadWindow ID="RadWindowApp" runat="server" Title="试验件物资申请" Left="150px"
                 ReloadOnShow="true" ShowContentDuringLoad="false" VisibleTitlebar="true" VisibleStatusbar="false"
                 Behaviors="Close,Maximize,Minimize" Modal="true" Width="1000px" Height="680px" />
+             <telerik:RadWindow ID="RadWindowList" runat="server" Title="物资申请列表" Left="150px"
+                ReloadOnShow="true" ShowContentDuringLoad="false" VisibleTitlebar="true" VisibleStatusbar="false"
+                Behaviors="Close,Maximize,Minimize" Modal="true" Width="1000px" Height="400px" />
         </Windows>
     </telerik:RadWindowManager>
     <telerik:RadNotification ID="RadNotificationAlert" runat="server" Text="" Position="Center"
