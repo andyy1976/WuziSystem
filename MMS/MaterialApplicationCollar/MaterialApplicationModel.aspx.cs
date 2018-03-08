@@ -38,6 +38,7 @@ namespace mms.MaterialApplicationCollar
                 {
                     HF_DeptCode.Value = dt.Rows[0]["DeptCode"].ToString();
                 }
+                Session["StrWhere"] = " and M_Demand_Merge_List.DemandNum_Left>0 ";
                 GetMDML();
             }
         }
@@ -47,12 +48,12 @@ namespace mms.MaterialApplicationCollar
             string strSQL = " select M_Demand_Merge_List.* "
                     + " ,isnull(Sys_Model.Model, P_Pack.Model) as Model, P_Pack_Task.TaskCode, P_Pack_Task.ProductName as Com_ProductName, TaskDrawingCode as Com_Drawing_No"
                     + " , isnull(Sys_Phase.Phase,M_Demand_Merge_List.Stage) as Com_Stage"
-                    + " from M_Demand_Merge_List" 
+                    + " from M_Demand_Merge_List"
                     + " join P_Pack_Task on P_Pack_Task.TaskId = M_Demand_Merge_List.TaskId "
                     + " join P_Pack on P_Pack.PackId = M_Demand_Merge_List.PackId  left join Sys_Model on Convert(nvarchar(50),Sys_Model.ID) = P_Pack.Model "
                     + " left join Sys_Phase on Sys_Phase.Code =  M_Demand_Merge_List.Stage"
-                    + " where Submit_Type = '0' and Is_submit = 'true' and MaterialDept = '" + HF_DeptCode.Value + "'"
-                    + "and Quantity_Left>0 and DemandNum_Left>0";
+                    + " where Submit_Type = '0' and Is_submit = 'true' and MaterialDept = '" + HF_DeptCode.Value + "'";
+                 //   + "and Quantity_Left>0 and DemandNum_Left>0";
                    // + " and M_Demand_Merge_List.ID not in (select Material_ID from MaterialApplication where Is_del = 'false' and Material_ID is not null)";
             if (Session["StrWhere"] != null)
             {
@@ -105,6 +106,7 @@ namespace mms.MaterialApplicationCollar
         {
             if (e.Argument == "Rebind")
             {
+                Session["StrWhere"] = " and M_Demand_Merge_List.DemandNum_Left>0 ";
                 GetMDML();
                 RadGridMDML.Rebind();
             }
@@ -127,7 +129,16 @@ namespace mms.MaterialApplicationCollar
             string endTime = RDPEnd.SelectedDate.ToString();
             string applicant = RTB_Applicant.Text.Trim();
             string app_Depart = RTB_App_Depart.Text.Trim();
+            string State = RDDL_State.SelectedValue.ToString();
             Session["StrWhere"] = "";
+            if (State == "0")
+            {
+                Session["StrWhere"] += " and M_Demand_Merge_List.DemandNum_Left>0 ";
+            }
+            else
+            {
+                Session["StrWhere"] += " and M_Demand_Merge_List.DemandNum_Left=0 ";
+            }
             if (taskCode != "")
             {
                 Session["StrWhere"] += " and P_Pack_Task.TaskCode like '%" + taskCode + "%'";
@@ -146,6 +157,8 @@ namespace mms.MaterialApplicationCollar
                 Session["StrWhere"] += " and Drawing_No like '%" + DrawingNo + "%'";
             }
 
+
+       
             if (PROJECT != "")
             {
                 Session["StrWhere"] += " and Sys_Model.Model like '%" + PROJECT + "%'";

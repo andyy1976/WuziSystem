@@ -109,14 +109,14 @@
                         <telerik:RadDatePicker ID="RDP_SubmitDateEnd" runat="server" Width="120px" DateInput-ClientEvents-OnKeyPress='EnterKeyProcessing'>
                         </telerik:RadDatePicker>
                     </td>
-                     <td style="text-align:right;"><%--提交状态：--%></td>
-                    <td><telerik:RadDropDownList ID="RDDL_State" runat="server" Width="120px" AppendDataBoundItems="true" Visible="false">
+                     <td style="text-align:right;">领用状态：</td>
+                    <td><telerik:RadDropDownList ID="RDDL_State" runat="server" Width="120px" AppendDataBoundItems="true" Visible="true">
                         <Items>
-                            <telerik:DropDownListItem Value="" Text="全部" />
-                            <telerik:DropDownListItem Value="0" Text="未提交" />
-                            <telerik:DropDownListItem Value="1" Text="已提交" />
+                            <telerik:DropDownListItem Value="0" Text="未领完" />
+                            <telerik:DropDownListItem Value="1" Text="已领完" />
                         </Items>
                         </telerik:RadDropDownList></td>
+
                 </tr>
                 <tr>
                      <td>需求行号：</td>

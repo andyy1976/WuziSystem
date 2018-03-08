@@ -130,6 +130,15 @@ namespace mms.MaterialApplicationCollar {
         protected global::Telerik.Web.UI.RadButton RB_Search;
         
         /// <summary>
+        /// RDDL_State 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadDropDownList RDDL_State;
+        
+        /// <summary>
         /// HF_DeptCode 控件。
         /// </summary>
         /// <remarks>
@@ -173,6 +182,15 @@ namespace mms.MaterialApplicationCollar {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::Telerik.Web.UI.RadWindow RadWindowApp;
+        
+        /// <summary>
+        /// RadWindowList 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadWindow RadWindowList;
         
         /// <summary>
         /// RadNotificationAlert 控件。

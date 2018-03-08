@@ -158,6 +158,13 @@
                           <ClientEvents OnKeyPress="EnterKeyProcessing" />
                         </telerik:RadTextBox>
                     </td>
+                       <td style="text-align:right;">领用状态</td>
+                     <td><telerik:RadDropDownList ID="RDDL_State" runat="server" Width="100px" AppendDataBoundItems="true" Visible="true">
+                        <Items>
+                            <telerik:DropDownListItem Value="0" Text="未领完" />
+                            <telerik:DropDownListItem Value="1" Text="已领完" />
+                        </Items>
+                        </telerik:RadDropDownList></td>
                 </tr>
             </table>
         </div>

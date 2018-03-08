@@ -39,6 +39,7 @@ namespace mms.MaterialApplicationCollar
                 {
                     HF_DeptCode.Value = dt.Rows[0]["DeptCode"].ToString();
                 }
+                Session["StrWhere"] = " and M_Demand_Merge_List.DemandNum_Left>0 ";
                 GetMDML();
             }
         }

@@ -147,7 +147,18 @@
                       ～<telerik:RadDatePicker ID="RDPEnd" runat="server" Width="100px" DateInput-ClientEvents-OnKeyPress="EnterKeyProcessing">
                         </telerik:RadDatePicker>
                     </td>
-                    <td><telerik:RadButton ID="RB_Search" runat="server" Text="搜索" OnClick="RB_Search_Click"></telerik:RadButton></td>
+                     <td><telerik:RadButton ID="RB_Search" runat="server" Text="搜索" OnClick="RB_Search_Click"></telerik:RadButton></td>
+                     </tr>
+
+                 <tr>
+                        <td style="text-align:right;">领用状态</td>
+                     <td><telerik:RadDropDownList ID="RDDL_State" runat="server" Width="100px" AppendDataBoundItems="true" Visible="true">
+                        <Items>
+                            <telerik:DropDownListItem Value="0" Text="未领完" />
+                            <telerik:DropDownListItem Value="1" Text="已领完" />
+                        </Items>
+                        </telerik:RadDropDownList></td>
+                   
                 </tr>
             </table>
         </div>

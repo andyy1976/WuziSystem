@@ -38,6 +38,7 @@ namespace mms.MaterialApplicationCollar
                 {
                     HF_DeptCode.Value = dt.Rows[0]["DeptCode"].ToString();
                 }
+                Session["StrWhere"] = " and M_Demand_Merge_List.DemandNum_Left>0 ";
                 GetMDML();
             }
         }
@@ -92,6 +93,7 @@ namespace mms.MaterialApplicationCollar
         {
             if (e.Argument == "Rebind")
             {
+                Session["StrWhere"] = " and M_Demand_Merge_List.DemandNum_Left>0 ";
                 GetMDML();
                 RadGridMDML.Rebind();
             }
@@ -112,7 +114,16 @@ namespace mms.MaterialApplicationCollar
             string ItemCode1 = RTB_ItemCode1.Text.Trim();
             string startTime = RDPStart.SelectedDate.ToString();
             string endTime = RDPEnd.SelectedDate.ToString();
+            string State = RDDL_State.SelectedValue.ToString();
             Session["StrWhere"] = "";
+            if (State == "0")
+            {
+                Session["StrWhere"] += " and M_Demand_Merge_List.DemandNum_Left>0 ";
+            }
+            else
+            {
+                Session["StrWhere"] += " and M_Demand_Merge_List.DemandNum_Left=0 ";
+            }
             if (taskCode != "")
             {
                 Session["StrWhere"] += " and TaskCode like '%" + taskCode + "%'";

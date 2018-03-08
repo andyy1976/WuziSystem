@@ -47,15 +47,15 @@ namespace mms.Plan
                 RDDL_Secret_Level.DataValueField = "SecretLevel_Name";
                 RDDL_Secret_Level.DataTextField = "SecretLevel_Name";
                 RDDL_Secret_Level.DataBind();
-
-                GetMDemandMergeList("");
+                GetMDemandMergeList(" and M_Demand_Merge_List.DemandNum_Left>0 ");
             }
         }
         protected void RadAjaxManager1_AjaxRequest(object sender, AjaxRequestEventArgs e)
         {
             if (e.Argument == "Rebind")
             {
-                GetMDemandMergeList("");
+               // Session["StrWhere"] = " and M_Demand_Merge_List.DemandNum_Left>0 ";
+                GetMDemandMergeList(" and M_Demand_Merge_List.DemandNum_Left>0 ");
                 RadGrid1.Rebind();
             }
             else
@@ -76,11 +76,20 @@ namespace mms.Plan
             string Urgency_Degre = RDDL_Urgency_Degre.SelectedValue.ToString();
             string dept = RDDL_Dept.SelectedValue.ToString();
             string secret_Level = RDDL_Secret_Level.SelectedValue.ToString();
-            string State = RDDL_State.SelectedValue.ToString();
             string startDemandDate = RDP_DemandDateStart.SelectedDate.ToString();
             string endDemandDate = RDP_DemandDateEnd.SelectedDate.ToString();
             string ID = RTB_ID.Text.Trim();
+            string State = RDDL_State.SelectedValue.ToString();
             string strSQL = "";
+            if (State == "0")
+            {
+                strSQL += " and M_Demand_Merge_List.DemandNum_Left>0 ";
+            }
+            else
+            {
+                strSQL += " and M_Demand_Merge_List.DemandNum_Left=0 ";
+            }
+            
             if (type != "")
             {
                 strSQL += " and M_Demand_Merge_List.submit_type = '" + type + "'";
@@ -145,8 +154,8 @@ namespace mms.Plan
                 " left join GetBasicdata_T_Item as CUX_DM_USAGE on CUX_DM_USAGE.DICT_CODE = M_Demand_Merge_List.Use_Des and CUX_DM_USAGE.DICT_CLASS='CUX_DM_USAGE'" +
                 " left join GetBasicdata_T_Item as CUX_DM_PROJECT on CUX_DM_PROJECT.DICT_CODE = M_Demand_Merge_List.Project and CUX_DM_PROJECT.DICT_CLASS='CUX_DM_PROJECT'" +
                 //" left join GetCustInfo_T_ACCT_SITE on Convert(nvarchar(50),GetCustInfo_T_ACCT_SITE.LOCATION_ID) = M_Demand_Merge_List.Shipping_Address" +
-              //  " where M_Demand_Merge_List.Is_submit = 'true'" + strWhere + " order by Submit_Date desc, ID desc";
-                " where M_Demand_Merge_List.Is_submit = 'true' and M_Demand_Merge_List.Quantity_Left>0 and M_Demand_Plan_List.Submit_state = '4'" + strWhere + " order by Submit_Date desc, ID desc";
+                " where M_Demand_Merge_List.Is_submit = 'true' and M_Demand_Plan_List.Submit_state = '4'" + strWhere + " order by Submit_Date desc, ID desc";
+              //  " where M_Demand_Merge_List.Is_submit = 'true' and M_Demand_Merge_List.Quantity_Left>0 and M_Demand_Plan_List.Submit_state = '4'" + strWhere + " order by Submit_Date desc, ID desc";
             DataTable dt = DBI.Execute(strSQL, true);
             this.ViewState["_gds"] = dt;
             RadGrid1.Rebind();

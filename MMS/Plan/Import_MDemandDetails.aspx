@@ -92,19 +92,36 @@
             function YesOrNoClicked(sender, args)
             {
                 var oWnd = $find("<%=RadWindow.ClientID %>");
-                            oWnd.close();
-                            if (sender.get_text() == "是") {
-                                $find(submintId).click();
-                            }
+                oWnd.close();
+                if (sender.get_text() == "是")
+                {
+                    var grid = $find("<%=RadGrid_MDemandDetails.ClientID%>");
+                    if (grid._selectedIndexes.length == 0)
+                    {
+                        $find("<%=RadNotificationAlert.ClientID%>").set_text("请选择需求行");
+                        $find("<%=RadNotificationAlert.ClientID%>").show();
+                        return;
+                    }
+                      $find(submintId).click();
+                }
              }
                    
 
             function confirmRadWindow(sender, args) 
             {
+             //   var grid = $find("<%=RadGrid_MDemandDetails.ClientID%>");
+              //  if (grid._selectedIndexes.length == 0) {
+                  //  $find("<%=RadNotificationAlert.ClientID%>").set_text("请选择需求行");
+                 //   $find("<%=RadNotificationAlert.ClientID%>").show();
+                 //   return;
+              //  }
+               // else
+                {
                     $find("<%= RadWindow.ClientID %>").show();
-                                   submintId = sender.get_id();
-                                args.set_cancel(true);
-                        }
+                    submintId = sender.get_id();
+                    args.set_cancel(true);
+                }
+           }
 
 
               
@@ -167,7 +184,7 @@
            <div style="clear: both; overflow: hidden"></div>
         </div>
         <telerik:RadAjaxPanel ID="RadAjaxPanel1" runat="server"  >
-           <telerik:RadGrid ID="RadGrid_MDemandDetails" runat="server" DataKeyNames="ID" Culture="zh-CN" GroupPanelPosition="Top"
+           <telerik:RadGrid ID="RadGrid_MDemandDetails" runat="server"  Culture="zh-CN" GroupPanelPosition="Top"
                     OnNeedDataSource="RadGrid_MDemandDetails_NeedDataSource"  OnItemDataBound="RadGrid_MDemandDetails_ItemDataBound"
                 AllowPaging="true" PageSize="20" PagerStyle-AlwaysVisible="True" AllowSorting="true" AllowMultiRowSelection="True" AutoGenerateColumns="False">
                 <AlternatingItemStyle HorizontalAlign="Center" />

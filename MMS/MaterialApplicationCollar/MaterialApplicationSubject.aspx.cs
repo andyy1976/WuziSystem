@@ -38,6 +38,7 @@ namespace mms.MaterialApplicationCollar
                 {
                     HF_DeptCode.Value = dt.Rows[0]["DeptCode"].ToString();
                 }
+                Session["StrWhere"] = " and M_Demand_Merge_List.DemandNum_Left>0 ";
                 GetMDML();
             }
         }
@@ -50,8 +51,8 @@ namespace mms.MaterialApplicationCollar
 
                     + " from M_Demand_Merge_List"
                     + " left join GetBasicdata_T_Item as CUX_DM_PROJECT on CUX_DM_PROJECT.DICT_CODE = M_Demand_Merge_List.Project and DICT_CLASS='CUX_DM_PROJECT'"
-                    + " where Submit_Type = '2' and Is_submit = 'true' and MaterialDept = '" + HF_DeptCode.Value + "'"
-                    + "and Quantity_Left>0 and DemandNum_Left>0";
+                    + " where Submit_Type = '2' and Is_submit = 'true' and MaterialDept = '" + HF_DeptCode.Value + "'";
+                    //+ "and Quantity_Left>0 and DemandNum_Left>0";
                    // + " and M_Demand_Merge_List.ID not in (select Material_ID from MaterialApplication where Is_del = 'false' and Material_ID is not null)";
             if (Session["StrWhere"] != null)
             {
@@ -92,6 +93,7 @@ namespace mms.MaterialApplicationCollar
         {
             if (e.Argument == "Rebind")
             {
+                Session["StrWhere"] = " and M_Demand_Merge_List.DemandNum_Left>0 ";
                 GetMDML();
                 RadGridMDML.Rebind();
             }
@@ -112,7 +114,16 @@ namespace mms.MaterialApplicationCollar
             string ItemCode1 = RTB_ItemCode1.Text.Trim();
             string startTime = RDPStart.SelectedDate.ToString();
             string endTime = RDPEnd.SelectedDate.ToString();
+           string State = RDDL_State.SelectedValue.ToString();
             Session["StrWhere"] = "";
+            if (State == "0")
+            {
+                Session["StrWhere"] += " and M_Demand_Merge_List.DemandNum_Left>0 ";
+            }
+            else
+            {
+                Session["StrWhere"] += " and M_Demand_Merge_List.DemandNum_Left=0 ";
+            }
             if (taskCode != "")
             {
                 Session["StrWhere"] += " and TaskCode like '%" + taskCode + "%'";
