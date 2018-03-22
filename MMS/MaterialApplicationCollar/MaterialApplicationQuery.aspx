@@ -154,9 +154,9 @@
        申请单状态：<telerik:RadDropDownList ID="RDDL_AppState" runat="server" Width="100px">
             <Items>
                 <telerik:DropDownListItem Value="" Text="全部" />
-                <telerik:DropDownListItem Value="1" Text="已申请未审批" />
-                <telerik:DropDownListItem Value="2" Text="开始审批" />
-                <telerik:DropDownListItem Value="3" Text="取消审批" />
+                <telerik:DropDownListItem Value="1" Text="未进入流程平台" />
+                <telerik:DropDownListItem Value="2" Text="进入流程平台" />
+               
                 <telerik:DropDownListItem Value="4" Text="已审批已通过" />
                 <telerik:DropDownListItem Value="5" Text="已审批未通过" />
                 <telerik:DropDownListItem Value="6" Text="物流中心退单" />

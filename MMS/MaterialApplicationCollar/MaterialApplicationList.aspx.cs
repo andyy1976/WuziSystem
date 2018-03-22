@@ -17,28 +17,15 @@ namespace mms.MaterialApplicationCollar
         DBInterface DBI;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["UserName"] == null || Session["UserId"] == null)
+            if (Session["UserName"] == null || Session["UserId"] == null) 
             {
-                Response.Redirect("/Default.aspx");
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "info", "CloseWindow();", true);
+                return;
             }
             DBConn = ConfigurationManager.ConnectionStrings["MaterialManagerSystemConnectionString"].ToString();
             DBI = DBFactory.GetDBInterface(DBConn);
-    
             if (!IsPostBack)
             {
-                Common.CheckPermission(Session["UserName"].ToString(), "MaterialApplicationQuery", this.Page);
-                Session["MAQStrWhere"] = null;
-                string userId = Session["UserId"].ToString();
-                string strSQL = " select DeptCode, Dept from Sys_DeptEnum where ID = (select Dept from Sys_UserInfo_PWD where Id = '" + userId + "')";
-                DataTable dt = DBI.Execute(strSQL, true);
-                if (dt.Rows.Count == 0)
-                {
-                    Response.Redirect("/Admin/NoRights.aspx");
-                }
-             //   else
-              //  {
-                  //  HF_DeptCode.Value = dt.Rows[0]["DeptCode"].ToString();
-              //  }
                 GetMA();
             }
         }
@@ -52,7 +39,7 @@ namespace mms.MaterialApplicationCollar
                 string strSQL = "select *,case when AppState = '1' then '已申请,未审批' when AppState='2' then '进入流程平台' when AppState='3' then '取消审批'"
                 + " when AppState ='4' then '已审批已通过' when AppState = '5' then '已审批未通过' when AppState='6' then '已退回' else Convert(nvarchar(50),AppState) end as AppState1"
                 + " , case when MaterialApplication.Type = '0' then '型号投产' when MaterialApplication.Type = '1' then '试验件' when MaterialApplication.Type='2' then '技术创新课题'  when MaterialApplication.Type='3' then '车间备料' when MaterialApplication.Type ='4' then '无需求' else Convert(nvarchar(50), MaterialApplication.Type) end as Type1"
-                    + " from MaterialApplication where Material_Id='" + HFMDMLID.Value;
+                    + " from MaterialApplication where Is_Del='false' and Material_Id='" + HFMDMLID.Value ;
                
                 strSQL += "' order by ID desc";
                 DataTable dt = Common.AddTableRowsID(DBI.Execute(strSQL, true));
@@ -101,7 +88,7 @@ namespace mms.MaterialApplicationCollar
             if (RadGridMA.SelectedItems.Count > 0)
             {
                 HFMAID.Value = ((RadGridMA.SelectedItems[0]) as GridDataItem).GetDataKeyValue("ID").ToString();
-                HFMDMLID.Value = ((RadGridMA.SelectedItems[0]) as GridDataItem)["Material_Id"].Text;
+               // HFMDMLID.Value = ((RadGridMA.SelectedItems[0]) as GridDataItem)["Material_Id"].Text;
                 HFAppSate1.Value = ((RadGridMA.SelectedItems[0]) as GridDataItem)["AppState1"].Text;
                 string type1 = ((RadGridMA.SelectedItems[0]) as GridDataItem)["Type1"].Text;
                 if (type1 == "型号投产")

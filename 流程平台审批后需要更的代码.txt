@@ -1,0 +1,7 @@
+流程平台审批如果是退回，取消审批，已审批未通过，则需要更新M_Demand_Merge_List的值
+
+
+  " Update M_Demand_Merge_List set Quantity_Applied = '" + quantity_Applied + "',DemandNum_Applied='" + demandNum_Applied +
+                        "',DemandNum_Left='" + demandNum_Left + "',Quantity_Left='" + quantity_Left +
+
+                                    "' where ID = '" + HFMDMLID.Value + "'";

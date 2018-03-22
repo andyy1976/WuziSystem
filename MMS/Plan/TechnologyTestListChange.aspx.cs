@@ -74,7 +74,7 @@ namespace mms.Plan
 
             if (PROJECT != "")
             {
-                Session["StrWhere"] += " and M_Demand_Merge_List.PROJECT like '%" + PROJECT + "%'";
+                Session["StrWhere"] += " and CUX_DM_PROJECT.DICT_NAME like '%" + PROJECT + "%'";
             }
             if (Material_Name != "")
             {
@@ -104,7 +104,7 @@ namespace mms.Plan
 
         protected void GetMDemandMergeList(string strWhere)
         {
-            string strSQL = " select M_Demand_Merge_List.ID, M_Demand_Merge_List.TaskCode, Drawing_No, ItemCode1, NumCasesSum, DemandNumSum, Dept, DemandDate, M_Demand_Merge_List.Submit_Date" +
+            string strSQL = " select M_Demand_Merge_List.ID, M_Demand_Merge_List.TaskCode, TDM_Description,Drawing_No, ItemCode1, NumCasesSum, DemandNumSum, Dept, DemandDate, M_Demand_Merge_List.Submit_Date" +
                 " , Special_Needs, Secret_Level, Shipping_Address, Material_Name, Manufacturer" +
                 " , CUX_DM_URGENCY_LEVEL.DICT_Name as UrgencyDegre, CUX_DM_USAGE.DICT_Name as UseDes , Convert(float, NumCasesSum) as NumCasesSum1" +
                 " , isnull((select top 1 Submission_Status from GetRqStatus_T_Item where USER_RQ_LINE_ID = M_Demand_Merge_List.ID order by SUBMITED_SYNC_STATUS desc),'已提交') as State" +

@@ -492,14 +492,14 @@
 
                                    <telerik:GridBoundColumn DataField="NumCasesSum" ItemStyle-Width="80px" HeaderStyle-Width="80px" HeaderText="需求件数" SortExpression="NumCasesSum" UniqueName="NumCasesSum">
                                     </telerik:GridBoundColumn>
-                                    <telerik:GridBoundColumn DataField="MAT_UNIT" ItemStyle-Width="80px" HeaderStyle-Width="80px" HeaderText="计量单位" SortExpression="MAT_UNIT" UniqueName="MAT_UNIT" Visible="false">
+                                    <telerik:GridBoundColumn DataField="MAT_UNIT" ItemStyle-Width="80px" HeaderStyle-Width="80px" HeaderText="计量单位" SortExpression="MAT_UNIT" UniqueName="MAT_UNIT" Visible="true">
                                     </telerik:GridBoundColumn>
                                     <telerik:GridBoundColumn DataField="DemandNumSum" ItemStyle-Width="80px" HeaderStyle-Width="80px" HeaderText="需求数量" SortExpression="DemandNumSum" UniqueName="DemandNumSum">
                                     </telerik:GridBoundColumn>
 
 
                                 
-                                    <telerik:GridBoundColumn DataField="Mat_Rough_Weight" ItemStyle-Width="80px" HeaderStyle-Width="80px" HeaderText="单件质量" SortExpression="Mat_Rough_Weight" UniqueName="Mat_Rough_Weight" Visible="false">
+                                    <telerik:GridBoundColumn DataField="Mat_Rough_Weight" ItemStyle-Width="80px" HeaderStyle-Width="80px" HeaderText="单件质量" SortExpression="Mat_Rough_Weight" UniqueName="Mat_Rough_Weight" Visible="true">
                                     </telerik:GridBoundColumn>
                                     <telerik:GridBoundColumn DataField="Mat_Pro_Weight" ItemStyle-Width="80px" HeaderStyle-Width="80px" HeaderText="每产品质量" SortExpression="Mat_Pro_Weight" UniqueName="Mat_Pro_Weight" Visible="False">
                                     </telerik:GridBoundColumn>
@@ -684,12 +684,12 @@
 
                                     <telerik:GridBoundColumn DataField="NumCasesSum" ItemStyle-Width="80px" HeaderStyle-Width="80px" HeaderText="需求件数" SortExpression="NumCasesSum" UniqueName="NumCasesSum">
                                     </telerik:GridBoundColumn>
-                                    <telerik:GridBoundColumn DataField="MAT_UNIT" ItemStyle-Width="80px" HeaderStyle-Width="80px" HeaderText="计量单位" SortExpression="MAT_UNIT" UniqueName="MAT_UNIT" Visible="false">
+                                    <telerik:GridBoundColumn DataField="MAT_UNIT" ItemStyle-Width="80px" HeaderStyle-Width="80px" HeaderText="计量单位" SortExpression="MAT_UNIT" UniqueName="MAT_UNIT" Visible="true">
                                     </telerik:GridBoundColumn>
                                     <telerik:GridBoundColumn DataField="DemandNumSum" ItemStyle-Width="80px" HeaderStyle-Width="80px" HeaderText="需求数量" SortExpression="DemandNumSum" UniqueName="DemandNumSum">
                                     </telerik:GridBoundColumn>
 
-                                    <telerik:GridBoundColumn DataField="Mat_Rough_Weight" ItemStyle-Width="80px" HeaderStyle-Width="80px" HeaderText="单件质量" SortExpression="Mat_Rough_Weight" UniqueName="Mat_Rough_Weight" Visible="false">
+                                    <telerik:GridBoundColumn DataField="Mat_Rough_Weight" ItemStyle-Width="80px" HeaderStyle-Width="80px" HeaderText="单件质量" SortExpression="Mat_Rough_Weight" UniqueName="Mat_Rough_Weight" Visible="true">
                                     </telerik:GridBoundColumn>
 
                                     <telerik:GridBoundColumn DataField="Unit_Price" ItemStyle-Width="80px" HeaderStyle-Width="80px" HeaderText="单价" SortExpression="Unit_Price" UniqueName="Unit_Price">
@@ -712,6 +712,11 @@
                                     <telerik:GridBoundColumn DataField="Attribute4" ItemStyle-Width="80px" HeaderStyle-Width="80px" HeaderText="国产/进口" SortExpression="Attribute4" UniqueName="Attribute4">
                                     </telerik:GridBoundColumn>
                                     <telerik:GridBoundColumn DataField="MaterialDept" HeaderText="领料部门" ItemStyle-Width="80px" HeaderStyle-Width="80px"  SortExpression="MaterialDept" UniqueName="MaterialDept" Visible="false">
+                                    </telerik:GridBoundColumn>
+
+                                         <telerik:GridBoundColumn DataField="PREPARER" ItemStyle-Width="80px" HeaderStyle-Width="80px" HeaderText="提交人" SortExpression="PREPARER" UniqueName="PREPARER">
+                                    </telerik:GridBoundColumn>
+                                    <telerik:GridBoundColumn DataField="SUBMISSION_DATE" HeaderText="提交时间" DataFormatString="{0:yyyy-MM-dd}" ItemStyle-Width="100px" HeaderStyle-Width="100px"  SortExpression="SUBMISSION_DATE" UniqueName="SUBMISSION_DATE" Visible="true">
                                     </telerik:GridBoundColumn>
 
                                 </Columns>

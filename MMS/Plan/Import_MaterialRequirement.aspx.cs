@@ -1376,16 +1376,27 @@ namespace mms.Plan
                          dtTemp = DBI.Execute(strSQL, true);
 
                         MDDLD.Shipping_Address = item["Shipping_Address"].Text.Trim();
-                        if (MDDLD.Shipping_Address != dtTemp.Rows[0]["KeyWord"].ToString())
+                        bool shipping_Address_right = false;
+                        string addressArrow = null;
+                        for (int count = 0; count < dtTemp.Rows.Count; count++)
                         {
-                            RadNotificationAlert.Text = "配送地址输入不正确，正确的选项为：" + dtTemp.Rows[0]["KeyWord"].ToString();
-                            RadNotificationAlert.Show();
-                            return;
-
+                            if (MDDLD.Shipping_Address == dtTemp.Rows[count]["KeyWord"].ToString())
+                            {
+                                shipping_Address_right = true;
+                                break;
+                            }
+                            else
+                            {
+                                addressArrow += dtTemp.Rows[count]["KeyWord"].ToString() + " ";
+                            }
                         }
 
-                      
-                   
+                        if (!shipping_Address_right)
+                        {
+                            RadNotificationAlert.Text = "配送地址输入不正确，正确的选项为：" + addressArrow;
+                            RadNotificationAlert.Show();
+                            return;
+                        }
                      
                    
                         string Use_Des = item["Use_Des"].Text.Trim();
@@ -1480,7 +1491,7 @@ namespace mms.Plan
                             }
                             else
                             {
-                                strSQL = @"exec Proc_Add_M_Demand_Plan_List_Technology " + userid + ",'" + MDDLD.TaskCode + "'," + PackId + "," + DraftID + "," + this.ViewState["submit_type"].ToString() + ",0,''";
+                                strSQL = @"exec Proc_Add_M_Demand_Plan_List_Modeltask " + userid + ",'" + MDDLD.TaskCode + "'," + PackId + "," + DraftID + "," + this.ViewState["submit_type"].ToString() + ",0,''";
                                 DataTable dt1 = DBI.Execute(strSQL, true);
                                 if (dt1.Rows.Count == 1)
                                 {
@@ -1489,7 +1500,7 @@ namespace mms.Plan
                                 }
                                 else
                                 {
-                                    RadNotificationAlert.Text = "失败！Proc_Add_M_Demand_Plan_List_Technology返回的记录数不唯一";
+                                    RadNotificationAlert.Text = "失败！Proc_Add_M_Demand_Plan_List_Modeltask返回的记录数不唯一";
                                     RadNotificationAlert.Show();
                                     return;
                                 }
@@ -1602,7 +1613,7 @@ namespace mms.Plan
             string userid = Session["UserId"].ToString();
             string strSQL = " select Sys_UserInfo_PWD.ID as UserID, Sys_DeptEnum.ID as DeptID,  DeptCode, Sys_DeptEnum.Dept, UserName, DomainAccount from Sys_UserInfo_PWD" +
                             " join Sys_DeptEnum on Convert(nvarchar(50),Sys_DeptEnum.ID) = Sys_UserInfo_PWD.Dept " +
-                            " where Sys_UserInfo_PWD.ID = '" + userid + "'";
+                            " where Sys_UserInfo_PWD.ID = '" + userid + "'";//让用户选择
             DataTable dt = DBI.Execute(strSQL, true);
 
             RadComboBox_Dept.DataSource = dt;

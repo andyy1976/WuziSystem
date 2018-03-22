@@ -131,13 +131,13 @@ namespace mms.Plan
                 RadNotificationAlert.Show();
                 return;
             }
-
+            string demanddate = Convert.ToDateTime(dt.Rows[0]["DemandDate"].ToString()).ToString("yyyy-MM-dd");
             if (RTB_Special_Needs.Text.Trim() != dt.Rows[0]["Special_Needs"].ToString() || RDDL_Urgency_Degre.SelectedValue.ToString() != dt.Rows[0]["Urgency_Degre"].ToString() 
                 || RDDL_Secret_Level.SelectedText.ToString() != dt.Rows[0]["Secret_Level"].ToString() || RDDL_Use_Des.SelectedValue.ToString() != dt.Rows[0]["Use_Des"].ToString()
                 || RDDL_Shipping_Address.SelectedText.ToString() != dt.Rows[0]["Shipping_Address"].ToString() || RDDL_Certification.SelectedValue.ToString() != dt.Rows[0]["Certification"].ToString()
                 || Convert.ToDateTime(RDP_DemandDate.SelectedDate).ToString("yyyy-MM-dd") != Convert.ToDateTime(dt.Rows[0]["DemandDate"].ToString()).ToString("yyyy-MM-dd")
-                || lbl_NumCasesSum.Text.Trim() != dt.Rows[0]["NumCasesSum"].ToString() || lbl_Mat_Unit.Text.Trim() != dt.Rows[0]["Mat_Unit"].ToString()
-                || lbl_DemandNumSum.Text.Trim() != dt.Rows[0]["DemandNumSum"].ToString() || RTB_ROUGH_SIZE.Text.Trim() != dt.Rows[0]["Rough_Size"].ToString()
+                ||Convert.ToDecimal(lbl_NumCasesSum.Text.Trim()) != Convert.ToDecimal(dt.Rows[0]["NumCasesSum"].ToString()) || Convert.ToDecimal(lbl_DemandNumSum.Text.Trim()) != Convert.ToDecimal(dt.Rows[0]["DemandNumSum"].ToString())
+                || lbl_Mat_Unit.Text.Trim() != dt.Rows[0]["Mat_Unit"].ToString() || RTB_ROUGH_SIZE.Text.Trim() != dt.Rows[0]["Rough_Size"].ToString()
                 || RTB_MANUFACTURER.Text.Trim() != dt.Rows[0]["MANUFACTURER"].ToString() || RTB_Mat_Rough_Weight.Text.Trim() != dt.Rows[0]["Mat_Rough_Weight"].ToString())
             {
                 string ID = lbl_ID.Text;

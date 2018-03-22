@@ -101,7 +101,7 @@ namespace mms.MaterialApplicationCollar
 
 
                     //strSQL = " select * , (select MDPID from M_Demand_Merge_List where ID = MaterialApplication.Material_Id) as MDPLID from MaterialApplication where ID = '" + HFMAID.Value + "'";
-                    strSQL = " select * ,M_Demand_Merge_List.MDPID as MDPLID,M_Demand_Merge_List.Special_Needs ,M_Demand_Merge_List.SECURITY_LEVEL,M_Demand_Merge_List.USAGE from MaterialApplication left join M_Demand_Merge_List on ID = MaterialApplication.Material_Id where ID = '" + HFMAID.Value + "'";
+                    strSQL = " select * ,M_Demand_Merge_List.MDPID as MDPLID,M_Demand_Merge_List.Special_Needs ,M_Demand_Merge_List.SECURITY_LEVEL,M_Demand_Merge_List.USAGE from MaterialApplication left join M_Demand_Merge_List on M_Demand_Merge_List.ID = MaterialApplication.Material_Id where MaterialApplication.ID = '" + HFMAID.Value + "'";
                     DataTable dtma = DBI.Execute(strSQL, true);
                     HFMDMLID.Value = dtma.Rows[0]["Material_ID"].ToString();
                     HFMDPLID.Value = dtma.Rows[0]["MDPLID"].ToString();
@@ -307,6 +307,13 @@ namespace mms.MaterialApplicationCollar
                 RadNotificationAlert.Show();
                 return;
             }
+
+            if (FeedingTime == "")
+            {
+                RadNotificationAlert.Text = "请输入需求供料时间！";
+                RadNotificationAlert.Show();
+                return;
+            }
             if (ContactInformation == "")
             {
                 RadNotificationAlert.Text = "请输入联系方式！";
@@ -370,8 +377,10 @@ namespace mms.MaterialApplicationCollar
             try
             {
                 string strSQL = "";
+                bool isNewCreate = false;
                 if (HFMAID.Value == "")
                 {
+                    isNewCreate = true;
                     strSQL = "declare @id int";
                     strSQL += " Insert into MaterialApplication (Type, Material_Id, Applicant, Dept, ApplicationTime, ContactInformation, TheMaterialWay, TaskCode, Drawing_No"
                         + " , Draft_Code, Quantity, FeedingTime, IsDispatch, IsConfirm, Remark, MaterialType, Material_Name, Material_Mark, CN_Material_State, Material_Tech_Condition"
@@ -418,8 +427,8 @@ namespace mms.MaterialApplicationCollar
                     DBI.Execute(strSQL);
 
                 }
-
-                string demandNum_Applied = (Convert.ToDecimal(DemandNum_Applied.Value) + Convert.ToDecimal(PleaseTakeQuality)).ToString();
+                /*
+               string demandNum_Applied = (Convert.ToDecimal(DemandNum_Applied.Value) + Convert.ToDecimal(PleaseTakeQuality)).ToString();
                 string quantity_Applied = (Convert.ToDecimal(Quantity_Applied.Value) + Convert.ToDecimal(Quantity)).ToString();
                 string demandNum_Left = (Convert.ToDecimal(DemandNum_Left.Value) - Convert.ToDecimal(PleaseTakeQuality)).ToString();
                 string quantity_Left = (Convert.ToDecimal(Quantity_Left.Value) - Convert.ToDecimal(Quantity)).ToString();
@@ -431,40 +440,41 @@ namespace mms.MaterialApplicationCollar
 
 
                 DBI.Execute(strSQL);
-
+               */
                 K2BLL k2Bll = new K2BLL();
                 var result = k2Bll.StartNewProcess(HFMAID.Value);
-                if (result == "")
+               if (result == "")
                 {
                     strSQL =
                         " Insert into MaterialApplication_Log (MaterialApplicationId, Operation_UserID, Operation_Time, Operation_Remark)" +
                         " values('" + HFMAID.Value + "','" + Session["UserId"].ToString() + "',GetDate() " +
                         " ,'进入流程平台:调度员：' + '" + diaodu + "' + '型号计划员：' + '" + xinghao + "' +'物资计划员：' + '" + wuzi + "')";
                     DBI.Execute(strSQL);
-                   /* string demandNum_Applied = (Convert.ToDecimal(DemandNum_Applied.Value) + Convert.ToDecimal(PleaseTakeQuality)).ToString();
+                   
+                    string demandNum_Applied = (Convert.ToDecimal(DemandNum_Applied.Value) + Convert.ToDecimal(PleaseTakeQuality)).ToString();
                     string quantity_Applied = (Convert.ToDecimal(Quantity_Applied.Value) + Convert.ToDecimal(Quantity)).ToString();
-                    string demandNum_Left = (Convert.ToDecimal(DemandNum_Left.Value)- Convert.ToDecimal(PleaseTakeQuality)).ToString();
+                    string demandNum_Left = (Convert.ToDecimal(DemandNum_Left.Value) - Convert.ToDecimal(PleaseTakeQuality)).ToString();
                     string quantity_Left = (Convert.ToDecimal(Quantity_Left.Value) - Convert.ToDecimal(Quantity)).ToString();
                     strSQL =
-                         " Update M_Demand_Merge_List set Quantity_Applied = '" + quantity_Applied +"',DemandNum_Applied='"+demandNum_Applied+
-                        "',DemandNum_Left='" + demandNum_Left +"',Quantity_Left='"+quantity_Left+
-                                   
+                         " Update M_Demand_Merge_List set Quantity_Applied = '" + quantity_Applied + "',DemandNum_Applied='" + demandNum_Applied +
+                        "',DemandNum_Left='" + demandNum_Left + "',Quantity_Left='" + quantity_Left +
+
                                     "' where ID = '" + HFMDMLID.Value + "'";
-                      
-                     
+
+
                     DBI.Execute(strSQL);
-                    * */
+                   
                     RadNotificationAlert1.Text = "申请成功！进入流程平台";
                     RadNotificationAlert1.Show();
-                 // _timer = new System.Timers.Timer(5000);
-             //   _timer.Elapsed += new System.Timers.ElapsedEventHandler(_timer_Elapsed);
-             //   _timer.Enabled = true;
-            //    _timer.Start();
-                  //  Page.ClientScript.RegisterStartupScript(this.GetType(), "info", "CloseWindow();", true);
                     
                 }
-                else
+               else
                 {
+                    if (isNewCreate)
+                    {
+                         strSQL = " Update MaterialApplication set Is_Del = 'true' where Id = '" + HFMAID.Value + "'";
+                         DBI.Execute(strSQL);
+                    }
                     //进入流程平台失败
                     RadNotificationAlert.Text = result;
                     RadNotificationAlert.Show();

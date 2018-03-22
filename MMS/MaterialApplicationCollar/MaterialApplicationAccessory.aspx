@@ -228,12 +228,12 @@
     </div>
     <telerik:RadWindowManager ID="RadWindowManager1" runat="server">
         <Windows>
-            <telerik:RadWindow ID="RadWindowApp" runat="server" Title="车间备料物资申请" Left="150px"
+            <telerik:RadWindow ID="RadWindowApp" runat="server" Title="车间备料物资申请" Left="100px"
                 ReloadOnShow="true" ShowContentDuringLoad="false" VisibleTitlebar="true" VisibleStatusbar="false"
                 Behaviors="Close,Maximize,Minimize" Modal="true" Width="1000px" Height="680px" />
-             <telerik:RadWindow ID="RadWindowList" runat="server" Title="物资申请列表" Left="150px"
+             <telerik:RadWindow ID="RadWindowList" runat="server" Title="物资申请列表" Left="100px"
                 ReloadOnShow="true" ShowContentDuringLoad="false" VisibleTitlebar="true" VisibleStatusbar="false"
-                Behaviors="Close,Maximize,Minimize" Modal="true" Width="1000px" Height="400px" />
+                Behaviors="Close,Maximize,Minimize" Modal="true" Width="1000px" Height="680px" />
         </Windows>
     </telerik:RadWindowManager>
     <telerik:RadNotification ID="RadNotificationAlert" runat="server" Text="申请成功！进入流程平台" Position="Center"

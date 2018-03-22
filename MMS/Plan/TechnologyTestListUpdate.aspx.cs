@@ -410,7 +410,7 @@ namespace mms.Plan
                 || Project != dt.Rows[0]["Project"].ToString() || TDM_Description != dt.Rows[0]["TDM_Description"].ToString()
                 || Material_Mark != dt.Rows[0]["Material_Mark"].ToString() || CN_Material_State != dt.Rows[0]["CN_Material_State"].ToString()
                 || Material_Tech_Condition != dt.Rows[0]["Material_Tech_Condition"].ToString() || MaterialsDes != dt.Rows[0]["MaterialsDes"].ToString()
-                || Unit_Price != dt.Rows[0]["Unit_Price"].ToString() || Mat_Rough_Weight != dt.Rows[0]["Mat_Rough_Weight"].ToString())
+                ||Convert.ToDecimal(Unit_Price) != Convert.ToDecimal(dt.Rows[0]["Unit_Price"].ToString())|| Mat_Rough_Weight != dt.Rows[0]["Mat_Rough_Weight"].ToString())
 
             {
                 if (Special_Needs != dt.Rows[0]["Special_Needs"].ToString() && Special_Needs == "")

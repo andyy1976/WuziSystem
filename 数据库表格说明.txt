@@ -1,0 +1,8 @@
+P_Pack:计划包
+P_Pack_Task:计划包里面对应的任务
+M_Draft_List:物资草稿清单
+M_Demand_Plan_List :需求计划列表
+M_Demand_DetailedList_Draft:物资需求草稿列表
+M_Demand_Merge_List物资需求列表
+MaterialApplication物资申请列表
+MaterialApplication_Log物资申请日志

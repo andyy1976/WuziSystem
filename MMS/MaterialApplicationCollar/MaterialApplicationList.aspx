@@ -5,10 +5,25 @@
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head id="Head1" runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
+    <link href="../Styles/Plan.css" rel="stylesheet" />
     <style type="text/css">
+        .CommonSymbols {
+            color: blue;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        #table1 tr {
+            height: 26px;
+        }
+
+        #table2 tr {
+            height: 30px;
+            padding: 4px;
+        }
         .floatright {
             float:right;
         }
@@ -151,7 +166,7 @@
     <div style="width: 100%; float: left;">
         <telerik:RadGrid ID="RadGridMA" runat="server" AutoGenerateColumns="false" AllowMultiRowSelection="false"
             OnNeedDataSource="RadGridMA_NeedDataSource" OnItemCommand="RadGridMA_ItemCommand" OnItemDataBound="RadGridMA_OnItemDataBound" OnSelectedIndexChanged="RadGridMA_SelectedIndexChanged"
-                AllowPaging="true" PageSize="20" PagerStyle-AlwaysVisible="True" AllowSorting="true">
+                AllowPaging="true" PageSize="50" PagerStyle-AlwaysVisible="True" AllowSorting="true">
                 <AlternatingItemStyle HorizontalAlign="Center" />
                 <ItemStyle Font-Size="12px" HorizontalAlign="Center" />
                 <HeaderStyle Font-Size="13px" HorizontalAlign="Center"/>
@@ -178,7 +193,7 @@
 
                     <telerik:GridBoundColumn DataField="Quantity" HeaderText="领用件数" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn DataField="PleaseTakeQuality" HeaderText="领用数量"  DataFormatString="{0:N0}" ItemStyle-Width="70px" HeaderStyle-Width="70px"></telerik:GridBoundColumn>
-                 
+                  <telerik:GridBoundColumn DataField="Type1"  UniqueName="Type1" HeaderText="申请类型" ColumnGroupName="Applicant" ItemStyle-Width="70px" HeaderStyle-Width="70px"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn DataField="AppState1" UniqueName="AppState1" HeaderText="申请单状态" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
                     <telerik:GridTemplateColumn HeaderText ="查询流程<br />平台信息"  ItemStyle-Width="70px" HeaderStyle-Width="70px">
                         <ItemTemplate>
@@ -225,10 +240,10 @@
     <%-- 删除弹出窗口--结束--%>
     <telerik:RadWindowManager ID="RadWindowManager1" runat="server">
         <Windows>
-            <telerik:RadWindow ID="RadWindowApp" runat="server" Title="型号物资申请" Left="150px"
+            <telerik:RadWindow ID="RadWindowApp" runat="server" Title="型号物资申请" Left="100px"
                 ReloadOnShow="true" ShowContentDuringLoad="false" VisibleTitlebar="true" VisibleStatusbar="false"
-                Behaviors="Close,Maximize,Minimize" Modal="true" Width="1000px" Height="660px" />
-            <telerik:RadWindow ID="RadWindowK2" runat="server" Title="型号物资申请" Left="150px"
+                Behaviors="Close,Maximize,Minimize" Modal="true" Width="1000px" Height="680px" />
+            <telerik:RadWindow ID="RadWindowK2" runat="server" Title="型号物资申请" Left="100px"
                 ReloadOnShow="true" ShowContentDuringLoad="false" VisibleTitlebar="true" VisibleStatusbar="false"
                 Behaviors="Close,Maximize,Minimize" Modal="true" Width="800px" Height="400px" />
         </Windows>

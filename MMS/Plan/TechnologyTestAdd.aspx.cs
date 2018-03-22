@@ -1610,16 +1610,17 @@ namespace mms.Plan
                                        GridSource1.Columns[i].ColumnName = "Special_Needs";
                                        columnscount++;
                                        break;
-                                   /*
+                                  
                                  
-                                    case "单件定额质量":
-                                      GridSource1.Columns[i].ColumnName = "Mat_Rough_Weight";
-                                      columnscount++;
-                                      break;
+                               
                
-                                    */
+                                    
                                    case "需求件数":
                                        GridSource1.Columns[i].ColumnName = "NumCasesSum";
+                                       columnscount++;
+                                       break;
+                                   case "单件质量":
+                                       GridSource1.Columns[i].ColumnName = "Mat_Rough_Weight";
                                        columnscount++;
                                        break;
                                    case "计量单位":
