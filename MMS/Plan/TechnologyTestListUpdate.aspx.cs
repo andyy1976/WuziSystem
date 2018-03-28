@@ -613,7 +613,8 @@ namespace mms.Plan
                     RadNotificationAlert.Show();
                     return;
                 }
-
+                string MDPLID = null;
+                string MDPLCode = null;
                 try
                 {
                     string strSQL = @"exec Proc_UpdateMDemandMergeList '" + ID + "','" +
@@ -651,78 +652,88 @@ namespace mms.Plan
                                  UserID + "','" +
                                  reason.Replace(",", "，") + "'";
                     DataTable dtmd = DBI.Execute(strSQL, true);
-
+                    MDPLID = dtmd.Rows[0][0].ToString();
+                    MDPLCode = dtmd.Rows[0][1].ToString();
                 }
                 catch (Exception ex)
                 {
                     throw new Exception("保存需求更改信息出错" + ex.Message.ToString());
                 }
 
-            }
-            else
-            {
-                RadNotificationAlert.Text = "修改后的数据没变化!!!";
-                RadNotificationAlert.Show();
-            }
-            if (this.MDPLID.Value != null && this.MDPLID.Value != "")
-            {
-                string approveAccount1 = RDDL_ApproveAccount1.SelectedValue;
-                string approveAccount2 = RDDL_ApproveAccount2.SelectedValue;
 
-                if (approveAccount1 == "")
+                if (MDPLID != null && MDPLID != "")
                 {
-                    RadNotificationAlert.Text = "失败！没有选择" + lbl_ApproveAccount1.Text;
-                    RadNotificationAlert.Show();
-                    return;
-                }
-                if (approveAccount2 == "")
-                {
-                    RadNotificationAlert.Text = "失败！没有选择" + lbl_ApproveAccount2.Text;
-                    RadNotificationAlert.Show();
-                    return;
-                }
-                string approveAccount3 = null;
-                if (this.ViewState["Submit_Type"].ToString() == "3")
-                {
-                    approveAccount3 = RDDL_ApproveAccount3.SelectedValue;
-                    if (approveAccount3 == "")
+                    string approveAccount1 = RDDL_ApproveAccount1.SelectedValue;
+                    string approveAccount2 = RDDL_ApproveAccount2.SelectedValue;
+
+                    if (approveAccount1 == "")
                     {
-                        RadNotificationAlert.Text = "失败！没有选择物资综合计划员" ;
+                        RadNotificationAlert.Text = "失败！没有选择" + lbl_ApproveAccount1.Text;
                         RadNotificationAlert.Show();
                         return;
                     }
-                }
-                string strSql = " Update M_Demand_Plan_List set DeptApproveAccountChange = '" + approveAccount1 + "', PlanOrTecApproveAccountChange = '" + approveAccount2 + "', MaterialPlanApproveAccountChange = '" + approveAccount3 + "' where ID = '" + MDPLID.Value.ToString() + "'";
-                DBI.Execute(strSql);
-
-                //ModifyTechnologySubmit(this.MDPLID.Value);
-                // WriteReqOrderRepeat(MDPLID.Value);
-                //Response.Redirect("/Plan/MDemandMergeListState.aspx?MDPID=" + MDPLID.Value);
-                  
-                K2PreBLL k2prebll = new K2PreBLL();
-                try
-                {
-                  //  Convert.ToInt32(MDPId.Value);
-                    var result = k2prebll.k2StartPreparesProgressChange(MDPLID.Value.ToString(), MDMLID.Value.ToString());
-
-                    if (result == "")
+                    if (approveAccount2 == "")
                     {
-                        RadNotificationAlert1.Text = "进入流程平台！";
-                        RadNotificationAlert1.Show();
-                    //    Page.ClientScript.RegisterStartupScript(this.GetType(), "info", "CloseWindow1();", true);
+                        RadNotificationAlert.Text = "失败！没有选择" + lbl_ApproveAccount2.Text;
+                        RadNotificationAlert.Show();
+                        return;
                     }
-                    else
+                    string approveAccount3 = null;
+                    if (this.ViewState["Submit_Type"].ToString() == "3")
                     {
-                        RadNotificationAlert.Text = result;
+                        approveAccount3 = RDDL_ApproveAccount3.SelectedValue;
+                        if (approveAccount3 == "")
+                        {
+                            RadNotificationAlert.Text = "失败！没有选择物资综合计划员";
+                            RadNotificationAlert.Show();
+                            return;
+                        }
+                    }
+                    string strSql = " Update M_Demand_Plan_List set DeptApproveAccountChange = '" + approveAccount1 + "', PlanOrTecApproveAccountChange = '" + approveAccount2 + "', MaterialPlanApproveAccountChange = '" + approveAccount3 + "' where ID = '" + MDPLID + "'";
+                    DBI.Execute(strSql);
+
+                    //ModifyTechnologySubmit(this.MDPLID.Value);
+                    // WriteReqOrderRepeat(MDPLID.Value);
+                    //Response.Redirect("/Plan/MDemandMergeListState.aspx?MDPID=" + MDPLID.Value);
+
+                    K2PreBLL k2prebll = new K2PreBLL();
+                    try
+                    {
+                        //  Convert.ToInt32(MDPId.Value);
+                        var result = k2prebll.k2StartPreparesProgressChange(MDPLID, MDMLID.Value.ToString());
+
+                        if (result == "")
+                        {
+                            RadNotificationAlert1.Text = "进入流程平台！";
+                            RadNotificationAlert1.Show();
+                            //    Page.ClientScript.RegisterStartupScript(this.GetType(), "info", "CloseWindow1();", true);
+                        }
+                        else
+                        {
+                            RadNotificationAlert.Text = result;
+                            RadNotificationAlert.Show();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        RadNotificationAlert.Text = "失败！" + ex.Message.ToString();
                         RadNotificationAlert.Show();
                     }
                 }
-                catch (Exception ex)
+                else
                 {
-                    RadNotificationAlert.Text = "失败！" + ex.Message.ToString();
+                    RadNotificationAlert.Text = "修改后的数据没变化!!!";
                     RadNotificationAlert.Show();
+
                 }
+
             }
+            else
+            {
+                RadNotificationAlert.Text = "存储过程Proc_UpdateMDemandMergeList执行出错!!!";
+                RadNotificationAlert.Show();
+            }
+      
         }
         
    

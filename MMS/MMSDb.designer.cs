@@ -21958,6 +21958,22 @@ namespace mms
 		
 		private string _Dinge_Size;
 		
+		private string _Material_Tech_Condition;
+		
+		private System.Nullable<decimal> _Quantity_Applied;
+		
+		private System.Nullable<decimal> _Quantity_Left;
+		
+		private System.Nullable<decimal> _DemandNum_Applied;
+		
+		private System.Nullable<decimal> _DemandNum_Left;
+		
+		private string _CN_Material_State;
+		
+		private string _Material_Mark;
+		
+		private string _TDM_Description;
+		
     #region 可扩展性方法定义
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -22152,6 +22168,22 @@ namespace mms
     partial void OnMaterial_NameChanged();
     partial void OnDinge_SizeChanging(string value);
     partial void OnDinge_SizeChanged();
+    partial void OnMaterial_Tech_ConditionChanging(string value);
+    partial void OnMaterial_Tech_ConditionChanged();
+    partial void OnQuantity_AppliedChanging(System.Nullable<decimal> value);
+    partial void OnQuantity_AppliedChanged();
+    partial void OnQuantity_LeftChanging(System.Nullable<decimal> value);
+    partial void OnQuantity_LeftChanged();
+    partial void OnDemandNum_AppliedChanging(System.Nullable<decimal> value);
+    partial void OnDemandNum_AppliedChanged();
+    partial void OnDemandNum_LeftChanging(System.Nullable<decimal> value);
+    partial void OnDemandNum_LeftChanged();
+    partial void OnCN_Material_StateChanging(string value);
+    partial void OnCN_Material_StateChanged();
+    partial void OnMaterial_MarkChanging(string value);
+    partial void OnMaterial_MarkChanged();
+    partial void OnTDM_DescriptionChanging(string value);
+    partial void OnTDM_DescriptionChanged();
     #endregion
 		
 		public M_Demand_Merge_List()
@@ -24059,6 +24091,166 @@ namespace mms
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Material_Tech_Condition")]
+		public string Material_Tech_Condition
+		{
+			get
+			{
+				return this._Material_Tech_Condition;
+			}
+			set
+			{
+				if ((this._Material_Tech_Condition != value))
+				{
+					this.OnMaterial_Tech_ConditionChanging(value);
+					this.SendPropertyChanging();
+					this._Material_Tech_Condition = value;
+					this.SendPropertyChanged("Material_Tech_Condition");
+					this.OnMaterial_Tech_ConditionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Quantity_Applied")]
+		public System.Nullable<decimal> Quantity_Applied
+		{
+			get
+			{
+				return this._Quantity_Applied;
+			}
+			set
+			{
+				if ((this._Quantity_Applied != value))
+				{
+					this.OnQuantity_AppliedChanging(value);
+					this.SendPropertyChanging();
+					this._Quantity_Applied = value;
+					this.SendPropertyChanged("Quantity_Applied");
+					this.OnQuantity_AppliedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Quantity_Left")]
+		public System.Nullable<decimal> Quantity_Left
+		{
+			get
+			{
+				return this._Quantity_Left;
+			}
+			set
+			{
+				if ((this._Quantity_Left != value))
+				{
+					this.OnQuantity_LeftChanging(value);
+					this.SendPropertyChanging();
+					this._Quantity_Left = value;
+					this.SendPropertyChanged("Quantity_Left");
+					this.OnQuantity_LeftChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DemandNum_Applied")]
+		public System.Nullable<decimal> DemandNum_Applied
+		{
+			get
+			{
+				return this._DemandNum_Applied;
+			}
+			set
+			{
+				if ((this._DemandNum_Applied != value))
+				{
+					this.OnDemandNum_AppliedChanging(value);
+					this.SendPropertyChanging();
+					this._DemandNum_Applied = value;
+					this.SendPropertyChanged("DemandNum_Applied");
+					this.OnDemandNum_AppliedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DemandNum_Left")]
+		public System.Nullable<decimal> DemandNum_Left
+		{
+			get
+			{
+				return this._DemandNum_Left;
+			}
+			set
+			{
+				if ((this._DemandNum_Left != value))
+				{
+					this.OnDemandNum_LeftChanging(value);
+					this.SendPropertyChanging();
+					this._DemandNum_Left = value;
+					this.SendPropertyChanged("DemandNum_Left");
+					this.OnDemandNum_LeftChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CN_Material_State")]
+		public string CN_Material_State
+		{
+			get
+			{
+				return this._CN_Material_State;
+			}
+			set
+			{
+				if ((this._CN_Material_State != value))
+				{
+					this.OnCN_Material_StateChanging(value);
+					this.SendPropertyChanging();
+					this._CN_Material_State = value;
+					this.SendPropertyChanged("CN_Material_State");
+					this.OnCN_Material_StateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Material_Mark")]
+		public string Material_Mark
+		{
+			get
+			{
+				return this._Material_Mark;
+			}
+			set
+			{
+				if ((this._Material_Mark != value))
+				{
+					this.OnMaterial_MarkChanging(value);
+					this.SendPropertyChanging();
+					this._Material_Mark = value;
+					this.SendPropertyChanged("Material_Mark");
+					this.OnMaterial_MarkChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TDM_Description")]
+		public string TDM_Description
+		{
+			get
+			{
+				return this._TDM_Description;
+			}
+			set
+			{
+				if ((this._TDM_Description != value))
+				{
+					this.OnTDM_DescriptionChanging(value);
+					this.SendPropertyChanging();
+					this._TDM_Description = value;
+					this.SendPropertyChanged("TDM_Description");
+					this.OnTDM_DescriptionChanged();
+				}
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -24718,6 +24910,16 @@ namespace mms
 		
 		private string _UserAccount;
 		
+		private string _Dinge_Size;
+		
+		private string _MaterialsDes;
+		
+		private string _SECURITY_LEVEL;
+		
+		private string _USAGE;
+		
+		private string _Is_Apply;
+		
     #region 可扩展性方法定义
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -24798,6 +25000,16 @@ namespace mms
     partial void OnUserIdChanged();
     partial void OnUserAccountChanging(string value);
     partial void OnUserAccountChanged();
+    partial void OnDinge_SizeChanging(string value);
+    partial void OnDinge_SizeChanged();
+    partial void OnMaterialsDesChanging(string value);
+    partial void OnMaterialsDesChanged();
+    partial void OnSECURITY_LEVELChanging(string value);
+    partial void OnSECURITY_LEVELChanged();
+    partial void OnUSAGEChanging(string value);
+    partial void OnUSAGEChanged();
+    partial void OnIs_ApplyChanging(string value);
+    partial void OnIs_ApplyChanged();
     #endregion
 		
 		public MaterialApplication()
@@ -25561,6 +25773,106 @@ namespace mms
 					this._UserAccount = value;
 					this.SendPropertyChanged("UserAccount");
 					this.OnUserAccountChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Dinge_Size")]
+		public string Dinge_Size
+		{
+			get
+			{
+				return this._Dinge_Size;
+			}
+			set
+			{
+				if ((this._Dinge_Size != value))
+				{
+					this.OnDinge_SizeChanging(value);
+					this.SendPropertyChanging();
+					this._Dinge_Size = value;
+					this.SendPropertyChanged("Dinge_Size");
+					this.OnDinge_SizeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaterialsDes")]
+		public string MaterialsDes
+		{
+			get
+			{
+				return this._MaterialsDes;
+			}
+			set
+			{
+				if ((this._MaterialsDes != value))
+				{
+					this.OnMaterialsDesChanging(value);
+					this.SendPropertyChanging();
+					this._MaterialsDes = value;
+					this.SendPropertyChanged("MaterialsDes");
+					this.OnMaterialsDesChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SECURITY_LEVEL")]
+		public string SECURITY_LEVEL
+		{
+			get
+			{
+				return this._SECURITY_LEVEL;
+			}
+			set
+			{
+				if ((this._SECURITY_LEVEL != value))
+				{
+					this.OnSECURITY_LEVELChanging(value);
+					this.SendPropertyChanging();
+					this._SECURITY_LEVEL = value;
+					this.SendPropertyChanged("SECURITY_LEVEL");
+					this.OnSECURITY_LEVELChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_USAGE")]
+		public string USAGE
+		{
+			get
+			{
+				return this._USAGE;
+			}
+			set
+			{
+				if ((this._USAGE != value))
+				{
+					this.OnUSAGEChanging(value);
+					this.SendPropertyChanging();
+					this._USAGE = value;
+					this.SendPropertyChanged("USAGE");
+					this.OnUSAGEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Is_Apply")]
+		public string Is_Apply
+		{
+			get
+			{
+				return this._Is_Apply;
+			}
+			set
+			{
+				if ((this._Is_Apply != value))
+				{
+					this.OnIs_ApplyChanging(value);
+					this.SendPropertyChanging();
+					this._Is_Apply = value;
+					this.SendPropertyChanged("Is_Apply");
+					this.OnIs_ApplyChanged();
 				}
 			}
 		}

@@ -391,10 +391,12 @@ namespace mms
                                 case "QUANTITY"://需求数量
                                     mdml.DemandNumSum = Convert.ToDecimal(originalValue);
                                     mdml.QUANTITY1 = Convert.ToDecimal(originalValue);
+                                    mdml.DemandNum_Left = Convert.ToDecimal(originalValue) - mdml.DemandNum_Applied;
                                     break;
                                 case "PIECE"://件数
                                     mdml.NumCasesSum = Convert.ToDecimal(originalValue);
                                     mdml.PIECE = Convert.ToDecimal(originalValue);
+                                    mdml.Quantity_Left = Convert.ToDecimal(originalValue) - mdml.Quantity_Applied;
                                     break;
                                 case "DIMENSION"://尺寸
                                     mdml.Rough_Size = originalValue;
@@ -516,10 +518,12 @@ namespace mms
                                 case "QUANTITY"://需求数量
                                     mdml.DemandNumSum = Convert.ToDecimal(originalValue);
                                     mdml.QUANTITY1 = Convert.ToDecimal(originalValue);
+                                    mdml.DemandNum_Left = Convert.ToDecimal(originalValue) - mdml.DemandNum_Applied;
                                     break;
                                 case "PIECE"://件数
                                     mdml.NumCasesSum = Convert.ToDecimal(originalValue);
                                     mdml.PIECE = Convert.ToDecimal(originalValue);
+                                    mdml.Quantity_Left = Convert.ToDecimal(originalValue) - mdml.Quantity_Applied;
                                     break;
                                 case "DIMENSION"://尺寸
                                     mdml.Rough_Size = originalValue;//需求尺寸
@@ -601,6 +605,7 @@ namespace mms
             }
             db.SubmitChanges();
 
+            db.ExecuteCommand("Update M_Demand_Merge_List set Is_Change = 'false' where MDPID = '" + MDPLID + "' Update M_Demand_Plan_List set Submit_State = '4' where Id = '" + MDPLID + "'");
             return "";
         }
 

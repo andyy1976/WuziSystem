@@ -1,0 +1,7 @@
+MaterialApplication: 
+is_cancelData	bit	Checked 
+默认值0
+M_Demand_Plan_List:
+planType	int	Checked
+0：用于需求计划；1：用于变更
+默认值0

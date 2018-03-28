@@ -261,9 +261,18 @@ namespace mms.Plan
 
         protected void BtnSubmit_Click(object sender, EventArgs e)
         {
+            string changesubmit = Request.QueryString["changeSubmit"].ToString();
             string MDPLID = Request.QueryString["MDPID"].ToString();
             LogisticsCenterBLL bll = new LogisticsCenterBLL();
-            string result = bll.WriteReqOrderRepeat(MDPLID);
+            string result="";
+            if (changesubmit == "1")
+            {
+                result = bll.WriteRcoOrderRepeat(MDPLID);
+            }
+            else
+            {
+                result = bll.WriteReqOrderRepeat(MDPLID);
+            }
             if (result == "")
             {
                 RadNotificationAlert.Text = "提交成功！";

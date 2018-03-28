@@ -5,25 +5,10 @@
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<head id="Head1" runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
-    <link href="../Styles/Plan.css" rel="stylesheet" />
     <style type="text/css">
-        .CommonSymbols {
-            color: blue;
-            cursor: pointer;
-            padding: 4px;
-        }
-
-        #table1 tr {
-            height: 26px;
-        }
-
-        #table2 tr {
-            height: 30px;
-            padding: 4px;
-        }
         .floatright {
             float:right;
         }
@@ -100,7 +85,7 @@
                     return;
                 } else {
                     var appstate = $get("<%=HFAppSate1.ClientID%>").value;
-                    if (appstate == "已退回" || appstate == "已申请,未审批" || appstate == "取消审批" || appstate=="已审批未通过") {
+                    if (appstate == "已退回" || appstate == "未进入流程平台" || appstate == "取消审批" || appstate=="已审批未通过") {
                         $find("<%= RadWindowDelete.ClientID %>").show();
                         deleteID = sender.get_id();
                         args.set_cancel(true);
@@ -129,7 +114,7 @@
                 } else {
                     var win = $find("<%=RadWindowManager1.ClientID %>");
                     var appstate = $get("<%=HFAppSate1.ClientID%>").value;
-                    if (appstate == "已退回" || appstate == "已申请,未审批" || appstate == "取消审批" || appstate == "已审批未通过")
+                    if (appstate == "已退回" || appstate == "未进入流程平台" || appstate == "取消审批" || appstate == "已审批未通过")
                     {
                         var MDMLID = $get("<%=HFMDMLID.ClientID%>").value;
                         var Type = $get("<%=HFType.ClientID%>").value;
@@ -193,7 +178,7 @@
 
                     <telerik:GridBoundColumn DataField="Quantity" HeaderText="领用件数" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn DataField="PleaseTakeQuality" HeaderText="领用数量"  DataFormatString="{0:N0}" ItemStyle-Width="70px" HeaderStyle-Width="70px"></telerik:GridBoundColumn>
-                  <telerik:GridBoundColumn DataField="Type1"  UniqueName="Type1" HeaderText="申请类型" ColumnGroupName="Applicant" ItemStyle-Width="70px" HeaderStyle-Width="70px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="Type1"  UniqueName="Type1" HeaderText="申请类型" ColumnGroupName="Applicant" ItemStyle-Width="70px" HeaderStyle-Width="70px"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn DataField="AppState1" UniqueName="AppState1" HeaderText="申请单状态" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
                     <telerik:GridTemplateColumn HeaderText ="查询流程<br />平台信息"  ItemStyle-Width="70px" HeaderStyle-Width="70px">
                         <ItemTemplate>

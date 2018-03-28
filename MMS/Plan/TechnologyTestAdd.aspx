@@ -714,7 +714,7 @@
                                     <telerik:GridBoundColumn DataField="MaterialDept" HeaderText="领料部门" ItemStyle-Width="80px" HeaderStyle-Width="80px"  SortExpression="MaterialDept" UniqueName="MaterialDept" Visible="false">
                                     </telerik:GridBoundColumn>
 
-                                         <telerik:GridBoundColumn DataField="PREPARER" ItemStyle-Width="80px" HeaderStyle-Width="80px" HeaderText="提交人" SortExpression="PREPARER" UniqueName="PREPARER">
+                                    <telerik:GridBoundColumn DataField="PREPARER" ItemStyle-Width="80px" HeaderStyle-Width="80px" HeaderText="提交人" SortExpression="PREPARER" UniqueName="PREPARER">
                                     </telerik:GridBoundColumn>
                                     <telerik:GridBoundColumn DataField="SUBMISSION_DATE" HeaderText="提交时间" DataFormatString="{0:yyyy-MM-dd}" ItemStyle-Width="100px" HeaderStyle-Width="100px"  SortExpression="SUBMISSION_DATE" UniqueName="SUBMISSION_DATE" Visible="true">
                                     </telerik:GridBoundColumn>

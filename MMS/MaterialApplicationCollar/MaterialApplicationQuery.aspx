@@ -75,7 +75,7 @@
                     return;
                 } else {
                     var appstate = $get("<%=HFAppSate1.ClientID%>").value;
-                    if (appstate == "已退回" || appstate == "已申请,未审批" || appstate == "取消审批" || appstate=="已审批未通过") {
+                    if (appstate == "已退回" || appstate == "未进入流程平台" || appstate == "取消审批" || appstate == "已审批未通过") {
                         $find("<%= RadWindowDelete.ClientID %>").show();
                         deleteID = sender.get_id();
                         args.set_cancel(true);
@@ -102,7 +102,7 @@
                 } else {
                     var win = $find("<%=RadWindowManager1.ClientID %>");
                     var appstate = $get("<%=HFAppSate1.ClientID%>").value;
-                    if (appstate == "已退回" || appstate == "已申请,未审批" || appstate == "取消审批" || appstate == "已审批未通过") {
+                    if (appstate == "已退回" || appstate == "未进入流程平台" || appstate == "取消审批" || appstate == "已审批未通过") {
                         var MDMLID = $get("<%=HFMDMLID.ClientID%>").value;
                         var Type = $get("<%=HFType.ClientID%>").value;
                         var MAID = $get("<%=HFMAID.ClientID%>").value;
@@ -154,9 +154,7 @@
        申请单状态：<telerik:RadDropDownList ID="RDDL_AppState" runat="server" Width="100px">
             <Items>
                 <telerik:DropDownListItem Value="" Text="全部" />
-                <telerik:DropDownListItem Value="1" Text="未进入流程平台" />
-                <telerik:DropDownListItem Value="2" Text="进入流程平台" />
-               
+                <telerik:DropDownListItem Value="2" Text="进入流程平台" />               
                 <telerik:DropDownListItem Value="4" Text="已审批已通过" />
                 <telerik:DropDownListItem Value="5" Text="已审批未通过" />
                 <telerik:DropDownListItem Value="6" Text="物流中心退单" />

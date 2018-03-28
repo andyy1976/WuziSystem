@@ -247,7 +247,7 @@
                                <td style="width:110px;">申请部门：</td>
                             <td style="width:80px;">
                                 <telerik:RadComboBox ID="RadComboBox_Dept" AutoPostBack="true" AppendDataBoundItems="true" runat="server"
-                                            OnSelectedIndexChanged="RadComboBox_Dept_SelectedIndexChanged" Width="100" Enabled="False">
+                                            OnSelectedIndexChanged="RadComboBox_Dept_SelectedIndexChanged" Width="100" Enabled="True">
                                 </telerik:RadComboBox>
                                  </td>
                             <td style="width:90px;">申请人：</td>

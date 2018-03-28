@@ -116,7 +116,7 @@
                 <telerik:RadButton ID="BtnSubmit" runat="server" Text="提交物流中心" OnClick="BtnSubmit_Click" OnClientClicking="confirmRadWindow" Visible="false"></telerik:RadButton>
             </div>
             <div style="width:100%; margin-top:10px;">
-                 <telerik:RadGrid ID="RadGridErr" runat="server" AllowPaging="True" DataKeyNames="ID" Culture="zh-CN" GroupPanelPosition="Top" PageSize="10"
+                 <telerik:RadGrid ID="RadGridErr" runat="server" AllowPaging="True" Culture="zh-CN" GroupPanelPosition="Top" PageSize="10"
                     OnNeedDataSource="RadGridErr_NeedDataSource">
                     <HeaderStyle HorizontalAlign="Center" Font-Size="12px" />
                     <CommandItemStyle Font-Bold="true" Font-Size="16px" HorizontalAlign="Center" Height="40px" />
@@ -173,7 +173,7 @@
                 </telerik:RadGrid>
             </div>
             <div style="width:100%; margin-top:10px;">
-                <telerik:RadGrid ID="RadGrid_TechnologyTest" runat="server" AllowPaging="True" DataKeyNames="ID" Culture="zh-CN" GroupPanelPosition="Top" PageSize="10"
+                <telerik:RadGrid ID="RadGrid_TechnologyTest" runat="server" AllowPaging="True" Culture="zh-CN" GroupPanelPosition="Top" PageSize="10"
                     OnNeedDataSource="RadGrid_TechnologyTest_NeedDataSource">
                     <HeaderStyle HorizontalAlign="Center" Font-Size="12px" />
                     <CommandItemStyle Font-Bold="true" Font-Size="16px" HorizontalAlign="Center" Height="40px" />

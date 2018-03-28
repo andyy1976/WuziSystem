@@ -71,7 +71,9 @@ namespace mms
             model.Remark = ma.Remark;
             model.ReturnReason = ma.ReturnReason;
             model.Rough_Size = ma.Rough_Size;
-        //    model.Dinge_Size = ma.Dinge_Size;
+          // model.Dinge_Size = ma.Dinge_Size;//定额尺寸
+          //  model.SECURITY_LEVEL = ma.SECURITY_LEVEL;//密级
+            //model.USAGE = ma.USAGE;//用途
             model.Rough_Spec = ma.Rough_Spec;
             model.RqDept = rqDept;                                          
             model.RqHeaderId = RqHeaderId;

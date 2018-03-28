@@ -2194,16 +2194,29 @@ namespace mms.Plan
                         " where TypeID = '2' and Dept_Id = (select ID from Sys_DeptEnum where DeptCode = '" + mta.MaterialDept + "')";
                         dtTemp = DBI.Execute(strSQL, true);
 
+                      
                         mta.Shipping_Address = item["Shipping_Address"].Text.Trim();
-                        if (mta.Shipping_Address != dtTemp.Rows[0]["KeyWord"].ToString())
+                        bool shipping_Address_right = false;
+                        string addressArrow = null;
+                        for (int count = 0; count < dtTemp.Rows.Count; count++)
                         {
-                            RadNotificationAlert.Text = "配送地址输入不正确，正确的选项为：" + dtTemp.Rows[0]["KeyWord"].ToString();
-                            RadNotificationAlert.Show();
-                            return;
-
+                            if (mta.Shipping_Address == dtTemp.Rows[count]["KeyWord"].ToString())
+                            {
+                                shipping_Address_right = true;
+                                break;
+                            }
+                            else
+                            {
+                                addressArrow += dtTemp.Rows[count]["KeyWord"].ToString() + " ";
+                            }
                         }
 
-
+                        if (!shipping_Address_right)
+                        {
+                            RadNotificationAlert.Text = "配送地址输入不正确，正确的选项为：" + addressArrow;
+                            RadNotificationAlert.Show();
+                            return;
+                        }
 
 
 

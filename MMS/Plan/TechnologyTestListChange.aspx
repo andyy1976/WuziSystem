@@ -57,6 +57,23 @@
             function RefreshParent(sender, eventArgs) {
                 document.location.reload();
             }
+
+            function ShowTechnologyTestListDetails(MDP_Code, MDPID, SubmitType, Type) {
+                var win = $find("<%=RadWindowRecordWindow.ClientID %>");
+                 var title = "";
+                 switch (SubmitType) {
+                     case "1":
+                         title = "工艺试验件"; break;
+                     case "2":
+                         title = "技术创新课题"; break;
+                     case "3":
+                         title = "车间备料"; break;
+                 }
+                 win.set_title(title);
+                 window.radopen("/Plan/TechnologyTest.aspx?changeSubmit=1&MDP_Code=" + MDP_Code + "&MDPID=" + MDPID +
+                     "&SubmitType=" + SubmitType + "&Type=" + Type, "RadWindowRecordWindow");
+                 return false;
+             }
         </script>
     </telerik:RadCodeBlock>
     <div style="width:100%;">
@@ -128,9 +145,11 @@
                         <telerik:GridTemplateColumn HeaderText="修改" ItemStyle-Width="100px" HeaderStyle-Width="100px">
                             <ItemTemplate>
                                 <telerik:RadButton ID="RB_ShowWin" runat="server" Text="修改需求"  ButtonType="ToggleButton" ForeColor="Blue"></telerik:RadButton>
+                                <telerik:RadButton ID="RadButtonDetails" runat="server"  Text="查看详细" Visible="false" AutoPostBack="false"></telerik:RadButton>
                             </ItemTemplate>
                         </telerik:GridTemplateColumn>
                         <telerik:GridBoundColumn DataField="ID" HeaderText="需求行号" ItemStyle-Width="70px" HeaderStyle-Width="70px"></telerik:GridBoundColumn>
+                        <telerik:GridBoundColumn DataField="substate" HeaderText="变更提交状态" ItemStyle-Width="120px" HeaderStyle-Width="120px"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="Model" HeaderText="型号" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
 
                         <telerik:GridBoundColumn DataField="TaskCode" HeaderText="任务号" ItemStyle-Width="120px" HeaderStyle-Width="120px"></telerik:GridBoundColumn>
@@ -164,10 +183,16 @@
      <%--修改需求弹窗--开始--%>
     <telerik:RadWindowManager ID="RadWindowManager1" runat="server">
         <Windows>
+              <telerik:RadWindow ID="RadWindowRecordWindow" runat="server" Title="工艺试验件" Left="100px"
+                            ReloadOnShow="true" ShowContentDuringLoad="false" VisibleTitlebar="true" VisibleStatusbar="false"
+                            Behaviors="Close,Maximize,Minimize" Modal="true" Width="1300px" Height="620px" />
             <telerik:RadWindow ID="RadWindow1" runat="server" Title="修改需求" Left="150px" Top="20"
                 ReloadOnShow="true" ShowContentDuringLoad="false" VisibleTitlebar="true" VisibleStatusbar="false"
                 Behaviors="Close,Maximize,Minimize" OnClientClose="RefreshParent" Modal="true" Width="1300px" Height="600px" />
         </Windows>
     </telerik:RadWindowManager>
     <%--修改需求弹窗--结束--%>
+      <telerik:RadNotification ID="RadNotificationAlert" runat="server" Text="" Position="Center"
+        AutoCloseDelay="4000" Width="350" Title="提示" EnableRoundedCorners="true"  >
+        </telerik:RadNotification>
 </asp:Content>

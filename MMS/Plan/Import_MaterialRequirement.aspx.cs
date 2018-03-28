@@ -1611,9 +1611,9 @@ namespace mms.Plan
         private void BindDeptUserAddress()
         {
             string userid = Session["UserId"].ToString();
-            string strSQL = " select Sys_UserInfo_PWD.ID as UserID, Sys_DeptEnum.ID as DeptID,  DeptCode, Sys_DeptEnum.Dept, UserName, DomainAccount from Sys_UserInfo_PWD" +
-                            " join Sys_DeptEnum on Convert(nvarchar(50),Sys_DeptEnum.ID) = Sys_UserInfo_PWD.Dept " +
-                            " where Sys_UserInfo_PWD.ID = '" + userid + "'";//让用户选择
+            string strSQL = " select * from Sys_DeptEnum" +
+                            // " join Sys_DeptEnum on Convert(nvarchar(50),Sys_DeptEnum.ID) = Sys_UserInfo_PWD.Dept " +
+                            " where Is_Del = 'false'";
             DataTable dt = DBI.Execute(strSQL, true);
 
             RadComboBox_Dept.DataSource = dt;
@@ -1621,7 +1621,10 @@ namespace mms.Plan
             RadComboBox_Dept.DataValueField = "DeptCode";
             RadComboBox_Dept.DataBind();
 
-        
+            strSQL = " select Sys_UserInfo_PWD.ID as UserID, Sys_DeptEnum.ID as DeptID,  DeptCode, Sys_DeptEnum.Dept, UserName, DomainAccount from Sys_UserInfo_PWD" +
+                                " join Sys_DeptEnum on Convert(nvarchar(50),Sys_DeptEnum.ID) = Sys_UserInfo_PWD.Dept " +
+                                " where Sys_UserInfo_PWD.ID = '" + userid + "'";//让用户选择
+            dt = DBI.Execute(strSQL, true);
 
             RadComboBox_User.DataSource = dt;
             RadComboBox_User.DataTextField = "UserName";
@@ -1643,10 +1646,11 @@ namespace mms.Plan
         }
         protected void RadComboBox_Dept_SelectedIndexChanged(object sender, RadComboBoxSelectedIndexChangedEventArgs e)
         {
-            if (RadComboBox_Dept.SelectedValue != "0")
+          /*  if (RadComboBox_Dept.SelectedValue != "0")
             {
                 BindDDlUserInfo(RadComboBox_Dept.SelectedValue);
             }
+            */
         }
    
     }

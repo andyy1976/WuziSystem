@@ -29,8 +29,8 @@ namespace mms.Plan
                 string strSQL = " select * from GetBasicdata_T_Item where DICT_CLASS='CUX_DM_URGENCY_LEVEL'";
                 DataTable dt = DBI.Execute(strSQL, true);
                 RDDL_Urgency_Degre.DataSource = dt;
-                RDDL_Urgency_Degre.DataTextField = "DICT_Name";
-                RDDL_Urgency_Degre.DataValueField = "DICT_Code";
+                RDDL_Urgency_Degre.DataTextField = "DICT_NAME";
+                RDDL_Urgency_Degre.DataValueField = "DICT_CODE";
                 RDDL_Urgency_Degre.DataBind();
 
                 strSQL = "SELECT * FROM [Sys_SecretLevel] WHERE ([Is_Del] = 0)";
@@ -43,8 +43,8 @@ namespace mms.Plan
                 strSQL = "select * from GetBasicdata_T_Item where DICT_CLASS='CUX_DM_USAGE'";
                 dt = DBI.Execute(strSQL, true);
                 RDDL_Use_Des.DataSource = dt;
-                RDDL_Use_Des.DataTextField = "DICT_Name";
-                RDDL_Use_Des.DataValueField = "DICT_Code";
+                RDDL_Use_Des.DataTextField = "DICT_NAME";
+                RDDL_Use_Des.DataValueField = "DICT_CODE";
                 RDDL_Use_Des.DataBind();
 
                 GetMDML(MDMLID);
@@ -72,17 +72,17 @@ namespace mms.Plan
             RTB_Special_Needs.Text = dt.Rows[0]["Special_Needs"].ToString();
             lbl_NumCasesSum.Text = Convert.ToDouble(dt.Rows[0]["NumCasesSum"].ToString()).ToString();
             lbl_DemandNumSum.Text = Convert.ToDouble(dt.Rows[0]["DemandNumSum"].ToString()).ToString();
-            if (RDDL_Urgency_Degre.FindItemByText(dt.Rows[0]["Urgency_Degre"].ToString()) != null)
+            if (RDDL_Urgency_Degre.FindItemByValue(dt.Rows[0]["Urgency_Degre"].ToString()) != null)
             {
-                RDDL_Urgency_Degre.FindItemByText(dt.Rows[0]["Urgency_Degre"].ToString()).Selected = true;
+                RDDL_Urgency_Degre.FindItemByValue(dt.Rows[0]["Urgency_Degre"].ToString()).Selected = true;
             }
-            if (RDDL_Secret_Level.FindItemByText(dt.Rows[0]["Secret_Level"].ToString()) != null)
+            if (RDDL_Secret_Level.FindItemByValue(dt.Rows[0]["Secret_Level"].ToString()) != null)
             {
-                RDDL_Secret_Level.FindItemByText(dt.Rows[0]["Secret_Level"].ToString()).Selected = true;
+                RDDL_Secret_Level.FindItemByValue(dt.Rows[0]["Secret_Level"].ToString()).Selected = true;
             }
-            if (RDDL_Use_Des.FindItemByText(dt.Rows[0]["Use_Des"].ToString()) != null)
+            if (RDDL_Use_Des.FindItemByValue(dt.Rows[0]["Use_Des"].ToString()) != null)
             {
-                RDDL_Use_Des.FindItemByText(dt.Rows[0]["Use_Des"].ToString()).Selected = true;
+                RDDL_Use_Des.FindItemByValue(dt.Rows[0]["Use_Des"].ToString()).Selected = true;
             }
             if (RDDL_Certification.FindItemByText(dt.Rows[0]["Certification"].ToString()) != null)
             {
@@ -131,7 +131,7 @@ namespace mms.Plan
                 RadNotificationAlert.Show();
                 return;
             }
-            string demanddate = Convert.ToDateTime(dt.Rows[0]["DemandDate"].ToString()).ToString("yyyy-MM-dd");
+
             if (RTB_Special_Needs.Text.Trim() != dt.Rows[0]["Special_Needs"].ToString() || RDDL_Urgency_Degre.SelectedValue.ToString() != dt.Rows[0]["Urgency_Degre"].ToString() 
                 || RDDL_Secret_Level.SelectedText.ToString() != dt.Rows[0]["Secret_Level"].ToString() || RDDL_Use_Des.SelectedValue.ToString() != dt.Rows[0]["Use_Des"].ToString()
                 || RDDL_Shipping_Address.SelectedText.ToString() != dt.Rows[0]["Shipping_Address"].ToString() || RDDL_Certification.SelectedValue.ToString() != dt.Rows[0]["Certification"].ToString()
@@ -249,7 +249,7 @@ namespace mms.Plan
                 string MDPLID = dtmd.Rows[0][0].ToString();
                 string MDPCode = dtmd.Rows[0][1].ToString();
 
-                //WriteRcoOrderRepeat(MDPLID);
+              
 
                 LogisticsCenterBLL bll = new LogisticsCenterBLL();
                 var result = bll.WriteRcoOrderRepeat(MDPLID);

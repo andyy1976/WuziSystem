@@ -29,6 +29,9 @@ namespace mms.Plan
                     InitTable.Columns.Add("rownum");
                     InitTable.Columns.Add("ID");
                     InitTable.Columns.Add("MDP_Code");
+                    InitTable.Columns.Add("PackId");
+                    InitTable.Columns.Add("DraftId");
+                    InitTable.Columns.Add("MDMId");
                     InitTable.Columns.Add("SecretLevel");
                     InitTable.Columns.Add("SpecialNeeds");
                     InitTable.Columns.Add("UrgencyDegre");
@@ -62,8 +65,11 @@ namespace mms.Plan
                     InitTable.Columns.Add("User_ID");
                     InitTable.Columns.Add("Contact_Way");
                     InitTable.Columns.Add("Submit_Date");
+                    InitTable.Columns.Add("Submit_Type");
                     InitTable.Columns.Add("Get_Quantity");
+                    InitTable.Columns.Add("Return_State");
                     InitTable.Columns.Add("subtype");
+                    InitTable.Columns.Add("reState");
                     InitTable.Columns.Add("substate");
                     InitTable.PrimaryKey = new DataColumn[] { InitTable.Columns["ID"] };
                     this.ViewState["_gds"] = InitTable;

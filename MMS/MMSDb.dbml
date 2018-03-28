@@ -944,7 +944,7 @@
       <Column Name="MDPId" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="CN_Material_State" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="MDML_Id" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Member="Dinge_Size" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Dinge_Size" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.M_Demand_Merge_List" Member="M_Demand_Merge_List">
@@ -1043,7 +1043,15 @@
       <Column Name="ATTRIBUTE14" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
       <Column Name="ATTRIBUTE15" Type="System.String" DbType="NVarChar(240)" CanBeNull="true" />
       <Column Name="Material_Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Member="Dinge_Size" Type="System.String" CanBeNull="false" />
+      <Column Name="Dinge_Size" Type="System.String" CanBeNull="false" />
+      <Column Member="Material_Tech_Condition" Type="System.String" CanBeNull="true" />
+      <Column Member="Quantity_Applied" Type="System.Decimal" CanBeNull="true" />
+      <Column Member="Quantity_Left" Type="System.Decimal" CanBeNull="true" />
+      <Column Member="DemandNum_Applied" Type="System.Decimal" CanBeNull="true" />
+      <Column Member="DemandNum_Left" Type="System.Decimal" CanBeNull="true" />
+      <Column Member="CN_Material_State" Type="System.String" CanBeNull="true" />
+      <Column Member="Material_Mark" Type="System.String" CanBeNull="true" />
+      <Column Member="TDM_Description" Type="System.String" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.M_Demand_Plan_List" Member="M_Demand_Plan_List">
@@ -1114,6 +1122,11 @@
       <Column Name="TuiKuContext" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="UserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="UserAccount" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Dinge_Size" Type="System.String" CanBeNull="true" />
+      <Column Name="MaterialsDes" Type="System.String" CanBeNull="true" />
+      <Column Name="SECURITY_LEVEL" Type="System.String" CanBeNull="true" />
+      <Column Name="USAGE" Type="System.String" CanBeNull="true" />
+      <Column Name="Is_Apply" Type="System.String" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.MaterialApplication_Log" Member="MaterialApplication_Log">

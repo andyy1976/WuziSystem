@@ -182,6 +182,10 @@ namespace mms
             }
             catch (Exception ex)
             {
+               //strSql = " Update M_Demand_Plan_List set Submit_State='1' where ID ='" + MDPLID + "'";
+              // DBI.Execute(strSql);
+               //strSql = " Update M_Demand_Merge_List set Is_Change='1' ,MDPId='" + MDPLID + "' where ID ='" + MDMLID + "'";
+              //  DBI.Execute(strSql);
                 if (ex.Message.IndexOf("未能解析此远程名称") == -1)
                 {
                     return "提交流程平台错误，请联系流程平台管理员";
@@ -193,12 +197,16 @@ namespace mms
             }
             if (result == true)
             {
-                strSql = " Update M_Demand_Plan_List set Submit_State='1' where ID ='" + MDPLID + "'";
+                strSql = " Update M_Demand_Plan_List set Submit_State='1'  where ID ='" + MDPLID + "'";
+
+                DBI.Execute(strSql);
+                strSql = " Update M_Demand_Merge_List set Is_Change='true',MDPId='" + MDPLID + "' where ID ='" + MDMLID + "'";
                 DBI.Execute(strSql);
                 return "";
             }
             else
             {
+      
                 return "提交流程平台失败！<br />请联系管理员";
             }
         }

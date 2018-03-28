@@ -55,7 +55,7 @@
         </div>
         <div class="divContant">
             <div class="divViewPanel">
-                <asp:Button ID="btnNewAdd" runat="server" Text="" AutoPostBack="false"/>
+                <asp:Button ID="btnNewAdd" runat="server" Text="" />
             </div>
             <div class="divViewPanel">
                 <telerik:RadCodeBlock ID="RadCodeBlock1" runat="server">
@@ -83,7 +83,7 @@
                           }
                           win.set_title(title);
                             window.radopen("/Plan/TechnologyTest.aspx?MDP_Code=" + MDP_Code + "&MDPID=" + MDPID +
-                                "&SubmitType=" + SubmitType + "&Type=" + Type, "RadWindowRecordWindow");
+                                "&SubmitType=" + SubmitType + "&Type=" + Type + "&changeSubmit=0", "RadWindowRecordWindow");
                             return false;
                         }
                         function ShowTechnologyTestAdd(MDPId, SubmitType) {
@@ -138,7 +138,7 @@
                     </AjaxSettings>
                 </telerik:RadAjaxManager>
 
-                <telerik:RadGrid ID="RadGrid_TechnologyTestList" runat="server" DataKeyNames="ID" Culture="zh-CN" GroupPanelPosition="Top"  
+                <telerik:RadGrid ID="RadGrid_TechnologyTestList" runat="server" Culture="zh-CN" GroupPanelPosition="Top"  
                     AllowPaging="True" PageSize="20" PagerStyle-AlwaysVisible="True"
                     OnNeedDataSource="RadGrid_TechnologyTestList_NeedDataSource" OnItemCommand="RadGrid_TechnologyTestList_ItemCommand" OnItemDataBound="RadGrid_TechnologyTestList_ItemDataBound">
                     <HeaderStyle HorizontalAlign="Center" Font-Size="13px" />
