@@ -218,7 +218,7 @@ namespace mms.Plan
                  string MDMID = (e.Item as GridDataItem).GetDataKeyValue("ID").ToString();
                  string MDPID = GridSource.Select("ID='" + MDMID + "'")[0]["MDPId"].ToString();
                  string Submit_State = GridSource.Select("ID='" + MDMID + "'")[0]["Submit_State"].ToString();
-
+                 string Is_Change = GridSource.Select("ID='" + MDMID + "'")[0]["Is_Change"].ToString();
                  string MDP_Code = GridSource.Select("ID='" + MDMID + "'")[0]["MDP_Code"].ToString();
 
                  string SubmitType = GridSource.Select("ID='" + MDMID + "'")[0]["Submit_Type"].ToString();
@@ -228,8 +228,8 @@ namespace mms.Plan
                 {
                     btnDetails.Attributes["onclick"] = "return ShowTechnologyTestListDetails('" + MDP_Code + "','" + MDPID + "','" + SubmitType + "','1')";
                 }
-              
-                if (Submit_State == "0")
+
+                if (Is_Change == "False")
                 {
                     if (btnDetails != null)
                     {

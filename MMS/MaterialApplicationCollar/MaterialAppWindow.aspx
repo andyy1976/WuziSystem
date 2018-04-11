@@ -106,6 +106,7 @@
             <asp:HiddenField ID="HFMAID" runat="server" />
             <asp:HiddenField ID="Quantity_Left" runat="server" />
             <asp:HiddenField ID="DemandNum_Left" runat="server" />
+            <asp:HiddenField ID="type" runat="server" />
             <asp:HiddenField ID="Quantity_Applied" runat="server" />
             <asp:HiddenField ID="DemandNum_Applied" runat="server" />
             <table id="table2" style="margin: 0px auto; text-align: left; font-size: 13px;">
@@ -268,7 +269,7 @@
                 <tr>
                    <td  style="text-align: right;">密级：</td>
                            <td >
-                                        <telerik:RadComboBox ID="RadComboBoxSecretLevel" runat="server" DataSourceID="SqlDataSourceSecretLevel"
+                                        <telerik:RadComboBox ID="RadComboBoxSecretLevel" runat="server" 
                                             DataTextField="SecretLevel_Name" DataValueField="SecretLevel_Name" Width="120">
                                         </telerik:RadComboBox>
                                         <asp:SqlDataSource ID="SqlDataSourceSecretLevel" runat="server" ConnectionString='<%$ ConnectionStrings:MaterialManagerSystemConnectionString %>'
@@ -276,7 +277,7 @@
                            </td>
                            <td style="text-align: right;">用途：</td>
                            <td >
-                                        <telerik:RadComboBox ID="RadComboBoxUseDes" runat="server" DataSourceID="SqlDataSourceUseDes"
+                                        <telerik:RadComboBox ID="RadComboBoxUseDes" runat="server" 
                                             DataTextField="DICT_Name" DataValueField="DICT_CODE" Width="120">
                                         </telerik:RadComboBox>
                                         <asp:SqlDataSource ID="SqlDataSourceUseDes" runat="server" ConnectionString='<%$ ConnectionStrings:MaterialManagerSystemConnectionString %>'

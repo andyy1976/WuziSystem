@@ -94,6 +94,16 @@ namespace mms.MaterialApplicationCollar
                 lbl_Dept.Text = dtdept.Rows[0]["Dept"].ToString();
                 HF_DeptCode.Value = dtdept.Rows[0]["DeptCode"].ToString();
 
+                strSQL = " select DICT_Code, DICT_Name from GetBasicdata_T_Item  where DICT_CLASS = 'CUX_DM_USAGE' and ENABLED_FLAG = 'Y' order by DICT_Name";
+                RadComboBoxUseDes.DataSource = DBI.Execute(strSQL, true);
+                RadComboBoxUseDes.DataValueField = "DICT_Code";
+                RadComboBoxUseDes.DataTextField = "DICT_Name";
+                RadComboBoxUseDes.DataBind();
+                strSQL = " SELECT * FROM [Sys_SecretLevel] WHERE ([Is_Del] = 0)";
+                RadComboBoxSecretLevel.DataSource = DBI.Execute(strSQL, true);
+                RadComboBoxSecretLevel.DataValueField = "SecretLevel_Name";
+                RadComboBoxSecretLevel.DataTextField = "SecretLevel_Name";
+                RadComboBoxSecretLevel.DataBind();
                 //修改
                 if (Request.QueryString["MAID"] != null)
                 {
@@ -101,7 +111,7 @@ namespace mms.MaterialApplicationCollar
 
 
                     //strSQL = " select * , (select MDPID from M_Demand_Merge_List where ID = MaterialApplication.Material_Id) as MDPLID from MaterialApplication where ID = '" + HFMAID.Value + "'";
-                    strSQL = " select * ,M_Demand_Merge_List.MDPID as MDPLID,M_Demand_Merge_List.Special_Needs ,M_Demand_Merge_List.SECURITY_LEVEL,M_Demand_Merge_List.USAGE from MaterialApplication left join M_Demand_Merge_List on M_Demand_Merge_List.ID = MaterialApplication.Material_Id where MaterialApplication.ID = '" + HFMAID.Value + "'";
+                    strSQL = " select * ,M_Demand_Merge_List.DemandNum_Left,M_Demand_Merge_List.Quantity_Left,M_Demand_Merge_List.MDPID as MDPLID,M_Demand_Merge_List.Special_Needs from MaterialApplication left join M_Demand_Merge_List on M_Demand_Merge_List.ID = MaterialApplication.Material_Id where MaterialApplication.ID = '" + HFMAID.Value + "'";
                     DataTable dtma = DBI.Execute(strSQL, true);
                     HFMDMLID.Value = dtma.Rows[0]["Material_ID"].ToString();
                     HFMDPLID.Value = dtma.Rows[0]["MDPLID"].ToString();
@@ -117,11 +127,14 @@ namespace mms.MaterialApplicationCollar
                     RTB_DrawingNo.Text = dtma.Rows[0]["Drawing_No"].ToString();
                     RTB_Quantity.Text = dtma.Rows[0]["Quantity"].ToString();
                     RTB_PleaseTakeQuality.Text = dtma.Rows[0]["PleaseTakeQuality"].ToString();
-                    DemandNum_Left.Value = (Convert.ToDecimal(dtma.Rows[0]["DemandNum_Left"].ToString()) + Convert.ToDecimal(RTB_PleaseTakeQuality.Text)).ToString();
-                    Quantity_Left.Value = (Convert.ToDecimal(dtma.Rows[0]["Quantity_Left"].ToString())+Convert.ToDecimal(RTB_Quantity.Text)).ToString();
-                    DemandNum_Applied.Value = (Convert.ToDecimal(dtma.Rows[0]["DemandNum_Applied"].ToString())- Convert.ToDecimal(RTB_PleaseTakeQuality.Text)).ToString();
-                    Quantity_Applied.Value = (Convert.ToDecimal(dtma.Rows[0]["Quantity_Applied"].ToString())-Convert.ToDecimal(RTB_Quantity.Text)).ToString();
-
+                    type.Value=dtma.Rows[0]["Type"].ToString();
+                    if (type.Value != "4")
+                    {
+                        DemandNum_Left.Value = (Convert.ToDecimal(dtma.Rows[0]["DemandNum_Left"].ToString()) + Convert.ToDecimal(RTB_PleaseTakeQuality.Text)).ToString();
+                        Quantity_Left.Value = (Convert.ToDecimal(dtma.Rows[0]["Quantity_Left"].ToString()) + Convert.ToDecimal(RTB_Quantity.Text)).ToString();
+                        DemandNum_Applied.Value = (Convert.ToDecimal(dtma.Rows[0]["DemandNum_Applied"].ToString()) - Convert.ToDecimal(RTB_PleaseTakeQuality.Text)).ToString();
+                        Quantity_Applied.Value = (Convert.ToDecimal(dtma.Rows[0]["Quantity_Applied"].ToString()) - Convert.ToDecimal(RTB_Quantity.Text)).ToString();
+                    }
                     RDDL_TheMaterialWay.SelectedIndex = 0;
                     if (RDDL_TheMaterialWay.FindItemByText(dtma.Rows[0]["TheMaterialWay"].ToString()) != null)
                     {
@@ -149,13 +162,15 @@ namespace mms.MaterialApplicationCollar
                     lbl_Mat_Unit.Text = dtma.Rows[0]["Mat_Unit"].ToString();
                     RTB_Rough_Size.Text = dtma.Rows[0]["Rough_Size"].ToString();
                     lbl_Dinge_Size.Text = dtma.Rows[0]["Dinge_Size"].ToString();
-                    if (RadComboBoxSecretLevel.FindItemByValue(dtma.Rows[0]["USAGE"].ToString()) != null)
+                   
+                  
+                    if (RadComboBoxSecretLevel.FindItemByValue(dtma.Rows[0]["SECURITY_LEVEL"].ToString()) != null)
                     {
-                        RadComboBoxSecretLevel.FindItemByValue(dtma.Rows[0]["USAGE"].ToString()).Selected = true;
+                        RadComboBoxSecretLevel.FindItemByValue(dtma.Rows[0]["SECURITY_LEVEL"].ToString()).Selected = true;
                     }
-                    if (RadComboBoxUseDes.FindItemByValue(dtma.Rows[0]["SECURITY_LEVEL"].ToString()) != null)
+                    if (RadComboBoxUseDes.FindItemByValue(dtma.Rows[0]["USAGE"].ToString()) != null)
                     {
-                        RadComboBoxUseDes.FindItemByValue(dtma.Rows[0]["SECURITY_LEVEL"].ToString()).Selected = true;
+                        RadComboBoxUseDes.FindItemByValue(dtma.Rows[0]["USAGE"].ToString()).Selected = true;
                     }
                     if (RDDL_DiaoDu.FindItemByValue(dtma.Rows[0]["DiaoDuApprove"].ToString()) != null)
                     {
@@ -177,13 +192,21 @@ namespace mms.MaterialApplicationCollar
                     RDP_ApplicationTime.SelectedDate = DateTime.Now;
                     if (Request.QueryString["MDMLID"] != null && Request.QueryString["MDMLID"].ToString() != "")
                     {
+
                         HFMDMLID.Value = Request.QueryString["MDMLID"].ToString();
 
                         strSQL = " select * from M_Demand_Merge_List where ID = '" + HFMDMLID.Value + "'";
                         DataTable dt = DBI.Execute(strSQL, true);
 
                         HFMDPLID.Value = dt.Rows[0]["MDPID"].ToString();
-
+                        if (RadComboBoxSecretLevel.FindItemByValue(dt.Rows[0]["SECURITY_LEVEL"].ToString()) != null)
+                        {
+                            RadComboBoxSecretLevel.FindItemByValue(dt.Rows[0]["SECURITY_LEVEL"].ToString()).Selected = true;
+                        }
+                        if (RadComboBoxUseDes.FindItemByValue(dt.Rows[0]["Use_Des"].ToString()) != null)
+                        {
+                            RadComboBoxUseDes.FindItemByValue(dt.Rows[0]["Use_Des"].ToString()).Selected = true;
+                        }
                         lbl_ItemCode.Text = dt.Rows[0]["ItemCode1"].ToString();
                         lbl_Material_Name.Text = dt.Rows[0]["Material_Name"].ToString();
                         lbl_Material_Mark.Text = dt.Rows[0]["Material_Mark"].ToString();
@@ -450,20 +473,22 @@ namespace mms.MaterialApplicationCollar
                         " values('" + HFMAID.Value + "','" + Session["UserId"].ToString() + "',GetDate() " +
                         " ,'进入流程平台:调度员：' + '" + diaodu + "' + '型号计划员：' + '" + xinghao + "' +'物资计划员：' + '" + wuzi + "')";
                     DBI.Execute(strSQL);
-                   
-                    string demandNum_Applied = (Convert.ToDecimal(DemandNum_Applied.Value) + Convert.ToDecimal(PleaseTakeQuality)).ToString();
-                    string quantity_Applied = (Convert.ToDecimal(Quantity_Applied.Value) + Convert.ToDecimal(Quantity)).ToString();
-                    string demandNum_Left = (Convert.ToDecimal(DemandNum_Left.Value) - Convert.ToDecimal(PleaseTakeQuality)).ToString();
-                    string quantity_Left = (Convert.ToDecimal(Quantity_Left.Value) - Convert.ToDecimal(Quantity)).ToString();
-                    strSQL =
-                         " Update M_Demand_Merge_List set Quantity_Applied = '" + quantity_Applied + "',DemandNum_Applied='" + demandNum_Applied +
-                        "',DemandNum_Left='" + demandNum_Left + "',Quantity_Left='" + quantity_Left +
+                    if (type.Value != "4")
+                    {
 
-                                    "' where ID = '" + HFMDMLID.Value + "'";
+                        string demandNum_Applied = (Convert.ToDecimal(DemandNum_Applied.Value) + Convert.ToDecimal(PleaseTakeQuality)).ToString();
+                        string quantity_Applied = (Convert.ToDecimal(Quantity_Applied.Value) + Convert.ToDecimal(Quantity)).ToString();
+                        string demandNum_Left = (Convert.ToDecimal(DemandNum_Left.Value) - Convert.ToDecimal(PleaseTakeQuality)).ToString();
+                        string quantity_Left = (Convert.ToDecimal(Quantity_Left.Value) - Convert.ToDecimal(Quantity)).ToString();
+                        strSQL =
+                             " Update M_Demand_Merge_List set Quantity_Applied = '" + quantity_Applied + "',DemandNum_Applied='" + demandNum_Applied +
+                            "',DemandNum_Left='" + demandNum_Left + "',Quantity_Left='" + quantity_Left +
+
+                                        "' where ID = '" + HFMDMLID.Value + "'";
 
 
-                    DBI.Execute(strSQL);
-                   
+                        DBI.Execute(strSQL);
+                    }
                     RadNotificationAlert1.Text = "申请成功！进入流程平台";
                     RadNotificationAlert1.Show();
                     

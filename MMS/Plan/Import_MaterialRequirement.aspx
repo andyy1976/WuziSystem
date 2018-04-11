@@ -375,7 +375,7 @@
                                     </telerik:GridBoundColumn>
                                     <telerik:GridBoundColumn DataField="TaskCode" HeaderText="任务号" ItemStyle-Width="80px" HeaderStyle-Width="80px" Visible="false">
                                     </telerik:GridBoundColumn>  
-                                    <telerik:GridBoundColumn DataField="TDM_Description" ItemStyle-Width="100px" HeaderStyle-Width="100px" HeaderText="产品名称" SortExpression="TDM_Description" UniqueName="TDM_Description" Visible="false">
+                                    <telerik:GridBoundColumn DataField="TDM_Description" ItemStyle-Width="100px" HeaderStyle-Width="100px" HeaderText="产品名称" SortExpression="TDM_Description" UniqueName="TDM_Description" Visible="true">
                                     </telerik:GridBoundColumn>
                                     <telerik:GridBoundColumn DataField="LingJian_Type" ItemStyle-Width="80px" HeaderStyle-Width="80px" HeaderText="零件类型" SortExpression="LingJian_Type" UniqueName="LingJian_Type" Visible="true">
                                     </telerik:GridBoundColumn>

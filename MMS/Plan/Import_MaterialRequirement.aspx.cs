@@ -1205,7 +1205,7 @@ namespace mms.Plan
 
                 MDDLD.TaskId = Convert.ToInt32(dt.Rows[0]["TaskID"].ToString());
                 MDDLD.ThisTimeOperation = Convert.ToInt32(dt.Rows[0]["ProductionNum"].ToString()); //投产数量
-                MDDLD.TDM_Description = dt.Rows[0]["ProductName"].ToString();//产品名称
+              //  MDDLD.TDM_Description = dt.Rows[0]["ProductName"].ToString();//产品名称
                   GridItemCollection gridItems=null;
                   if (RadGridImport.SelectedItems.Count > 0)
                   {
@@ -1228,7 +1228,7 @@ namespace mms.Plan
 
                         MDDLD.CN_Material_State = item["CN_Material_State"].Text.Trim();
                         MDDLD.Material_Tech_Condition = item["Material_Tech_Condition"].Text.Trim();
-
+                        MDDLD.TDM_Description = item["TDM_Description"].Text.Trim();//产品名称
                         MDDLD.Rough_Spec = item["Rough_Spec"].Text.Trim();
                         MDDLD.Rough_Size = item["ROUGH_SIZE"].Text.Trim();
                         MDDLD.Mat_Unit = item["MAT_UNIT"].Text.Trim();
@@ -1491,7 +1491,7 @@ namespace mms.Plan
                             }
                             else
                             {
-                                strSQL = @"exec Proc_Add_M_Demand_Plan_List_Modeltask " + userid + ",'" + MDDLD.TaskCode + "'," + PackId + "," + DraftID + "," + this.ViewState["submit_type"].ToString() + ",0,''";
+                                strSQL = @"exec Proc_Add_M_Demand_Plan_List_Technology " + userid + ",'" + MDDLD.TaskCode + "'," + PackId + "," + DraftID + "," + this.ViewState["submit_type"].ToString() + ",0,''";
                                 DataTable dt1 = DBI.Execute(strSQL, true);
                                 if (dt1.Rows.Count == 1)
                                 {

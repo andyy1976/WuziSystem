@@ -154,7 +154,7 @@ namespace mms.Plan
                         " ,  (select Convert(nvarchar(50),count(*)) from M_Demand_Merge_List where MDPID = M_Demand_Plan_List.ID and Is_Submit = '1')" +
                         " + '/' + (select Convert(nvarchar(50),Count(*)) from M_Demand_Merge_List where MDPID = M_Demand_Plan_List.ID)  as SubmitCount" +
                         " from M_Demand_Plan_List left join Sys_UserInfo_PWD on M_Demand_Plan_List.User_ID = Sys_UserInfo_PWD.ID" +
-                        " where Submit_Type = '" + stype + "' and and M_Demand_Plan_List.planType!='1'M_Demand_Plan_List.ID in (select MDPID from M_Demand_Merge_List) and UserAccount='" + UserName + "'" +
+                        " where Submit_Type = '" + stype + "' and M_Demand_Plan_List.ID in (select MDPID from M_Demand_Merge_List) and UserAccount='" + UserName + "'" +
                         strWhereCondition + " and planType!='1' order by Submit_Date desc";
                 }
                 return DBI.Execute(strSQL, true);

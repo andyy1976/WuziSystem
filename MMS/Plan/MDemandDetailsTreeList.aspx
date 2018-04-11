@@ -309,7 +309,7 @@
                             <telerik:TreeListBoundColumn DataField="CN_Material_State" HeaderText="材料状态" ItemStyle-Width="70px" HeaderStyle-Width="80px" SortExpression="CN_Material_State" UniqueName="CN_Material_State"></telerik:TreeListBoundColumn>
                             <telerik:TreeListBoundColumn DataField="Material_Tech_Condition" HeaderText="技术条件" ItemStyle-Width="100px" HeaderStyle-Width="100px" SortExpression="Material_Tech_Condition" UniqueName="Material_Tech_Condition"> </telerik:TreeListBoundColumn>
                             <telerik:TreeListBoundColumn DataField="Rough_Spec" HeaderText="胚料规格" ItemStyle-Width="100px" HeaderStyle-Width="100px" SortExpression="Rough_Spec" UniqueName="Rough_Spec"></telerik:TreeListBoundColumn>
-                            <telerik:TreeListBoundColumn DataField="Dinge_Size" HeaderText="胚料尺寸" ItemStyle-Width="70px" HeaderStyle-Width="70px" SortExpression="Dinge_Size" UniqueName="Dinge_Size"></telerik:TreeListBoundColumn>
+                            <telerik:TreeListBoundColumn DataField="Dinge_Size" HeaderText="胚料尺寸" ItemStyle-Width="120px" HeaderStyle-Width="120px" SortExpression="Dinge_Size" UniqueName="Dinge_Size"></telerik:TreeListBoundColumn>
                                                   
 
                             <telerik:TreeListBoundColumn DataField="Mat_Rough_Weight" HeaderText="单件质量" ItemStyle-Width="70px" HeaderStyle-Width="70px" SortExpression="Mat_Rough_Weight" UniqueName="Mat_Rough_Weight">
