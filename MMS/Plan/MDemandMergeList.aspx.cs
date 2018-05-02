@@ -136,7 +136,7 @@ namespace mms.Plan
                     GridSource1 = Common.AddTableRowsID(GetChangeRecord(idStr));
                 }
                 else {
-                    Page.ClientScript.RegisterStartupScript(this.GetType(), "", "CloseWindow1();", true);
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "", "CloseWindow();", true);
                 }
             }
         }
@@ -245,7 +245,7 @@ namespace mms.Plan
                 RadNotificationAlert.Show();
                 return;
             }
-           
+            RB_Submit.Visible = false;
             string MDPLID = SaveMergeInfo();
             try
             {
@@ -253,6 +253,7 @@ namespace mms.Plan
                 {
                     RadNotificationAlert.Text = "系统超时，请重新登录";
                     RadNotificationAlert.Show();
+
                 }
                 else
                 {
@@ -264,6 +265,7 @@ namespace mms.Plan
             {
                 RadNotificationAlert.Text = MDPLID + "<br />" + ex.Message;
                 RadNotificationAlert.Show();
+                RB_Submit.Enabled = true;
             }
         }
 
@@ -393,7 +395,15 @@ namespace mms.Plan
                 }
                 RadTextBox rtbSpecialNeeds = e.Item.FindControl("rtb_SpecialNeeds") as RadTextBox;
                // rtbSpecialNeeds.CssClass = id;
-                rtbSpecialNeeds.Text = (GridSource.Select("ID='" + id + "'")[0]["Special_Needs"].ToString());
+                if (GridSource.Select("ID='" + id + "'")[0]["Special_Needs"].ToString() != null && GridSource.Select("ID='" + id + "'")[0]["Special_Needs"].ToString()!="")
+                {
+                    rtbSpecialNeeds.Text = (GridSource.Select("ID='" + id + "'")[0]["Special_Needs"].ToString());
+                }
+                else
+                {
+                    GridSource.Select("Id='" + id + "'")[0]["Special_Needs"] = "无";
+                    rtbSpecialNeeds.Text = "无";
+                }
 
                RadComboBox RadComboBoxUseDes = e.Item.FindControl("RadComboBoxUseDes") as RadComboBox;
               if (RadComboBoxUseDes.FindItemByText(GridSource.Select("ID='" + id + "'")[0]["Use_Des"].ToString()) != null)

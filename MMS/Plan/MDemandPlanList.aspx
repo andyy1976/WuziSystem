@@ -75,7 +75,7 @@
                 </AjaxSettings>
             </telerik:RadAjaxManager>
             <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" runat="server"></telerik:RadAjaxLoadingPanel>
-            <telerik:RadGrid ID="RadGrid_MDemandPlanList" runat="server" AllowPaging="True" DataKeyNames="ID" Culture="zh-CN" GroupPanelPosition="Top" PageSize="10" 
+            <telerik:RadGrid ID="RadGrid_MDemandPlanList" runat="server" AllowPaging="True" DataKeyNames="ID" Culture="zh-CN" GroupPanelPosition="Top" PageSize="15" 
                 OnNeedDataSource="RadGrid_MDemandPlanList_NeedDataSource">
                     <ExportSettings HideStructureColumns="true" ExportOnlyData="true" IgnorePaging="true" OpenInNewWindow="true">
                        <Pdf  DefaultFontFamily="Arial Unicode MS" />
@@ -156,7 +156,7 @@
             </div>
         </div>
         <div style="width: 100%; float: left; margin-top:10px;" runat="server" id="divListContent">
-            <telerik:RadGrid ID="RadGrid_ChangeRecord" runat="server" AllowPaging="True" DataKeyNames="ID" Culture="zh-CN" GroupPanelPosition="Top" PageSize="20"
+            <telerik:RadGrid ID="RadGrid_ChangeRecord" runat="server" AllowPaging="True" DataKeyNames="ID" Culture="zh-CN" GroupPanelPosition="Top" PageSize="15"
                 OnNeedDataSource="RadGrid_ChangeRecord_NeedDataSource">
                 <MasterTableView AutoGenerateColumns="False" DataKeyNames="ID" CommandItemDisplay="Bottom">
                     <CommandItemSettings ShowExportToExcelButton="false" ShowAddNewRecordButton="false" ShowRefreshButton="false" />

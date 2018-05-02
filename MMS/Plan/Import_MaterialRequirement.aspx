@@ -281,7 +281,7 @@
              </div>
 
                 <div style="width: 100%; float: left; margin-top: 10px;">
-                    <telerik:RadGrid ID="RadGridP_Pack_Task" runat="server" AutoGenerateColumns="false" AllowPaging="true" PageSize="20" PagerStyle-AlwaysVisible="false"
+                    <telerik:RadGrid ID="RadGridP_Pack_Task" runat="server" AutoGenerateColumns="false" AllowPaging="true" PageSize="15" PagerStyle-AlwaysVisible="false"
                         OnNeedDataSource="RadGridP_Pack_Task_NeedDataSource" OnItemCreated="RadGridP_Pack_Task_ItemCreated">
                         <AlternatingItemStyle HorizontalAlign="Center" />
                         <ItemStyle HorizontalAlign="Center" />
@@ -346,7 +346,7 @@
              <div id="div_no_submit1" style="font-size: 13px; text-align: center; margin-bottom: 20px;">
                     <div class="divViewPanel">
                   <telerik:RadGrid ID="RadGridImport" runat="server" AllowPaging="True"  DataKeyNames="ID" Culture="zh-CN" GroupPanelPosition="Top"
-                       OnNeedDataSource="RadGridImport_NeedDataSource" OnItemDataBound="RadGrid_Importlist_ItemDataBound" PageSize="50"
+                       OnNeedDataSource="RadGridImport_NeedDataSource" OnItemDataBound="RadGrid_Importlist_ItemDataBound" PageSize="15" OnItemCommand="RadGrid_Importlist_ItemCommand"
                       AllowMultiRowSelection="true" >
                         <HeaderStyle HorizontalAlign="Center" Font-Size="13px" />
                         <ClientSettings EnableRowHoverStyle="true" >
@@ -358,14 +358,18 @@
                         <CommandItemTemplate>
                           从Excel导入的物资需求列表
                         <telerik:RadButton ID="RB_Import" runat="server" Text="导入"  Font-Bold="true" CommandName="Import" OnClick="RBImport_Click" OnClientClicking="ShowRadWindowImport" CssClass="floatleft"></telerik:RadButton>
-                        <telerik:RadButton ID="RB_Delete" runat="server" Text="删除"  Font-Bold="true" CommandName="Delete" OnClick="RBDelete_Click" OnClientClicking="ShowRadWindowDelete" CssClass="floatright"></telerik:RadButton>
                         <telerik:RadButton ID="RB_Clear"  runat="server" Text="清空"  Font-Bold="true" CommandName="Clear" OnClick="RBClear_Click"  OnClientClicking="ShowRadWindowClear"  CssClass="floatright"></telerik:RadButton>
 
                          </CommandItemTemplate>
                             <Columns>
                                     <telerik:GridClientSelectColumn UniqueName="ClientSelectColumn" ItemStyle-Width="30px" HeaderStyle-Width="30px"  >
                                     </telerik:GridClientSelectColumn>
-                               
+                                        <telerik:GridTemplateColumn HeaderText="操作" ItemStyle-Width="80px" HeaderStyle-Width="80px">
+                                        <ItemTemplate>
+                                            <telerik:RadButton ID="RadButtonImportGridDelete" runat="server" Text="删除"  CommandName="deleteImport"></telerik:RadButton>
+                                        </ItemTemplate>
+                                    </telerik:GridTemplateColumn>
+                         
                                     <telerik:GridBoundColumn DataField="ID" ItemStyle-Width="40px" HeaderStyle-Width="40px" HeaderText="序号" SortExpression="ID" UniqueName="ID">
                                     </telerik:GridBoundColumn>
 
@@ -556,7 +560,7 @@
                 <div id="div_no_submit" style="font-size: 12px; text-align: center; margin-bottom: 20px;">
                     <div class="divViewPanel">
                         <telerik:RadGrid ID="RadGrid_DemandDetailedList" runat="server" AllowPaging="True" DataKeyNames="ID" Culture="zh-CN" GroupPanelPosition="Top"
-                            OnNeedDataSource="RadGrid_DemandDetailedList_NeedDataSource" OnItemCommand="RadGrid_DemandDetailedList_ItemCommand" PageSize="50"
+                            OnNeedDataSource="RadGrid_DemandDetailedList_NeedDataSource" OnItemCommand="RadGrid_DemandDetailedList_ItemCommand" PageSize="15"
                       AllowMultiRowSelection="true" >
                         <HeaderStyle HorizontalAlign="Center" Font-Size="10px" />
                         <ClientSettings EnableRowHoverStyle="true" >

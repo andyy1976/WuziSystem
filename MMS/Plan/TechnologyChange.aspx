@@ -38,7 +38,7 @@
                 <div id="div_no_submit" style="font-size: 14px; text-align: center; margin-bottom:20px;">
                     <div class="divViewPanel">
                         <telerik:RadGrid ID="RadGrid_TechnologyList" runat="server" AllowPaging="True" DataKeyNames="ID" Culture="zh-CN" GroupPanelPosition="Top"
-                            OnNeedDataSource="RadGrid_TechnologyList_NeedDataSource" OnItemCommand="RadGrid_TechnologyList_ItemCommand" PageSize="50">
+                            OnNeedDataSource="RadGrid_TechnologyList_NeedDataSource" OnItemCommand="RadGrid_TechnologyList_ItemCommand" PageSize="15">
                             <MasterTableView AutoGenerateColumns="False" DataKeyNames="ID" CommandItemDisplay="Top">
                                 <CommandItemSettings ShowExportToExcelButton="false" ShowAddNewRecordButton="false" ShowRefreshButton="false" />
                                 <Columns>

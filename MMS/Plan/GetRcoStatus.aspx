@@ -59,7 +59,7 @@
         </div>
         <div style="width:100%;">
             <telerik:RadGrid ID="RadGrid1" runat="server" AutoGenerateColumns="false" 
-                AllowPaging="true" PageSize="20" PagerStyle-AlwaysVisible="True"
+                AllowPaging="true" PageSize="15" PagerStyle-AlwaysVisible="True"
                 OnItemDataBound="RadGrid1_ItemDataBound" OnNeedDataSource="RadGrid1_NeedDataSource" >
                 <AlternatingItemStyle HorizontalAlign="Center" />
                 <ItemStyle HorizontalAlign="Center" />

@@ -60,7 +60,7 @@
                 <telerik:RadButton ID="RB_Close" runat="server" Text="关闭" ButtonType="LinkButton" AutoPostBack="false" CssClass="floatright" OnClientClicking="CloseWindow"></telerik:RadButton>
             </div>
             <div style="width: 470px; float: left;">
-                <telerik:RadGrid ID="RadGrid1" runat="server" AutoGenerateColumns="false" AllowPaging="true" PageSize="10"
+                <telerik:RadGrid ID="RadGrid1" runat="server" AutoGenerateColumns="false" AllowPaging="true" PageSize="15"
                     OnNeedDataSource="RadGrid1_NeedDataSource" OnItemCommand="RadGrid1_ItemCommand" Skin="Silk">
                     <HeaderStyle HorizontalAlign="Center" Font-Size="13px" />
                     <ItemStyle HorizontalAlign="Center" />

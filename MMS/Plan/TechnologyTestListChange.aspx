@@ -127,7 +127,7 @@
         <div style="width:100%;">
             <telerik:RadGrid ID="RadGrid1" runat="server" AutoGenerateColumns="false" 
                 OnNeedDataSource="RadGrid1_NeedDataSource" OnItemDataBound="RadGrid1_ItemDataBound"
-                AllowPaging="true" PageSize="50" PagerStyle-AlwaysVisible="True" >
+                AllowPaging="true" PageSize="15" PagerStyle-AlwaysVisible="True" >
                 <AlternatingItemStyle HorizontalAlign="Center" />
                 <ItemStyle HorizontalAlign="Center" />
                 <HeaderStyle HorizontalAlign="Center" Font-Size="13px" />
@@ -160,7 +160,7 @@
                         <telerik:GridBoundColumn DataField="NumCasesSum1" HeaderText="件数" ItemStyle-Width="60px" HeaderStyle-Width="60px"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="DemandNumSum" HeaderText="需求量" ItemStyle-Width="60px" HeaderStyle-Width="60px" ItemStyle-HorizontalAlign="Center"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="Dept" HeaderText="领料部门" ItemStyle-Width="70px" HeaderStyle-Width="70px"></telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="Submit_Date" HeaderText="申请时间" ItemStyle-Width="150px" HeaderStyle-Width="150px"></telerik:GridBoundColumn> 
+                        <telerik:GridBoundColumn DataField="SUBMISSION_DATE" HeaderText="申请时间" ItemStyle-Width="150px" HeaderStyle-Width="150px"></telerik:GridBoundColumn> 
                         <telerik:GridBoundColumn DataField="UrgencyDegre" HeaderText="紧急程度" ItemStyle-Width="80px" HeaderStyle-Width="80px"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="Secret_Level" HeaderText="密级" ItemStyle-Width="80px" HeaderStyle-Width="80px"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="UseDes" HeaderText="用途" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>

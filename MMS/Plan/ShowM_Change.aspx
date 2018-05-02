@@ -10,7 +10,7 @@
         型号：<asp:Label ID="lblModel" runat="server" Font-Bold="false" ></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         计划包名称：<asp:Label ID="lblPlanName" runat="server" Font-Bold="false"></asp:Label>
     </div>
-    <telerik:RadGrid ID="RadGridMCL" runat="server" AutoGenerateColumns="false" AllowPaging="true" PageSize="20" PagerStyle-AlwaysVisible="True"
+    <telerik:RadGrid ID="RadGridMCL" runat="server" AutoGenerateColumns="false" AllowPaging="true" PageSize="15" PagerStyle-AlwaysVisible="True"
         OnNeedDataSource="RadGridMCL_NeedDataSource" OnItemDataBound="RadGridMCL_ItemDataBound"
         AllowMultiRowSelection="false">
         <ClientSettings Selecting-AllowRowSelect="true" EnableRowHoverStyle="true">

@@ -162,7 +162,7 @@
             <asp:HiddenField ID="HFMDMLID" runat="server" />
             <telerik:RadGrid ID="RadGrid1" runat="server" AutoGenerateColumns="false" AllowMultiRowSelection="false"
                 OnNeedDataSource="RadGrid1_NeedDataSource" OnSelectedIndexChanged="RadGridMDML_SelectedIndexChanged"
-                AllowPaging="true" PageSize="20" PagerStyle-AlwaysVisible="True" AllowSorting="true">
+                AllowPaging="true" PageSize="15" PagerStyle-AlwaysVisible="True" AllowSorting="true">
                 <AlternatingItemStyle HorizontalAlign="Center" />
                 <ItemStyle Font-Size="12px" HorizontalAlign="Center" />
                 <HeaderStyle Font-Size="13px" HorizontalAlign="Center"/>
@@ -199,7 +199,7 @@
                         <telerik:GridBoundColumn DataField="Secret_Level" HeaderText="密级" ItemStyle-Width="80px" HeaderStyle-Width="80px"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="UseDes" HeaderText="用途" ItemStyle-Width="80px" HeaderStyle-Width="80px"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="State" HeaderText="状态" ItemStyle-Width="80px" HeaderStyle-Width="80px"></telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="Submit_Date" HeaderText="提交时间" ItemStyle-Width="150px" HeaderStyle-Width="150px" ></telerik:GridBoundColumn>  
+                        <telerik:GridBoundColumn DataField="SUBMISSION_DATE" HeaderText="提交时间" ItemStyle-Width="150px" HeaderStyle-Width="150px" ></telerik:GridBoundColumn>  
                         <telerik:GridBoundColumn DataField="REQUESTER" HeaderText="提交人" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>    
                     </Columns>
                         <CommandItemTemplate>

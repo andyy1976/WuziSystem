@@ -151,7 +151,7 @@
     <div style="width: 100%; float: left;">
         <telerik:RadGrid ID="RadGridMA" runat="server" AutoGenerateColumns="false" AllowMultiRowSelection="false"
             OnNeedDataSource="RadGridMA_NeedDataSource" OnItemCommand="RadGridMA_ItemCommand" OnItemDataBound="RadGridMA_OnItemDataBound" OnSelectedIndexChanged="RadGridMA_SelectedIndexChanged"
-                AllowPaging="true" PageSize="50" PagerStyle-AlwaysVisible="True" AllowSorting="true">
+                AllowPaging="true" PageSize="10" PagerStyle-AlwaysVisible="True" AllowSorting="true">
                 <AlternatingItemStyle HorizontalAlign="Center" />
                 <ItemStyle Font-Size="12px" HorizontalAlign="Center" />
                 <HeaderStyle Font-Size="13px" HorizontalAlign="Center"/>

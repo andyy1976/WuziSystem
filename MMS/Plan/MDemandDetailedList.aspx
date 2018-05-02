@@ -55,7 +55,7 @@
                     </script>
                 </telerik:RadCodeBlock>
             <telerik:RadGrid ID="RadGrid_MDemandDetailedList" runat="server" AllowPaging="True" DataKeyNames="ID" Culture="zh-CN" GroupPanelPosition="Top" 
-                OnNeedDataSource="RadGrid_MDemandDetailedList_NeedDataSource" OnItemCommand="RadGrid_MDemandDetailedList_ItemCommand" OnItemDataBound="RadGrid_MDemandDetailedList_ItemDataBound" PageSize="3">
+                OnNeedDataSource="RadGrid_MDemandDetailedList_NeedDataSource" OnItemCommand="RadGrid_MDemandDetailedList_ItemCommand" OnItemDataBound="RadGrid_MDemandDetailedList_ItemDataBound" PageSize="15">
                 <MasterTableView AutoGenerateColumns="False" DataKeyNames="ID" CommandItemDisplay="Top">
                     <Columns>
                         <telerik:GridBoundColumn DataField="ID" DataType="System.Int32" FilterControlAltText="Filter ID column" HeaderText="序号" HeaderStyle-Width="40" ReadOnly="True" SortExpression="ID" UniqueName="ID">

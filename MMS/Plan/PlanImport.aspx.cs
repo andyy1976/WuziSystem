@@ -26,6 +26,7 @@ namespace mms.Plan
             {
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "info", "CloseWindow();", true);
             }
+          
             if (!IsPostBack)
             {
                 string DBContractConn =
@@ -54,6 +55,23 @@ namespace mms.Plan
             }
         }
 
+        protected void RadGridP_Pack_Task_ItemCreated(object sender, Telerik.Web.UI.GridItemEventArgs e)
+        {
+            if (e.Item is GridCommandItem)
+            {
+                System.Web.UI.WebControls.Label hfield = e.Item.FindControl("HiddenField") as System.Web.UI.WebControls.Label;
+                if (Request.QueryString["type"].ToString() == "1")
+                {
+                    hfield.Text = "企业备料计划任务列表";
+
+                }
+                else
+                {
+                    hfield.Text = "型号投产计划任务列表";
+                }
+               
+            }
+        }
         protected void RadAsyncUpload1_FileUploaded(object sender, FileUploadedEventArgs e)
         {
             HFGridItemsCount.Value = "0";

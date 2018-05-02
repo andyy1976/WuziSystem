@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WinPermission.aspx.cs" Inherits="mms.SystemMangement.WinPage.WinPermission" %>
-
+<%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -52,7 +52,7 @@
         <telerik:RadGrid ID="RadGrid_Permission" runat="server" Culture="zh-CN" GroupPanelPosition="Top"
             OnNeedDataSource="RadGrid_Permission_NeedDataSource" Width="100%"
             OnItemCommand="RadGrid_Permission_ItemCommand" OnItemDataBound="RadGrid_Permission_ItemDataBound"
-            AllowPaging="True" PageSize="10">
+            AllowPaging="True" PageSize="15">
             <MasterTableView AutoGenerateColumns="False" DataKeyNames="ID" CommandItemDisplay="Top">
                 <Columns>
                     <telerik:GridTemplateColumn UniqueName="CheckBoxTemplateColumn" HeaderStyle-Width="20px">

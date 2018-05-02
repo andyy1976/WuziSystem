@@ -437,8 +437,8 @@
       
              <div id="div_no_submit1" style="font-size: 13px; text-align: center; margin-bottom: 20px;">
                     <div class="divViewPanel">
-                  <telerik:RadGrid ID="RadGridImport" runat="server" AllowPaging="True"  DataKeyNames="ID" Culture="zh-CN" GroupPanelPosition="Top"
-                       OnNeedDataSource="RadGridImport_NeedDataSource" OnItemDataBound="RadGrid_Importlist_ItemDataBound" PageSize="50"
+                  <telerik:RadGrid ID="RadGridImport" runat="server" AllowPaging="True"  Culture="zh-CN" GroupPanelPosition="Top"
+                       OnNeedDataSource="RadGridImport_NeedDataSource" OnItemDataBound="RadGrid_Importlist_ItemDataBound"  OnItemCommand="RadGrid_Importlist_ItemCommand" PageSize="50"
                       AllowMultiRowSelection="true" >
                         <HeaderStyle HorizontalAlign="Center" Font-Size="13px" />
                         <ClientSettings EnableRowHoverStyle="true" >
@@ -450,13 +450,18 @@
                         <CommandItemTemplate>
                           从Excel导入的物资需求列表
                          <telerik:RadButton ID="RB_Import" runat="server" Text="导入"  Font-Bold="true" OnClick="RBImport_Click" OnClientClicking="ShowRadWindowImport" CssClass="floatleft"></telerik:RadButton>
-                         <telerik:RadButton ID="RB_Delete" runat="server" Text="删除"  Font-Bold="true" OnClick="RBDelete_Click" OnClientClicking="ShowRadWindowDelete" CssClass="floatright"></telerik:RadButton>
                          <telerik:RadButton ID="RB_Clear" runat="server" Text="清空"   Font-Bold="true" OnClick="RBClear_Click" OnClientClicking="ShowRadWindowClear" CssClass="floatright"></telerik:RadButton> 
                         </CommandItemTemplate>
                             <Columns>
                                 <telerik:GridClientSelectColumn UniqueName="ClientSelectColumn" ItemStyle-Width="30px" HeaderStyle-Width="30px"  >
                                 </telerik:GridClientSelectColumn>
-                             
+                                 <telerik:GridTemplateColumn HeaderText="操作" ItemStyle-Width="80px" HeaderStyle-Width="80px">
+                                        <ItemTemplate>
+                                            <telerik:RadButton ID="RadButtonImportGridDelete" runat="server" Text="删除"  CommandName="deleteImport"></telerik:RadButton>
+                                        </ItemTemplate>
+                                    </telerik:GridTemplateColumn>
+                                   <telerik:GridBoundColumn DataField="ID" DataType="System.Int32" ItemStyle-Width="50px" HeaderStyle-Width="50px" HeaderText="序号" SortExpression="ID" UniqueName="ID" visible="true">
+                                    </telerik:GridBoundColumn>
                                     <telerik:GridBoundColumn DataField="Project" ItemStyle-Width="80px" HeaderStyle-Width="80px" HeaderText="型号" SortExpression="Project" UniqueName="Project">
                                     </telerik:GridBoundColumn>
                                     <telerik:GridBoundColumn DataField="TaskCode" ItemStyle-Width="80px" HeaderStyle-Width="80px" HeaderText="任务编号" SortExpression="TaskCode" UniqueName="TaskCode">
@@ -629,7 +634,7 @@
             <div class="divContant">
                 <div id="div_no_submit" style="font-size: 12px; text-align: center; margin-bottom: 20px;">
                     <div class="divViewPanel">
-                        <telerik:RadGrid ID="RadGrid_TechnologyTestList" runat="server" AllowPaging="True" DataKeyNames="ID" Culture="zh-CN" GroupPanelPosition="Top"
+                        <telerik:RadGrid ID="RadGrid_TechnologyTestList" runat="server" AllowPaging="True" Culture="zh-CN" GroupPanelPosition="Top"
                             OnNeedDataSource="RadGrid_TechnologyTestList_NeedDataSource" OnItemCommand="RadGrid_TechnologyTestList_ItemCommand" PageSize="50"
                       AllowMultiRowSelection="true" >
                         <HeaderStyle HorizontalAlign="Center" Font-Size="10px" />
@@ -850,7 +855,7 @@
                                     </div>
                                     <div style="width: 100%;">
                                         <telerik:RadGrid ID="RadGrid1" runat="server" OnNeedDataSource="RadGrid1_NeedDataSource" AutoGenerateColumns="false"
-                                            AllowPaging="true" PageSize="20" PagerStyle-AlwaysVisible="True" AllowMultiRowSelection="False">
+                                            AllowPaging="true" PageSize="15" PagerStyle-AlwaysVisible="True" AllowMultiRowSelection="False">
                                             <PagerStyle AlwaysVisible="true" />
                                             <HeaderStyle HorizontalAlign="Center" Font-Size="13px" />
                                             <ClientSettings EnableRowHoverStyle="true">

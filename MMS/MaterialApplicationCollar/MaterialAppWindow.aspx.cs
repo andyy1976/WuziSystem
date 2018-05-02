@@ -127,6 +127,7 @@ namespace mms.MaterialApplicationCollar
                     RTB_DrawingNo.Text = dtma.Rows[0]["Drawing_No"].ToString();
                     RTB_Quantity.Text = dtma.Rows[0]["Quantity"].ToString();
                     RTB_PleaseTakeQuality.Text = dtma.Rows[0]["PleaseTakeQuality"].ToString();
+                    RadComboBoxIsApply.SelectedValue = dtma.Rows[0]["Is_Apply"].ToString();
                     type.Value=dtma.Rows[0]["Type"].ToString();
                     if (type.Value != "4")
                     {
@@ -147,7 +148,7 @@ namespace mms.MaterialApplicationCollar
                     }
                     
 
-                    RTB_Remark.Text = dtma.Rows[0]["Special_Needs"].ToString(); //dtma.Rows[0]["Remark"].ToString();
+                    RTB_Remark.Text = dtma.Rows[0]["Remark"].ToString();
                     RB_IsDispatch.Checked = Convert.ToBoolean(dtma.Rows[0]["IsDispatch"].ToString());
                     RB_IsConfirm.Checked = Convert.ToBoolean(dtma.Rows[0]["IsConfirm"].ToString());
 

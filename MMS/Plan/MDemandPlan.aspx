@@ -67,7 +67,7 @@
             <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" runat="server"></telerik:RadAjaxLoadingPanel>
 
             <telerik:RadGrid ID="RadGrid_MDemandPlan" runat="server" AllowPaging="True" DataKeyNames="ID" Culture="zh-CN" GroupPanelPosition="Top" 
-                OnNeedDataSource="RadGrid_MDemandPlan_NeedDataSource" OnItemCommand="RadGrid_MDemandPlan_ItemCommand" PageSize="50"
+                OnNeedDataSource="RadGrid_MDemandPlan_NeedDataSource" OnItemCommand="RadGrid_MDemandPlan_ItemCommand" PageSize="15"
                 OnItemDataBound="RadGrid_MDemandPlan_ItemDataBound">
                 <MasterTableView AutoGenerateColumns="False" DataKeyNames="ID" CommandItemDisplay="Top">
                     <CommandItemSettings ShowExportToExcelButton="false" ShowAddNewRecordButton="false" ShowRefreshButton="false" />

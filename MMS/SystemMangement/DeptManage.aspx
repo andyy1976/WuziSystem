@@ -74,7 +74,7 @@
                     </telerik:RadAjaxManager>
                     <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" runat="server" Skin="Default"></telerik:RadAjaxLoadingPanel>
 
-                    <telerik:RadGrid ID="RadGrid_DeptManage" runat="server" AllowPaging="True" PageSize="20" PagerStyle-AlwaysVisible="True"
+                    <telerik:RadGrid ID="RadGrid_DeptManage" runat="server" AllowPaging="True" PageSize="15" PagerStyle-AlwaysVisible="True"
                         DataKeyNames="ID" Culture="zh-CN" GroupPanelPosition="Top"
                         OnNeedDataSource="RadGrid_DeptManage_NeedDataSource" OnItemCommand="RadGrid_DeptManage_ItemCommand" OnItemDataBound="RadGrid_DeptManage_ItemDataBound">
                         <HeaderStyle HorizontalAlign="Center" Font-Size="13px" />

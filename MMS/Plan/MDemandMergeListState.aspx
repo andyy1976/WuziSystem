@@ -32,7 +32,7 @@
             </script>
         </telerik:RadCodeBlock>
         <div>
-            <telerik:RadGrid ID="RadGridFailed" runat="server" AllowPaging="true" PageSize="20" PagerStyle-AlwaysVisible="true"
+            <telerik:RadGrid ID="RadGridFailed" runat="server" AllowPaging="true" PageSize="15" PagerStyle-AlwaysVisible="true"
                 OnItemCommand="RadGridFailed_ItemCommand">
                 <HeaderStyle HorizontalAlign="Center" Font-Size="12px" />
                 <ClientSettings EnableRowHoverStyle="true">
@@ -65,7 +65,7 @@
             </telerik:RadGrid>
 
             <telerik:RadButton ID="BtnClose" runat="server" Text="关闭" AutoPostBack="false" OnClientClicking="CloseWindow" CssClass="floatright"></telerik:RadButton>
-            <telerik:RadGrid runat="server" ID="RadGrid1" AllowPaging="true" PageSize="20" PagerStyle-AlwaysVisible="true" OnNeedDataSource="RadGrid1_OnNeedDataSource">
+            <telerik:RadGrid runat="server" ID="RadGrid1" AllowPaging="true" PageSize="15" PagerStyle-AlwaysVisible="true" OnNeedDataSource="RadGrid1_OnNeedDataSource">
                 <HeaderStyle HorizontalAlign="Center" Font-Size="12px" />
                 <ClientSettings EnableRowHoverStyle="true">
                     <Selecting AllowRowSelect="true" />

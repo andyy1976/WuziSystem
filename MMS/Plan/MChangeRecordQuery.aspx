@@ -134,7 +134,7 @@
         </div>
         <div style="width: 100%; margin: 0px auto;">
             <telerik:RadGrid ID="RadGrid1" runat="server" AutoGenerateColumns="false" OnNeedDataSource="RadGrid1_NeedDataSource"
-                AllowPaging="true" PageSize="20" PagerStyle-AlwaysVisible="True" OnItemDataBound="RadGrid1_ItemDataBound">
+                AllowPaging="true" PageSize="15" PagerStyle-AlwaysVisible="True" OnItemDataBound="RadGrid1_ItemDataBound">
                 <AlternatingItemStyle HorizontalAlign="Center" />
                 <ItemStyle HorizontalAlign="Center" />
                 <HeaderStyle HorizontalAlign="Center" Font-Size="13px" />

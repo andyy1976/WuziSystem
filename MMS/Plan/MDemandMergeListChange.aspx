@@ -140,7 +140,7 @@
             </table>
             <telerik:RadGrid ID="RadGrid1" runat="server" AutoGenerateColumns="false"
                 OnItemDataBound="RadGrid1_ItemDataBound" OnNeedDataSource="RadGrid1_NeedDataSource"
-                AllowPaging="true" PageSize="20" PagerStyle-AlwaysVisible="True">
+                AllowPaging="true" PageSize="15" PagerStyle-AlwaysVisible="True">
                 <AlternatingItemStyle HorizontalAlign="Center" />
                 <ItemStyle Font-Size="12px" HorizontalAlign="Center" />
                 <HeaderStyle Font-Size="13px" HorizontalAlign="Center"/>
@@ -177,7 +177,7 @@
                         <telerik:GridBoundColumn DataField="UseDes" HeaderText="用途" HeaderStyle-Width="100px" ItemStyle-Width="100px"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="Manufacturer" HeaderText="生产厂家" HeaderStyle-Width="100px" ItemStyle-Width="100px"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="State" HeaderText="状态" HeaderStyle-Width="70px" ItemStyle-Width="70px" Visible="false"></telerik:GridBoundColumn>
-                        <telerik:GridBoundColumn DataField="Submit_Date" HeaderText="提交时间" HeaderStyle-Width="120px" ItemStyle-Width="120px"></telerik:GridBoundColumn>  
+                        <telerik:GridBoundColumn DataField="SUBMISSION_DATE" HeaderText="提交时间" HeaderStyle-Width="120px" ItemStyle-Width="120px"></telerik:GridBoundColumn>  
 
 
                      

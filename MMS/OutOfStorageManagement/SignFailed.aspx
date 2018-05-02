@@ -31,7 +31,7 @@
         </telerik:RadTabStrip>
     </div>
    <div style="width: 100%; margin: 20px auto;">
-        <telerik:RadGrid ID="RadGrid1" runat="server" AutoGenerateColumns="false" AllowPaging="true" PageSize="20" PagerStyle-AlwaysVisible="True"
+        <telerik:RadGrid ID="RadGrid1" runat="server" AutoGenerateColumns="false" AllowPaging="true" PageSize="15" PagerStyle-AlwaysVisible="True"
             OnNeedDataSource="RadGrid1_NeedDataSource" >
             <AlternatingItemStyle HorizontalAlign="Center" />
             <ItemStyle HorizontalAlign="Center" />

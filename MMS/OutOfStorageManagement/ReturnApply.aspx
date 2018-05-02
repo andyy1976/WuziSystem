@@ -171,7 +171,7 @@
         </table>
     </div>
     <div style="width: 100%; margin: 0px auto;">
-        <telerik:RadGrid ID="RadGrid1" runat="server" AutoGenerateColumns="false" AllowPaging="true" PageSize="20" PagerStyle-AlwaysVisible="True"
+        <telerik:RadGrid ID="RadGrid1" runat="server" AutoGenerateColumns="false" AllowPaging="true" PageSize="15" PagerStyle-AlwaysVisible="True"
             OnNeedDataSource="RadGrid1_NeedDataSource" OnItemDataBound="RadGrid1_ItemDataBound" OnItemCommand="RadGrid1_ItemCommand">
             <AlternatingItemStyle HorizontalAlign="Center" />
             <ItemStyle HorizontalAlign="Center" />

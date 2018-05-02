@@ -139,7 +139,7 @@
                 </telerik:RadAjaxManager>
 
                 <telerik:RadGrid ID="RadGrid_TechnologyTestList" runat="server" Culture="zh-CN" GroupPanelPosition="Top"  
-                    AllowPaging="True" PageSize="20" PagerStyle-AlwaysVisible="True"
+                    AllowPaging="True" PageSize="15" PagerStyle-AlwaysVisible="True"
                     OnNeedDataSource="RadGrid_TechnologyTestList_NeedDataSource" OnItemCommand="RadGrid_TechnologyTestList_ItemCommand" OnItemDataBound="RadGrid_TechnologyTestList_ItemDataBound">
                     <HeaderStyle HorizontalAlign="Center" Font-Size="13px" />
                     <ClientSettings EnableRowHoverStyle="true"  Selecting-AllowRowSelect="true" >

@@ -108,11 +108,11 @@ namespace mms.Plan
             }
             if (start != "")
             {
-                strWhere += " and Submit_Date >= '" + start + "'";
+                strWhere += " and SUBMISSION_DATE >= '" + start + "'";
             }
             if (end != "")
             {
-                strWhere += " and Submit_Date <= '" + Convert.ToDateTime(end).AddDays(1).ToString("yyyy-MM-dd") + "'";
+                strWhere += " and SUBMISSION_DATE <= '" + Convert.ToDateTime(end).AddDays(1).ToString("yyyy-MM-dd") + "'";
             }
             if (headerId != "")
             {

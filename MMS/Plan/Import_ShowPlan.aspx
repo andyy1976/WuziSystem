@@ -140,7 +140,7 @@
             function ShowP_Pack_Task(PackId) {
                 var win = $find("<%=RadWindowImportWindow.ClientID %>");
                 win.set_title("查看计划包");
-                window.radopen("/Plan/ShowP_Pack_Task.aspx?PackId=" + PackId, "RadWindowImportWindow");
+                window.radopen("/Plan/ShowP_Pack_Task.aspx?type=1&PackId=" + PackId, "RadWindowImportWindow");
             }
             //查看BOM
             function ShowSmarTeam(PackId) {
@@ -229,7 +229,7 @@
         </div>
         <div style="width: 100%; float: left;">
             <telerik:RadGrid ID="RadGridP_Pack" runat="server" AutoGenerateColumns="false" 
-                AllowPaging="true" PageSize="20" PagerStyle-AlwaysVisible="True"
+                AllowPaging="true" PageSize="15" PagerStyle-AlwaysVisible="True"
                 OnItemCommand="RadGridP_Pack_ItemCommand" OnNeedDataSource="RadGridP_Pack_NeedDataSource" OnItemDataBound="RadGridP_Pack_ItemDataBound">
                 <AlternatingItemStyle HorizontalAlign="Center" />
                 <ItemStyle HorizontalAlign="Center" />

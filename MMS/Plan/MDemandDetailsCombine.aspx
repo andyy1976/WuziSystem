@@ -93,7 +93,7 @@
                 </div>
                 <div class="divViewPanel">
                 <telerik:RadGrid ID="RadGrid_MDemandDetails" runat="server" DataKeyNames="ID" Culture="zh-CN" GroupPanelPosition="Top"
-                    AllowPaging="true"  PageSize="20" PagerStyle-AlwaysVisible="True"
+                    AllowPaging="true"  PageSize="15" PagerStyle-AlwaysVisible="True"
                     OnNeedDataSource="RadGrid_MDemandDetails_NeedDataSource" AllowMultiRowSelection="true"
                     OnItemDataBound="RadGrid_MDemandDetails_ItemDataBound">
                     <GroupingSettings CollapseAllTooltip="Collapse all groups"></GroupingSettings>

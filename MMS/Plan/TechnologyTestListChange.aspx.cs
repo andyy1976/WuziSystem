@@ -141,12 +141,12 @@ namespace mms.Plan
             }
             try
             {
-                Session["StrWhere"] += " and M_Demand_Merge_List.SUBMIT_DATE >= '" + Convert.ToDateTime(startTime).ToString() + "'";
+                Session["StrWhere"] += " and M_Demand_Merge_List.SUBMISSION_DATE >= '" + Convert.ToDateTime(startTime).ToString() + "'";
             }
             catch { }
             try
             {
-                Session["StrWhere"] += " and M_Demand_Merge_List.SUBMIT_DATE <= '" + Convert.ToDateTime(endTime).ToString() + "'";
+                Session["StrWhere"] += " and M_Demand_Merge_List.SUBMISSION_DATE <= '" + Convert.ToDateTime(endTime).ToString() + "'";
             }
             catch { }
             if (ID != "")
@@ -159,7 +159,7 @@ namespace mms.Plan
 
         protected void GetMDemandMergeList(string strWhere)
         {
-            string strSQL = " select M_Demand_Plan_List.Submit_State,M_Demand_Plan_List.Submit_Type,M_Demand_Plan_List.MDP_Code ,M_Demand_Merge_List.ID, M_Demand_Merge_List.TaskCode, MDPId,TDM_Description,Drawing_No, ItemCode1, NumCasesSum, DemandNumSum, Dept, DemandDate,M_Demand_Merge_List.Is_Change, M_Demand_Merge_List.Submit_Date" +
+            string strSQL = " select M_Demand_Plan_List.Submit_State,M_Demand_Plan_List.Submit_Type,M_Demand_Plan_List.MDP_Code ,M_Demand_Merge_List.ID, M_Demand_Merge_List.TaskCode, MDPId,TDM_Description,Drawing_No, ItemCode1, NumCasesSum, DemandNumSum, Dept, DemandDate,M_Demand_Merge_List.Is_Change, M_Demand_Merge_List.Submit_Date,M_Demand_Merge_List.SUBMISSION_DATE" +
                 " , Special_Needs, Secret_Level, Shipping_Address, Material_Name, Manufacturer" +
               //  " , case when M_Demand_Plan_Change_List.submit_State = '0' then '未提交流程平台' when M_Demand_Plan_Change_List.submit_State = '1' then '进入流程平台' when M_Demand_Plan_Change_List.submit_State = '2' then '已审批，已通过' when M_Demand_Plan_Change_List.submit_State = '3' then '已审批，未通过' when M_Demand_Plan_Change_List.submit_State = '4' then '已提交物流' else '未提交流程平台' end as substate " +
               //  " , case when M_Demand_Merge_List.Is_Change = '0' then '未变更' when M_Demand_Merge_List.Is_Change = '1' then '进入流程平台' end as substate " +

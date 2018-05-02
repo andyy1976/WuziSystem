@@ -236,6 +236,8 @@
                             </telerik:GridBoundColumn>
                             <telerik:GridBoundColumn DataField="State" HeaderText="执行状态" HeaderStyle-Width="70px" ItemStyle-Width="70px">
                             </telerik:GridBoundColumn>
+                            <telerik:GridBoundColumn DataField="SUBMISSION_DATE" HeaderText="提交时间" DataFormatString="{0:yyyy-MM-dd}"  HeaderStyle-Width="100px" ItemStyle-Width="100px">
+                            </telerik:GridBoundColumn>
                         </Columns>
                     </MasterTableView>
                 </telerik:RadGrid>

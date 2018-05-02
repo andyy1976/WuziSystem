@@ -484,7 +484,7 @@
             </div>
             <div style="width: 100%;">
                 <telerik:RadGrid ID="RadGrid1" runat="server" Width="1160px" OnNeedDataSource="RadGrid1_NeedDataSource" AutoGenerateColumns="false" AllowPaging="true" 
-                    PageSize="50" AllowMultiRowSelection="False">
+                    PageSize="15" AllowMultiRowSelection="False">
                     <PagerStyle AlwaysVisible="true" />
                     <ClientSettings Selecting-AllowRowSelect="true">
                         <Scrolling AllowScroll="True" UseStaticHeaders="True" SaveScrollPosition="true"></Scrolling>

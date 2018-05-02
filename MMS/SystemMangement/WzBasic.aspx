@@ -119,7 +119,7 @@
     </div>
     <div style="width: 100%;">
         <telerik:RadGrid ID="RadGrid1" runat="server" OnNeedDataSource="RadGrid1_NeedDataSource" AutoGenerateColumns="false" 
-            AllowPaging="true" PageSize="20" PagerStyle-AlwaysVisible="True">
+            AllowPaging="true" PageSize="15" PagerStyle-AlwaysVisible="True">
             <PagerStyle AlwaysVisible="true" />
             <ClientSettings EnableRowHoverStyle="true">
                 <Selecting AllowRowSelect="true" />

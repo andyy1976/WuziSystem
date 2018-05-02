@@ -79,7 +79,7 @@
             </div>
             <div style="width:100%;">
                 <telerik:RadGrid ID="RadGrid1" runat="server" OnNeedDataSource="RadGrid1_NeedDataSource"
-                    AllowPaging="true" PageSize="20" PagerStyle-AlwaysVisible="True" AutoGenerateColumns="false" AllowMultiRowSelection="true">
+                    AllowPaging="true" PageSize="15" PagerStyle-AlwaysVisible="True" AutoGenerateColumns="false" AllowMultiRowSelection="true">
                     <HeaderStyle HorizontalAlign="Center" Font-Size="13px" />
                     <CommandItemStyle Font-Bold="true" Font-Size="16px" HorizontalAlign="Center" Height="40px" />
                     <ClientSettings EnableRowHoverStyle="true" Selecting-AllowRowSelect="true">
@@ -128,7 +128,7 @@
             </div>
             <div style="width:100%;">
                 <telerik:RadGrid ID="RadGrid2" runat="server" AutoGenerateColumns="false" OnNeedDataSource="RadGrid2_NeedDataSource"
-                    AllowPaging="true" PageSize="20" PagerStyle-AlwaysVisible="True">
+                    AllowPaging="true" PageSize="15" PagerStyle-AlwaysVisible="True">
                     <HeaderStyle HorizontalAlign="Center" Font-Size="13px" />
                     <CommandItemStyle Font-Bold="true" Font-Size="16px" HorizontalAlign="Center" Height="40px" />
                     <ClientSettings EnableRowHoverStyle="true" Selecting-AllowRowSelect="true">

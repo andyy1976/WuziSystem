@@ -99,7 +99,7 @@
                     </table>
                 </div>
                 <div style="width:100%;">
-                    <telerik:RadGrid ID="RadGrid1" runat="server" AutoGenerateColumns="false" AllowPaging="true" PageSize="20" PagerStyle-AlwaysVisible="true"
+                    <telerik:RadGrid ID="RadGrid1" runat="server" AutoGenerateColumns="false" AllowPaging="true" PageSize="15" PagerStyle-AlwaysVisible="true"
                         OnNeedDataSource="RadGrid1_NeedDataSource">
                         <ClientSettings EnableRowHoverStyle="true">
                             <Selecting AllowRowSelect="true" />
@@ -177,7 +177,7 @@
                     </table>
                 </div>
                 <div style="width:100%;">
-                    <telerik:RadGrid ID="RadGrid2" runat="server" AutoGenerateColumns="false" AllowPaging="true" PageSize="20" PagerStyle-AlwaysVisible="true"
+                    <telerik:RadGrid ID="RadGrid2" runat="server" AutoGenerateColumns="false" AllowPaging="true" PageSize="15" PagerStyle-AlwaysVisible="true"
                         OnNeedDataSource="RadGrid2_NeedDataSource">
                         <ClientSettings EnableRowHoverStyle="true">
                             <Selecting AllowRowSelect="true" />

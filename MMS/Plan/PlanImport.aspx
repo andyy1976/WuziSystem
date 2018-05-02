@@ -147,9 +147,16 @@
                     </tr>
                 </table>
             </div>
+             <div style="width: 100%; float: left;">
+
+
+                       
+                    </div>    
+                             
             <div style="width: 100%; float: left;">
+
                 <telerik:RadGrid ID="RadGridPack" runat="server" OnNeedDataSource="RadGridPack_NeedDataSource" AllowPaging="false"
-                    AutoGenerateColumns="false" ItemStyle-HorizontalAlign="Center"  Height="420px">
+                    AutoGenerateColumns="false" ItemStyle-HorizontalAlign="Center"  Height="420px" OnItemCreated="RadGridP_Pack_Task_ItemCreated" >
                     <AlternatingItemStyle HorizontalAlign="Center" />
                     <HeaderStyle HorizontalAlign="Center" Font-Size="13px" />
                     <CommandItemStyle Font-Bold="true" Font-Size="16px" HorizontalAlign="Center" Height="40px" />
@@ -189,7 +196,9 @@
                             </telerik:GridTemplateColumn>
                         </Columns>
                         <CommandItemTemplate>
-                            型号投产计划任务列表
+                            
+                             <asp:Label ID="HiddenField" runat="server" Value="" ClientIDMode="Static" />
+                            
                             <asp:RadioButtonList ID="RBL_IsSpreadAll" runat="server" RepeatDirection="Horizontal" CssClass="floatright" AutoPostBack="true" OnSelectedIndexChanged="RBL_IsSpreadAll_SelectedIndexChanged">
                                 <asp:ListItem Value="false" Text="全否"></asp:ListItem>
                                 <asp:ListItem Value="true" Text="全是"></asp:ListItem>

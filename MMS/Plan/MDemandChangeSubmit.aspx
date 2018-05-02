@@ -79,7 +79,7 @@
             </telerik:RadAjaxManager>
             <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" runat="server"></telerik:RadAjaxLoadingPanel>
             <telerik:RadGrid ID="RadGrid_MDemandMergelist" runat="server" AllowPaging="false" DataKeyNames="ID" Culture="zh-CN" 
-                GroupPanelPosition="Top" PageSize="10" AllowMultiRowSelection="true" skin="Silk"
+                GroupPanelPosition="Top" PageSize="15" AllowMultiRowSelection="true" skin="Silk"
                 OnNeedDataSource="RadGrid_MDemandMergelist_NeedDataSource">
                 <%--<ClientSettings Selecting-AllowRowSelect="true"></ClientSettings>--%>
                 <ExportSettings HideStructureColumns="true" ExportOnlyData="true" />

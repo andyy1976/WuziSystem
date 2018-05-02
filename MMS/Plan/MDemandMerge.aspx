@@ -33,7 +33,7 @@
             <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" runat="server"></telerik:RadAjaxLoadingPanel>
 
             <telerik:RadGrid ID="RadGrid_MDemandMerge" runat="server" AllowPaging="True" DataKeyNames="ID" Culture="zh-CN" GroupPanelPosition="Top"
-                OnNeedDataSource="RadGrid_MDemandMerge_NeedDataSource" OnItemCommand="RadGrid_MDemandMerge_ItemCommand" OnItemDataBound="RadGrid_MDemandMerge_ItemDataBound" PageSize="3">
+                OnNeedDataSource="RadGrid_MDemandMerge_NeedDataSource" OnItemCommand="RadGrid_MDemandMerge_ItemCommand" OnItemDataBound="RadGrid_MDemandMerge_ItemDataBound" PageSize="10">
                 <MasterTableView AutoGenerateColumns="False" DataKeyNames="ID" CommandItemDisplay="Top">
                     <Columns>
                         <telerik:GridBoundColumn DataField="rownum" DataType="System.Int32" FilterControlAltText="Filter rownum column" HeaderText="序号" HeaderStyle-Width="40" ReadOnly="True" SortExpression="rownum" UniqueName="rownum">

@@ -96,7 +96,7 @@
                 </table>
             </div>
             
-            <telerik:RadGrid ID="RadGrid_UserManage_PWD" runat="server" AllowPaging="True" PageSize="20" PagerStyle-AlwaysVisible="True"
+            <telerik:RadGrid ID="RadGrid_UserManage_PWD" runat="server" AllowPaging="True" PageSize="15" PagerStyle-AlwaysVisible="True"
                 DataKeyNames="ID" Culture="zh-CN"
                 GroupPanelPosition="Top" OnNeedDataSource="RadGrid_UserManage_PWD_NeedDataSource"
                 OnItemCommand="RadGrid_UserManage_PWD_ItemCommand" OnItemDataBound="RadGrid_UserManage_PWD_ItemDataBound">

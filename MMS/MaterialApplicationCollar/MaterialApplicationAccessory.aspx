@@ -164,7 +164,7 @@
             <asp:HiddenField ID="HFMDMLID" runat="server" />
             <telerik:RadGrid ID="RadGridMDML" runat="server" AutoGenerateColumns="false" AllowMultiRowSelection="false"
                 OnNeedDataSource="RadGridMDML_NeedDataSource" OnSelectedIndexChanged="RadGridMDML_SelectedIndexChanged"
-                AllowPaging="true" PageSize="20" PagerStyle-AlwaysVisible="True" AllowSorting="true">
+                AllowPaging="true" PageSize="10" PagerStyle-AlwaysVisible="True" AllowSorting="true">
                 <AlternatingItemStyle HorizontalAlign="Center" />
                 <ItemStyle Font-Size="12px" HorizontalAlign="Center" />
                 <HeaderStyle Font-Size="13px" HorizontalAlign="Center"/>

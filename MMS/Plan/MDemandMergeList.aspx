@@ -39,6 +39,7 @@
                     <UpdatedControls>
                         <telerik:AjaxUpdatedControl ControlID="RadGrid_MDemandMergelist" LoadingPanelID="RadAjaxLoadingPanel1" />
                         <telerik:AjaxUpdatedControl ControlID="RadNotificationAlert" />
+                        <telerik:AjaxUpdatedControl ControlID="RB_Submit" />
                     </UpdatedControls>
                 </telerik:AjaxSetting>
             </AjaxSettings>
@@ -54,7 +55,7 @@
                     }
                 }
 
-                function CloseWindow1(sender,args){
+                function CloseWindow(sender,args){
                     var oWindow = null;
                     if (window.radWindow) oWindow = window.radWindow;
                     else if (window.frameElement.radWindow) oWindow = window.frameElement.radWindow;
@@ -87,9 +88,9 @@
     
                 </div>
                 <div class="divViewPanel">
-                <telerik:RadGrid ID="RadGrid_MDemandMergelist" runat="server" DataKeyNames="ID" Culture="zh-CN" GroupPanelPosition="Top"
+                <telerik:RadGrid ID="RadGrid_MDemandMergelist" runat="server" Culture="zh-CN" GroupPanelPosition="Top"
                     OnNeedDataSource="RadGrid_MDemandMergelist_NeedDataSource" OnItemDataBound="RadGrid_MDemandMergelist_ItemDataBound" 
-                AllowPaging="true" PageSize="20" PagerStyle-AlwaysVisible="True" AllowSorting="true" AllowMultiRowSelection="True" AutoGenerateColumns="False">
+                AllowPaging="true" PageSize="15" PagerStyle-AlwaysVisible="True" AllowSorting="true" AllowMultiRowSelection="True" AutoGenerateColumns="False">
                 <AlternatingItemStyle HorizontalAlign="Center" />
                 <ItemStyle Font-Size="12px" HorizontalAlign="Center" />
                 <HeaderStyle Font-Size="13px" HorizontalAlign="Center"/>
@@ -143,7 +144,7 @@
                                      HeaderStyle-width="80px" ItemStyle-Width="80px">
                                     <HeaderStyle HorizontalAlign="Center"></HeaderStyle>
                                     <ItemTemplate>
-                                        <telerik:RadTextBox ID="rtb_SpecialNeeds" runat="server" Width="50" AutoPostBack="true" MaxLength="50" EmptyMessage="无" OnTextChanged="rtb_SpecialNeeds_TextChanged"></telerik:RadTextBox>
+                                        <telerik:RadTextBox ID="rtb_SpecialNeeds" runat="server" Width="50" AutoPostBack="true" MaxLength="50" Value="无" EmptyMessage="无" OnTextChanged="rtb_SpecialNeeds_TextChanged"></telerik:RadTextBox>
                                     </ItemTemplate>
                                 </telerik:GridTemplateColumn>
                                 <telerik:GridTemplateColumn HeaderText="紧急程度"  UniqueName="Urgency_Degre" HeaderStyle-width="70px" ItemStyle-Width="70px">
@@ -279,8 +280,8 @@
                     </div>
                 </div>
                 <div style="width: 100%; float: left; margin-top: 10px;" runat="server" id="divListContent">
-                    <telerik:RadGrid ID="RadGrid_ChangeRecord" runat="server" AllowPaging="True" PageSize="20" PagerStyle-AlwaysVisible="true" 
-                        DataKeyNames="MDMLID" Culture="zh-CN" GroupPanelPosition="Top" 
+                    <telerik:RadGrid ID="RadGrid_ChangeRecord" runat="server" AllowPaging="True" PageSize="15" PagerStyle-AlwaysVisible="true" 
+                        Culture="zh-CN" GroupPanelPosition="Top" 
                         OnNeedDataSource="RadGrid_ChangeRecord_NeedDataSource">
                         <HeaderStyle HorizontalAlign="Center" Font-Size="13px" />
                         <ClientSettings EnableRowHoverStyle="true" >
@@ -359,7 +360,7 @@
             </ContentTemplate>
         </telerik:RadWindow>
         <telerik:RadNotification ID="RadNotificationAlert" runat="server" Text="" Position="Center"
-            AutoCloseDelay="4000" Width="240" Title="提示" EnableRoundedCorners="true">
+            AutoCloseDelay="4000" Width="240" Title="提示" OnClientHidden="CloseWindow" EnableRoundedCorners="true">
         </telerik:RadNotification>
     </form>
 </body>

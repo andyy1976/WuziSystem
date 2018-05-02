@@ -29,7 +29,7 @@
     <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" Runat="server" Skin="Default"></telerik:RadAjaxLoadingPanel>
 
     <telerik:RadGrid ID="RadGridMaterialDeptInfo" runat="server" CellSpacing="-1" Culture="zh-CN" 
-        AllowPaging="true" PageSize="20" PagerStyle-AlwaysVisible="True"
+        AllowPaging="true" PageSize="15" PagerStyle-AlwaysVisible="True"
          GroupPanelPosition="Top" OnNeedDataSource="RadGridMaterialDeptInfo_NeedDataSource"
          OnItemCommand="RadGridMaterialDeptInfo_ItemCommand">
         <AlternatingItemStyle HorizontalAlign="Center" />

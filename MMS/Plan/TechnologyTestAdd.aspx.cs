@@ -1706,6 +1706,8 @@ namespace mms.Plan
                         }
 
                         GridSource1.Columns.Add("ID");
+                   
+                       
                        // GridSource1.Columns.Add("Material_Name");
                      //   GridSource1.Columns.Add("Material_Mark");
                       //  GridSource1.Columns.Add("CN_Material_State");
@@ -1750,8 +1752,8 @@ namespace mms.Plan
                                 GridSource1.Rows[i].Delete();
                             }
                         }
-                
 
+                        GridSource1.PrimaryKey = new DataColumn[] { GridSource1.Columns["ID"] };
                         RadGridImport.Rebind();
                         HFGridItemsCount.Value = RadGridImport.Items.Count.ToString();
                     }
@@ -1878,6 +1880,36 @@ namespace mms.Plan
             }
 
         }
+
+        protected void RadGrid_Importlist_ItemCommand(object sender, GridCommandEventArgs e)
+        {
+            GridDataItem dataitem = e.Item as GridDataItem;
+            if (e.CommandName == "deleteImport")
+            {
+               
+
+                try
+                {
+                    string ID = dataitem.OwnerTableView.DataKeyValues[e.Item.ItemIndex]["ID"].ToString();
+                  // string ID = dataitem.GetDataKeyValue("ID").ToString();
+                    if( GridSource1.Rows.Find(ID)!=null)
+                    {
+                        GridSource1.Rows.Find(ID).Delete();
+                    }
+                    RadGridImport.Rebind();
+                    HFGridItemsCount.Value = RadGridImport.Items.Count.ToString();
+
+                }
+                catch (Exception ex)
+                {
+                    RadNotificationAlert.Text = "删除失败！" + ex.Message.ToString();
+                    RadNotificationAlert.Show();
+                    return;
+                }
+               
+            }
+        }
+
         protected void RBDelete_Click(object sender, EventArgs e)
         {
             try

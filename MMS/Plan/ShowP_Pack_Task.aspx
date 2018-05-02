@@ -106,7 +106,7 @@
                      <telerik:RadButton ID="RB_Add" runat="server" Text="归档" CssClass="floatright" Visible="false" CommandName="File" OnClientClicking="confirmWindow" OnClick="RB_Add_Click"></telerik:RadButton>
                 </div>
                 <div style="width: 100%; float: left; margin-top: 10px;">
-                    <telerik:RadGrid ID="RadGridP_Pack_Task" runat="server" AutoGenerateColumns="false" AllowPaging="true" PageSize="20" PagerStyle-AlwaysVisible="true"
+                    <telerik:RadGrid ID="RadGridP_Pack_Task" runat="server" AutoGenerateColumns="false" AllowPaging="true" PageSize="15" PagerStyle-AlwaysVisible="true"
                         OnNeedDataSource="RadGridP_Pack_Task_NeedDataSource" OnItemCreated="RadGridP_Pack_Task_ItemCreated">
                         <AlternatingItemStyle HorizontalAlign="Center" />
                         <ItemStyle HorizontalAlign="Center" />
@@ -150,7 +150,7 @@
                                 </telerik:GridTemplateColumn>
                             </Columns>
                             <CommandItemTemplate>
-                                型号投产计划任务列表
+                            <asp:Label ID="HiddenField" runat="server" Value="" ClientIDMode="Static" />
                                 <asp:RadioButtonList ID="RBL_IsSpreadAll" runat="server" RepeatDirection="Horizontal" CssClass="floatright" AutoPostBack="true" OnSelectedIndexChanged="RBL_IsSpreadAll_SelectedIndexChanged">
                                     <asp:ListItem Value="false" Text="全否"></asp:ListItem>
                                     <asp:ListItem Value="true" Text="全是"></asp:ListItem>
