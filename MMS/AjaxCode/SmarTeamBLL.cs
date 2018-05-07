@@ -271,7 +271,7 @@ namespace mms
                     {
                         Convert.ToDouble(MDDLD.Quantity);
                         MDDLD.NumCasesSum = Convert.ToDecimal((Convert.ToDouble(MDDLD.Quantity) * Convert.ToDouble(NumCasesSum)));  //共计需求件数
-                      //  MDDLD.DemandNumSum =Convert.ToDecimal(Convert.ToDouble(MDDLD.NumCasesSum) * Convert.ToDouble(MDDLD.Mat_Rough_Weight));  //共计需求数量
+                        MDDLD.DemandNumSum =Convert.ToDecimal(Convert.ToDouble(MDDLD.NumCasesSum) * Convert.ToDouble(MDDLD.Mat_Rough_Weight));  //共计需求数量
                     }
                     catch { }
                 }

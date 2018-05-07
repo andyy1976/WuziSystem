@@ -353,7 +353,7 @@ namespace mms.Plan
                          MDPLID + "' and Is_Submit = 'false')";
                 DBI.Execute(strSQL);
 
-                bll.WriteRcoOrderRepeat(MDPLID);
+             //   bll.WriteRcoOrderRepeat(MDPLID);
                 if (result != "")
                 {
                     return result;

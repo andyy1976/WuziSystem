@@ -1183,31 +1183,68 @@ namespace mms.Plan
                     Manufacturer = null,
                     Attribute4 = null,
                 };
-            //    strSQL = " Select * From V_M_Draft_List where packid='" + PackId + "'";
-                strSQL = " Select * From M_Demand_Plan_List where packid='" + PackId + "'";
-                DataTable dt = DBI.Execute(strSQL, true);
+                DataTable dt = null;
 
                 string DraftID = "";
                 int MDPID = 0;
-                if (dt.Rows.Count > 0)
+                try
                 {
-                    DraftID = dt.Rows[0]["draftid"].ToString();
-                    this.hfBh.Value = dt.Rows[0]["Id"].ToString();
-                }
+                    //    strSQL = " Select * From V_M_Draft_List where packid='" + PackId + "'";
+                    strSQL = " Select * From M_Draft_List where packid='" + PackId + "'";
+                    dt = DBI.Execute(strSQL, true);
 
-                if (DraftID == "" || DraftID == null)
+                   
+                    if (dt.Rows.Count > 0)
+                    {
+                        DraftID = dt.Rows[0]["Id"].ToString();
+
+                    }
+                    else
+                    {
+                        string Draft_Code = DBI.GetSingleValue(" Exec  [Proc_CodeBuildByCodeDes1] '材料清单编号','JZWZ'");
+                        strSQL = " Insert into [dbo].[M_Draft_List] (Draft_Code, Material_State, Lasttime_Synchro_Time, PackId, Task_Type, List_Maker)"
+                            + " values ('" + Draft_Code + "','1',GetDate(),'" + PackId + "','0','" + userid + "') select @@identity";
+                        DraftID = DBI.GetSingleValue(strSQL);
+                    }
+
+
+                    strSQL = " Select * From M_Demand_Plan_List where packid='" + PackId + "' and DraftId='" + DraftID + "'";
+                    dt = DBI.Execute(strSQL, true);
+
+
+                    if (dt.Rows.Count > 0)
+                    {
+                        this.hfBh.Value = dt.Rows[0]["Id"].ToString();
+                    }
+                    if (this.hfBh.Value != null && this.hfBh.Value != "")
+                    {
+                        MDPID = Convert.ToInt32(this.hfBh.Value);
+                    }
+                    else
+                    {
+                        strSQL = @"exec Proc_Add_M_Demand_Plan_List_Technology " + userid + ",'" + MDDLD.TaskCode + "'," + PackId + "," + DraftID + "," + this.ViewState["submit_type"].ToString() + ",0,''";
+                        DataTable dt1 = DBI.Execute(strSQL, true);
+                        if (dt1.Rows.Count == 1)
+                        {
+                            MDPID = Convert.ToInt32(dt1.Rows[0][0].ToString());
+                            this.hfBh.Value = dt1.Rows[0][0].ToString();
+                        }
+                        else
+                        {
+                            RadNotificationAlert.Text = "失败！Proc_Add_M_Demand_Plan_List_Technology返回的记录数不唯一";
+                            RadNotificationAlert.Show();
+                            return;
+                        }
+                    }
+                    MDDLD.MDPId = MDPID;
+
+                }
+                catch (Exception e1)
                 {
-                    string Draft_Code = DBI.GetSingleValue(" Exec  [Proc_CodeBuildByCodeDes1] '材料清单编号','JZWZ'");
-                    strSQL = " Insert into [dbo].[M_Draft_List] (Draft_Code, Material_State, Lasttime_Synchro_Time, PackId, Task_Type, List_Maker)"
-                        + " values ('" + Draft_Code + "','1',GetDate(),'" + PackId + "','0','" + userid + "') select @@identity";
-                    DraftID = DBI.GetSingleValue(strSQL);
-
-                
+                    RadNotificationAlert.Text = "获取draftid,planid失败！-" + e1.Message.ToString();
+                    RadNotificationAlert.Show();
+                    return;
                 }
-               // if (DraftID != "" & DraftID != null)
-           //     {
-                //    MDDLD.DraftId = Convert.ToInt32(DraftID);
-           //     }
 
          
 
@@ -1514,27 +1551,6 @@ namespace mms.Plan
                     
                         try
                         {
-                            if (this.hfBh.Value != null && this.hfBh.Value != "")
-                            {
-                                MDPID = Convert.ToInt32(this.hfBh.Value);
-                            }
-                            else
-                            {
-                                strSQL = @"exec Proc_Add_M_Demand_Plan_List_Technology " + userid + ",'" + MDDLD.TaskCode + "'," + PackId + "," + DraftID + "," + this.ViewState["submit_type"].ToString() + ",0,''";
-                                DataTable dt1 = DBI.Execute(strSQL, true);
-                                if (dt1.Rows.Count == 1)
-                                {
-                                    MDPID = Convert.ToInt32(dt1.Rows[0][0].ToString());
-                                    this.hfBh.Value = dt1.Rows[0][0].ToString();
-                                }
-                                else
-                                {
-                                    RadNotificationAlert.Text = "失败！Proc_Add_M_Demand_Plan_List_Modeltask返回的记录数不唯一";
-                                    RadNotificationAlert.Show();
-                                    return;
-                                }
-                           }
-                           MDDLD.MDPId = MDPID;
 
 
                           strSQL = " Insert Into M_Demand_DetailedList_Draft ( PackId, DraftId,taskid,MDPId,Quantity,VerCode,Stage,DemandDate,Special_Needs,MaterialDept,"

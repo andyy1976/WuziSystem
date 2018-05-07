@@ -336,6 +336,8 @@ namespace mms.Plan
                 GridSource = GetDetailedListByItemCode(ItemCode, lingjiantype,drawingNum,techline);
                 RadGrid_MDemandDetails.DataSource = GridSource;
                 RadGrid_MDemandDetails.Rebind();
+                Session["idStr"] = ",";
+
          //   }
 
         }

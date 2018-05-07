@@ -151,10 +151,10 @@ namespace mms.Plan
                     this.ViewState["flag"] = false;
                     this.hfFlag.Value = "0";
                     RadTabStrip1.Tabs[1].NavigateUrl = "MDemandMergeListChange.aspx?PackId=" + PackId+"&fromPage=1";
-
                     Session["idStr"] = ",";
                     Session["otherStr"] = PackId + "," + draftid + "," + Model + "," + DraftCode;
                 }
+                
                 //设置上一次部门过滤选择状态
                 this.ViewState["lastSelectDeptCode"] = "";
                 this.ViewState["lastSelectAccount"] = "";
@@ -334,6 +334,7 @@ namespace mms.Plan
                 GridSource = GetDetailedListByItemCode(ItemCode, lingjiantype,drawingNum,techline);
                 RadGrid_MDemandDetails.DataSource = GridSource;
                 RadGrid_MDemandDetails.Rebind();
+                Session["idStr"] = ",";
          //   }
 
         }
@@ -607,7 +608,7 @@ namespace mms.Plan
                          MDPLID + "' and Is_Submit = 'false')";
                 DBI.Execute(strSQL);
 
-                bll.WriteRcoOrderRepeat(MDPLID);
+              //  bll.WriteRcoOrderRepeat(MDPLID);
                 if (result != "")
                 {
                     return result;

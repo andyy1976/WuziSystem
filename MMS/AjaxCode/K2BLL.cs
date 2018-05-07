@@ -71,9 +71,9 @@ namespace mms
             model.Remark = ma.Remark;
             model.ReturnReason = ma.ReturnReason;
             model.Rough_Size = ma.Rough_Size;
-          // model.Dinge_Size = ma.Dinge_Size;//定额尺寸
-          //  model.SECURITY_LEVEL = ma.SECURITY_LEVEL;//密级
-            //model.USAGE = ma.USAGE;//用途
+            //model.dinge_size = ma.Dinge_Size;//定额尺寸
+            model.Secret = ma.SECURITY_LEVEL;//密级
+            model.Purpose = ma.USAGE;//用途
             model.Rough_Spec = ma.Rough_Spec;
             model.RqDept = rqDept;                                          
             model.RqHeaderId = RqHeaderId;
@@ -85,6 +85,7 @@ namespace mms
             model.UserAccount = "TJ\\" + ma.UserAccount;
             model.WuZiJiHuaYuanApprove = "TJ\\" + ma.WuZiJiHuaYuanApprove;
             model.XingHaoJiHuaYuanApprove = "TJ\\" + ma.XingHaoJiHuaYuanApprove;
+            model.IsNeedCertificate = ma.Is_Apply == "Y";  //缺少是否开证的信息
 
             K2WebServiceForMMS k2mms = new K2WebServiceForMMS();
             bool result ;
