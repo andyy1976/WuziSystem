@@ -189,7 +189,7 @@
                 <tr>
                     <td style="text-align: right;">需求尺寸：</td>
                     <td>
-                        <telerik:RadTextBox ID="RTB_Rough_Size" runat="server">
+                        <telerik:RadTextBox ID="RTB_Rough_Size" runat="server" Enabled="false">
                           <ClientEvents OnKeyPress="EnterKeyProcessing" />
                         </telerik:RadTextBox>
                     </td>
