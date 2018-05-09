@@ -24,7 +24,8 @@
                 function CloseWindow(args) {
                     var oWindow = null;
                     if (window.radWindow) oWindow = window.radWindow;
-                    else if (window.frameElement.radWindow) oWindow = window.frameElement.radWindow;
+                        else 
+                    if (window.frameElement.radWindow) oWindow = window.frameElement.radWindow;
                     var oArg = new Object();
                     oWindow.BrowserWindow.refreshGrid(args);
                     oWindow.close(oArg);
@@ -32,6 +33,7 @@
             </script>
         </telerik:RadCodeBlock>
         <div>
+            <telerik:RadButton ID="BtnClose" runat="server" Text="关闭" AutoPostBack="false" OnClientClicking="CloseWindow" CssClass="floatright"></telerik:RadButton>
             <telerik:RadGrid ID="RadGridFailed" runat="server" AllowPaging="true" PageSize="15" PagerStyle-AlwaysVisible="true"
                 OnItemCommand="RadGridFailed_ItemCommand">
                 <HeaderStyle HorizontalAlign="Center" Font-Size="12px" />
@@ -64,7 +66,7 @@
                 </MasterTableView>
             </telerik:RadGrid>
 
-            <telerik:RadButton ID="BtnClose" runat="server" Text="关闭" AutoPostBack="false" OnClientClicking="CloseWindow" CssClass="floatright"></telerik:RadButton>
+           
             <telerik:RadGrid runat="server" ID="RadGrid1" AllowPaging="true" PageSize="15" PagerStyle-AlwaysVisible="true" OnNeedDataSource="RadGrid1_OnNeedDataSource">
                 <HeaderStyle HorizontalAlign="Center" Font-Size="12px" />
                 <ClientSettings EnableRowHoverStyle="true">

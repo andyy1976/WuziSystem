@@ -10,34 +10,16 @@
 namespace mms.Plan {
     
     
-    public partial class Import_MDemandDetails {
+    public partial class import_MDemandMergeList {
         
         /// <summary>
-        /// hfFlag 控件。
+        /// form1 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hfFlag;
-        
-        /// <summary>
-        /// HiddenField 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField HiddenField;
-        
-        /// <summary>
-        /// RadTabStrip1 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadTabStrip RadTabStrip1;
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
         /// RadScriptManager1 控件。
@@ -76,184 +58,103 @@ namespace mms.Plan {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl span_model;
         
         /// <summary>
-        /// span_PlanName 控件。
+        /// span_listNo 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl span_PlanName;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl span_listNo;
         
         /// <summary>
-        /// span_plancode 控件。
+        /// RDP_DemandDate 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl span_plancode;
+        protected global::Telerik.Web.UI.RadDatePicker RDP_DemandDate;
         
         /// <summary>
-        /// span_DraftCode 控件。
+        /// RadGrid_MDemandMergelist 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl span_DraftCode;
+        protected global::Telerik.Web.UI.RadGrid RadGrid_MDemandMergelist;
         
         /// <summary>
-        /// RTB_ItemCode 控件。
+        /// SqlDataSource1 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::Telerik.Web.UI.RadTextBox RTB_ItemCode;
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
         
         /// <summary>
-        /// RDDL_LingJian_Type 控件。
+        /// SqlDataSourceUrgencyDegre 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::Telerik.Web.UI.RadDropDownList RDDL_LingJian_Type;
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceUrgencyDegre;
         
         /// <summary>
-        /// RTB_Drawing_No 控件。
+        /// SqlDataSourceSecretLevel 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::Telerik.Web.UI.RadTextBox RTB_Drawing_No;
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceSecretLevel;
         
         /// <summary>
-        /// Rad_TechLine 控件。
+        /// SqlDataSourceUseDes 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::Telerik.Web.UI.RadTextBox Rad_TechLine;
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceUseDes;
         
         /// <summary>
-        /// RB_Query 控件。
+        /// RB_Submit 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::Telerik.Web.UI.RadButton RB_Query;
+        protected global::Telerik.Web.UI.RadButton RB_Submit;
         
         /// <summary>
-        /// chb_all 控件。
+        /// divListTitle 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox chb_all;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divListTitle;
         
         /// <summary>
-        /// lbl_state_0 控件。
+        /// divListContent 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lbl_state_0;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divListContent;
         
         /// <summary>
-        /// lbl_state_1 控件。
+        /// RadGrid_ChangeRecord 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lbl_state_1;
-        
-        /// <summary>
-        /// lbl_state_2 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lbl_state_2;
-        
-        /// <summary>
-        /// lbl_state_4 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lbl_state_4;
-        
-        /// <summary>
-        /// lbl_state_5 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lbl_state_5;
-        
-        /// <summary>
-        /// lbl_state_6 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lbl_state_6;
-        
-        /// <summary>
-        /// RadAjaxPanel1 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadAjaxPanel RadAjaxPanel1;
-        
-        /// <summary>
-        /// RadGrid_MDemandDetails 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadGrid RadGrid_MDemandDetails;
-        
-        /// <summary>
-        /// RadNotificationAlert 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadNotification RadNotificationAlert;
-        
-        /// <summary>
-        /// RadWindowManager1 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadWindowManager RadWindowManager1;
-        
-        /// <summary>
-        /// RadWindowRecordWindow 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadWindow RadWindowRecordWindow;
+        protected global::Telerik.Web.UI.RadGrid RadGrid_ChangeRecord;
         
         /// <summary>
         /// RadWindow 控件。
@@ -274,21 +175,30 @@ namespace mms.Plan {
         protected global::System.Web.UI.WebControls.Label Label2;
         
         /// <summary>
-        /// RadButton1 控件。
+        /// RadButton3 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::Telerik.Web.UI.RadButton RadButton1;
+        protected global::Telerik.Web.UI.RadButton RadButton3;
         
         /// <summary>
-        /// RadButton2 控件。
+        /// RadButton4 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::Telerik.Web.UI.RadButton RadButton2;
+        protected global::Telerik.Web.UI.RadButton RadButton4;
+        
+        /// <summary>
+        /// RadNotificationAlert 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadNotification RadNotificationAlert;
     }
 }

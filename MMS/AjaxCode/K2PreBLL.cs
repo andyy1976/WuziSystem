@@ -77,7 +77,10 @@ namespace mms
                     SubjectNum = dtmdml.Rows[i]["SUBJECT"].ToString(),
                     TaskNum = dtmdml.Rows[i]["TaskCode"].ToString(),
                     Urgency = dtmdml.Rows[i]["Urgency"].ToString(),
-                    UseDes = dtmdml.Rows[i]["UseDes"].ToString()
+                    UseDes = dtmdml.Rows[i]["UseDes"].ToString(),//已经做了转换了
+                    Brand = dtmdml.Rows[i]["Material_Mark"].ToString(),
+                    Status = dtmdml.Rows[i]["CN_Material_State"].ToString(),
+                    Standard = dtmdml.Rows[i]["Material_Tech_Condition"].ToString()
                 };
                 listbodymodel[i] = bodymodel;
             }
@@ -169,7 +172,10 @@ namespace mms
                     SubjectNum = dtmdml.Rows[i]["SUBJECT"].ToString(),
                     TaskNum = dtmdml.Rows[i]["TaskCode"].ToString(),
                     Urgency = dtmdml.Rows[i]["Urgency"].ToString(),
-                    UseDes = dtmdml.Rows[i]["UseDes"].ToString()
+                    UseDes = dtmdml.Rows[i]["UseDes"].ToString(),
+                    Brand = dtmdml.Rows[i]["Material_Mark"].ToString(),
+                    Status = dtmdml.Rows[i]["CN_Material_State"].ToString(),
+                    Standard = dtmdml.Rows[i]["Material_Tech_Condition"].ToString()
                 };
                 listbodymodel[i] = bodymodel;
             }

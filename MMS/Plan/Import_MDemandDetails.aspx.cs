@@ -106,6 +106,7 @@ namespace mms.Plan
             {
                 Response.Redirect("/Default.aspx");
             }
+           // ((ScriptManager)Master.FindControl("ScriptManager1")).RegisterPostBackControl(RB_Submit);  
             DBConn = ConfigurationManager.ConnectionStrings["MaterialManagerSystemConnectionString"].ToString();
             DBI = DBFactory.GetDBInterface(DBConn);
 
@@ -192,13 +193,14 @@ namespace mms.Plan
                   " , Convert(nvarchar(50), (select Convert(int,sum(NumCasesSum)) from M_Demand_Merge_List where Correspond_Draft_Code = Convert(nvarchar(50), M_Demand_DetailedList_Draft.ID))) as quantity1, " +
 
                   "CUX_DM_URGENCY_LEVEL.DICT_Name as UrgencyDegre, CUX_DM_USAGE.DICT_Name as UseDes ,"+
-                    //  //  " GetCustInfo_T_ACCT_SITE.ADDRESS as ADDRESS, " +
+               //  " GetCustInfo_T_ACCT_SITE.ADDRESS as ADDRESS, " +
+              //    "case when Stage ='1' then 'M' when stage='2' then 'C' when Stage='3' then 'S' when Stage='4' then 'D' else Convert(nvarchar(50),Stage) end as Stage1, " +
 
-                  "case when LingJian_Type='1' then '标准件' else case when LingJian_Type='2' then '成品件'  else case when LingJian_Type='3' then '通用件' else case when LingJian_Type='4' then '专用件' else case when LingJian_Type='5' then '组件'   else '其它' end  end end end end as LingJian_Type1 from M_Demand_DetailedList_Draft "+
+                  "case when LingJian_Type='1' then '标准件' else case when LingJian_Type='2' then '成品件'  else case when LingJian_Type='3' then '通用件' else case when LingJian_Type='4' then '专用件' else case when LingJian_Type='5' then '组件'   else '其它' end  end end end end as LingJian_Type1 from M_Demand_DetailedList_Draft " +
 
                   " left join GetBasicdata_T_Item as CUX_DM_URGENCY_LEVEL on CUX_DM_URGENCY_LEVEL.DICT_CODE = M_Demand_DetailedList_Draft.Urgency_Degre and DICT_CLASS='CUX_DM_URGENCY_LEVEL'" +
                   " left join GetBasicdata_T_Item as CUX_DM_USAGE on CUX_DM_USAGE.DICT_CODE = M_Demand_DetailedList_Draft.Use_Des and CUX_DM_USAGE.DICT_CLASS='CUX_DM_USAGE'";
-             //       //   " left join GetCustInfo_T_ACCT_SITE on Convert(nvarchar(50),GetCustInfo_T_ACCT_SITE.LOCATION_ID) = M_Demand_DetailedList_Draft.Shipping_Address";
+                    //   " left join GetCustInfo_T_ACCT_SITE on Convert(nvarchar(50),GetCustInfo_T_ACCT_SITE.LOCATION_ID) = M_Demand_DetailedList_Draft.Shipping_Address";
 
                   strSQL += " where PackId = '" + Request.QueryString["PackId"].ToString() + "' and ParentId_For_Combine = 0 " + " and ItemCode1 like '%" + ItemCode + "%' and Drawing_No like '%" + drawingNum + "%' and Technics_Line like '%" + techline + "%' and ((Is_del = 'false' and Material_State in ('2','7')) or (Is_del = 'true' and Material_State in ('1','2','6','7')))";
 
@@ -215,14 +217,15 @@ namespace mms.Plan
 
                 strSQL += " union all select M_Demand_DetailedList_Draft.*, 'false' as checked, '未提交' as mstate, '0' as quantity1, " +
 
-                 "CUX_DM_URGENCY_LEVEL.DICT_Name as UrgencyDegre, CUX_DM_USAGE.DICT_Name as UseDes ," +
+                  "CUX_DM_URGENCY_LEVEL.DICT_Name as UrgencyDegre, CUX_DM_USAGE.DICT_Name as UseDes ," +
                     //"GetCustInfo_T_ACCT_SITE.ADDRESS as ADDRESS, " +
+                    //     "case when Stage ='1' then 'M' when stage='2' then 'C' when Stage='3' then 'S' when Stage='4' then 'D' else Convert(nvarchar(50),Stage) end as Stage1, " +
 
-                  "case when LingJian_Type='1' then '标准件' else case when LingJian_Type='2' then '成品件'  else case when LingJian_Type='3' then '通用件' else case when LingJian_Type='4' then '专用件' else case when LingJian_Type='5' then '组件'   else '其它' end  end end end end as LingJian_Type1 from M_Demand_DetailedList_Draft "+
+                  "case when LingJian_Type='1' then '标准件' else case when LingJian_Type='2' then '成品件'  else case when LingJian_Type='3' then '通用件' else case when LingJian_Type='4' then '专用件' else case when LingJian_Type='5' then '组件'   else '其它' end  end end end end as LingJian_Type1 from M_Demand_DetailedList_Draft " +
 
-                 " left join GetBasicdata_T_Item as CUX_DM_URGENCY_LEVEL on CUX_DM_URGENCY_LEVEL.DICT_CODE = M_Demand_DetailedList_Draft.Urgency_Degre and DICT_CLASS='CUX_DM_URGENCY_LEVEL'" +
-                 " left join GetBasicdata_T_Item as CUX_DM_USAGE on CUX_DM_USAGE.DICT_CODE = M_Demand_DetailedList_Draft.Use_Des and CUX_DM_USAGE.DICT_CLASS='CUX_DM_USAGE'";
-                    ////    " left join GetCustInfo_T_ACCT_SITE on Convert(nvarchar(50),GetCustInfo_T_ACCT_SITE.LOCATION_ID) = M_Demand_DetailedList_Draft.Shipping_Address";
+                  " left join GetBasicdata_T_Item as CUX_DM_URGENCY_LEVEL on CUX_DM_URGENCY_LEVEL.DICT_CODE = M_Demand_DetailedList_Draft.Urgency_Degre and DICT_CLASS='CUX_DM_URGENCY_LEVEL'" +
+                  " left join GetBasicdata_T_Item as CUX_DM_USAGE on CUX_DM_USAGE.DICT_CODE = M_Demand_DetailedList_Draft.Use_Des and CUX_DM_USAGE.DICT_CLASS='CUX_DM_USAGE'";
+              //    " left join GetCustInfo_T_ACCT_SITE on Convert(nvarchar(50),GetCustInfo_T_ACCT_SITE.LOCATION_ID) = M_Demand_DetailedList_Draft.Shipping_Address";
 
                 strSQL += " where PackId = '" + Request.QueryString["PackId"].ToString() + "' and ParentId_For_Combine = 0  " + " and ItemCode1 like'%" + ItemCode + "%' and Drawing_No like '%" + drawingNum + "%' and Technics_Line like '%" + techline + "%' and is_del = 'false' and Material_State = '0'";
                 if (lingjiantype == "6")
@@ -512,19 +515,31 @@ namespace mms.Plan
             {
                 if (MDPLID == "" || MDPLID == null)
                 {
+                    RadWindowRecordWindow.Dispose();
                     RadNotificationAlert.Text = "系统超时，请重新登录";
                     RadNotificationAlert.Show();
                 }
                 else
                 {
-                    Convert.ToDouble(MDPLID);
-                    Response.Redirect("/Plan/MDemandMergeListState.aspx?MDPID=" + MDPLID);
+                   // Convert.ToDouble(MDPLID);
+                    MDPLID = "1";
+               //    RadWindowRecordWindow.NavigateUrl = "/Plan/MDemandMergeListState.aspx?MDPID=";
+     
+                   // Response.Write("<script>window.showModelessDialog('"+"/Plan/MDemandMergeListState.aspx?MDPID=" + MDPLID+"')</script>");
+                 //   Response.Write("<script language='javascript'>window.open('" + "/Plan/MDemandMergeListState.aspx?MDPID=" + MDPLID + "','','resizable=1,scrollbars=0,status=1,menubar=no,toolbar=no,location=no, menu=no');</script>"); 
+                  // Page.ClientScript.RegisterStartupScript(this.GetType(), "info", "ShowMDemandMergeListState();", true);
+                  Response.Redirect("/Plan/MDemandMergeListState.aspx?MDPID=" + MDPLID);
+                 //   string js = "<script>window.radopen(";
+                  //  js += "'/Plan/MDemandMergeListState.aspx?MDPID=" + MDPLID;
+                 //   js += "','RadWindowRecordWindow')</script>";
+               //     Response.Write(js);
                 }
             }
             catch (Exception ex)
             {
                 RadNotificationAlert.Text = MDPLID + "<br />" + ex.Message;
                 RadNotificationAlert.Show();
+                RadWindowRecordWindow.Dispose();
             }
         }
 
@@ -611,7 +626,7 @@ namespace mms.Plan
                          MDPLID + "' and Is_Submit = 'false')";
                 DBI.Execute(strSQL);
 
-                bll.WriteRcoOrderRepeat(MDPLID);
+              //  bll.WriteRcoOrderRepeat(MDPLID);
                 if (result != "")
                 {
                     return result;
@@ -629,6 +644,10 @@ namespace mms.Plan
         {
             RadGrid_MDemandDetails.ExportSettings.FileName = "型号物资需求清单-" + DateTime.Now.ToString("yyyy-MM-dd");
             RadGrid_MDemandDetails.Columns[0].Visible = false;
+         //   RadGrid_MDemandDetails.Columns[1].Visible = false;
+         //   RadGrid_MDemandDetails.Columns[2].Visible = false;
+           // RadGrid_MDemandDetails.Columns[3].Visible = false;
+        //    RadGrid_MDemandDetails.Columns[4].Visible = false;
             RadGrid_MDemandDetails.ExportSettings.IgnorePaging = true;
             RadGrid_MDemandDetails.ExportSettings.ExportOnlyData = true;
             RadGrid_MDemandDetails.MasterTableView.ExportToExcel();

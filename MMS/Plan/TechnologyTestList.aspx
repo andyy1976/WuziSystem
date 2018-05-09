@@ -14,7 +14,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:HiddenField ID="HiddenField" runat="server" Value="" ClientIDMode="Static" />
-    <div style="width:100%; float:left;">
+   <div style="width:100%; float:left;">
         <telerik:RadTabStrip ID="RadTabStrip1" runat="server" Skin="Default" ShowBaseLine="true">
             <Tabs>
                 <telerik:RadTab TabIndex="0" Value="0" Text="需求清单" Selected="true"></telerik:RadTab>
@@ -22,6 +22,7 @@
             </Tabs>
         </telerik:RadTabStrip>
     </div>
+
     <div style="width: 100%; float: left; margin-top:10px;">
               <div style="width: 100%; float: left;">
             <table>

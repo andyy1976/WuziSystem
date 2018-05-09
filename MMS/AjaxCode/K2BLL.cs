@@ -86,7 +86,9 @@ namespace mms
             model.WuZiJiHuaYuanApprove = "TJ\\" + ma.WuZiJiHuaYuanApprove;
             model.XingHaoJiHuaYuanApprove = "TJ\\" + ma.XingHaoJiHuaYuanApprove;
             model.IsNeedCertificate = ma.Is_Apply == "Y";  //缺少是否开证的信息
-
+            //model.Brand=ma.Material_Mark;
+           // model.Status=ma.CN_Material_State;
+           // model.Standard=ma.Material_Tech_Condition;
             K2WebServiceForMMS k2mms = new K2WebServiceForMMS();
             bool result ;
             try

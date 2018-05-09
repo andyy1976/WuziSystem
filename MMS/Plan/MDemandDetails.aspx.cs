@@ -282,7 +282,7 @@ namespace mms.Plan
             Session["dateStr"] = dateStr;
             Session["otherStr"] = this.ViewState["PackId"].ToString() + "," + this.ViewState["DraftId"].ToString() + "," +
             this.ViewState["Model"].ToString() + "," + this.ViewState["DraftCode"].ToString();
-            Response.Redirect("~/Plan/MDemandMergeList.aspx");
+            Response.Redirect("~/Plan/import_MDemandMergeList.aspx");
         }
         protected bool ValidMaterialState(string Id)
         {

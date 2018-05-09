@@ -54,6 +54,9 @@
           <s:element minOccurs="0" maxOccurs="1" name="MaterialDept" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="Material_Name" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="Country" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Brand" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Status" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Standard" type="s:string" />
         </s:sequence>
       </s:complexType>
       <s:element name="StartPreparesProgressResponse">

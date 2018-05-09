@@ -49,15 +49,6 @@ namespace mms.Plan {
         protected global::Telerik.Web.UI.RadCodeBlock RadCodeBlock1;
         
         /// <summary>
-        /// RadGridFailed 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadGrid RadGridFailed;
-        
-        /// <summary>
         /// BtnClose 控件。
         /// </summary>
         /// <remarks>
@@ -65,6 +56,15 @@ namespace mms.Plan {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::Telerik.Web.UI.RadButton BtnClose;
+        
+        /// <summary>
+        /// RadGridFailed 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadGrid RadGridFailed;
         
         /// <summary>
         /// RadGrid1 控件。

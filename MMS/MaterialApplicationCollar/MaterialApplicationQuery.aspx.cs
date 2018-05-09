@@ -45,22 +45,36 @@ namespace mms.MaterialApplicationCollar
 
         public void GetMA()
         {
+            string strSQL1 = " select UserName, DomainAccount from V_Get_Sys_User_byRole where Isdel = 'false' and DomainAccount != '' and RoleName = '系统管理员' and Is_Del ='false'  and DomainAccount ='" + Session["UserName"].ToString()+"'";
+           DataTable dt = DBI.Execute(strSQL1, true);
+           
+
             string strSQL = "select Convert(nvarchar(50),ApplicationTime, 111) as ApplicationTime, Convert(nvarchar(50),FeedingTime, 111) as FeedingTime,MaterialApplication.*, case when AppState = '1' then '未进入流程平台' when AppState='2' then '进入流程平台' when AppState='3' then '取消审批'"
                 + " when AppState ='4' then '已审批已通过' when AppState = '5' then '已审批未通过' when AppState='6' then '已退回' else Convert(nvarchar(50),AppState) end as AppState1"
                 + " , case when MaterialApplication.Type = '0' then '型号投产' when MaterialApplication.Type = '1' then '试验件' when MaterialApplication.Type='2' then '技术创新课题'  when MaterialApplication.Type='3' then '车间备料' when MaterialApplication.Type ='4' then '无需求' else Convert(nvarchar(50), MaterialApplication.Type) end as Type1"
                 + " , ItemCode1,M_Demand_Merge_List.Project,M_Demand_Merge_List.TDM_Description,M_Demand_Merge_List.Stage"
-                + " , case when ItemCode = '' then ItemCode1 else ItemCode end as ItemCode2" 
-                +" , (select Phase from Sys_Phase where Code = M_Demand_Merge_List.Stage) as Stage1"
-                +" , (select DICT_Name from GetBasicdata_T_Item where DICT_CODE = M_Demand_Merge_List.Project and DICT_CLASS='CUX_DM_PROJECT') as Model" 
+                + " , case when ItemCode = '' then ItemCode1 else ItemCode end as ItemCode2"
+                + " , (select Phase from Sys_Phase where Code = M_Demand_Merge_List.Stage) as Stage1"
+                + " , (select DICT_Name from GetBasicdata_T_Item where DICT_CODE = M_Demand_Merge_List.Project and DICT_CLASS='CUX_DM_PROJECT') as Model"
                 + " from MaterialApplication "
-                + " left join M_Demand_Merge_List on M_Demand_Merge_List.ID = MaterialApplication.Material_Id"
-                + " where (Is_ReturnApply is null or Is_ReturnApply = 'false') and MaterialApplication.Dept = '" + HF_DeptCode.Value + "' and MaterialApplication.Is_Del = 'false'";
+                + " left join M_Demand_Merge_List on M_Demand_Merge_List.ID = MaterialApplication.Material_Id";
+           // if (HF_DeptCode.Value == "B")
+             if(dt.Rows.Count>0)
+            {
+
+           
+                strSQL += " where (Is_ReturnApply is null or Is_ReturnApply = 'false') and MaterialApplication.Is_Del = 'false'";
+            }
+            else
+            {
+                strSQL += " where (Is_ReturnApply is null or Is_ReturnApply = 'false') and MaterialApplication.Dept = '" + HF_DeptCode.Value + "' and MaterialApplication.Is_Del = 'false'";
+            }
             if (Session["MAQStrWhere"] != null)
             {
                 strSQL += Session["MAQStrWhere"].ToString();
             }
             strSQL += " order by MaterialApplication.ID desc";
-            DataTable dt = Common.AddTableRowsID(DBI.Execute(strSQL, true));
+            dt = Common.AddTableRowsID(DBI.Execute(strSQL, true));
             Session["MAQuery"] = dt;
         }
 

@@ -13,6 +13,7 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
     <asp:HiddenField ID="hfFlag" runat="server" />
     <asp:HiddenField ID="HiddenField" runat="server" Value="物资需求-->企业备料任务-->物资需求清单" ClientIDMode="Static" />
     <telerik:RadTabStrip ID="RadTabStrip1" runat="server" Skin="Silk" ShowBaseLine="True" >
@@ -56,7 +57,7 @@
                                 <telerik:AjaxUpdatedControl ControlID="hfFlag" />
                             </UpdatedControls>
                         </telerik:AjaxSetting>
-               		    <telerik:AjaxSetting AjaxControlID="RB_Submit">
+                       <telerik:AjaxSetting AjaxControlID="RadBtnBuildMergeList">
                             <UpdatedControls>
                                 <telerik:AjaxUpdatedControl ControlID="RadGrid_MDemandDetails" LoadingPanelID="RadAjaxLoadingPanel1" />
                                 <telerik:AjaxUpdatedControl ControlID="RadNotificationAlert" />
@@ -86,7 +87,30 @@
                     eventArgs.set_cancel(true);
                 }
             }
-
+            function ShowMDemandMergeList()
+            {
+                var win = $find("<%=RadWindowRecordWindow.ClientID %>");
+                win.set_title("物资需求计划清单-待提交");
+                window.radopen("/Plan/import_MDemandMergeList.aspx", "RadWindowRecordWindow");
+                return false;
+            }
+            function confirmWindowSubmitMerge(sender, args)
+            {
+                var grid = $find("<%=RadGrid_MDemandDetails.ClientID%>");
+                var flag = document.getElementById("ContentPlaceHolder1_hfFlag").value;
+                var checkAll = document.getElementById("ContentPlaceHolder1_chb_all");
+                if (flag == "0" && !checkAll.checked)
+                {
+                    var rnal = $find("<%=RadNotificationAlert.ClientID %>");
+                    rnal.set_text("请选择要提交的数据");
+                    rnal.show();
+                    args.set_cancel(true);
+                 }
+                else
+                {
+                     ShowMDemandMergeList();
+                }
+             }
             var submintId;
 
             function YesOrNoClicked(sender, args)
@@ -102,11 +126,17 @@
                         $find("<%=RadNotificationAlert.ClientID%>").show();
                         return;
                     }
-                      $find(submintId).click();
+                 //   $find("<%= RadWindowRecordWindow.ClientID %>").show();
+                    $find(submintId).click();
                 }
              }
                    
-
+            function ShowMDemandMergeListState(MDPLID) {
+                var win = $find("<%=RadWindowRecordWindow.ClientID %>");
+                win.set_title("物资需求计划清单-提交物流中心列表");
+                window.radopen("/Plan/MDemandMergeListState.aspx?MDPID=" + MDPLID, "RadWindowRecordWindow");
+                  return false;
+              }
             function confirmRadWindow(sender, args) 
             {
              //   var grid = $find("<%=RadGrid_MDemandDetails.ClientID%>");
@@ -209,7 +239,6 @@
                                 <asp:CheckBox ID="headerChkbox" runat="server" OnCheckedChanged="ToggleSelectedState" AutoPostBack="True" />
                               </HeaderTemplate>
                             </telerik:GridTemplateColumn>
-           
                            
                             <telerik:GridBoundColumn DataField="Drawing_No"  HeaderText="图号" ItemStyle-Width="100px" HeaderStyle-Width="100px" SortExpression="Drawing_No" UniqueName="Drawing_No">
                             </telerik:GridBoundColumn>
@@ -217,18 +246,13 @@
                             </telerik:GridBoundColumn>
                             <telerik:GridBoundColumn DataField="TDM_Description" HeaderText="产品名称" ItemStyle-Width="100px" HeaderStyle-Width="100px" SortExpression="TDM_Description" UniqueName="TDM_Description">
                             </telerik:GridBoundColumn>
-                                     
                             <telerik:GridBoundColumn DataField="LingJian_Type1" HeaderText="零件类型" ItemStyle-Width="100px" HeaderStyle-Width="100px" SortExpression="LingJian_Type1" UniqueName="LingJian_Type1">
                             </telerik:GridBoundColumn>
-            
-                     
-                      
                             <telerik:GridBoundColumn DataField="Technics_Line"  HeaderText="工艺路线" ItemStyle-Width="100px" HeaderStyle-Width="100px" SortExpression="Technics_Line" UniqueName="Technics_Line">
                             </telerik:GridBoundColumn>
 
                             <telerik:GridBoundColumn DataField="Material_Name" HeaderText="物资名称" ItemStyle-Width="150px" HeaderStyle-Width="150px" SortExpression="Material_Name" UniqueName="Material_Name">
-                            </telerik:GridBoundColumn>
-
+                            </telerik:GridBoundColumn>        
                             <telerik:GridBoundColumn DataField="Material_Mark" HeaderText="物资牌号" ItemStyle-Width="70px" HeaderStyle-Width="80px" SortExpression="Material_Name" UniqueName="Material_Name"></telerik:GridBoundColumn>
                             <telerik:GridBoundColumn DataField="CN_Material_State" HeaderText="供应状态" ItemStyle-Width="70px" HeaderStyle-Width="80px" SortExpression="CN_Material_State" UniqueName="CN_Material_State"></telerik:GridBoundColumn>
                             <telerik:GridBoundColumn DataField="Material_Tech_Condition" HeaderText="技术标准" ItemStyle-Width="100px" HeaderStyle-Width="100px" SortExpression="Material_Tech_Condition" UniqueName="Material_Tech_Condition"> </telerik:GridBoundColumn>
@@ -265,8 +289,6 @@
                             
                             <telerik:GridBoundColumn DataField="DemandDate" HeaderText="需求日期" ItemStyle-Width="100px" HeaderStyle-Width="100px" SortExpression="DemandDate" UniqueName="DemandDate" Visible="true">
                             </telerik:GridBoundColumn>
-                            
-
                             <telerik:GridBoundColumn DataField="UrgencyDegre" HeaderText="紧急程度" ItemStyle-Width="70px" HeaderStyle-Width="70px" SortExpression="UrgencyDegre" UniqueName="UrgencyDegre" Visible="true">
                             </telerik:GridBoundColumn>
                             <telerik:GridBoundColumn DataField="Secret_Level" HeaderText="密级" ItemStyle-Width="60px" HeaderStyle-Width="60px" SortExpression="Secret_Level" UniqueName="Secret_Level" Visible="true">
@@ -292,7 +314,7 @@
                         </Columns>
 
                         <CommandItemTemplate>
-                         <telerik:RadButton ID="RB_Submit" runat="server" Text="提交物流中心" Font-Bold="true" CommandName="SubmitWuliuCenter" OnClick="RB_Submit_Click" OnClientClicking="confirmRadWindow" CssClass="floatleft"  ></telerik:RadButton>
+                        <telerik:RadButton ID="RadBtnBuildMergeList" runat="server" Text="生成物资需求清单" Font-Bold="true" CommandName="BuildMergeList" OnClientClicking="confirmWindowSubmitMerge" CssClass="floatleft"></telerik:RadButton>
                         <asp:Label ID="lbltop" runat="server">型号物资需求清单</asp:Label>
 					     <telerik:RadButton ID="RadButton_ExportExcel" runat="server" Text="导出Excel" Font-Bold="true" CommandName="ExportExcel" OnClick="RadButton_ExportExcel_Click" CssClass="floatright"></telerik:RadButton>
                          <telerik:RadButton ID="RadButton_ExportWord"  runat="server" Text="导出Word"  Font-Bold="true" CommandName="ExportWord" Visible="false"  OnClick="RadButton_ExportWord_Click"  CssClass="floatright"></telerik:RadButton>
@@ -307,6 +329,14 @@
                     AutoCloseDelay="4000" Width="240" Height="90" Title="提示" EnableRoundedCorners="true">
     </telerik:RadNotification>
     <%--弹出窗口--开始--%>
+    <telerik:RadWindowManager ID="RadWindowManager1" runat="server">
+                    <Windows>
+                        <telerik:RadWindow ID="RadWindowRecordWindow" runat="server" Title="物资需求计划清单-待提交" Left="50px" Top="50px"
+                            ReloadOnShow="true" ShowContentDuringLoad="false" VisibleTitlebar="true" VisibleStatusbar="false"
+                            Behaviors="Close,Maximize,Minimize" OnClientClose="RefreshParent" Modal="true" Width="1200px" Height="500px" />
+                    </Windows>
+    </telerik:RadWindowManager>
+
         <telerik:RadWindow ID="RadWindow" runat="server" VisibleTitlebar="false"
             VisibleStatusbar="false" Modal="true" Behaviors="None" Height="120px" Width="320px">
             <ContentTemplate>

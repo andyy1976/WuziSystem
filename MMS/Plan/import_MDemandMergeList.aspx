@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="MDemandMergeList.aspx.cs" Inherits="mms.Plan.MDemandMergeList" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="import_MDemandMergeList.aspx.cs" Inherits="mms.Plan.import_MDemandMergeList" %>
 
 <%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
 <!DOCTYPE html>
@@ -81,10 +81,7 @@
                 <div class="divSiteMap" style="width: 100%; float: none; height: 30px; border-bottom-style: solid; border-bottom-width: 0px;">
                     <label style="margin-left: 10px; float: left;color:red;">型号：</label><span id="span_model" style="float: left;color:red;" runat="server"></span>
                     <label style="margin-left: 50px; float: left">基准物资材料清单号：</label><span id="span_listNo" style="float: left;" runat="server"></span>
-                    <label style="margin-left: 50px; float: right"> 需求时间：
-                       <telerik:RadDatePicker runat="server" id="RDP_DemandDate" Width="100px" DateInput-ClientEvents-OnKeyPress='EnterKeyProcessing'>
-                       </telerik:RadDatePicker>
-                   </label>
+                  
     
                 </div>
                 <div class="divViewPanel">
@@ -184,7 +181,7 @@
                                 <telerik:GridBoundColumn DataField="MaterialDept" FilterControlAltText="Filter MaterialDept column" HeaderText="领用单位" SortExpression="MaterialDept" UniqueName="MaterialDept"
                                      HeaderStyle-width="70px" ItemStyle-Width="70px">
                                 </telerik:GridBoundColumn>
-                                <telerik:GridTemplateColumn HeaderText="配送地址"  UniqueName="Shipping_Addr_Id"
+                                <telerik:GridTemplateColumn HeaderText="配送地址"  UniqueName="Shipping_Address"
                                      HeaderStyle-width="110px" ItemStyle-Width="110px">
                                     <HeaderStyle HorizontalAlign="Center"></HeaderStyle>
                                     <ItemTemplate>
@@ -221,6 +218,11 @@
                                 <telerik:GridBoundColumn DataField="stage1" HeaderText="研制阶段" SortExpression="stage1" UniqueName="stage1"  HeaderStyle-width="80px"
                                      ItemStyle-Width="60px">
                                 </telerik:GridBoundColumn>
+
+                                    <telerik:GridBoundColumn DataField="DemandDate" HeaderText="需求日期"  SortExpression="DemandDate" UniqueName="DemandDate" HeaderStyle-Width="100px" 
+                                   ItemStyle-Width="100px">
+                                </telerik:GridBoundColumn>
+
                                 <telerik:GridBoundColumn DataField="PackId" Visible="false" UniqueName="PackId"></telerik:GridBoundColumn>
                                 <telerik:GridBoundColumn DataField="TaskId" Visible="false" UniqueName="TaskId"></telerik:GridBoundColumn>
                                 <telerik:GridBoundColumn DataField="DraftId" Visible="false" UniqueName="DraftId"></telerik:GridBoundColumn>

@@ -13,7 +13,7 @@ using System.Web.UI.WebControls.WebParts;
 
 namespace mms.Plan
 {
-    public partial class MDemandMergeList : System.Web.UI.Page
+    public partial class import_MDemandMergeList : System.Web.UI.Page
     {
         //初始化Grid数据源
         private DataTable GridSource
@@ -115,7 +115,7 @@ namespace mms.Plan
 
             if (!IsPostBack)
             {
-                RDP_DemandDate.SelectedDate = DateTime.Today.AddMonths(3);
+                //RDP_DemandDate.SelectedDate = DateTime.Today.AddMonths(3);
 
                 string idStr=string.Empty;
                 string dateStr = string.Empty;
@@ -145,7 +145,9 @@ namespace mms.Plan
         {
             try
             {
-                string strSQL = @"exec Proc_Build_Merge_List '" + idStr + "'";
+                string strSQL = " select * ,case when Stage = '1' then 'M' when Stage = '2' then 'C' when Stage = '3' then 'S' else 'D' end as Stage1 from M_Demand_DetailedList_Draft where Id in (" + idStr + ") order by ItemCode1";
+
+
                 return DBI.Execute(strSQL, true);
             }
             catch (Exception ex)
@@ -239,13 +241,14 @@ namespace mms.Plan
 
         protected void RB_Submit_Click(object sender, EventArgs e)
         {
-            if (RDP_DemandDate.SelectedDate == null)
+          /*  if (RDP_DemandDate.SelectedDate == null)
             {
                 RadNotificationAlert.Text = "请选择需求时间！";
                 RadNotificationAlert.Show();
                 return;
             }
-            RB_Submit.Visible = false;
+           */
+            //RB_Submit.Visible = false;
             string MDPLID = SaveMergeInfo();
             try
             {
@@ -258,6 +261,7 @@ namespace mms.Plan
                 else
                 {
                     Convert.ToDouble(MDPLID);
+                  //  MDPLID = "1";
                     Response.Redirect("/Plan/MDemandMergeListState.aspx?MDPID=" + MDPLID);
                 }
             }
@@ -288,17 +292,13 @@ namespace mms.Plan
                     string Urgency_Degre = GridSource.Rows[j]["Urgency_Degre"].ToString();
                     string Secret_Level = GridSource.Rows[j]["Secret_Level"].ToString();
                     string Use_Des = GridSource.Rows[j]["Use_Des"].ToString();
-                    string Shipping_Address = GridSource.Rows[j]["Shipping_Addr_Id"].ToString();
+                    string Shipping_Address = GridSource.Rows[j]["Shipping_Address"].ToString();
                     string CertificationVal = GridSource.Rows[j]["Certification"].ToString();
                     string Manufacturer = GridSource.Rows[j]["Manufacturer"].ToString();
-                    string DemandDate = "";
-                    if (RDP_DemandDate.SelectedDate == null)
+                    string DemandDate = GridSource.Rows[j]["DemandDate"].ToString();
+                    if (DemandDate == "" || DemandDate == null)
                     {
                         DemandDate = DateTime.Today.AddMonths(3).ToString("yyyy-MM-dd");
-                    }
-                    else
-                    {
-                        DemandDate = Convert.ToDateTime(RDP_DemandDate.SelectedDate).ToString("yyyy-MM-dd");
                     }
                    
                     NeedsStr = NeedsStr + Special_Needs + ",";
@@ -389,66 +389,47 @@ namespace mms.Plan
              
               //  rcbAddr.CssClass = id;
                 BindDDlShipping_Addr(rcbAddr, MaterialDept);
-                string shipaddress = GridSource.Select("ID='" + id + "'")[0]["Shipping_Addr_Id"].ToString();
-                if (shipaddress != null)
+                if (rcbAddr.FindItemByValue(GridSource.Select("ID='" + id + "'")[0]["Shipping_Address"].ToString()) != null)
                 {
-                    if (rcbAddr.FindItemByValue(shipaddress) != null)
-                    {
-                        rcbAddr.FindItemByValue(shipaddress).Selected = true;
-                    }
+                    rcbAddr.FindItemByValue(GridSource.Select("ID='" + id + "'")[0]["Shipping_Address"].ToString()).Selected = true;
                 }
                 RadTextBox rtbSpecialNeeds = e.Item.FindControl("rtb_SpecialNeeds") as RadTextBox;
-                string specialneeds = GridSource.Select("ID='" + id + "'")[0]["Special_Needs"].ToString();
                // rtbSpecialNeeds.CssClass = id;
-                if (specialneeds != null && specialneeds != "")
+                if (GridSource.Select("ID='" + id + "'")[0]["Special_Needs"].ToString() != null && GridSource.Select("ID='" + id + "'")[0]["Special_Needs"].ToString()!="")
                 {
-                    rtbSpecialNeeds.Text = specialneeds;
+                    rtbSpecialNeeds.Text = (GridSource.Select("ID='" + id + "'")[0]["Special_Needs"].ToString());
                 }
                 else
                 {
-                    
+                    GridSource.Select("Id='" + id + "'")[0]["Special_Needs"] = "无";
                     rtbSpecialNeeds.Text = "无";
                 }
-
+                RadTextBox rtbManutacture = e.Item.FindControl("RTB_MANUFACTURER") as RadTextBox;
+                if (GridSource.Select("ID='" + id + "'")[0]["MANUFACTURER"].ToString() != null && GridSource.Select("ID='" + id + "'")[0]["MANUFACTURER"].ToString() != "")
+                {
+                    rtbManutacture.Text = (GridSource.Select("ID='" + id + "'")[0]["MANUFACTURER"].ToString());
+                }
+               
               RadComboBox RadComboBoxUseDes = e.Item.FindControl("RadComboBoxUseDes") as RadComboBox;
-              string usedes = GridSource.Select("ID='" + id + "'")[0]["Use_Des"].ToString();
-              if (usedes != null)
+              if (RadComboBoxUseDes.FindItemByValue(GridSource.Select("ID='" + id + "'")[0]["Use_Des"].ToString()) != null)
               {
-                  if (RadComboBoxUseDes.FindItemByValue(usedes) != null)
-                  {
-                      RadComboBoxUseDes.FindItemByValue(usedes).Selected = true;
-                  }
-              }
-          
-
+                  RadComboBoxUseDes.FindItemByValue(GridSource.Select("ID='" + id + "'")[0]["Use_Des"].ToString()).Selected = true;
+               }
 
               
                RadComboBox RadComboBoxSecretLevel = e.Item.FindControl("RadComboBoxSecretLevel") as RadComboBox;
-               string secretlevel = GridSource.Select("ID='" + id + "'")[0]["Secret_Level"].ToString();
-               if (secretlevel != null)
+               if (RadComboBoxSecretLevel.FindItemByValue(GridSource.Select("ID='" + id + "'")[0]["Secret_Level"].ToString()) != null)
                {
-                    if (RadComboBoxSecretLevel.FindItemByValue(secretlevel) != null)
-                    {
-                            RadComboBoxSecretLevel.FindItemByValue(secretlevel).Selected = true;
-                    }
-                    else
-                    {
-                            RadComboBoxSecretLevel.FindItemByText("内部").Selected = true;
-                    }
+                   RadComboBoxSecretLevel.FindItemByValue(GridSource.Select("ID='" + id + "'")[0]["Secret_Level"].ToString()).Selected = true;
                }
-
-               RadComboBox RadComboBoxUrgencyDegre = e.Item.FindControl("RadComboBoxUrgencyDegre") as RadComboBox;
-               string urgencydegree = GridSource.Select("ID='" + id + "'")[0]["Urgency_Degre"].ToString();
-               if (urgencydegree != null)
+               else
                {
-                   if (RadComboBoxUrgencyDegre.FindItemByValue(urgencydegree) != null)
-                   {
-                       RadComboBoxUrgencyDegre.FindItemByValue(urgencydegree).Selected = true;
-                   }
-                   else
-                   {
-                       RadComboBoxUrgencyDegre.FindItemByText("一般").Selected = true;
-                   }
+                  RadComboBoxSecretLevel.FindItemByText("内部").Selected = true;
+               }
+               RadComboBox RadComboBoxUrgencyDegre = e.Item.FindControl("RadComboBoxUrgencyDegre") as RadComboBox;
+               if (RadComboBoxUrgencyDegre.FindItemByValue(GridSource.Select("ID='" + id + "'")[0]["Urgency_Degre"].ToString()) != null)
+               {
+                   RadComboBoxUrgencyDegre.FindItemByValue(GridSource.Select("ID='" + id + "'")[0]["Urgency_Degre"].ToString()).Selected = true;
                }
                else
                {
@@ -489,7 +470,7 @@ namespace mms.Plan
         {
             RadComboBox cb = sender as RadComboBox;
             string id = (cb.Parent.Parent as GridDataItem).GetDataKeyValue("ID").ToString();
-            GridSource.Select("Id='" + id + "'")[0]["Shipping_Addr_Id"] = cb.SelectedItem.Value;
+            GridSource.Select("Id='" + id + "'")[0]["Shipping_Address"] = cb.SelectedItem.Value;
         }
 
         protected void RadComboBoxCertification_SelectedIndexChanged(object sender, RadComboBoxSelectedIndexChangedEventArgs e)
