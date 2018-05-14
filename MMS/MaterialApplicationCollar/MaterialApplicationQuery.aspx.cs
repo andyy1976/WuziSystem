@@ -56,8 +56,14 @@ namespace mms.MaterialApplicationCollar
                 + " , case when ItemCode = '' then ItemCode1 else ItemCode end as ItemCode2"
                 + " , (select Phase from Sys_Phase where Code = M_Demand_Merge_List.Stage) as Stage1"
                 + " , (select DICT_Name from GetBasicdata_T_Item where DICT_CODE = M_Demand_Merge_List.Project and DICT_CLASS='CUX_DM_PROJECT') as Model"
+                + " , b.DICT_Name as Use_Des1"
+                + " , case when MaterialApplication.IsDispatch = '0' then '否' when MaterialApplication.IsDispatch = '1' then '是' else '' end as IsDispatch1"
+                + " , case when MaterialApplication.IsConfirm = '0' then '否' when MaterialApplication.IsConfirm = '1' then '是' else '' end as IsConfirm1"
+                + " , case when MaterialApplication.Is_Apply = 'N' then '否' when MaterialApplication.Is_Apply = 'Y' then '是' else '' end as Is_Apply1"
                 + " from MaterialApplication "
+                + " left join GetBasicdata_T_Item as b on  b.DICT_CODE = MaterialApplication.USAGE and b.DICT_CLASS='CUX_DM_USAGE'" 
                 + " left join M_Demand_Merge_List on M_Demand_Merge_List.ID = MaterialApplication.Material_Id";
+
            // if (HF_DeptCode.Value == "B")
              if(dt.Rows.Count>0)
             {

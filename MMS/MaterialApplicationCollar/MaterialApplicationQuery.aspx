@@ -224,6 +224,10 @@
                     <telerik:GridBoundColumn DataField="Mat_Rough_Weight" HeaderText="单件定额质量" UniqueName="Mat_Rough_Weight" ColumnGroupName="Material" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>
                     <telerik:GridBoundColumn DataField="Remark" HeaderText="备注" UniqueName="Remark" ColumnGroupName="Material" ItemStyle-Width="80px" HeaderStyle-Width="80px"></telerik:GridBoundColumn>
 
+                    <telerik:GridBoundColumn DataField="IsDispatch1" HeaderText="急件" UniqueName="IsDispatch" ColumnGroupName="Material" ItemStyle-Width="80px" HeaderStyle-Width="80px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="Use_Des1" HeaderText="用途" UniqueName="Use_Des1" ColumnGroupName="Material" ItemStyle-Width="80px" HeaderStyle-Width="80px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="IsConfirm1" HeaderText="调拨" UniqueName="IsConfirm" ColumnGroupName="Material" ItemStyle-Width="80px" HeaderStyle-Width="80px"></telerik:GridBoundColumn>
+                    <telerik:GridBoundColumn DataField="Is_Apply1" HeaderText="是否开证" UniqueName="Is_Apply" ColumnGroupName="Material" ItemStyle-Width="80px" HeaderStyle-Width="80px"></telerik:GridBoundColumn>
                     <telerik:GridTemplateColumn HeaderText ="查询流程<br />平台信息"  ItemStyle-Width="70px" HeaderStyle-Width="70px">
                         <ItemTemplate>
                         <telerik:RadButton ID="RB_K2" runat="server" Text="查看" CommandName="K2" ButtonType="ToggleButton" ToggleType="None" AutoPostBack="false" ForeColor="blue"></telerik:RadButton>
