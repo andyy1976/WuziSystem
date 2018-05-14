@@ -26,12 +26,14 @@ namespace mms.SystemMangement
                 //   string strSQL = " select distinct dbo.Get_StrArrayStrOfIndex(Seg6,'.',1) as Seg6, substring(Seg5,1,4) as Type"
                 //      + " from [dbo].[GetCommItem_T_Item] order by substring(Seg5,1,4)";
                 string strSQL = "select * from Sys_Wuzi_Type";
-                DataTable dt = DBI.Execute(strSQL, true);
+                /*
+                 *DataTable dt = DBI.Execute(strSQL, true);
 
                 RDDLMT.DataSource = dt;
                 RDDLMT.DataTextField = "Seg6";
                 RDDLMT.DataValueField = "Type";
                 RDDLMT.DataBind();
+                * */
                 //RDDLMT.SelectedIndex = 0;
               //  Telerik.Web.UI.DropDownListItem li = new Telerik.Web.UI.DropDownListItem("物资编码查询", "ItemCode");
               //  RDDLMT.Items.Add(li);
@@ -82,8 +84,8 @@ namespace mms.SystemMangement
 
         protected void RDDLMT_SelectedIndexChanged(object sender, Telerik.Web.UI.DropDownListEventArgs e)
         {
-            string value = RDDLMT.SelectedValue.ToString();
-            string prefix = RDDLMT.SelectedText.ToString() + ".";
+           // string value = RDDLMT.SelectedValue.ToString();
+           // string prefix = RDDLMT.SelectedText.ToString() + ".";
            // string strSQL = "";
 
          /*   RDDLMT1.SelectedIndex = 0;
@@ -206,11 +208,11 @@ namespace mms.SystemMangement
             {
                 strSQL += " and SEG4 like '%采用标准(%" + Material_Biaozhun + "%'";
             }
-            string MTv = RDDLMT.SelectedValue.ToString();
-            if (MTv == "")
-            {
+          //  string MTv = RDDLMT.SelectedValue.ToString();
+            //if (MTv == "")
+          //  {
                 
-            }
+         //   }
           /*  else if (MTv == "ItemCode")
             {
                 string ItemCode = RTB_ItemCode.Text.Trim();
@@ -219,14 +221,14 @@ namespace mms.SystemMangement
             */
             else
             {
-                string MT = RDDLMT.SelectedText.ToString();
+               // string MT = RDDLMT.SelectedText.ToString();
              //   string MT1 = RDDLMT1.SelectedText.ToString();
                // string MT2 = RDDLMT2.SelectedText.ToString();
                // string MT3 = RDDLMT3.SelectedText.ToString();
                // string MT4 = RDDLMT4.SelectedText.ToString();
 
                 string SEG6 = "";
-                if (MT != "") { SEG6 += MT ; }
+              //  if (MT != "") { SEG6 += MT ; }
             //    if (MT1 != "") { SEG6 +=  "." +MT1; }
              //   if (MT2 != "") { SEG6 += "." + MT2; }
            //     if (MT3 != "") { SEG6 += "." + MT3; }

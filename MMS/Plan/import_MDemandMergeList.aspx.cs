@@ -248,7 +248,7 @@ namespace mms.Plan
                 return;
             }
            */
-            //RB_Submit.Visible = false;
+            RB_Submit.Enabled = false;
             string MDPLID = SaveMergeInfo();
             try
             {
@@ -282,12 +282,25 @@ namespace mms.Plan
             if ((Session["idStr"] != null && Session["idStr"].ToString() != "") &&
                 (Session["otherStr"] != null && Session["otherStr"].ToString() != ""))
             {
-                idStr = Session["idStr"].ToString();
+             //   idStr = Session["idStr"].ToString();
+                /*
+                string[] arrystr = idStr.Split(',');
+
+               // Array.Reverse(arrystr);
+                idStr = "";
+
+                for (int i = arrystr.Length - 1; i>=0; i--)
+                {
+                    idStr = idStr + arrystr[i] + ",";
+                }
+                idStr = idStr.Substring(0, idStr.Length - 1);
+                */
                 otherStr = Session["otherStr"].ToString().Split(new char[] { ',' });
                 string PackId = otherStr[0];
                 string DraftId = otherStr[1];
                 for(int j=0;j<GridSource.Rows.Count;j++)
                 {
+                    string idStrs = GridSource.Rows[j]["ID"].ToString();
                     string Special_Needs = GridSource.Rows[j]["Special_Needs"].ToString();
                     string Urgency_Degre = GridSource.Rows[j]["Urgency_Degre"].ToString();
                     string Secret_Level = GridSource.Rows[j]["Secret_Level"].ToString();
@@ -295,6 +308,10 @@ namespace mms.Plan
                     string Shipping_Address = GridSource.Rows[j]["Shipping_Address"].ToString();
                     string CertificationVal = GridSource.Rows[j]["Certification"].ToString();
                     string Manufacturer = GridSource.Rows[j]["Manufacturer"].ToString();
+                    if (Manufacturer == "" || Manufacturer == "&nbsp;")
+                    {
+                        Manufacturer = null;
+                    }
                     string DemandDate = GridSource.Rows[j]["DemandDate"].ToString();
                     if (DemandDate == "" || DemandDate == null)
                     {
@@ -302,6 +319,7 @@ namespace mms.Plan
                     }
                    
                     NeedsStr = NeedsStr + Special_Needs + ",";
+                    idStr = idStr + idStrs + ",";
                     DegreStr = DegreStr + Urgency_Degre + ",";
                     LevelStr = LevelStr + Secret_Level + ",";
                     DesStr = DesStr + Use_Des + ",";
@@ -310,6 +328,7 @@ namespace mms.Plan
                     ManufacturerStr = ManufacturerStr + Manufacturer + ",";
                     DemandDateStr = DemandDateStr + DemandDate + ",";                 
                 }
+                idStr = idStr.Substring(0, idStr.Length - 1);
                 NeedsStr = NeedsStr.Substring(0, NeedsStr.Length - 1);
                 DegreStr = DegreStr.Substring(0, DegreStr.Length - 1);
                 LevelStr = LevelStr.Substring(0, LevelStr.Length - 1);

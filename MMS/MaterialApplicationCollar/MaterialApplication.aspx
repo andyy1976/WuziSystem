@@ -434,7 +434,7 @@
                         <th colspan="10" style="font-size:16px; letter-spacing:16px;">物资基础库查询</th>
                     </tr>
                     <tr>
-                        <td style="width:50px;">物资名称：</td>
+                        <td style="width:70px;">物资名称：</td>
                         <td>
                             <telerik:RadTextBox ID="RTB_MaterialName" runat="server" Width="100px">
                               <ClientEvents OnKeyPress="EnterKeyProcessing" />
@@ -470,6 +470,7 @@
                                                 </telerik:RadButton>--%> 
                                   </td>
                          </tr>
+                    <%--
                          <tr>
                         <td style="width:100px;">物资类别：</td>
                         <td style="width:100px;">
@@ -480,6 +481,7 @@
                             </telerik:RadDropDownList>
                         </td>
                     </tr>
+                    --%>
                 </table>
             </div>
             <div style="width: 100%;">

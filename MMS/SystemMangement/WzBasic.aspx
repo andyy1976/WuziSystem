@@ -73,6 +73,7 @@
                      <td  style="width:200px" colspan="2"><telerik:RadButton ID="RB_Search" runat="server" Text="搜索" OnClick="RB_Search_Click"></telerik:RadButton></td>
 
            </tr>
+                 <%-- 
                 <tr>
                     <td style="width:120px">物资类别：</td>
                     <td >
@@ -82,7 +83,7 @@
                             </Items>
                         </telerik:RadDropDownList>
                     </td>
-                   <%-- 
+                  
                     <td colspan="8">
                         <div id="div1" runat="server" visible="false">
                             <table>
@@ -112,8 +113,9 @@
                         </div>
                    
                     </td>
-                     --%>
+                     
                 </tr>
+                     --%>
             </table>
         </asp:Panel>
     </div>

@@ -213,14 +213,14 @@ namespace mms.Plan
 
                     //   strSQL = " select distinct dbo.Get_StrArrayStrOfIndex(Seg6,'.',1) as Seg6, substring(Seg5,1,4) as Type"
                     //    + " from [dbo].[GetCommItem_T_Item] order by substring(Seg5,1,4)";
-                    strSQL = "select * from Sys_Wuzi_Type";
+                   // strSQL = "select * from Sys_Wuzi_Type";
 
-                    DataTable dt = DBI.Execute(strSQL, true);
+                  //  DataTable dt = DBI.Execute(strSQL, true);
 
-                    RDDLMT.DataSource = dt;
-                    RDDLMT.DataTextField = "Seg6";
-                    RDDLMT.DataValueField = "Type";
-                    RDDLMT.DataBind();
+                 //   RDDLMT.DataSource = dt;
+                 //   RDDLMT.DataTextField = "Seg6";
+                   // RDDLMT.DataValueField = "Type";
+                //    RDDLMT.DataBind();
 
                    /*
                     strSQL = "select * from GetCommItem_T_Item where SEG10 = 'N'";
@@ -1380,11 +1380,11 @@ namespace mms.Plan
             {
                 strSQL += " and SEG4 like '%采用标准(%" + Material_Biaozhun + "%'";
             }
-            string MTv = RDDLMT.SelectedValue.ToString();
-            if (MTv == "")
-            {
+          //  string MTv = RDDLMT.SelectedValue.ToString();
+            //if (MTv == "")
+           // {
 
-            }
+            //}
            /* else if (MTv == "ItemCode")
             {
                 string ItemCode = RTB_ItemCode.Text.Trim();
@@ -1392,19 +1392,19 @@ namespace mms.Plan
             }*/
             else
             {
-                string MT = RDDLMT.SelectedText.ToString();
+              //  string MT = RDDLMT.SelectedText.ToString();
               //  string MT1 = RDDLMT1.SelectedText.ToString();
              //   string MT2 = RDDLMT2.SelectedText.ToString();
               //  string MT3 = RDDLMT3.SelectedText.ToString();
               //  string MT4 = RDDLMT4.SelectedText.ToString();
 
-                string SEG6 = "";
-                if (MT != "") { SEG6 += MT; }
+           //     string SEG6 = "";
+            //    if (MT != "") { SEG6 += MT; }
             //    if (MT1 != "") { SEG6 += "." + MT1; }
             //    if (MT2 != "") { SEG6 += "." + MT2; }
               //  if (MT3 != "") { SEG6 += "." + MT3; }
                // if (MT4 != "") { SEG6 += "." + MT4; }
-                strSQL += " and SEG6 like '" + SEG6 + "%'";
+               // strSQL += " and SEG6 like '" + SEG6 + "%'";
             }
             Session["gds"] = DBI.Execute(strSQL, true);
             RadGrid1.Rebind();

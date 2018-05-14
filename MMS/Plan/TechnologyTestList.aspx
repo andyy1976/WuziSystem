@@ -18,7 +18,7 @@
         <telerik:RadTabStrip ID="RadTabStrip1" runat="server" Skin="Default" ShowBaseLine="true">
             <Tabs>
                 <telerik:RadTab TabIndex="0" Value="0" Text="需求清单" Selected="true"></telerik:RadTab>
-                <telerik:RadTab TabIndex="1" Value="1" Text="更改需求"></telerik:RadTab>
+                <telerik:RadTab TabIndex="1" Value="1" Text="更改需求" Visible="false"></telerik:RadTab>
             </Tabs>
         </telerik:RadTabStrip>
     </div>

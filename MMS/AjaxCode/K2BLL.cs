@@ -26,6 +26,11 @@ namespace mms
         {
             var db = new MMSDbDataContext();
             var ma = db.MaterialApplication.SingleOrDefault(p => p.Id == Convert.ToInt32(MAID)); //(from p in db.MaterialApplication where p.Id == Convert.ToInt32(MAID) select p).SingleOrDefault();
+         //   string strSql = " select b.DICT_Name as UseDes, MaterialApplication.* from MaterialApplication" +
+           //    " left join GetBasicdata_T_Item as b on MaterialApplication.USAGE = b.DICT_Code and b.DICT_CLASS='CUX_DM_USAGE'" +
+             //  " where MaterialApplication.Id='" + MAID + "'";
+            //DataTable dtma = DBI.Execute(strSql, true);
+
             if (ma == null) return "失败！" ;
             var mdml = db.M_Demand_Merge_List.SingleOrDefault(p => p.ID == ma.Material_Id); // (from p in db.M_Demand_Merge_List where p.ID == ma.Material_Id select p).SingleOrDefault();
             var RqHeaderId="";
@@ -73,7 +78,18 @@ namespace mms
             model.Rough_Size = ma.Rough_Size;
             //model.dinge_size = ma.Dinge_Size;//定额尺寸
             model.Secret = ma.SECURITY_LEVEL;//密级
-            model.Purpose = ma.USAGE;//用途
+            //model.Purpose = ma.USAGE;//用途
+            string strSql = " select * from GetBasicdata_T_Item where DICT_CLASS='CUX_DM_USAGE' and DICT_Code='" + ma.USAGE + "'";
+              
+            DataTable dtusage = DBI.Execute(strSql, true);
+            if (dtusage.Rows.Count > 0)
+            {
+                model.Purpose = dtusage.Rows[0]["dict_name"].ToString();
+            }
+            else
+            {
+                return "用途转换失败，请检查数据库中用途选项设置";
+            }
             model.Rough_Spec = ma.Rough_Spec;
             model.RqDept = rqDept;                                          
             model.RqHeaderId = RqHeaderId;
@@ -86,9 +102,7 @@ namespace mms
             model.WuZiJiHuaYuanApprove = "TJ\\" + ma.WuZiJiHuaYuanApprove;
             model.XingHaoJiHuaYuanApprove = "TJ\\" + ma.XingHaoJiHuaYuanApprove;
             model.IsNeedCertificate = ma.Is_Apply == "Y";  //缺少是否开证的信息
-            //model.Brand=ma.Material_Mark;
-           // model.Status=ma.CN_Material_State;
-           // model.Standard=ma.Material_Tech_Condition;
+
             K2WebServiceForMMS k2mms = new K2WebServiceForMMS();
             bool result ;
             try

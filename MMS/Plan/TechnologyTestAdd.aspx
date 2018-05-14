@@ -801,16 +801,17 @@
                                                 </telerik:RadButton>--%>
                                                     </td>
                                                   </tr>
+                                                  <%--
                                                 <tr>
-                                                    <td style="width: 100px;">物资类别：</td>
+                                                  <td style="width: 100px;">物资类别：</td>
                                                     <td>
-                                                        <telerik:RadDropDownList ID="RDDLMT" runat="server" AppendDataBoundItems="true" OnSelectedIndexChanged="RDDLMT_SelectedIndexChanged" AutoPostBack="true" Width="100px">
+                                                        <telerik:RadDropDownList ID="RDDLMT" runat="server" AppendDataBoundItems="true" OnSelectedIndexChanged="RDDLMT_SelectedIndexChanged" AutoPostBack="true" Width="100px" Visible="false">
                                                             <Items>
                                                                 <telerik:DropDownListItem Value="" Text="" />
                                                             </Items>
                                                         </telerik:RadDropDownList>
                                                     </td>
-                                                    <%-- 
+                                                   
                                                     <td colspan="8">
                                                         <div id="div1" runat="server" visible="false">
                                                             <table>
@@ -848,8 +849,9 @@
                                                             </table>
                                                         </div>
                                                     </td>
-                                                        --%>
+                                                        
                                                 </tr>
+                                                      --%>
                                             </table>
                                         </asp:Panel>
                                     </div>

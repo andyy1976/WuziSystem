@@ -506,7 +506,7 @@ namespace mms.Plan
             sethfFlag();
         }
 
-
+/*
         protected void RB_Submit_Click(object sender, EventArgs e)
         {
 
@@ -639,7 +639,7 @@ namespace mms.Plan
                 throw new Exception("数据库操作-操作物资需求清单详表时出现异常" + e.Message.ToString());
             }
         }
-
+        */
         protected void RadButton_ExportExcel_Click(object sender, EventArgs e)
         {
             RadGrid_MDemandDetails.ExportSettings.FileName = "型号物资需求清单-" + DateTime.Now.ToString("yyyy-MM-dd");

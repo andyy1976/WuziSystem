@@ -481,15 +481,6 @@ namespace mms.MaterialApplicationCollar {
         protected global::Telerik.Web.UI.RadButton RadBtnChoose;
         
         /// <summary>
-        /// RDDLMT 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadDropDownList RDDLMT;
-        
-        /// <summary>
         /// RadGrid1 控件。
         /// </summary>
         /// <remarks>
