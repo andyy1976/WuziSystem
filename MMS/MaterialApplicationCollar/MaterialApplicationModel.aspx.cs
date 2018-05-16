@@ -52,8 +52,9 @@ namespace mms.MaterialApplicationCollar
                     + " join P_Pack_Task on P_Pack_Task.TaskId = M_Demand_Merge_List.TaskId "
                     + " join P_Pack on P_Pack.PackId = M_Demand_Merge_List.PackId  left join Sys_Model on Convert(nvarchar(50),Sys_Model.ID) = P_Pack.Model "
                     + " left join Sys_Phase on Sys_Phase.Code =  M_Demand_Merge_List.Stage"
-                    + " where Submit_Type = '0' and Is_submit = 'true' and MaterialDept = '" + HF_DeptCode.Value + "'";
-                 //   + "and Quantity_Left>0 and DemandNum_Left>0";
+                    + " where Submit_Type = '0' and Is_submit = 'true' and MaterialDept = '" + HF_DeptCode.Value + "'"
+                    +" and isClosed=0";    
+            //   + " and Quantity_Left>0 and DemandNum_Left>0";
                    // + " and M_Demand_Merge_List.ID not in (select Material_ID from MaterialApplication where Is_del = 'false' and Material_ID is not null)";
             if (Session["StrWhere"] != null)
             {

@@ -1,0 +1,3 @@
+╠МM_Demand_Merge_List
+isClosed	bit	Checked
+д╛хож╣0

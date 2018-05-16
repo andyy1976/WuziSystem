@@ -47,7 +47,7 @@ namespace mms.Plan
                 RDDL_Secret_Level.DataValueField = "SecretLevel_Name";
                 RDDL_Secret_Level.DataTextField = "SecretLevel_Name";
                 RDDL_Secret_Level.DataBind();
-                GetMDemandMergeList(" and M_Demand_Merge_List.DemandNum_Left>0 ");
+                GetMDemandMergeList(" and M_Demand_Merge_List.DemandNum_Left>0 and M_Demand_Merge_List.isClosed=0");
             }
         }
         protected void RadAjaxManager1_AjaxRequest(object sender, AjaxRequestEventArgs e)
@@ -81,6 +81,7 @@ namespace mms.Plan
             string ID = RTB_ID.Text.Trim();
             string State = RDDL_State.SelectedValue.ToString();
             string strSQL = "";
+            string closeState = RadDropDownListCloseState.SelectedValue.ToString();
             if (State == "0")
             {
                 strSQL += " and M_Demand_Merge_List.DemandNum_Left>0 ";
@@ -89,7 +90,14 @@ namespace mms.Plan
             {
                 strSQL += " and M_Demand_Merge_List.DemandNum_Left=0 ";
             }
-            
+            if (closeState == "0")
+            {
+                strSQL += " and M_Demand_Merge_List.isClosed=0 ";
+            }
+            else
+            {
+                strSQL += " and M_Demand_Merge_List.isClosed=1 ";
+            }
             if (type != "")
             {
                 strSQL += " and M_Demand_Merge_List.submit_type = '" + type + "'";
@@ -176,7 +184,33 @@ namespace mms.Plan
         {
             RadGrid1.DataSource = this.ViewState["_gds"];
         }
+        protected void RadGrid1_ItemCommand(object sender, GridCommandEventArgs e)
+        {
+           
+            GridDataItem dataitem = e.Item as GridDataItem;
+            if (e.CommandName == "close")
+            {
+                int ID = Convert.ToInt32(dataitem.GetDataKeyValue("ID"));
+                DBI.OpenConnection();
+                try
+                {
+                    
+                   string  strSQL = "Update M_Demand_Merge_List  set isClosed = 'true' where ID =" + ID;
+                    DBI.Execute(strSQL);
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("关闭需求时出现数据操作异常" + ex.Message.ToString());
+                }
+                finally
+                {
+                    DBI.CloseConnection();
+                }
+                GetMDemandMergeList(" and M_Demand_Merge_List.DemandNum_Left>0 ");
+                RadGrid1.Rebind();
 
+            }
+        }
         protected void RadButton_ExportExcel_Click(object sender, EventArgs e)
         {
             RadGrid1.ExportSettings.FileName = "物资需求列表" + DateTime.Now.ToString("yyyy-MM-dd");

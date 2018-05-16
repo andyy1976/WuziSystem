@@ -51,7 +51,8 @@ namespace mms.MaterialApplicationCollar
 
                     + " from M_Demand_Merge_List"
                     + " left join GetBasicdata_T_Item as CUX_DM_PROJECT on CUX_DM_PROJECT.DICT_CODE = M_Demand_Merge_List.Project and DICT_CLASS='CUX_DM_PROJECT'"
-                    + " where Submit_Type = '2' and Is_submit = 'true' and Is_Change='false' and MaterialDept = '" + HF_DeptCode.Value + "'";
+                    + " where Submit_Type = '2' and Is_submit = 'true' and Is_Change='false' and MaterialDept = '" + HF_DeptCode.Value + "'"
+                    + " and isClosed=0"; 
                     //+ "and Quantity_Left>0 and DemandNum_Left>0";
                    // + " and M_Demand_Merge_List.ID not in (select Material_ID from MaterialApplication where Is_del = 'false' and Material_ID is not null)";
             if (Session["StrWhere"] != null)

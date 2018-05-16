@@ -44,7 +44,22 @@
                     eventArgs.set_cancel(true);
                 }
             }
-
+            var deleteButtonID;
+            function confirmRadWindowDelete(sender, args)
+            {
+                $find("<%=confirmDeleteWindow.ClientID %>").show();
+                deleteButtonID = sender.get_id();
+                args.set_cancel(true);
+            }
+            function YesOrNoClicked(sender, args)
+            {
+                     var oWnd = $find("<%=confirmDeleteWindow.ClientID %>");
+                                oWnd.close();
+                                if (sender.get_text() == "是")
+                                {
+                                    $find(deleteButtonID).click();
+                                }
+            }
             function refreshGrid(arg) 
             {
                 if (!arg) {
@@ -154,6 +169,13 @@
                         <telerik:RadDatePicker ID="RDP_DemandDateEnd" runat="server" Width="120px" DateInput-ClientEvents-OnKeyPress='EnterKeyProcessing'>
                         </telerik:RadDatePicker>
                     </td>
+                     <td style="text-align:right;">关闭状态：</td>
+                    <td><telerik:RadDropDownList ID="RadDropDownListCloseState" runat="server" Width="120px" AppendDataBoundItems="true" Visible="true">
+                        <Items>
+                            <telerik:DropDownListItem Value="0" Text="未关闭" />
+                            <telerik:DropDownListItem Value="1" Text="已关闭" />
+                        </Items>
+                        </telerik:RadDropDownList></td>
                     <td><telerik:RadButton ID="RB_Query" runat="server" Text="查询" OnClick="RB_Query_Click"></telerik:RadButton></td>
                 </tr>
             </table>
@@ -161,7 +183,7 @@
         <div style="width: 100%; float: left;">
             <asp:HiddenField ID="HFMDMLID" runat="server" />
             <telerik:RadGrid ID="RadGrid1" runat="server" AutoGenerateColumns="false" AllowMultiRowSelection="false"
-                OnNeedDataSource="RadGrid1_NeedDataSource" OnSelectedIndexChanged="RadGridMDML_SelectedIndexChanged"
+                OnNeedDataSource="RadGrid1_NeedDataSource" OnSelectedIndexChanged="RadGridMDML_SelectedIndexChanged" OnItemCommand="RadGrid1_ItemCommand"
                 AllowPaging="true" PageSize="15" PagerStyle-AlwaysVisible="True" AllowSorting="true">
                 <AlternatingItemStyle HorizontalAlign="Center" />
                 <ItemStyle Font-Size="12px" HorizontalAlign="Center" />
@@ -177,7 +199,12 @@
                 <MasterTableView DataKeyNames="ID" CommandItemDisplay="Top">
 			    <CommandItemSettings ShowExportToExcelButton="true" ShowExportToWordButton="true" ShowExportToPdfButton="true" />
                     <Columns>
-                        <telerik:GridClientSelectColumn UniqueName="ClientSelectColumn" ColumnGroupName="Requirement"  ItemStyle-Width="30px" HeaderStyle-Width="30px"></telerik:GridClientSelectColumn>
+                       <telerik:GridClientSelectColumn UniqueName="ClientSelectColumn" ColumnGroupName="Requirement"  ItemStyle-Width="30px" HeaderStyle-Width="30px"></telerik:GridClientSelectColumn>
+                        <telerik:GridTemplateColumn HeaderText="操作" ItemStyle-Width="80px" HeaderStyle-Width="80px">
+                                        <ItemTemplate>
+                                            <telerik:RadButton ID="RadButtonDelete" runat="server" Text="关闭" OnClientClicking="confirmRadWindowDelete" CommandName="close"></telerik:RadButton>
+                                        </ItemTemplate>
+                        </telerik:GridTemplateColumn>
                         <telerik:GridBoundColumn DataField="ID" HeaderText="需求行号" ItemStyle-Width="80px" HeaderStyle-Width="80px"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="Model" HeaderText="型号" ItemStyle-Width="80px" HeaderStyle-Width="80px"></telerik:GridBoundColumn>
                         <telerik:GridBoundColumn DataField="TaskCode" HeaderText="任务号" ItemStyle-Width="120px" HeaderStyle-Width="120px"></telerik:GridBoundColumn>
@@ -203,6 +230,7 @@
                         <telerik:GridBoundColumn DataField="REQUESTER" HeaderText="提交人" ItemStyle-Width="100px" HeaderStyle-Width="100px"></telerik:GridBoundColumn>    
                     </Columns>
                         <CommandItemTemplate>
+                         
                          <telerik:RadButton ID="RB_ViewApplyRecord" runat="server" Text="查看申请记录" Font-Bold="true" OnClientClicking="ShowWindow1" CssClass="floatleft" AutoPostBack="true"></telerik:RadButton>
 						    物资需求清单列表
                          <telerik:RadButton ID="RadButton_ExportExcel" runat="server" Text="导出Excel" Font-Bold="true" CommandName="ExportExcel" OnClick="RadButton_ExportExcel_Click" CssClass="floatright"></telerik:RadButton>
@@ -218,6 +246,31 @@
              <telerik:RadWindow ID="RadWindowList" runat="server" Title="物资申请列表" Left="150px"
                 ReloadOnShow="true" ShowContentDuringLoad="false" VisibleTitlebar="true" VisibleStatusbar="false"
                 Behaviors="Close,Maximize,Minimize" Modal="true" Width="1000px" Height="400px" />
+
+            <telerik:RadWindow ID="confirmDeleteWindow" runat="server" VisibleTitlebar="false" VisibleStatusbar="false"
+             Modal="true" Behaviors="None" Height="120px" Width="320px">
+            <ContentTemplate>
+                <div style="margin-top: 30px; float: left;">
+                    <div style="width: 60px; padding-left: 15px; float: left;">
+                        <img src="/Images/images/warnning1.jpg" alt="" />
+                    </div>
+                    <div style="width: 200px; float: left;">
+                        <asp:Label ID="Label2" Font-Size="14px" Text="将不能继续申请了，确定要关闭吗？" runat="server" Font-Bold="true"
+                            ForeColor="#25a0da" />
+                        <br />
+                        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <telerik:RadButton ID="RadButton5" runat="server" Text="是" AutoPostBack="false" OnClientClicked="YesOrNoClicked">
+                        <Icon PrimaryIconCssClass="rbOk" />
+                    </telerik:RadButton>
+                        &nbsp;
+                    <telerik:RadButton ID="RadButton6" runat="server" Text="否" AutoPostBack="false" OnClientClicked="YesOrNoClicked">
+                        <Icon PrimaryIconCssClass="rbCancel" />
+                    </telerik:RadButton>
+                    </div>
+                </div>
+            </ContentTemplate>
+           </telerik:RadWindow>
         </Windows>
     </telerik:RadWindowManager>
     <telerik:RadNotification ID="RadNotificationAlert" runat="server" Text="申请成功！进入流程平台" Position="Center"
