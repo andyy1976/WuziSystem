@@ -265,6 +265,8 @@ namespace mms.Plan
             string MDPLID = Request.QueryString["MDPID"].ToString();
             LogisticsCenterBLL bll = new LogisticsCenterBLL();
             string result="";
+          //  string strSql = " Update M_Demand_Merge_List set Submission_Date = '" + DateTime.Now + "' where MDPID = '" + MDPLID + "' Update M_Demand_Plan_List set Submit_Date = '" + DateTime.Now + "' where ID ='" + MDPLID + "'";
+           // DBI.Execute(strSql);
             if (changesubmit == "1")
             {
                 result = bll.WriteRcoOrderRepeat(MDPLID);
@@ -275,6 +277,8 @@ namespace mms.Plan
             }
             if (result == "")
             {
+                string strSql = " Update M_Demand_Merge_List set Submission_Date = '" + DateTime.Now + "' where MDPID = '" + MDPLID + "' Update M_Demand_Plan_List set Submit_Date = '" + DateTime.Now + "' where ID ='" + MDPLID + "'";
+                DBI.Execute(strSql);
                 RadNotificationAlert.Text = "提交成功！";
                 RadNotificationAlert.Show();
 

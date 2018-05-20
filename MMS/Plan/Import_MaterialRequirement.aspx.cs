@@ -1543,8 +1543,12 @@ namespace mms.Plan
                             return;
                         }
                         MDDLD.Manufacturer = item["MANUFACTURER"].Text.Trim();
-                  
-                    
+
+                        if (MDDLD.Manufacturer == "&nbsp;")
+                        {
+                            MDDLD.Manufacturer = null;
+                         }
+
                       //  RadComboBox RadComboBoxMaterialDept = item.FindControl("RadComboBoxMaterialDept") as RadComboBox;
                         MDDLD.MaterialDept = RadComboBox_Dept.SelectedValue;
 

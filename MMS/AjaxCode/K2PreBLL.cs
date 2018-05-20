@@ -89,6 +89,8 @@ namespace mms
             bool result;
             try
             {
+               // strSql = " Update M_Demand_Merge_List set Submit_Date = '" + DateTime.Now + "' where MDPID = '" + MDPLID +"' Update M_Demand_Plan_List set Submit_Date = '" + DateTime.Now +"',Submit_State='1' where ID ='" + MDPLID + "'";
+                //DBI.Execute(strSql);
                 result = mms.StartPreparesProgress(headmodel, listbodymodel);
             }
             catch (Exception ex)
@@ -104,7 +106,8 @@ namespace mms
             }
             if (result == true)
             {
-                strSql = " Update M_Demand_Plan_List set Submit_State='1' where ID ='" + MDPLID + "'";
+                strSql = " Update M_Demand_Merge_List set Submit_Date = '" + DateTime.Now + "' where MDPID = '" + MDPLID + "' Update M_Demand_Plan_List set Submit_Date = '" + DateTime.Now + "',Submit_State='1' where ID ='" + MDPLID + "'";
+                //strSql = " Update M_Demand_Plan_List set Submit_State='1' where ID ='" + MDPLID + "'";
                 DBI.Execute(strSql);
                 return "";
             }
